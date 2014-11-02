@@ -1,0 +1,11 @@
+@media (min-width: 1180px) {
+  body:not(.no-literate) .content {
+  	width: 980px;
+  }
+  body:not(.no-literate) .content > pre {
+  	width: 420px;
+  }
+}
+li.active {
+	text-decoration: underline;
+}
