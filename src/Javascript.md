@@ -17,7 +17,11 @@ Appbase.credentials(appname, appsecret)
 
 Authorize the app credentials using the appname and appsecret identifiers, as they appear in the [Dev Console](//appbase.io/developer).
 
-#### Usage
+```javascript
+var register = Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217');
+if (register === true)
+  console.log("app successfully registered");
+```
 
 ``Appbase.credentials(appname, appsecret)``
 
@@ -27,9 +31,3 @@ Authorize the app credentials using the appname and appsecret identifiers, as th
 **Returns**
 
 ``boolean`` **true** if the app has been successfully registered.
-
-```javascript
-var register = Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217');
-if (register === true)
-  console.log("app successfully registered");
-```
