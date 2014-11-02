@@ -21,7 +21,7 @@ var register = Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd21
 if (register === true)
   console.log("app successfully registered");
 ```
->**Usage**
+**Usage**
 
 ``Appbase.credentials(appname, appsecret)``
 
