@@ -12,7 +12,7 @@ The Appbase library exposes the ``Appbase`` object. The methods in the JS lib re
 
 **Appbase** is the global object exposed the JS library. It has the following four methods: ``credentials()``, ``ns()``, ``uuid()``, and ``serverTime()``.
 
-### credentials()
+## credentials()
 
 Authorize the app credentials using the appname and appsecret identifiers, as they appear in the [Dev Console](//appbase.io/developer).
 
@@ -23,16 +23,14 @@ if (register === true)
 ```
 **Usage**
 
-``Appbase.credentials(appname, appsecret)``
+``Appbase.credentials(appname, appsecret [, onComplete])``
 
-* **appname** ``String`` — App name
-* **appsecret** ``String`` — App secret key
+- **appname** ``String`` — App name
+- **appsecret** ``String`` — App secret key
 
-**Returns**
+**TBD**
 
-``boolean`` **true** if the app has been successfully registered.
-
-### ns()
+## ns()
 
 Get the namespace reference with the passed *string identifier*. It creates a new namespace if one doesn't already exist, else returns reference to the existing namespace.
 
@@ -50,7 +48,7 @@ var nsref = Appbase.ns("Domains");
 
 ``Object`` **nsref** *Namespace Reference*
 
-### uuid()
+## uuid()
 
 Returns a 32-character uuid.
 
@@ -66,7 +64,7 @@ console.log(Appbase.uuid());  // 32-character string
 
 ``String`` UUID
 
-### serverTime()
+## serverTime()
 
 Obtain the current time in *milliseconds* since epoch.
 
@@ -89,18 +87,18 @@ var abref = Appbase.serverTime(
   - **time** `Number` — points to the same path on which the method is called.
 
 
-# Namespace ``nsref``
+# Namespace Reference
 
 Namespace Reference Object or ``nsref`` has methods for creating vertices, searching vertices, and event listeners to the addition and destruction of vertices.
 
-### v()
+## v()
 
 Creates a new vertex or obtains a reference to an existing vertex.
 
 ```js
 nsref = Appbase.ns("Domains");
-vref1 = nsref.v("www.appbase.io"); // will return the vertex at path "Domains/www.appbase.io".
-vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path "Domains/www.appbase.io/subdomains".
+vref1 = nsref.v("www.appbase.io"); // will return the vertex at path "Domains/www.appbase.io". Will create one if it does not exist.
+vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path "Domains/www.appbase.io/subdomains". Will only return if the vertex at the path exists.
 ```
 
 **Usage**
@@ -115,7 +113,7 @@ vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path 
 
 ``Note:`` Use a string identifier if you are creating a new vertex. A new vertex cannot be created recursively, avoid using non-existent paths.
 
-### search()
+## search()
 
 Powerful realtime search on vertices inside a namespace, with options to search using one or more data properties. It returns not just matched strings, but all the matching vertices.
 
@@ -137,18 +135,18 @@ Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(er
 
 ``nsref.search(queryObj, onComplete)``
 
-- **queryObj** ``Object`` -- A Javascript Object containing the following fields and values
+- **queryObj** ``Object`` — A Javascript Object containing the following fields and values
 
-	- **text** ``String`` -- Search query string
-	- **properties** ``Array`` -- One or more properties on which to apply the search.
+	- **text** ``String`` — Search query string
+	- **properties** ``Array`` — One or more properties on which to apply the search.
 
-- **onComplete** ``Function`` -- will be passed two arguments:
+- **onComplete** ``Function`` — will be passed two arguments:
 
-	- **error** ``String`` / ``null`` -- *String* containing the error message, *null* if event listening is successful
-	- **results** ``Array`` -- Search results as an Array of matching vertices.
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
+	- **results** ``Array`` — Search results as an Array of matching vertices.
 	
 
-### on()
+## on()
 
 Listens for addition / destruction of vertices in the namespace.
 
@@ -172,25 +170,25 @@ setTimeout(function(){
 
 **Usage**
 
-``nsref.on(eventType, callback)``
+``nsref.on(eventType [, callback])``
 
 - **eventType** ``String`` — Either "vertex_added" or "vertex_destoyed"
-- **callback** ``Function`` — will be passed two arguments:
+- **callback** ``Function`` (optional) — will be passed two arguments:
 
   - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
   - **vref** `Vertex Reference` — of the newly added vertex.
   
 ``Note:`` ``vertex_added`` event listener returns the existing vertices in the namespace when listening for the first time.
 
-### off()
+## off()
 
 Turn off the listeners on a given namespace reference.
 
 ``nsref.off([eventType])``
 
-- **eventType** ``String`` (optional) -- Either "vertex_added" or "vertex_destroyed". Turns off all listeners on the reference if this argument is not passed.
+- **eventType** ``String`` (optional) — Either "vertex_added" or "vertex_destroyed". Turns off all listeners on the reference if this argument is not passed.
 
-### path()
+## path()
 
 Returns the path of the current reference.
 
@@ -208,7 +206,7 @@ The method accepts no arguments, and returns a path of the ``nsref`` resource. S
 
 **path** ``String`` Path of the ``nsref`` is usually the namespace identifier.
  
-### URL()
+## URL()
 
 Appbase URL of the current reference.
 
@@ -226,11 +224,11 @@ The method accepts no arguments, and returns a URL of the ``nsref`` resource.
 
 **url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/nsref``.
 
-# Vertex ``vref``
+# Vertex Reference
 
 Vertex Reference Object or ``vref`` has the methods for setting data, creating links to other vertices, and different listeners to notify about data changes, link changes, etc.
 
-### setData()
+## setData()
 
 Set one or more data properties on this vertex reference.
 
@@ -247,6 +245,72 @@ vref.setData(data, function(error, abVertexRef) {
 
 **Usage**
 
-``vref.setData(dataObject, onComplete)``
+``vref.setData(dataObject [, onComplete])``
 
-- **dataObject** ``Object`` A valid JSON object. Can contain a nested object, or arrays.
+- **dataObject** ``Object`` — A valid JSON object. Can contain a nested object, or arrays.
+- **onComplete** ``Function`` (optional) — will be passed two arguments:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``setData()`` worked successfully.
+	- **vref** ``Object`` — *Vertex Reference* of the vertex on which ``setData()`` has been applied.
+
+## removeData()
+
+Removes one or more data properties from this vertex reference.
+
+```js
+vref.removeData(["registered"], function(error, vref) {
+  if (!error) console.log("property removed successfully");
+});
+```
+
+**Usage**
+
+``vref.removeData(propertyNames [, onComplete])``
+
+- **propertyNames** ``Array`` — One or more property names to be deleted.
+- **onComplete** ``Function`` (optional) — will be passed two arguments:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeData()`` worked successfully.
+	- **vref** ``Vertex Reference`` —  of the vertex on which ``removeData()`` has been applied.
+
+## setEdge()
+
+Create a link to another vertex. You can optionally set priority to links.
+
+```js
+vref = Appbase.ns("Domains").v("www.appbase.io");
+vref.setEdge("subdomains"); // Creates an edge from vref to "subdomains"
+```
+
+**Usage**
+
+``vref.setEdge(edgeName [, outVertex, priority, onComplete])``
+
+- **edgeName** ``String`` — Identifier for the outVertex. The identifier can contain all ascii characters except whitespaces, `, \, ~, : or /. You can use ``Appbase.uuid()`` for setting a unique identifier.
+- **outVertex** ``Vertex Reference`` (optional) — If passed, ``setEdge()`` will create a link from ``vref`` to the ``outVertex``. Otherwise, it will create a new vertex and create a link from ``vref`` to it.
+- **priority** ``Number`` (optional) — If passed, the link will be assigned the priority. By default, the timestamp of edge creation is used as it's priority.
+- **onComplete** ``Function`` (optional) — will be passed two arguments:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``setEdge()`` worked successfully.
+	- **vref** ``Vertex Reference`` — of the vertex on which ``setEdge()`` has been applied.
+
+## removeEdge()
+
+Remove a link from the current vertex.
+
+```js
+vref = Appbase.ns("Domains").v("www.appbase.io");
+vref.removeEdge("subdomains", function(error, vref) {
+  if (!error) console.log("vertex removed successfully");
+});
+```
+
+**Usage**
+
+``vref.removeEdge(edgeName [, onComplete])``
+
+- **edgeName** ``String`` — The edge name to be deleted.
+- **onComplete** ``Function`` (optional) — will be passed two arguments:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeEdge()`` worked successfully.
+	- **vref** ``Vertex Reference`` —  of the vertex on which ``removeEdge()`` has been applied.
