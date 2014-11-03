@@ -76,7 +76,7 @@ var abref = Appbase.serverTime(
     if (error === null) { // confirming no errors
       console.log(time);  // 1413133493597
     }
-	});
+  });
 ```
 
 **Usage**
@@ -108,42 +108,11 @@ vref1 = nsref.v("www.appbase.io");
 
 - **path** `String` — A UNIX style path to the vertex reference.
 
+**Returns**
+
+**vref** ``Object`` *Vertex Reference*
+
 ``Note:`` Use a string identifier if you are creating a new vertex. A new vertex cannot be created recursively, avoid using non-existent paths.
-
-
-### on()
-
-Listens for addition / destruction of vertices in the namespace.
-
-```js
-var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
-
-domain.on('vertex_added', function onComplete(err, vref) {
-   if (err) console.log(err);
-   else {
-   	 console.log(vref.URL()); 
-   }
-);
-
-setTimeout(function(){
-    domain.v('www.appbase.io');
-}, 2000);
-
-/* After 2s, it adds the newly added vertex's URL -
-'http://api.appbase.io/<appname>/v2/Domain/www.appbase.io/' */
-```
-
-**Usage**
-
-``nsref.on(eventType, callback)``
-
-- **eventType** ``String`` — Either "vertex_added" or  "vertex_destoyed"
-- **callback** ``Function`` — will be passed two arguments:
-
-  - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
-  - **vref** `Vertex Reference` — of the newly added vertex.
-  
-``Note:`` ``vertex_added`` event listener returns the existing vertices in the namespace when listening for the first time.
 
 ### search()
 
@@ -177,3 +146,82 @@ Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(er
 	- **error** ``String`` / ``null`` -- *String* containing the error message, *null* if event listening is successful
 	- **results** ``Array`` -- Search results as an Array of matching vertices.
 	
+
+### on()
+
+Listens for addition / destruction of vertices in the namespace.
+
+```js
+var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
+
+domain.on('vertex_added', function onComplete(err, vref) {
+   if (err) console.log(err);
+   else {
+   	 console.log(vref.URL()); 
+   }
+);
+
+setTimeout(function(){
+    domain.v('www.appbase.io');
+}, 2000);
+
+/* After 2s, it adds the newly added vertex's URL -
+'http://api.appbase.io/<appname>/v2/Domain/www.appbase.io/' */
+```
+
+**Usage**
+
+``nsref.on(eventType, callback)``
+
+- **eventType** ``String`` — Either "vertex_added" or "vertex_destoyed"
+- **callback** ``Function`` — will be passed two arguments:
+
+  - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
+  - **vref** `Vertex Reference` — of the newly added vertex.
+  
+``Note:`` ``vertex_added`` event listener returns the existing vertices in the namespace when listening for the first time.
+
+### off()
+
+Turn off the listeners on a given namespace reference.
+
+``nsref.off([eventType])``
+
+- **eventType** ``String`` (optional) -- Either "vertex_added" or "vertex_destroyed". Turns off all listeners on the reference if this argument is not passed.
+
+### path()
+
+Returns the path of the current reference.
+
+```js
+var path = nsref.path() // path equals "Domains"
+```
+
+**Usage**
+
+``nsref.path()``
+
+The method accepts no arguments, and returns a path of the ``nsref`` resource. Since namespaces are top-level objects, the path for a namespace is just the *namesapce identifier*.
+
+**Returns**
+
+**path** ``String`` Path of the ``nsref`` is usually the namespace identifier.
+ 
+### URL()
+
+Appbase URL of the current reference.
+
+```js
+var url = nsref.URL() // url equals "api.appbase.io/appname/v2/Domains"
+```
+
+**Usage**
+
+``nsref.URL()``
+
+The method accepts no arguments, and returns a URL of the ``nsref`` resource.
+
+**Returns**
+
+**url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/nsref``.
+
