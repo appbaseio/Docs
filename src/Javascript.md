@@ -8,7 +8,7 @@ The Appbase library exposes the ``Appbase`` object. The methods in the JS lib re
 2. **Namespace Reference** (referred as ``nsref`` in this doc)
 3. **Vertex Reference** (referred as ``vref`` in this doc)
 
-## Appbase
+# Appbase
 
 **Appbase** is the global object exposed the JS library. It has the following four methods: ``credentials()``, ``ns()``, ``uuid()``, and ``serverTime()``.
 
@@ -31,3 +31,59 @@ if (register === true)
 **Returns**
 
 ``boolean`` **true** if the app has been successfully registered.
+
+### ns()
+
+Get the namespace reference with the passed *string identifier*. It creates a new namespace if one doesn't already exist, else returns reference to the existing namespace.
+
+```js
+var nsref = Appbase.ns("Domains");
+```
+
+**Usage**
+
+``Appbase.ns(namespace)``
+
+* **namespace** ``String`` — Namespace identifier (can contain all ascii characters except for whitespaces, `, ~, : or / characters.)
+
+**Returns**
+
+``Object`` **nsref** *Namespace Reference*
+
+### uuid()
+
+Returns a 32-character uuid.
+
+```js
+console.log(Appbase.uuid());  // 32-character string
+```
+
+**Usage**
+
+``Appbase.uuid()``
+
+**Returns**
+
+``String`` UUID
+
+### serverTime()
+
+Obtain the current time in *milliseconds* since epoch.
+
+```js
+var abref = Appbase.serverTime(
+  function onComplete(error, time) {
+    if (error === null) { // confirming no errors
+      console.log(time);  // 1413133493597
+    }
+	});
+```
+
+**Usage**
+
+``Appbase.serverTime(onComplete)``
+
+- **onComplete** ``Function`` will be passed with two arguments.
+
+  - **error** `String` / `null` -- *String* containing the error message, *null* if `serverTime()` returns successfully.
+  - **time** `Number` -- points to the same path on which the method is called.
