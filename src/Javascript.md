@@ -44,7 +44,7 @@ var nsref = Appbase.ns("Domains");
 
 ``Appbase.ns(namespace)``
 
-* **namespace** ``String`` — Namespace identifier (can contain all ascii characters except for whitespaces, `, ~, : or / characters.)
+* **namespace** ``String`` — Namespace identifier (can contain all ascii characters except for whitespaces, `` `, ~, :, /`` characters.)
 
 **Returns**
 
@@ -89,9 +89,9 @@ var abref = Appbase.serverTime(
   - **time** `Number` — points to the same path on which the method is called.
 
 
-# Namespace
+# Namespace ``nsref``
 
-Namespace Reference Object or ``nsref`` has the following methods: ``v()``, ``on()`` and ``search()``.
+Namespace Reference Object or ``nsref`` has methods for creating vertices, searching vertices, and event listeners to the addition and destruction of vertices.
 
 ### v()
 
@@ -99,14 +99,15 @@ Creates a new vertex or obtains a reference to an existing vertex.
 
 ```js
 nsref = Appbase.ns("Domains");
-vref1 = nsref.v("www.appbase.io");
+vref1 = nsref.v("www.appbase.io"); // will return the vertex at path "Domains/www.appbase.io".
+vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path "Domains/www.appbase.io/subdomains".
 ```
 
 **Usage**
 
 ``nsref.v(path)``
 
-- **path** `String` — A UNIX style path to the vertex reference.
+- **path** `String` — Relative path of the vertex reference. If creating a new vertex, this is the vertex identifier. ``/`` character is used for separating path variables. The path can contain all ascii characters except for any whitespaces, `` `, ~, :`` characters.
 
 **Returns**
 
@@ -225,3 +226,27 @@ The method accepts no arguments, and returns a URL of the ``nsref`` resource.
 
 **url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/nsref``.
 
+# Vertex ``vref``
+
+Vertex Reference Object or ``vref`` has the methods for setting data, creating links to other vertices, and different listeners to notify about data changes, link changes, etc.
+
+### setData()
+
+Set one or more data properties on this vertex reference.
+
+```js
+vref = Appbase.ns("Domains").v("www.appbase.io");
+data = {
+  "tld": "io",
+  "registered": "2013"
+}
+vref.setData(data, function(error, abVertexRef) {
+  if (!error) console.log("data successfully set.");
+});
+```
+
+**Usage**
+
+``vref.setData(dataObject, onComplete)``
+
+- **dataObject** ``Object`` A valid JSON object. Can contain a nested object, or arrays.
