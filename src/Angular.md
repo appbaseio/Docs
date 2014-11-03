@@ -1,4 +1,4 @@
-# ngAppbase Guide
+# ng-Appbase Guide
 
 Appbase provides a realtime graph backend, is designed to write complex applications completely clientside. Appbase fits perfectly as a backend in your AngularJS application.
 
@@ -103,20 +103,20 @@ Vertex References created with `$appbase.ns().v()` has all the methods exactly a
 $appbase.ns('user').v('bella').setData({having: 'Cerveja'});
 ```
 
-The  documentation for Appbase JS api is [here](/docs/js.md).  
+The  documentation for Appbase JS api is [here](http://docs.appbase.io/docs/js.html).
 
 ## Next Steps
 
-Checkout additional documentation for `bindEdges()`, `bindVertices()` and `bindProperties()` [here](/docs/angular_advanced.md).
+Checkout additional documentation for `bindEdges()`, `bindVertices()` and `bindProperties()` further down on this page.
 
 Checkout this opensource [Twitter clone](http://twitter.appbase.io/) we built using this Angular binding in under ~250 lines of javascript code.
 
 Have a great time building awesome realtime applications!
 
 
-## $appbase API Docs
+# $appbase API Docs
 
-### vertexRef.bindEdges()
+## vertexRef.bindEdges()
 ```js
 {
 	hello: "hello"
@@ -174,7 +174,7 @@ app.controller("myCtrl", function($scope, $appbase) {
 });
 ```
 
-### bindVertices()
+## bindVertices()
 
 `bindVertices` works exactly as `bindEdges`, except that it is invoked on a namespace reference and returns an array of all the vertices in the namespace. Callbacks _onAdd_, _onRemove_ and _onChange_ are called, respectively, when a vertex is added, destroyed and properties are changed.
 
@@ -191,7 +191,7 @@ scope.varName = nsRef.bindEdges(scope, {
 })
 ```
 
-### bindProperties()
+## bindProperties()
 ```js
 scope.varName = vRef.bindProperties(scope, {
 	onProperties: function(properties, ref, done) {
