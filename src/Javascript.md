@@ -117,10 +117,10 @@ vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path 
 
 Powerful realtime search on vertices inside a namespace, with options to search using one or more data properties. It returns not just matched strings, but all the matching vertices.
 
->**Note:** Search has to be manually enabled on the namesapces using the [Developer Dashboard](http://appbase.io/developer).
+**Note:** Search has to be manually enabled on the namesapces using the [Developer Dashboard](http://appbase.io/developer).
 
->1. Enable the search by toggling the <i class="fa fa-eye-slash fa-2x"></i> switch in your app's preferred namespace. If search is enabled, you should see an this icon <i class="fa fa-eye fa-2x"></i> next to the namespace.
->2. Second and final step, use this code snippet on the enabled namespace and have a full-text search widget.
+1. Enable the search by toggling the <span class="fa fa-eye-slash fa-2x"></span> switch in your app's preferred namespace. If search is enabled, you should see an this icon <span class="fa fa-eye fa-2x"></span> next to the namespace.
+2. Second and final step, use this code snippet on the enabled namespace and have a full-text search widget.
 
 ```js
 // Suppose there is a "tweets" namespace containing vertices with a property "message".
