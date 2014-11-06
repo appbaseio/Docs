@@ -82,6 +82,32 @@ requestObj.post('/api/endpoint', {
 	}
 );
 ```
+## Caching Credentials
+
+When the user logs in once with a provider, the credentials are cached in localStorage auttomatically, this helps staying logged in across browser restarts. To fetch these cached credentails call `Appbase.getAuth()`.
+
+```js
+var cachedCreds = Appbase.getAuth();
+if(getAuth !== null) {
+	console.log(cachedCreds.authObj.uid);
+} else {
+	console.log('Not authenticated.');
+}
+```
+
+`getAuth()` saves you from calling `authPopup` again for authenticating user when the user already went through the login flow previously. It returns the two objects described object: _authObj_ _requestObj_. 
+
+```js
+var cachedCreds = Appbase.getAuth();
+if(cachedCreds) {
+	//access user's profile with cachedCreds.authObj
+	//access provider's api with cachedCreds.requestObj
+} else {
+	//need to call authPopup to log in
+}
+```
+
+
 ## Dealing with Popups and Redirects
 
 Appbase supports two different ways to authenticate with OAuth providers - via pop-up, or browser redirect.
