@@ -1,3 +1,6 @@
+##### AppbaseJS v2.2.0 -> 2.2.1
+- getAuth() returns stored credentials
+
 ##### AppbaseJS v1.2.2 -> 2.2.0
 - The lib now points to REST 2.0
 - fixed: credentils was creating random vertices
