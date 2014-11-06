@@ -84,7 +84,7 @@ requestObj.post('/api/endpoint', {
 ```
 ## Caching Credentials
 
-When the user logs in once with a provider, the credentials are cached in localStorage auttomatically, this helps staying logged in across browser restarts. To fetch these cached credentails call `Appbase.getAuth()`.
+Once the user logs in with a provider, the credentials are cached in localStorage automatically, and this helps staying logged in across browser restarts. To fetch these cached credentails call, `Appbase.getAuth()`.
 
 ```js
 var cachedCreds = Appbase.getAuth();
@@ -95,7 +95,7 @@ if(getAuth !== null) {
 }
 ```
 
-`getAuth()` saves you from calling `authPopup` again for authenticating user when the user already went through the login flow previously. It returns the two objects described object: _authObj_ _requestObj_. 
+`getAuth()` saves you from calling `authPopup()` again for authenticating user when the user already went through the login flow previously. It returns the two objects described object: _authObj_ and _requestObj_. If user is not authenticated, it returns `null`.
 
 ```js
 var cachedCreds = Appbase.getAuth();
