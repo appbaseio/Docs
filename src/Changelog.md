@@ -5,6 +5,7 @@
 ##### AppbaseJS v1.2.1 -> 1.2.2
 - the lib points to REST API 1.0
 - `setEdge` works without a callback
+- Event: _vertex_destroyed_ -> _vertex_removed_
 - input validation and returning proper errors
 - removeEdge and removeData accepts array/string
 - `inVertex` throws an error when called on a root vertex
