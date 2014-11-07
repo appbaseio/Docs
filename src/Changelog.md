@@ -1,3 +1,12 @@
+##### AppbaseJS v2.2.3 -> 2.2.4
+- namespace listening works after a reconnect
+
+##### AppbaseJS v2.2.2 -> 2.2.3
+- vRef.name(), nsRef.name(), vRef.once('properties')
+
+##### AppbaseJS v2.2.1 -> 2.2.2
+- getAuth() returns {authObj, requestObj}
+
 ##### AppbaseJS v2.2.0 -> 2.2.1
 - getAuth() returns stored credentials
 
