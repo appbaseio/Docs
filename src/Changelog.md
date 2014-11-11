@@ -1,3 +1,12 @@
+##### AppbaseJS v2.2.4 -> 2.2.5
+- getAuth() - resolved: 'token not present'
+- proper character support
+  - paths support all ascii except '~' and ':'
+  - vertice names: all ascii except '/', '~' and ':'
+  - property names: all unicode
+  - appname: lowercase alphanumeric and underscores
+  - appsecret: alphanumeric
+
 ##### AppbaseJS v2.2.3 -> 2.2.4
 - namespace listening works after a reconnect
 
