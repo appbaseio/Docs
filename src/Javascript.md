@@ -89,7 +89,7 @@ var abref = Appbase.serverTime(
 - **onComplete** ``Function`` will be passed with two arguments.
 
   - **error** `String` / `null` — *String* containing the error message, *null* if `serverTime()` returns successfully.
-  - **time** `Number` — points to the same path on which the method is called.
+  - **time** `Number` — the current time of server in  milliseconds since epoch
 
 
 # Namespace Reference
@@ -153,7 +153,7 @@ Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(er
 
 ### on()
 
-Listens for addition / destruction of vertices in the namespace.
+Listens for addition / removal of vertices in the namespace.
 
 ```js
 var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
@@ -177,7 +177,7 @@ setTimeout(function(){
 
 ``nsref.on(eventType [, callback])``
 
-- **eventType** ``String`` — Either "vertex_added" or "vertex_destoyed"
+- **eventType** ``String`` — Either "vertex_added" or "vertex_removed"
 - **callback** ``Function`` (optional) — will be passed two arguments:
 
   - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
@@ -191,7 +191,7 @@ Turn off the listeners on a given namespace reference.
 
 ``nsref.off([eventType])``
 
-- **eventType** ``String`` (optional) — Either "vertex_added" or "vertex_destroyed". Turns off all listeners on the reference if this argument is not passed.
+- **eventType** ``String`` (optional) — Either "vertex_added" or "vertex_removed". Turns off all listeners on the reference if this argument is not passed.
 
 ### path()
 
