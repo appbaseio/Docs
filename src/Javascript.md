@@ -294,16 +294,16 @@ vref.commitData(function(previousData) {
 Removes one or more data properties from this vertex reference.
 
 ```js
-vref.removeData(["registered"], function(error, vref) {
+vref.removeData("registered", function(error, vref) {
   if (!error) console.log("property removed successfully");
 });
 ```
 
 **Usage**
 
-``vref.removeData(propertyNames [, onComplete])``
+``vref.removeData(propertyName [, onComplete])``
 
-- **propertyNames** ``Array`` — One or more property names to be deleted.
+- **propertyName** ``String`` / ``Array`` — One or more property names to be deleted.
 - **onComplete** ``Function`` (optional) — will be passed two arguments:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeData()`` worked successfully.
@@ -315,7 +315,7 @@ Create a link to another vertex. You can optionally set priority to links.
 
 ```js
 vref = Appbase.ns("Domains").v("www.appbase.io");
-vref.setEdge("subdomains"); // Creates an edge from vref to "subdomains"
+vref.setEdge("subdomains"); // Creates an edge "subdomains" to a new vertex
 ```
 
 **Usage**
@@ -325,10 +325,11 @@ vref.setEdge("subdomains"); // Creates an edge from vref to "subdomains"
 - **edgeName** ``String`` — Identifier for the outVertex. The identifier can contain all ascii characters except whitespaces, `, \, ~, : or /. You can use ``Appbase.uuid()`` for setting a unique identifier.
 - **outVertex** ``Vertex Reference`` (optional) — If passed, ``setEdge()`` will create a link from ``vref`` to the ``outVertex``. Otherwise, it will create a new vertex and create a link from ``vref`` to it.
 - **priority** ``Number`` (optional) — If passed, the link will be assigned the priority. By default, the timestamp of edge creation is used as it's priority.
-- **onComplete** ``Function`` (optional) — will be passed two arguments:
+- **onComplete** ``Function`` (optional) — will be passed three arguments:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``setEdge()`` worked successfully.
 	- **vref** ``Vertex Reference`` — of the vertex on which ``setEdge()`` has been applied.
+    - **outVertexRef** ``Vertex Reference`` - of the vertex which is added as an edge.
 
 ### removeEdge()
 
@@ -345,7 +346,7 @@ vref.removeEdge("subdomains", function(error, vref) {
 
 ``vref.removeEdge(edgeName [, onComplete])``
 
-- **edgeName** ``String`` — The edge name to be deleted.
+- **edgeName** ``String`` / ``Array`` — One or more edge names to be deleted.
 - **onComplete** ``Function`` (optional) — will be passed two arguments:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeEdge()`` worked successfully.
