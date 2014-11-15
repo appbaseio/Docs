@@ -227,7 +227,7 @@ The method accepts no arguments, and returns a URL of the ``nsref`` resource.
 
 **Returns**
 
-**url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/nsref``.
+**url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/namespace``.
 
 # Vertex Reference
 
@@ -241,9 +241,10 @@ Set one or more data properties on this vertex reference.
 vref = Appbase.ns("Domains").v("www.appbase.io");
 data = {
   "tld": "io",
-  "registered": "2013"
+  "registered": "2013",
+  "visits": 0
 }
-vref.setData(data, function(error, abVertexRef) {
+vref.setData(data, function(error, vref) {
   if (!error) console.log("data successfully set.");
 });
 ```
@@ -257,6 +258,36 @@ vref.setData(data, function(error, abVertexRef) {
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``setData()`` worked successfully.
 	- **vref** ``Object`` — *Vertex Reference* of the vertex on which ``setData()`` has been applied.
+
+
+### commitData()
+
+Atomically modify properties of the vertex. Unlike setData(), which just overwrites the properties regardless of their previous values, commitData() is used to modify the existing value to a new value, ensuring there are no conflicts with other clients writing to the same location at the same time.
+
+```js
+vref = Appbase.ns("Domains").v("www.appbase.io");
+vref.commitData(function(previousData) {
+  var newData = {
+    visits: previousData.visits
+  };
+  newData.visits += 1;
+  return newData;
+}, function(error, vref) {
+  if (!error) console.log("data successfully commited.");
+});
+```
+
+**Usage**
+
+``vref.commitData(applyFunction [, onComplete])``
+
+- **applyFunction** ``Function`` — is used to transform the current value into a new value. It will be passed the current data as a JSON object and it is supposed to return the new data as a JSON object. Note: only the properties defined in the new JSON object is commited to the server, others are persisted.
+- **onComplete** ``Function`` (optional) — will be passed two arguments:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``commitData()`` worked successfully.
+	- **vref** ``Object`` — *Vertex Reference* of the vertex on which ``commitData()`` has been applied.
+
+`applyFunction` is called once and the new data is sent to the server for write. If another client writes to the vertex before your new value is successfully written, the `applyFunction` will be called again with the new current value, and the write will be retried.
 
 ### removeData()
 
