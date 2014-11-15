@@ -94,7 +94,7 @@ var abref = Appbase.serverTime(
 
 # Namespace Reference
 
-Namespace Reference Object or ``nsref`` has methods for creating vertices, searching vertices, and event listeners to the addition and destruction of vertices.
+Namespace Reference Object or ``nsref`` has methods for creating vertices, searching vertices, and event listeners to the addition and removal of vertices.
 
 ### v()
 
@@ -408,6 +408,23 @@ The method accepts no arguments, and returns a path of the ``vref`` resource.
 **Returns**
 
 **path** ``String`` Path of the ``vref`` is a UNIX style path of the format namespace/:vertex1/:vertex2/vref.
+
+### name()
+
+Returns the name of the current reference.
+
+```js
+var vref = Appbase.ns('user').v('andy/tools/rockhammer')
+var name = vref.name(); // name = 'rockhammer'
+```
+
+**Usage**
+
+``vref.name()``
+
+**Returns**
+
+**name** ``String`` Name of the ``vref``.
  
 ### URL()
 
