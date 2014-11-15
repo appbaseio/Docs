@@ -17,9 +17,10 @@ The Appbase library exposes the ``Appbase`` object. The methods in the JS lib re
 Authorize the app credentials using the appname and appsecret identifiers, as they appear in the [Dev Console](//appbase.io/developer).
 
 ```js
-var register = Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217');
-if (register === true)
-  console.log("app successfully registered");
+Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217', function(error, isAuthorized) {
+  if (!error && isAuthorized)
+    console.log("app successfully registered");
+});
 ```
 **Usage**
 
@@ -27,8 +28,12 @@ if (register === true)
 
 - **appname** ``String`` — App name
 - **appsecret** ``String`` — App secret key
+- **onComplete** ``Function`` — will be passed two arguments:
 
-**TBD**
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
+	- **isAuthorized** ``Boolean`` — Whether the credentials are correct or not
+	
+
 
 ### ns()
 
