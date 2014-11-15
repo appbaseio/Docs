@@ -352,6 +352,25 @@ vref.removeEdge("subdomains", function(error, vref) {
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeEdge()`` worked successfully.
 	- **vref** ``Vertex Reference`` —  of the vertex on which ``removeEdge()`` has been applied.
 
+### destroy()
+
+Destroys a vertex from Appbase. All edges pointing to this vertex are also removed. This causes **vertex_removed** to be fired on the namespace where this vertex belongs.
+
+```js
+vref = Appbase.ns("Domains").v("www.appbase.io");
+vref.destroy(function(error, vref) {
+  if (!error) console.log("vertex destroyed.");
+});
+```
+
+**Usage**
+
+``vref.destroy([, onComplete])``
+
+- **onComplete** ``Function`` (optional) — will be passed the argument:
+
+	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeEdge()`` worked successfully.
+    
 ### outVertex()
 
 Reference to the corresponding ``outVertex`` with the given name.
