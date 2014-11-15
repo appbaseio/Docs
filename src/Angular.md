@@ -194,9 +194,9 @@ scope.varName = nsRef.bindEdges(scope, {
 ## bindProperties()
 ```js
 scope.varName = vRef.bindProperties(scope, {
-	onProperties: function(properties, ref, done) {
+	onProperties: function(scope, properties, ref, done) {
 	},
-	onUnbind: function(properties, ref) {
+	onUnbind: function(scope, properties, ref) {
 	}
 })
 ```
