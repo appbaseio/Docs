@@ -8,7 +8,7 @@ Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://a
 Add Appbase library to your codebase and set the app credentials as they appear here.
 
 ```html
-<script src="https://cdn.appbase.io/2.0/appbase.js"></script>
+<script src="https://cdn.appbase.io/latest/appbase.js"></script>
 ```
 
 ```js
