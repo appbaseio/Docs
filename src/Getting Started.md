@@ -1,6 +1,6 @@
 # Steps to getting started with Appbase
 
-## Step0: Get Appbase
+## Step 0: Get Appbase
 Login into [Appbase Dashboard](http://appbase.io/developer/), and create a new app.
 
 ## Step 1: Add the Appbase JS Library
@@ -80,8 +80,8 @@ Appbase.ns('tweet').search({text:'hello', properties: ['message']}, function(err
 })
 ```
 
-## Further: User Authentications
+## Further
 
 If you are using Appbase from a Javascript client, you might want to use user authentications over secret. Checkout [here](/docs/authentications.html) for more.
 
-You should checkout the [Javascript API reference](/docs/js.html) as a next step.
+As a next step, you should checkout the [Javascript API reference](/docs/js.html) for an in-depth usage guide.
