@@ -1,7 +1,7 @@
 # Steps to getting started with Appbase
 
 ## Step 0: Get Appbase
-Log in to [Appbase Dashboard](http://appbase.io/developer/) <i class="fa fa-external-link"></i>, and create a new app.
+Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://appbase.io/developer/), and create a new app.
 
 ## Step 1: Add the Appbase JS Library
 
