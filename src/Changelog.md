@@ -1,5 +1,5 @@
 ##### AppbaseJS v2.2.6 -> 2.2.7
-- Only supporting characters encoded by `encodeURI()`. Encoding all URLs before requesting server
+- Supporting the only characters encoded by `encodeURI()` except namespaces. Encoding all URLs before requesting server
 
 ##### AppbaseJS v2.2.5 -> 2.2.6
 - console.error -> console.log
