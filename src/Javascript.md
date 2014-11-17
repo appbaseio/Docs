@@ -47,7 +47,7 @@ var nsref = Appbase.ns("Domains");
 
 ``Appbase.ns(namespace)``
 
-* **namespace** ``String`` — Namespace identifier (can contain all ascii characters except for whitespaces, `` `, ~, :, /`` characters.)
+* **namespace** ``String`` — Namespace identifier (can contain all ascii characters except for whitespaces, ',', '/', '?', ':', '@', '&', '=', '+', '$', '#', and '~'.)
 
 **Returns**
 
@@ -110,7 +110,7 @@ vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path 
 
 ``nsref.v(path)``
 
-- **path** `String` — Relative path of the vertex reference. If creating a new vertex, this is the vertex identifier. ``/`` character is used for separating path variables. The path can contain all ascii characters except for any whitespaces, `` `, ~, :`` characters.
+- **path** `String` — Relative path of the vertex reference. If creating a new vertex, this is the vertex identifier. ``/`` character is used for separating path variables. The path can contain all ascii characters except for whitespaces, ',', '?', ':', '@', '&', '=', '+', '$', '#', and '~'.
 
 **Returns**
 
@@ -322,7 +322,7 @@ vref.setEdge("subdomains"); // Creates an edge "subdomains" to a new vertex
 
 ``vref.setEdge(edgeName [, outVertex, priority, onComplete])``
 
-- **edgeName** ``String`` — Identifier for the outVertex. The identifier can contain all ascii characters except whitespaces, `, \, ~, : or /. You can use ``Appbase.uuid()`` for setting a unique identifier.
+- **edgeName** ``String`` — Identifier for the outVertex. The identifier can contain all ascii characters except  whitespaces, ',', '?', ':', '@', '&', '=', '+', '$', '#', and '~'. You can use ``Appbase.uuid()`` for setting a unique identifier.
 - **outVertex** ``Vertex Reference`` (optional) — If passed, ``setEdge()`` will create a link from ``vref`` to the ``outVertex``. Otherwise, it will create a new vertex and create a link from ``vref`` to it.
 - **priority** ``Number`` (optional) — If passed, the link will be assigned the priority. By default, the timestamp of edge creation is used as it's priority.
 - **onComplete** ``Function`` (optional) — will be passed three arguments:
