@@ -462,3 +462,27 @@ The method accepts no arguments, and returns a URL of the ``vref`` resource.
 **Returns**
 
 **url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/ns/:vertex1/:vertex2``.
+
+# Data Snapshots
+
+Data snapshots are immutable copies of the data stored at `Appbase References`_. There are two kinds of snapshots: `Property Snapshot`_ and `Edge Snapshot`_, fired when listening to on('properties') or one of the edge listeners.
+
+### Property Snapshot
+
+It holds the property data of a vertex in Appbase. It has the following methods to obtain the changes in the Appbase Reference.
+
+
+| Method              | Returns                                                        |
+|----------------     |----------------                                                |
+| properties()        | data properties as a Javascript object                         |
+| prevProperties()    | data properties before data **change** as a Javascript object  |
+
+### Edge Snapshot
+
+It holds the edge data. It has the following methods to obtain the edge related changes in the Appbase Reference.
+
+
+| Method             | Returns                                                       |
+|--------------------|---------------------------------------------------------------|
+| priority()         | current priority of the edge                                  |
+| prevPriority()     | previous priority of the edge (``null`` if not set)           |
