@@ -15,6 +15,8 @@ Add Appbase library to your codebase and set the app credentials as they appear 
 Appbase.credentials("aphrodite", "4d8d0072580912343cd74a09015cd217");
 ```
 
+> Note: You will want to change the parameters of the ``Appbase.credentials()`` method to your own app name, app secret combination, as seen in the [Dashboard](http://appbase.io/developer).
+
 ## Step 2: Creating Vertices
 
 Now let's create two Appbase vertices under two different namespaces "user" and "tweets".
