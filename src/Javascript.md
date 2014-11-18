@@ -475,7 +475,7 @@ It holds the property data of a vertex in Appbase. It has the following methods 
 | Method              | Returns                                                        |
 |----------------     |----------------                                                |
 | properties()        | data properties as a Javascript object                         |
-| prevProperties()    | data properties before data **change** as a Javascript object  |
+| prevProperties()    | data properties before data change as a Javascript object      |
 
 ### Edge Snapshot
 
