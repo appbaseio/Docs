@@ -1,3 +1,9 @@
+##### ng-appbase v2.2.1 -> 2.2.2
+- using Appbase.vRefModifier() to conver every reference to ng-appbase ref
+
+##### AppbaseJS v2.2.7 -> 2.2.8
+- Appbase.vRefModifier and Appbase.nsRefModifier to let bindings modify references
+
 ##### ng-appbase v2.2.0 -> 2.2.1
 - performance improvements
 
