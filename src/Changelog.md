@@ -1,4 +1,10 @@
+##### ng-appbase v2.2.0 -> 2.2.1
+- performance improvements
+
 ##### AppbaseJS v2.2.6 -> 2.2.7
+- performance improvements in nsRef.v() - making ng-appbase was faster
+
+##### (Discarded) AppbaseJS v2.2.6 -> 2.2.7
 - Supporting the only characters encoded by `encodeURI()` except namespaces. Encoding all URLs before requesting server
 
 ##### AppbaseJS v2.2.5 -> 2.2.6
