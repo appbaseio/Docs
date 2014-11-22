@@ -83,7 +83,7 @@ connection: keep-alive
 </code>
 </pre>
 
-```curl
+```html
 curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
