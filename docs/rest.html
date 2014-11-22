@@ -52,6 +52,9 @@
     Flatdoc.highlighters.html = function(code) {
       return code;
     };
+    Flatdoc.highlighters.curl = function(code) {
+      return code;
+    };
     Flatdoc.run({
       fetcher: Flatdoc.github('appbaseio/docs', 'src/REST.md')
     });
