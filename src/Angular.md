@@ -124,6 +124,8 @@ Have a great time building awesome realtime applications!
 scope.varName = vRef.bindEdges(scope, {
 	onAdd: function(scope, edgeData, edgeRef, done) {
 	},
+    onComplete: function() {
+	},
 	onRemove: function(scope, edgeData, edgeRef, done) {
 	},
 	onUnbind: function(scope, edgeData, edgeRef) {
@@ -147,6 +149,7 @@ Each object (called _edgeData_ from now on) in array represents an edge and cont
 ### Arguments
 - __scope__ : The angular scope where bindEdges() is called.
 - __onAdd__ _(function)_: called when an edge is added. This function basically gives the programmer a facility to modify what should be available in `edgeData`. You can add more data into it, which will be automatically added in to the array, which bound to a scope variable, you don't need to manually add any data to the scope.  The `edgeRef` passed in the callback helps fetching more data relevant to the edge. `done()` should be called when the required data is added in `edgeData`, only after that the `edgeData` will added in the array.
+- __onComplete__ _(function)_: called when existing edges are fired. Works exactly as `onComplete` callback for _edge_added_ event in Appbase Javascript Library.
 - __onRemove__ _(function)_: called when an edge is removed. To remove the `edgeData` from the array, calling `done()` is necessary.
 - __onChange__ _(function)_: called when the properties of the vertex are changed. To reflect the changes in the scope, calling `done()` is necessary.
 - __onUnbind__ _(function)_: called when the scope variable is unbound from edges. You should turn off the listeners here, if added any in the `onAdd` callback.
@@ -176,11 +179,13 @@ app.controller("myCtrl", function($scope, $appbase) {
 
 ## bindVertices()
 
-`bindVertices` works exactly as `bindEdges`, except that it is invoked on a namespace reference and returns an array of all the vertices in the namespace. Callbacks _onAdd_, _onRemove_ and _onChange_ are called, respectively, when a vertex is added, destroyed and properties are changed.
+`bindVertices` works exactly as `bindEdges`, except that it is invoked on a namespace reference and returns an array of all the vertices in the namespace. Callbacks _onAdd_, _onRemove_ and _onChange_ are called, respectively, when a vertex is added, destroyed and properties are changed. _onComplete_ is called when existing vertices are retrieved. Works exactly as `onComplete` callback for *vertex_added* event in Appbase Javascript Library.
 
 ```js
 scope.varName = nsRef.bindEdges(scope, {
 	onAdd: function(scope, vData, vRef, done) {
+	},
+    onComplete: function() {
 	},
 	onRemove: function(scope, vData, vRef, done) {
 	},
