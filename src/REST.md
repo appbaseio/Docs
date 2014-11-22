@@ -82,3 +82,14 @@ connection: keep-alive
 }
 </code>
 </pre>
+
+```curl
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"data\":{\"foo\":\"bar\"}
+    }" \
+https://api.appbase.io/appname/v2/namespace/vertex/~properties
+```
