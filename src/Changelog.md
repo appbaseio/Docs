@@ -1,5 +1,8 @@
+##### AppbaseJS v2.2.8 -> 2.2.9
+- onComplete callback: fired when existing edges/vertices have been fired
+
 ##### ng-appbase v2.2.1 -> 2.2.2
-- using Appbase.vRefModifier() to conver every reference to ng-appbase ref
+- using Appbase.vRefModifier() to convert every reference to ng-appbase ref
 
 ##### AppbaseJS v2.2.7 -> 2.2.8
 - Appbase.vRefModifier and Appbase.nsRefModifier to let bindings modify references

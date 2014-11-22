@@ -158,12 +158,14 @@ Listens for addition / removal of vertices in the namespace.
 ```js
 var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
 
-domain.on('vertex_added', function onComplete(err, vref) {
+domain.on('vertex_added', function (err, vref) {
    if (err) console.log(err);
    else {
    	 console.log(vref.URL()); 
    }
-);
+}, function() {
+  console.log('Existing vertices retrieved.');
+});
 
 setTimeout(function(){
     domain.v('www.appbase.io');
@@ -175,14 +177,15 @@ setTimeout(function(){
 
 **Usage**
 
-``nsref.on(eventType [, callback])``
+``nsref.on(eventType [, callback, onComplete])``
 
 - **eventType** ``String`` — Either "vertex_added" or "vertex_removed"
-- **callback** ``Function`` (optional) — will be passed two arguments:
+- **callback** ``Function`` (optional) — is called when with existing vertices, and when ever a new vertex is added. It will be passed two arguments:
 
   - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
   - **vref** `Vertex Reference` — of the newly added vertex.
-  
+- **onComplete** ``Function`` - Called when all the existing vertices have been retrieved. It will be called only once.
+
 ``Note:`` ``vertex_added`` event listener returns the existing vertices in the namespace when listening for the first time.
 
 ### off()
