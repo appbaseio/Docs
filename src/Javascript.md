@@ -177,7 +177,7 @@ setTimeout(function(){
 
 **Usage**
 
-``nsref.on(eventType [, callback, onComplete])``
+``nsref.on(eventType , callback [, onComplete])``
 
 - **eventType** ``String`` — Either "vertex_added" or "vertex_removed"
 - **callback** ``Function`` (optional) — is called when with existing vertices, and when ever a new vertex is added. It will be passed two arguments:
@@ -241,7 +241,7 @@ Vertex Reference Object or ``vref`` has the methods for setting data, creating l
 Set one or more data properties on this vertex reference.
 
 ```js
-vref = Appbase.ns("Domains").v("www.appbase.io");
+var vref = Appbase.ns("Domains").v("www.appbase.io");
 data = {
   "tld": "io",
   "registered": "2013",
@@ -268,7 +268,7 @@ vref.setData(data, function(error, vref) {
 Atomically modify properties of the vertex. Unlike setData(), which just overwrites the properties regardless of their previous values, commitData() is used to modify the existing value to a new value, ensuring there are no conflicts with other clients writing to the same location at the same time.
 
 ```js
-vref = Appbase.ns("Domains").v("www.appbase.io");
+var vref = Appbase.ns("Domains").v("www.appbase.io");
 vref.commitData(function(previousData) {
   var newData = {
     visits: previousData.visits
@@ -466,6 +466,71 @@ The method accepts no arguments, and returns a URL of the ``vref`` resource.
 
 **url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/ns/:vertex1/:vertex2``.
 
+### on('properties')
+
+Fetch current properties, and listen to changes in the properties of a vertex.
+
+
+```js
+var vref = Appbase.ns("Domains").v("www.appbase.io");
+
+vref.on('properties', function(err,ref,snap){
+   console.log(snap.properties().visits); 
+);
+
+// It would print the current number of visits, and also every time the number changes.
+```
+
+**Usage**
+``vref.on('properties', callback)``
+
+- **callback** ``Function`` --- will be passed these as arguments:
+    - **error** `String` / `null` -- *String* containing the error message, *null* if :function-name:`on('properties')` listening is successful
+    - **abref** `Appbase Vertex Reference` -- points to the path on which the event is fired
+    - **snapObj** `Property Snapshot` -- Snapshot of the data stored in the vertex. Take a look at the documentation of `Property Snapshot` on this page
+
+### once('properties')
+
+As the name suggests, it works exactly like `on("properties")` except that it will be fired only once. When you want to fetch only the current properties and don't want to listen to changes, you can use `once()`.
+
+### on('edge_added')
+
+Get existing edges inserted at a location, and listen to new ones.
+
+**Usage**
+``vref.on('edge_added', callback [, onComplete])``
+
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null` --
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
+- **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once.
+
+
+### on('edge_removed')
+
+Listen to removal of edges. 
+
+**Usage**
+``vref.on('edge_added', callback)``
+
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null` --
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
+    
+### on('edge_changed')
+
+When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge name, this event is fired.
+
+**Usage**
+``vref.on('edge_added', callback)``
+
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null` --
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
+
 # Data Snapshots
 
 Data snapshots are immutable copies of the data stored at `Appbase References`_. There are two kinds of snapshots: `Property Snapshot`_ and `Edge Snapshot`_, fired when listening to on('properties') or one of the edge listeners.
@@ -473,7 +538,6 @@ Data snapshots are immutable copies of the data stored at `Appbase References`_.
 ### Property Snapshot
 
 It holds the property data of a vertex in Appbase. It has the following methods to obtain the changes in the Appbase Reference.
-
 
 | Method              | Returns                                                        |
 |----------------     |----------------                                                |
@@ -487,5 +551,6 @@ It holds the edge data. It has the following methods to obtain the edge related 
 
 | Method             | Returns                                                       |
 |--------------------|---------------------------------------------------------------|
+| name()             | name of the edge                                              |
 | priority()         | current priority of the edge                                  |
 | prevPriority()     | previous priority of the edge (``null`` if not set)           |
