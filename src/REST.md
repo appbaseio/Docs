@@ -49,41 +49,8 @@ The Appbase API endpoints are divided between three types of different resources
 
 Create a new vertex with some properties or update the properties of an existing vertex.
 
-<pre>
-<code>
-<b>Request</b>
-
-Content-Type: application/json
-Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
-
-{
-  "data": {
-    "foo": "bar"
-  }
-}
-
-<b>Response</b>
-
-200
-
-Content-Type: application/json
-access-control-allow-credentials: true
-cache-control: no-cache
-content-type: application/json
-date: Wed, 15 Oct 2014 20:08:58 GMT
-content-length: 112
-connection: keep-alive
-
-{
-  "foo": "bar",
-  "timestamp": 1413403738268,
-  "rootPath": "namespace/vertex",
-  "_id": "namespace`543ed45a4c0b62550662563b"
-}
-</code>
-</pre>
-
-```html
+> **Example Request**
+```curl
 curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
@@ -91,5 +58,69 @@ curl --include \
      --data-binary "    {
         \"data\":{\"foo\":\"bar\"}
     }" \
-https://api.appbase.io/appname/v2/namespace/vertex/~properties
+https://api.appbase.io/rest_test/v2/Materials/Ice/~properties
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``data`` - A JSON object representing the properties to be set on the vertex (can contain nested object, arrays). In case of a conflict (read existing property), the property value will be overwritten.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``timestamp`` when the update happened, the shortest path to the vertex resource aka ``rootPath``, and a unique identifier of the vertex properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+  "data": {
+    "foo": "bar"
+  }
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+content-type: application/json
+date: Wed, 15 Oct 2014 20:08:58 GMT
+content-length: 112
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+{
+  "foo": "bar",
+  "timestamp": 1413403738268,
+  "rootPath": "Materials/Ice",
+  "_id": "Materials`543ed45a4c0b62550662563b"
+}
+</code>
+</pre>
