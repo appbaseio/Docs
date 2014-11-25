@@ -1,3 +1,12 @@
+##### ng-appbase v2.2.3 -> 2.2.4
+- onComplete callback: called after properties are loaded as well, with arguments scope and reference
+
+##### ng-appbase v2.2.2 -> 2.2.3
+- onComplete callback
+
+##### AppbaseJS v2.2.9 -> 2.2.10
+- onComplete callback: returns the reference as well
+
 ##### AppbaseJS v2.2.8 -> 2.2.9
 - onComplete callback: fired when existing edges/vertices have been fired
 

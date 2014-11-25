@@ -124,7 +124,7 @@ Have a great time building awesome realtime applications!
 scope.varName = vRef.bindEdges(scope, {
 	onAdd: function(scope, edgeData, edgeRef, done) {
 	},
-    onComplete: function() {
+    onComplete: function(scope, vRef) {
 	},
 	onRemove: function(scope, edgeData, edgeRef, done) {
 	},
@@ -185,7 +185,7 @@ app.controller("myCtrl", function($scope, $appbase) {
 scope.varName = nsRef.bindEdges(scope, {
 	onAdd: function(scope, vData, vRef, done) {
 	},
-    onComplete: function() {
+    onComplete: function(scope, nsRef) {
 	},
 	onRemove: function(scope, vData, vRef, done) {
 	},

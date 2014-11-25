@@ -184,7 +184,9 @@ setTimeout(function(){
 
   - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
   - **vref** `Vertex Reference` — of the newly added vertex.
-- **onComplete** ``Function`` - Called when all the existing vertices have been retrieved. It will be called only once.
+- **onComplete** ``Function`` - Called when all the existing vertices have been retrieved. It will be called only once, with arguments:
+
+  - **nsref** ``Namespace Reference`` — of the vertex where the edge is added.
 
 ``Note:`` ``vertex_added`` event listener returns the existing vertices in the namespace when listening for the first time.
 
@@ -510,7 +512,8 @@ Get existing edges inserted at a location, and listen to new ones.
     - **error** `String` / `null` --
     - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge
     - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
-- **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once.
+- **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once, with argments:
+    - **vref** ``Vertex reference`` - of the vertex where edges are being added
 
 
 ### on('edge_removed')
