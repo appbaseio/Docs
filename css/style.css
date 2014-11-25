@@ -222,9 +222,6 @@ a:hover {
 .content blockquote :first-child {
   padding-top: 0;
 }
-.content blockquote :last-child {
-  padding-bottom: 0;
-}
 .content table {
   margin-top: 10px;
   margin-bottom: 10px;

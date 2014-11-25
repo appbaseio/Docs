@@ -56,12 +56,12 @@
       return code;
     };
     Flatdoc.run({
-      fetcher: Flatdoc.github('appbaseio/docs', 'src/REST.md')
+      fetcher: Flatdoc.file('/src/rest.md') //Flatdoc.github('appbaseio/docs', 'src/REST.md')
     });
     });
   </script>
 </head>
-<body role='flatdoc'>
+<body role='flatdoc' class="big-h3">
 
   <div class='header'>
     <div class='left'>

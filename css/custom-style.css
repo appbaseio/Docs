@@ -13,6 +13,25 @@
 li.active {
 	text-decoration: underline;
 }
+.http-url {
+	color: #3ac;
+}
+.inline-heading {
+	font-weight: 100;
+	font-family: sans-serif;
+	color: #aaa;
+	font-style: oblique;
+	font-size:	0.9em;
+}
+.path-var {
+	color: #3ac;
+	border-bottom: 1px dotted #3ac;
+	padding: 0px 2px;
+}
+.request-type {
+	color: #008f00;
+	font-weight: bold;
+}
 p {
 	font-size: 1.2em;
 }
