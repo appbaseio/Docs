@@ -482,6 +482,7 @@ vref.on('properties', function(err,ref,snap){
 ```
 
 **Usage**
+
 ``vref.on('properties', callback)``
 
 - **callback** ``Function`` --- will be passed these as arguments:
@@ -493,11 +494,16 @@ vref.on('properties', function(err,ref,snap){
 
 As the name suggests, it works exactly like `on("properties")` except that it will be fired only once. When you want to fetch only the current properties and don't want to listen to changes, you can use `once()`.
 
+**Usage**
+
+``vref.once('properties', callback)``
+
 ### on('edge_added')
 
 Get existing edges inserted at a location, and listen to new ones.
 
 **Usage**
+
 ``vref.on('edge_added', callback [, onComplete])``
 
 - **callback** `Function` - will be passed these as arguments:
@@ -512,6 +518,7 @@ Get existing edges inserted at a location, and listen to new ones.
 Listen to removal of edges. 
 
 **Usage**
+
 ``vref.on('edge_added', callback)``
 
 - **callback** `Function` - will be passed these as arguments:
@@ -524,6 +531,7 @@ Listen to removal of edges.
 When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge name, this event is fired.
 
 **Usage**
+
 ``vref.on('edge_added', callback)``
 
 - **callback** `Function` - will be passed these as arguments:
