@@ -32,6 +32,6 @@ Data in Appbase has a flexible schema. Unlike SQL databases, where you must dete
 
 ![Graph](http://i.imgur.com/ajJ3dRB.png)
 
-In the above graphic, circles are *vertices*, with 'A' and 'B' as the *keys*, which belong to 'X' and 'Y' *namespaces* respectively. 'name' and 'size' are *properties* of the vertex. Arrows are *edges*, where 'P' points from 'A' to 'B' and 'Q' points from 'B' to 'A'.  
+In the above graphic, circles are *vertices*, with 'A' and 'B' as the *keys*, which belong to 'X' and 'Y' *namespaces* respectively. 'Name' and 'Size' are *properties* of the vertex. Arrows are *edges*, where 'P' points from 'A' to 'B' and 'Q' points from 'B' to 'A'.  
 
 The *paths* to reach vertex 'A' are `X/A` or `Y/B/Q`, and the *paths* to reach vertex 'B' are `Y/B` or `X/A/P`.
