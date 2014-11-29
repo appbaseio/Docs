@@ -506,15 +506,32 @@ Get existing edges inserted at a location, and listen to new ones.
 
 **Usage**
 
-``vref.on('edge_added', callback [, onComplete])``
-
+``vref.on('edge_added' [, filters ],  callback [, onComplete])``
+- **filters** `JSON Object` - Allows filtering of edges, and supports `startAt`, `endAt`, `limit`, `skip` and `onlyNew` filters
 - **callback** `Function` - will be passed these as arguments:
-    - **error** `String` / `null` --
+    - **error** `String` / `null`
     - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge
     - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
 - **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once, with argments:
     - **vref** ``Vertex reference`` - of the vertex where edges are being added
 
+With edge filters, it is possible to fetch only certain edges. It comes handy when there are large number of edges and you want to paginate them.
+
+When more than one filter is provided, they work as logical `AND` and only the edges matchihg all filters will be fetched. This is what each filter means:
+
+ 1. **startAt** `Number` - Edges having priorities equal or more than this
+ 2. **endAt** `Number` - Edges having priorities equal or less than this
+ 3. **limit** `Number` - Only this number of edges
+ 4. **skip** `Number` - Skipping certain number of edges, which match all the other filters
+ 5. **onlyNew** `Boolean` - return only newly created edges
+
+Notice that:
+
+ - Edges are always returned ordered according to their priorities
+ - When *endAt* < *startAt*, edges are returned in reverse order
+ - You can NOT apply all the numeric filters (first four) to newly created edges, they are only for existing edges and it is NOT possible to apply filters to newly created edges in realtime
+	- This means that the numeric filters can not be used with *onlyNew* set to be `true`
+	- *Newly created* edges will NOT be fired when any of the numeric filter is applied, i.e. only the existing edges will be returned
 
 ### on('edge_removed')
 
