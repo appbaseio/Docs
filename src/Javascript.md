@@ -91,6 +91,9 @@ var abref = Appbase.serverTime(
   - **error** `String` / `null` — *String* containing the error message, *null* if `serverTime()` returns successfully.
   - **time** `Number` — the current time of server in  milliseconds since epoch
 
+### rawSearch()
+
+Appbase uses ElasticSearch in the backend. To completely understand how it works, please refer to [this page](http://docs.appbase.io/docs/elasticsearch.html).
 
 # Namespace Reference
 
