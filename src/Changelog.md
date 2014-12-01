@@ -1,3 +1,7 @@
+##### AppbaseJS v2.2.11 -> 2.2.12
+- fixed: onComplete wasn't getting the reference
+- Appbase.rawSearch();
+
 ##### AppbaseJS v2.2.10 -> 2.2.11
 - fixed: error thrown on empty namespaces
 
