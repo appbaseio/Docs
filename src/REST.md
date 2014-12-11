@@ -124,3 +124,105 @@ connection: keep-alive
 }
 </code>
 </pre>
+
+### Create / Update Vertex Edges
+
+Create a new (directed) edge or update the existing edge(s) of a vertex to another vertex. An **order**, which acts as an index can optionally be set on the edge.
+
+> **Example Request**
+```curl
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"data\": {
+            \"anEdge\": {
+                \"path\": \"Materials/Iron\"
+            },
+            \"anotherEdge\": {
+                \"path\": \"Materials/Ice\",
+                \"order\": 500.6
+            }
+        }
+    }" \
+https://api.appbase.io/rest_test/v2/Materials/Ice/~edges
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``data`` - A JSON object representing the edge(s) to be created from the vertex. In case of a conflict (read an existing edge), the link will be updated.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated edge links to outvertices, a server ``timestamp`` for each edge when the update happened, and a unique identifier for each edge resource ``t_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~edges
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+  "data": {
+    "anEdge": {
+      "path": "Materials/Iron"
+    },
+    "anotherEdge": {
+      "path": "Materials/Ice",
+      "order": 500.6
+    }
+  }
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+content-type: application/json
+date: Wed, 15 Oct 2014 20:08:58 GMT
+content-length: 235
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+{
+  "_id": "Materials`547059ce69528db30aa7ae90",
+  "edges": {
+    "anEdge": {
+      "t_id": "Materials`5488ccab3b87a791550d81b7",
+      "timestamp": 1418261314605
+    },
+    "anotherEdge": {
+      "t_id": "Materials`547059ce69528db30aa7ae90",
+      "order": 500.6,
+      "timestamp": 1418261314605
+    }
+  }
+}
+</code>
+</pre>
