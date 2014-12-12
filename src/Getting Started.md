@@ -53,9 +53,9 @@ userRef.setEdge('tweeted', tweetRef);
 ```
 Now, the tweetRef vertex can also be accessed using the path /user/andy/tweeted. To retrieve a vertex reference at a given path, ``ns.v(path)`` is a handy method.
 
-## Step 5: Go real-time! 
+## Step 5: Retrieving data, in real-time! 
 
-Appbase supports retrieval of objects using realtime streams. We will now add listeners so that everytime a user vertex's property changes we are notified. Similarly we will add a listener for edge additions on the user vertex.
+Appbase supports retrieval of objects using realtime streams. We will now add listeners, which return existing data stored, and keeps returning new data as it keeps changing. Similarly we will add a listener for retrieving edges on the vertex.
 
 ```js
 userRef.on('properties', function(error, ref, userSnap) {
@@ -63,7 +63,7 @@ userRef.on('properties', function(error, ref, userSnap) {
     console.log(userSnap.properties().location);
 });
 userRef.on('edge_added', function(error, outVertexRef, eSnap) {
-    outVertexRef.on('properties', function(error, ref, tweetSnap) {
+    outVertexRef.once('properties', function(error, ref, tweetSnap) {
         console.log(tweetSnap.properties().message);
     });
 });

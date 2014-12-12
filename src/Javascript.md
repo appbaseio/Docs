@@ -10,7 +10,10 @@ The Appbase library exposes the ``Appbase`` object. The methods in the JS lib re
 
 # Appbase
 
-**Appbase** is the global object exposed the JS library. It has the following four methods: ``credentials()``, ``ns()``, ``uuid()``, and ``serverTime()``.
+**Appbase** is the global object exposed the JS library. It has the following four methods: ``credentials()``, 
+``ns()``, ``uuid()``, and ``serverTime()``.
+
+## Setting up
 
 ### credentials()
 
@@ -33,11 +36,11 @@ Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217', function(er
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
 	- **isAuthorized** ``Boolean`` — Whether the credentials are correct or not
 	
-
+## Namespaces
 
 ### ns()
 
-Get the namespace reference with the passed *string identifier*. It creates a new namespace if one doesn't already exist, else returns reference to the existing namespace.
+Get the namespace reference with the passed *string identifier*. It creates a new namespace if one doesn't already exist, else returns reference to the existing namespace. See _Namespace Reference_ docs for how namespaces work.
 
 ```js
 var nsref = Appbase.ns("Domains");
@@ -52,6 +55,15 @@ var nsref = Appbase.ns("Domains");
 **Returns**
 
 ``Object`` **nsref** *Namespace Reference*
+
+
+## Fantastic Search
+
+### rawSearch()
+
+Appbase uses ElasticSearch in the backend. To completely understand how it works, please refer to [this page](http://docs.appbase.io/docs/elasticsearch.html).
+
+## Utility
 
 ### uuid()
 
@@ -91,13 +103,11 @@ var abref = Appbase.serverTime(
   - **error** `String` / `null` — *String* containing the error message, *null* if `serverTime()` returns successfully.
   - **time** `Number` — the current time of server in  milliseconds since epoch
 
-### rawSearch()
-
-Appbase uses ElasticSearch in the backend. To completely understand how it works, please refer to [this page](http://docs.appbase.io/docs/elasticsearch.html).
-
 # Namespace Reference
 
 Namespace Reference Object or ``nsref`` has methods for creating vertices, searching vertices, and event listeners to the addition and removal of vertices.
+
+## Vertices
 
 ### v()
 
@@ -120,6 +130,9 @@ vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path 
 **vref** ``Object`` *Vertex Reference*
 
 ``Note:`` Use a string identifier if you are creating a new vertex. A new vertex cannot be created recursively, avoid using non-existent paths.
+
+
+## Search
 
 ### search()
 
@@ -153,10 +166,11 @@ Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(er
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
 	- **results** ``Array`` — Search results as an Array of matching vertices.
 	
+## Retrieving Data
 
 ### on()
 
-Listens for addition / removal of vertices in the namespace.
+Retrieve existing vertices, and listen to addition or removal of vertices.
 
 ```js
 var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
@@ -175,7 +189,7 @@ setTimeout(function(){
 }, 2000);
 
 /* After 2s, it adds the newly added vertex's URL -
-'http://api.appbase.io/<appname>/v2/Domain/www.appbase.io/' */
+'http://api.appbase.io/yourAppName/v2/Domain/www.appbase.io/' */
 ```
 
 **Usage**
@@ -200,6 +214,8 @@ Turn off the listeners on a given namespace reference.
 ``nsref.off([eventType])``
 
 - **eventType** ``String`` (optional) — Either "vertex_added" or "vertex_removed". Turns off all listeners on the reference if this argument is not passed.
+
+## Utility
 
 ### path()
 
@@ -240,6 +256,8 @@ The method accepts no arguments, and returns a URL of the ``nsref`` resource.
 # Vertex Reference
 
 Vertex Reference Object or ``vref`` has the methods for setting data, creating links to other vertices, and different listeners to notify about data changes, link changes, etc.
+
+## Storing Data
 
 ### setData()
 
@@ -378,7 +396,103 @@ vref.destroy(function(error, vref) {
 - **onComplete** ``Function`` (optional) — will be passed the argument:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if ``removeEdge()`` worked successfully.
+
+## Retrieving Data
+
+### on('properties')
+
+Fetch current properties, and listen to changes in the properties of a vertex.
+
+
+```js
+var vref = Appbase.ns("Domains").v("www.appbase.io");
+
+vref.on('properties', function(err,ref,snap){
+   console.log(snap.properties().visits); 
+);
+
+// It would print the current number of visits, and also every time the number changes.
+```
+
+**Usage**
+
+``vref.on('properties', callback)``
+
+- **callback** ``Function`` --- will be passed these as arguments:
+    - **error** `String` / `null` -- *String* containing the error message, *null* if :function-name:`on('properties')` listening is successful
+    - **abref** `Appbase Vertex Reference` -- points to the path on which the event is fired
+    - **snapObj** `Property Snapshot` -- Snapshot of the data stored in the vertex. Take a look at the documentation of `Property Snapshot` on this page
+
+### once('properties')
+
+As the name suggests, it works exactly like `on("properties")` except that it will be fired only once. When you want to fetch only the current properties and don't want to listen to changes, you can use `once()`.
+
+**Usage**
+
+``vref.once('properties', callback)``
+
+### on('edge_added')
+
+Get existing edges added at a location, and listen to new ones.
+
+**Usage**
+
+``vref.on('edge_added' [, filters ],  callback [, onComplete])``
+- **filters** `JSON Object` - Allows filtering of edges, and supports `startAt`, `endAt`, `limit`, `skip` and `onlyNew` filters
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null`
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
+- **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once, with argments:
+    - **vref** ``Vertex reference`` - of the vertex where edges are being added
+
+With edge filters, it is possible to fetch only certain edges. It comes handy when there are large number of edges and you want to paginate them.
+
+When more than one filter is provided, they work as logical `AND` and only the edges matchihg all filters will be fetched. This is what each filter means:
+
+ 1. **startAt** `Number` - Edges having priorities equal or more than this
+ 2. **endAt** `Number` - Edges having priorities equal or less than this
+ 3. **limit** `Number` - Only this number of edges
+ 4. **skip** `Number` - Skipping certain number of edges, which match all the other filters
+ 5. **onlyNew** `Boolean` - return only newly created edges
+
+Notice that:
+
+ - Edges are always returned ordered according to their priorities
+ - When *endAt* < *startAt*, edges are returned in reverse order
+ - You can NOT apply all the numeric filters (first four) to newly created edges, they are only for existing edges and it is NOT possible to apply filters to newly created edges in realtime
+	- This means that the numeric filters can not be used with *onlyNew* set to be `true`
+	- *Newly created* edges will NOT be fired when any of the numeric filter is applied, i.e. only the existing edges will be returned
+
+### on('edge_removed')
+
+Listen to removal of edges. 
+
+**Usage**
+
+``vref.on('edge_added', callback)``
+
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null` --
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
     
+### on('edge_changed')
+
+When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge name, this event is fired.
+
+**Usage**
+
+``vref.on('edge_added', callback)``
+
+- **callback** `Function` - will be passed these as arguments:
+    - **error** `String` / `null` --
+    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
+    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
+
+
+## Utility
+
 ### outVertex()
 
 Reference to the corresponding ``outVertex`` with the given name.
@@ -471,96 +585,6 @@ The method accepts no arguments, and returns a URL of the ``vref`` resource.
 
 **url** ``String`` Data URL of the namespace reference. The format of the URL is ``api.appbase.io/:appname/:version/ns/:vertex1/:vertex2``.
 
-### on('properties')
-
-Fetch current properties, and listen to changes in the properties of a vertex.
-
-
-```js
-var vref = Appbase.ns("Domains").v("www.appbase.io");
-
-vref.on('properties', function(err,ref,snap){
-   console.log(snap.properties().visits); 
-);
-
-// It would print the current number of visits, and also every time the number changes.
-```
-
-**Usage**
-
-``vref.on('properties', callback)``
-
-- **callback** ``Function`` --- will be passed these as arguments:
-    - **error** `String` / `null` -- *String* containing the error message, *null* if :function-name:`on('properties')` listening is successful
-    - **abref** `Appbase Vertex Reference` -- points to the path on which the event is fired
-    - **snapObj** `Property Snapshot` -- Snapshot of the data stored in the vertex. Take a look at the documentation of `Property Snapshot` on this page
-
-### once('properties')
-
-As the name suggests, it works exactly like `on("properties")` except that it will be fired only once. When you want to fetch only the current properties and don't want to listen to changes, you can use `once()`.
-
-**Usage**
-
-``vref.once('properties', callback)``
-
-### on('edge_added')
-
-Get existing edges inserted at a location, and listen to new ones.
-
-**Usage**
-
-``vref.on('edge_added' [, filters ],  callback [, onComplete])``
-- **filters** `JSON Object` - Allows filtering of edges, and supports `startAt`, `endAt`, `limit`, `skip` and `onlyNew` filters
-- **callback** `Function` - will be passed these as arguments:
-    - **error** `String` / `null`
-    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge
-    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
-- **onComplete** ``Function`` - Called when all the existing edges have been retrieved. It will be called only once, with argments:
-    - **vref** ``Vertex reference`` - of the vertex where edges are being added
-
-With edge filters, it is possible to fetch only certain edges. It comes handy when there are large number of edges and you want to paginate them.
-
-When more than one filter is provided, they work as logical `AND` and only the edges matchihg all filters will be fetched. This is what each filter means:
-
- 1. **startAt** `Number` - Edges having priorities equal or more than this
- 2. **endAt** `Number` - Edges having priorities equal or less than this
- 3. **limit** `Number` - Only this number of edges
- 4. **skip** `Number` - Skipping certain number of edges, which match all the other filters
- 5. **onlyNew** `Boolean` - return only newly created edges
-
-Notice that:
-
- - Edges are always returned ordered according to their priorities
- - When *endAt* < *startAt*, edges are returned in reverse order
- - You can NOT apply all the numeric filters (first four) to newly created edges, they are only for existing edges and it is NOT possible to apply filters to newly created edges in realtime
-	- This means that the numeric filters can not be used with *onlyNew* set to be `true`
-	- *Newly created* edges will NOT be fired when any of the numeric filter is applied, i.e. only the existing edges will be returned
-
-### on('edge_removed')
-
-Listen to removal of edges. 
-
-**Usage**
-
-``vref.on('edge_added', callback)``
-
-- **callback** `Function` - will be passed these as arguments:
-    - **error** `String` / `null` --
-    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
-    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
-    
-### on('edge_changed')
-
-When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge name, this event is fired.
-
-**Usage**
-
-``vref.on('edge_added', callback)``
-
-- **callback** `Function` - will be passed these as arguments:
-    - **error** `String` / `null` --
-    - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
-    - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
 
 # Data Snapshots
 
