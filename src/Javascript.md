@@ -438,6 +438,7 @@ Get existing edges added at a location, and listen to new ones.
 **Usage**
 
 ``vref.on('edge_added' [, filters ],  callback [, onComplete])``
+
 - **filters** `JSON Object` - Allows filtering of edges, and supports `startAt`, `endAt`, `limit`, `skip` and `onlyNew` filters
 - **callback** `Function` - will be passed these as arguments:
     - **error** `String` / `null`
