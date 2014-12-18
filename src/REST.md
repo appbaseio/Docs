@@ -1,6 +1,6 @@
 # Introduction
 
-The Appbase API is based on REST principles. All operations including creating vertices and edges, fetching vertex properties (data) and edges, deleting a vertex or an edge as well as searching through vertices are RESTful. The only non-RESTful operation is realtime event streams, which works with the Websocket protocol.
+The Appbase API is based on REST principles. All operations including creating vertices and edges, fetching vertex properties (data) and edges, deleting a vertex or an edge as well as searching through vertices are RESTful. The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, using socket.io.
 
 
 ### Allowed HTTP Request Types
@@ -226,3 +226,134 @@ connection: keep-alive
 }
 </code>
 </pre>
+
+# Socket.io API Endpoints
+
+Socket.io is a powerful realtime engine, and we are using it in the backend to provide realtime streams of data. Socket.io has client libraries for almost popular languages and platforms, and you can follow the API endpoints given below to fetch the data as realtime streams. Examples here use Javascript Language, but you can use the same methods on any other platform.
+
+### Creating the Client
+
+The API server can be reached form `http://api.appbase.io:80` or `https://api.appbase.io:443`. Make sure that the ports are properly defined in the server URL itself.
+
+```js
+ioClient = io("http://api.appbase.io:80");
+```
+
+### Requesting for data
+
+As vertices and namespace are represented using paths, you request for data on a path. If the path points to a vertex, you can listen to:
+- Properties of the Vertex
+- Edges of the Vertex
+
+If the path points to a namespace, you can listen to 
+- Vertices in the Namespace
+
+They share the same Request format, with minor changes for special cases. 
+
+#### Request Format
+
+The request object looks something like this: 
+```json
+{
+	"appname": <string>,
+	"secret": <string>,
+	"token": <string>,
+	"namespace": <string>,
+	"key": <string>,
+	"obj_path": <string>,
+	"filters": {
+		"limit": <natural number>,
+		"skip": <natural number>,
+		"startAt": <natural number>,
+		"endAt": <natural number>
+	},
+	"listener_id": <string>,
+	"timestamp": <natural number>
+}
+```
+- **appname** - The name of the application
+- **secret** - Application secret
+- **token** - Appbase Auth Token returned using the OAuth flow
+  Only any one of _secret_ or _token_ needs to be present in the request. 
+- **namespace** - The namespace from where the path starts
+  E.g. for path _user/andy/machod/bhenchod_, the namespace would be _user_.
+- **key** - The vertex key in the path
+  For the path _user/andy/machod/bhenchod_, the key would be _andy_.
+  For _user/_ (only the namespace), it would be `undefined`.
+- **obj_path** - The path of the vertex that follows the key
+  For the path _user/andy/machod/bhenchod_, the obj_path would be _machod/bhenchod_.
+  For _user/andy_, it would be `undefined`.
+- **filters** - edge filters, applies only when listening for edges on a vertex
+- **timestamp** - specify milliseconds since epoch, from where to start 'syncing' data
+  When there's a reconnection with the server, due to network connectivity problems, this handy option allows you to 'resume' listening and sync the changes happend after that timestamp
+- **listener_id** - a unique string that will be used in your application to distuinguish Socket.IO listeners
+
+#### Vertices
+Sample request object, pointing to the path: _user/andy/bhenchod/machod_, for application _chat_app_.
+```json
+{
+	"appname": "chat_app",
+	"secret": "dskfhyr987r09g8w00309309",
+	"namespace": "user",
+	"key": "andy",
+	"obj_path": "bhenchod/machod",
+	"listener_id": "sdfkgjohabioahdfk"
+}
+```
+
+##### Properties
+To turn on the listening:
+```js
+ioClient.emit('properties', requestObj);
+```
+
+To turn the listening off: 
+```js
+ioClient.emit('properties off', requestObj);
+```
+
+##### Edges
+Turn it on:
+```js
+ioClient.emit('edges', requestObj);
+```
+
+Turn off:
+```js
+ioClient.emit('edges off', requestObj);
+```
+
+#### Namespaces
+
+To listen on the vertices in namespace the namespace _user_, the sample request would be:
+```json
+{
+	"appname": "chat_app",
+	"secret": "dskfhyr987r09g8w00309309",
+	"namespace": "user",
+	"listener_id": "asasasfasaef324"
+}
+```
+
+Turn it on:
+```js
+ioClient.emit('new vertices', requestObj);
+```
+
+Turn off:
+```js
+ioClient.emit('new vertices off', requestObj);
+```
+
+### Attaching Data Listeners
+
+Socket.io allows you to attach callback to events, and these callbacks are called everytime the event it fired, i.e. when some data is arrived. The data starts arriving on these callbacks once you request for some data, and it stops when you do an 'off' request.
+
+TODO:
+
+#### Vertices
+
+##### Properties
+##### Edges
+
+#### Namespaces
