@@ -3,7 +3,7 @@ Help people to understand how they can model their data in Appbase.
 
 #### Approach
 1. Explain how data is stored in Appbase, compare with different databases
-2. Explain how to store arrays/sets, and relationships in Appbase. While comparing with different databases
+2. Explain how to store lists, and relationships in Appbase. While comparing with different databases
 3. A concrete example
 
 # The DOC
@@ -31,7 +31,7 @@ Notice: Appbase is **NOT** a [*property graph*](https://github.com/tinkerpop/blu
 
 Data in Appbase is stored as JSON objects. Appbase supports flexible schema, i.e. the properties of the JSON object need not be defined in advance. 
 
-Although Appbase supports storing embedded JSON objects and arrays, we discourage this behavior of denormalization. The data is **NEVER** needed to be denormalized in a Graph. In this document we will see how you can store different kinds data (primitive values, objects, arrays and sets), create relationships amongst them, normalize, and do literally anything, as it is a fucking graph.
+Although Appbase supports storing embedded JSON objects and arrays, we discourage this behavior of denormalization. The data is **NEVER** needed to be denormalized in a Graph. In this document we will see how you can store different kinds data (primitive values, objects, lists), create relationships amongst them, normalize, and do literally anything, as it is a fucking graph.
 
 ## Concepts
 
@@ -89,7 +89,7 @@ When you want to store objects like *tweets* or *chat-groups*, which will always
 
 For convenience, when you don't care about the namespace and the primary key of the vertex, we create vertices for you in the namespace named **misc**, with a UUID as its primary key. This way it is possible to push JSON objects to Appbase without worrying about their namespace or key.
 
-### Edge
+### Edge (One-to-One relationship)
 
 After creating entities, its time to create relations amongst them and *edges* are the way to do it. 
 
@@ -122,6 +122,7 @@ Creating edges create deeper *Paths*. Lets take the example of the movie Incepti
 	 - Vertex Key: emma_thomas
 
 These vertices can be accessed with the following paths, as entry points in the graph:
+
 1. `movie/inception_2010`
 2. `person/leonardo_dicaprio`
 3. `person/christopher_nolan`
@@ -196,6 +197,7 @@ A better to do this is store Nolan as a new vertex, and create an edge from Ince
 We will create three edges here: 
 
 1. inception `--directedBy->` nolan
+
 2. nolan `--marriedTo->` emma
 Recall that the edges are _directional_, so this 2nd edge only tells us that Nolan in married to Emma, but says nothing about Emma's marital status. That's why we create the third edge: 
 
@@ -231,6 +233,7 @@ A set makes sure that all the items in the list exist only once. Consider this e
 Operations on a single set are: addition, checking existence of an item, deletion and traversal. 
 
 Operations on multiple sets, like union and intersection can be emulated using single-set operations. For e.g.
+
 1. intersection can be achieved by traversing through one set and checking existence of those items in the other set
 2. union is similar to traversing through one set and adding non-existing items into the second set, the second set becomes the union of two
 
@@ -294,16 +297,48 @@ setRef.outVertex(inceptionRef.name()).isValid(function(error, validity) {
 
 As all the items are the edges of the Set vertex, we simply fetch the edges of the Set vertex, and traverse through them.
 
-See _Retrieving Data_ section. 
+See _Retrieving Data_ section.
 
-### Arrays
- 
- 
- 
- 
- 
+
 ## Retrieving Data
 
-As we saw, all the things we store in Appbase, are stored as either a vertex or edges. 
+In a nutshell, Namspaces in Appbase have vertices, and vertices have properties, edges.
 
-## Creating Relationships
+Data retrieval in Appbase happens via _realtime streams_. These streams allows you to fetch existing data, and then keep listening to new data as well.
+
+### Properties
+When you start listening to the properties of a vertex, you first get the existing properties, and then as the data keeps changing, the callback is called again with new properties.
+
+Appbase gives you the properties data as a _snapshot_. The snapshots are immutable copies of the data stored in a vertex. Any changes you make in the snapshot will not be stored in Appbase. 
+
+```js
+var inceptionRef = Appbase.ns("movie").v("inception_2010")
+inceptionRef.on("properties", function(error, vRef, vSnapshot) {
+	console.log(vSnapshot.properties());
+});
+```
+If you don't want to listen to the properties any more, you can turn the listener off with `inceptionRef.off()`.
+
+For convenience, we have the method  `inceptionRef.once()` when you want to listen to daat just only once.
+
+### Edges
+
+Retrieving existing edges of a vertex is simple: just listen to _edge_added_ event, which will return existing edges at first. When new edges are added, the callback will be fired for new edges as well.
+
+```js
+var moviesRef = Appbase.ns("set").v("moviesByNolan");
+moviesRef.on('edge_added', function(error, eRef, eSnap) {
+});
+```
+Notice that the if there are 'N' number of existing edges, the callback will be called 'N' times, each time with a new edge.
+
+`eRef` here is the Appbase Reference to the outVertex, and `eSnap` is the snapshot of the edge. Edge Snapshot is the snapshot of the data stored with the edge, mainly the _priority_ of the edge. `eSnap.priority()` will give you the priority. It does NOT give you the _properties_ of the outVertex. To fetch the properties of the out vertex, you should listen for _properties_ event on `eRef`.
+
+```js
+var moviesRef = Appbase.ns("set").v("moviesByNolan");
+moviesRef.on('edge_added', function(error, eRef, eSnap) {
+	eRef.once('properties', function(error, ref, vSnapshot) {
+		console.log(vSnapshot.properties());
+	})
+});
+```
