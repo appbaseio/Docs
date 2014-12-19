@@ -231,7 +231,7 @@ connection: keep-alive
 
 Socket.io is a powerful realtime engine, and we are using it in the backend to provide realtime streams of data. Socket.io has client libraries for almost popular languages and platforms, and you can follow the API endpoints given below to fetch the data as realtime streams. Examples here use Javascript Language, but you can use the same methods on any other platform.
 
-### Creating the Client
+## Creating the Client
 
 The API server can be reached form `http://api.appbase.io:80` or `https://api.appbase.io:443`. Make sure that the ports are properly defined in the server URL itself.
 
@@ -239,18 +239,11 @@ The API server can be reached form `http://api.appbase.io:80` or `https://api.ap
 ioClient = io("http://api.appbase.io:80");
 ```
 
-### Requesting for data
+## Requesting for data
 
-As vertices and namespace are represented using paths, you request for data on a path. If the path points to a vertex, you can listen to:
-- Properties of the Vertex
-- Edges of the Vertex
+As vertices and namespace are represented using paths, you request for data on a path. Vertices and Namespaces are fundamentally different, and they also differ in terms of what resources you can listen to. But, they share the same Request format, with minor changes for special cases. 
 
-If the path points to a namespace, you can listen to 
-- Vertices in the Namespace
-
-They share the same Request format, with minor changes for special cases. 
-
-#### Request Format
+### Request Format
 
 The request object looks something like this: 
 ```json
@@ -288,7 +281,12 @@ The request object looks something like this:
   When there's a reconnection with the server, due to network connectivity problems, this handy option allows you to 'resume' listening and sync the changes happend after that timestamp
 - **listener_id** - a unique string that will be used in your application to distuinguish Socket.IO listeners
 
-#### Vertices
+### Vertex
+
+When the path you are pointing to is a vertex, you can listen to:
+- Properties of the Vertex. I.e. fetch existing properties of the vertx, and get updates when they change.
+- Edges of the Vertex. I.e. fetch existing edges, and get updates when edges are added, removed or replaced.
+
 Sample request object, pointing to the path: _user/andy/bhenchod/machod_, for application _chat_app_.
 ```json
 {
@@ -301,7 +299,7 @@ Sample request object, pointing to the path: _user/andy/bhenchod/machod_, for ap
 }
 ```
 
-##### Properties
+#### Properties
 To turn on the listening:
 ```js
 ioClient.emit('properties', requestObj);
@@ -312,7 +310,7 @@ To turn the listening off:
 ioClient.emit('properties off', requestObj);
 ```
 
-##### Edges
+#### Edges
 Turn it on:
 ```js
 ioClient.emit('edges', requestObj);
@@ -323,7 +321,8 @@ Turn off:
 ioClient.emit('edges off', requestObj);
 ```
 
-#### Namespaces
+### Namespace
+When your path points to a namespace, you can listen to the Vertices in the Namespace. It means that you will be able to fetch existing vertices, and get updates like addition and removal of vertices.
 
 To listen on the vertices in namespace the namespace _user_, the sample request would be:
 ```json
@@ -345,15 +344,109 @@ Turn off:
 ioClient.emit('new vertices off', requestObj);
 ```
 
-### Attaching Data Listeners
+## Attaching/Removing Data Listeners
 
-Socket.io allows you to attach callback to events, and these callbacks are called everytime the event it fired, i.e. when some data is arrived. The data starts arriving on these callbacks once you request for some data, and it stops when you do an 'off' request.
+Socket.io allows you to attach callbacks to events, and these callbacks are called everytime the event it fired, i.e. when some data is arrived. The data starts arriving on these callbacks once you request for some data as described above, and it stops when you do an 'off' request.
 
-TODO:
+You should _always_ attach the listeners first and then request for data, otherwise you will miss the initial data that arrives.
 
-#### Vertices
+`ioClient.on()` is the method we will use to attach listeners.
 
-##### Properties
-##### Edges
+It is possible to listen to _connection status_ events as well, as in, when a disconnection or reconnectio happens. See _Handling Disconnection and Reconnection_ in this doc.
 
-#### Namespaces
+### Format
+
+We saw that we build a specific _requestObject_ to do a data request. We will use the same object to attach lieteners.
+```js
+delete requestObject.timestamp;
+var event = JSON.stringify(requestObject), callback;
+ioClient.on(event, callback = function(data) {
+	// do something with the data
+});
+```
+
+The event on which we are listening to is just the stringified version of the _requestObject_ we used, while requesting for data. This way you can listen to all the resources on which you request the data.
+
+Notice that we deleted the `timestamp` from request object. This is necessary and it is kept that way on purpose. We will see how and why, in _Handling Disconnection and Reconnection_ section of this documentation.
+
+The following code will remove the callback.
+```js
+ioClient.removeListener(event, callback);
+```
+
+## Parsing the Data
+
+The data that arrives on listener callbacks is different for different resources. It is even different for the same resource, when different events happen. Let's see how the data looks like on all these cases.
+
+```js
+ioClient.on(event, function(data) {
+	// what this `data` looks like?
+});
+```
+
+### Vertex
+As we saw earlier, on a vertex you can listen to two kinds of resources: properties and edges.
+
+#### Properties
+Suppose we are listening to the properties of the vertex at _user/andy_. We understand what are the cases when data will arrive and how it would look like.
+
+##### 1. Retrieval
+
+When you request for data for the first time, all the existing properties are retrieved. The data looks like this:
+```json
+{
+	"optype":"RETR",
+	"vertex": {
+		"_id":"user`542094995fd2217414d7cec4",
+		"timestamp":1419000935812,
+		"name": "Andy Dufresne",
+		"height_m": 1.96
+	}
+}
+```
+
+Notice that the `data.optype` of the data is _"RETR"_ - retrieval. You get all the properties inside `data.vertex`, additionally the timestamp when the vertex was changed and the internal __id_ of the vertex.
+
+##### 2. Property change
+
+Whenever a new property is added or an existing property is replaced, the data would be:
+```json
+{
+	"optype":"UPDATE",
+	"vertex": {
+		"_id":"user`542094995fd2217414d7cec4",
+		"timestamp":1419001116911,
+		"cast": "Tim Robbins"
+	}
+}
+```
+
+The `data.optype` is _"UPDATE"_, and you will get only the changed properties inside `data.vertex` and the updated timestamp of the vertex.
+
+##### 3. Property removal
+A property removal causes arrivel of the following object:
+
+```json
+{
+	"optype":"REMOVE",
+	"vertex": {
+		"_id":"user`542094995fd2217414d7cec4",
+		"timestamp":1419001116911,
+		"cast": ""
+	}
+}
+```
+`data.optype` is _"REMOVE"_ and `data.vertex` includes empty property `cast`. It means that the property `cast` has been removed.
+
+
+##### 3. Do an "Off" request
+
+When you do a `ioClient.emit('properties off', requestObj)` to turn off the data listening, you receive a string as data. The value og this string is `"STOPPED"`. It simply tells you that the callback will never be called again, unless you  agan do a data request.
+
+##### 4. Error
+
+Whenever there's an error with socket, the data will be a string, containing the error message.
+
+#### Edges
+
+### Namespace
