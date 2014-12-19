@@ -391,6 +391,23 @@ As we saw earlier, on a vertex you can listen to two kinds of resources: propert
 
 Suppose you are listening to the properties of the vertex at _user/andy_. We will try to understand what are the cases when data will arrive and how it would look like.
 
+Start listening:
+```js
+var request = {
+	"appname": "chat_app",
+	"secret": "dskfhyr987r09g8w00309309",
+	"namespace": "user",
+	"key": "andy",
+	"listener_id": "asasjhsd335f324"
+};
+
+ioClient.on(JSON.stringify(request), function(data) {
+	// ...
+});
+
+ioClient.emit('properties', request);
+```
+
 ##### 1. Retrieval
 
 When you request for data for the first time, all the existing properties are retrieved. The data looks like this:
@@ -449,6 +466,22 @@ When you do a `ioClient.emit('properties off', requestObj)` to turn off the data
 Whenever an error occurs, the data will be a string, containing the error message.
 
 #### Edges
+Suppose you want to listen to edges of the vertex _user/andy_. Here's the code: 
+```js
+var request = {
+	"appname": "chat_app",
+	"secret": "dskfhyr987r09g8w00309309",
+	"namespace": "user",
+	"key": "andy",
+	"listener_id": "asasasfasaef324"
+};
+
+ioClient.on(JSON.stringify(request), function(data) {
+	// ...
+});
+
+ioClient.emit('edges', request);
+```
 
 Whenever you listen for edges of a vertex, you first get all the existing edges and later on you keep getting the updates.
 
@@ -520,9 +553,20 @@ When you do a `ioClient.emit('edges off', requestObj)` to turn off the data list
 Whenever an error occurs, the data will be a string, containing the error message.
 
 ### Namespace
-Suppose that you are listening on the namespace _user_, so you attached a callback and you requested for the data.
+Suppose that you are listening on the namespace _user_, so you build a _requestObject_, attached a callback and you requested for the data.
 ```js
+var request = {
+	"appname": "chat_app",
+	"secret": "dskfhyr987r09g8w00309309",
+	"namespace": "user",
+	"listener_id": "asasasfasaef324"
+};
 
+ioClient.on(JSON.stringify(request), function(data) {
+	// ...
+});
+
+ioClient.emit('new vertices', request);
 ```
 
 When you listen on a namespace, you first get all the existing vertices, and then as vertices are added or removed, you get the changes.
