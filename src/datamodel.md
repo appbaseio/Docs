@@ -226,9 +226,9 @@ emmaRef.setEdge('marriedTo', nolanRef);
 
 Notice that Inception directed by Nolan, is a One-to-One relationship. Nolan has directed many movies, and that's a case of One-to-Many relationships. We see later how to create them in Appbase. 
 
-### Sets
+### Sets (One-to-Many Relationship)
 
-A set makes sure that all the items in the list exist only once. Consider this example, the movies directed by Nolan. We will make only a small list here:  ``["Interstellar", "Inception", "The Dark Night", "Memento"]``. Clearly, it doesn't make sense to have any of the movies twice in the this list. 
+A set makes sure that all the items in the list exist only once. Consider this example, the movies directed by Nolan. We will make only a small list here:  ``["Interstellar", "Inception", "The Dark Night", "Memento"]``. Clearly, it doesn't make sense to have any of the movies twice in the this list.  Notice that this is a One-to-Many relationship here. _Nolan_ (1) -> _Movies_ (N).
 
 Operations on a single set are: addition, checking existence of an item, deletion and traversal. 
 
