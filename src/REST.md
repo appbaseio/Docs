@@ -388,7 +388,8 @@ ioClient.on(event, function(data) {
 As we saw earlier, on a vertex you can listen to two kinds of resources: properties and edges.
 
 #### Properties
-Suppose we are listening to the properties of the vertex at _user/andy_. We understand what are the cases when data will arrive and how it would look like.
+
+Suppose you are listening to the properties of the vertex at _user/andy_. We will try to understand what are the cases when data will arrive and how it would look like.
 
 ##### 1. Retrieval
 
@@ -439,14 +440,139 @@ A property removal causes arrivel of the following object:
 `data.optype` is _"REMOVE"_ and `data.vertex` includes empty property `cast`. It means that the property `cast` has been removed.
 
 
-##### 3. Do an "Off" request
+##### 4. Do an "Off" request
 
-When you do a `ioClient.emit('properties off', requestObj)` to turn off the data listening, you receive a string as data. The value og this string is `"STOPPED"`. It simply tells you that the callback will never be called again, unless you  agan do a data request.
+When you do a `ioClient.emit('properties off', requestObj)` to turn off the data listening, you receive a string as data. The value of this string is `"STOPPED"`. It simply tells you that the callback will never be called again, unless you request for the data again.
 
-##### 4. Error
+##### 5. Error
 
-Whenever there's an error with socket, the data will be a string, containing the error message.
+Whenever an error occurs, the data will be a string, containing the error message.
 
 #### Edges
 
+Whenever you listen for edges of a vertex, you first get all the existing edges and later on you keep getting the updates.
+
+If you apply filters, you only get the edges which match the filters, and you NEVER get any further changes in edges. 
+
+##### 1. Retrieval
+```json
+{
+	"optype":"RETR",
+	"_id":"user`54943c863b87a791550d835a",
+	"edges":{
+		"abcd":{
+			"t_id":"misc`54943c893b87a791550d835e",
+			"timestamp":1419000969730,
+			"order":1
+		},
+		"pqrs":{
+			"t_id":"misc`54943c883b87a791550d835d",
+			"timestamp":1419000968929,
+			"order":234245
+		}
+	}
+}
+```
+
+`data.optype` is _"RETR"_. `data.edges` are all the existing edges of the vertex. Each edge has a `timestamp` which describes when the timestamp was last changed, and `order` is the priority of the edge. `t_id` of each edge displays the internal id of the vertex it points to.
+
+##### Edge addition or replacement
+The data that arrives is:
+```json
+{
+	"optype":"RETR",
+	"_id":"user`54943c863b87a791550d835a",
+	"edges":{
+		"pqrs":{
+			"t_id":"misc`5w5rgfhfrtu5835",
+			"timestamp":1419000999913,
+			"order":23341
+		}
+	}
+}
+```
+
+`data.optype` is _"UPDATE"_ and only the edges which are replaced or added, are present here.
+
+
+##### 3. Edge removal
+
+```json
+{
+	"optype":"REMOVE",
+	"edges": {
+		"pqrs": {
+			"t_id": "",
+			"timestamp":1419001116911
+		}
+	}
+}
+```
+`data.optype` is _"REMOVE"_ and `data.edges` includes edges which are deleted. Notice that `t_id` of the edge is empty and now it doesn't point to any vertex.
+
+
+##### 4. Do an "Off" request
+
+When you do a `ioClient.emit('edges off', requestObj)` to turn off the data listening, you receive a string as data. The value of this string is `"STOPPED"`. It simply tells you that the callback will never be called again, unless you request for the data again.
+
+##### 5. Error
+
+Whenever an error occurs, the data will be a string, containing the error message.
+
 ### Namespace
+Suppose that you are listening on the namespace _user_, so you attached a callback and you requested for the data.
+```js
+
+```
+
+When you listen on a namespace, you first get all the existing vertices, and then as vertices are added or removed, you get the changes.
+
+##### 1. Retrieval 
+Intially, all the vertices are retrieved as an array,
+
+```json
+[
+	{
+		"_id":"53f7785324ebdb4878cb677b",
+		"rootPath":"user/andy",
+		"timestamp":1408727123813
+	},
+	{
+		"_id":"549454913b87a791550d836e",
+		"timestamp":1419007121579,
+		"rootPath":"user/red"
+	}
+]
+```
+
+You do NOT get the properties of the vertices, you just get thier timestaps, internal ids, and root-paths. Using the root-path, you can again listen on their properties if you want.
+
+##### 2. Addition
+```
+{
+	"optype":"UPDATE",
+	"vertex":{
+		"timestamp":1419007153037,
+		"rootPath":"user/blue",
+		"_id":"user`549454b13b87a791550d836f"
+	}
+}
+```
+`data.optype` is _"UPDATE"_, and `data.vertex` is the newly added vertex in the namespace.
+
+##### 3. Removal (Destruction)
+
+```json
+{
+	"optype":"DESTROY",
+	"vertex": {
+		"_id":"user`549454b13b87a791550d836f",
+		"timestamp":1419007160898,
+		"rootPath":"user/red"
+	}
+}
+```
+
+`data.optype` is _"REMOVE"_, and `data.vertex` is the vertex which got destroyed.
+
+
