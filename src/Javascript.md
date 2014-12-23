@@ -217,6 +217,24 @@ Turn off the listeners on a given namespace reference.
 
 ## Utility
 
+
+### name()
+
+Returns the name of the current reference.
+
+```js
+var nsref = Appbase.ns('user')
+var name = nsref.name(); // name = 'user'
+```
+
+**Usage**
+
+``nsref.name()``
+
+**Returns**
+
+**name** ``String`` Name of the ``nsref``.
+
 ### path()
 
 Returns the path of the current reference.
@@ -465,32 +483,57 @@ Notice that:
 	- This means that the numeric filters can not be used with *onlyNew* set to be `true`
 	- *Newly created* edges will NOT be fired when any of the numeric filter is applied, i.e. only the existing edges will be returned
 
+```js
+var belasTweets = Appbase.ns("user").v("bela/tweets");
+belasTweets.on('edge_added', function(error, eRef, eSnap) {
+	eRef.once('properties', function(error, ref, vSnapshot) {
+		console.log(vSnapshot.properties(), "with priority", eSnap.priority());
+	})
+});
+```
+
 ### on('edge_removed')
 
 Listen to removal of edges. 
 
 **Usage**
 
-``vref.on('edge_added', callback)``
+``vref.on('edge_removed', callback)``
 
 - **callback** `Function` - will be passed these as arguments:
     - **error** `String` / `null` --
     - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
     - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
-    
+
+```js
+var belasTweets = Appbase.ns("user").v("bela/tweets");
+belasTweets.on('edge_removed', function(error, eRef, eSnap) {
+  console.log(eRef.name(), "removed");
+});
+```
+
 ### on('edge_changed')
 
 When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge name, this event is fired.
 
 **Usage**
 
-``vref.on('edge_added', callback)``
+``vref.on('edge_changed', callback)``
 
 - **callback** `Function` - will be passed these as arguments:
     - **error** `String` / `null` --
     - **edgeRef** `Appbase Vertex Reference` - pointing to path of the edge.
     - **snapObj** `Edge Snapshot` - Snapshot of the edge. Take a look at the documentation of `Edge Snapshot` on this page
 
+```js
+var belasTweets = Appbase.ns("user").v("bela/tweets");
+belasTweets.on('edge_changed', function(error, eRef, eSnap) {
+  console.log(eRef.name(), "replaced");
+  eRef.once('properties', function(error, ref, vSnapshot) {
+		console.log(vSnapshot.properties(), "with priority", eSnap.priority());
+  })
+});
+```
 
 ## Utility
 
