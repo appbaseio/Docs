@@ -209,7 +209,7 @@ movieRef.setEdge('directedBy', nolanRef);
 nolanRef.setEdge('marriedTo', emmaRef);
 emmaRef.setEdge('marriedTo', nolanRef);
 ``` 
-[](http://i.imgur.com/LC3yaEM.png)
+![](http://i.imgur.com/LC3yaEM.png)
 
 Notice that Inception directed by Nolan, is a One-to-One relationship. Nolan has directed many movies, and that's a case of One-to-Many relationships. We see later how to create them in Appbase. 
 
