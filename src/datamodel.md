@@ -1,16 +1,4 @@
-#### Purpose
-Help people to understand how they can model their data in Appbase.
-
-#### Approach
-1. Explain how data is stored in Appbase, compare with different databases
-2. Explain how to store lists, and relationships in Appbase. While comparing with different databases
-3. A concrete example
-
-# The DOC
-
-This documentation is written step by step, skipping any part of it will make it difficult to understand the latter parts.
-
-Appbase is a Database-as-a-Service (DBaaS). This documentation requires prior understanding of databases. It is assumed that you have dealt with somekind of database earlier and you atleast know how to store/fetch data, and what different kind of relationships mean (One-to-One, One-to-Many, Many-to-Many). If not, [check this out](http://en.wikipedia.org/wiki/Database).
+Appbase is a Database-as-a-Service (DBaaS). It is best recommended that you have some prior understanding of databases. If you haven't dealt with somekind of database earlier, or you are unfamiliar with different kind of relationships mean (One-to-One, One-to-Many, Many-to-Many), please take a look at [this article](http://en.wikipedia.org/wiki/Database).
 
 All databases support the storing and fetching of data, what distinguishes one database type from another is the structure of the data they store and the means by which it can be retrieved. 
 
@@ -57,15 +45,15 @@ As SQL as concepts like _table_, _row_, _column_, _relation_ and MongoDB has _co
 
 We can not actually compare these concepts with other kinds of databases, but it helps to understand Appbase if we compare the *usage practices*.
 
-Appbase | MongoDB | RDBMS | Usage
+Usage | Appbase | MongoDB | RDBMS
 ---- | ----- | ----- | -----
-Namespace | Collection | Table | Combine similar entities
-Vertex | Document | Row | Data containers
-Properties | JSON data inside the object | Columns' values in a Row | The Data
-Vertex Key | ObjectId | Primary Key | Unique identifier of an entity
-Edge | Reference/DBRef | Foreign Key | Creating *Relations*
-Path | - | Apply *JOINs* with a single *Primary Key* and then a set of linked *Foreign Keys*, to reach the target Row | Traversing through the data *relevant* to an entity
-Priority | - | Extra numeric data attached with a *Relation* | Attach some useful information about the *Relation*, which can also be used to filter/sort them while fetching
+Combine similar entities | Namespace | Collection | Table
+Data containers | Vertex | Document | Row
+The Data | Properties | JSON data inside the object | Columns' values in a Row
+Unique identifier of an entity | Vertex Key | ObjectId | Primary Key
+Creating *Relations* | Edge | Reference/DBRef | Foreign Key
+Traversing through the data *relevant* to an entity | Path | - | Apply *JOINs* with a single *Primary Key* and then a set of linked *Foreign Keys*, to reach the target Row
+Attach some useful information about the *Relation*, which can also be used to filter/sort them while fetching| Priority | - | Extra numeric data attached with a *Relation*
 
 With this table in mind, lets understand how the concepts work.
 
@@ -147,8 +135,6 @@ With these edge, we created these deeper paths:
 This means, modifying the data stored at `movie/inception_2010/directedBy/marriedTo` will change the data of `person/emma_thomas` as they both are the same vertices.
 
 Paths are powerful ways to point to the exact data you want to interact with. For e.g.  when you access the path `movie/inception_2010/directedBy/marriedTo`, you are only interested in the vertex representing the person who is married to the director of Inception, and nothing else. You never access the data of the movie Inception, or the director.
-
-TODO: An image of these vertices
 
 ### URL
 
@@ -330,7 +316,7 @@ var moviesRef = Appbase.ns("set").v("moviesByNolan");
 moviesRef.on('edge_added', function(error, eRef, eSnap) {
 });
 ```
-Notice that the if there are 'N' number of existing edges, the callback will be called 'N' times, each time with a new edge.
+Notice that the if there are 'N' number of existing edges, the callback will be called 'N' times.
 
 `eRef` here is the Appbase Reference to the outVertex, and `eSnap` is the snapshot of the edge. Edge Snapshot is the snapshot of the data stored with the edge, mainly the _priority_ of the edge. `eSnap.priority()` will give you the priority. It does NOT give you the _properties_ of the outVertex. To fetch the properties of the out vertex, you should listen for _properties_ event on `eRef`.
 
@@ -342,3 +328,72 @@ moviesRef.on('edge_added', function(error, eRef, eSnap) {
 	})
 });
 ```
+
+#### Filters
+
+With edge filters, it is possible to fetch only certain edges. It comes handy when there are large number of edges and you want to paginate them, or want to fetch only a particular edge.
+
+
+When more than one filter is provided, they work as logical `AND` and only the edges matchihg all filters will be fetched. This is what each filter means:
+
+ 1. **startAt** `Number` - Edges having priorities equal or more than this
+ 2. **endAt** `Number` - Edges having priorities equal or less than this
+ 3. **limit** `Number` - Only this number of edges
+ 4. **skip** `Number` - Skipping certain number of edges, which match all the other filters
+ 5. **onlyNew** `Boolean` - return only newly created edges
+
+Notice that:
+ - Filters are a way to fetch existing edges, thus they work only with _edge_added_ event
+ - Edges are always returned ordered according to their priorities
+ - When *endAt* < *startAt*, edges are returned in reverse order
+ - You can NOT apply all the numeric filters (first four) to newly created edges, they are only for existing edges and it is NOT possible to apply filters to newly created edges in realtime
+	- This means that the numeric filters can not be used with *onlyNew* set to be `true`
+	- *Newly created* edges will NOT be fired when any of the numeric filter is applied, i.e. only the existing edges will be returned
+
+
+```js
+var moviesRef = Appbase.ns("set").v("moviesByNolan");
+var filters =  {limit: 2};
+moviesRef.on('edge_added', filters, function(error, eRef, eSnap) {
+	eRef.once('properties', function(error, ref, vSnapshot) {
+		console.log(vSnapshot.properties());
+	})
+});
+```
+
+### Vertices in a Namespace
+
+Namespaces are vertex containers, and it is possible to retrieve existing vertices, and listen to updates when new vertices are added or old vertices are removed.
+
+```js
+var movieNSRef = Appbase.ns("movie");
+movieNSRef.on('vertex_added', filters, function(error, vRef) {
+	vRef.once('properties', function(error, ref, vSnapshot) {
+		console.log(vSnapshot.properties());
+	})
+});
+```
+
+The callback attached with _vertex_added_ event is called for all the existing vertices. As new vertices are added, it is called for them too.
+
+To listen to updates of vertex removal, use _vertex_removed_ event.
+
+```js
+var movieNSRef = Appbase.ns("movie");
+movieNSRef.on('vertex_removed', filters, function(error, vRef) {
+	console.log(vRef.name(), "removed.");
+});
+```
+
+#### Search
+
+With ElasticSearch's powerful APIs in the backend, Appbase supports full-text fuzzy search queries on the data stored into vertices of a namespace. A sample query on a namespace looks something like this: 
+
+```js
+var query = {text: "2010", properties: ["year"]};
+Appbase.ns('movie').search(query, function(error, arrayOfVertices) {
+  //display vertices
+});
+```
+
+This query searches on all the vertices of the namespace _movie_, and returns an array of vertices who's property `year`, matches fuzzily with the text "2010". See [this documentation](http://docs.appbase.io/docs/js.html#namespace-reference-search) for more details.

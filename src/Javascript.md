@@ -458,7 +458,7 @@ When more than one filter is provided, they work as logical `AND` and only the e
  5. **onlyNew** `Boolean` - return only newly created edges
 
 Notice that:
-
+ - Filters are a way to fetch existing edges, thus they work only with _edge_added_ event
  - Edges are always returned ordered according to their priorities
  - When *endAt* < *startAt*, edges are returned in reverse order
  - You can NOT apply all the numeric filters (first four) to newly created edges, they are only for existing edges and it is NOT possible to apply filters to newly created edges in realtime
