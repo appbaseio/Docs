@@ -98,49 +98,51 @@ Creating edges create deeper *Paths*. Lets take the example of the movie Incepti
 
 1. The Movie: Inception
 	 - Namespace: movie
-	 - Vertex Key: inception_2010
+	 - Vertex Key: inception
 2. DiCaprio
 	 - Namespace: person
-	 - Vertex Key: leonardo_dicaprio
+	 - Vertex Key: dicaprio
 3. Nolan
 	 - Namespace: person
-	 - Vertex Key: christopher_nolan
+	 - Vertex Key: nolan
 4. Nolan's wife
 	 - Namespace: person
-	 - Vertex Key: emma_thomas
+	 - Vertex Key: emma
 
 These vertices can be accessed with the following paths, as entry points in the graph:
 
-1. `movie/inception_2010`
-2. `person/leonardo_dicaprio`
-3. `person/christopher_nolan`
-4. `person/emma_thomas`
+1. `movie/inception`
+2. `person/dicaprio`
+3. `person/nolan`
+4. `person/emma`
 
 Let's create edges:
 
-1. movie/inception_2010 `--leadActor->` person/leonardo_dicaprio
-2. movie/inception_2010 `--directedBy->` person/christopher_nolan
-3. person/christopher_nolan `--marriedTo->`person/emma_thomas
+1. movie/inception `--leadActor->` person/dicaprio
+2. movie/inception `--directedBy->` person/nolan
+3. person/nolan `--marriedTo->`person/emma
+
+![](http://i.imgur.com/2Asfr9r.png)
 
 With these edge, we created these deeper paths:
 
-1. `movie/inception_2010/leadActor` : points to the same vertex as `person/leonardo_dicaprio`
+1. `movie/inception/leadActor` : points to the same vertex as `person/dicaprio`
 
-2. `movie/inception_2010/directedBy` : points to `person/christopher_nolan`
+2. `movie/inception/directedBy` : points to `person/nolan`
 
-3. `person/christopher_nolan/marriedTo`: points to `person/emma_thomas`
+3. `person/nolan/marriedTo`: points to `person/emma`
 
-4. Here's the _magic_, the path `movie/inception_2010/directedBy/marriedTo` points directly to `person/emma_thomas`
+4. Here's the _magic_, the path `movie/inception/directedBy/marriedTo` points directly to `person/emma`
 
-This means, modifying the data stored at `movie/inception_2010/directedBy/marriedTo` will change the data of `person/emma_thomas` as they both are the same vertices.
+This means, modifying the data stored at `movie/inception/directedBy/marriedTo` will change the data of `person/emma` as they both are the same vertices.
 
-Paths are powerful ways to point to the exact data you want to interact with. For e.g.  when you access the path `movie/inception_2010/directedBy/marriedTo`, you are only interested in the vertex representing the person who is married to the director of Inception, and nothing else. You never access the data of the movie Inception, or the director.
+Paths are powerful ways to point to the exact data you want to interact with. For e.g.  when you access the path `movie/inception/directedBy/marriedTo`, you are only interested in the vertex representing the person who is married to the director of Inception, and nothing else. You never access the data of the movie Inception, or the director.
 
 ### URL
 
 A URL is just another representation of a _Path_. REST API URL looks like this: https://api.appbase.io/&lt;app_name&gt;/v2/&lt;path&gt;/. 
 
-Assuming the Application's name as _imdb_, URL for the path _movie/inception_2010/directedBy/marriedTo_ would be `https://api.appbase.io/imdb/v2/movie/inception_2010/directedBy/marriedTo`
+Assuming the Application's name as _imdb_, URL for the path _movie/inception/directedBy/marriedTo_ would be `https://api.appbase.io/imdb/v2/movie/inception/directedBy/marriedTo`
 
 ## Storing Data
 
@@ -158,7 +160,7 @@ var data = {
 	year: 2010
 }
 
-Appbase.ns('movie').v('inception_2010').setData(data);
+Appbase.ns('movie').v('inception').setData(data);
 ```
 
 ### Nested JSON Objects
@@ -174,7 +176,7 @@ var data = {
 	}
 }
 
-Appbase.ns('movie').v('inception_2010').setData(data);
+Appbase.ns('movie').v('inception').setData(data);
 ```
 This would work perfectly. Notice that you are not storing the director (Nolan) of Inception as a _different entity_, instead as a _property_ of the movie itself. While this approach is sometimes handy, it limits you in terms of what you can do with Nolan. I.e. you will not be able to establish any direct relationships with Nolan, as it is not an entity in itself. For eg. Nolan is married to Emma, but there is no way to create a link between Nolan  and Emma, when it is stored as a nested object in Appbase.
 
@@ -188,6 +190,8 @@ We will create three edges here:
 Recall that the edges are _directional_, so this 2nd edge only tells us that Nolan in married to Emma, but says nothing about Emma's marital status. That's why we create the third edge: 
 
 3. emma `--marriedTo->` nolan
+
+![](http://i.imgur.com/IipHJzL.png)
 
 ```js
 var movieData = {
@@ -209,7 +213,6 @@ movieRef.setEdge('directedBy', nolanRef);
 nolanRef.setEdge('marriedTo', emmaRef);
 emmaRef.setEdge('marriedTo', nolanRef);
 ``` 
-![](http://i.imgur.com/LC3yaEM.png)
 
 Notice that Inception directed by Nolan, is a One-to-One relationship. Nolan has directed many movies, and that's a case of One-to-Many relationships. We see later how to create them in Appbase. 
 
@@ -299,7 +302,7 @@ When you start listening to the properties of a vertex, you first get the existi
 Appbase gives you the properties data as a _snapshot_. The snapshots are immutable copies of the data stored in a vertex. Any changes you make in the snapshot will not be stored in Appbase. 
 
 ```js
-var inceptionRef = Appbase.ns("movie").v("inception_2010")
+var inceptionRef = Appbase.ns("movie").v("inception")
 inceptionRef.on("properties", function(error, vRef, vSnapshot) {
 	console.log(vSnapshot.properties());
 });
