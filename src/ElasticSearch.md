@@ -1,4 +1,45 @@
-With ElasticSearch's powerful APIs in the backend, Appbase supports full-text fuzzy search queries on namespaces. A sample query on a namespace looks something like this: 
+Appbase uses opensource Elasticsearch in the backend, and provides all the powerful search features of ES, on the data stored in Appbase.
+
+When you want to make some data _searchable_, you have to enable search on a namespace in the _Dashboard_. In the _Data Browswr_, enable the search by toggling the <i class="fa fa-eye-slash"></i> switch on the namespace. If search is enabled, you should see this icon <i class="fa fa-eye"></i> next to the namespace. 
+
+Enabling search on a namespace causes all the vertices inside the namespace to be indexed inside Elasticsearch. New vertices created inside this namespace are automatically indexed, and searchable. When the data of a vertex is updated, the indices update automatically and new data is searchable.
+
+
+## Data Mapping
+
+As in Appbase has the concepts of Namespaces, Vertices and Properties, Elasticsearch has Types, Documents, and Fields. Let's see how Appbase data is indexed and how these concepts are mapped.
+
+Purpose | Appbase | ES
+--------|---------|----
+Combining similar objects | Namespace | Type
+JSON Data Containers | Vertex | Document 
+JSON Data Property | Property | Field
+
+
+In a nutshell, All the _vertices_ of Appbase are stored as _documents_ inside ES, where the _namespace_ of the vertex becomes its _type_. _Properties_ of the vertex can be accessed and filtered as _fields_ inside ES. 
+
+All the examples in this doc ES concepts (Type, Document and Field), as we will be making direct Elasticsearch DSL query, but the query is explained in context the of data in Appbase, so Appbase concepts (Namespace, Vertex and Property) are used.
+
+## Elasticsearch Basics
+
+ElasticSearch is powered by Lucene, a powerful open-source full-text search library, under the hood. Although ES is mainly used for full-text queries, we can use it for number of things, like numeric range queries, geo spatial queries, aggrigation/ordering/grouping search results etc. In addition, we can combine these queries (logical and, or) and search across multiple namespaces and properties. To know more about Elasticsearch, checkout (this link)[].
+
+We see one by one, what queries apply in which use cases, how you can combine them later, and harness the full power that Elasticsearch provides. Let's start with basic usecase
+
+### Equality Queries
+
+### Full-text fuzzy search
+
+### Numeric-range
+
+### Geo spatial
+
+### Combining queries
+
+### Next steps
+
+
+# Old document, just kept here for a quick lookup
 
 ```js
 var query = {text: "ola", properties: ["msg"]};
