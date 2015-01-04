@@ -1,6 +1,6 @@
 Appbase uses opensource Elasticsearch in the backend, and provides all the powerful search features of ES, on the data stored in Appbase.
 
-When you want to make some data _searchable_, you have to enable search on a namespace in the _Dashboard_. In the _Data Browswr_, enable the search by toggling the <i class="fa fa-eye-slash"></i> switch on the namespace. If search is enabled, you should see this icon <i class="fa fa-eye"></i> next to the namespace. 
+When you want to make some data _searchable_, you have to enable search on a namespace in the _Dashboard_. In the _Data Browser_, enable the search by toggling the <i class="fa fa-eye-slash"></i> switch on the namespace. If search is enabled, you should see this icon <i class="fa fa-eye"></i> next to the namespace. 
 
 Enabling search on a namespace causes all the vertices inside the namespace to be indexed inside Elasticsearch. New vertices created inside this namespace are automatically indexed, and searchable. When the data of a vertex is updated, the indices update automatically and new data is searchable.
 
@@ -13,7 +13,7 @@ Purpose | Appbase | ES
 --------|---------|----
 Combining similar objects | Namespace | Type
 JSON Data Containers | Vertex | Document 
-JSON Data Property | Property | Field
+JSON Object's Property | Property | Field
 
 
 In a nutshell, All the _vertices_ of Appbase are stored as _documents_ inside ES, where the _namespace_ of the vertex becomes its _type_. _Properties_ of the vertex can be accessed and filtered as _fields_ inside ES. 
@@ -22,17 +22,116 @@ All the examples in this doc ES concepts (Type, Document and Field), as we will 
 
 ## Elasticsearch Basics
 
-ElasticSearch is powered by Lucene, a powerful open-source full-text search library, under the hood. Although ES is mainly used for full-text queries, we can use it for number of things, like numeric range queries, geo spatial queries, aggrigation/ordering/grouping search results etc. In addition, we can combine these queries (logical and, or) and search across multiple namespaces and properties. To know more about Elasticsearch, checkout (this link)[].
+ElasticSearch is powered by Lucene, a powerful open-source full-text search library, under the hood. Although ES is mainly used for full-text queries, we can use it for number of things, like numeric range queries, geo spatial queries, aggrigation/ordering/grouping search results etc. In addition, we can combine these queries (logical and/or) and search across multiple namespaces and properties. To know more about Elasticsearch, checkout [this link](http://www.elasticsearch.org).
 
-We see one by one, what queries apply in which use cases, how you can combine them later, and harness the full power that Elasticsearch provides. Let's start with basic usecase
+## Request and Response Format
 
-### Equality Queries
+To do a raw ES query on the data, Appbase provides a [REST API endpoint]() and the Javascript library method [`Appbase.rawSearch()`](). Both of them, accepts similar request Query Object, and gives similar responses. 
+
+### Request
+
+A typical request object defines:
+
+ - __namespaces__ - _array_ : The namespaces on which the query will run
+ - __body__ - _object_ : The Elasticsearch Query DSL body
+
+Elasticsearch provides rich Query DSL (Domain Specific Language) based on JSON to define queries. Queries involving major usecases are covered in this documentation, but if you want to know more about DSL, goto [this link](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html).
+
+This is a sample request Query Object: 
+
+```json
+{
+    "namespaces": ["user", "tweet"],
+    "body": {
+        "query": {
+             "multi_match": {
+                 "fields": ["msg", "name"],
+                 "query": "hello"
+             }
+         }
+     }
+};
+```
+
+Do not worry about the `body` of this object for now, we will see how to define it for different use cases in this document.
+
+### Response
+
+We provide an unaltered DSL Response from ES. A typical response includes:
+
+ - __took__ - _number_ : The time it took for the query to run
+ - __timeout__ - _boolean_ : If the was query timed out
+ - __\_shards__ -  _object_ : Sharding information
+ - __hits__ - _object_ : Query results and more
+	 - __total__ - _number_: Number of results
+	 - __max_score__ - _number_ : The maximum _score_ that matched the query. This score comes into picture when we do a full text query.
+	 - __hits__ - _array_ : The results that satisfied the query. Each object inside this array is a JSON object representing a _vertex_,  and has following perperties:
+		 - __\_index__ - _string_ : Index inside which the object is stored. Appbase stores all the vertices of a single application inside a single index. So this will equal to the name of Appbase application you are using.
+		 - __\_type__ - _string_ : Type of the document. I.E. namespace of the vertex (As explained in the Data Mapping).
+		 - __\_id__ - _string_ : Id of the document inside ES.
+		 - __\_score__ - _number_ : The score by witch the vertex matched the query
+		 - __\_source__ - _object_ : The data inside the document (vertex).
+
+Example: 
+
+```json
+{
+	"took": 9,
+	"timed_out": false,
+	"_shards": {
+		"total": 5,
+		"successful": 5,
+		"failed": 0
+	},
+	"hits": {
+		"total": 2,
+		"max_score": 6.41832,
+		"hits": [
+			{
+				"_index": "twitter",
+				"_type": "user",
+				"_id": "53fa820a5f1f08c11ecb0f95",
+				"_score": 6.41832,
+				"_source": {
+					"timestamp": 1408931734497,
+					"rootPath": "user/hello",
+					"_id": "53fa820a5f1f08c11ecb0f95",
+					"name": "hello"
+				}
+			},
+			{
+				"_index": "twitter",
+				"_type": "tweet",
+				"_id": "546a504316453f340d289d97",
+				"_score": 3.7718577,
+				"_source": {
+					"timestamp": 1416253508159,
+					"rootPath": "tweet/244caea78e32401c9b16788219d8efd5",
+					"_id": "546a504316453f340d289d97",
+					"by": "sid",
+					"msg": "hell"
+				}
+			}
+		]
+	}
+}
+```
+
+
+## Queries
+
+We see one by one, what queries apply in which use cases, how you can combine them later, and harness the full power that Elasticsearch provides. Let's start with basic use case.
+
+
+### Match Query
 
 ### Full-text fuzzy search
 
 ### Numeric-range
 
 ### Geo spatial
+
+### Grouping, ordering and aggregation
 
 ### Combining queries
 
