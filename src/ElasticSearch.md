@@ -252,6 +252,33 @@ For more fine tuned searches, like on the users with first name as "Andrew" and 
 
 ### Fuzzy
 
+A fuzzy search matches with the documents who have the terms matching _nearly_  the search term.
+
+This is very useful for Google-like searches, where there could be some typing mistakes, or the user is not sure what word exactly he is searching for. 
+
+The simplest way to do a _fuzzy query_ is:
+
+```json
+{
+    "namespaces": ["tweet"],
+    "body": {
+	    "query" : {
+            "fuzzy" : { "message" : "hello" }
+        }
+	}
+}
+```
+
+The above query would return tweets with the message as "hella" or "hallo" etc. 
+
+
+> <sup>Elasticseach sidenote</sup>
+> #### ___fuzzy___ search
+> There are number of _fuzzy_ queries in Elasticsearch and a number of ways to control the _fuzziness_ of the term. Plus, you can search on a single or more properties (fields). Take a look at these documentations:
+> - [_fuzzy_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html)
+> - [_fuzzy-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html)
+> - [_more-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
+
 ### Numeric-range
 
 ### Geo spatial
