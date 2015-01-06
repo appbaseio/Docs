@@ -486,7 +486,7 @@ Lets write the request to search the mobile phones we described above.
 > - [_bool_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-filter.html)
 
 
-### Next steps
+## Next steps
 
 This document may only be able to give you a headstart on Elasticsearch, and it is impossible to cover every use case and feature provided by Elasticsearch. 
 
