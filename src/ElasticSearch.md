@@ -132,9 +132,10 @@ In each use case below, it is first described how the data is stored, and what k
 This is the most basic use case we can think of, where you want to just find out vertices which contain a certain _term_, either as a string or a number. 
 
 For example, _"give me all the.."_
-	1. users with first name "Andrew"
-	2. products priced at "$100"
-	3. tweets which say "hello"
+	
+ - users with first name "Andrew"
+ - products priced at "$100"
+ - tweets which say "hello"
 
 We can use the _term filter_ or _term query_ for such cases.
 
@@ -281,22 +282,214 @@ The above query would return tweets with the message as "hella" or "hallo" etc.
 
 ### Numeric-range
 
+_"Give me all the..."_
+
+- products priced at less than _\$100_, more than _\$50_ 
+- pages between _5_ and _10_
+
+We can use the _range filter_.
+```json
+{
+    "namespaces": ["product"],
+    "body": {
+	    "filter" : {
+            "range" : {
+	            "price" : {
+                    "lt": 100,
+                    "gt": 50
+                }
+            }
+        }
+	}
+}
+```
+
+> <sup>Elasticseach sidenote</sup>
+> #### ___range___ _filter_
+> It can also perform greater/less _or equal _ searches. See the [_range_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-range-filter.html) for more details.
+
 ### Geo spatial
 
-### Grouping, ordering and aggregation
+Elasticsearch requires you to store your the geographic location using longitude and latitude, stored as a nested JSON object. Lets say that we are storing restaurants, along with their location. The data of a restaurant would be: 
+```json
+{
+	"name": "Sanro Vegetarian Restaurant",
+	"location": {
+		"lat" : 40.12
+		"lon" : -71.34
+	}
+}
+```
 
-### Combining queries
+As long as the location is stored as above inside a vertex, we can do tons of geo spatial queries with Elasticsearch.
+
+We can use _geo distance_ filter to find vertices located within specific distance from a geo point.
+
+Find restaurants located within 5km from the point $ 40, -70 $.
+```json
+{
+    "namespaces": ["restaurant"],
+    "body": {
+	    "filter" : {
+            "geo_distance" : {
+				"distance" : "5km",
+				"location" : {
+					"lat" : 40,
+					"lon" : -70
+				}
+			}
+		}
+	}
+}
+```
+
+> <sup>Elasticseach sidenote</sup>
+> #### ___geo spatial___ _search_
+> You can define the distance in real world Units like km, miles etc. There many ways the shape (box, polygon etc) and the range of this distance can be customized. Check out these documents for more details: 
+> - [Elasticsearch Geo Location tutorial](http://www.elasticsearch.org/blog/geo-location-and-search/)
+> - [_geo-distance_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-distance-filter.html)
+> - [_geo-distance-range_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-distance-range-filter.html)
+> - [_geo-bounding-box_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-bounding-box-filter.html)
+> - [_geo-polygon_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-polygon-filter.html)
+> - [_geo-shape_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-shape-filter.html)
+> - [_geohash-cell_ filter](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geohash-cell-filter.html)
+
+### Sorting
+
+Results are sorted according to their _score_ by default. We can change this behavior by applying _sort_ parameter in the request.
+
+Earlier in the _numeric range_ use case, we searched for products in price range \$50 and \$100. Let's sort the results according to their price, and then name.
+
+```json
+{
+    "namespaces": ["product"],
+    "body": {
+	    "filter" : {
+            "term" : { "price" : 100 }
+        },
+        "sort" : [
+			{ "price" : "asc"},
+			{ "name" : "asc" }
+		],
+	}
+}
+```
+> <sup>Elasticseach sidenote</sup>
+> #### ___sorting___
+> You can specify the order of the sort (asc, desc), you can also sort on multi-valued fields. Geo Location based sort is possible too.
+> Take a look at the [_sort_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-sort.html).
+
+### Aggregation
+
+There are types of aggregation supported in Elasticsearch. 
+
+ 1. Grouping (Bucketing): vertices are grouped together based on criteria.
+ 2. Metric: keep track and compute metrics over a set of documents.
+
+There wide varieties of aggregations and criteria, based on string-terms, locations, dates, numbers, etc. Take a look at the [_Aggregation API_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html).
+
+### Combining queries/filters
+
+_"Give me all the products which.."_
+
+ - are mobile phones
+ _and_
+ - are priced at lower than \$800
+ _and_
+ - do not belong to the brand "Apple"
+ _and_
+ - are either 
+	 - with brand "Samsung" _and_ "white" colored
+	 _or_
+	 - with brand "Sony" _and_ "black" colored
+	_or_
+	 - any brand with "metal" color
+
+Writing these terms into a programming language like Javascript: 
+
+```js
+product.type == "mobile" &&
+product.price < 800 &&
+product.brand != "Apple" &&
+(
+	(product.brand == "Samsung" && product.color == "white") ||
+	(product.brand == "Sony" && product.color == "white") ||
+	product.color == "metal"
+)
+```
+
+For such a case, Elasticsearch provides _bool query_ or _bool filter_. In a bool query/filter you define the the other kind of queries/filters which should or must be satisfied or, must not be satisfied.
+
+A bool query/filter can have three kinds of clauses:
+
+ - `must` - all the conditions (query/filter) defined inside this clause must appear in matching documents.
+ - `must_not` - the conditions must not appear in the matching documents.
+ - `should` - any one of the conditions must appear in the matching documents.
+
+Lets write the request to search the mobile phones we described above.
+```json
+{
+    "namespaces": ["product"],
+    "body": {
+	    "filter" : {
+		    "bool": {
+			    "must": [ 
+				    {
+					    "term": { "type": "mobile" }
+				    }, 
+				    {
+					    "range": { "price": { "lt": 800 } }
+				    }
+			    ],
+			    "must_not": [{
+				    "term": { "brand": "Apple" }
+			    }],
+			    "should": [
+				    {
+					    "term": { "color": "metal"}
+				    },
+				    {
+					    "bool": {
+						    "must": [
+							    {
+								    "term": {"brand": "Samsung"}
+							    },
+							    {
+								    "term": {"color": "white"}
+							    }
+						    ]
+					    },
+				    },
+				    {
+					    "bool": {
+						    "must": [
+							    {
+								    "term": {"brand": "Sony"}
+							    },
+							    {
+								    "term": {"color": "black"}
+							    }
+						    ]
+					    }
+				    }
+			    ]
+		    }
+	    }
+	}
+}
+```
+
+> <sup>Elasticseach sidenote</sup>
+> #### ___bool___ _query/filter_
+> As you can see in the example here, we have using bool filters. This way you can write really complex search requests. To know more check out:
+> - [_bool_ query documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
+> - [_bool_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-filter.html)
+
 
 ### Next steps
 
+This document may only be able to give you a headstart on Elasticsearch, and it is impossible to cover every use case and feature provided by Elasticsearch. 
 
-# Old document, just kept here for a quick lookup
+If you have confusions on any of the use cases covered here, see the additional notes and links provided beside them.
 
-```js
-var query = {text: "ola", properties: ["msg"]};
-Appbase.ns('tweet').search(query, function(error, arrayOfVertices) {
-  //display vertices
-});
-```
-
-This simple query searches for all the vertices in the *tweet* namespace, which has a *message* property with its value fuzzily matching the text "ola". This search with also return "ol", "hla", "ole" etc.
+To understand the Elasticsearch from the basics to advanced level, the book ["Exploring Elasticsearch" by Andrew Cholakian](http://exploringelasticsearch.com/), and [Elasticsearch: The Definitive Guide](http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/index.html) are definitely helpful.
