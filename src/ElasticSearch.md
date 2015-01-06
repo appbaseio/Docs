@@ -153,6 +153,7 @@ We can use the _term filter_ or _term query_ for such cases.
 For all the users with first name as "Andrew",
 
  - Using the _term __filter___, the request object would be: 
+
 ```json
 {
     "namespaces": ["user"],
@@ -165,6 +166,7 @@ For all the users with first name as "Andrew",
 ```
 
 - Using the _term __query___, the request object would be: 
+
 ```json
 {
     "namespaces": ["user"],
@@ -228,7 +230,8 @@ The above search request would find tweets which contains terms "hello" and "wor
 > Read more about them: 
 >  -  [_match query_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
 >  -  [_terms filter_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-terms-filter.html)
->  
+
+
 #### Searching on multiple properties
 
 The _multi\_match_ query can search on multiple fields (properties) and returned if _any_ of those properties match _any_ of the terms.
@@ -284,7 +287,7 @@ The above query would return tweets with the message as "hella" or "hallo" etc.
 
 _"Give me all the..."_
 
-- products priced at less than _\$100_, more than _\$50_ 
+- products priced at less than _$100_, more than _$50_ 
 - pages between _5_ and _10_
 
 We can use the _range filter_.
@@ -325,7 +328,7 @@ As long as the location is stored as above inside a vertex, we can do tons of ge
 
 We can use _geo distance_ filter to find vertices located within specific distance from a geo point.
 
-Find restaurants located within 5km from the point $ 40, -70 $.
+Find restaurants located within 5km from the point 40, -70.
 ```json
 {
     "namespaces": ["restaurant"],
@@ -358,7 +361,7 @@ Find restaurants located within 5km from the point $ 40, -70 $.
 
 Results are sorted according to their _score_ by default. We can change this behavior by applying _sort_ parameter in the request.
 
-Earlier in the _numeric range_ use case, we searched for products in price range \$50 and \$100. Let's sort the results according to their price, and then name.
+Earlier in the _numeric range_ use case, we searched for products in price range $50 and $100. Let's sort the results according to their price, and then name.
 
 ```json
 {
@@ -394,7 +397,7 @@ _"Give me all the products which.."_
 
  - are mobile phones
  _and_
- - are priced at lower than \$800
+ - are priced at lower than $800
  _and_
  - do not belong to the brand "Apple"
  _and_
