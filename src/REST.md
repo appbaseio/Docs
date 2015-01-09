@@ -209,7 +209,9 @@ connection: keep-alive
 </pre>
 
 
-## Vertex
+## Vertex Property
+
+All data operations on a vertex happen via **Vertex Property** endpoints.
 
 ### Create / Update Vertex Properties
 
@@ -224,7 +226,7 @@ curl --include \
      --data-binary "    {
         \"data\":{\"foo\":\"bar\"}
     }" \
-https://api.appbase.io/rest_test/v2/Materials/Ice/~properties
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
 ```
 **Usage**:
 <ul>
@@ -290,6 +292,171 @@ connection: keep-alive
 </code>
 </pre>
 
+### Read Vertex Properties
+
+Read the existing vertex properties.
+
+> **Example Request**
+```curl
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"all\": true
+    }" \
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``data`` - A JSON object with the property ``all`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **vertex** object with all the properties, a ``timestamp`` value when the vertex was last updated, the shortest path to the vertex resource aka ``rootPath``, a unique identifier of the vertex properties resource ``_id`` (used by the server internally), along with an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+  "all": true
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Sat, 13 Dec 2014 16:28:36 GMT
+content-length: 151
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+{
+  "vertex": {
+    "_id": "Materials`547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice",
+    "foo": "bar",
+    "green": "leaf"
+  },
+  "optype": "RETR"
+}
+</code>
+</pre>
+
+### Delete vertex properties
+
+Delete specific (or all) data properties of a vertex.
+
+> **Example Request**
+```curl
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"data\": [\"foo\"]
+    }" \
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all properties</b>
+	<ul>
+		<li>``data`` - A JSON object with the property ``all`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific properties</b>
+	<ul>
+		<li>``data`` - A JSON object with the property ``data`` set as an array of property names to be deleted.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **vertex** object with the deleted properties set to "", a ``timestamp`` value when the vertex was last updated, the shortest path to the vertex resource aka ``rootPath``, and a unique identifier of the vertex properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "data": ["foo"]
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Wed, 15 Oct 2014 20:08:58 GMT
+content-length: 112
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+{
+  "foo": "",
+  "_id": "Materials`547059ce69528db30aa7ae90",
+  "timestamp": 1418486072705,
+  "rootPath": "Materials/Ice"
+}
+</code>
+</pre>
+
+## Vertex Edge
+
 ### Create / Update Vertex Edges
 
 Create a new (directed) edge or update the existing edge(s) of a vertex to another vertex. An **order**, which acts as an index can optionally be set on the edge.
@@ -311,7 +478,7 @@ curl --include \
             }
         }
     }" \
-https://api.appbase.io/rest_test/v2/Materials/Ice/~edges
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~edges'
 ```
 **Usage**:
 <ul>
