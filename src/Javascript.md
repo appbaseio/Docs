@@ -2,6 +2,10 @@
 
 The Appbase JS library allows developers to create realtime multi-user apps using a graph data model and realtime smart-search capabilities.
 
+To use it in the browser, use this link: https://cdn.appbase.io/latest/appbase.js
+
+To use it with nodejs, do `npm install appbasejs`
+
 The Appbase library exposes the ``Appbase`` object. The methods in the JS lib rely on three main objects.
 
 1. **Appbase**
