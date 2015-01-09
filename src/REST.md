@@ -33,7 +33,7 @@ Base URI is the fixed URI that is common for all the API request endpoints and i
 
 
 
-# API endpoints
+# API Reference
 
 ## Introduction
 
@@ -43,7 +43,173 @@ The Appbase API endpoints are divided between three types of different resources
 2. ``Vertex Properties`` - *Vertex Properties* are stored as a JSON object. The suffix ``~properties`` is used with the resource URI of the vertex to operate on the *properties* resource.
 3. ``Edges`` - *Edges* of a vertex are stored as JSON object. The suffic ``~edges`` is used with the resource URI of the vertex to operate on the *edge* resource.
 
-## API Reference
+## Namespace
+
+### List all vertices
+
+List the vertices in the namespace. *Returns* an array of vertices in the namespace.
+
+> **Example Request**
+```curl
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+  'https://api.appbase.io/rest_test/v2/Materials/~list'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* identifier can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of vertices. Each vertex is returned as an object with a server ``timestamp`` when the vertex was last updated, the shortest path to the vertex resource aka ``rootPath``, and a unique identifier of the vertex properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/~list
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Sat, 13 Dec 2014 17:13:37 GMT
+content-length: 267
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+[
+  {
+    "_id": "547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice"
+  },
+  {
+    "_id": "5488ccab3b87a791550d81b7",
+    "timestamp": 1418464098508,
+    "rootPath": "Materials/Iron"
+  },
+  {
+    "_id": "5488cce73b87a791550d81bb",
+    "timestamp": 1418251495670,
+    "rootPath": "Materials/Fire"
+  }
+]</code>
+</pre>
+
+### Search Vertices by property(ies)
+
+Search vertices by one or more vertex properties. *Returns* an array of vertices that match the search criteria.
+
+``Note:`` Search should be enabled for the respective namespace from the databrowser interface before performing this query. 
+
+> **Example Request**
+```curl
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"query\": {
+            \"text\": \"bar\",
+            \"properties\":[\"foo\"]
+        }
+    }" \
+'https://api.appbase.io/rest_test/v2/Materials/~search'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* identifier can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``data`` - A JSON object representing the search query and the properties to be used for the matching criteria.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of vertices which match the search query. Each vertex is returned as an object with all the **properties** (both matching and non-matching), a server ``timestamp`` when the vertex was last updated, the shortest path to the vertex resource aka ``rootPath``, and a unique identifier of the vertex properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/~search
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+  "query": {
+    "text": "bar",
+    "properties": [
+      "foo"
+    ]
+  }
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Sat, 13 Dec 2014 17:26:52 GMT
+content-length: 126
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+[
+  {
+    "_id": "Materials`547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice",
+    "green": "leaf",
+    "foo": "bar"
+  }
+]
+</code>
+</pre>
+
+
+## Vertex
 
 ### Create / Update Vertex Properties
 
@@ -111,7 +277,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 Content-Type: application/json
 access-control-allow-credentials: true
 cache-control: no-cache
-content-type: application/json
 date: Wed, 15 Oct 2014 20:08:58 GMT
 content-length: 112
 connection: keep-alive
