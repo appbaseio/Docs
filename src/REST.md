@@ -559,6 +559,166 @@ connection: keep-alive
 </code>
 </pre>
 
+### Read Vertex Edges
+
+Fetch the outgoing edges of a vertex..
+
+> **Example Request**
+```curl
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"filters\": {}
+    }" \
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``filters`` - A filters JSON object, set as {} to not apply any filters.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an **edges** object with the filtered edges as an array, each edge having a ``timestamp`` value when the edge was last updated, a unique identifier of the edge resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the vertex on which this operation is performed and an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~edges
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+  "filters": {}
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Sat, 13 Dec 2014 16:55:14 GMT
+content-length: 203
+connection: keep-alive
+<span class="inline-heading">BODY</span>
+{
+  "edges": {
+    "anEdge": {
+      "t_id": "Materials`5488ccab3b87a791550d81b7",
+      "timestamp": 1418489847292
+    },
+    "anotherEdge": {
+      "t_id": "Materials`547059ce69528db30aa7ae90",
+      "timestamp": 1418489847292,
+      "order": 500.6
+    }
+  },
+  "optype": "RETR",
+  "_id": "Materials`547059ce69528db30aa7ae90"
+}
+</code>
+</pre>
+
+### Delete vertex edges
+
+Delete specific (or all) data properties of a vertex.
+
+> **Example Request**
+```curl
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     --data-binary "    {
+        \"data\": [\"edge1\", \"edgen\"]
+    }" \
+'https://api.appbase.io/rest_test/v2/Materials/Ice/~edges'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *namespace* and *vertex* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all edges</b>
+	<ul>
+		<li>``data`` - A JSON object with the property ``all`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific edges</b>
+	<ul>
+		<li>``data`` - A JSON object with the property ``data`` set as an array of edge names to be deleted.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/<span class="path-var">vertex</span>/~edges
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "data": ["edge1", "edgen"]
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+204
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+access-control-allow-credentials: true
+cache-control: no-cache
+date: Wed, 15 Oct 2014 20:08:58 GMT
+content-length: 112
+connection: keep-alive
+</code>
+</pre>
+
 # Socket.io API Endpoints
 
 Socket.io is a powerful realtime engine, and we are using it in the backend to provide realtime streams of data. Socket.io has client libraries for almost popular languages and platforms, and you can follow the API endpoints given below to fetch the data as realtime streams. Examples here use Javascript Language, but you can use the same methods on any other platform.
