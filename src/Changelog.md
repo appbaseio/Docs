@@ -1,3 +1,12 @@
+
+
+##### AppbaseJS v2.2.13 -> 2.2.14
+- `on()` methods now include vertex data with them.
+- better error return for `on` methods
+
+##### AppbaseJS v2.2.12 -> 2.2.13
+- Resolved: path problems when using with an https site
+
 ##### AppbaseJS v2.2.11 -> 2.2.12
 - fixed: onComplete wasn't getting the reference
 - Appbase.rawSearch();
