@@ -92,10 +92,10 @@ Now that we have successfully stored data, let's perform a full-text search.
 
 Before that, just a small setup in the dashboard to enable search. 
 
-![Imgur](http://i.imgur.com/LBjXQQT.png)  
+![Select "Data Browser" View](http://i.imgur.com/LBjXQQT.png)  
 **Image2**: Select the "Data Browser" view (3rd option).
 
-![Imgur](http://i.imgur.com/20vL1BC.png)  
+![Enable Search View](http://i.imgur.com/dUBq2fw.png)  
 **Image3**: Ensure search is enabled on the "people" namespace.
 
 Inside the databrowser view, enable **Search**. The eye icon should appear <span style="color:green;">green</span>, once the search is enabled.
