@@ -62,10 +62,8 @@ userRef.on('properties', function(error, ref, userSnap) {
     console.log(userSnap.properties().status);
     console.log(userSnap.properties().location);
 });
-userRef.on('edge_added', function(error, outVertexRef, eSnap) {
-    outVertexRef.once('properties', function(error, ref, tweetSnap) {
-        console.log(tweetSnap.properties().message);
-    });
+userRef.on('edge_added', function(error, outVertexRef, tweetSnap) {
+    console.log(tweetSnap.properties().message);
 });
 ```
 
