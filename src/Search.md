@@ -12,7 +12,7 @@ We have thought about the **Search** problem really hard, and have come up with 
 
 Appbase takes the search problem head-on and indexes all the data that is ever stored in Appbase, allowing searching on all the data and relationships. We provide the ability to do the following kind of queries:  
 1. Full-text search - including [simple match queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-fuzzy),  
-2. [Numeric-range queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-numeric-range) - when you want answers to "Give me all the products that cost between \$50 and \$100" or "fetch all pages from 5 to 10",  
+2. [Numeric-range queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
 3. [Geo spatial queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
 4. [Sort queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
 
@@ -93,10 +93,10 @@ Now that we have successfully stored data, let's perform a full-text search.
 Before that, just a small setup in the dashboard to enable search. 
 
 ![Select "Data Browser" View](http://i.imgur.com/LBjXQQT.png)  
-**Image2**: Select the "Data Browser" view (3rd option).
+**Image 2**: Select the "Data Browser" view (3rd option).
 
 ![Enable Search View](http://i.imgur.com/dUBq2fw.png)  
-**Image3**: Ensure search is enabled on the "people" namespace.
+**Image 3**: Ensure search is enabled on the "people" namespace.
 
 Inside the databrowser view, enable **Search**. The eye icon should appear <span style="color:green;">green</span>, once the search is enabled.
 
