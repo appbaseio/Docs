@@ -5250,7 +5250,7 @@ button.close {
           font-size: 1.1em; } }
       #landing .buttons a:hover {
         background-color: white;
-        color: #138FCD; }
+        color: #7DD3F4; }
 
 #apps {
   background-color: white;
@@ -5507,78 +5507,187 @@ h2 {
   z-index: 999;
   width: 100%; }
 
-.navbar {
-  min-height: 70px;
-  opacity: 0.94;
-  border: 0;
-  margin: 0;
-  border-radius: 0;
-  transition: all 0.5s ease; }
-  .navbar .container {
-    min-height: 70px; }
-  .navbar .navbar-header {
-    height: 70px;
-    line-height: 70px;
-    vertical-align: middle; }
-    .navbar .navbar-header .navbar-toggle {
-      position: relative;
-      margin: 18px 20px; }
-      .navbar .navbar-header .navbar-toggle .icon-bar {
-        background-color: white; }
-    .navbar .navbar-header .navbar-brand {
-      padding: 15px 20px; }
-      .navbar .navbar-header .navbar-brand img {
-        height: 40px; }
-  .navbar .nav {
-    margin: 0 inherit; }
-    .navbar .nav li .link {
-      padding: 0 3vw;
-      line-height: 70px; }
-      .navbar .nav li .link a {
-        font-family: "Source Sans Pro Light";
-        font-size: 1.35em;
-        text-transform: uppercase;
-        color: white;
-        padding: 10px;
-        border-radius: 5px; }
-        .navbar .nav li .link a:hover {
-          background-color: white;
-          text-decoration: none;
-          color: #138FCD;
-          opacity: 0.9;
-          border-radius: 20px; }
-        .navbar .nav li.active .link a {
-          background-color: white;
-          text-decoration: none;
-          color: #138FCD;
-          opacity: 0.9;
-          border-radius: 20px; }
-    .navbar .nav li:last-child {
-      padding-right: 20px; }
-      .navbar .nav li:last-child .link {
-        padding-left: 3vw;
-        padding-right: 0; }
-  .navbar .navbar-collapse {
-    border-top: none;
+  #nav {
     position: relative;
-    z-index: 999999; }
-    .navbar .navbar-collapse.in .nav {
-      background-color: #50BAEF;
-      opacity: 0.95;
-      margin-top: -2px; }
-      .navbar .navbar-collapse.in .nav li {
-        display: inline; }
-        .navbar .navbar-collapse.in .nav li div {
-          display: inline; }
-        .navbar .navbar-collapse.in .nav li.active a {
-          color: #138FCD; }
-        .navbar .navbar-collapse.in .nav li a {
-          color: white; }
-          .navbar .navbar-collapse.in .nav li a:hover {
-            color: #138FCD;
-            background-color: white;
-            opacity: 0.9; 
+    z-index: 2;
+    background-color: transparent; }
+    #nav.affix {
+      position: fixed;
+      background-color: transparent !important; }
+      #nav.affix .navbar {
+        background-color: transparent; }
+    #nav .navbar {
+      min-height: 70px;
+      background-color: transparent;
+      border: 0;
+      margin: -2px 0 0;
+      border-radius: 0; }
+      #nav .navbar .container-fluid {
+        min-height: 70px;
+        padding: 0; }
+        @media screen and (min-width: 768px) {
+          #nav .navbar .container-fluid {
+            opacity: 0.94;
+            padding: 0 1vw; }
+            #nav .navbar .container-fluid .nav {
+              text-align: left; }
+              #nav .navbar .container-fluid .nav li .link {
+                padding: 0 0.9vw; }
+                #nav .navbar .container-fluid .nav li .link a {
+                  padding: 6px 5px; }
+            #nav .navbar .container-fluid .navbar-header {
+              margin: 0 -15px; } }
+        @media screen and (min-width: 900px) {
+          #nav .navbar .container-fluid {
+            padding: 0 2.5vw; }
+            #nav .navbar .container-fluid .nav li .link {
+              padding: 0 0.3vw; }
+              #nav .navbar .container-fluid .nav li .link a {
+                padding: 6px 20px; } }
+        @media screen and (min-width: 1200px) {
+          #nav .navbar .container-fluid {
+            padding: 0 5.5vw; }
+            #nav .navbar .container-fluid .nav li .link {
+              padding: 0 0.2vw; } }
+        @media screen and (min-width: 1600px) {
+          #nav .navbar .container-fluid {
+            padding: 0 10vw; }
+            #nav .navbar .container-fluid .nav li .link {
+              padding: 0 0.5vw; } }
+        @media screen and (min-width: 2000px) {
+          #nav .navbar .container-fluid {
+            padding: 0 12vw; }
+            #nav .navbar .container-fluid .nav li .link {
+              padding: 0 1vw; } }
+      #nav .navbar .navbar-header {
+        margin: 0;
+        height: 70px;
+        line-height: 70px;
+        vertical-align: middle;
+        z-index: 15; }
+        #nav .navbar .navbar-header .navbar-toggle {
+          position: relative;
+          z-index: 21;
+          margin: 18px 20px; }
+          #nav .navbar .navbar-header .navbar-toggle .icon-bar {
+            background-color: white; }
+        #nav .navbar .navbar-header .navbar-brand {
+          position: relative;
+          z-index: 10;
+          padding: 15px 20px;
+          cursor: pointer; }
+          #nav .navbar .navbar-header .navbar-brand img {
+            height: 40px; }
+      #nav .navbar .nav {
+        position: relative;
+        z-index: 30;
+        margin: 0 inherit;
+        color: white;
+        font-family: "Source Sans Pro Light"; }
+        #nav .navbar .nav #login_userInfo {
+          font-size: 1.25em;
+          margin-top: 15px;
+          margin-left: 15px;
+          line-height: 70px; }
+          #nav .navbar .nav #login_userInfo > span {
+            cursor: default; }
+          #nav .navbar .nav #login_userInfo .tooltip {
+            line-height: 35px;
+            opacity: 0; }
+            #nav .navbar .nav #login_userInfo .tooltip:hover {
+              opacity: 0.6; }
+            #nav .navbar .nav #login_userInfo .tooltip .tooltip-inner {
+              font-family: "Source Sans Pro Light";
+              font-size: 2.5em;
+              background-color: brown;
+              height: 40px;
+              width: 40px;
+              border-radius: 20px;
+              cursor: pointer; }
+          #nav .navbar .nav #login_userInfo .circle {
+            float: right;
+            position: relative;
+            top: 15px;
+            height: 40px;
+            width: 40px;
+            margin-left: 15px; }
+            #nav .navbar .nav #login_userInfo .circle .overlay {
+              display: inline;
+              color: transparent; }
+              #nav .navbar .nav #login_userInfo .circle .overlay:hover {
+                color: black; }
+            #nav .navbar .nav #login_userInfo .circle img {
+              float: left;
+              vertical-align: top;
+              border-radius: 25px;
+              height: 40px;
+              width: 40px; }
+      #nav .navbar li .link {
+        padding: 0;
+        line-height: 70px; }
+        #nav .navbar li .link a {
+          cursor: pointer;
+          font-family: "Source Sans Pro Light";
+          font-size: 1.35em;
+          text-transform: uppercase;
+          color: white;
+          padding: 5px 10px;
+          border-radius: 5px; }
+          .link a.active{
+            cursor: default!important;
           }
+          .link a.active, #nav .navbar li .link a:hover {
+            background-color: white;
+            text-decoration: none !important;
+            color: #50BAEF!important;
+            opacity: 1;
+            border-radius: 20px!important; }
+          #nav .navbar li .link a:focus {
+            text-decoration: none !important; }
+          #nav .navbar li .link a.current-path {
+            font-family: "Source Sans Pro Bold"; }
+            #nav .navbar li .link a.current-path:hover {
+              opacity: 0.9;
+              cursor: default; }
+      #nav .navbar li li:last-child {
+        padding-right: 20px; }
+        #nav .navbar li li:last-child .link {
+          padding-left: 3vw;
+          padding-right: 0; }
+      #nav .navbar .navbar-collapse {
+        border-top: none;
+        width: 100%;
+        position: relative; }
+        #nav .navbar .navbar-collapse.in {
+          opacity: 1 !important; }
+        @media screen and (max-width: 768px) {
+          #nav .navbar .navbar-collapse {
+            opacity: 0;
+            position: relative;
+            top: -90px;
+            padding: 0 !important;
+            margin-left: 0;
+            margin-bottom: -140px;
+            background: #50BAEF; }
+            #nav .navbar .navbar-collapse .nav {
+              text-align: center;
+              width: 100%;
+              margin: 0;
+              padding-top: 70px; }
+              #nav .navbar .navbar-collapse .nav .profile {
+                display: none; }
+              #nav .navbar .navbar-collapse .nav li {
+                display: inline; }
+                #nav .navbar .navbar-collapse .nav li .link {
+                  line-height: 46.6666666667px !important; }
+                #nav .navbar .navbar-collapse .nav li div {
+                  display: inline; }
+                #nav .navbar .navbar-collapse .nav li a {
+                  color: white; }
+                  #nav .navbar .navbar-collapse .nav li a:hover {
+                    color: #50BAEF;
+                    background-color: white;
+                    opacity: 0.9; } }
 
 .row:before {
   content: ""; }
@@ -5653,5 +5762,3 @@ h2 {
       .footer .email::before {
         content: "";
         border: 0; } }
-
-/*# sourceMappingURL=main.css.map */

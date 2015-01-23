@@ -52,13 +52,16 @@
     Flatdoc.highlighters.html = function(code) {
       return code;
     };
+    Flatdoc.highlighters.curl = function(code) {
+      return code;
+    };
     Flatdoc.run({
-      fetcher: Flatdoc.github('appbaseio/docs', 'src/datamodel.md')
+      fetcher: Flatdoc.github('appbaseio/docs', 'src/Search.md')
     });
     });
   </script>
 </head>
-<body role='flatdoc' class="no-literate">
+<body role='flatdoc' class='no-literate'>
 
   <div class='header'>
     <div class='left'>
@@ -71,12 +74,13 @@
     <div class="left">
       <ul style="padding-left:40px;margin-top:20px;">
         <li><a href='getting-started.html'><i class="fa fa-rocket"></i> Getting Started</a></li>
-        <li><a href='search.html'><i class="fa fa-rocket"></i> Quickstart with Search</a></li>
-        <li class="active"><a href='datamodel.html'><i class="fa fa-database"></i> Datamodel Overview</a></li>
+        <li class='active'><a href='search.html'><i class="fa fa-rocket"></i> Quickstart with Search</a></li>
+        <li><a href='datamodel.html'><i class="fa fa-database"></i> Datamodel Overview</a></li>
         <li><a href='rest.html'><i class="fa fa-code"></i> REST API</a></li>
         <li><a href='js.html'><i class="fa fa-bolt"></i> Javascript Library</a></li>
         <li><a href='angular.html'><i class="fa fa-adn"></i> Angular Guide</a></li>
         <li><a href='authentications.html'><i class="fa fa-lock"></i> Authentications</a></li>
+        <li><a href='elasticsearch.html'><i class="fa fa-search"></i> ElasticSearch</a></li>
       </ul>
     </div>
     <div class='right'>

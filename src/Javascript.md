@@ -180,10 +180,10 @@ Retrieve existing vertices, and listen to addition or removal of vertices.
 ```js
 var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
 
-domain.on('vertex_added', function (err, vref) {
+domain.on('vertex_added', function (err, vref, vsnap) {
    if (err) console.log(err);
    else {
-   	 console.log(vref.URL()); 
+   	 console.log(vref.URL(), vsnap.properties()); 
    }
 }, function() {
   console.log('Existing vertices retrieved.');
@@ -206,6 +206,7 @@ setTimeout(function(){
 
   - **error** `String` / `null` — *String* containing the error message, *null* if event listening is successful
   - **vref** `Vertex Reference` — of the newly added vertex.
+  - **snapObj** `Property Snapshot` -- Snapshot of the data stored in the vertex. Take a look at the documentation of `Property Snapshot` on this page
 - **onComplete** ``Function`` - Called when all the existing vertices have been retrieved. It will be called only once, with arguments:
 
   - **nsref** ``Namespace Reference`` — of the vertex where the edge is added.
@@ -491,9 +492,7 @@ Notice that:
 ```js
 var belasTweets = Appbase.ns("user").v("bela/tweets");
 belasTweets.on('edge_added', function(error, eRef, eSnap) {
-	eRef.once('properties', function(error, ref, vSnapshot) {
-		console.log(vSnapshot.properties(), "with priority", eSnap.priority());
-	})
+	console.log("Added: ", eSnap.properties(), "with priority", eSnap.priority());
 });
 ```
 
@@ -513,7 +512,7 @@ Listen to removal of edges.
 ```js
 var belasTweets = Appbase.ns("user").v("bela/tweets");
 belasTweets.on('edge_removed', function(error, eRef, eSnap) {
-  console.log(eRef.name(), "removed");
+  console.log(eRef.name(), eSnap.properties(), "removed");
 });
 ```
 
@@ -533,10 +532,7 @@ When ever an edge is replaced, i.e. `setEdge()` is called with an existing edge 
 ```js
 var belasTweets = Appbase.ns("user").v("bela/tweets");
 belasTweets.on('edge_changed', function(error, eRef, eSnap) {
-  console.log(eRef.name(), "replaced");
-  eRef.once('properties', function(error, ref, vSnapshot) {
-		console.log(vSnapshot.properties(), "with priority", eSnap.priority());
-  })
+  console.log(eRef.name(), eSnap.properties(), "replaced");
 });
 ```
 
@@ -658,3 +654,6 @@ It holds the edge data. It has the following methods to obtain the edge related 
 | name()             | name of the edge                                              |
 | priority()         | current priority of the edge                                  |
 | prevPriority()     | previous priority of the edge (``null`` if not set)           |
+| properties()       | data properties as a Javascript object                        |
+| prevProperties()   | data properties before data change as a Javascript object     |
+

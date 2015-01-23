@@ -82,6 +82,7 @@ body {
   line-height: 1;
   color: #000;
   background: #fff;
+  margin-top:70px;
 }
 ol,
 ul {
@@ -598,7 +599,10 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   padding: 15px 15px 15px 30px;
   zoom: 1;
   line-height: 20px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  top:0;
 }
 .header:before,
 .header:after {
@@ -677,6 +681,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   }
 }
 .menubar {
+  padding-top:45px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

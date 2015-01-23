@@ -322,14 +322,12 @@ moviesRef.on('edge_added', function(error, eRef, eSnap) {
 ```
 Notice that the if there are 'N' number of existing edges, the callback will be called 'N' times.
 
-`eRef` here is the Appbase Reference to the outVertex, and `eSnap` is the snapshot of the edge. Edge Snapshot is the snapshot of the data stored with the edge, mainly the _priority_ of the edge. `eSnap.priority()` will give you the priority. It does NOT give you the _properties_ of the outVertex. To fetch the properties of the out vertex, you should listen for _properties_ event on `eRef`.
+`eRef` here is the Appbase Reference to the outVertex, and `eSnap` is the snapshot of the edge. Edge Snapshot is the snapshot of the data stored with the edge and the out vertex, mainly the _priority_ of the edge, and the properties of the out vertex. `eSnap.priority()` will give you the priority, and `eSnap.properties()` will give you properties.
 
 ```js
 var moviesRef = Appbase.ns("set").v("moviesByNolan");
 moviesRef.on('edge_added', function(error, eRef, eSnap) {
-	eRef.once('properties', function(error, ref, vSnapshot) {
-		console.log(vSnapshot.properties());
-	})
+	console.log(eSnap.properties());
 });
 ```
 
@@ -359,9 +357,7 @@ Notice that:
 var moviesRef = Appbase.ns("set").v("moviesByNolan");
 var filters =  {limit: 2};
 moviesRef.on('edge_added', filters, function(error, eRef, eSnap) {
-	eRef.once('properties', function(error, ref, vSnapshot) {
-		console.log(vSnapshot.properties());
-	})
+	console.log(eSnap.properties());
 });
 ```
 
@@ -371,10 +367,8 @@ Namespaces are vertex containers, and it is possible to retrieve existing vertic
 
 ```js
 var movieNSRef = Appbase.ns("movie");
-movieNSRef.on('vertex_added', filters, function(error, vRef) {
-	vRef.once('properties', function(error, ref, vSnapshot) {
-		console.log(vSnapshot.properties());
-	})
+movieNSRef.on('vertex_added', filters, function(error, vRef, snap) {
+	console.log(snap.properties());
 });
 ```
 
@@ -400,4 +394,4 @@ Appbase.ns('movie').search(query, function(error, arrayOfVertices) {
 });
 ```
 
-This query searches on all the vertices of the namespace _movie_, and returns an array of vertices who's property `year`, matches fuzzily with the text "2010". See [this documentation](http://docs.appbase.io/docs/js.html#namespace-reference-search) for more details.
+This query searches on all the vertices of the namespace _movie_, and returns an array of vertices who's property `year`, matches fuzzily with the text "2010". See [this documentation](http://docs.appbase.io/docs/search.html) for more details.
