@@ -31,10 +31,11 @@ Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217', function(er
 ```
 **Usage**
 
-``Appbase.credentials(appname, appsecret [, onComplete])``
+``Appbase.credentials(appname, [appsecret , onComplete])``
 
 - **appname** ``String`` — App name
-- **appsecret** ``String`` — App secret key
+- **appsecret** ``String`` (optional) — App secret key
+    While using Appbase clientside, app secret should not be used, as it will be exposed in the Javascript file. [User Authenticaion](http://docs.appbase.io/docs/authentications.html) is recommended in the clienside use of Appbase Library.
 - **onComplete** ``Function`` — will be passed two arguments:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
