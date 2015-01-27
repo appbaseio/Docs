@@ -1,3 +1,5 @@
+# Datamodel
+
 Appbase is a Database-as-a-Service (DBaaS). It is best recommended that you have some prior understanding of databases. If you haven't dealt with somekind of database earlier, or you are unfamiliar with different kind of relationships mean (One-to-One, One-to-Many, Many-to-Many), please take a look at [this article](http://en.wikipedia.org/wiki/Database).
 
 All databases support the storing and fetching of data, what distinguishes one database type from another is the structure of the data they store and the means by which it can be retrieved. 
