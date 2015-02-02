@@ -72,15 +72,53 @@
       </ul>
     </div>
     <div class="left">
-      <ul style="padding-left:40px;margin-top:20px;">
-        <li><a href='getting-started.html'><i class="fa fa-rocket"></i> Getting Started</a></li>
-        <li><a href='search.html'><i class="fa fa-rocket"></i> Quickstart with Search</a></li>
-        <li><a href='datamodel.html'><i class="fa fa-database"></i> Datamodel Overview</a></li>
-        <li class="active"><a href='rest.html'><i class="fa fa-code"></i> REST API</a></li>
-        <li><a href='js.html'><i class="fa fa-bolt"></i> Javascript Library</a></li>
-        <li><a href='angular.html'><i class="fa fa-adn"></i> Angular Guide</a></li>
-        <li><a href='authentications.html'><i class="fa fa-lock"></i> Authentications</a></li>
-      </ul>
+      <ul class="nav navbar-nav" style="padding-left:40px;margin-top:20px;">
+         <li class="dropdown">
+             <a href="#"
+                class="dropdown-toggle fa fa-database"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"> Concepts <span class="caret"></span></a>
+             <ul class="dropdown-menu" role="menu">
+                 <li><a href="datamodel.html">Datamodel overview</a></li>
+             </ul>
+         </li>
+         <li class="dropdown">
+             <a href="#"
+                class="dropdown-toggle fa fa-code"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"> REST <span class="caret"></span></a>
+             <ul class="dropdown-menu" role="menu">
+                 <li><a href="rest.html">API Reference</a></li>
+             </ul>
+         </li>
+         <li class="dropdown">
+             <a href="#"
+                class="dropdown-toggle fa fa-bolt"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"> Javascript <span class="caret"></span></a>
+             <ul class="dropdown-menu" role="menu">
+                 <li><a href="getting-started.html">Quick Start</a></li>
+                 <li><a href="js.html">API Reference</a></li>
+                 <li><a href="angular.html">Angular binding</a></li>
+                 <li><a href="authentications.html">OAuth</a></li>
+             </ul>
+         </li>
+         <li class="dropdown">
+             <a href="#"
+                class="dropdown-toggle fa fa-search"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"> Search Queries <span class="caret"></span></a>
+             <ul class="dropdown-menu" role="menu">
+                 <li><a href="search.html">Quick Start</a></li>
+                 <li><a href="elasticsearch.html">Use-cases</a></li>
+             </ul>
+         </li>
+
+     </ul>
     </div>
     <div class='right'>
       <!-- GitHub buttons: see http://ghbtns.com -->
@@ -98,5 +136,6 @@
 
   <script src="/js/analytics.js"></script>
   <script  src="/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
