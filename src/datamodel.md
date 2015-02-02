@@ -1,6 +1,6 @@
 # Datamodel
 
-Appbase is a Database-as-a-Service (DBaaS). It is best recommended that you have some prior understanding of databases. If you haven't dealt with somekind of database earlier, or you are unfamiliar with different kind of relationships mean (One-to-One, One-to-Many, Many-to-Many), please take a look at [this article](http://en.wikipedia.org/wiki/Database).
+Appbase is a Database-as-a-Service (DBaaS).
 
 All databases support the storing and fetching of data, what distinguishes one database type from another is the structure of the data they store and the means by which it can be retrieved. 
 
@@ -15,9 +15,7 @@ Several databases we already know:
 
 ## Data in Appbase
 
-Appbase is a [*Directed Graph*](http://en.wikipedia.org/wiki/Directed_graph),  you will be dealing with *vertices* - *edges* and the learning curve might be steep, but you will be able to do almost *anything* with your data. 
-
-Notice: Appbase is **NOT** a [*property graph*](https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model). The concepts of *edges* and *edge-names* are different in Appbase. Although they share the same concept of *vertex*.
+Appbase is a [*Directed Graph*](http://en.wikipedia.org/wiki/Directed_graph). Objects inside Appbase are called [Vertices](http://en.wikipedia.org/wiki/Vertex_(graph_theory)) (a graph term for entities), and the links (relationships) between the objects are called [Edges](http://en.wikipedia.org/wiki/Glossary_of_graph_theory#Basics).
 
 Data in Appbase is stored as JSON objects. Appbase supports flexible schema, i.e. the properties of the JSON object need not be defined in advance. 
 
