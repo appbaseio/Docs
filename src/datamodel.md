@@ -1,10 +1,10 @@
 # Datamodel
 
-Appbase is a Database-as-a-Service (DBaaS).
+Appbase is a realtime Database as a Service (DBaaS), built on top of a graph schema with JSON based vertices (similar to JSON documents), and edges to link them.
 
 All databases support the storing and fetching of data, what distinguishes one database type from another is the structure of the data they store and the means by which it can be retrieved. 
 
-Several databases we already know:
+Several popular databases can be classified as below:
 
 1. [Relational (SQL) Databases](http://en.wikipedia.org/wiki/SQL) SQLite, PostgreSQL  
 2. [NoSQL Databases](http://en.wikipedia.org/wiki/NoSQL)  
@@ -19,7 +19,7 @@ Appbase is a [*Directed Graph*](http://en.wikipedia.org/wiki/Directed_graph). Ob
 
 Data in Appbase is stored as JSON objects. Appbase supports flexible schema, i.e. the properties of the JSON object need not be defined in advance. 
 
-Although Appbase supports storing embedded JSON objects and arrays, one doesn't have to store data in this denormalized fashion. The data is **NEVER** needed to be denormalized in a Graph. In this doc, we will cover how you can store different kinds data (primitive values, objects, lists), create relationships amongst them, normalize, and do perform different queries on them.
+Although Appbase supports storing embedded JSON objects and arrays, one doesn't have to store data in this denormalized fashion. This is mainly for compatibility with existing document stores like MongoDB. The recommended approach is to create reference links between distint entities. In this doc, we will cover how you can store different kinds data (primitive values, objects, lists), create relationships amongst them, normalize, and do perform different queries on them.
 
 ## Concepts
 
