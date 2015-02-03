@@ -19,25 +19,25 @@ Appbase is a [*Directed Graph*](http://en.wikipedia.org/wiki/Directed_graph). Ob
 
 Data in Appbase is stored as JSON objects. Appbase supports flexible schema, i.e. the properties of the JSON object need not be defined in advance. 
 
-Although Appbase supports storing embedded JSON objects and arrays, we discourage this behavior of denormalization. The data is **NEVER** needed to be denormalized in a Graph. In this document we will see how you can store different kinds data (primitive values, objects, lists), create relationships amongst them, normalize, and do literally anything, as it is a fucking graph.
+Although Appbase supports storing embedded JSON objects and arrays, one doesn't have to store data in this denormalized fashion. The data is **NEVER** needed to be denormalized in a Graph. In this doc, we will cover how you can store different kinds data (primitive values, objects, lists), create relationships amongst them, normalize, and do perform different queries on them.
 
 ## Concepts
 
-As SQL as concepts like _table_, _row_, _column_, _relation_ and MongoDB has _collection_ , _object_ etc, here are the key concepts in Appbase.
+Similar to how SQL has concepts for _table_, _row_, _column_, _relation_ and MongoDB has _collection_ , _Document_ and _fields_, here are the key concepts in Appbase.
 
 
 1. **Vertex** — is similar to a *Document* in MongoDB, it stores data.  
   - **Key** — A string that is used to access the vertex as an entry point.
   - **Properties** — A JSON object representing the data inside the vertex. 
 
-2. **Namespace** — is similar to *Collections* in MongoDB or ElasticSearch. A *vertex* always belongs to a *namespace* and *security rules* can be applied on *namespaces*. 
+2. **Namespace** — is similar to a *Collection* in MongoDB or *type* in ElasticSearch. A *vertex* always belongs to a *namespace* and *security rules* can be applied on *namespaces*. 
 
 3. **Edge** — is a directional link to another vertex.  
-  - **Priority** — An *edge* can optionally have a priority, a **Number** 
+  - **Priority** — An *edge* can optionally have a priority, a **Number** (a secondary index).
   - **outVertex** — is the vertex which the edge points *to*.
   - **inVertex**  — the vertex *from* which the edge starts.
 
-   I.E. An *edge* is pointed from *inVertex* to an *outVertex*.
+   i.e. an *edge* is pointed from *inVertex* to an *outVertex*.
 
 4. **Path** — Every *vertex* in Appbase has a path, starting from the &lt;namespace&gt; and ending at the *vertex*, not unlike the UNIX path. A typical path looks like &lt;namespace&gt;/&lt;v1&gt;/&lt;v2&gt;/.../&lt;vn&gt;/.
 
@@ -59,36 +59,25 @@ With this table in mind, lets understand how the concepts work.
 
 ### Vertex
 
-Vertex is the only data container in Appbase, except _priorities_, but that support only numerical values. A vertex can store a standard JSON object. 
+Vertex is the the standard data container in Appbase. A vertex can store a valid JSON object and be linked to other vertices via *edges*.
 
 It can also store nested JSON objects and arrays, but this is only for convenience. In practice, vertices act as singular data entities, i.e. you store only the data relevant to a single entity in the real world. For e.g. a person's age, name, height, sex can be stored in a single vertex, but the data of his belongings, like a book or a car is a completely different entity. This new entity will have properties of its own and they should be stored inside a new vertex. Later in this document, we will see how we can create a relation between these two entities.
 
-A vertex has a primary key, which allows us to interact with that vertex directly. To see how that's possible, let's first understand the *Namespace*.
-
 ### Namespace
 
-Namespaces are a way to combine _similar_ entities. For eg. all vertices storing different users can be stored inside the *user* namespace and all the tweets can be stored inside the *tweet* namespace. As described earlier, namespace need not have a specific schema, and different kinds of objects can be stored inside a single namespace. Combining similar objects is a good practice, it makes it easy to apply *security rules* and *search vertices*.
+Namespaces are a way to combine _similar_ entities. For eg. all vertices storing different users can be stored inside the *user* namespace and all the tweets (repreented as vertices) can be stored inside the *tweet* namespace. Since namespace is a logical container, different kinds of objects can be stored inside a single namespace. This allows searching for *similar vertices* and applying *security rules* with ease.
 
-Namespaces are *searchable*. We are using open source [ElasticSearch](http://www.elasticsearch.org/) in the backend to support this. See [this documentation](http://docs.appbase.io/docs/js.html#namespace-reference-search) for more details. 
+Namespaces are *searchable*. We are using the open-source [ElasticSearch](http://www.elasticsearch.org/) behind the scenes to support this use-case. See [this documentation](http://docs.appbase.io/docs/search.html) for a quick intro on how search works.
 
-Namespace combined with the primary key of the vertex, allows direct interaction with a vertex. For eg. if the primary key of the *user* vertices is the email of the user, we can point to the vertex by the path: *user/sagar@appbase.io*. This would be an *entry point* in the Graph. I.E. you will start exploring the graph from this vertex, and then go through its *edges* - *out vertices*, to interact with more of the graph.
+### Edge (one-to-one relationships)
 
-When you want to store objects like *tweets* or *chat-groups*, which will always be stored as *Relations* from a *user* vertex, you shouldn't care about the primary key, as you won't be using them as *entry points*. But you should care about the *uniqueness* of the primary key, as otherwise it will overwrite another vertex. All Appbase client libraries have a convenient method `Appbase.uuid()` for this purpose. 
+After creating entities, its time to create relations amongst them via *edges*. 
 
-For convenience, when you don't care about the namespace and the primary key of the vertex, we create vertices for you in the namespace named **misc**, with a UUID as its primary key. This way it is possible to push JSON objects to Appbase without worrying about their namespace or key.
+An edge is a *named* directional link connecting two vertices for a purpose, a *one-to-one relation*. For instance, a book has an author, a husband has wife and a child has a mother. The edges for these would be _book vertex_ `--authouredBy->` _person vertex_, _man vertex_ `--marriedTo->` _woman vertex_. 
 
-### Edge (One-to-One relationship)
+Edges are directional, so if you set the edge _man_ `--crushOn->` _woman_, it only tells us that the man is married to the woman, but it tells us nothing about woman's relationship status. For that, another edge, _woman_ `--marriedTo->` _man_, should be created.
 
-After creating entities, its time to create relations amongst them and *edges* are the way to do it. 
-
-An edge is a directional link connecting two vertices for a purpose, a *One-to-One relation*. Edges have names and generally the relation between the vertices becomes the name of the edge. Eg. a book has an author, a husband has wife and a child has a mother. The edges would be _book vertex_ `--authouredBy->` _person vertex_, _man vertex_ `--marriedTo->` _woman vertex_. 
-
-Edges are directional, so if you set the edge, _man_ `--marriedTo->` _woman_, it only tells us that the man is married to the woman, but tells nothing about woman's relationship status. For that, another edge, _woman_ `--marriedTo->` _man_, should be created. 
-
-Unlike *labels* in property graph, unique edges in Appbase have unique names and creating more edges with the same name would simply create only a single edge, overwriting previously created edges.  Using *labels* in property graph is a great way to create One-to-Many relations, but labels  
-are **NOT** a necessity for such relations. We see later how to create One-to-Many relationships in Appbase.
-
-Edges have priorities, which are natural numbers, an extra data attached with each edge. This allows sorting and filtering of edges while fetching them. We see later in the documentation how this works.
+Appbase only allows for unique edge names. The default behaviour is last-write-wins in case a new edge is created with an existing name. Edges have priorities which are rational numbers (think of the ``Number`` datatype in Javascript).
 
 ### Path 
 
@@ -143,6 +132,8 @@ Paths are powerful ways to point to the exact data you want to interact with. Fo
 A URL is just another representation of a _Path_. REST API URL looks like this: https://api.appbase.io/&lt;app_name&gt;/v2/&lt;path&gt;/. 
 
 Assuming the Application's name as _imdb_, URL for the path _movie/inception/directedBy/marriedTo_ would be `https://api.appbase.io/imdb/v2/movie/inception/directedBy/marriedTo`
+
+---
 
 ## Storing Data
 
