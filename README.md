@@ -19,4 +19,4 @@ We use Flatdoc at http://docs.appbase.io to fetch all the markdown documents, an
 
 ## LICENSE
 
-MIT License, Copyright (c) 2014 appbase.io
+MIT License, Copyright (c) 2015 appbase.io
