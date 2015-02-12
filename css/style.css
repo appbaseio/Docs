@@ -503,10 +503,19 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 @media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
-    -webkit-box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 60vw 0 #fff, inset 60.1vw 0 #dfe2e7, inset 61vw 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 60vw 0 #fff, inset 60.1vw 0 #dfe2e7, inset 61vw 0 5px -10px rgba(0,0,0,0.1);
   }
 }
+/*
+300px side
+20
+40
+40
+480px thing
+400px code
+*/
+
 @media (min-width: 1180px) {
   body:not(.no-literate) .content {
     padding-left: 0;

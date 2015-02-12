@@ -1,0 +1,94 @@
+/**
+*
+* DocBase styling
+* Henrique Sa, Feb 2015
+* MIT license
+*
+*/
+
+/**
+* Resets
+*/
+pre {
+	background: transparent;
+}
+.menubar.fixed {
+	padding-top: 35px;
+}
+
+/**
+* Header
+*/
+body {
+	padding-top: 50px;
+}
+.root-view{
+	margin-top: -50px;
+}
+ul.nav li.dropdown:hover {
+	background: white;
+}
+ul.nav li.dropdown:hover > a {
+	color: #50BAEF;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;    
+}
+.navbar-fixed-top {
+	background: #50BAEF;
+}
+.navbar-default .navbar-nav>li>a {
+	color: white;
+	text-shadow: none;
+}
+.navbar-default .navbar-brand{
+	text-shadow: none;
+	color: white;
+}
+.navbar-default .navbar-brand:hover{
+	color: white;
+}
+.dropdown-menu {
+	border: 0;
+}
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+
+}
+
+/**
+* Buttons
+*/
+.button {
+	background: #50BAEF;
+	border: 2px solid transparent;
+}
+.button:hover, .button:active {
+	text-decoration: none;
+	color: #50BAEF;
+	background: white;
+	border: 2px solid #50BAEF;
+}
+.menu a, .menu a:visited {
+	color: #50BAEF;
+}
+.menu a.active:after {
+	background: #50BAEF;
+}
+a {
+	color: #50BAEF;
+}
+a:hover, a:active {
+	color: #1aa5ea;
+}
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:active {
+	color: #50BAEF;
+}
+.navbar-default .navbar-nav>li:focus,
+.navbar-default .navbar-nav>li:hover,
+.navbar-default .navbar-nav>li:active {
+	background-color: white;
+}
