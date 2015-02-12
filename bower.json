@@ -1,0 +1,20 @@
+{
+  "name": "appbase-docs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/appbaseio/Docs",
+  "authors": [
+    "Henrique Sa <henriquepss@gmail.com>"
+  ],
+  "description": "Documentation for Appbase.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "docbase": "*"
+  }
+}

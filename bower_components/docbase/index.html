@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="docBaseApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <meta name="viewport" content="width=device-width">
+  <base href="/">
+
+  <title>Documentation</title>
+
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+  <!-- Flatdoc -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/flatdoc/legacy.js"></script>
+  <script src="/bower_components/flatdoc/flatdoc.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link  href="/bower_components/flatdoc/theme-white/style.css" rel="stylesheet">
+  <script src="/scripts/flatdoc-theme-offset.js"></script>
+
+  <!-- DocBase -->
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
+  <script src="/scripts/docs-engine.js"></script>
+
+  <script type="text/javascript">
+    DocBase.run({
+      method: 'file',
+      file: {
+          src: 'map.json',
+          path: 'docs'
+      },
+      html5mode: false
+    });
+  </script>
+
+  <style>
+  </style>
+</head>
+<body role="flatdoc">
+
+  <div ng-view></div>
+
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
