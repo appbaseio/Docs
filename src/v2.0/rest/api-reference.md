@@ -84,7 +84,7 @@ curl --include \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/~list
+<span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v2/<span class="path-var">namespace</span>/~list
 <span class="inline-heading">HEADERS</span>
 Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
