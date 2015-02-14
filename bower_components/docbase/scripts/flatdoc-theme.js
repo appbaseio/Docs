@@ -10,6 +10,15 @@
   $window.on('docbase:ready', runTheme);
 
   function runTheme(){
+    $("blockquote>pre:has(code.lang-curl)").each(function() {
+      $(this).parent().css({"float": "left",
+                             "width": "510px",
+                             "margin-left": "20px",
+                             "margin-right": "20px",
+                             "color": "#333"});
+      $(this).css({"padding": "10px"});
+    });
+
   	$("h2, h3").scrollagent( {offset: 100}, function(cid, pid, currentElement, previousElement) {
     	if (pid) {
 			$("[pref='#"+pid+"']").removeClass('active');
