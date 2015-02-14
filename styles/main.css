@@ -107,3 +107,62 @@ body:not(.no-literate) .content h1 {
   	width: 900px;
   }
 }
+
+@media (min-width: 1180px) {
+  body:not(.no-literate) .content {
+    width: 980px;
+  }
+  body:not(.no-literate) .content > pre {
+    width: 420px;
+  }
+}
+.content pre {
+  border: 1px solid #aaa;
+  box-shadow: inset 0 0 10px #ddd;
+}
+li.active {
+  text-decoration: underline;
+}
+.http-url {
+  color: #3ac;
+}
+.inline-heading {
+  color: #aaa;
+}
+.path-var {
+  color: #3ac;
+  border-bottom: 1px dotted #3ac;
+  padding: 0px 2px;
+}
+.request-type {
+  background: #008f00;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 0.8em;
+}
+p {
+  font-size: 1.1em;
+}
+.content ul li p {
+  font-size: 1.0em;
+}
+.content ul li {
+  font-size: 1.0em;
+}
+.content p code {
+  font-size: 0.9em;
+}
+.content h3 {
+  font-size: 2.0em;
+}
+.content pre > code {
+  font-size: 1.0em;
+}
+.content pre > code span.keyword {
+  font-size: 1.1em;
+}
+.content pre > code span.comment {
+  font-size: 0.8em;
+}

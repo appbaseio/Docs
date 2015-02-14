@@ -28,34 +28,7 @@
   <link rel="stylesheet" type="text/css" href="bower_components/docbase/styles/main.css">
   <link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 
-  <script type="text/javascript">
-    Docbase.run({
-      method: 'github',
-      path: 'src',
-      map: {
-          file: 'map.json',
-          path: '/'
-      },
-      github: {
-        user: 'appbaseio',
-        repo: 'Docs',
-        path: 'src',
-        branch: 'master'
-      },
-      file: {
-          src: 'map.json',
-          path: 'src'
-      },
-      indexType: 'markdown',
-      indexSrc: 'v2.0/javascript/quick-start',
-      editGithubBtn: true,
-      html5mode: false,
-      flatdocHtml: 'html/flatdoc.html',
-      angularAppName: 'docbaseApp'
-
-    });
-  </script>
-
+  <!-- Custom -->
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 
 </head>
@@ -66,6 +39,7 @@
 
   <div ng-view></div>
 
+  <script type="text/javascript" src="scripts/main.js"></script>
   <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
