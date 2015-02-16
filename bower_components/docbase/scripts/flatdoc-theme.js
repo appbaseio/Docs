@@ -13,14 +13,29 @@
 
   	$("h2, h3").scrollagent( {offset: 100}, function(cid, pid, currentElement, previousElement) {
     	if (pid) {
-			$("[pref='#"+pid+"']").removeClass('active');
-		}
-		if (cid) {
-			$("[pref='#"+cid+"']").addClass('active');
-		}
-	});
+			   $("[pref='#"+pid+"']").removeClass('active');
+		  }
+		  if (cid) {
+			   $("[pref='#"+cid+"']").addClass('active');
+		  }
+	  });
 
-  	$('.menu a').anchorjump({offset: -50});
+  	$('.menu a').each(function(){
+      var el = $(this);
+      var href = el.attr('href');
+
+      if(href && !el.attr('pref')){
+        var location = window.location.href.split('#');
+        if(location.length <= 2) {
+          location = location.join('#') + href;
+        } else {
+          location[location.length-1] = href.substring(1);
+          location = location.join('#');
+        }
+        el.attr('href', location);
+        el.attr('pref', href);
+      }
+    });
 
   	var $sidebar = $('.menubar');
   	var elTop;
@@ -102,7 +117,7 @@
     }
 
     // Find the current active section every scroll tick.
-    function refreshScroll(last){
+    function refreshScroll(){
       var y = $parent.scrollTop();
       y += height * (0.3 + 0.7 * Math.pow(y/range, 2));
 
@@ -123,15 +138,9 @@
           current ? current.el : null);
         current = latest;
       }
-
-      if(!last) {
-      	setTimeout(function(){
-      		refreshScroll(true);
-      	}, 250);
-      }
     }
 
-    $window.on('scroll', $.throttle(250, refreshScroll));
+    $window.on('scroll', $.throttle(50, refreshScroll));
     $window.on('resize', $.throttle(250, refreshSize));
     
     refreshSize();
@@ -140,89 +149,6 @@
     return this;
   };
 
-})(jQuery);
-/*! Anchorjump (c) 2012, Rico Sta. Cruz. MIT License.
- *   http://github.com/rstacruz/jquery-stuff/tree/master/anchorjump */
-
-// Makes anchor jumps happen with smooth scrolling.
-//
-//    $("#menu a").anchorjump();
-//    $("#menu a").anchorjump({ offset: -30 });
-//
-//    // Via delegate:
-//    $("#menu").anchorjump({ for: 'a', offset: -30 });
-//
-// You may specify a parent. This makes it scroll down to the parent.
-// Great for tabbed views.
-//
-//     $('#menu a').anchorjump({ parent: '.anchor' });
-//
-// You can jump to a given area.
-//
-//     $.anchorjump('#bank-deposit', options);
-
-(function($) {
-  var defaults = {
-    'speed': 500,
-    'offset': 0,
-    'for': null,
-    'parent': null
-  };
-
-  $.fn.anchorjump = function(options) {
-    options = $.extend({}, defaults, options);
-    this.each(function(each){
-    	var el = $(this);
-    	var href = el.attr('href');
-    	if(href){
-    		el.attr('pref', href);
-    		el.attr('href', '');
-    	}
-    });
-    if (options['for']) {
-      this.on('click', options['for'], onClick);
-    } else {
-      this.on('click', onClick);
-    }
-
-    function onClick(e) {
-      var $a = $(e.target).closest('a');
-      if (e.ctrlKey || e.metaKey || e.altKey || $a.attr('target')) return;
-
-      e.preventDefault();
-      var href = $a.attr('pref');
-
-      $.anchorjump(href, options);
-    }
-  };
-
-  // Jump to a given area.
-  $.anchorjump = function(href, options) {
-    options = $.extend({}, defaults, options);
-
-    var top = 0;
-
-    if (href != '#') {
-      var $area = $(href);
-      // Find the parent
-      if (options.parent) {
-        var $parent = $area.closest(options.parent);
-        if ($parent.length) { $area = $parent; }
-      }
-      if (!$area.length) { return; }
-
-      // Determine the pixel offset; use the default if not available
-      var offset =
-        $area.attr('data-anchor-offset') ?
-        parseInt($area.attr('data-anchor-offset'), 10) :
-        options.offset;
-
-      top = Math.max(0, $area.offset().top + offset);
-    }
-
-    $('html, body').stop().animate({ scrollTop: top }, options.speed);
-    $('body').trigger('anchor', href);
-  };
 })(jQuery);
 
 /*
