@@ -8,16 +8,14 @@ The Appbase v3.0 API is based on REST principles. All operations including creat
 Endpoint | Method | Action
 -------- | ------ | ------ 
 / | GET | list of existing collections
-/~search | GET | Elastic search query
 /{collection_id} | GET | Get/Query a list of documents
-/{collection_id} | PUT | Create a collection, if doesn't exist
-/{collection_id}/~search | GET | Quick full text Search
+/{collection_id} | PATCH | Create a collection, if doesn't exist
 /{collection_id} | DELETE | Delete a collection
 /{collection_id} | POST | create a new document inside collection with uuid
 /{collection_id}/{document_id}/{path} | GET | get/listen properties, Query references
 /{collection_id}/{document_id}/{path} | PATCH | create object; partially update properties; put-remove a reference
 /{collection_id}/{document_id}/{path} | DELETE | delete the whole document
-/{collection_id}/{document_id}/{path} | POST | insert a JSON, create a new document for it, and it as a  reference, optionally creating a uuid in the name
+/{collection_id}/{document_id}/{path} | POST | insert a JSON, create a new document for it, and it as a reference, optionally creating a uuid in the name
 
 ## HTTP Status Codes
 
@@ -60,14 +58,14 @@ TBD
 	    - rootPath <-replaced by id and collection
 
 
-### Document
+## Document
 
-#### __Read__
-#### `GET` 
+### __Read Document__ ``GET`` 
 
 Fetch document's properties and references
 
-```
+> **Example Request**
+```curl
 curl -i -l "appbase-secret: afasxasf" \  
 'https://api.appbase.io/rest_test/v3/Materials/Ice/~json`
 ```
@@ -88,106 +86,10 @@ Note:
  - references are included as well, unless `deep=false` provided in URL parameter
  - `query` is a url paramter, that filter references
 
-
-#### __Write__
-#### `PATCH`
-Replace the whole JSON, or create a new document when the ancestors exist. 
-
-If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
-
-```
-curl -i -X PATCH \
--d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
-```
-
-Response: (get the whole document that was just stored - unsure about this part)
-`200`
-Content-Type: application/json
-```json
-{
-	"_id": "Ice"
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"foo": "bar"
-}
-```
-Note:
-
- - Operation which replaces properties wholesome is not supported.
-
-
------
-
-####  `PATCH`
-
-Also works for partial updates.
-
-Replace/update only the properties specified in the request.
-
-`tbd` When the document doesn't exist, it will create a new document if  `collection` is provided in the URL params.
-
-If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
-```
-curl -i -X PATCH \
--d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
-```
-
-
-Response: 
-(get the whole document including properties that weren't updated - unsure about this part)
-`200`
-Content-Type: application/json
-```json
-{
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"foo": "bar"
-}
-```
-
-Note:
-
-- patch properties with `null` to remove them
-- to update a nested field, provide nested properties with a dot (Mongo and ES convention)
-	- eg: 
-```json
-{
-	"authoredBy.profile.firstName" = 52
-}
-```
-
-#### `DELETE`
-
-Delete (Destroy) Document
-
-```
-curl -i -X DELETE \
-'https://api.appbase.io/rest_test/v3/Materials/Ice'
-```
-
-Response: (get the whole document which was just deleted)
-
-`200`
-Content-Type: application/json
-```json
-{
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"_deleted": true,
-	"foo": "bar"
-}
-```
-
-#### __Read__
-#### `GET`
-
 Can also apply filters with url parameters to fetch the references.
 
-```
+> **Example Request**
+```curl
 curl -i \  
 'https://api.appbase.io/rest_test/v3/Materials/Ice/~refs?startAt=0&endAt=500'
 ```
@@ -232,12 +134,108 @@ Note:
  - if a `timestamp` is provided in the url parameter, it will work as a _sync_ and refs changed after that timestamp will be returned.
  - request url parameters are included in the response
 
-#### __Write__
-#### `PATCH`
+
+### __Create / Update Document__ ``PATCH``
+Update the document properties, or create a new document when the path exists. 
+
+If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
+
+> **Example Request**
+```curl
+curl -i -X PATCH \
+-d '{"foo": "bar"}' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
+```
+
+Response: (get the whole document that was just stored - unsure about this part)
+`200`
+Content-Type: application/json
+```json
+{
+	"_id": "Ice"
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"foo": "bar"
+}
+```
+Note:
+
+ - Operation which replaces properties wholesome is not supported.
+
+
+-----
+
+### __Write Properties__ ``PATCH``
+
+Also works for partial updates.
+
+Replace/update only the properties specified in the request.
+
+`tbd` When the document doesn't exist, it will create a new document if  `collection` is provided in the URL params.
+
+If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
+
+> **Example Request**
+```curl
+curl -i -X PATCH \
+-d '{"foo": "bar"}' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
+```
+
+
+Response: 
+(get the whole document including properties that weren't updated - unsure about this part)
+`200`
+Content-Type: application/json
+```json
+{
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"foo": "bar"
+}
+```
+
+Note:
+
+- patch properties with `null` to remove them
+- to update a nested field, provide nested properties with a dot (Mongo and ES convention)
+	- eg: 
+```js
+{
+	"authoredBy.profile.firstName" = 52
+}
+```
+
+### __Delete__ `DELETE`
+
+Delete (Destroy) Document
+
+```
+curl -i -X DELETE \
+'https://api.appbase.io/rest_test/v3/Materials/Ice'
+```
+
+Response: (get the whole document which was just deleted)
+
+`200`
+Content-Type: application/json
+```json
+{
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"_deleted": true,
+	"foo": "bar"
+}
+```
+
+### __Write Reference__ ``PATCH``
 
 Update/create references, one at a time. This is an overloaded endpoint. One can update either properties or one reference.
 
-```
+> **Example Request**
+```curl
 curl -i -X PATCH \  
 -d '{ 
 	"/tweetedBy":  {
@@ -275,38 +273,17 @@ Almost the same as what we used to do before.
 
 ---
 
-#### `POST`
+## Collection
 
-Push a JSON and create a new reference out of it. It will be given a UUID as the name of the reference.
-
-```
-curl -i -X POST \  
--d '{
-		"tweet": "hello twitter!"
-	}
-}' \  
-'https://api.appbase.io/rest_test/v3/user/sagar/tweets/~refs?collection=tweet'
-```
-
-Note:
- - necessary to provide a `collection` in the url param, where a new document will be created and that will be added as a reference.
- - (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the newly created document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had the problem regarding this. 
-
-### Collection
-
-### 1) /
-
-Previously /~list
 Operate on documents inside a collection.
 
-#### __Read__
-#### `GET`
+### __Read__ `GET`
 
 Receive all the documents inside, works with filters - `limit` and `skip`.
 
 
 ```
-curl -i -X GET \    
+curl -i \    
 'https://api.appbase.io/rest_test/v3/Materials/?limit=50'
 ```
 
@@ -343,8 +320,7 @@ Note:
  - response also include the request url parameters 
  - 
 
-#### __Write__
-#### `POST`
+### __Write__ ``POST``
 
 Push a JSON and create a new document out of it. It will be given a UUID as its doc id by default.
 
@@ -360,13 +336,7 @@ curl -i -X POST \
 Note:
  -  (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had this problem. 
 
-### 2) /~search
-
-works with a ``GET`` request. The request body moves to the parameter --data-url-encoded.
-
-### 3) /
-
-#### `PATCH`
+### __Write__ ``PATCH``
 
 Create a new collection if it doesn't exist. This is NOT a required step to create documents inside that collection. Collections are created automatically.
 
@@ -376,7 +346,7 @@ curl -i -X PATCH \
 ```
 
 
-#### `DELETE`
+### __Delete__ ``DELETE``
 Delete the collection and all its documents.
 
 ```
