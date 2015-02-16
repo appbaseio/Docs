@@ -131,12 +131,12 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"query\": {
-            \"text\": \"bar\",
-            \"properties\":[\"foo\"]
+     --data-binary '    {
+        "query": {
+            "text": "bar",
+            "properties":["foo"]
         }
-    }" \
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/~search'
 ```
 **Usage**:
@@ -223,9 +223,9 @@ curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"data\":{\"foo\":\"bar\"}
-    }" \
+     --data-binary '    {
+        "data":{"foo":"bar"}
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
 ```
 **Usage**:
@@ -302,9 +302,9 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"all\": true
-    }" \
+     --data-binary '    {
+        "all": true
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
 ```
 **Usage**:
@@ -383,9 +383,9 @@ curl --include \
      --request DELETE \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"data\": [\"foo\"]
-    }" \
+     --data-binary '    {
+        "data": ["foo"]
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
 ```
 **Usage**:
@@ -467,17 +467,17 @@ curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"data\": {
-            \"anEdge\": {
-                \"path\": \"Materials/Iron\"
+     --data-binary '    {
+        "data": {
+            "anEdge": {
+                "path": "Materials/Iron"
             },
-            \"anotherEdge\": {
-                \"path\": \"Materials/Ice\",
-                \"order\": 500.6
+            "anotherEdge": {
+                "path": "Materials/Ice",
+                "order": 500.6
             }
         }
-    }" \
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~edges'
 ```
 **Usage**:
@@ -569,9 +569,9 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"filters\": {}
-    }" \
+     --data-binary '    {
+        "filters": {}
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
 ```
 **Usage**:
@@ -655,9 +655,9 @@ curl --include \
      --request DELETE \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary "    {
-        \"data\": [\"edge1\", \"edgen\"]
-    }" \
+     --data-binary '    {
+        "data": ["edge1", "edgen"]
+    }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~edges'
 ```
 **Usage**:
