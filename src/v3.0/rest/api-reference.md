@@ -8,14 +8,14 @@ The Appbase v3.0 API is based on REST principles. All operations including creat
 Endpoint | Method | Action
 -------- | ------ | ------ 
 / | GET | list of existing collections
-/{collection_id} | GET | Get/Query a list of documents
-/{collection_id} | PATCH | Create a collection, if doesn't exist
-/{collection_id} | DELETE | Delete a collection
-/{collection_id} | POST | create a new document inside collection with uuid
-/{collection_id}/{document_id}/{path} | GET | get/listen properties, Query references
-/{collection_id}/{document_id}/{path} | PATCH | create object; partially update properties; put-remove a reference
-/{collection_id}/{document_id}/{path} | DELETE | delete the whole document
-/{collection_id}/{document_id}/{path} | POST | insert a JSON, create a new document for it, and it as a reference, optionally creating a uuid in the name
+/{collection_id}/ | GET | Get/Query a list of documents
+/{collection_id}/ | PATCH | Create a collection, if doesn't exist
+/{collection_id}/ | DELETE | Delete a collection
+/{collection_id}/ | POST | create a new document inside collection with an auto generated id
+/{collection_id}/{document_id}/{path}/ | GET | get/listen properties, Query references
+/{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
+/{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
+/{collection_id}/{document_id}/{path}/ | POST | insert a new reference document with an auto generated id
 
 ## HTTP Status Codes
 
@@ -24,9 +24,9 @@ Endpoint | Method | Action
  - 401 (Unauthorized): when secret or token is not present, or is invalid
  - 500 (Server error): internal server errors, like when ES indexing failed or something
  - 501 (Not Implemented) : When trying to use a wrong HTTP method on the endpoint
- - 400 (Bad Req): 
+ - 400 (Bad Request): 
  - 403 (Forbidden): a thing to keep in mind for the next backend - When the security rules do not allow the access
- - 409 (Conflict) : for commitData
+ - 409 (Conflict): for commitData
 
 ## Errors
 
@@ -37,12 +37,6 @@ On top of HTTP status code, we return a json document for errors. the document l
 	message: <string>
 }
 ```
-
-Each error has a error-no, and here are the errors:
-TBD
- - 1x: request format related
- - 2x: auth and security related
- - 3x: data related: path do not exist, commitData related
 
 # API Reference
 
@@ -67,7 +61,7 @@ Fetch document's properties and references
 > **Example Request**
 ```curl
 curl -i -l "appbase-secret: afasxasf" \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~json`
+'https://api.appbase.io/rest_test/v3/Materials/Ice/`
 ```
 
 Response:
@@ -91,7 +85,7 @@ Can also apply filters with url parameters to fetch the references.
 > **Example Request**
 ```curl
 curl -i \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~refs?startAt=0&endAt=500'
+'https://api.appbase.io/rest_test/v3/Materials/Ice/?startAt=0&endAt=500'
 ```
 
 Response:
@@ -99,8 +93,8 @@ Response:
 `200`
 ```
 {
-	_startAt: null,
-	_stopAt: null,
+	_startAt: 0,
+	_stopAt: 500,
 	_skip: 0,
 	_limit: 50,
 	_fromTimestamp: 0,	
@@ -144,7 +138,7 @@ If timestamp is provided in the url parameter, it will only update the document 
 ```curl
 curl -i -X PATCH \
 -d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
+'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
 
 Response: (get the whole document that was just stored - unsure about this part)
@@ -160,7 +154,7 @@ Content-Type: application/json
 ```
 Note:
 
- - Operation which replaces properties wholesome is not supported.
+ - Overwrite operation on all properties, or replacing properties are not supported.
 
 
 -----
@@ -179,7 +173,7 @@ If timestamp is provided in the url parameter, it will only update the document 
 ```curl
 curl -i -X PATCH \
 -d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~json'
+'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
 
 
