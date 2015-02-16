@@ -131,7 +131,7 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "query": {
             "text": "bar",
             "properties":["foo"]
@@ -223,7 +223,7 @@ curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "data":{"foo":"bar"}
     }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
@@ -302,7 +302,7 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "all": true
     }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
@@ -383,7 +383,7 @@ curl --include \
      --request DELETE \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "data": ["foo"]
     }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
@@ -467,7 +467,7 @@ curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "data": {
             "anEdge": {
                 "path": "Materials/Iron"
@@ -569,7 +569,7 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "filters": {}
     }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~properties'
@@ -655,7 +655,7 @@ curl --include \
      --request DELETE \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-     --data-binary '    {
+     --data-binary '{
         "data": ["edge1", "edgen"]
     }' \
 'https://api.appbase.io/rest_test/v2/Materials/Ice/~edges'
