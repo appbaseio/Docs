@@ -74,9 +74,15 @@
 
         angApp = angular
             .module(options.angularAppName, ['ngRoute'])
-            .controller('URLCtrl', ['$scope', '$routeParams', '$location', '$timeout', Route.URLCtrl])
+            .controller('URLCtrl',
+                ['$scope', '$routeParams', '$location', '$timeout', '$anchorScroll', Route.URLCtrl]
+            )
             .controller('MainCtrl', ['$location', Route.mainCtrl])
-            .config(['$routeProvider', '$locationProvider', Route.config]);
+            .config(['$routeProvider', '$locationProvider', Route.config])
+            .run(
+                ['$rootScope', '$location', '$routeParams', '$anchorScroll',
+                '$route', Route.anchorConfig]
+            );
 
         Docbase[options.method](options[options.method]);
     }
@@ -164,12 +170,15 @@
                 $('body').addClass('no-literate');
             }
 
-        } catch (e) {/* No JSON object found, keep title as-is */};
+        } catch (e) {
+            // No JSON object found, keep title as-is, but disable three-collums
+            $('body').addClass('no-literate');
+        };
         
         Events.ready();
     };
 
-    Route.config = function($routeProvider, $locationProvider){
+    Route.config = function($routeProvider, $location, $rootScope, $anchorScroll){
         var flatdocURL = Docbase.options.flatdocHtml;
         var mainURL = Docbase.options.indexSrc;
 
@@ -198,11 +207,53 @@
             redirectTo: '/'
         });
 
-        $locationProvider.html5Mode(Docbase.options.html5mode);
+        $location.html5Mode(Docbase.options.html5mode);
+    }
+
+    Route.anchorConfig = function($rootScope, $location, $routeParams, $anchorScroll, $route){
+        
+        /**
+        * Hack to prevent route reload when hash is changed.
+        * Makes sure only the hash was change and intercepts the event.
+        */
+
+        $rootScope.$on('$locationChangeStart', function(evnt, newRoute, oldRoute){ 
+            var firstRoute = newRoute.split('#');
+            var hash = firstRoute[firstRoute.length-1];
+
+            firstRoute.splice(firstRoute.length-1, 1);
+            firstRoute = firstRoute.join('#');
+
+            var secondRoute = oldRoute.split('#');
+            secondRoute.splice(secondRoute.length === 2 ? 2 : secondRoute.length-1, 1);
+            secondRoute = secondRoute.join('#');
+
+            if(firstRoute === secondRoute && (newRoute !== oldRoute)) {
+                
+                $location.hash(hash);
+                var lastRoute = $route.current;
+                var unbind = $rootScope.$on('$locationChangeSuccess', function () {
+                    $route.current = lastRoute;
+                    unbind();
+                });
+                $anchorScroll();
+            }
+        });
+
+        /**
+        * Initial scroll to hash on page load.
+        */
+
+        $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+            jWindow.on('docbase:ready', function(){
+                $anchorScroll();
+            });
+        });
     }
 
     Route.fetch = function(file){
         var options = Docbase.options;
+
         Flatdoc.run({
           fetcher: Flatdoc.file(options.path + file + '.md')
         });
@@ -219,7 +270,15 @@
     //     }); 
     // };
 
-    Route.URLCtrl = function($scope, $routeParams, $location, $timeout){
+    Route.URLCtrl = function($scope, $routeParams, $location, $timeout, $anchorScroll){
+        $scope.loading = true;
+
+        jWindow.on('docbase:ready', function(){
+            $timeout(function(){
+                $scope.loading = false;
+            });
+        });
+
         if(Docbase.map) {
             mapLoaded();
         } else {
@@ -255,6 +314,12 @@
                 });
 
                 Route.fetch(location.path);
+
+                // jWindow.on('docbase:ready', function(){
+                //     $location.hash($routeParams.scrollTo);
+                //     $anchorScroll();
+                // });
+
             } else {
                 $scope.github = false;
             }
