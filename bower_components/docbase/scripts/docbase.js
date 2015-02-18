@@ -256,6 +256,10 @@
         $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
             jWindow.on('docbase:ready', function(){
                 $anchorScroll();
+                $('.content').find('pre code').each(function() {
+                    $(this).addClass("prettyprint");
+                });
+                prettyPrint();
             });
         });
     }
