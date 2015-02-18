@@ -165,3 +165,43 @@ p {
 .content pre > code span.comment {
   font-size: 0.8em;
 }
+.edit {
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 821px;
+  width: 30px;
+  padding: 5px 0 5px 8px;
+  line-height: 1.5em;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+  color: #aaa;
+  transition: all 0.3s ease;
+}
+
+.edit:hover{
+  color: #444;
+  left: 816px;
+  width: 35px;
+  border-color: #bbb;
+}
+
+.edit:active, .edit:focus {
+  color: #aaa;
+  border-color: #eee;
+}
+
+body.no-literate .edit {
+  left: 300px;
+  border-left: 0;
+  border-right: 1px solid #eee;
+}
+
+body.no-literate .edit:hover {
+  padding-left: 10px;
+}
+
+body.no-literate .content h1:first-child {
+  margin-left: 5px;
+}
