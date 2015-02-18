@@ -92,3 +92,17 @@ a:hover, a:active {
 .navbar-default .navbar-nav>li:active {
 	background-color: white;
 }
+
+.github-star {
+	overflow: hidden;
+	margin-top: 15px;
+
+}
+.navbar-default .navbar-nav .github-star:hover, .navbar-default .navbar-nav .github-star:active {
+	background-color: transparent;
+}
+
+.github-star > *{
+	width: 100px;
+	float: right;
+}

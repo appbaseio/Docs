@@ -44,8 +44,8 @@
           	</li>
           </ul>
         </li>
-        <li ng-show="github">
-          <a ng-href="{{github}}" class="fa fa-pencil" role="edit-github-btn"> Edit on Github</a>
+        <li class="github-star">
+          <iframe src="https://ghbtns.com/github-btn.html?user=appbaseio&repo=Docs&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -56,4 +56,7 @@
     <div class="menu section" role="flatdoc-menu"></div>
   </div>
   <div role="flatdoc-content" class="content"></div>
+  <a class="edit" ng-href="{{github}}" target="_blank">
+    <span class="fa fa-pencil"></span>
+  </a>
 </div>
