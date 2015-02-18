@@ -197,24 +197,3 @@ body.no-literate .edit:hover {
 body.no-literate .content h1:first-child {
   margin-left: 5px;
 }
-
-body:not(.no-literate) .content > pre + p,
-body:not(.no-literate) .content > blockquote + p,
-body:not(.no-literate) .content > p.img + p,
-body:not(.no-literate) .content > pre + ul,
-body:not(.no-literate) .content > blockquote + ul,
-body:not(.no-literate) .content > p.img + ul,
-body:not(.no-literate) .content > pre + ol,
-body:not(.no-literate) .content > blockquote + ol,
-body:not(.no-literate) .content > p.img + ol,
-body:not(.no-literate) .content > pre + h4,
-body:not(.no-literate) .content > blockquote + h4,
-body:not(.no-literate) .content > p.img + h4,
-body:not(.no-literate) .content > pre + h5,
-body:not(.no-literate) .content > blockquote + h5,
-body:not(.no-literate) .content > p.img + h5,
-body:not(.no-literate) .content > pre + h6,
-body:not(.no-literate) .content > blockquote + h6,
-body:not(.no-literate) .content > p.img + h6 {
-  clear: both;
-}
