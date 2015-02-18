@@ -71,7 +71,23 @@ body:not(.no-literate) .content h1 {
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
     width: 550px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 40px;
+    padding-left: 40px;
   }
+  body:not(.no-literate) .content > h1,
+  body:not(.no-literate) .content > h2,
+  body:not(.no-literate) .content > h3 {
+    clear: both;
+    width: 100%;
+  }
+
+  body:not(.no-literate) .content > h1:first-child {
+    width: 500px;
+  }
+
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
     width: 380px;
@@ -115,10 +131,6 @@ body:not(.no-literate) .content h1 {
     width: 420px;
   }
 }
-.content pre {
-  border: 1px solid #aaa;
-  box-shadow: inset 0 0 10px #ddd;
-}
 li.active {
   text-decoration: underline;
 }
@@ -141,30 +153,10 @@ li.active {
   padding: 3px;
   font-size: 0.8em;
 }
-p {
-  font-size: 1.1em;
+.request-type > * {
+  color: white!important;
 }
-.content ul li p {
-  font-size: 1.0em;
-}
-.content ul li {
-  font-size: 1.0em;
-}
-.content p code {
-  font-size: 0.9em;
-}
-.content h3 {
-  font-size: 2.0em;
-}
-.content pre > code {
-  font-size: 1.0em;
-}
-.content pre > code span.keyword {
-  font-size: 1.1em;
-}
-.content pre > code span.comment {
-  font-size: 0.8em;
-}
+
 .edit {
   display: block;
   position: absolute;
@@ -204,4 +196,25 @@ body.no-literate .edit:hover {
 
 body.no-literate .content h1:first-child {
   margin-left: 5px;
+}
+
+body:not(.no-literate) .content > pre + p,
+body:not(.no-literate) .content > blockquote + p,
+body:not(.no-literate) .content > p.img + p,
+body:not(.no-literate) .content > pre + ul,
+body:not(.no-literate) .content > blockquote + ul,
+body:not(.no-literate) .content > p.img + ul,
+body:not(.no-literate) .content > pre + ol,
+body:not(.no-literate) .content > blockquote + ol,
+body:not(.no-literate) .content > p.img + ol,
+body:not(.no-literate) .content > pre + h4,
+body:not(.no-literate) .content > blockquote + h4,
+body:not(.no-literate) .content > p.img + h4,
+body:not(.no-literate) .content > pre + h5,
+body:not(.no-literate) .content > blockquote + h5,
+body:not(.no-literate) .content > p.img + h5,
+body:not(.no-literate) .content > pre + h6,
+body:not(.no-literate) .content > blockquote + h6,
+body:not(.no-literate) .content > p.img + h6 {
+  clear: both;
 }
