@@ -190,7 +190,9 @@ Scoping allows OAuth clients to tell an authorization server what permissions th
 ### Minimal Code
 
 ```js
-Appbase.authPopup('google', { authorize: { scope: ['openid'] } }, function(error, authObj, requestObj) {
+Appbase.authPopup('google',
+{ authorize: { scope: ['openid'] } },
+function(error, authObj, requestObj) {
     console.log('Logged in as:', authObj.uid);
 });
 ```
@@ -202,9 +204,12 @@ Find out more about scopes and API endpoints supported by Google [here](https://
 ### Calling APIs
 
 ```js
-Appbase.authPopup('google', { authorize: { scope: ['openid email profile'] } }, function(error, authObj, requestObj) {
+Appbase.authPopup('google',
+{ authorize: { scope: ['openid email profile'] } },
+function(error, authObj, requestObj) {
     console.log('Logged in as:', authObj.uid);
-    request.get('plus/v1/people/me', function(error, data) { // requests the profile of the user
+    // requests the profile of the user
+    request.get('plus/v1/people/me', function(error, data) {
         ...
     });
 });

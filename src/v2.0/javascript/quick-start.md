@@ -8,7 +8,8 @@ Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://a
 Add Appbase library to your codebase and set the app credentials as they appear here.
 
 ```html
-<script src="https://cdn.appbase.io/latest/appbase.js"></script>
+<script src="https://cdn.appbase.io/latest/appbase.js">
+</script>
 ```
 
 ```js
@@ -75,7 +76,8 @@ Enable the search by toggling the <i class="fa fa-eye-slash"></i> switch in your
 Second and final step, use this code snippet on the enabled namespace and have a full-text search widget.
 
 ```js
-Appbase.ns('tweet').search({text:'hello', properties: ['message']}, function(err, array) {
+Appbase.ns('tweet').search({text:'hello',
+	       properties: ['message']}, function(err, array) {
     console.log(array);
 })
 ```

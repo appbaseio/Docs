@@ -24,7 +24,9 @@ The Appbase library exposes the ``Appbase`` object. The methods in the JS lib re
 Authorize the app credentials using the appname and appsecret identifiers, as they appear in the [Dev Console](//appbase.io/developer).
 
 ```js
-Appbase.credentials('aphrodite', '4d8d0072580912343cd74aa0015cd217', function(error, isAuthorized) {
+Appbase.credentials('aphrodite',
+'4d8d0072580912343cd74aa0015cd217',
+function(error, isAuthorized) {
   if (!error && isAuthorized)
     console.log("app successfully registered");
 });
@@ -120,8 +122,12 @@ Creates a new vertex or obtains a reference to an existing vertex.
 
 ```js
 nsref = Appbase.ns("Domains");
-vref1 = nsref.v("www.appbase.io"); // will return the vertex at path "Domains/www.appbase.io". Will create one if it does not exist.
-vref2 = nsref.v("www.appbase.io/subdomains"); // will return the vertex at path "Domains/www.appbase.io/subdomains". Will only return if the vertex at the path exists.
+// will return the vertex at path "Domains/www.appbase.io"
+// will create one if it does not exist.
+vref1 = nsref.v("www.appbase.io");
+// will return the vertex at path "Domains/www.appbase.io/subdomains"
+// Will only return if the vertex at the path exists.
+vref2 = nsref.v("www.appbase.io/subdomains");
 ```
 
 **Usage**
@@ -149,8 +155,12 @@ Powerful realtime search on vertices inside a namespace, with options to search 
 2. Second and final step, use this code snippet on the enabled namespace and have a full-text search widget.
 
 ```js
-// Suppose there is a "tweets" namespace containing vertices with a property "message".
-Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(error, array) {
+// Suppose there is a "tweets" namespace
+// containing vertices with a property "message".
+Appbase.ns('tweets')
+.search({text:'hello',
+properties: ['message']},
+function(error, array) {
     if (!error) {
     	console.log(array);
     }
@@ -178,7 +188,8 @@ Appbase.ns('tweets').search({text:'hello', properties: ['message']}, function(er
 Retrieve existing vertices, and listen to addition or removal of vertices.
 
 ```js
-var domain = Appbase.ns("Domain"); // get reference to the namespace 'Domain'
+// get reference to the namespace 'Domain'
+var domain = Appbase.ns("Domain");
 
 domain.on('vertex_added', function (err, vref, vsnap) {
    if (err) console.log(err);
@@ -264,7 +275,8 @@ The method accepts no arguments, and returns a path of the ``nsref`` resource. S
 Appbase URL of the current reference.
 
 ```js
-var url = nsref.URL() // url equals "api.appbase.io/appname/v2/Domains"
+// url equals "api.appbase.io/appname/v2/Domains"
+var url = nsref.URL() 
 ```
 
 **Usage**
@@ -365,7 +377,8 @@ Create a link to another vertex. You can optionally set priority to links.
 
 ```js
 vref = Appbase.ns("Domains").v("www.appbase.io");
-vref.setEdge("subdomains"); // Creates an edge "subdomains" to a new vertex
+// Creates an edge "subdomains" to a new vertex
+vref.setEdge("subdomains"); 
 ```
 
 **Usage**
@@ -435,7 +448,8 @@ vref.on('properties', function(err,ref,snap){
    console.log(snap.properties().visits); 
 );
 
-// It would print the current number of visits, and also every time the number changes.
+// It would print the current number of visits,
+// and also every time the number changes.
 ```
 
 **Usage**
@@ -492,7 +506,8 @@ Notice that:
 ```js
 var belasTweets = Appbase.ns("user").v("bela/tweets");
 belasTweets.on('edge_added', function(error, eRef, eSnap) {
-	console.log("Added: ", eSnap.properties(), "with priority", eSnap.priority());
+	console.log("Added: ", eSnap.properties(),
+  "with priority", eSnap.priority());
 });
 ```
 
@@ -544,7 +559,8 @@ Reference to the corresponding ``outVertex`` with the given name.
 
 ```js
 vref = Appbase.ns("Domains").v("www.appbase.io");
-outVertex = vref.outVertex("subdomains");  // Returns the vertex reference to "Domains/www.appbase.io/subdomains".
+// Returns the vertex reference to "Domains/www.appbase.io/subdomains".
+outVertex = vref.outVertex("subdomains");
 ```
 
 **Usage**
@@ -563,7 +579,8 @@ Reference to the corresponding ``inVertex`` from the current vertex.
 
 ```js
 vref = Appbase.ns("Domains").v("www.appbase.io/subdomains");
-inVertex = vref.inVertex();  // Returns the vertex reference to "Domains/www.appbase.io".
+// Returns the vertex reference to "Domains/www.appbase.io".
+inVertex = vref.inVertex();  
 ```
 
 **Usage**
@@ -617,7 +634,8 @@ var name = vref.name(); // name = 'rockhammer'
 Appbase URL of the current reference.
 
 ```js
-var url = vref.URL() // url equals "api.appbase.io/appname/v2/Domains"
+// url equals "api.appbase.io/appname/v2/Domains"
+var url = vref.URL();
 ```
 
 **Usage**
