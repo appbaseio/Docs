@@ -8,12 +8,13 @@ Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://a
 Add Appbase library to your codebase and set the app credentials as they appear here.
 
 ```html
-<script src="https://cdn.appbase.io/latest/appbase.js">
+<script src="//cdn.appbase.io/latest/appbase.js">
 </script>
 ```
 
 ```js
-Appbase.credentials("aphrodite", "4d8d0072580912343cd74a09015cd217");
+Appbase.credentials("aphrodite",
+"4d8d0072580912343cd74a09015cd217");
 ```
 
 > Note: You will want to change the parameters of the ``Appbase.credentials()`` method to your own app name, app secret combination, as seen in the [Dashboard](http://appbase.io/developer).
@@ -24,7 +25,8 @@ Now let's create two Appbase vertices under two different namespaces "user" and 
 
 ```js
 var userRef = Appbase.ns("user").v("andy");
-var tweetRef = Appbase.ns("tweet").v(Appbase.uuid());
+var tweetRef = Appbase
+			   .ns("tweet").v(Appbase.uuid());
 ```
 
 Namespaces are containers that do not hold actual data, but help with data logic separation. A "vertex" can only be created using a ns reference object.
@@ -59,11 +61,13 @@ Now, the tweetRef vertex can also be accessed using the path /user/andy/tweeted.
 Appbase supports retrieval of objects using realtime streams. We will now add listeners, which return existing data stored, and keeps returning new data as it keeps changing. Similarly we will add a listener for retrieving edges on the vertex.
 
 ```js
-userRef.on('properties', function(error, ref, userSnap) {
+userRef.on('properties',
+function(error, ref, userSnap) {
     console.log(userSnap.properties().status);
     console.log(userSnap.properties().location);
 });
-userRef.on('edge_added', function(error, outVertexRef, tweetSnap) {
+userRef.on('edge_added',
+function(error, outVertexRef, tweetSnap) {
     console.log(tweetSnap.properties().message);
 });
 ```
@@ -77,7 +81,7 @@ Second and final step, use this code snippet on the enabled namespace and have a
 
 ```js
 Appbase.ns('tweet').search({text:'hello',
-	       properties: ['message']}, function(err, array) {
+properties: ['message']}, function(err, array) {
     console.log(array);
 })
 ```
