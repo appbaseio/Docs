@@ -79,7 +79,6 @@ body:not(.no-literate) .content h1 {
     padding-right: 20px;
     float: right;
     clear: right;
-    white-space: pre-wrap;
   }
   body:not(.no-literate) .content > h4,
   body:not(.no-literate) .content > h5,
