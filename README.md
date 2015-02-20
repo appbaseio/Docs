@@ -1,7 +1,7 @@
 Docs
 ====
 
-https://docs.appbase.io
+http://docs.appbase.io
 
 Check out our framework, Docbase, at https://github.com/appbaseio/Docbase
 
