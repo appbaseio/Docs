@@ -58,10 +58,10 @@ curl --include \
         "data": {
 	        "name": "Laura Vieria",
 	        "sex": "F",
-		"city": "Rio de Janeiro",
-		"country": "Brazil",
-		"occupation": "Graphic Designer",
-		"email": "laura@awesomedesigner.com"
+	        "city": "Rio de Janeiro",
+	        "country": "Brazil",
+	        "occupation": "Graphic Designer",
+	        "email": "laura@awesomedesigner.com"
         }
     }' \
 'https://api.appbase.io/my_app9/v2/people/laura/~properties'
