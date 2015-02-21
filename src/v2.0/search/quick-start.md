@@ -54,16 +54,16 @@ curl --include \
      --request PATCH \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 097b2b28b6a13cf2e53b6cecfec42b86" \
-     --data-binary "    {
-        \"data\":{
-	        \"name\": \"Laura Vieria\",
-	         \"sex\": \"F\",
-			\"city\": \"Rio de Janeiro\",
-			\"country\": \"Brazil\",
-			\"occupation\": \"Graphic Designer\",
-			\"email\": \"laura@awesomedesigner.com\"
+     --data-binary '    {
+        "data": {
+	        "name": "Laura Vieria",
+	        "sex": "F",
+		"city": "Rio de Janeiro",
+		"country": "Brazil",
+		"occupation": "Graphic Designer",
+		"email": "laura@awesomedesigner.com"
         }
-    }" \
+    }' \
 'https://api.appbase.io/my_app9/v2/people/laura/~properties'
 ```
 
@@ -107,12 +107,12 @@ curl --include \
      --request POST \
      --header "Content-Type: application/json" \
      --header "Appbase-Secret: 097b2b28b6a13cf2e53b6cecfec42b86" \
-     --data-binary "    {
-        \"query\": {
-            \"text\": \"designer\",
-            \"properties\":[\"occupation\"]
+     --data-binary '    {
+        "query": {
+            "text": "designer",
+            "properties":["occupation"]
         }
-    }" \
+    }' \
 'https://api.appbase.io/my_app9/v2/people/~search'
 ```
 
