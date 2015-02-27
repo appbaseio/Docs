@@ -130,22 +130,17 @@ Response:
 ```js
 {
 	
-	"abc" : {
+	"/abc" : {
 		"_id": "abc",
 		"_collection": "Materials"
 		"_timestamp": 2021692,
 		"foo": "bar"
 	},
-	"pqr": {
-		"_id": "pqr",
-		"_collection": "asas"
-		"_timestamp": 2021692,
-		"_deleted": true
-	}
+	"/pqr": null // deleted
 }
 ```
 Note:
- - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `_deleted = true`. 
+ - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `"/doc_id": null`. 
  - response also includes the request url parameters (query, timestamp etc) 
  - By default, at most `50` documents are returned. Thus the default query becomes: `{ size: 50, query: {match_all: {}}}`. To fetch more, provide a proper `query`. 
 
