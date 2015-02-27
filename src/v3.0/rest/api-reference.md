@@ -56,23 +56,6 @@ On top of HTTP status code, we return a json document for errors. the document l
 
 ## Collection
 
-Operate on documents inside a collection.
-
-### __Write__ ``POST``
-
-Push a JSON and create a new document out of it. It will be given a UUID as its doc id by default.
-
-```
-curl -i -X POST \  
--d '{
-		"name": "john"
-	}
-}' \  
-'https://api.appbase.io/rest_test/v3/user/'
-```
-
-Note:
- -  (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had this problem. 
 
 ### __Write__ ``PATCH``
 
@@ -83,6 +66,22 @@ curl -i -X PATCH \
 'https://api.appbase.io/rest_test/v3/Materials'
 ```
 
+Reponse: (when the collection is newly created)
+```js
+{
+	"_collection": "Materials",
+	"_created": true, // as it is a new collection
+	"_createdAt": 2301249092 //timestamp in UTC
+}
+```
+
+(when the collection is already exists)
+```js
+{
+	"_collection": "Materials",
+	"_createdAt": 2301249092 //timestamp in UTC
+}
+```
 
 ### __Delete__ ``DELETE``
 Delete the collection and all its documents.
@@ -91,7 +90,14 @@ Delete the collection and all its documents.
 curl -i -X DELETE \  
 'https://api.appbase.io/rest_test/v3/Materials'
 ```
-
+Response: 
+```js
+{
+	"_collection": "Materials",
+	"_createdAt": 2301249092,
+	"_delete": true //timestamp in UTC
+}
+```
 
 ### __Read__ `GET`
 
@@ -106,10 +112,11 @@ Response:
 
 `200`
 
-```json
+```js
 {
 	_query: { size: 50, query: {match_all: {}}},
 	_timestamp: 0,
+	_fromTimestamp: 0,
 	_received: 2,
 	_documents: [
 		{
@@ -134,7 +141,28 @@ Note:
  - response also include the request url parameters (query, timestamp etc) 
  - By default, at most `50` documents are returned. To fetch more, provide a proper `query`.
  
+
+
 ## Document
+
+Operate on documents inside a collection.
+
+### __Write__ ``POST``
+
+Push a JSON and create a new document out of it. It will be given a UUID as its doc id by default.
+
+```
+curl -i -X POST \  
+-d '{
+		"name": "john"
+	}
+}' \  
+'https://api.appbase.io/rest_test/v3/user/'
+```
+
+Note:
+ -  (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had this problem. 
+
 
 ### __Create / Update Document__ ``PATCH``
 Update the document properties, or create a new document when the path exists. 
@@ -151,7 +179,7 @@ Response:
 
 `200`
 Content-Type: application/json
-```json
+```js
 {
 	"_id": "Ice"
 	"_collection": "Materials",
@@ -193,7 +221,7 @@ Response:
 `200`
 Receive the whole document, with the reference which was just updated. `_deleted` will be true for reference which just got deleted.
 
-```json
+```js
 {
 	"ref_name": {
 		"_priority": 5354842,
@@ -226,7 +254,7 @@ Response: (get the whole document which was just deleted - omitting references)
 
 `200`
 Content-Type: application/json
-```json
+```js
 {
 	"_id": "Ice",
 	"_collection": "Materials",
