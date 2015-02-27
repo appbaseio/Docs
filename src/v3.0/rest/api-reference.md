@@ -356,8 +356,8 @@ Response:
 
 ```js
 {
-	"/141fsddvf": {
-		"_id": "wasvt33463",
+	"/141fsddvf": { //random generate reference name
+		"_id": "wasvt33463", //random generated id for the new document
 		"_collection": "tweet"
 		"message": "this is a tweet"
 	}
