@@ -7,7 +7,7 @@ The Appbase v3.0 API is based on REST principles. All operations including creat
 
 Endpoint | Method | Action
 -------- | ------ | ------ 
-/ | GET | list of existing collections
+/ | GET | list of existing collections, current time as an object
 /{collection_id}/ | GET | Get/Query a list of documents
 /{collection_id}/ | PATCH | Create a collection, if doesn't exist
 /{collection_id}/ | DELETE | Delete a collection
@@ -40,11 +40,25 @@ On top of HTTP status code, we return a json document for errors. the document l
 
 # API Reference
 
+## http://api.appbase.io/appname/v3 - Global
+
+### `GET`
+```js
+{
+	_time: {
+		"_timestamp": 346274526,
+		"_timezone": "UTC", // always - infact server's own system time is in UTC - simplifies Elasticsearch's relative time features
+		"_ISOString": "2015-02-27T02:51:50.968Z",
+	},
+	_collections: ["user", "tweet"]
+}
+```
+
 ### Document Resource Notes:
 
 - properties - that can not be used by the developer:
  
-	- _id - uuid of the document
+	- _id - uuid of the document - unique across the collection - also represents the document's path: `collection/id`
 	- _timestamp - used for internal timestamping
 	- _collection - collection where it belongs
 	- _deleted - keeping track of deleted documents
@@ -57,7 +71,7 @@ On top of HTTP status code, we return a json document for errors. the document l
 ## Collection
 
 
-### __Write__ ``PATCH``
+### __Create__ ``PATCH``
 
 Create a new collection if it doesn't exist. This is NOT a required step to create documents inside that collection. Collections are created automatically.
 
@@ -75,7 +89,7 @@ Reponse: (when the collection is newly created)
 }
 ```
 
-(when the collection is already exists)
+(when the collection already exists)
 ```js
 {
 	"_collection": "Materials",
@@ -94,8 +108,8 @@ Response:
 ```js
 {
 	"_collection": "Materials",
-	"_createdAt": 2301249092,
-	"_delete": true //timestamp in UTC
+	"_createdAt": 2301249092, //timestamp in UTC
+	"_deleted": true
 }
 ```
 
@@ -114,8 +128,7 @@ Response:
 
 ```js
 {
-	_query: { size: 50, query: {match_all: {}}},
-	_timestamp: 0,
+	_query: { size: 50, query: {match_all: {}}}, // es query with which the data was requested
 	_fromTimestamp: 0,
 	_received: 2,
 	_documents: [
@@ -133,35 +146,59 @@ Response:
 		}
 	]
 }
-
 ```
 
 Note:
- - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned.
- - response also include the request url parameters (query, timestamp etc) 
- - By default, at most `50` documents are returned. To fetch more, provide a proper `query`.
- 
+ - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `_deleted = true`. 
+ - response also includes the request url parameters (query, timestamp etc) 
+ - By default, at most `50` documents are returned. Thus the default query becomes: `{ size: 50, query: {match_all: {}}}`. To fetch more, provide a proper `query`. 
 
 
 ## Document
 
 Operate on documents inside a collection.
 
-### __Write__ ``POST``
+### __Create Document__ ``POST``
 
 Push a JSON and create a new document out of it. It will be given a UUID as its doc id by default.
 
 ```
 curl -i -X POST \  
 -d '{
-		"name": "john"
+		"name": "lanny"
 	}
 }' \  
 'https://api.appbase.io/rest_test/v3/user/'
 ```
 
+Response:
+
+```js
+{
+	"_id" : "asd34234" //random id
+	"name": "lanny"
+}
+```
+
 Note:
- -  (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had this problem. 
+ -  If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff. For eg.
+
+```
+curl -i -X POST \  
+-d '{
+		"_id": "john"
+		"name": "john mcclane"
+	}
+}' \  
+'https://api.appbase.io/rest_test/v3/user/'
+```
+
+
+Now fetching that document:
+```
+curl -i -X \  
+'https://api.appbase.io/rest_test/v3/user/john'
+```
 
 
 ### __Create / Update Document__ ``PATCH``
