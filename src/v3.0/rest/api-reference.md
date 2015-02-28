@@ -16,7 +16,6 @@ Endpoint | Method | Action
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
 /{collection_id}/{document_id}/{path}/ | POST | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
-/{collection_id}/{document_id}/{path}/ | POST | insert a new reference document with an auto generated id
 
 ## HTTP Status Codes
 
@@ -398,7 +397,7 @@ curl -i \
 Response:
 
 `200`
-```
+```js
 {
 	"_id": "Ice",
 	"_collection": "Material",
