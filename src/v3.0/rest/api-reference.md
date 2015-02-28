@@ -16,6 +16,7 @@ Endpoint | Method | Action
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
 /{collection_id}/{document_id}/{path}/ | POST | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
+/{collection_id}/{document_id}/{path}/ | POST | insert a new reference document with an auto generated id
 
 ## HTTP Status Codes
 
@@ -302,10 +303,13 @@ curl -i -X PATCH \
 
 Response: 
 `200`
-Receive the reference with its data. 
+Receive the reference with its data. Receive basic properties of the document, id collection and timestamp. 
 
 ```js
 {
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
 	"/tweetedBy": {
 		"_id": "abc",
 		"_collection": "asas"
@@ -332,10 +336,13 @@ curl -i -X PATCH \
 
 Response: 
 `200`
-Receive the deleted reference, set as null.
+Receive the deleted reference, set as null. Receive basic properties of the document, id collection and timestamp. 
 
 ```js
 {
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
 	"/tweetedBy": null
 }
 ```
