@@ -7,15 +7,15 @@ The Appbase v3.0 API is based on REST principles. All operations including creat
 
 Endpoint | Method | Action
 -------- | ------ | ------ 
-/ | GET | list of existing collections
+/ | GET | list of existing collections, current time as an object
 /{collection_id}/ | GET | Get/Query a list of documents
 /{collection_id}/ | PATCH | Create a collection, if doesn't exist
 /{collection_id}/ | DELETE | Delete a collection
 /{collection_id}/ | POST | create a new document inside collection with an auto generated id
 /{collection_id}/{document_id}/{path}/ | GET | get/listen properties, Query references
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
+/{collection_id}/{document_id}/{path}/ | POST | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
-/{collection_id}/{document_id}/{path}/ | POST | insert a new reference document with an auto generated id
 
 ## HTTP Status Codes
 
@@ -40,11 +40,25 @@ On top of HTTP status code, we return a json document for errors. the document l
 
 # API Reference
 
+## http://api.appbase.io/appname/v3 - Global
+
+### `GET`
+```js
+{
+	_time: {
+		"_timestamp": 346274526,
+		"_timezone": "UTC", // always - infact server's own system time is in UTC - simplifies Elasticsearch's relative time features
+		"_ISOString": "2015-02-27T02:51:50.968Z",
+	},
+	_collections: ["user", "tweet"]
+}
+```
+
 ### Document Resource Notes:
 
 - properties - that can not be used by the developer:
  
-	- _id - uuid of the document
+	- _id - uuid of the document - unique across the collection - also represents the document's path: `collection/id`
 	- _timestamp - used for internal timestamping
 	- _collection - collection where it belongs
 	- _deleted - keeping track of deleted documents
@@ -52,87 +66,148 @@ On top of HTTP status code, we return a json document for errors. the document l
 	    - rootPath <-replaced by id and collection
 
 
+---
+
+## Collection
+
+Operate on namespaces.
+
+### __Create__ ``PATCH``
+
+Create a new collection if it doesn't exist. This is NOT a required step to create documents inside that collection. Collections are created automatically.
+
+```
+curl -i -X PATCH \  
+'https://api.appbase.io/rest_test/v3/Materials'
+```
+
+Reponse: (when the collection is newly created)
+```js
+{
+	"_collection": "Materials",
+	"_created": true, // as it is a new collection
+	"_createdAt": 2301249092 //timestamp in UTC
+}
+```
+
+(when the collection already exists)
+```js
+{
+	"_collection": "Materials",
+	"_createdAt": 2301249092 //timestamp in UTC
+}
+```
+
+### __Delete__ ``DELETE``
+Delete the collection and all its documents.
+
+```
+curl -i -X DELETE \  
+'https://api.appbase.io/rest_test/v3/Materials'
+```
+Response: 
+```js
+{
+	"_collection": "Materials",
+	"_createdAt": 2301249092, //timestamp in UTC
+	"_deleted": true
+}
+```
+
+### __Read__ `GET`
+
+Receive all the documents inside, provide a `query=` url parameter for querying the documents.
+
+```
+curl -i \    
+'https://api.appbase.io/rest_test/v3/Materials
+```
+
+Response:
+
+`200`
+
+```js
+{
+	
+	"/abc" : {
+		"_id": "abc",
+		"_collection": "Materials"
+		"_timestamp": 2021692,
+		"foo": "bar"
+	},
+	"/pqr": null // deleted
+}
+```
+Note:
+ - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `"/doc_id": null`. 
+ - response also includes the request url parameters (query, timestamp etc) 
+ - By default, at most `50` documents are returned. Thus the default query becomes: `{ size: 50, query: {match_all: {}}}`. To fetch more, provide a proper `query`. 
+
+
+### __Push JSON to a new document__ ``POST``
+
+Push a JSON and create a new document out of it in a collection. It will be given a UUID as its doc id by default.
+
+```
+curl -i -X POST \  
+-d '{
+		"name": "lanny"
+	}
+}' \  
+'https://api.appbase.io/rest_test/v3/user/'
+```
+
+Response:
+
+```js
+{
+	"/asd34234": {
+		"_id" : "asd34234" //random id
+		"name": "lanny"
+	}
+}
+```
+
+Note:
+ -  If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff. For eg.
+
+```
+curl -i -X POST \  
+-d '{
+		"_id": "john"
+		"name": "john mcclane"
+	}
+}' \  
+'https://api.appbase.io/rest_test/v3/user/'
+```
+
+Response:
+```js
+{
+	"/john": {
+		"_id": "john"
+		"name": "john mcclane"
+	}
+}
+```
+
+Now fetching that document:
+```
+curl -i -X \  
+'https://api.appbase.io/rest_test/v3/user/john'
+```
+
+Note:
+If `_id` points to an existing document, it works as a `PATCH`.
+
+
 ## Document
 
-### __Read Document__ ``GET`` 
-
-Fetch document's properties and references
-
-> **Example Request**
-```curl
-curl -i -l "appbase-secret: afasxasf" \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/`
-```
-
-Response:
-`200`
-Content-Type: application/json
-```json
-{
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"foo": "bar"
-}
-```
-
-Note:
- - references are included as well, unless `deep=false` provided in URL parameter
- - `query` is a url paramter, that filter references
-
-Can also apply filters with url parameters to fetch the references.
-
-> **Example Request**
-```curl
-curl -i \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/?startAt=0&endAt=500'
-```
-
-Response:
-
-`200`
-```
-{
-	_startAt: 0,
-	_stopAt: 500,
-	_skip: 0,
-	_limit: 50,
-	_fromTimestamp: 0,	
-	_received: 2,
-	_refs: [
-		{
-			"_name": "ref_name",
-			"_priority": 251413
-			"_document" : {
-				"_id": "abc",
-				"_collection": "Materials"
-				"_timestamp": 2021692,
-				"foo": "bar"
-			}
-		},
-		{
-			"_name": "ref_name2",
-			"_priority": 2514132351
-			"_document" : {
-				"_id": "pqr",
-				"_collection": "user"
-				"_timestamp": 202169512,
-				"beer": "bar"
-			}
-		}
-	]
-}
-```
-Note:
- - JSON of the referenced document is returned as well.
- - if a `timestamp` is provided in the url parameter, it will work as a _sync_ and refs changed after that timestamp will be returned.
- - request url parameters are included in the response
-
+Operate on documents inside a collection.
 
 ### __Create / Update Document__ ``PATCH``
-Update the document properties, or create a new document when the path exists. 
-
-If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
+Update the document properties, or create a new document when the path exists. The document and collection, are automatically created if they don't exist.
 
 > **Example Request**
 ```curl
@@ -141,10 +216,12 @@ curl -i -X PATCH \
 'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
 
-Response: (get the whole document that was just stored - unsure about this part)
+Response: 
+ Return the whole updated document.
+
 `200`
 Content-Type: application/json
-```json
+```js
 {
 	"_id": "Ice"
 	"_collection": "Materials",
@@ -154,52 +231,33 @@ Content-Type: application/json
 ```
 Note:
 
- - Overwrite operation on all properties, or replacing properties are not supported.
-
-
------
-
-### __Write Properties__ ``PATCH``
-
-Also works for partial updates.
-
-Replace/update only the properties specified in the request.
-
-`tbd` When the document doesn't exist, it will create a new document if  `collection` is provided in the URL params.
-
-If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
-
-> **Example Request**
-```curl
+ - If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
+ - only updates properties which are provided in the request
+ - patch properties with `null` to remove them
+ eg:
+```
 curl -i -X PATCH \
 -d '{"foo": "bar"}' \
 'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
-
-
 Response: 
-(get the whole document including properties that weren't updated - unsure about this part)
-`200`
-Content-Type: application/json
-```json
+```js
 {
-	"_id": "Ice",
+	"_id": "Ice"
 	"_collection": "Materials",
 	"_timestamp": 12535265236,
-	"foo": "bar"
+	"foo": null // null appears only in this request, as this property is removed. in subsequent requests, this property will simply be omitted 
 }
 ```
 
-Note:
-
-- patch properties with `null` to remove them
-- to update a nested field, provide nested properties with a dot (Mongo and ES convention)
+ - to update a nested field, provide nested properties with a dot (Mongo and ES convention)
 	- eg: 
 ```js
 {
 	"authoredBy.profile.firstName" = 52
 }
 ```
+
 
 ### __Delete__ `DELETE`
 
@@ -210,11 +268,11 @@ curl -i -X DELETE \
 'https://api.appbase.io/rest_test/v3/Materials/Ice'
 ```
 
-Response: (get the whole document which was just deleted)
+Response: (get the whole document which was just deleted - omitting references) 
 
 `200`
 Content-Type: application/json
-```json
+```js
 {
 	"_id": "Ice",
 	"_collection": "Materials",
@@ -224,38 +282,38 @@ Content-Type: application/json
 }
 ```
 
-### __Write Reference__ ``PATCH``
+
+
+### Creating References 
+
+
+### __with a Reference Name__ `PATCH`
 
 Update/create references, one at a time. This is an overloaded endpoint. One can update either properties or one reference.
 
 > **Example Request**
 ```curl
 curl -i -X PATCH \  
--d '{ 
-	"/tweetedBy":  {
-		"_path": "user/sagar",
-		"_priority:" 5820352232
-	}
+-d '{
+	"/tweetedBy": "user/sagar"
 }' \  
 'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
 
 Response: 
 `200`
-Receive all the changed references with its data. `_deleted` will be true for reference which just got deleted.
+Receive the reference with its data. Receive basic properties of the document, id collection and timestamp. 
 
-```json
+```js
 {
-	"ref_name": {
-		"_priority": 5354842,
-		"_timestamp": 096240962,
-		"_deleted": true,
-		"_json": {
-			"_id": "abc",
-			"_collection": "asas"
-			"_timestamp": 2021692,
-			"foo": "bar"
-		}
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"/tweetedBy": {
+		"_id": "abc",
+		"_collection": "asas"
+		"_timestamp": 2021692,
+		"foo": "bar"
 	}
 }
 ``` 
@@ -263,87 +321,100 @@ Receive all the changed references with its data. `_deleted` will be true for re
 Note:
  - provide a `null` for a reference name to delete a reference.
 
-Almost the same as what we used to do before.
-
----
-
-## Collection
-
-Operate on documents inside a collection.
-
-### __Read__ `GET`
-
-Receive all the documents inside, works with filters - `limit` and `skip`.
+Eg: 
 
 
+> **Example Request**
+```curl
+curl -i -X PATCH \  
+-d '{
+	"/tweetedBy": null
+}' \  
+'https://api.appbase.io/rest_test/v3/Materials/Ice/'
 ```
-curl -i \    
-'https://api.appbase.io/rest_test/v3/Materials/?limit=50'
+
+Response: 
+`200`
+Receive the deleted reference, set as null. Receive basic properties of the document, id collection and timestamp. 
+
+```js
+{
+	"_id": "Ice",
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"/tweetedBy": null
+}
+```
+
+Note:
+
+- references don't have any meta data. No priority/timestamp.
+
+### __without a Reference Name__ `POST`
+
+This is a way to work with web-hooks or events from other systems and services, where there may not be a control over what kind of JSON object is received.
+
+This endpoint allows pushing pure JSON data to an document URL, and it creates a new document out of it, adding it as a reference inside the document.
+
+Works similar to POST on a collection.
+
+eg.
+
+> **Example Request**
+```curl
+curl -i -X PATCH \  
+-d '{
+	"message": "this is a tweet"
+}' \  
+'https://api.appbase.io/rest_test/v3/Materials/Ice?collection=tweet'
+```
+
+Response:
+
+```js
+{
+	"/141fsddvf": { //random generate reference name
+		"_id": "wasvt33463", //random generated id for the new document
+		"_collection": "tweet"
+		"message": "this is a tweet"
+	}
+}
+```
+Note: 
+
+- `collection=` is necessary in the URL, where the new document will be created.
+
+### __Read Document__ ``GET`` 
+
+Fetch document's properties and references
+
+> **Example Request**
+```curl
+curl -i \  
+'https://api.appbase.io/rest_test/v3/Materials/Ice'
 ```
 
 Response:
 
 `200`
-
-```json
+```js
 {
-	_skip: 0,
-	_limit: 50,
-	_timestamp: 0,	
-	_received: 2,
-	_documents: [
-		{
-			"_id": "abc",
-			"_collection": "Materials"
-			"_timestamp": 2021692,
-			"foo": "bar"
-		},
-		{
-			"_id": "abc",
-			"_collection": "asas"
-			"_timestamp": 2021692,
-			"foo": "foo"
-		}
-	]
-}
-
-```
-
-Note:
- - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned.
- - response also include the request url parameters 
- - 
-
-### __Write__ ``POST``
-
-Push a JSON and create a new document out of it. It will be given a UUID as its doc id by default.
-
-```
-curl -i -X POST \  
--d '{
-		"name": "john"
+	"_id": "Ice",
+	"_collection": "Material",
+	"foo": "bar",
+	"_timestamp": 23491400,
+	"/tweetedBy": {
+		"_id": "3193v1934n",
+		"_collection": "user",
+		"name": "yo",
+		"_timestamp": 23491400
 	}
-}' \  
-'https://api.appbase.io/rest_test/v3/user/'
+}
 ```
 
 Note:
- -  (Unsure) If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff - Dane and Patrick both had this problem. 
-
-### __Write__ ``PATCH``
-
-Create a new collection if it doesn't exist. This is NOT a required step to create documents inside that collection. Collections are created automatically.
-
-```
-curl -i -X PATCH \  
-'https://api.appbase.io/rest_test/v3/Materials'
-```
-
-
-### __Delete__ ``DELETE``
-Delete the collection and all its documents.
-
-```
-curl -i -X DELETE \  
-'https://api.appbase.io/rest_test/v3/Materials'
-```
+ - references are included as well, unless `references=false` provided in URL parameter
+ - `query` is a url parameter, that filter references.
+ - if a `timestamp` is provided in the url parameter, it will work as a _sync_ and refs changed after that timestamp will be returned: `"/ref_name": null`
+ - request url parameters are included in the response
+ - By default, only 50 references are returned, use query to return more.
