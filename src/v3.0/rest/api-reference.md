@@ -235,6 +235,22 @@ Note:
  - If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
  - only updates properties which are provided in the request
  - patch properties with `null` to remove them
+ eg:
+```
+curl -i -X PATCH \
+-d '{"foo": "bar"}' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/'
+```
+Response: 
+```js
+{
+	"_id": "Ice"
+	"_collection": "Materials",
+	"_timestamp": 12535265236,
+	"foo": null // null appears only in this request, as this property is removed. in subsequent requests, this property will simply be omitted 
+}
+```
+
  - to update a nested field, provide nested properties with a dot (Mongo and ES convention)
 	- eg: 
 ```js
