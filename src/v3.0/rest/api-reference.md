@@ -231,6 +231,16 @@ Content-Type: application/json
 ```
 Note:
 
+ - `_id` and the path of the object can't be different. eg.
+ 
+```curl
+curl -i -X PATCH \
+-d '{"_id": "sagar", "foo": "bar"}' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/'
+```
+
+The above request will fail with an error "The value of `_id` inside the object, can't be different from the _collection_/__id__."
+
  - If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
  - only updates properties which are provided in the request
  - patch properties with `null` to remove them
