@@ -10,8 +10,8 @@ ngAppbase - AngularJS binding for Appbase, makes it very simple to bind your dat
 Add these script tags in your HTML:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
-<script src="https://cdn.appbase.io/2.0/appbase.min.js"></script>
-<script src="https://cdn.appbase.io/2.0/ng-appbase.js"></script>
+<script src="https://cdn.appbase.io/latest/appbase.js"></script>
+<script src="https://cdn.appbase.io/latest/ng-appbase.js"></script>
 ```
 Register `ngAppbase` as a dependency in the module, and the `$appbase` is available to be injected into any controller, service, or factory.
 ```js
