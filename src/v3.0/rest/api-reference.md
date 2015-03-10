@@ -8,11 +8,11 @@ The Appbase v3.0 API is based on REST principles. All operations including creat
 Endpoint | Method | Action
 -------- | ------ | ------ 
 / | GET | list of existing collections, current time as an object
-/{collection_id}/ | GET | Get/Query a list of documents
+/{collection_id}/ | GET | Get a list of documents
 /{collection_id}/ | PATCH | Create a collection, if doesn't exist
 /{collection_id}/ | DELETE | Delete a collection
 /{collection_id}/ | PUT | create a new document inside collection with an auto generated id
-/{collection_id}/{document_id}/{path}/ | GET | get/listen properties, Query references
+/{collection_id}/{document_id}/{path}/ | GET | get/listen properties
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
 /{collection_id}/{document_id}/{path}/ | PUT | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
@@ -121,37 +121,6 @@ Response:
 }
 ```
 
-### __Read__ `GET`
-
-Receive all the documents inside, provide a `query=` url parameter for querying the documents.
-
-```
-curl -i \    
-'https://api.appbase.io/rest_test/v3/Materials
-```
-
-Response:
-
-`200`
-
-```js
-{
-	
-	"/abc" : {
-		"_id": "abc",
-		"_collection": "Materials"
-		"_timestamp": 2021692,
-		"foo": "bar"
-	},
-	"/pqr": null // deleted
-}
-```
-Note:
- - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `"/doc_id": null`. 
- - response also includes the request url parameters (query, timestamp etc) 
- - By default, at most `50` documents are returned. Thus the default query becomes: `{ size: 50, query: {match_all: {}}}`. To fetch more, provide a proper `query`. 
-
-
 ### __Push JSON to a new document__ ``PUT``
 
 Push a JSON and create a new document out of it in a collection. It will be given a UUID as its doc id by default.
@@ -169,7 +138,7 @@ Response:
 
 ```js
 {
-	"/asd34234": {
+	"asd34234": {
 		"_id" : "asd34234" //random id
 		"name": "lanny"
 	}
@@ -192,7 +161,7 @@ curl -i -X PUT \
 Response:
 ```js
 {
-	"/john": {
+	"john": {
 		"_id": "john"
 		"name": "john mcclane"
 	}
@@ -208,6 +177,116 @@ curl -i -X \
 Note:
 If `_id` points to an existing document, it works as a `PATCH`.
 
+
+
+### __Read__ `GET`
+
+
+```
+curl -i \    
+'https://api.appbase.io/rest_test/v3/Materials?timestamp=235234'
+```
+
+Response:
+
+`200`
+
+```js
+{
+	
+	"abc" : {
+		"_id": "abc",
+		"_collection": "Materials"
+		"_timestamp": 2021692,
+		"foo": "bar"
+	},
+	"pqr": null // deleted
+}
+```
+Note:
+ - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `"/doc_id": null`. 
+ - By default, we only provide 1000 documents in the request. If required more, use the queries.
+
+
+### __Query__ `POST`
+
+Elastic search queries on the documents.
+
+For now, the query format, and the response format is kept exactly the same as elasticsearch.
+
+```
+curl -XPOST 'https://api.appbase.io/rest_test/v3/user/' \
+-d '//DslQueryJSONObject'
+```
+
+the query object example:
+
+```js
+{
+    size: 0,
+    query: {
+      filtered: {
+        filter: {
+            bool: {must: [
+                {"exists" : { "field" : "bucket" }}, // leave it as it is
+                {"exists" : { "field" : "_user" }}, // leave it as it is
+                {"range": {"startTime": range("2015-02-28 2015-02-28")}} // date range
+            ]}
+        }
+      }
+    },
+    aggs: { // creating buckets for hours
+      byTime: {
+        terms: {
+          field: "bucket.hour",
+          size: 2
+        }
+      }
+    }
+  }
+}
+```
+
+Response:
+
+Direct elastic search results.
+
+```js
+{
+  "took": 7,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 2491,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "byTime": {
+      "buckets": [
+        {
+          "key": 9,
+          "doc_count": 398
+        },
+        {
+          "key": 8,
+          "doc_count": 358
+        }
+      ]
+    }
+  }
+}
+```
+
+
+Note: 
+Pagination becomes a part of the elasticsearch query.
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-from-size.html
 
 ## Document
 
@@ -265,6 +344,25 @@ Response:
 }
 ```
 
+- it is possible to patch a non-existent deeper document using patch too. the ancestors must exist. eg.
+```
+curl -i -X PATCH \
+-d '{"foo": "bar", "_collection": "Song"}' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/IceBaby'
+```
+
+Note that `_collection` must be provided in the request, where the object will be created.
+If `_id` is provided too, it will be used as the id for the new document.
+
+Response: 
+```js
+{
+	"_id": "sddfvdav", // random, if not provided in the request 
+	"_collection": "Song",
+	"_timestamp": 12535265236,
+	"foo": null // null appears only in this request, as this property is removed. in subsequent requests, this property will simply be omitted 
+}
+```
 
 ### __Delete__ `DELETE`
 
@@ -369,7 +467,7 @@ eg.
 
 > **Example Request**
 ```curl
-curl -i -X PATCH \  
+curl -i -X PUT \  
 -d '{
 	"message": "this is a tweet"
 }' \  
@@ -421,7 +519,86 @@ Response:
 
 Note:
  - references are included as well, unless `references=false` provided in URL parameter
- - `query` is a url parameter, that filter references.
  - if a `timestamp` is provided in the url parameter, it will work as a _sync_ and refs changed after that timestamp will be returned: `"/ref_name": null`
- - request url parameters are included in the response
- - By default, only 50 references are returned, use query to return more.
+ - by default, only 1000 references will be returned. If required more, use the queries.
+
+
+
+### __Query__ `POST`
+
+Elastic search queries on the documents.
+
+For now, the query format, and the response format is kept exactly the same as elasticsearch.
+
+```
+curl -XPOST 'https://api.appbase.io/rest_test/v3/user/sagar/calls' \
+-d '//DslQueryJSONObject'
+```
+
+the query object example:
+
+```js
+{
+    size: 0,
+    query: {
+      filtered: {
+        filter: {
+            bool: {must: [
+                {"exists" : { "field" : "bucket" }}, // leave it as it is
+                {"exists" : { "field" : "_user" }}, // leave it as it is
+                {"range": {"startTime": range("2015-02-28 2015-02-28")}} // date range
+            ]}
+        }
+      }
+    },
+    aggs: { // creating buckets for hours
+      byTime: {
+        terms: {
+          field: "bucket.hour",
+          size: 2
+        }
+      }
+    }
+  }
+}
+```
+
+Response:
+
+Direct elastic search results.
+
+```js
+{
+  "took": 7,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 2491,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "byTime": {
+      "buckets": [
+        {
+          "key": 9,
+          "doc_count": 398
+        },
+        {
+          "key": 8,
+          "doc_count": 358
+        }
+      ]
+    }
+  }
+}
+```
+
+Note: 
+Pagination becomes a part of the elasticsearch query.
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-from-size.html
