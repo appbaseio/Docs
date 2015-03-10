@@ -38,6 +38,13 @@ On top of HTTP status code, we return a json document for errors. the document l
 }
 ```
 
+# Headers
+
+ - appbase-secret
+ - content-type: "application/json"
+ - http-method-override - https://www.firebase.com/docs/rest/api/#section-method-override
+
+
 # API Reference
 
 ## http://api.appbase.io/appname/v3 - Global
