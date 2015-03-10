@@ -12,10 +12,12 @@ Endpoint | Method | Action
 /{collection_id}/ | PATCH | Create a collection, if doesn't exist
 /{collection_id}/ | DELETE | Delete a collection
 /{collection_id}/ | PUT | create a new document inside collection with an auto generated id
+/{collection_id}/ | POST | queries
 /{collection_id}/{document_id}/{path}/ | GET | get/listen properties
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
 /{collection_id}/{document_id}/{path}/ | PUT | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
+/{collection_id}/{document_id}/{path}/ | POST | queries
 
 ## HTTP Status Codes
 
