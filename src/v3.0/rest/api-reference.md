@@ -11,10 +11,10 @@ Endpoint | Method | Action
 /{collection_id}/ | GET | Get/Query a list of documents
 /{collection_id}/ | PATCH | Create a collection, if doesn't exist
 /{collection_id}/ | DELETE | Delete a collection
-/{collection_id}/ | POST | create a new document inside collection with an auto generated id
+/{collection_id}/ | PUT | create a new document inside collection with an auto generated id
 /{collection_id}/{document_id}/{path}/ | GET | get/listen properties, Query references
 /{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
-/{collection_id}/{document_id}/{path}/ | POST | push a JSON to create a new object and a reference
+/{collection_id}/{document_id}/{path}/ | PUT | push a JSON to create a new object and a reference
 /{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
 
 ## HTTP Status Codes
@@ -145,12 +145,12 @@ Note:
  - By default, at most `50` documents are returned. Thus the default query becomes: `{ size: 50, query: {match_all: {}}}`. To fetch more, provide a proper `query`. 
 
 
-### __Push JSON to a new document__ ``POST``
+### __Push JSON to a new document__ ``PUT``
 
 Push a JSON and create a new document out of it in a collection. It will be given a UUID as its doc id by default.
 
 ```
-curl -i -X POST \  
+curl -i -X PUT \  
 -d '{
 		"name": "lanny"
 	}
@@ -173,7 +173,7 @@ Note:
  -  If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff. For eg.
 
 ```
-curl -i -X POST \  
+curl -i -X PUT \  
 -d '{
 		"_id": "john"
 		"name": "john mcclane"
@@ -350,13 +350,13 @@ Note:
 
 - references don't have any meta data. No priority/timestamp.
 
-### __without a Reference Name__ `POST`
+### __without a Reference Name__ `PUT`
 
 This is a way to work with web-hooks or events from other systems and services, where there may not be a control over what kind of JSON object is received.
 
 This endpoint allows pushing pure JSON data to an document URL, and it creates a new document out of it, adding it as a reference inside the document.
 
-Works similar to POST on a collection.
+Works similar to PUT on a collection.
 
 eg.
 
