@@ -1,4 +1,5 @@
-
+##### AppbaseJS v2.2.13 -> 2.2.14
+- using `v2_1` REST API
 
 ##### AppbaseJS v2.2.13 -> 2.2.14
 - `on()` methods now include vertex data with them.
