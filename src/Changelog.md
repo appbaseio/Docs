@@ -1,4 +1,4 @@
-##### AppbaseJS v2.2.13 -> 2.2.14
+##### AppbaseJS v2.2.14 -> 2.2.15
 - using `v2_1` REST API
 
 ##### AppbaseJS v2.2.13 -> 2.2.14
