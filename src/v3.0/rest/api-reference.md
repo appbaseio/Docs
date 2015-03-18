@@ -369,7 +369,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
-    "data": ["foo"]
+    "properties": ["foo"]
 }
 
 <b>Response</b>
@@ -580,7 +580,7 @@ curl -X DELETE -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
 </li>
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
-		<li><span class="inline-heading">STATUS</span> - ``204`` if success.</li>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
 	</ul>
 </li>
 </ul>
@@ -599,6 +599,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 <b>Response</b>
 <span class="inline-heading">STATUS</span>
-204
+200
 </code>
 </pre>
