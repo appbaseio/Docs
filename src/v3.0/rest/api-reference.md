@@ -1,606 +1,615 @@
 # {"title": "Introduction", "threeColumns": true}
 
-The Appbase v3.0 API is based on REST principles. All operations including creating documents and references, fetching a specific document, deleting a document or searching through documents are RESTful. The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, via sockjs.
+The Appbase API is based on REST principles. All operations including creation of new documents and references, fetching document (JSON) and references, deleting a document or a reference as well as searching through documents are RESTful.
 
-# API Quick Reference
+The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, using socket.io.
+
+### Resource Types
+
+- ``Collection`` - A container of JSON documents
+- ``Document`` - A JSON object, can contain embedded documents
+- ``Reference`` - A reference is an alias to another document
+- ``Path`` - A path consists of a document and one or more references
+
+### Allowed HTTP Request Types
+
+- ``PATCH`` - Partial Updates to an Existing Resource OR Creates a new resource
+- ``POST`` - Creates a new resource at the resource path
+- ``GET`` - Fetches a resource
+- ``DELETE`` - Delete a resource
 
 
-Endpoint | Method | Action
--------- | ------ | ------ 
-/ | GET | list of existing collections, current time as an object
-/{collection_id}/ | GET | Get a list of documents
-/{collection_id}/ | PATCH | Create a collection, if doesn't exist
-/{collection_id}/ | DELETE | Delete a collection
-/{collection_id}/ | PUT | create a new document inside collection with an auto generated id
-/{collection_id}/ | POST | queries
-/{collection_id}/{document_id}/{path}/ | GET | get/listen properties
-/{collection_id}/{document_id}/{path}/ | PATCH | create object; partially update properties; put-remove a reference
-/{collection_id}/{document_id}/{path}/ | PUT | push a JSON to create a new object and a reference
-/{collection_id}/{document_id}/{path}/ | DELETE | delete the whole document
-/{collection_id}/{document_id}/{path}/ | POST | queries
+### HTTP Header(s)
 
-## HTTP Status Codes
+All API requests require a JSON body to specify additional options. The following header is necessary for all the API requests.
 
- - 200 (Success): for every request that succeeds, also the create/delete ones
- - 404 (not found): when the path doesn't exist
- - 401 (Unauthorized): when secret or token is not present, or is invalid
- - 500 (Server error): internal server errors, like when ES indexing failed or something
- - 501 (Not Implemented) : When trying to use a wrong HTTP method on the endpoint
- - 400 (Bad Request): 
- - 403 (Forbidden): a thing to keep in mind for the next backend - When the security rules do not allow the access
- - 409 (Conflict): for commitData
+"Content-Type": "application/json"
 
-## Errors
 
-On top of HTTP status code, we return a json document for errors. the document looks like: 
-```js
-{
-	error: <number>
-	message: <string>
-}
-```
+### Authorization
 
-# Headers
+Appbase accepts one of the two methods of authorizations.
 
- - appbase-secret
- - content-type: "application/json"
- - http-method-override - https://www.firebase.com/docs/rest/api/#section-method-override
+1. Header based authorization (preferred) - Add a HTTP header "Appbase-Secret" to each request, with value as the app's *secret key*.
+2. Add a field "secret" : "&lt;secret-key>" in the JSON body of the request.
+
+In this document, we will be using the 1. method since it makes authorization distinct from the request data.
+
+
+### Base URI
+
+Base URI is the fixed URI that is common for all the API request endpoints and is prefix to all the API requests. A base URI has two path variables: **appname** and **api_version**. A typical base URI looks like https://api.appbase.io/&lt;appname>/v3/.
+
 
 
 # API Reference
 
-## http://api.appbase.io/appname/v3 - Global
+## Introduction
 
-### `GET`
-```js
-{
-	_time: {
-		"_timestamp": 346274526,
-		"_timezone": "UTC", // always - infact server's own system time is in UTC - simplifies Elasticsearch's relative time features
-		"_ISOString": "2015-02-27T02:51:50.968Z",
-	},
-	_collections: ["user", "tweet"]
-}
-```
+The Appbase API endpoints are divided between three types of different resources.
 
-### Document Resource Notes:
+1. ``Collection`` - A container of JSON documents
+2. ``Document`` - A JSON object, can contain embedded documents
+3. ``Reference`` - A reference is an alias to another document
 
-- properties - that can not be used by the developer:
- 
-	- _id - uuid of the document - unique across the collection - also represents the document's path: `collection/id`
-	- _timestamp - used for internal timestamping
-	- _collection - collection where it belongs
-	- _deleted - keeping track of deleted documents
-    - deprecated in this version:
-	    - rootPath <-replaced by id and collection
+#### Path: New Concept
 
-
----
+A path consists of a document and one or more references. It's similar to how symlinks work in *nix filesystems.
 
 ## Collection
 
-Operate on namespaces.
+### List all documents
 
-### __Create__ ``PATCH``
-
-Create a new collection if it doesn't exist. This is NOT a required step to create documents inside that collection. Collections are created automatically.
-
-```
-curl -i -X PATCH \  
-'https://api.appbase.io/rest_test/v3/Materials'
-```
-
-Reponse: (when the collection is newly created)
-```js
-{
-	"_collection": "Materials",
-	"_created": true, // as it is a new collection
-	"_createdAt": 2301249092 //timestamp in UTC
-}
-```
-
-(when the collection already exists)
-```js
-{
-	"_collection": "Materials",
-	"_createdAt": 2301249092 //timestamp in UTC
-}
-```
-
-### __Delete__ ``DELETE``
-Delete the collection and all its documents.
-
-```
-curl -i -X DELETE \  
-'https://api.appbase.io/rest_test/v3/Materials'
-```
-Response: 
-```js
-{
-	"_collection": "Materials",
-	"_createdAt": 2301249092, //timestamp in UTC
-	"_deleted": true
-}
-```
-
-### __Push JSON to a new document__ ``PUT``
-
-Push a JSON and create a new document out of it in a collection. It will be given a UUID as its doc id by default.
-
-```
-curl -i -X PUT \  
--d '{
-		"name": "lanny"
-	}
-}' \  
-'https://api.appbase.io/rest_test/v3/user/'
-```
-
-Response:
-
-```js
-{
-	"asd34234": {
-		"_id" : "asd34234" //random id
-		"name": "lanny"
-	}
-}
-```
-
-Note:
- -  If an `_id` field is provided inside the JSON object, that id will be used as the document's id in Appbase. Making it fully compatible with other NoSQL stuff. For eg.
-
-```
-curl -i -X PUT \  
--d '{
-		"_id": "john"
-		"name": "john mcclane"
-	}
-}' \  
-'https://api.appbase.io/rest_test/v3/user/'
-```
-
-Response:
-```js
-{
-	"john": {
-		"_id": "john"
-		"name": "john mcclane"
-	}
-}
-```
-
-Now fetching that document:
-```
-curl -i -X \  
-'https://api.appbase.io/rest_test/v3/user/john'
-```
-
-Note:
-If `_id` points to an existing document, it works as a `PATCH`.
-
-
-
-### __Read__ `GET`
-
-
-```
-curl -i \    
-'https://api.appbase.io/rest_test/v3/Materials?timestamp=235234'
-```
-
-Response:
-
-`200`
-
-```js
-{
-	
-	"abc" : {
-		"_id": "abc",
-		"_collection": "Materials"
-		"_timestamp": 2021692,
-		"foo": "bar"
-	},
-	"pqr": null // deleted
-}
-```
-Note:
- - If a `timestamp` is provided in the url parameter, it will work as a _sync_ and only the documents updated after that will be returned. Documents that are deleted will be returned too, with `"/doc_id": null`. 
- - By default, we only provide 1000 documents in the request. If required more, use the queries.
-
-
-### __Query__ `POST`
-
-Elastic search queries on the documents.
-
-For now, the query format, and the response format is kept exactly the same as elasticsearch.
-
-```
-curl -XPOST 'https://api.appbase.io/rest_test/v3/user/' \
--d '//DslQueryJSONObject'
-```
-
-the query object example:
-
-```js
-{
-    size: 0,
-    query: {
-      filtered: {
-        filter: {
-            bool: {must: [
-                {"exists" : { "field" : "bucket" }}, // leave it as it is
-                {"exists" : { "field" : "_user" }}, // leave it as it is
-                {"range": {"startTime": range("2015-02-28 2015-02-28")}} // date range
-            ]}
-        }
-      }
-    },
-    aggs: { // creating buckets for hours
-      byTime: {
-        terms: {
-          field: "bucket.hour",
-          size: 2
-        }
-      }
-    }
-  }
-}
-```
-
-Response:
-
-Direct elastic search results.
-
-```js
-{
-  "took": 7,
-  "timed_out": false,
-  "_shards": {
-    "total": 5,
-    "successful": 5,
-    "failed": 0
-  },
-  "hits": {
-    "total": 2491,
-    "max_score": 0,
-    "hits": []
-  },
-  "aggregations": {
-    "byTime": {
-      "buckets": [
-        {
-          "key": 9,
-          "doc_count": 398
-        },
-        {
-          "key": 8,
-          "doc_count": 358
-        }
-      ]
-    }
-  }
-}
-```
-
-
-Note: 
-Pagination becomes a part of the elasticsearch query.
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-from-size.html
-
-## Document
-
-Operate on documents inside a collection.
-
-### __Create / Update Document__ ``PATCH``
-Update the document properties, or create a new document when the path exists. The document and collection, are automatically created if they don't exist.
+List the documents in the collection. *Returns* an array of documents in the given collection.
 
 > **Example Request**
 ```curl
-curl -i -X PATCH \
--d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/'
+curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+  'https://api.appbase.io/rest_test/v3/Materials/~list'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* identifier can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents. Each document is returned as an object with a server ``timestamp`` when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
 
-Response: 
- Return the whole updated document.
-
-`200`
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~list
+<span class="inline-heading">HEADERS</span>
 Content-Type: application/json
-```js
-{
-	"_id": "Ice"
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"foo": "bar"
-}
-```
-Note:
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
- - If timestamp is provided in the url parameter, it will only update the document when the request timestamp matches the stored timestamp. (commitData)
- - only updates properties which are provided in the request
- - patch properties with `null` to remove them
- eg:
-```
-curl -i -X PATCH \
--d '{"foo": "bar"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/'
-```
-Response: 
-```js
-{
-	"_id": "Ice"
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"foo": null // null appears only in this request, as this property is removed. in subsequent requests, this property will simply be omitted 
-}
-```
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+[
+  {
+    "_id": "547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice"
+  },
+  {
+    "_id": "5488ccab3b87a791550d81b7",
+    "timestamp": 1418464098508,
+    "rootPath": "Materials/Iron"
+  },
+  {
+    "_id": "5488cce73b87a791550d81bb",
+    "timestamp": 1418251495670,
+    "rootPath": "Materials/Fire"
+  }
+]</code>
+</pre>
 
- - to update a nested field, provide nested properties with a dot (Mongo and ES convention)
-	- eg: 
-```js
-{
-	"authoredBy.profile.firstName" = 52
-}
+### Search Documents by property(ies)
+
+Search documents by one or more document properties. *Returns* an array of documents that match the search criteria.
+
+> **Example Request**
+```curl
+curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+        "query": {
+            "text": "bar",
+            "properties":["foo"]
+        }
+     }' \
+'https://api.appbase.io/rest_test/v3/Materials/~search'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* identifier can contain all ascii characters except for white spaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``query`` - A JSON object representing the search query and the properties to be used for the matching criteria.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents which match the search query. Each document is returned as an object with all the **properties** (both matching and non-matching), a server ``timestamp`` when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
 
-- it is possible to patch a non-existent deeper document using patch too. the ancestors must exist. eg.
-```
-curl -i -X PATCH \
--d '{"foo": "bar", "_collection": "Song"}' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/IceBaby'
-```
-
-Note that `_collection` must be provided in the request, where the object will be created.
-If `_id` is provided too, it will be used as the id for the new document.
-
-Response: 
-```js
-{
-	"_id": "sddfvdav", // random, if not provided in the request 
-	"_collection": "Song",
-	"_timestamp": 12535265236,
-	"foo": null // null appears only in this request, as this property is removed. in subsequent requests, this property will simply be omitted 
-}
-```
-
-### __Delete__ `DELETE`
-
-Delete (Destroy) Document
-
-```
-curl -i -X DELETE \
-'https://api.appbase.io/rest_test/v3/Materials/Ice'
-```
-
-Response: (get the whole document which was just deleted - omitting references) 
-
-`200`
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~search
+<span class="inline-heading">HEADERS</span>
 Content-Type: application/json
-```js
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
 {
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"_deleted": true,
-	"foo": "bar"
+  "query": {
+    "text": "bar",
+    "properties": [
+      "foo"
+    ]
+  }
 }
-```
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+[
+  {
+    "_id": "Materials`547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice",
+    "green": "leaf",
+    "foo": "bar"
+  }
+]
+</code>
+</pre>
 
 
+## Document Properties
 
-### Creating References 
+All data operations on a document happen via **Document Properties** endpoint.
 
+### Create / Update Document Properties
 
-### __with a Reference Name__ `PATCH`
-
-Update/create references, one at a time. This is an overloaded endpoint. One can update either properties or one reference.
+Create a new document with some properties or update the properties of an existing document.
 
 > **Example Request**
 ```curl
-curl -i -X PATCH \  
--d '{
-	"/tweetedBy": "user/sagar"
-}' \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/'
+curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+		"foo":"bar"
+     }' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``data`` - A JSON object representing the properties to be set on the document (can contain nested object, arrays). In case of a conflict (read existing property), the property value will be overwritten.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``timestamp`` when the update happened, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
 
-Response: 
-`200`
-Receive the reference with its data. Receive basic properties of the document, id collection and timestamp. 
-
-```js
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
 {
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"/tweetedBy": {
-		"_id": "abc",
-		"_collection": "asas"
-		"_timestamp": 2021692,
-		"foo": "bar"
-	}
+    "foo": "bar"
 }
-``` 
 
-Note:
- - provide a `null` for a reference name to delete a reference.
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+  "foo": "bar",
+  "timestamp": 1413403738268,
+  "rootPath": "Materials/Ice",
+  "_id": "Materials`543ed45a4c0b62550662563b"
+}
+</code>
+</pre>
 
-Eg: 
+### Read Document Properties
 
+Read the existing document properties.
 
 > **Example Request**
 ```curl
-curl -i -X PATCH \  
--d '{
-	"/tweetedBy": null
-}' \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice/'
+curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, a unique identifier of the document properties resource ``_id`` (used by the server internally), along with an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+	</ul>
+</li>
+</ul>
 
-Response: 
-`200`
-Receive the deleted reference, set as null. Receive basic properties of the document, id collection and timestamp. 
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
-```js
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
 {
-	"_id": "Ice",
-	"_collection": "Materials",
-	"_timestamp": 12535265236,
-	"/tweetedBy": null
+  "document": {
+    "_id": "Materials`547059ce69528db30aa7ae90",
+    "timestamp": 1418488108255,
+    "rootPath": "Materials/Ice",
+    "foo": "bar",
+    "green": "leaf"
+  },
+  "optype": "RETR"
 }
-```
+</code>
+</pre>
 
-Note:
+### Delete document properties
 
-- references don't have any meta data. No priority/timestamp.
-
-### __without a Reference Name__ `PUT`
-
-This is a way to work with web-hooks or events from other systems and services, where there may not be a control over what kind of JSON object is received.
-
-This endpoint allows pushing pure JSON data to an document URL, and it creates a new document out of it, adding it as a reference inside the document.
-
-Works similar to PUT on a collection.
-
-eg.
+Delete specific (or all) data properties of a document.
 
 > **Example Request**
 ```curl
-curl -i -X PUT \  
--d '{
-	"message": "this is a tweet"
-}' \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice?collection=tweet'
+curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+         "properties": ["foo"]
+     }' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Content-Type - application/json (always)</li>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all properties</b>
+	<ul>
+		<li>A JSON object with the field ``properties`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific properties</b>
+	<ul>
+		<li>A JSON object with the property ``properties`` set as an array of property names to be deleted.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the deleted properties set to "", a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
 
-Response:
-
-```js
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
 {
-	"/141fsddvf": { //random generate reference name
-		"_id": "wasvt33463", //random generated id for the new document
-		"_collection": "tweet"
-		"message": "this is a tweet"
-	}
+    "data": ["foo"]
 }
-```
-Note: 
 
-- `collection=` is necessary in the URL, where the new document will be created.
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+  "foo": "",
+  "_id": "Materials`547059ce69528db30aa7ae90",
+  "timestamp": 1418486072705,
+  "rootPath": "Materials/Ice"
+}
+</code>
+</pre>
 
-### __Read Document__ ``GET`` 
+## Document Reference
 
-Fetch document's properties and references
+### Create / Update Document References
 
-> **Example Request**
+Create a new reference or update the existing reference(s). A **priority**, which acts as an index can optionally be set on the reference.
+
+> **Example Request**  
 ```curl
-curl -i \  
-'https://api.appbase.io/rest_test/v3/Materials/Ice'
+curl -X PATCH -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+	     "references": {
+	         "aReference": {
+	             "path": "Materials/Iron"
+	         },
+	         "anotherReference": {
+	             "path": "Materials/Ice"
+	             "priority": 500.6
+	         }
+	     }
+     }' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>A JSON object representing the reference(s) to be created from the document. In case of a conflict (read an existing reference), the original reference will be updated.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated references, a server ``timestamp`` for each reference when the update happened, and a unique identifier for each reference resource ``t_id`` (used by the server internally).</li>
+	</ul>
+</li>
+</ul>
 
-Response:
-
-`200`
-```js
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
 {
-	"_id": "Ice",
-	"_collection": "Material",
-	"foo": "bar",
-	"_timestamp": 23491400,
-	"/tweetedBy": {
-		"_id": "3193v1934n",
-		"_collection": "user",
-		"name": "yo",
-		"_timestamp": 23491400
-	}
-}
-```
-
-Note:
- - references are included as well, unless `references=false` provided in URL parameter
- - if a `timestamp` is provided in the url parameter, it will work as a _sync_ and refs changed after that timestamp will be returned: `"/ref_name": null`
- - by default, only 1000 references will be returned. If required more, use the queries.
-
-
-
-### __Query__ `POST`
-
-Elastic search queries on the documents.
-
-For now, the query format, and the response format is kept exactly the same as elasticsearch.
-
-```
-curl -XPOST 'https://api.appbase.io/rest_test/v3/user/sagar/calls' \
--d '//DslQueryJSONObject'
-```
-
-the query object example:
-
-```js
-{
-    size: 0,
-    query: {
-      filtered: {
-        filter: {
-            bool: {must: [
-                {"exists" : { "field" : "bucket" }}, // leave it as it is
-                {"exists" : { "field" : "_user" }}, // leave it as it is
-                {"range": {"startTime": range("2015-02-28 2015-02-28")}} // date range
-            ]}
-        }
-      }
+    "aReference": {
+      "path": "Materials/Iron"
     },
-    aggs: { // creating buckets for hours
-      byTime: {
-        terms: {
-          field: "bucket.hour",
-          size: 2
-        }
-      }
+    "anotherReference": {
+      "path": "Materials/Ice",
+      "priority": 500.6
     }
-  }
 }
-```
 
-Response:
-
-Direct elastic search results.
-
-```js
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
 {
-  "took": 7,
-  "timed_out": false,
-  "_shards": {
-    "total": 5,
-    "successful": 5,
-    "failed": 0
-  },
-  "hits": {
-    "total": 2491,
-    "max_score": 0,
-    "hits": []
-  },
-  "aggregations": {
-    "byTime": {
-      "buckets": [
-        {
-          "key": 9,
-          "doc_count": 398
-        },
-        {
-          "key": 8,
-          "doc_count": 358
-        }
-      ]
+  "_id": "Materials`547059ce69528db30aa7ae90",
+  "references": {
+    "aReference": {
+      "t_id": "Materials`5488ccab3b87a791550d81b7",
+      "timestamp": 1418261314605
+    },
+    "anotherReference": {
+      "t_id": "Materials`547059ce69528db30aa7ae90",
+      "priority": 500.6,
+      "timestamp": 1418261314605
     }
   }
 }
+</code>
+</pre>
+
+### Read References
+
+Fetch the document references.
+
+> **Example Request**
+```curl
+curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
 ```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **references** object with the filtered references as an array, each reference having a ``timestamp`` value when the reference was last updated, a unique identifier of the reference resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the reference on which this operation is performed and an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+	</ul>
+</li>
+</ul>
 
-Note: 
-Pagination becomes a part of the elasticsearch query.
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-from-size.html
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+  "references": {
+    "aReference": {
+      "t_id": "Materials`5488ccab3b87a791550d81b7",
+      "timestamp": 1418489847292
+    },
+    "anotherReference": {
+      "t_id": "Materials`547059ce69528db30aa7ae90",
+      "timestamp": 1418489847292,
+      "order": 500.6
+    }
+  },
+  "optype": "RETR",
+  "_id": "Materials`547059ce69528db30aa7ae90"
+}
+</code>
+</pre>
+
+### Delete References
+
+Delete specific (or all) document references.
+
+> **Example Request**
+```curl
+curl -X DELETE -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+        "references": ["edge1", "edgen"]
+     }' \
+'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all references</b>
+	<ul>
+		<li>A JSON object with the field ``references`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific references</b>
+	<ul>
+		<li>A JSON object with the field ``references`` set as an array of reference identifiers to be deleted.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``204`` if success.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="inline-heading">HEADERS</span>
+Content-Type: application/json
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "references": ["edge1", "edgen"]
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+204
+</code>
+</pre>
