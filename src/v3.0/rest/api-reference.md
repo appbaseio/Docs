@@ -385,7 +385,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 </code>
 </pre>
 
-## Document Reference
+## Document References
 
 ### Create / Update Document References
 
@@ -491,6 +491,11 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
 		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
 		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">URL PARAMETERS/span>
+	<ul>
+		<li>URL parameters can be passed to retrieve references by querying on priority. The valid url parameters are startAt, endAt, limit and skip</li>
 	</ul>
 </li>
 <li><span class="inline-heading">REQUEST HEADERS</span>
