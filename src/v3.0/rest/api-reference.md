@@ -19,13 +19,6 @@ The only non-RESTful operation is realtime event streams, which works with the W
 - ``DELETE`` - Delete a resource
 
 
-### HTTP Header(s)
-
-All API requests require a JSON body to specify additional options. The following header is necessary for all the API requests.
-
-"Content-Type": "application/json"
-
-
 ### Authorization
 
 Appbase accepts one of the two methods of authorizations.
@@ -95,7 +88,6 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~list
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 <b>Response</b>
@@ -169,7 +161,6 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~search
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
@@ -248,7 +239,6 @@ curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
@@ -306,7 +296,6 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 <b>Response</b>
@@ -350,7 +339,6 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 </li>
 <li><span class="inline-heading">REQUEST HEADERS</span>
 	<ul>
-		<li>Content-Type - application/json (always)</li>
 		<li>Appbase-Secret - Application secret key, unique to the application</li>
 	</ul>
 </li>
@@ -378,7 +366,6 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
@@ -454,7 +441,6 @@ curl -X PATCH -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
@@ -526,7 +512,6 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 <b>Response</b>
@@ -601,7 +586,6 @@ curl -X DELETE -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
 <span class="inline-heading">URL</span>
 <span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
-Content-Type: application/json
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
