@@ -647,7 +647,7 @@ connection: keep-alive
 
 ### Delete vertex edges
 
-Delete specific (or all) data properties of a vertex.
+Delete specific (or all) edges of a vertex.
 
 > **Example Request**
 ```curl
@@ -688,7 +688,7 @@ curl --include \
 </li>
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
-		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">STATUS</span> - ``204`` if success.</li>
 	</ul>
 </li>
 </ul>
