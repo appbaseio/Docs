@@ -493,7 +493,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
 	</ul>
 </li>
-<li><span class="inline-heading">URL PARAMETERS/span>
+<li><span class="inline-heading">URL PARAMETERS</span>
 	<ul>
 		<li>URL parameters can be passed to retrieve references by querying on priority. The valid url parameters are startAt, endAt, limit and skip</li>
 	</ul>
