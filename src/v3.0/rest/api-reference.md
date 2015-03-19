@@ -115,15 +115,17 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 ### Search Documents by property(ies)
 
-Search documents by one or more document properties. *Returns* an array of documents that match the search criteria.
+Search documents by one or more document properties. *Returns* an array of documents that match the search criteria. The ``~search`` endpoint uses ElasticSearch directly. For more details, see what more can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases).
 
 > **Example Request**
 ```curl
 curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
         "query": {
-            "text": "bar",
-            "properties":["foo"]
+            "multi_match": {
+                "fields": ["foo"],
+                "query": "bar"
+            }
         }
      }' \
 'https://api.appbase.io/rest_test/v3/Materials/~search'
@@ -393,7 +395,7 @@ Create a new reference or update the existing reference(s). A **priority**, whic
 
 > **Example Request**  
 ```curl
-curl -X PATCH -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
+curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
      -d '{
 	     "references": {
 	         "aReference": {
@@ -547,7 +549,7 @@ Delete specific (or all) document references.
 
 > **Example Request**
 ```curl
-curl -X DELETE -H "Appbase-Secret": "193dc4d2440146082ea734f36f4f2638" \
+curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
         "references": ["edge1", "edgen"]
      }' \
