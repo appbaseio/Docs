@@ -2,8 +2,6 @@
 
 The Appbase API is based on REST principles. All operations including creation of new documents and references, fetching document (JSON) and references, deleting a document or a reference as well as searching through documents are RESTful.
 
-The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, using socket.io.
-
 ### Resource Types
 
 - ``Collection`` - A container of JSON documents
@@ -31,7 +29,7 @@ In this document, we will be using the 1. method since it makes authorization di
 
 ### Base URI
 
-Base URI is the fixed URI that is common for all the API request endpoints and is prefix to all the API requests. A base URI has two path variables: **appname** and **api_version**. A typical base URI looks like https://api.appbase.io/&lt;appname>/v3/.
+Base URI is the fixed URI that is common for all the API request endpoints and is prefix to all the API requests. A base URI has two path variables: **appname** and **api_version**. A typical base URI looks like https://v3.api.appbase.io/&lt;appname>/.
 
 
 
@@ -58,7 +56,7 @@ List the documents in the collection. *Returns* an array of documents in the giv
 > **Example Request**
 ```curl
 curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-  'https://api.appbase.io/rest_test/v3/Materials/~list'
+  'https://v3.api.appbase.io/rest_test/Materials/~list'
 ```
 **Usage**:
 <ul>
@@ -86,7 +84,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~list
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/~list
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
@@ -128,7 +126,7 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
             }
         }
      }' \
-'https://api.appbase.io/rest_test/v3/Materials/~search'
+'https://v3.api.appbase.io/rest_test/Materials/~search'
 ```
 **Usage**:
 <ul>
@@ -161,7 +159,7 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">POST</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/~search
+<span class="request-type">POST</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/~search
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
@@ -205,7 +203,7 @@ curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
 		"foo":"bar"
      }' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~properties'
 ```
 **Usage**:
 <ul>
@@ -239,7 +237,7 @@ curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="request-type">PATCH</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
@@ -267,7 +265,7 @@ Read the existing document properties.
 > **Example Request**
 ```curl
 curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~properties'
 ```
 **Usage**:
 <ul>
@@ -296,7 +294,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
@@ -327,7 +325,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
          "properties": ["foo"]
      }' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~properties'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~properties'
 ```
 **Usage**:
 <ul>
@@ -366,7 +364,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
+<span class="request-type">DELETE</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~properties
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
@@ -407,7 +405,7 @@ curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
 	         }
 	     }
      }' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~references'
 ```
 **Usage**:
 <ul>
@@ -441,7 +439,7 @@ curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">PATCH</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="request-type">PATCH</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
@@ -483,7 +481,7 @@ Fetch the document references.
 > **Example Request**
 ```curl
 curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~references'
 ```
 **Usage**:
 <ul>
@@ -517,7 +515,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">GET</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
@@ -553,7 +551,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
         "references": ["edge1", "edgen"]
      }' \
-'https://api.appbase.io/rest_test/v3/Materials/Ice/~references'
+'https://v3.api.appbase.io/rest_test/Materials/Ice/~references'
 ```
 **Usage**:
 <ul>
@@ -591,7 +589,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">DELETE</span> https://api.appbase.io/<span class="path-var">appname</span>/v3/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
+<span class="request-type">DELETE</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/~references
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
