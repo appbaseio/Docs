@@ -47,6 +47,95 @@ The Appbase API endpoints are divided between three types of different resources
 
 A path consists of a document and one or more references. It's similar to how symlinks work in *nix filesystems.
 
+## Global
+
+### Server Time
+
+> **Example Request**
+```curl
+curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+  'https://v3.api.appbase.io/rest_test/~timestamp'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns server timestamp in milliseconds.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/~timestamp
+<span class="inline-heading">HEADERS</span>
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+
+</code>
+</pre>
+
+### List collections
+
+> **Example Request**
+```curl
+curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+  'https://v3.api.appbase.io/rest_test/~collections'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array with collection names.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/~collections
+<span class="inline-heading">HEADERS</span>
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+["Materials", "Users"]
+</code>
+</pre>
+
+
 ## Collection
 
 ### List all documents
@@ -56,7 +145,7 @@ List the documents in the collection. *Returns* an array of documents in the giv
 > **Example Request**
 ```curl
 curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
-  'https://v3.api.appbase.io/rest_test/Materials/~list'
+  'https://v3.api.appbase.io/rest_test/Materials/~documents'
 ```
 **Usage**:
 <ul>
