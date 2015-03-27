@@ -173,7 +173,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <code>
 <b>Request</b>
 <span class="inline-heading">URL</span>
-<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/~list
+<span class="request-type">GET</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/~documents
 <span class="inline-heading">HEADERS</span>
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
@@ -374,7 +374,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, a unique identifier of the document properties resource ``_id`` (used by the server internally), along with an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
 	</ul>
 </li>
 </ul>
@@ -392,14 +392,11 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 <span class="inline-heading">BODY</span>
 {
-  "document": {
-    "_id": "Materials`547059ce69528db30aa7ae90",
-    "timestamp": 1418488108255,
-    "rootPath": "Materials/Ice",
-    "foo": "bar",
-    "green": "leaf"
-  },
-  "optype": "RETR"
+  "_id": "Materials`547059ce69528db30aa7ae90",
+  "timestamp": 1418488108255,
+  "rootPath": "Materials/Ice",
+  "foo": "bar",
+  "green": "leaf"
 }
 </code>
 </pre>
@@ -595,7 +592,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **references** object with the filtered references as an array, each reference having a ``timestamp`` value when the reference was last updated, a unique identifier of the reference resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the reference on which this operation is performed and an **optype** field equaling "RETR" - indicating a retrieval operation.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **references** object with the filtered references as an array, each reference having a ``timestamp`` value when the reference was last updated, a unique identifier of the reference resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the reference on which this operation is performed.</li>
 	</ul>
 </li>
 </ul>
@@ -624,7 +621,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
       "order": 500.6
     }
   },
-  "optype": "RETR",
   "_id": "Materials`547059ce69528db30aa7ae90"
 }
 </code>
