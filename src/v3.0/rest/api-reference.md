@@ -88,7 +88,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">STATUS</span>
 200
 <span class="inline-heading">BODY</span>
-
+1427598163417
 </code>
 </pre>
 
@@ -131,7 +131,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">STATUS</span>
 200
 <span class="inline-heading">BODY</span>
-["Materials", "Users"]
+["Materials", "newName", "user", "calls", "HXH"]
 </code>
 </pre>
 
@@ -164,7 +164,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents. Each document is returned as an object with a server ``timestamp`` when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents. Each document is returned as an object with a server ``timestamp`` when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -183,19 +183,19 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 [
   {
-    "_id": "547059ce69528db30aa7ae90",
-    "timestamp": 1418488108255,
-    "rootPath": "Materials/Ice"
+    "_id": "Ice",
+    "_collection": "Materials",
+    "timestamp": 1418488108255
   },
   {
-    "_id": "5488ccab3b87a791550d81b7",
-    "timestamp": 1418464098508,
-    "rootPath": "Materials/Iron"
+    "_id": "Iron",
+    "_collection": "Materials",
+    "timestamp": 1418464098508
   },
   {
-    "_id": "5488cce73b87a791550d81bb",
-    "timestamp": 1418251495670,
-    "rootPath": "Materials/Fire"
+    "_id": "Fire",
+    "_collection": "Materials",
+    "timestamp": 1418251495670
   }
 ]</code>
 </pre>
@@ -239,7 +239,7 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents which match the search query. Each document is returned as an object with all the **properties** (both matching and non-matching), a server ``timestamp`` when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents which match the search query. Each document is returned as an object with all the **properties** (both matching and non-matching), a server ``timestamp`` when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -265,15 +265,32 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">STATUS</span>
 200
 <span class="inline-heading">BODY</span>
-[
-  {
-    "_id": "Materials`547059ce69528db30aa7ae90",
-    "timestamp": 1418488108255,
-    "rootPath": "Materials/Ice",
-    "green": "leaf",
-    "foo": "bar"
-  }
-]
+{
+    "took":126,
+    "timed_out":false,
+    "_shards":{
+    	"total":5,
+    	"successful":5,
+    	"failed":0
+    },
+    "hits": {
+    	"total":1,
+    	"max_score":8.6468315,
+    	"hits":[
+    		{
+    			"_index":"rest_test",
+    			"_type":"Materials",
+    			"_id":"5510233f328410803792d1cb",
+    			"_score":8.6468315,
+    			"_source":{
+    				"lol":"cat",
+    				"timestamp":1427120959524,
+    				"rootPath":"Materials/Es"
+    			}
+    		}
+    	]
+    }
+}
 </code>
 </pre>
 
@@ -317,7 +334,7 @@ curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``timestamp`` when the update happened, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``timestamp`` when the update happened, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -341,8 +358,8 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 {
   "foo": "bar",
   "timestamp": 1413403738268,
-  "rootPath": "Materials/Ice",
-  "_id": "Materials`543ed45a4c0b62550662563b"
+  "_id": "Ice",
+  "_collection": "Materials"
 }
 </code>
 </pre>
@@ -374,7 +391,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -392,11 +409,11 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 <span class="inline-heading">BODY</span>
 {
-  "_id": "Materials`547059ce69528db30aa7ae90",
-  "timestamp": 1418488108255,
-  "rootPath": "Materials/Ice",
   "foo": "bar",
-  "green": "leaf"
+  "green": "leaf",
+  "_id": "Ice",
+  "_collection": "Materials",
+  "timestamp": 1418488108255
 }
 </code>
 </pre>
@@ -441,7 +458,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the deleted properties set to "", a ``timestamp`` value when the document was last updated, the shortest path to the document resource aka ``rootPath``, and a unique identifier of the document properties resource ``_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the deleted properties set to "", a ``timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -464,9 +481,9 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
   "foo": "",
-  "_id": "Materials`547059ce69528db30aa7ae90",
   "timestamp": 1418486072705,
-  "rootPath": "Materials/Ice"
+  "_id": "Ice",
+  "_collection": "Materials"
 }
 </code>
 </pre>
@@ -481,7 +498,6 @@ Create a new reference or update the existing reference(s). A **priority**, whic
 ```curl
 curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
      -d '{
-	     "references": {
 	         "aReference": {
 	             "path": "Materials/Iron"
 	         },
@@ -489,7 +505,6 @@ curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
 	             "path": "Materials/Ice"
 	             "priority": 500.6
 	         }
-	     }
      }' \
 'https://v3.api.appbase.io/rest_test/Materials/Ice/~references'
 ```
@@ -544,8 +559,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 <span class="inline-heading">BODY</span>
 {
-  "_id": "Materials`547059ce69528db30aa7ae90",
-  "references": {
     "aReference": {
       "t_id": "Materials`5488ccab3b87a791550d81b7",
       "timestamp": 1418261314605
@@ -555,7 +568,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
       "priority": 500.6,
       "timestamp": 1418261314605
     }
-  }
 }
 </code>
 </pre>
@@ -610,7 +622,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 <span class="inline-heading">BODY</span>
 {
-  "references": {
     "aReference": {
       "t_id": "Materials`5488ccab3b87a791550d81b7",
       "timestamp": 1418489847292
@@ -620,8 +631,6 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
       "timestamp": 1418489847292,
       "order": 500.6
     }
-  },
-  "_id": "Materials`547059ce69528db30aa7ae90"
 }
 </code>
 </pre>
