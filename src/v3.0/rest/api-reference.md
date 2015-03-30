@@ -182,22 +182,20 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 <span class="inline-heading">BODY</span>
 [
-  {
-    "_id": "Ice",
-    "_collection": "Materials",
-    "timestamp": 1418488108255
-  },
-  {
-    "_id": "Iron",
-    "_collection": "Materials",
-    "timestamp": 1418464098508
-  },
-  {
-    "_id": "Fire",
-    "_collection": "Materials",
-    "timestamp": 1418251495670
-  }
-]</code>
+    {
+        "foo":"bar1",
+        "_id":"Ice",
+        "_collection":"Materials",
+        "_timestamp":1427654841414
+    },
+    {
+        "lol":"cat",
+        "_id":"Es",
+        "_collection":"Materials",
+        "_timestamp":1427120959524
+    }
+]
+</code>
 </pre>
 
 ### Search Documents by property(ies)
@@ -502,7 +500,7 @@ curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
 	             "path": "Materials/Iron"
 	         },
 	         "anotherReference": {
-	             "path": "Materials/Ice"
+	             "path": "Materials/Ice",
 	             "priority": 500.6
 	         }
      }' \
@@ -621,17 +619,35 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">STATUS</span>
 200
 <span class="inline-heading">BODY</span>
-{
-    "aReference": {
-      "t_id": "Materials`5488ccab3b87a791550d81b7",
-      "timestamp": 1418489847292
+[
+    {
+        "anotherReference":
+        {
+            "_timestamp":1427746003602,
+            "_json": 
+            {
+                "_id":"Ice",
+                "foo":"bar",
+                "_collection":"Materials",
+                "_timestamp":1427745945520
+            },
+            "priority":500.6
+        }
     },
-    "anotherReference": {
-      "t_id": "Materials`547059ce69528db30aa7ae90",
-      "timestamp": 1418489847292,
-      "order": 500.6
+    {
+        "aReference":
+        {
+             "_timestamp":1427746003602,
+             "_json":
+             {
+                 "_id":"Iron",
+                 "density":"2.0",
+                 "_collection":"Materials",
+                 "_timestamp":1427745992545
+             }
+        }
     }
-}
+]
 </code>
 </pre>
 
