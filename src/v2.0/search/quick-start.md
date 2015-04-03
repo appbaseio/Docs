@@ -170,4 +170,4 @@ That's it! In less than 10 minutes, we were able to add production grade search 
 
 ## Next Steps
 
-Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/docs/elasticsearch.html).
+Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/#/v2.0/search/use-cases).
