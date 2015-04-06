@@ -1,6 +1,6 @@
 # {"title": "Use-cases", "threeColumns": false}
 
-Appbase uses opensource Elasticsearch in the backend, and provides all the powerful search features of ES, on the data stored in Appbase. Every data that's pushed into Appbase is automatically indexed on ElasticSearch.
+Appbase uses Elasticsearch in the backend, and provides all the search queries and filters supported by ES, on the data stored in Appbase. Every data that's pushed into Appbase is automatically indexed on ElasticSearch.
 
 ## Elasticsearch Introduction
 
@@ -35,7 +35,7 @@ A typical request object defines:
 
 Elasticsearch provides rich Query DSL (Domain Specific Language) based on JSON to define queries. Queries involving major usecases are covered in this documentation, but if you want to know more about DSL, goto [this link](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html).
 
-This is a sample request Query Object:
+This is a sample request **query object**, let's call it ``body.json``:
 
 ```json
 {
@@ -52,6 +52,16 @@ This is a sample request Query Object:
 ```
 
 Do not worry about the `body` of this object for now, we will see how to define it for different use cases in this document.
+
+The entire curl request would look like: 
+
+```curl
+curl -X POST -H "Appbase-Secret: 2cac84749bc429ad7017bb1685eafaf4" -d @body.json \
+'https://v3.api.appbase.io/twitter/~search'
+```
+
+> ``Note:``
+> The search endpoint here is not on a particular collection, it is on the app. The collections on which the search should apply are defined in the request body.
 
 ### Response
 
@@ -76,45 +86,150 @@ We provide an unaltered DSL Response from ES. A typical response includes:
 Example:
 
 ```json
-{
-	"took": 9,
-	"timed_out": false,
-	"_shards": {
-		"total": 5,
-		"successful": 5,
-		"failed": 0
-	},
-	"hits": {
-		"total": 2,
-		"max_score": 6.41832,
-		"hits": [
-			{
-				"_index": "twitter",
-				"_type": "user",
-				"_id": "53fa820a5f1f08c11ecb0f95",
-				"_score": 6.41832,
-				"_source": {
-					"timestamp": 1408931734497,
-					"rootPath": "user/hello",
-					"_id": "53fa820a5f1f08c11ecb0f95",
-					"name": "hello"
-				}
-			},
-			{
-				"_index": "twitter",
-				"_type": "tweet",
-				"_id": "546a504316453f340d289d97",
-				"_score": 3.7718577,
-				"_source": {
-					"timestamp": 1416253508159,
-					"rootPath": "tweet/244caea78e32401c9b16788219d8efd5",
-					"_id": "546a504316453f340d289d97",
-					"by": "sid",
-					"msg": "hell"
-				}
-			}
-		]
-	}
+{  
+   "took":108,
+   "timed_out":false,
+   "_shards":{  
+      "total":5,
+      "successful":5,
+      "failed":0
+   },
+   "hits":{  
+      "total":85,
+      "max_score":2.7672698,
+      "hits":[  
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"54039490e8e652c33de48306",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1409520784851,
+               "rootPath":"tweet/bcb14adde5f34ae3892310ae6774a6d8",
+               "_id":"54039490e8e652c33de48306",
+               "by":"ray",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"54039c58e8e652c33de4837f",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1409522776291,
+               "rootPath":"tweet/e888d1865c604b5c9a3a4f1743e786a6",
+               "_id":"54039c58e8e652c33de4837f",
+               "by":"oeb25",
+               "msg":"Hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"5404eeb5e8e652c33de48a29",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1409609397379,
+               "rootPath":"tweet/193d8e1af1ff40daab3e89dd3911d305",
+               "_id":"5404eeb5e8e652c33de48a29",
+               "by":"p'p",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"546a33a57ecdaac9622e4b88",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1416246182889,
+               "rootPath":"tweet/b774c3d5bcbf4b47aec6cf5036d5ead7",
+               "_id":"546a33a57ecdaac9622e4b88",
+               "by":"sid",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"549ba3d5a81d8ae67f23436a",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1419486165405,
+               "rootPath":"tweet/1b1135ac97d348a28545703784d52984",
+               "_id":"549ba3d5a81d8ae67f23436a",
+               "by":"Nitin",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"54c188351e8cc2334ad5829f",
+            "_score":2.7672698,
+            "_source":{  
+               "timestamp":1421969463460,
+               "rootPath":"tweet/16d4e2b2e6f44b6893ed979b0b00c572",
+               "_id":"54c188351e8cc2334ad5829f",
+               "by":"Zuper",
+               "msg":"Hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"53f975c66c34fcac2d7b8cf9",
+            "_score":2.5059822,
+            "_source":{  
+               "timestamp":1408857542834,
+               "rootPath":"tweet/ed8629b30fd54a13b59c6d7fce56e6b6",
+               "_id":"53f975c66c34fcac2d7b8cf9",
+               "by":"Malav",
+               "msg":"Hello?"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"54037040e8e652c33de480ac",
+            "_score":2.5059822,
+            "_source":{  
+               "timestamp":1409511488905,
+               "rootPath":"tweet/4698cafdda474795adde5fecc03fd0ed",
+               "_id":"54037040e8e652c33de480ac",
+               "by":"swag",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"540381d3e8e652c33de48170",
+            "_score":2.5059822,
+            "_source":{  
+               "timestamp":1409515987389,
+               "rootPath":"tweet/2b320ec901dc45cb8557a255f41687d6",
+               "_id":"540381d3e8e652c33de48170",
+               "by":"hunter",
+               "msg":"hello"
+            }
+         },
+         {  
+            "_index":"twitter",
+            "_type":"tweet",
+            "_id":"5408e606e8e652c33de48e97",
+            "_score":2.5059822,
+            "_source":{  
+               "timestamp":1409869318548,
+               "rootPath":"tweet/ff802b2c30ce496f85162034841bcbdb",
+               "_id":"5408e606e8e652c33de48e97",
+               "by":"sagar",
+               "msg":"hello"
+            }
+         }
+      ]
+   }
 }
 ```
 
