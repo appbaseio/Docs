@@ -26,8 +26,8 @@ All the examples in this doc ES concepts (Type, Document and Field), as we will 
 
 Appbase provides two REST API endpoints for performing search.
 
-1. [https://v3.api.appbase.io/&lt;app_name>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-global-search-collections)
-2. [https://v3.api.appbase.io/&lt;app_name>/&lt;collection>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-collection-search-documents-by-propertyies)
+1. [v3.api.appbase.io/&lt;app_name>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-global-search-collections)
+2. [v3.api.appbase.io/&lt;app_name>/&lt;collection>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-collection-search-documents-by-propertyies)
 
 The **1.** searches across multiple collections and has an additional field to specify this in the request body. Both endpoints are compatible with [ElasticSearch Query DSL](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl.html) and return results in the same format.
 
