@@ -11,12 +11,12 @@ We have thought about the **Search** problem really hard, and have come up with 
 ## Our Approach to Search
 
 Appbase takes the search problem head-on and indexes all the data that is ever stored in Appbase, allowing searching on all the data and relationships. We provide the ability to do the following kind of queries:  
-1. Full-text search - including [simple match queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-fuzzy),  
-2. [Numeric-range queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
-3. [Geo spatial queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
-4. [Sort queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
+1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-fuzzy),  
+2. [Numeric-range queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
+3. [Geo spatial queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
+4. [Sort queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
 
-With [Aggregation](http://docs.appbase.io/docs/elasticsearch.html#-searching-aggregation) and [Combining queries](http://docs.appbase.io/docs/elasticsearch.html#-searching-combining-queries-filters), the possibilities are endless.
+With [Aggregation](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-aggregation) and [Combining queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-combining-queriesfilters), the possibilities are endless.
 
 Here's a primer to leverage these powerful search queries broken into three steps.
 
@@ -32,9 +32,9 @@ We will need the `app name` and the `secret` in all our API calls. In this case,
 
 ### 2. Put some Data
 
-Appbase works with JSON data. You can store JSON objects with Appbase directly, they would form Appbase vertices (similar to MongoDB documents, or RDBMS records). We can make search requests on all the vertices, or a set of vertices via a JSON based query format (using ElasticSearch's DSL).
+Appbase supports the document data model. You can store JSON objects (known as documents) with Appbase directly (similar to MongoDB documents, or RDBMS records). The documents are stored within a collection. Appbase supports a granular search which typically works on a collection. The search is based on the [ElasticSearch DSL](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl.html), and supports the entire query format.
 
-For brevity, let's suppose we are storing user profiles and would like to later search them by different properties. Here's how a JSON user object might look:
+For brevity, let's say we are storing user profiles that we would like to later search by different document properties. Here's how a JSON user object might look:
 
 ```json
 {
@@ -47,7 +47,7 @@ For brevity, let's suppose we are storing user profiles and would like to later 
 }
 ```
 
-To store this data with Appbase, we will make a *PATCH* request via REST. You can read more about them in our [REST API](http://docs.appbase.io/docs/rest.html#api-reference-vertex-property-create-update-vertex-properties). Here's how the request would like in our case:
+To store this data with Appbase, we will make a *PATCH* request via REST. You can read more about them in our [REST API](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-document-properties-create-update-document-properties). Here's how the request would like in our case:
 
 ```curl
 curl -X PATCH -H "Appbase-Secret: 097b2b28b6a13cf2e53b6cecfec42b86" \
@@ -59,25 +59,24 @@ curl -X PATCH -H "Appbase-Secret: 097b2b28b6a13cf2e53b6cecfec42b86" \
         "occupation": "Graphic Designer",
         "email": "laura@awesomedesigner.com"
      }' \
-'https://api.appbase.io/my_app9/v3/people/laura/~properties'
+'https://v3.api.appbase.io/my_app9/people/laura/~properties'
 ```
 
-When you copy the above code, be sure to replace the `Appbase-Secret` header and the `app name` in the URL to your credentials.
+When you copy the above code, be sure to replace the `Appbase-Secret` header and the `app name` in the URL to match your credentials.
 
 > *Understanding the Request*
 >  
 > To store data, we do a __PATCH__ request.
 >
-- URL: https://api.appbase.io/my_app9/v3/people/laura/~properties, where
+- URL: https://v3.api.appbase.io/my_app9/people/laura/~properties, where
 >
- - `https://api.appbase.io` - Appbase REST API base URL
+ - `https://v3.api.appbase.io` - Appbase REST API base URL prefixed with the API version (``v3``)
  - `my_app9` - name of your app as shown in the dashboard
- - `v3` - the current Appbase REST API version (`v3` for all API requests)
- - `people` - the collection identifer (similar to a collection id in MongoDB)
- - `laura` - the document identifier (similar to a document id in MongoDB)
+ - `people` - the collection identifer
+ - `laura` - the document identifier
  - `~properties` - the resource endpoint for the vertex `laura` to patch (depending on the operation, this could be either `~properties`, `~references`, `~search`, etc.)
 >
->- Headers
+>- Headers  
 Headers in this request include the `Appbase-Secret` value.
 
 
@@ -91,30 +90,50 @@ Let's search for users whose occupation is being a _designer_.
 curl -X POST -H "Appbase-Secret: 097b2b28b6a13cf2e53b6cecfec42b86" \
      -d '{
         "query": {
-            "text": "designer",
-            "properties":["occupation"]
+            "multi_match": {
+                "fields": ["occupation"],
+                "query": "designer"
+            }
         }
     }' \
-'https://api.appbase.io/my_app9/v3/people/~search'
+'https://v3.api.appbase.io/my_app9/people/~search'
 ```
 
 The response that you get from Appbase is an array of JSON objects which match the query criteria.
 
 Response:
 ```json
-[
-	{
-		"_id": "people`54bdde2b1e8cc2334ad5800f",
-		"timestamp": 1421729323073,
-		"rootPath": "people/laura",
-		"occupation": "Graphic Designer",
-		"sex": "F",
-		"email": "laura@awesomedesigner.com",
-		"name": "Laura Vieria",
-		"country": "Brazil",
-		"city": "Rio de Janeiro"
-	}
-]
+{
+    "took":7,
+    "timed_out":false,
+    "_shards": {
+    	"total":5,
+    	"successful":5,
+    	"failed":0
+    },
+    "hits": {
+    	"total":1,
+    	"max_score":0.19178301,
+    	"hits":[
+    		{
+    			"_index":"my_app9",
+    			"_type":"people",
+    			"_id":"54bdde2b1e8cc2334ad5800f",
+    			"_score":0.19178301,
+    			"_source": {
+    				"name":"Laura Vieria",
+    				"sex":"F",
+    				"city":"Rio de Janeiro",
+    				"country":"Brazil",
+    				"occupation":"Graphic Designer",
+    				"email":"laura@awesomedesigner.com",
+    				"timestamp":1428266902727,
+    				"rootPath":"people/laura"
+    			}
+    		}
+    	]
+    }
+}
 ```
 
 There you go! Appbase's search fetches results which are close to the search term, and you get the following object in response.
@@ -123,33 +142,34 @@ There you go! Appbase's search fetches results which are close to the search ter
 >
 > To perform a search, we do a __POST__ request.
 >
-- URL: https://api.appbase.io/my_app9/v3/people/~search, where
+- URL: https://v3.api.appbase.io/my_app9v/people/~search, where
 >
- - `https://api.appbase.io` - Appbase REST API base URL
+ - `https://v3.api.appbase.io` - Appbase REST API base URL (``v3`` for all API requests)
  - `my_app9` - name of your app as shown in the dashboard
- - `v3` - the current Appbase REST API version (`v3` for all API requests)
- - `people` - the collection identifer (similar to a collection id in MongoDB)
+ - `people` - the collection identifer
  - `~search` - the resource endpoint indicating our query intent (`search` in this case, and `properties` in the previous step).
 >
->- Request Headers
+>- Request Headers  
 Headers are always the same for all REST API requests.
 >
->- Request Body
+>- Request Body  
 >The JSON query object that we send with this request:
 >```json
 {
 	"query": {
-		"text": "designer",
-		"properties": ["occupation"]
-	}
+            "multi_match": {
+                "fields": ["occupation"],
+                "query": "designer"
+            }
+        }
 }
 >```
->  - `text`: The search query string
->  - `properties`: The list of the properties whose value should match the search string
+>  - `query`: The search query string
+>  - `fields`: The list of fields to match the **query** against.
 
 That's it! In less than 10 minutes, we were able to add production grade search in your app.
 
 
 ## Next Steps
 
-Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/docs/elasticsearch.html).
+Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/#/v3.0/search/use-cases).
