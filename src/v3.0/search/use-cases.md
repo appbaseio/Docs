@@ -24,7 +24,15 @@ All the examples in this doc ES concepts (Type, Document and Field), as we will 
 
 ## Request and Response Format
 
-To do a raw ES query on the data, Appbase provides a [REST API endpoint]() and the Javascript library method [`Appbase.rawSearch()`](). Both of them, accepts similar request Query Object, and gives similar responses.
+Appbase provides two REST API endpoints for performing search.
+
+1. [https://v3.api.appbase.io/&lt;app_name>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-global-search-collections)
+2. [https://v3.api.appbase.io/&lt;app_name>/&lt;collection>/~search](http://docs.appbase.io/#/v3.0/rest/api-reference#api-reference-collection-search-documents-by-propertyies)
+
+The **1.** searches across multiple collections and has an additional field to specify this in the request body. Both endpoints are compatible with [ElasticSearch Query DSL](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl.html) and return results in the same format.
+
+> ``Roadmap Note``:
+> We will be adding a search endpoint at the **document** level that queries on the document and it's references.
 
 ### Request
 
