@@ -135,6 +135,104 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 </code>
 </pre>
 
+### Search collections
+
+Search documents across one or more collections. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see other queries that can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases), including fuzzy search, numeric-range, geospatial and aggregation queries.
+
+> **Example Request**
+```curl
+curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+        "collections": ["Materials"],
+        "body": {
+            "query": {
+                "multi_match": {
+                    "fields": ["foo"],
+                    "query": "bar"
+                }
+            }
+        }
+     }' \
+'https://v3.api.appbase.io/rest_test/~search'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>``collections`` - An array of the collection names across which search should be applied.</li>
+		<li>``body.query`` - A JSON object representing the search query and the properties to be used for the matching criteria.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents which match the search query. Each document is returned as an object with all the **properties** (both matching and non-matching), a server ``timestamp`` when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">POST</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/~search
+<span class="inline-heading">HEADERS</span>
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "collections": ["Materials"],
+    "body": {
+        "query": {
+                "multi_match": {
+                    "fields": ["foo"],
+                    "query": "bar"
+                }
+        }
+    }
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+    "took":126,
+    "timed_out":false,
+    "_shards":{
+    	"total":5,
+    	"successful":5,
+    	"failed":0
+    },
+    "hits": {
+    	"total":1,
+    	"max_score":8.6468315,
+    	"hits":[
+    		{
+    			"_index":"rest_test",
+    			"_type":"Materials",
+    			"_id":"5510233f328410803792d1cb",
+    			"_score":8.6468315,
+    			"_source":{
+    				"lol":"cat",
+    				"timestamp":1427120959524,
+    				"rootPath":"Materials/Es"
+    			}
+    		}
+    	]
+    }
+}
+</code>
+</pre>
 
 ## Collection
 
@@ -200,7 +298,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 ### Search Documents by property(ies)
 
-Search documents by one or more document properties. *Returns* an array of documents that match the search criteria. The ``~search`` endpoint uses ElasticSearch directly. For more details, see what more can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases).
+Search documents by one or more document properties. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see other queries that can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases), including fuzzy search, numeric-range, geospatial and aggregation queries.
 
 > **Example Request**
 ```curl
@@ -251,12 +349,12 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
-  "query": {
-    "text": "bar",
-    "properties": [
-      "foo"
-    ]
-  }
+        "query": {
+            "multi_match": {
+                "fields": ["foo"],
+                "query": "bar"
+            }
+        }
 }
 
 <b>Response</b>
