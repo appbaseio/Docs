@@ -37,6 +37,7 @@
 		                         "color": "#333"});
 		  $(this).css({"padding": "10px"});
 		});
+		
 		if(typeof(ga) === 'function'){
 			ga('send', 'pageview',$location.path());
 		}
