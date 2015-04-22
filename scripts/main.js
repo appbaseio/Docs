@@ -39,7 +39,7 @@
 		});
 		
 		if(typeof(ga) === 'function'){
-			ga('send', 'pageview',$location.path());
+			ga('send', 'pageview',window.location.href);
 		}
 	});
 
