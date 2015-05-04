@@ -93,12 +93,45 @@
                 Docbase.file(Docbase.options.map);
             } else if(checkSchema(map)){
                 Docbase.map = map;
-                jWindow.trigger('mapped');
-                Events.bind();
+
+                $.get(Docbase.options.map.path + '/' + Docbase.options.map.file)
+                .success(function(fileMap){
+                    var ghMap = Docbase.map;
+                    var fileMapVer = Object.keys(fileMap);
+
+                    fileMapVer.forEach(function(fileVer){
+                        if( ghMap[fileVer] ){
+                            ghMap[fileVer].forEach(function(category){
+                                var categoryM = fileMap[fileVer].filter(function(_category){
+                                    return _category.name === category.name;
+                                })[0];
+                                if(categoryM && categoryM.label) {
+                                    category.label = categoryM.label;
+
+                                    category.files.forEach(function(file){
+                                        var fileM = categoryM.files.filter(function(_file){
+                                            return _file.name === file.name;
+                                        })[0];
+                                        if(fileM && fileM.label) file.label = fileM.label;
+                                    });
+                                }
+
+                            });
+                        }
+                    });
+                    jWindow.trigger('mapped');
+                    Events.bind();
+                })
+                .error(function(error){
+                    // no map available for labels
+                    jWindow.trigger('mapped');
+                    Events.bind();
+                });
             } else {
                 throw 'GitHub tree mapping error.';
             }
         });
+
     }
 
     Docbase.file = function(options) {
