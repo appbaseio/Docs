@@ -156,7 +156,7 @@
     }
 
     Events.switchBind = function(state){
-        jWindow[state]('flatdoc:ready', Events.parseTitle);
+        jWindow[state]('flatdoc:ready', Events.ready);
         jWindow[state]('ajaxError', Events.ajaxError);
     }
 
@@ -177,43 +177,6 @@
             console.error('Github API quota exceeded.');
         }
     }
-
-    /**
-    * Parses title object, looking for specs such as three columns.
-    * Simply make your fiirst markdown title an object to customize it.
-    * Use double quotes on the markdown.
-    * Example: {"title": "Actual title", "threeColumns": false}
-    */
-    Events.parseTitle = function(){
-        var element = $('[role~="flatdoc-content"] h1:first');
-        var menuTitle = $( '#' + element.attr('id') + '-link' );
-
-        var content = element.html();
-        try {
-            content = content.replace(/\u201D/g, '"');
-            content = content.replace(/\u201C/g, '"');
-            content = JSON.parse(content);
-            
-            element.html(content.title);
-            menuTitle.html(content.title);
-
-            if(content.threeColumns) {
-                $('body').removeClass('no-literate');
-            } else {
-                $('body').addClass('no-literate');
-            }
-
-            Events.parsed = true;
-
-        } catch (e) {
-            // No JSON object found, keep title as-is, but disable three-collums
-            if(!Events.parsed) {
-                $('body').addClass('no-literate');
-            }
-        };
-        
-        Events.ready();
-    };
 
     Route.config = function($routeProvider, $location, $rootScope, $anchorScroll){
         var flatdocURL = Docbase.options.flatdocHtml;
@@ -334,6 +297,26 @@
                     Events.parsed = false;
 
                     Flatdoc.file(options.path + location.path + '.md')(function(err, markdown){
+                        markdown = markdown.split('\n');
+                        var obj = markdown.shift();
+                        obj = obj.replace(/\u201D/g, '"');
+                        obj = obj.replace(/\u201C/g, '"');
+
+                        try {
+                            obj = JSON.parse(obj);
+                        } catch(e) {
+                            markdown.unshift(obj);
+                            obj = { 'threeColumns': false };
+                        }
+
+                        markdown = markdown.join('\n');
+
+                        if(obj.threeColumns) {
+                            $('body').removeClass('no-literate');
+                        } else {
+                            $('body').addClass('no-literate');
+                        }
+
                         var data = Flatdoc.parser.parse(markdown, function(code){
                             return Flatdoc.highlighters.generic(code)
                         });
