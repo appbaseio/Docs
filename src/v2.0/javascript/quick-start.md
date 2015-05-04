@@ -1,4 +1,5 @@
-# {"title": "Steps to getting started with Appbase", "threeColumns": true}
+{"threeColumns": true}
+# Steps to getting started with Appbase
 
 ## Step 0: Get Appbase
 Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://appbase.io/developer/), and create a new app.

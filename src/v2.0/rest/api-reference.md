@@ -1,4 +1,5 @@
-# {"title": "Introduction", "threeColumns": true}
+{"threeColumns": true}
+# Introduction
 
 The Appbase API is based on REST principles. All operations including creating vertices and edges, fetching vertex properties (data) and edges, deleting a vertex or an edge as well as searching through vertices are RESTful. The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, using socket.io.
 

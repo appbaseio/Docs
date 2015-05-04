@@ -1,4 +1,5 @@
-# {"title": "User Authentication", "threeColumns": true}
+{"threeColumns": true}
+# User Authentication
 
 Most applications need to know the identity of a user. Knowing a user's identity allows an app to provide a customized experience. The process of proving a user's identity is called _authentication_.
 

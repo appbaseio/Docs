@@ -1,4 +1,5 @@
-# {"title": "Datamodel", "threeColumns": false}
+{"threeColumns": false}
+# Datamodel
 
 Appbase is a realtime Database as a Service (DBaaS), built on top of a graph schema with JSON based vertices (similar to JSON documents), and edges to link them.
 

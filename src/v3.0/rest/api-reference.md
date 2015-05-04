@@ -1,4 +1,5 @@
-# {"title": "Introduction", "threeColumns": true}
+{"threeColumns": true}
+# Introduction
 
 The Appbase API is based on REST principles. All operations including creation of new documents and references, fetching document (JSON) and references, deleting a document or a reference as well as searching through documents are RESTful.
 

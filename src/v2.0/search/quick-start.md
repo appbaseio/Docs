@@ -1,4 +1,5 @@
-# {"title": "Searching for a better Search?", "threeColumns": false}
+{"threeColumns": false}
+# Searching for a better Search?
 
 Building a good quality full-text search experience for an app is a hard problem if your data resides in traditional RDBMS systems. Even database systems like MongoDB have very nascent support for search, others like DynamoDB offer no support. The hard, real fact is that these systems are not designed with search as a use-case, and one is left with a very rudimentary support like exact search match, or in the worst case scenario, even scanning the DB tables.
 

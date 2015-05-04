@@ -1,4 +1,5 @@
-# {"title": "Use-cases", "threeColumns": false}
+{"threeColumns": false}
+# Use-cases
 
 Appbase uses opensource Elasticsearch in the backend, and provides all the powerful search features of ES, on the data stored in Appbase.
 

@@ -1,4 +1,5 @@
-# {"title": "ng-Appbase Guide", "threeColumns": false}
+{"threeColumns": false}
+# ng-Appbase Guide
 
 Appbase provides a realtime graph backend, is designed to write complex applications completely clientside. Appbase fits perfectly as a backend in your AngularJS application.
 

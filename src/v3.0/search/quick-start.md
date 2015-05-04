@@ -1,4 +1,5 @@
-# {"title": "Searching for a better Search?", "threeColumns": false}
+{"threeColumns": false}
+# Searching for a better Search?
 
 Building a good quality full-text search experience for an app is a hard problem if your data resides in traditional RDBMS systems. Even database systems like MongoDB have very nascent support for search, others like DynamoDB offer no support. The hard, real fact is that these systems are not designed with search as a use-case, and one is left with a very rudimentary support like exact search match, or in the worst case scenario, even scanning the DB tables.
 
@@ -11,12 +12,12 @@ We have thought about the **Search** problem really hard, and have come up with 
 ## Our Approach to Search
 
 Appbase takes the search problem head-on and indexes all the data that is ever stored in Appbase, allowing searching on all the data and relationships. We provide the ability to do the following kind of queries:  
-1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-fuzzy),  
-2. [Numeric-range queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
-3. [Geo spatial queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
-4. [Sort queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
+1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fuzzy),  
+2. [Numeric-range queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
+3. [Geo spatial queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
+4. [Sort queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
 
-With [Aggregation](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-aggregation) and [Combining queries](http://docs.appbase.io/#/v3.0/search/use-cases#title-use-cases-threecolumns-false-searching-combining-queriesfilters), the possibilities are endless.
+With [Aggregation](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-aggregation) and [Combining queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), the possibilities are endless.
 
 Here's a primer to leverage these powerful search queries broken into three steps.
 
