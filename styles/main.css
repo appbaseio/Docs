@@ -149,6 +149,11 @@ body:not(.no-literate) .content h1 {
     left: 815px!important;
   }
 
+
+  body.no-literate .edit {
+    left: 300px!important;
+  }
+
 }
 
 @media (min-width: 1180px) {
@@ -199,7 +204,7 @@ li.active {
 }
 
 body.no-literate .edit {
-  left: 300px;
+  left: 230px;
   border-left: 0;
   border-right: 1px solid #eee;
 }
