@@ -811,3 +811,68 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 200
 </code>
 </pre>
+
+## Delete Document
+
+Deletes the document (including all properties, references), the document path itself will not resolve after this operation, i.e. a retrieval will result in a *101: Resource does not exist* error.
+
+> **Example Request**
+```curl
+curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+         "all": true
+     }' \
+'https://v3.api.appbase.io/rest_test/Materials/Ice/'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>A JSON object with the field ``all`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the fields "_deleted" set to true, and ``_timestamp`` field set for the time of deletion.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/
+<span class="inline-heading">HEADERS</span>
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "all": true
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+  "_deleted": "true",
+  "_timestamp": 1431324814057,
+  "_id": "Ice",
+  "_collection": "Materials"
+}
+</code>
+</pre>
