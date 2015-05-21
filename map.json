@@ -56,6 +56,42 @@
                 }
             ]
         }
+    ],
+    "v3.0" : [
+        {
+            "label": "Changelog",
+            "name": "changelog",
+            "files": [
+                {
+                    "label": "Changelog",
+                    "name": "changelog"
+                }
+            ]
+        },
+        {
+            "label": "REST",
+            "name": "rest",
+            "files": [
+                {
+                    "label": "API Reference",
+                    "name": "api-reference"
+                }
+            ]
+        },
+        {
+            "label": "Search",
+            "name": "search",
+            "files": [
+                {
+                    "label": "Quick Start",
+                    "name": "quick-start"
+                },
+                {
+                    "label": "Use-cases",
+                    "name": "use-cases"
+                }
+            ]
+        }
     ]
 
 }
