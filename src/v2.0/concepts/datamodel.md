@@ -76,7 +76,7 @@ After creating entities, its time to create relations amongst them via *edges*.
 
 An edge is a *named* directional link connecting two vertices for a purpose, a *one-to-one relation*. For instance, a book has an author, a husband has wife and a child has a mother. The edges for these would be _book vertex_ `--authouredBy->` _person vertex_, _man vertex_ `--marriedTo->` _woman vertex_. 
 
-Edges are directional, so if you set the edge _man_ `--crushOn->` _woman_, it only tells us that the man is married to the woman, but it tells us nothing about woman's relationship status. For that, another edge, _woman_ `--marriedTo->` _man_, should be created.
+Edges are directional, so if you set the edge _man_ `--marriedTo->` _woman_, it only tells us that the man is married to the woman, but it tells us nothing about woman's relationship status. For that, another edge, _woman_ `--marriedTo->` _man_, should be created.
 
 Appbase only allows for unique edge names. The default behaviour is last-write-wins in case a new edge is created with an existing name. Edges have priorities which are rational numbers (think of the ``Number`` datatype in Javascript).
 
@@ -140,7 +140,7 @@ Assuming the Application's name as _imdb_, URL for the path _movie/inception/dir
 
 Being a Graph, Appbase allows you to create any kind of data structures you want, you just need to know exactly how. Lets see how to store the practical data structures we used on daily basis.
 
-The examples here use Appbase Javascript Library and if any of the method is confusing you, feel free to chekout the [JS Documentation](http://docs.appbase.io/docs/js.html). 
+The examples here use Appbase Javascript Library and if any of the method is confusing you, feel free to chekout the [JS Documentation](http://docs.appbase.io/#/v2.0/javascript/api-reference).
 
 ### Primitive Data and JSON Objects
 

@@ -263,7 +263,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents. Each document is returned as an object with a server ``timestamp`` when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns an array of documents. Each document is returned as an object with a server ``_timestamp`` when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -431,7 +431,7 @@ curl -X PATCH -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``timestamp`` when the update happened, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server ``_timestamp`` when the update happened, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -454,7 +454,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
   "foo": "bar",
-  "timestamp": 1413403738268,
+  "_timestamp": 1413403738268,
   "_id": "Ice",
   "_collection": "Materials"
 }
@@ -488,7 +488,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **document** with all the properties, a ``_timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -510,7 +510,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
   "green": "leaf",
   "_id": "Ice",
   "_collection": "Materials",
-  "timestamp": 1418488108255
+  "_timestamp": 1418488108255
 }
 </code>
 </pre>
@@ -555,7 +555,7 @@ curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the deleted properties set to "", a ``timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the deleted properties set to "", a ``_timestamp`` value when the document was last updated, the collection name ``_collection`` to which the document belongs and the document key as ``_id`` (unique to the collection).</li>
 	</ul>
 </li>
 </ul>
@@ -578,7 +578,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
   "foo": "",
-  "timestamp": 1418486072705,
+  "_timestamp": 1418486072705,
   "_id": "Ice",
   "_collection": "Materials"
 }
@@ -628,7 +628,7 @@ curl -X PATCH -H "Appbase-Secret:193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated references, a server ``timestamp`` for each reference when the update happened, and a unique identifier for each reference resource ``t_id`` (used by the server internally).</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns updated references, a server ``_timestamp`` for each reference when the update happened, and a unique identifier for each reference resource ``t_id`` (used by the server internally).</li>
 	</ul>
 </li>
 </ul>
@@ -658,12 +658,12 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 {
     "aReference": {
       "t_id": "Materials`5488ccab3b87a791550d81b7",
-      "timestamp": 1418261314605
+      "_timestamp": 1418261314605
     },
     "anotherReference": {
       "t_id": "Materials`547059ce69528db30aa7ae90",
       "priority": 500.6,
-      "timestamp": 1418261314605
+      "_timestamp": 1418261314605
     }
 }
 </code>
@@ -701,7 +701,7 @@ curl -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 <li><span class="inline-heading">RESPONSE</span>
 	<ul>
 		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
-		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **references** object with the filtered references as an array, each reference having a ``timestamp`` value when the reference was last updated, a unique identifier of the reference resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the reference on which this operation is performed.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns a **references** object with the filtered references as an array, each reference having a ``_timestamp`` value when the reference was last updated, a unique identifier of the reference resource ``t_id`` (used by the server internally), along with an ``id`` identifier of the reference on which this operation is performed.</li>
 	</ul>
 </li>
 </ul>
@@ -809,5 +809,70 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <b>Response</b>
 <span class="inline-heading">STATUS</span>
 200
+</code>
+</pre>
+
+## Delete Document
+
+Deletes the document (including all properties, references), the document path itself will not resolve after this operation, i.e. a retrieval will result in a *101: Resource does not exist* error.
+
+> **Example Request**
+```curl
+curl -X DELETE -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
+     -d '{
+         "all": true
+     }' \
+'https://v3.api.appbase.io/rest_test/Materials/Ice/'
+```
+**Usage**:
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+	<ul>
+		<li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+		<li><span class="path-var">collection</span> - collection identifier, will create one if it doesn't exist.</li>
+		<li><span class="path-var">document</span> - document identifier, will create one if it doesn't exist.</li>
+		> ``Note:`` *collection* and *document* identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+	<ul>
+		<li>Appbase-Secret - Application secret key, unique to the application</li>
+	</ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+	<ul>
+		<li>A JSON object with the field ``all`` set as the boolean value **true**.</li>
+	</ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+	<ul>
+		<li><span class="inline-heading">STATUS</span> - ``200`` if success.</li>
+		<li><span class="inline-heading">BODY (JSON)</span> - Returns the **document** object with the fields "_deleted" set to true, and ``_timestamp`` field set for the time of deletion.</li>
+	</ul>
+</li>
+</ul>
+
+<pre>
+<code>
+<b>Request</b>
+<span class="inline-heading">URL</span>
+<span class="request-type">DELETE</span> https://v3.api.appbase.io/<span class="path-var">appname</span>/<span class="path-var">collection</span>/<span class="path-var">document</span>/
+<span class="inline-heading">HEADERS</span>
+Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
+<span class="inline-heading">BODY</span>
+{
+    "all": true
+}
+
+<b>Response</b>
+<span class="inline-heading">STATUS</span>
+200
+<span class="inline-heading">BODY</span>
+{
+  "_deleted": "true",
+  "_timestamp": 1431324814057,
+  "_id": "Ice",
+  "_collection": "Materials"
+}
 </code>
 </pre>
