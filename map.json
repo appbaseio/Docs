@@ -91,7 +91,38 @@
                     "name": "use-cases"
                 }
             ]
+        },
+        {
+            "label": "Concepts",
+            "name": "concepts",
+            "files": [
+                {
+                    "label": "Datamodel",
+                    "name": "datamodel"
+                }
+            ]
+        },
+        {
+            "label": "REST",
+            "name": "rest",
+            "files": [
+                {
+                    "label": "API Reference",
+                    "name": "api-reference"
+                }
+            ]
+        },
+        {
+            "label": "Javascript",
+            "name": "javascript",
+            "files": [
+                {
+                    "label": "API Reference",
+                    "name": "api-reference"
+                }
+            ]
         }
+
     ]
 
 }

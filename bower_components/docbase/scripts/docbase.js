@@ -77,7 +77,7 @@
             .module(options.angularAppName, ['ngRoute'])
             .factory('FlatdocService', ['$q', '$route', '$location', '$anchorScroll', Route.fetch])
             .controller('URLCtrl', ['$scope', '$location', 'data', Route.URLCtrl])
-            .controller('MainCtrl', ['$location', Route.mainCtrl])
+            .controller('MainCtrl', ['$scope', '$location', '$timeout', Route.mainCtrl])
             .config(['$routeProvider', '$locationProvider', Route.config])
             .run(
                 ['$rootScope', '$location', '$routeParams', '$anchorScroll',
@@ -357,7 +357,7 @@
         }
     };
 
-    Route.mainCtrl = function($location){
+    Route.mainCtrl = function($scope, $location, $timeout){
         if(Docbase.options.indexType === 'markdown') {
             var path = Docbase.options.indexSrc;
             if(endsWith(path, '.md')){
@@ -368,6 +368,14 @@
             }
 
             $location.path(path);
+        } else {
+            jWindow.on('mapped', function(){
+                $timeout(function(){
+                    $scope.map = Docbase.map;
+                    $scope.versions = Object.keys($scope.map);
+                    $scope.currentVersion = $scope.versions[$scope.versions.length-1];                    
+                });
+            });
         }
     };
 
