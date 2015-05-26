@@ -26,12 +26,14 @@ Here's a primer to leverage these powerful search queries broken into three step
 
 Log into <span class="fa fa-external-link"></span>[Appbase Dashboard](https://appbase.io/developer/), and create a new app. Once you create an app with a desired name, you should see an app dialog box appear as below.
 
-![App credentials](http://i.imgur.com/LBjXQQT.png)  
-**Image 1**: App name, credentials, and access controls  
+![App credentials](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/snvrcs_y.png)  
+**Image 1**: App name, stats and credentials
+
+Click the ![Icon](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/izp4iufp.png) icon to copy your secret into clipboard.
 
 We will need the `app name` and the `secret` in all our API calls. In this case, these would be *my_app9* and *097b2b28b6a13cf2e53b6cecfec42b86*. We **trust you** with our app's secret!
 
-### 2. Put some Data
+### 2. Store some Data
 
 Appbase supports the document data model. You can store JSON objects (known as documents) with Appbase directly (similar to MongoDB documents, or RDBMS records). The documents are stored within a collection. Appbase supports a granular search which typically works on a collection. The search is based on the [ElasticSearch DSL](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl.html), and supports the entire query format.
 
@@ -171,6 +173,6 @@ Headers are always the same for all REST API requests.
 That's it! In less than 10 minutes, we were able to add production grade search in your app.
 
 
-## Next Steps
+## Full text and more
 
-Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/#/v3.0/search/use-cases).
+Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main article over here. [Search Usecases](http://docs.appbase.io/#/v3.0/search/use-cases).
