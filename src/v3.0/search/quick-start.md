@@ -12,7 +12,7 @@ We have thought about the **Search** problem really hard, and have come up with 
 ## Our Approach to Search
 
 Appbase takes the search problem head-on and indexes all the data that is ever stored in Appbase, allowing searching on all the data and relationships. We provide the ability to do the following kind of queries:  
-1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fuzzy),  
+1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-simple-match-and-fulltext), [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fulltext-fuzzy), and [autocomplete](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fulltext-autocompletewildcard)
 2. [Numeric-range queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
 3. [Geo spatial queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
 4. [Sort queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
