@@ -246,7 +246,7 @@ We see one by one, what queries apply in which search use cases, how you can com
 
 In each use case below, it is first described how the data is stored, and what kind of search we are trying to achieve on the data. Let's start with basic use case.
 
-### Simple _Match_
+### Simple _Match_ and Fulltext
 
 This is the most basic use case we can think of, where you want to just find out documents which contain a certain _term_, either as a string or a number.
 
@@ -355,7 +355,7 @@ The below query would search for users with either first name or last name, bein
 
 For more fine tuned searches, like on the users with first name as "Andrew" and last name as "Garlic", we have to combine queries/filters. We see that later in this document.
 
-### Fuzzy
+### Fulltext: Fuzzy
 
 A fuzzy search matches with the documents who have the terms matching _nearly_  the search term.
 
@@ -383,7 +383,7 @@ The above query would return tweets with the message as "hella" or "hallo" etc.
 > - [_fuzzy-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html)
 > - [_more-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
 
-### Autocomplete - wildcard search
+### Fulltext Autocomplete/wildcard
 
 When you want to search based on few characters (generally a use case in autocomplete search bar), you can use the wildcard search.
 
@@ -403,7 +403,7 @@ Here's an example, you will get all the results which has "laur" anywhere in the
 > #### ___wildcard___ search
 > You can use either `*` or `?` as wildcards. `?` stands for a single characters, and `*` stands for any character length. Checkout the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-wildcard-query.html) for more.
 
-### Fuzzy And Autocomplete
+### Fulltext: Fuzzy And Autocomplete
 
 Using the [bool query](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), which is explained [later in this document](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), we can combine above two cases into a single query and improve our search results.
 
