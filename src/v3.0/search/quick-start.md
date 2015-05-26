@@ -29,7 +29,7 @@ Log into <span class="fa fa-external-link"></span>[Appbase Dashboard](https://ap
 ![App credentials](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/snvrcs_y.png)  
 **Image 1**: App name, stats and credentials
 
-Click the ![Icon](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/izp4iufp.png) icon to copy your secret into clipboard.
+Click the ![Icon](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/jf22g2ed.png) icon to copy your secret into clipboard.
 
 We will need the `app name` and the `secret` in all our API calls. In this case, these would be *my_app9* and *097b2b28b6a13cf2e53b6cecfec42b86*. We **trust you** with our app's secret!
 
