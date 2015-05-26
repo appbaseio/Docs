@@ -17,5 +17,7 @@ Reference | Edge | Path to another data container
 
 The number of API endpoints have been reduced and the overall API format has been made more expressive.
 
-* Fetching a resource is now completely supported by ``GET`` requests.  
-* ``PUT`` and ``PATCH`` are used for creating and updating resources. ``PUT`` overwrites and ``PATCH`` updates the resource partially.  
+* Fetching a resource is done by ``GET`` requests.  
+* ``PATCH`` -  creating and updating resources.
+* ``POST`` - querying data.
+* ``DELETE`` - removing properties and documents.
