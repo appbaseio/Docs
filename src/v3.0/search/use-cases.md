@@ -1,4 +1,4 @@
-{"threeColumns": false}
+{"threeColumns": true}
 # Use-cases
 
 Appbase uses Elasticsearch in the backend, and provides all the search queries and filters supported by ES, on the data stored in Appbase. Every data that's pushed into Appbase is automatically indexed on ElasticSearch.
