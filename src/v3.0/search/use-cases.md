@@ -48,15 +48,12 @@ This is a sample request **query object**, let's call it ``body.json``:
 
 ```json
 {
-    "collections": ["user", "tweet"],
-    "body": {
-        "query": {
-             "multi_match": {
-                 "fields": ["msg", "name"],
-                 "query": "hello"
-             }
-         }
-     }
+   "query": {
+      "multi_match": {
+         "fields": ["msg", "name"],
+         "query": "hello"
+      }
+   }
 }
 ```
 
