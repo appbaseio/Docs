@@ -383,6 +383,54 @@ The above query would return tweets with the message as "hella" or "hallo" etc.
 > - [_fuzzy-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html)
 > - [_more-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
 
+### Autocomplete - wildcard search
+
+When you want to search based on few characters (generally a use case in autocomplete search bar), you can use the wildcard search.
+
+Here's an example, you will get all the results which has "laur" anywhere in the text.
+
+```json
+{
+  "query": {
+    "wildcard": {
+      "message": "*laur*"
+    }
+  }
+}
+```
+
+> <sup>Elasticseach sidenote</sup>
+> #### ___wildcard___ search
+> You can use either `*` or `?` as wildcards. `?` stands for a single characters, and `*` stands for any character length. Checkout the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-wildcard-query.html) for more.
+
+### Fuzzy And Autocomplete
+
+Using the [bool query](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), which is explained [later in this document](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), we can combine above two cases into a single query and improve our search results.
+
+Example:
+
+```json
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "wildcard": {
+            "message": "*laur*"
+          }
+        },
+        {
+          "fuzzy": {
+            "message": "laur"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+
 ### Numeric-range
 
 _"Give me all the..."_
