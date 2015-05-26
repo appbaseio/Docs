@@ -86,7 +86,7 @@ We provide an unaltered DSL Response from ES. A typical response includes:
 		 - __\_score__ - _number_ : The score by witch the document matched the query
 		 - __\_source__ - _object_ : The data inside the document (document).
 
-> Elasticseach sidenote
+> Elasticseach sidenote:
 > The _score_ of a result describes how close it matches the query.
 
 Example:
