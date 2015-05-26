@@ -700,7 +700,7 @@ Lets write the request to search the mobile phones we described above.
 
 > Elasticseach sidenote
 > #### ___bool___ _query/filter_
-> As you can see in the example here, we have using bool filters. This way you can write really complex search requests. To know more check out:
+> As you can see in the example here, we have using bool filters. This way you can combine any kind of queries and filters, you can also combine multiple usecases (like fuzzy and wildcard), and write complex search requests. To know more check out:
 > - [_bool_ query documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
 > - [_bool_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-filter.html)
 
