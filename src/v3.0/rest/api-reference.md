@@ -193,7 +193,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
                     "fields": ["foo"],
                     "query": "bar"
                 }
-	}
+        }
 }
 
 <b>Response</b>
