@@ -13,7 +13,7 @@ The Appbase API is based on REST principles. All operations including creation o
 ### Allowed HTTP Request Types
 
 - ``PATCH`` - Partial Updates to an Existing Resource OR Creates a new resource
-- ``POST`` - Creates a new resource at the resource path
+- ``POST`` - Querying
 - ``GET`` - Fetches a resource
 - ``DELETE`` - Delete a resource
 
