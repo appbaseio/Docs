@@ -13,7 +13,7 @@ As in Appbase has the concepts of collections, Documents and Properties, Elastic
 
 Purpose | Appbase | ES
 --------|---------|----
-Combining similar objects | collection | Type
+Combining similar objects | Collection | Type
 JSON Data Containers | Document | Document
 JSON Object's Property | Property | Field
 
