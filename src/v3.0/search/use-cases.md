@@ -386,7 +386,7 @@ Here's an example, you will get all the results which has "laur" anywhere in the
 > #### ___wildcard___ search
 > You can use either `*` or `?` as wildcards. `?` stands for a single characters, and `*` stands for any character length. Checkout the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-wildcard-query.html) for more.
 
-### Fulltext: Fuzzy And Autocomplete
+### Fulltext: Fuzzy and Autocomplete
 
 Using the [bool query](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), which is explained [later in this document](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), we can combine above two cases into a single query and improve our search results.
 
