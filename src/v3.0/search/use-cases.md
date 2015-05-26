@@ -1,4 +1,4 @@
-{"threeColumns": true}
+{"threeColumns": false}
 # Use-cases
 
 Appbase uses Elasticsearch in the backend, and provides all the search queries and filters supported by ES, on the data stored in Appbase. Every data that's pushed into Appbase is automatically indexed on ElasticSearch.
@@ -86,7 +86,7 @@ We provide an unaltered DSL Response from ES. A typical response includes:
 		 - __\_score__ - _number_ : The score by witch the document matched the query
 		 - __\_source__ - _object_ : The data inside the document (document).
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > The _score_ of a result describes how close it matches the query.
 
 Example:
@@ -258,7 +258,7 @@ For example, _"give me all the.."_
 
 We can use the _term filter_ or _term query_ for such cases.
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___filter___ vs ___query___  
 > A __filter__ in Elasticsearch says Yes or No for a document. I.E. If the document should be present in the results, or not.
 > A __query__ also _scores_ the document (counts the relevance with the desired search term - a heavy operation) and results come sorted according to their score.
@@ -328,7 +328,7 @@ The above search request would find tweets which contains terms "hello" or "worl
 
 The above search request would find tweets which contains terms "hello" and "world", both.
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___match___ _query_ and ___terms___ _filter_
 > The equivalent filter for a _match query_ is the _terms filter_.
 > Read more about them:
@@ -376,7 +376,7 @@ The simplest way to do a _fuzzy query_ is:
 The above query would return tweets with the message as "hella" or "hallo" etc.
 
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___fuzzy___ search
 > There are number of _fuzzy_ queries in Elasticsearch and a number of ways to control the _fuzziness_ of the term. Plus, you can search on a single or more properties (fields). Take a look at these documentations:
 > - [_fuzzy_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html)
@@ -399,7 +399,7 @@ Here's an example, you will get all the results which has "laur" anywhere in the
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___wildcard___ search
 > You can use either `*` or `?` as wildcards. `?` stands for a single characters, and `*` stands for any character length. Checkout the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-wildcard-query.html) for more.
 
@@ -452,7 +452,7 @@ We can use the _range filter_.
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___range___ _filter_
 > It can also perform greater/less _or equal _ searches. See the [_range_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-range-filter.html) for more details.
 
@@ -488,7 +488,7 @@ Find restaurants located within 5km from the point 40, -70.
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___geo spatial___ _search_
 > You can define the distance in real world Units like km, miles etc. There many ways the shape (box, polygon etc) and the range of this distance can be customized. Check out these documents for more details:
 > - [Elasticsearch Geo Location tutorial](http://www.elasticsearch.org/blog/geo-location-and-search/)
@@ -522,7 +522,7 @@ Earlier in the _numeric range_ use case, we searched for products in price range
   ],
 }
 ```
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___sorting___
 > You can specify the order of the sort (asc, desc), you can also sort on multi-valued fields. Geo Location based sort is possible too.
 > Take a look at the [_sort_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-sort.html).
@@ -671,7 +671,7 @@ Lets write the request to search the mobile phones we described above.
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___bool___ _query/filter_
 > As you can see in the example here, we have using bool filters. This way you can write really complex search requests. To know more check out:
 > - [_bool_ query documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
