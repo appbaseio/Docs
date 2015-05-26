@@ -275,11 +275,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["user"],
-    "body": {
-	    "filter" : {
-            "term" : { "firstname" : "Andrew" }
-        }
+	"filter" : {
+		"term" : { "firstname" : "Andrew" }
 	}
 }
 ```
@@ -288,11 +285,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["user"],
-    "body": {
-	    "query" : {
-            "term" : { "firstname" : "Andrew" }
-        }
+	"query" : {
+		"term" : { "firstname" : "Andrew" }
 	}
 }
 ```
@@ -301,11 +295,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "term" : { "price" : 100 }
-        }
+	"filter" : {
+		"term" : { "price" : 100 }
 	}
 }
 ```
@@ -314,11 +305,8 @@ Another useful query is a _match query_. It allows to define a string of terms a
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "match" : { "message" : "hello world" }
-        }
+	"query" : {
+		"match" : { "message" : "hello world" }
 	}
 }
 ```
@@ -327,16 +315,13 @@ The above search request would find tweets which contains terms "hello" or "worl
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "match" : {
-	            "message" : {
-		            "query" : "hello world",
-		            "operator" : "and"
-	            }
-            }
-        }
+	"query" : {
+		"match" : {
+			"message" : {
+				"query" : "hello world",
+				"operator" : "and"
+			}
+		}
 	}
 }
 ```
@@ -359,15 +344,12 @@ The below query would search for users with either first name or last name, bein
 
 ```json
 {
-    "collections": ["user"],
-    "body": {
-	    "query" : {
-            "multi_match" : {
-	            "query": "Andrew Garlic",
-			    "fields": ["firstname", "lastname"]
-            }
-        }
-	}
+  "query": {
+    "multi_match": {
+      "query": "Andrew Garlic",
+      "fields": ["firstname", "lastname"]
+    }
+  }
 }
 ```
 
@@ -383,12 +365,11 @@ The simplest way to do a _fuzzy query_ is:
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "fuzzy" : { "message" : "hello" }
-        }
-	}
+  "query": {
+    "fuzzy": {
+      "message": "hello"
+    }
+  }
 }
 ```
 
@@ -412,17 +393,14 @@ _"Give me all the..."_
 We can use the _range filter_.
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "range" : {
-	            "price" : {
-                    "lt": 100,
-                    "gt": 50
-                }
-            }
-        }
-	}
+  "filter": {
+    "range": {
+      "price": {
+        "lt": 100,
+        "gt": 50
+      }
+    }
+  }
 }
 ```
 
@@ -450,18 +428,15 @@ We can use _geo distance_ filter to find documents located within specific dista
 Find restaurants located within 5km from the point 40, -70.
 ```json
 {
-    "collections": ["restaurant"],
-    "body": {
-	    "filter" : {
-            "geo_distance" : {
-				"distance" : "5km",
-				"location" : {
-					"lat" : 40,
-					"lon" : -70
-				}
-			}
-		}
-	}
+  "filter": {
+    "geo_distance": {
+      "distance": "5km",
+      "location": {
+        "lat": 40,
+        "lon": -70
+      }
+    }
+  }
 }
 ```
 
@@ -484,16 +459,19 @@ Earlier in the _numeric range_ use case, we searched for products in price range
 
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "term" : { "price" : 100 }
-        },
-        "sort" : [
-			{ "price" : "asc"},
-			{ "name" : "asc" }
-		],
-	}
+  "filter": {
+    "term": {
+      "price": 100
+    }
+  },
+  "sort": [
+    {
+      "price": "asc"
+    },
+    {
+      "name": "asc"
+    }
+  ],
 }
 ```
 > <sup>Elasticseach sidenote</sup>
@@ -551,53 +529,68 @@ A bool query/filter can have three kinds of clauses:
 Lets write the request to search the mobile phones we described above.
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-		    "bool": {
-			    "must": [
-				    {
-					    "term": { "type": "mobile" }
-				    },
-				    {
-					    "range": { "price": { "lt": 800 } }
-				    }
-			    ],
-			    "must_not": [{
-				    "term": { "brand": "Apple" }
-			    }],
-			    "should": [
-				    {
-					    "term": { "color": "metal"}
-				    },
-				    {
-					    "bool": {
-						    "must": [
-							    {
-								    "term": {"brand": "Samsung"}
-							    },
-							    {
-								    "term": {"color": "white"}
-							    }
-						    ]
-					    },
-				    },
-				    {
-					    "bool": {
-						    "must": [
-							    {
-								    "term": {"brand": "Sony"}
-							    },
-							    {
-								    "term": {"color": "black"}
-							    }
-						    ]
-					    }
-				    }
-			    ]
-		    }
-	    }
-	}
+  "filter": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "type": "mobile"
+          }
+        },
+        {
+          "range": {
+            "price": {
+              "lt": 800
+            }
+          }
+        }
+       ],
+      "must_not": [{
+        "term": {
+          "brand": "Apple"
+        }
+       }],
+      "should": [
+        {
+          "term": {
+            "color": "metal"
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "brand": "Samsung"
+                }
+           },
+              {
+                "term": {
+                  "color": "white"
+                }
+           }
+          ]
+          },
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "brand": "Sony"
+                }
+           },
+              {
+                "term": {
+                  "color": "black"
+                }
+           }
+          ]
+          }
+        }
+       ]
+    }
+  }
 }
 ```
 
