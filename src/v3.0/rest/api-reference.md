@@ -144,16 +144,13 @@ Search documents across one or more collections. *Returns* a JSON body matching 
 ```curl
 curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
-        "collections": ["Materials"],
-        "body": {
             "query": {
                 "multi_match": {
                     "fields": ["foo"],
                     "query": "bar"
                 }
             }
-        }
-     }' \
+        }' \
 'https://v3.api.appbase.io/rest_test/~search'
 ```
 **Usage**:
@@ -191,15 +188,12 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
-    "collections": ["Materials"],
-    "body": {
         "query": {
                 "multi_match": {
                     "fields": ["foo"],
                     "query": "bar"
                 }
-        }
-    }
+	}
 }
 
 <b>Response</b>
