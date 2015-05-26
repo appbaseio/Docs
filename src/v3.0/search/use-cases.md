@@ -538,7 +538,13 @@ There wide varieties of aggregations and criteria, based on string-terms, locati
 
 ### Combining queries/filters
 
-_"Give me all the products which.."_
+1. _"Give me all the products which.."_
+
+ - has brand "Apple" or "Samsung".
+
+Let's take a very complex case,
+ 
+2. _"Give me all the products which.."_
 
  - are mobile phones
  _and_
@@ -576,6 +582,29 @@ A bool query/filter can have three kinds of clauses:
 
 Lets write the request to search the mobile phones we described above.
 ```json
+//For case 1
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "brand": "Apple"
+          }
+        },
+        {
+          "match": {
+            "brand": "Samsung"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+```json
+// For case 2
 {
   "filter": {
     "bool": {
