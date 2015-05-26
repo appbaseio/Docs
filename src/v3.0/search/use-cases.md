@@ -336,23 +336,6 @@ The above search request would find tweets which contains terms "hello" and "wor
 >  -  [_terms filter_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-terms-filter.html)
 
 
-#### Searching on multiple properties
-
-The _multi\_match_ query can search on multiple fields (properties) and returned if _any_ of those properties match _any_ of the terms.
-
-The below query would search for users with either first name or last name, being "Andrew" or "Garlic". I.E. also the users with first name as "Garlic" would be included, and vice versa.
-
-```json
-{
-  "query": {
-    "multi_match": {
-      "query": "Andrew Garlic",
-      "fields": ["firstname", "lastname"]
-    }
-  }
-}
-```
-
 For more fine tuned searches, like on the users with first name as "Andrew" and last name as "Garlic", we have to combine queries/filters. We see that later in this document.
 
 ### Fulltext: Fuzzy
@@ -546,6 +529,10 @@ Case 2)  _"Give me all the products which.."_
 
  - has brand "Apple" AND "Samsung".
 
+Case 4) Multiple properties, _"Give me all the users which.."_
+ 
+ - has brand first name "John" OR last name "John"
+
 Let's take a very complex case,
  
 Case 3) _"Give me all the products which.."_
@@ -629,6 +616,26 @@ Lets write the request to search the mobile phones we described above.
 }
 ```
 
+```js
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "first_name": "John"
+          }
+        },
+        {
+          "match": {
+            "last_name": "John"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ```js
 // For case 3
