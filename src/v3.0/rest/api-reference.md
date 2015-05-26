@@ -138,7 +138,7 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 ### Search collections
 
-Search documents across one or more collections. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see other queries that can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases), including fuzzy search, numeric-range, geospatial and aggregation queries.
+Search documents across one or more collections. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see [more queries](http://docs.appbase.io/#/v3.0/search/use-cases) that can be done with this endpoint, including fuzzy search, numeric-range, geospatial and aggregation queries.
 
 > **Example Request**
 ```curl
