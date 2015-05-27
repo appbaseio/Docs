@@ -12,7 +12,7 @@ We have thought about the **Search** problem really hard, and have come up with 
 ## Our Approach to Search
 
 Appbase takes the search problem head-on and indexes all the data that is ever stored in Appbase, allowing searching on all the data and relationships. We provide the ability to do the following kind of queries:  
-1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-simple-match) and [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fuzzy),  
+1. Full-text search - including [simple match queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-simple-match-and-fulltext), [fuzzy search queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fulltext-fuzzy), and [autocomplete](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-fulltext-autocompletewildcard)
 2. [Numeric-range queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-numeric-range) - when you want answers to "Give me all the products that cost between $50 and $100" or "fetch all pages from 5 to 10",  
 3. [Geo spatial queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-geo-spatial) - ElasticSearch offers a lot of Geo Spatial queries. To name a few, you can compare distances, get a bounding box, determine shape,  
 4. [Sort queries](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-sorting) - sort queries are more like filters to arrange data returned by one of above queries. You can sort the data using multiple "property" parameters.
@@ -26,12 +26,14 @@ Here's a primer to leverage these powerful search queries broken into three step
 
 Log into <span class="fa fa-external-link"></span>[Appbase Dashboard](https://appbase.io/developer/), and create a new app. Once you create an app with a desired name, you should see an app dialog box appear as below.
 
-![App credentials](http://i.imgur.com/LBjXQQT.png)  
-**Image 1**: App name, credentials, and access controls  
+![App credentials](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/snvrcs_y.png)  
+**Image 1**: App name, stats and credentials
+
+Click the ![Icon](https://dl.dropboxusercontent.com/spa/q0230upf0vj6xe0/jf22g2ed.png) icon to copy your secret into clipboard.
 
 We will need the `app name` and the `secret` in all our API calls. In this case, these would be *my_app9* and *097b2b28b6a13cf2e53b6cecfec42b86*. We **trust you** with our app's secret!
 
-### 2. Put some Data
+### 2. Store some Data
 
 Appbase supports the document data model. You can store JSON objects (known as documents) with Appbase directly (similar to MongoDB documents, or RDBMS records). The documents are stored within a collection. Appbase supports a granular search which typically works on a collection. The search is based on the [ElasticSearch DSL](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl.html), and supports the entire query format.
 
@@ -171,6 +173,6 @@ Headers are always the same for all REST API requests.
 That's it! In less than 10 minutes, we were able to add production grade search in your app.
 
 
-## Next Steps
+## Full text and more
 
-Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main "search" course on the [ElasticSearch documentation](http://docs.appbase.io/#/v3.0/search/use-cases).
+Do you want to customize the 'fuzziness' of your search? Or perhaps apply multiple queries and filter the data at the same time. If this has whetted your appetite, check out our main article over here. [Search Usecases](http://docs.appbase.io/#/v3.0/search/use-cases).

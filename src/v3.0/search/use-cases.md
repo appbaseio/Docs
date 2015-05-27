@@ -13,7 +13,7 @@ As in Appbase has the concepts of collections, Documents and Properties, Elastic
 
 Purpose | Appbase | ES
 --------|---------|----
-Combining similar objects | collection | Type
+Combining similar objects | Collection | Type
 JSON Data Containers | Document | Document
 JSON Object's Property | Property | Field
 
@@ -48,15 +48,12 @@ This is a sample request **query object**, let's call it ``body.json``:
 
 ```json
 {
-    "collections": ["user", "tweet"],
-    "body": {
-        "query": {
-             "multi_match": {
-                 "fields": ["msg", "name"],
-                 "query": "hello"
-             }
-         }
-     }
+   "query": {
+      "multi_match": {
+         "fields": ["msg", "name"],
+         "query": "hello"
+      }
+   }
 }
 ```
 
@@ -89,7 +86,7 @@ We provide an unaltered DSL Response from ES. A typical response includes:
 		 - __\_score__ - _number_ : The score by witch the document matched the query
 		 - __\_source__ - _object_ : The data inside the document (document).
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote:
 > The _score_ of a result describes how close it matches the query.
 
 Example:
@@ -249,7 +246,7 @@ We see one by one, what queries apply in which search use cases, how you can com
 
 In each use case below, it is first described how the data is stored, and what kind of search we are trying to achieve on the data. Let's start with basic use case.
 
-### Simple _Match_
+### Simple _Match_ and Fulltext
 
 This is the most basic use case we can think of, where you want to just find out documents which contain a certain _term_, either as a string or a number.
 
@@ -261,7 +258,7 @@ For example, _"give me all the.."_
 
 We can use the _term filter_ or _term query_ for such cases.
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___filter___ vs ___query___  
 > A __filter__ in Elasticsearch says Yes or No for a document. I.E. If the document should be present in the results, or not.
 > A __query__ also _scores_ the document (counts the relevance with the desired search term - a heavy operation) and results come sorted according to their score.
@@ -278,11 +275,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["user"],
-    "body": {
-	    "filter" : {
-            "term" : { "firstname" : "Andrew" }
-        }
+	"filter" : {
+		"term" : { "firstname" : "Andrew" }
 	}
 }
 ```
@@ -291,11 +285,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["user"],
-    "body": {
-	    "query" : {
-            "term" : { "firstname" : "Andrew" }
-        }
+	"query" : {
+		"term" : { "firstname" : "Andrew" }
 	}
 }
 ```
@@ -304,11 +295,8 @@ For all the users with first name as "Andrew",
 
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "term" : { "price" : 100 }
-        }
+	"filter" : {
+		"term" : { "price" : 100 }
 	}
 }
 ```
@@ -317,11 +305,8 @@ Another useful query is a _match query_. It allows to define a string of terms a
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "match" : { "message" : "hello world" }
-        }
+	"query" : {
+		"match" : { "message" : "hello world" }
 	}
 }
 ```
@@ -330,23 +315,20 @@ The above search request would find tweets which contains terms "hello" or "worl
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "match" : {
-	            "message" : {
-		            "query" : "hello world",
-		            "operator" : "and"
-	            }
-            }
-        }
+	"query" : {
+		"match" : {
+			"message" : {
+				"query" : "hello world",
+				"operator" : "and"
+			}
+		}
 	}
 }
 ```
 
 The above search request would find tweets which contains terms "hello" and "world", both.
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___match___ _query_ and ___terms___ _filter_
 > The equivalent filter for a _match query_ is the _terms filter_.
 > Read more about them:
@@ -354,29 +336,9 @@ The above search request would find tweets which contains terms "hello" and "wor
 >  -  [_terms filter_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-terms-filter.html)
 
 
-#### Searching on multiple properties
-
-The _multi\_match_ query can search on multiple fields (properties) and returned if _any_ of those properties match _any_ of the terms.
-
-The below query would search for users with either first name or last name, being "Andrew" or "Garlic". I.E. also the users with first name as "Garlic" would be included, and vice versa.
-
-```json
-{
-    "collections": ["user"],
-    "body": {
-	    "query" : {
-            "multi_match" : {
-	            "query": "Andrew Garlic",
-			    "fields": ["firstname", "lastname"]
-            }
-        }
-	}
-}
-```
-
 For more fine tuned searches, like on the users with first name as "Andrew" and last name as "Garlic", we have to combine queries/filters. We see that later in this document.
 
-### Fuzzy
+### Fulltext: Fuzzy
 
 A fuzzy search matches with the documents who have the terms matching _nearly_  the search term.
 
@@ -386,24 +348,71 @@ The simplest way to do a _fuzzy query_ is:
 
 ```json
 {
-    "collections": ["tweet"],
-    "body": {
-	    "query" : {
-            "fuzzy" : { "message" : "hello" }
-        }
-	}
+  "query": {
+    "fuzzy": {
+      "message": "hello"
+    }
+  }
 }
 ```
 
 The above query would return tweets with the message as "hella" or "hallo" etc.
 
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___fuzzy___ search
 > There are number of _fuzzy_ queries in Elasticsearch and a number of ways to control the _fuzziness_ of the term. Plus, you can search on a single or more properties (fields). Take a look at these documentations:
 > - [_fuzzy_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html)
 > - [_fuzzy-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html)
 > - [_more-like-this_ query](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
+
+### Fulltext Autocomplete/wildcard
+
+When you want to search based on few characters (generally a use case in autocomplete search bar), you can use the wildcard search.
+
+Here's an example, you will get all the results which has "laur" anywhere in the text.
+
+```json
+{
+  "query": {
+    "wildcard": {
+      "message": "*laur*"
+    }
+  }
+}
+```
+
+> Elasticseach sidenote
+> #### ___wildcard___ search
+> You can use either `*` or `?` as wildcards. `?` stands for a single characters, and `*` stands for any character length. Checkout the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-wildcard-query.html) for more.
+
+### Fulltext: Fuzzy and Autocomplete
+
+Using the [bool query](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), which is explained [later in this document](http://docs.appbase.io/#/v3.0/search/use-cases#use-cases-searching-combining-queriesfilters), we can combine above two cases into a single query and improve our search results.
+
+Example:
+
+```json
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "wildcard": {
+            "message": "*laur*"
+          }
+        },
+        {
+          "fuzzy": {
+            "message": "laur"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 
 ### Numeric-range
 
@@ -415,21 +424,18 @@ _"Give me all the..."_
 We can use the _range filter_.
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "range" : {
-	            "price" : {
-                    "lt": 100,
-                    "gt": 50
-                }
-            }
-        }
-	}
+  "filter": {
+    "range": {
+      "price": {
+        "lt": 100,
+        "gt": 50
+      }
+    }
+  }
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___range___ _filter_
 > It can also perform greater/less _or equal _ searches. See the [_range_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-range-filter.html) for more details.
 
@@ -453,22 +459,19 @@ We can use _geo distance_ filter to find documents located within specific dista
 Find restaurants located within 5km from the point 40, -70.
 ```json
 {
-    "collections": ["restaurant"],
-    "body": {
-	    "filter" : {
-            "geo_distance" : {
-				"distance" : "5km",
-				"location" : {
-					"lat" : 40,
-					"lon" : -70
-				}
-			}
-		}
-	}
+  "filter": {
+    "geo_distance": {
+      "distance": "5km",
+      "location": {
+        "lat": 40,
+        "lon": -70
+      }
+    }
+  }
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___geo spatial___ _search_
 > You can define the distance in real world Units like km, miles etc. There many ways the shape (box, polygon etc) and the range of this distance can be customized. Check out these documents for more details:
 > - [Elasticsearch Geo Location tutorial](http://www.elasticsearch.org/blog/geo-location-and-search/)
@@ -487,19 +490,22 @@ Earlier in the _numeric range_ use case, we searched for products in price range
 
 ```json
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-            "term" : { "price" : 100 }
-        },
-        "sort" : [
-			{ "price" : "asc"},
-			{ "name" : "asc" }
-		],
-	}
+  "filter": {
+    "term": {
+      "price": 100
+    }
+  },
+  "sort": [
+    {
+      "price": "asc"
+    },
+    {
+      "name": "asc"
+    }
+  ],
 }
 ```
-> <sup>Elasticseach sidenote</sup>
+> Elasticseach sidenote
 > #### ___sorting___
 > You can specify the order of the sort (asc, desc), you can also sort on multi-valued fields. Geo Location based sort is possible too.
 > Take a look at the [_sort_ documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-sort.html).
@@ -515,7 +521,21 @@ There wide varieties of aggregations and criteria, based on string-terms, locati
 
 ### Combining queries/filters
 
-_"Give me all the products which.."_
+Case 1) _"Give me all the products which.."_
+
+ - has brand "Apple" OR "Samsung".
+
+Case 2)  _"Give me all the products which.."_
+
+ - has brand "Apple" AND "Samsung".
+
+Case 4) Multiple properties, _"Give me all the users which.."_
+ 
+ - has brand first name "John" OR last name "John"
+
+Let's take a very complex case,
+ 
+Case 3) _"Give me all the products which.."_
 
  - are mobile phones
  _and_
@@ -552,61 +572,142 @@ A bool query/filter can have three kinds of clauses:
  - `should` - any one of the conditions must appear in the matching documents.
 
 Lets write the request to search the mobile phones we described above.
-```json
+```js
+//For case 1: "Apple" OR "Samsung"
 {
-    "collections": ["product"],
-    "body": {
-	    "filter" : {
-		    "bool": {
-			    "must": [
-				    {
-					    "term": { "type": "mobile" }
-				    },
-				    {
-					    "range": { "price": { "lt": 800 } }
-				    }
-			    ],
-			    "must_not": [{
-				    "term": { "brand": "Apple" }
-			    }],
-			    "should": [
-				    {
-					    "term": { "color": "metal"}
-				    },
-				    {
-					    "bool": {
-						    "must": [
-							    {
-								    "term": {"brand": "Samsung"}
-							    },
-							    {
-								    "term": {"color": "white"}
-							    }
-						    ]
-					    },
-				    },
-				    {
-					    "bool": {
-						    "must": [
-							    {
-								    "term": {"brand": "Sony"}
-							    },
-							    {
-								    "term": {"color": "black"}
-							    }
-						    ]
-					    }
-				    }
-			    ]
-		    }
-	    }
-	}
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "brand": "Apple"
+          }
+        },
+        {
+          "match": {
+            "brand": "Samsung"
+          }
+        }
+      ]
+    }
+  }
 }
 ```
 
-> <sup>Elasticseach sidenote</sup>
+```js
+//For case 2: "Apple" AND "Samsung"
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "brand": "Apple"
+          }
+        },
+        {
+          "match": {
+            "brand": "Samsung"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+```js
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "first_name": "John"
+          }
+        },
+        {
+          "match": {
+            "last_name": "John"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+```js
+// For case 3
+{
+  "filter": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "type": "mobile"
+          }
+        },
+        {
+          "range": {
+            "price": {
+              "lt": 800
+            }
+          }
+        }
+       ],
+      "must_not": [{
+        "term": {
+          "brand": "Apple"
+        }
+       }],
+      "should": [
+        {
+          "term": {
+            "color": "metal"
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "brand": "Samsung"
+                }
+           },
+              {
+                "term": {
+                  "color": "white"
+                }
+           }
+          ]
+          },
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "brand": "Sony"
+                }
+           },
+              {
+                "term": {
+                  "color": "black"
+                }
+           }
+          ]
+          }
+        }
+       ]
+    }
+  }
+}
+```
+
+> Elasticseach sidenote
 > #### ___bool___ _query/filter_
-> As you can see in the example here, we have using bool filters. This way you can write really complex search requests. To know more check out:
+> As you can see in the example here, we have using bool filters. This way you can combine any kind of queries and filters, you can also combine multiple usecases (like fuzzy and wildcard), and write complex search requests. To know more check out:
 > - [_bool_ query documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
 > - [_bool_ filter documentation](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-filter.html)
 

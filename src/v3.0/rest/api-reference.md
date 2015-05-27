@@ -13,7 +13,7 @@ The Appbase API is based on REST principles. All operations including creation o
 ### Allowed HTTP Request Types
 
 - ``PATCH`` - Partial Updates to an Existing Resource OR Creates a new resource
-- ``POST`` - Creates a new resource at the resource path
+- ``POST`` - Querying
 - ``GET`` - Fetches a resource
 - ``DELETE`` - Delete a resource
 
@@ -138,22 +138,19 @@ Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 
 ### Search collections
 
-Search documents across one or more collections. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see other queries that can be done with this [endpoint](http://docs.appbase.io/#/v3.0/search/use-cases), including fuzzy search, numeric-range, geospatial and aggregation queries.
+Search documents across one or more collections. *Returns* a JSON body matching the **ElasticSearch response format**. The matching search results are inside the ``hits.hits`` field as an array of documents. For more details, see [more queries](http://docs.appbase.io/#/v3.0/search/use-cases) that can be done with this endpoint, including fuzzy search, numeric-range, geospatial and aggregation queries.
 
 > **Example Request**
 ```curl
 curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
      -d '{
-        "collections": ["Materials"],
-        "body": {
             "query": {
                 "multi_match": {
                     "fields": ["foo"],
                     "query": "bar"
                 }
             }
-        }
-     }' \
+        }' \
 'https://v3.api.appbase.io/rest_test/~search'
 ```
 **Usage**:
@@ -191,15 +188,12 @@ curl -X POST -H "Appbase-Secret: 193dc4d2440146082ea734f36f4f2638" \
 Appbase-Secret: 193dc4d2440146082ea734f36f4f2638
 <span class="inline-heading">BODY</span>
 {
-    "collections": ["Materials"],
-    "body": {
         "query": {
                 "multi_match": {
                     "fields": ["foo"],
                     "query": "bar"
                 }
         }
-    }
 }
 
 <b>Response</b>
