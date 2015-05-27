@@ -279,7 +279,7 @@
                 var location = Route.updatePath($route.current.params);
 
                 retObj.versions = versions;
-                retObj.currentVersion = currentVersion || versions[0];
+                retObj.currentVersion = currentVersion || versions[versions.length-1];
                 retObj.map = map;
                 retObj.locationPath = location.path;
 
@@ -373,7 +373,7 @@
                 $timeout(function(){
                     $scope.map = Docbase.map;
                     $scope.versions = Object.keys($scope.map);
-                    $scope.currentVersion = $scope.versions[$scope.versions.length-1];                    
+                    $scope.currentVersion = $scope.versions[0];                    
                 });
             });
         }
