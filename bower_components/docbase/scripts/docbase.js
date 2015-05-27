@@ -279,7 +279,7 @@
                 var location = Route.updatePath($route.current.params);
 
                 retObj.versions = versions;
-                retObj.currentVersion = currentVersion || versions[versions.length-1];
+                retObj.currentVersion = currentVersion || versions[0];
                 retObj.map = map;
                 retObj.locationPath = location.path;
 
