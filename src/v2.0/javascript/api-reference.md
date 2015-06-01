@@ -38,7 +38,7 @@ function(error, isAuthorized) {
 
 - **appname** ``String`` — App name
 - **appsecret** ``String`` (optional) — App secret key
-    While using Appbase clientside, app secret should not be used, as it will be exposed in the Javascript file. [User Authenticaion](http://docs.appbase.io/docs/authentications.html) is recommended in the clienside use of Appbase Library.
+    While using Appbase clientside, app secret should not be used, as it will be exposed in the Javascript file. [User Authentication](http://docs.appbase.io/#/v2.0/javascript/oauth) is recommended in the clientside use of Appbase Library.
 - **onComplete** ``Function`` — will be passed two arguments:
 
 	- **error** ``String`` / ``null`` — *String* containing the error message, *null* if event listening is successful
