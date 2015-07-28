@@ -1,4 +1,4 @@
-{"threeColumns": true}  
+{"threeColumns": false}  
 
 # Quick Start to the ![Scalr](http://i.imgur.com/a1KAate.png) REST API:
 
