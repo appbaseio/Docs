@@ -1,4 +1,16 @@
-{
+{   
+    "scalr": [
+        {
+            "label": "REST",
+            "name": "rest",
+            "files": [
+                {
+                    "label": "Quick Start",
+                    "name": "intro"
+                }
+            ]
+        }
+    ],
     "v2.0" : [
         {
             "label": "Concepts",
