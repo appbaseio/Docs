@@ -26,7 +26,7 @@ And our beloved Hobo Lobo is typing out a 101 of 'SCALR'.
 
 ## ``SCALR`` - What's in a name
 
-The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [docs.appbase.io/#/scalr]() and the API base URL would be [https://scalr.api.appbase.io]().
+The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [docs.appbase.io/#/scalr/]() and the API base URL would be ``https://scalr.api.appbase.io``.
 
 ## Compatibility with ElasticSearch
 
