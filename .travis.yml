@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '0.10'
+branches:
+  only:
+  - master
+before_script:
+- npm install -g grunt-cli
+- grunt gh-pages-clean
+env:
+  global:
+    secure: kVBbY3Pzf/By5agcbTsBOjNPY+kABTJSZveHgmAc8t0rBJuhQV3yIr7DkHc3iUd01TKSYLKhi5LkF+DP9tXhJJdzSvpNdz4r3NjybYGXKm+3qQ8LxuGGuaLP1nOIQhbxvYKwoTwy/yy04BzwYIDhXADT81Nsfw5E4UoUBMZRRUIAqQ82e0hLoQUtdSm33fBy+IwIZHm+/P4NPTAahJJ1YsPaomCsPbqXPU79uFnoThuwHRBlBqbTjjrGhGoyRwYd2TDHeplKT2a8WVTnG9gYa4RL8hmPvl62ogus/TTF021fIsfUFszEcqArOphbsKwelBajcegueZedKhwe1wsDhFUR4kG2bDFx62zOmr0cjc2cgTHFkd77B4RV7apxDptbRsY288S8W8XFjh+tTOk4VkspyONvxgd5NH7BxS+WwaRnkt2yTqxQZY09meDInOSaZE5LvM5YHS879Tw4f+cwA5XenB97rj7SMJhrg7r9SOHFrirAPZ3LSOr6fWPdK/Nfx2kTQbeKJv17qm+Gfm6Kfs723a3gC7xCwOD8Nt+P71uRu5zCmtC+gyg3tFZd5PUCMrOiwyKGzsX1ghykHjlnMf/yUz4cHAC1aIPsstRYs6MYKnlAbNOjknFD6XKKk8s/e9748peNb67xUjAIl7Y52ndlWp6J3FtK/du6ZlITXZU=

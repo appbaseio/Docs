@@ -1,0 +1,903 @@
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Appbase Documentation</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+  <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="/bower_components/docbase/scripts/polyfill.js"></script>
+  <!-- Flatdoc -->
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/legacy.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/flatdoc.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/flatdoc/theme-white/style.css">
+  <script type="text/javascript" src="/bower_components/docbase/scripts/flatdoc-theme.js"></script>
+
+  <!-- DocBase -->
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
+
+  <script type="text/javascript" src="/bower_components/docbase/scripts/docbase.js"></script>
+  <script src="/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/google-code-prettify/bin/prettify.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
+  
+
+  <!-- Custom -->
+  <link rel="stylesheet" type="text/css" href="/styles/docs.css">
+
+</head>
+<body role="flatdoc" class="">
+  <!--[if lt IE 10]>
+     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- ngView:  --><div ng-view="" class="ng-scope"><!-- ngInclude: 'html/navbar.html' --><nav class="navbar navbar-default navbar-fixed-top ng-scope" ng-include="'html/navbar.html'"><div class="container-fluid ng-scope">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://appbase.io">
+      <img src="/images/logo.svg">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <!-- ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/concepts" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/concepts">Concepts</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="file.label" class="ng-binding" href=/v2.0/concepts/datamodel.html>Datamodel</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v2.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/javascript" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/javascript">Javascript</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/quick-start.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/quick-start.html>Quick start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/api-reference.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/angular.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/angular.html>Angular Binding</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/oauth.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/oauth.html>OAuth</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/search" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/search">Search Queries</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/search/quick-start.html ng-bind="file.label" class="ng-binding" href=/v2.0/search/quick-start.html>Quick Start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/search/use-cases.html ng-bind="file.label" class="ng-binding" href=/v2.0/search/use-cases.html>Use-cases</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] -->
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           <span ng-bind="currentVersion" class="ng-binding">v2.0</span> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu version-switcher" role="menu">
+          <!-- ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/scalr/rest/intro.html ng-bind="version" class="ng-binding" href=/scalr/rest/intro.html>scalr</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="version" class="ng-binding" href=/v2.0/concepts/datamodel.html>v2.0</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="version" class="ng-binding" href=/v3.0/changelog/changelog.html>v3.0</a>
+          </li><!-- end ngRepeat: version in versions -->
+        </ul>
+      </li>
+      <li class="github-star">
+        <iframe src="https://ghbtns.com/github-btn.html?user=appbaseio&amp;repo=Docs&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid --></nav>
+<div role="flatdoc" class="content-root ng-scope">
+  <div class="menubar fixed">
+    <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="introduction-item" class="level-1"><a id="introduction-link" href="/v2.0/rest/api-reference.html#introduction" class="level-1" pref="#introduction">Introduction</a><ul class="level-2" id="introduction-list"><li id="root-item" class="level-2"><ul class="level-3" id="root-list"><li id="introduction-allowed-http-request-types-item" class="level-3"><a id="introduction-allowed-http-request-types-link" href="/v2.0/rest/api-reference.html#introduction-allowed-http-request-types" class="level-3" pref="#introduction-allowed-http-request-types">Allowed HTTP Request Types</a></li><li id="introduction-http-headers-item" class="level-3"><a id="introduction-http-headers-link" href="/v2.0/rest/api-reference.html#introduction-http-headers" class="level-3" pref="#introduction-http-headers">HTTP Header(s)</a></li><li id="introduction-authorization-item" class="level-3"><a id="introduction-authorization-link" href="/v2.0/rest/api-reference.html#introduction-authorization" class="level-3" pref="#introduction-authorization">Authorization</a></li><li id="introduction-base-uri-item" class="level-3"><a id="introduction-base-uri-link" href="/v2.0/rest/api-reference.html#introduction-base-uri" class="level-3" pref="#introduction-base-uri">Base URI</a></li></ul></li></ul></li><li id="api-reference-item" class="level-1"><a id="api-reference-link" href="/v2.0/rest/api-reference.html#api-reference" class="level-1" pref="#api-reference">API Reference</a><ul class="level-2" id="api-reference-list"><li id="api-reference-introduction-item" class="level-2"><a id="api-reference-introduction-link" href="/v2.0/rest/api-reference.html#api-reference-introduction" class="level-2" pref="#api-reference-introduction">Introduction</a></li><li id="api-reference-namespace-item" class="level-2"><a id="api-reference-namespace-link" href="/v2.0/rest/api-reference.html#api-reference-namespace" class="level-2" pref="#api-reference-namespace">Namespace</a><ul class="level-3" id="api-reference-namespace-list"><li id="api-reference-namespace-list-all-vertices-item" class="level-3"><a id="api-reference-namespace-list-all-vertices-link" href="/v2.0/rest/api-reference.html#api-reference-namespace-list-all-vertices" class="level-3" pref="#api-reference-namespace-list-all-vertices">List all vertices</a></li><li id="api-reference-namespace-search-vertices-by-propertyies-item" class="level-3"><a id="api-reference-namespace-search-vertices-by-propertyies-link" href="/v2.0/rest/api-reference.html#api-reference-namespace-search-vertices-by-propertyies" class="level-3" pref="#api-reference-namespace-search-vertices-by-propertyies">Search Vertices by property(ies)</a></li></ul></li><li id="api-reference-vertex-property-item" class="level-2"><a id="api-reference-vertex-property-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-property" class="level-2" pref="#api-reference-vertex-property">Vertex Property</a><ul class="level-3" id="api-reference-vertex-property-list"><li id="api-reference-vertex-property-create-update-vertex-properties-item" class="level-3"><a id="api-reference-vertex-property-create-update-vertex-properties-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-property-create-update-vertex-properties" class="level-3" pref="#api-reference-vertex-property-create-update-vertex-properties">Create / Update Vertex Properties</a></li><li id="api-reference-vertex-property-read-vertex-properties-item" class="level-3"><a id="api-reference-vertex-property-read-vertex-properties-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-property-read-vertex-properties" class="level-3" pref="#api-reference-vertex-property-read-vertex-properties">Read Vertex Properties</a></li><li id="api-reference-vertex-property-delete-vertex-properties-item" class="level-3"><a id="api-reference-vertex-property-delete-vertex-properties-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-property-delete-vertex-properties" class="level-3" pref="#api-reference-vertex-property-delete-vertex-properties">Delete vertex properties</a></li></ul></li><li id="api-reference-vertex-edge-item" class="level-2"><a id="api-reference-vertex-edge-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-edge" class="level-2" pref="#api-reference-vertex-edge">Vertex Edge</a><ul class="level-3" id="api-reference-vertex-edge-list"><li id="api-reference-vertex-edge-create-update-vertex-edges-item" class="level-3"><a id="api-reference-vertex-edge-create-update-vertex-edges-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-edge-create-update-vertex-edges" class="level-3" pref="#api-reference-vertex-edge-create-update-vertex-edges">Create / Update Vertex Edges</a></li><li id="api-reference-vertex-edge-read-vertex-edges-item" class="level-3"><a id="api-reference-vertex-edge-read-vertex-edges-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-edge-read-vertex-edges" class="level-3" pref="#api-reference-vertex-edge-read-vertex-edges">Read Vertex Edges</a></li><li id="api-reference-vertex-edge-delete-vertex-edges-item" class="level-3"><a id="api-reference-vertex-edge-delete-vertex-edges-link" href="/v2.0/rest/api-reference.html#api-reference-vertex-edge-delete-vertex-edges" class="level-3" pref="#api-reference-vertex-edge-delete-vertex-edges">Delete vertex edges</a></li></ul></li></ul></li><li id="socketio-api-endpoints-item" class="level-1"><a id="socketio-api-endpoints-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints" class="level-1" pref="#socketio-api-endpoints">Socket.io API Endpoints</a><ul class="level-2" id="socketio-api-endpoints-list"><li id="socketio-api-endpoints-creating-the-client-item" class="level-2"><a id="socketio-api-endpoints-creating-the-client-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-creating-the-client" class="level-2" pref="#socketio-api-endpoints-creating-the-client">Creating the Client</a></li><li id="socketio-api-endpoints-requesting-for-data-item" class="level-2"><a id="socketio-api-endpoints-requesting-for-data-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-requesting-for-data" class="level-2" pref="#socketio-api-endpoints-requesting-for-data">Requesting for data</a><ul class="level-3" id="socketio-api-endpoints-requesting-for-data-list"><li id="socketio-api-endpoints-requesting-for-data-request-format-item" class="level-3"><a id="socketio-api-endpoints-requesting-for-data-request-format-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-requesting-for-data-request-format" class="level-3" pref="#socketio-api-endpoints-requesting-for-data-request-format">Request Format</a></li><li id="socketio-api-endpoints-requesting-for-data-vertex-item" class="level-3"><a id="socketio-api-endpoints-requesting-for-data-vertex-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-requesting-for-data-vertex" class="level-3" pref="#socketio-api-endpoints-requesting-for-data-vertex">Vertex</a></li><li id="socketio-api-endpoints-requesting-for-data-namespace-item" class="level-3"><a id="socketio-api-endpoints-requesting-for-data-namespace-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-requesting-for-data-namespace" class="level-3" pref="#socketio-api-endpoints-requesting-for-data-namespace">Namespace</a></li></ul></li><li id="socketio-api-endpoints-attachingremoving-data-listeners-item" class="level-2"><a id="socketio-api-endpoints-attachingremoving-data-listeners-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-attachingremoving-data-listeners" class="level-2" pref="#socketio-api-endpoints-attachingremoving-data-listeners">Attaching/Removing Data Listeners</a><ul class="level-3" id="socketio-api-endpoints-attachingremoving-data-listeners-list"><li id="socketio-api-endpoints-attachingremoving-data-listeners-format-item" class="level-3"><a id="socketio-api-endpoints-attachingremoving-data-listeners-format-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-attachingremoving-data-listeners-format" class="level-3" pref="#socketio-api-endpoints-attachingremoving-data-listeners-format">Format</a></li></ul></li><li id="socketio-api-endpoints-parsing-the-data-item" class="level-2"><a id="socketio-api-endpoints-parsing-the-data-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-parsing-the-data" class="level-2" pref="#socketio-api-endpoints-parsing-the-data">Parsing the Data</a><ul class="level-3" id="socketio-api-endpoints-parsing-the-data-list"><li id="socketio-api-endpoints-parsing-the-data-vertex-item" class="level-3"><a id="socketio-api-endpoints-parsing-the-data-vertex-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-parsing-the-data-vertex" class="level-3" pref="#socketio-api-endpoints-parsing-the-data-vertex">Vertex</a></li><li id="socketio-api-endpoints-parsing-the-data-namespace-item" class="level-3"><a id="socketio-api-endpoints-parsing-the-data-namespace-link" href="/v2.0/rest/api-reference.html#socketio-api-endpoints-parsing-the-data-namespace" class="level-3" pref="#socketio-api-endpoints-parsing-the-data-namespace">Namespace</a></li></ul></li></ul></li></ul></li></ul></div>
+  </div>
+  <div role="flatdoc-content" class="content"><h1 id="introduction">Introduction</h1><p>The Appbase API is based on REST principles. All operations including creating vertices and edges, fetching vertex properties (data) and edges, deleting a vertex or an edge as well as searching through vertices are RESTful. The only non-RESTful operation is realtime event streams, which works with the Websocket protocol, using socket.io.</p><h3 id="introduction-allowed-http-request-types">Allowed HTTP Request Types</h3><ul>
+<li><code>PATCH</code> - Creates or updates a resource</li>
+<li><code>POST</code> - Fetches a resource</li>
+<li><code>DELETE</code> - Delete a resource</li>
+</ul><h3 id="introduction-http-headers">HTTP Header(s)</h3><p>All API requests require a JSON body to specify additional options. The following header is necessary for all the API requests.</p><p>“Content-Type”: “application/json”</p><h3 id="introduction-authorization">Authorization</h3><p>Appbase accepts one of the two methods of authorizations.</p><ol>
+<li>Header based authorization - Add a HTTP header “Appbase-Secret” to each request, with value as the app’s <em>secret key</em>.</li>
+<li>Add a field “secret” : “&lt;secret-key&gt;” in the JSON body of the request.</li>
+</ol><p>In this document, we will be using the 1. method since it makes authorization distinct from the request data.</p><h3 id="introduction-base-uri">Base URI</h3><p>Base URI is the fixed URI that is common for all the API request endpoints and is prefix to all the API requests. A base URI has two path variables: <strong>appname</strong> and <strong>api_version</strong>. A typical base URI looks like <a href="https://api.appbase.io/&lt;appname&gt;/v2/">https://api.appbase.io/&lt;appname&gt;/v2/</a>.</p><h1 id="api-reference">API Reference</h1><h2 id="api-reference-introduction">Introduction</h2><p>The Appbase API endpoints are divided between three types of different resources.</p><ol>
+<li><code>Vertex</code> - A <em>vertex</em> contains two distinct resources - <strong>Properties</strong> and <strong>Edges</strong>. A vertex URI consists of either &lt;namespace&gt;/&lt;vertex&gt;/ format or &lt;namespace&gt;/&lt;vertex1&gt;/&lt;vertex2&gt;/…/&lt;vertexn&gt;/ format. Except <code>DELETE</code>, all operations on the <em>vertex</em> resource happens with either <em>properties</em> or <em>edges</em>.</li>
+<li><code>Vertex Properties</code> - <em>Vertex Properties</em> are stored as a JSON object. The suffix <code>~properties</code> is used with the resource URI of the vertex to operate on the <em>properties</em> resource.</li>
+<li><code>Edges</code> - <em>Edges</em> of a vertex are stored as JSON object. The suffic <code>~edges</code> is used with the resource URI of the vertex to operate on the <em>edge</em> resource.</li>
+</ol><h2 id="api-reference-namespace">Namespace</h2><h3 id="api-reference-namespace-list-all-vertices">List all vertices</h3><p>List the vertices in the namespace. <em>Returns</em> an array of vertices in the namespace.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request POST \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+  </span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/~list'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> identifier can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns an array of vertices. Each vertex is returned as an object with a server <code>timestamp</code> when the vertex was last updated, the shortest path to the vertex resource aka <code>rootPath</code>, and a unique identifier of the vertex properties resource <code>_id</code> (used by the server internally).</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">POST</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/~list</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Sat</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="typ">Dec</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">17</span><span class="pun">:</span><span class="lit">13</span><span class="pun">:</span><span class="lit">37</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">267</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">[</span><span class="pln">
+  </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418488108255</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"5488ccab3b87a791550d81b7"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418464098508</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Iron"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"5488cce73b87a791550d81bb"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418251495670</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Fire"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">]</span></code>
+</pre><h3 id="api-reference-namespace-search-vertices-by-propertyies">Search Vertices by property(ies)</h3><p>Search vertices by one or more vertex properties. <em>Returns</em> an array of vertices that match the search criteria.</p><p><code>Note:</code> Search should be enabled for the respective namespace from the databrowser interface before performing this query.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request POST \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"query"</span></span><span class="str">: {
+            </span><span class="string"><span class="str">"text"</span></span><span class="str">: </span><span class="string"><span class="str">"bar"</span></span><span class="str">,
+            </span><span class="string"><span class="str">"properties"</span></span><span class="str">:[</span><span class="string"><span class="str">"foo"</span></span><span class="str">]
+        }
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/~search'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> identifier can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+    <ul>
+        <li><code>data</code> - A JSON object representing the search query and the properties to be used for the matching criteria.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns an array of vertices which match the search query. Each vertex is returned as an object with all the <strong>properties</strong> (both matching and non-matching), a server <code>timestamp</code> when the vertex was last updated, the shortest path to the vertex resource aka <code>rootPath</code>, and a unique identifier of the vertex properties resource <code>_id</code> (used by the server internally).</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">POST</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/~search</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"query"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"text"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"bar"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"properties"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+      </span><span class="str">"foo"</span><span class="pln">
+    </span><span class="pun">]</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Sat</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="typ">Dec</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">17</span><span class="pun">:</span><span class="lit">26</span><span class="pun">:</span><span class="lit">52</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">126</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">[</span><span class="pln">
+  </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418488108255</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"green"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"leaf"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"foo"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"bar"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">]</span></code>
+</pre><h2 id="api-reference-vertex-property">Vertex Property</h2><p>All data operations on a vertex happen via <strong>Vertex Property</strong> endpoints.</p><h3 id="api-reference-vertex-property-create-update-vertex-properties">Create / Update Vertex Properties</h3><p>Create a new vertex with some properties or update the properties of an existing vertex.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request PATCH \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"data"</span></span><span class="str">:{</span><span class="string"><span class="str">"foo"</span></span><span class="str">:</span><span class="string"><span class="str">"bar"</span></span><span class="str">}
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~properties'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+    <ul>
+        <li><code>data</code> - A JSON object representing the properties to be set on the vertex (can contain nested object, arrays). In case of a conflict (read existing property), the property value will be overwritten.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns updated properties and values, a server <code>timestamp</code> when the update happened, the shortest path to the vertex resource aka <code>rootPath</code>, and a unique identifier of the vertex properties resource <code>_id</code> (used by the server internally).</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">PATCH</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~properties</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"data"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"foo"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"bar"</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Wed</span><span class="pun">,</span><span class="pln"> </span><span class="lit">15</span><span class="pln"> </span><span class="typ">Oct</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">20</span><span class="pun">:</span><span class="lit">08</span><span class="pun">:</span><span class="lit">58</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">112</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"foo"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"bar"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1413403738268</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`543ed45a4c0b62550662563b"</span><span class="pln">
+</span><span class="pun">}</span></code>
+</pre><h3 id="api-reference-vertex-property-read-vertex-properties">Read Vertex Properties</h3><p>Read the existing vertex properties.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request POST \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"all"</span></span><span class="str">: true
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~properties'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+    <ul>
+        <li><code>data</code> - A JSON object with the property <code>all</code> set as the boolean value <strong>true</strong>.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns a <strong>vertex</strong> object with all the properties, a <code>timestamp</code> value when the vertex was last updated, the shortest path to the vertex resource aka <code>rootPath</code>, a unique identifier of the vertex properties resource <code>_id</code> (used by the server internally), along with an <strong>optype</strong> field equaling “RETR” - indicating a retrieval operation.</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">POST</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~properties</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"all"</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Sat</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="typ">Dec</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">16</span><span class="pun">:</span><span class="lit">28</span><span class="pun">:</span><span class="lit">36</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">151</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"vertex"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418488108255</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"foo"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"bar"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"green"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"leaf"</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"optype"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"RETR"</span><span class="pln">
+</span><span class="pun">}</span></code>
+</pre><h3 id="api-reference-vertex-property-delete-vertex-properties">Delete vertex properties</h3><p>Delete specific (or all) data properties of a vertex.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request DELETE \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"data"</span></span><span class="str">: [</span><span class="string"><span class="str">"foo"</span></span><span class="str">]
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~properties'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all properties</b>
+    <ul>
+        <li><code>data</code> - A JSON object with the property <code>all</code> set as the boolean value <strong>true</strong>.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific properties</b>
+    <ul>
+        <li><code>data</code> - A JSON object with the property <code>data</code> set as an array of property names to be deleted.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns the <strong>vertex</strong> object with the deleted properties set to “”, a <code>timestamp</code> value when the vertex was last updated, the shortest path to the vertex resource aka <code>rootPath</code>, and a unique identifier of the vertex properties resource <code>_id</code> (used by the server internally).</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">DELETE</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~properties</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"data"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"foo"</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Wed</span><span class="pun">,</span><span class="pln"> </span><span class="lit">15</span><span class="pln"> </span><span class="typ">Oct</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">20</span><span class="pun">:</span><span class="lit">08</span><span class="pun">:</span><span class="lit">58</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">112</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"foo"</span><span class="pun">:</span><span class="pln"> </span><span class="str">""</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418486072705</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pln">
+</span><span class="pun">}</span></code>
+</pre><h2 id="api-reference-vertex-edge">Vertex Edge</h2><h3 id="api-reference-vertex-edge-create-update-vertex-edges">Create / Update Vertex Edges</h3><p>Create a new (directed) edge or update the existing edge(s) of a vertex to another vertex. An <strong>order</strong>, which acts as an index can optionally be set on the edge.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request PATCH \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"data"</span></span><span class="str">: {
+            </span><span class="string"><span class="str">"anEdge"</span></span><span class="str">: {
+                </span><span class="string"><span class="str">"path"</span></span><span class="str">: </span><span class="string"><span class="str">"Materials/Iron"</span></span><span class="str">
+            },
+            </span><span class="string"><span class="str">"anotherEdge"</span></span><span class="str">: {
+                </span><span class="string"><span class="str">"path"</span></span><span class="str">: </span><span class="string"><span class="str">"Materials/Ice"</span></span><span class="str">,
+                </span><span class="string"><span class="str">"order"</span></span><span class="str">: </span><span class="number"><span class="number"><span class="str">500</span></span><span class="str">.</span><span class="number"><span class="str">6</span></span></span><span class="str">
+            }
+        }
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~edges'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+    <ul>
+        <li><code>data</code> - A JSON object representing the edge(s) to be created from the vertex. In case of a conflict (read an existing edge), the link will be updated.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns updated edge links to outvertices, a server <code>timestamp</code> for each edge when the update happened, and a unique identifier for each edge resource <code>t_id</code> (used by the server internally).</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">PATCH</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~edges</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"data"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"anEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"path"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Iron"</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="str">"anotherEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"path"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials/Ice"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"order"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">500.6</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+content</span><span class="pun">-</span><span class="pln">type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Wed</span><span class="pun">,</span><span class="pln"> </span><span class="lit">15</span><span class="pln"> </span><span class="typ">Oct</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">20</span><span class="pun">:</span><span class="lit">08</span><span class="pun">:</span><span class="lit">58</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">235</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"edges"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"anEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"t_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`5488ccab3b87a791550d81b7"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418261314605</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="str">"anotherEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"t_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"order"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">500.6</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418261314605</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code>
+</pre><h3 id="api-reference-vertex-edge-read-vertex-edges">Read Vertex Edges</h3><p>Fetch the outgoing edges of a vertex..</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request POST \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"filters"</span></span><span class="str">: {}
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~edges'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span>
+    <ul>
+        <li><code>filters</code> - A filters JSON object, set as {} to not apply any filters.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>200</code> if success.</li>
+        <li><span class="inline-heading">BODY (JSON)</span> - Returns an <strong>edges</strong> object with the filtered edges as an array, each edge having a <code>timestamp</code> value when the edge was last updated, a unique identifier of the edge resource <code>t_id</code> (used by the server internally), along with an <code>id</code> identifier of the vertex on which this operation is performed and an <strong>optype</strong> field equaling “RETR” - indicating a retrieval operation.</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">POST</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~edges</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"filters"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">200</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Sat</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pln"> </span><span class="typ">Dec</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">16</span><span class="pun">:</span><span class="lit">55</span><span class="pun">:</span><span class="lit">14</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">203</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="str">"edges"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"anEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"t_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`5488ccab3b87a791550d81b7"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418489847292</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="str">"anotherEdge"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="str">"t_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1418489847292</span><span class="pun">,</span><span class="pln">
+      </span><span class="str">"order"</span><span class="pun">:</span><span class="pln"> </span><span class="lit">500.6</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">},</span><span class="pln">
+  </span><span class="str">"optype"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"RETR"</span><span class="pun">,</span><span class="pln">
+  </span><span class="str">"_id"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Materials`547059ce69528db30aa7ae90"</span><span class="pln">
+</span><span class="pun">}</span></code>
+</pre><h3 id="api-reference-vertex-edge-delete-vertex-edges">Delete vertex edges</h3><p>Delete specific (or all) edges of a vertex.</p><blockquote style="float: left; width: 510px; margin-left: 20px; margin-right: 20px; color: rgb(51, 51, 51); ">
+<p><strong>Example Request</strong></p>
+<pre style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; "><code class="lang-curl prettyprint prettyprinted" style=""><span class="pln">curl </span><span class="pun">--</span><span class="pln">include \
+     </span><span class="pun">--</span><span class="pln">request DELETE \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Content-Type: application/json"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">header </span><span class="string"><span class="str">"Appbase-Secret: </span><span class="number"><span class="str">193</span></span><span class="str">dc</span><span class="number"><span class="str">4</span></span><span class="str">d</span><span class="number"><span class="str">2440146082</span></span><span class="str">ea</span><span class="number"><span class="str">734</span></span><span class="str">f</span><span class="number"><span class="str">36</span></span><span class="str">f</span><span class="number"><span class="str">4</span></span><span class="str">f</span><span class="number"><span class="str">2638</span></span><span class="str">"</span></span><span class="pln"> \
+     </span><span class="pun">--</span><span class="pln">data</span><span class="pun">-</span><span class="pln">binary </span><span class="string"><span class="str">'{
+        </span><span class="string"><span class="str">"data"</span></span><span class="str">: [</span><span class="string"><span class="str">"edge</span><span class="number"><span class="str">1</span></span><span class="str">"</span></span><span class="str">, </span><span class="string"><span class="str">"edgen"</span></span><span class="str">]
+    }'</span></span><span class="pln"> \
+</span><span class="string"><span class="str">'https:</span><span class="comment"><span class="str">//api.appbase.io/rest_test/v</span><span class="number"><span class="str">2</span></span><span class="str">/Materials/Ice/~edges'</span></span></span></code></pre>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li><span class="inline-heading">URL VARIABLES</span>
+    <ul>
+        <li><span class="path-var">appname</span> - application name, as set in the Dashboard.</li>
+        <li><span class="path-var">namespace</span> - namespace identifier, will create one if it doesn’t exist.</li>
+        <li><span class="path-var">vertex</span> - vertex identifier, will create one if it doesn’t exist.</li>
+<code>Note:</code> <em>namespace</em> and <em>vertex</em> identifiers can contain all ascii characters except for whitespaces, ‘/’, ‘:’, and ‘~’.
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST HEADERS</span>
+    <ul>
+        <li>Content-Type - application/json (always)</li>
+        <li>Appbase-Secret - Application secret key, unique to the application</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting all edges</b>
+    <ul>
+        <li><code>data</code> - A JSON object with the property <code>all</code> set as the boolean value <strong>true</strong>.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">REQUEST BODY (JSON)</span> <b>For deleting specific edges</b>
+    <ul>
+        <li><code>data</code> - A JSON object with the property <code>data</code> set as an array of edge names to be deleted.</li>
+    </ul>
+</li>
+<li><span class="inline-heading">RESPONSE</span>
+    <ul>
+        <li><span class="inline-heading">STATUS</span> - <code>204</code> if success.</li>
+    </ul>
+</li>
+</ul>
+
+</blockquote><pre><code class="prettyprint prettyprinted" style=""><span class="pln">
+</span><b><span class="typ">Request</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">URL</span></span><span class="pln">
+</span><span class="request-type"><span class="pln">DELETE</span></span><span class="pln"> https</span><span class="pun">:</span><span class="com">//api.appbase.io/</span><span class="path-var"><span class="com">appname</span></span><span class="com">/v2/</span><span class="path-var"><span class="com">namespace</span></span><span class="com">/</span><span class="path-var"><span class="com">vertex</span></span><span class="com">/~edges</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+</span><span class="typ">Appbase</span><span class="pun">-</span><span class="typ">Secret</span><span class="pun">:</span><span class="pln"> </span><span class="lit">193dc4d2440146082ea734f36f4f2638</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">BODY</span></span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="str">"data"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">"edge1"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"edgen"</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><b><span class="typ">Response</span></b><span class="pln">
+</span><span class="inline-heading"><span class="pln">STATUS</span></span><span class="pln">
+</span><span class="lit">204</span><span class="pln">
+</span><span class="inline-heading"><span class="pln">HEADERS</span></span><span class="pln">
+</span><span class="typ">Content</span><span class="pun">-</span><span class="typ">Type</span><span class="pun">:</span><span class="pln"> application</span><span class="pun">/</span><span class="pln">json
+access</span><span class="pun">-</span><span class="pln">control</span><span class="pun">-</span><span class="pln">allow</span><span class="pun">-</span><span class="pln">credentials</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+cache</span><span class="pun">-</span><span class="pln">control</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">no</span><span class="pun">-</span><span class="pln">cache
+date</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Wed</span><span class="pun">,</span><span class="pln"> </span><span class="lit">15</span><span class="pln"> </span><span class="typ">Oct</span><span class="pln"> </span><span class="lit">2014</span><span class="pln"> </span><span class="lit">20</span><span class="pun">:</span><span class="lit">08</span><span class="pun">:</span><span class="lit">58</span><span class="pln"> GMT
+content</span><span class="pun">-</span><span class="pln">length</span><span class="pun">:</span><span class="pln"> </span><span class="lit">112</span><span class="pln">
+connection</span><span class="pun">:</span><span class="pln"> keep</span><span class="pun">-</span><span class="pln">alive</span></code>
+</pre><h1 id="socketio-api-endpoints">Socket.io API Endpoints</h1><p>Socket.io is a powerful realtime engine, and we are using it in the backend to provide realtime streams of data. Socket.io has client libraries for almost popular languages and platforms, and you can follow the API endpoints given below to fetch the data as realtime streams. Examples here use Javascript Language, but you can use the same methods on any other platform.</p><h2 id="socketio-api-endpoints-creating-the-client">Creating the Client</h2><p>The API server can be reached form <code>http://api.appbase.io:80</code> or <code>https://api.appbase.io:443</code>. Make sure that the ports are properly defined in the server URL itself.</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient </span><span class="pun">=</span><span class="pln"> io</span><span class="pun">(</span><span class="string"><span class="str">"http:</span><span class="comment"><span class="str">//api.appbase.io:</span><span class="number"><span class="str">80</span></span><span class="str">"</span></span><span class="pun">);</span></span></code></pre><h2 id="socketio-api-endpoints-requesting-for-data">Requesting for data</h2><p>As vertices and namespace are represented using paths, you request for data on a path. Vertices and Namespaces are fundamentally different, and they also differ in terms of what resources you can listen to. But, they share the same Request format, with minor changes for special cases.</p><h3 id="socketio-api-endpoints-requesting-for-data-request-format">Request Format</h3><p>The request object looks something like this:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"token"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"key"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"obj_path"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"filters"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"limit"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">natural number</span><span class="pun">&gt;,</span><span class="pln">
+        </span><span class="string"><span class="str">"skip"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">natural number</span><span class="pun">&gt;,</span><span class="pln">
+        </span><span class="string"><span class="str">"startAt"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">natural number</span><span class="pun">&gt;,</span><span class="pln">
+        </span><span class="string"><span class="str">"endAt"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">natural number</span><span class="pun">&gt;</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">string</span><span class="pun">&gt;,</span><span class="pln">
+    </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">natural number</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">}</span></code></pre><ul>
+<li><strong>appname</strong> - The name of the application</li>
+<li><strong>secret</strong> - Application secret</li>
+<li><strong>token</strong> - Appbase Auth Token returned using the OAuth flow
+Only any one of <em>secret</em> or <em>token</em> needs to be present in the request.</li>
+<li><strong>namespace</strong> - The namespace from where the path starts
+E.g. for path <em>user/andy/machod/bhenchod</em>, the namespace would be <em>user</em>.</li>
+<li><strong>key</strong> - The vertex key in the path
+For the path <em>user/andy/machod/bhenchod</em>, the key would be <em>andy</em>.
+For <em>user/</em> (only the namespace), it would be <code>undefined</code>.</li>
+<li><strong>obj_path</strong> - The path of the vertex that follows the key
+For the path <em>user/andy/machod/bhenchod</em>, the obj<em>path would be _machod/bhenchod</em>.
+For <em>user/andy</em>, it would be <code>undefined</code>.</li>
+<li><strong>filters</strong> - edge filters, applies only when listening for edges on a vertex</li>
+<li><strong>timestamp</strong> - specify milliseconds since epoch, from where to start ‘syncing’ data
+When there’s a reconnection with the server, due to network connectivity problems, this handy option allows you to ‘resume’ listening and sync the changes happend after that timestamp</li>
+<li><strong>listener_id</strong> - a unique string that will be used in your application to distuinguish Socket.IO listeners</li>
+</ul><h3 id="socketio-api-endpoints-requesting-for-data-vertex">Vertex</h3><p>When the path you are pointing to is a vertex, you can listen to:
+- Properties of the Vertex. I.e. fetch existing properties of the vertx, and get updates when they change.
+- Edges of the Vertex. I.e. fetch existing edges, and get updates when edges are added, removed or replaced.</p><p>Sample request object, pointing to the path: <em>user/andy/bhenchod/machod</em>, for application <em>chat_app</em>.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"chat_app"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"dskfhyr</span><span class="number"><span class="str">987</span></span><span class="str">r</span><span class="number"><span class="str">09</span></span><span class="str">g</span><span class="number"><span class="str">8</span></span><span class="str">w</span><span class="number"><span class="str">00309309</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"key"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"andy"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"obj_path"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"bhenchod/machod"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"sdfkgjohabioahdfk"</span></span><span class="pln">
+</span><span class="pun">}</span></code></pre><h4>Properties</h4><p>To turn on the listening:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'properties'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><p>To turn the listening off:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'properties off'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><h4>Edges</h4><p>Turn it on:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'edges'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><p>Turn off:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'edges off'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><h3 id="socketio-api-endpoints-requesting-for-data-namespace">Namespace</h3><p>When your path points to a namespace, you can listen to the Vertices in the Namespace. It means that you will be able to fetch existing vertices, and get updates like addition and removal of vertices.</p><p>To listen on the vertices in namespace the namespace <em>user</em>, the sample request would be:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"chat_app"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"dskfhyr</span><span class="number"><span class="str">987</span></span><span class="str">r</span><span class="number"><span class="str">09</span></span><span class="str">g</span><span class="number"><span class="str">8</span></span><span class="str">w</span><span class="number"><span class="str">00309309</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asasasfasaef</span><span class="number"><span class="str">324</span></span><span class="str">"</span></span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>Turn it on:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'new vertices'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><p>Turn off:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'new vertices off'</span></span><span class="pun">,</span><span class="pln"> requestObj</span><span class="pun">);</span></code></pre><h2 id="socketio-api-endpoints-attachingremoving-data-listeners">Attaching/Removing Data Listeners</h2><p>Socket.io allows you to attach callbacks to events, and these callbacks are called everytime the event it fired, i.e. when some data is arrived. The data starts arriving on these callbacks once you request for some data as described above, and it stops when you do an ‘off’ request.</p><p>You should <em>always</em> attach the listeners first and then request for data, otherwise you will miss the initial data that arrives.</p><p><code>ioClient.on()</code> is the method we will use to attach listeners.</p><p>It is possible to listen to <em>connection status</em> events as well, as in, when a disconnection or reconnectio happens. See <em>Handling Disconnection and Reconnection</em> in this doc.</p><h3 id="socketio-api-endpoints-attachingremoving-data-listeners-format">Format</h3><p>We saw that we build a specific <em>requestObject</em> to do a data request. We will use the same object to attach lieteners.</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">delete</span><span class="pln"> requestObject</span><span class="pun">.</span><span class="pln">timestamp</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> event </span><span class="pun">=</span><span class="pln"> JSON</span><span class="pun">.</span><span class="pln">stringify</span><span class="pun">(</span><span class="pln">requestObject</span><span class="pun">),</span><span class="pln"> callback</span><span class="pun">;</span><span class="pln">
+ioClient</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> callback </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="comment"><span class="com">// do something with the data</span></span><span class="pln">
+</span><span class="pun">});</span></code></pre><p>The event on which we are listening to is just the stringified version of the <em>requestObject</em> we used, while requesting for data. This way you can listen to all the resources on which you request the data.</p><p>Notice that we deleted the <code>timestamp</code> from request object. This is necessary and it is kept that way on purpose. We will see how and why, in <em>Handling Disconnection and Reconnection</em> section of this documentation.</p><p>The following code will remove the callback.</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">removeListener</span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> callback</span><span class="pun">);</span></code></pre><h2 id="socketio-api-endpoints-parsing-the-data">Parsing the Data</h2><p>The data that arrives on listener callbacks is different for different resources. It is even different for the same resource, when different events happen. Let’s see how the data looks like on all these cases.</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">ioClient</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="comment"><span class="com">// what this `data` looks like?</span></span><span class="pln">
+</span><span class="pun">});</span></code></pre><h3 id="socketio-api-endpoints-parsing-the-data-vertex">Vertex</h3><p>As we saw earlier, on a vertex you can listen to two kinds of resources: properties and edges.</p><h4>Properties</h4><p>Suppose you are listening to the properties of the vertex at <em>user/andy</em>. We will try to understand what are the cases when data will arrive and how it would look like.</p><p>Start listening:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">var</span><span class="pln"> request </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"chat_app"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"dskfhyr</span><span class="number"><span class="str">987</span></span><span class="str">r</span><span class="number"><span class="str">09</span></span><span class="str">g</span><span class="number"><span class="str">8</span></span><span class="str">w</span><span class="number"><span class="str">00309309</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"key"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"andy"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asasjhsd</span><span class="number"><span class="str">335</span></span><span class="str">f</span><span class="number"><span class="str">324</span></span><span class="str">"</span></span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="pln">JSON</span><span class="pun">.</span><span class="pln">stringify</span><span class="pun">(</span><span class="pln">request</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="comment"><span class="com">// ...</span></span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'properties'</span></span><span class="pun">,</span><span class="pln"> request</span><span class="pun">);</span></code></pre><h5>1. Retrieval</h5><p>When you request for data for the first time, all the existing properties are retrieved. The data looks like this:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"RETR"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"vertex"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">542094995</span></span><span class="str">fd</span><span class="number"><span class="str">2217414</span></span><span class="str">d</span><span class="number"><span class="str">7</span></span><span class="str">cec</span><span class="number"><span class="str">4</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419000935812</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"name"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Andy Dufresne"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"height_m"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="number"><span class="lit">1</span></span><span class="lit">.</span><span class="number"><span class="lit">96</span></span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>Notice that the <code>data.optype</code> of the data is <em>“RETR”</em> - retrieval. You get all the properties inside <code>data.vertex</code>, additionally the timestamp when the vertex was changed and the internal <em>_id</em> of the vertex.</p><h5>2. Property change</h5><p>Whenever a new property is added or an existing property is replaced, the data would be:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"UPDATE"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"vertex"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">542094995</span></span><span class="str">fd</span><span class="number"><span class="str">2217414</span></span><span class="str">d</span><span class="number"><span class="str">7</span></span><span class="str">cec</span><span class="number"><span class="str">4</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419001116911</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"cast"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Tim Robbins"</span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>The <code>data.optype</code> is <em>“UPDATE”</em>, and you will get only the changed properties inside <code>data.vertex</code> and the updated timestamp of the vertex.</p><h5>3. Property removal</h5><p>A property removal causes arrivel of the following object:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"REMOVE"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"vertex"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">542094995</span></span><span class="str">fd</span><span class="number"><span class="str">2217414</span></span><span class="str">d</span><span class="number"><span class="str">7</span></span><span class="str">cec</span><span class="number"><span class="str">4</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419001116911</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"cast"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">""</span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“REMOVE”</em> and <code>data.vertex</code> includes empty property <code>cast</code>. It means that the property <code>cast</code> has been removed.</p><h5>4. Do an “Off” request</h5><p>When you do a <code>ioClient.emit('properties off', requestObj)</code> to turn off the data listening, you receive a string as data. The value of this string is <code>"STOPPED"</code>. It simply tells you that the callback will never be called again, unless you request for the data again.</p><h5>5. Error</h5><p>Whenever an error occurs, the data will be a string, containing the error message.</p><h4>Edges</h4><p>Suppose you want to listen to edges of the vertex <em>user/andy</em>. Here’s the code:</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">var</span><span class="pln"> request </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"chat_app"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"dskfhyr</span><span class="number"><span class="str">987</span></span><span class="str">r</span><span class="number"><span class="str">09</span></span><span class="str">g</span><span class="number"><span class="str">8</span></span><span class="str">w</span><span class="number"><span class="str">00309309</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"key"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"andy"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asasasfasaef</span><span class="number"><span class="str">324</span></span><span class="str">"</span></span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="pln">JSON</span><span class="pun">.</span><span class="pln">stringify</span><span class="pun">(</span><span class="pln">request</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="comment"><span class="com">// ...</span></span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'edges'</span></span><span class="pun">,</span><span class="pln"> request</span><span class="pun">);</span></code></pre><p>Whenever you listen for edges of a vertex, you first get all the existing edges and later on you keep getting the updates.</p><p>If you apply filters, you only get the edges which match the filters, and you NEVER get any further changes in edges.</p><h5>1. Retrieval</h5><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"RETR"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">54943</span></span><span class="str">c</span><span class="number"><span class="str">863</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">835</span></span><span class="str">a"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"edges"</span></span><span class="pun">:{</span><span class="pln">
+        </span><span class="string"><span class="str">"abcd"</span></span><span class="pun">:{</span><span class="pln">
+            </span><span class="string"><span class="str">"t_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"misc`</span><span class="number"><span class="str">54943</span></span><span class="str">c</span><span class="number"><span class="str">893</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">835</span></span><span class="str">e"</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419000969730</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"order"</span></span><span class="pun">:</span><span class="number"><span class="lit">1</span></span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="string"><span class="str">"pqrs"</span></span><span class="pun">:{</span><span class="pln">
+            </span><span class="string"><span class="str">"t_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"misc`</span><span class="number"><span class="str">54943</span></span><span class="str">c</span><span class="number"><span class="str">883</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">835</span></span><span class="str">d"</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419000968929</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"order"</span></span><span class="pun">:</span><span class="number"><span class="lit">234245</span></span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“RETR”</em>. <code>data.edges</code> are all the existing edges of the vertex. Each edge has a <code>timestamp</code> which describes when the timestamp was last changed, and <code>order</code> is the priority of the edge. <code>t_id</code> of each edge displays the internal id of the vertex it points to.</p><h5>Edge addition or replacement</h5><p>The data that arrives is:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"RETR"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">54943</span></span><span class="str">c</span><span class="number"><span class="str">863</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">835</span></span><span class="str">a"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"edges"</span></span><span class="pun">:{</span><span class="pln">
+        </span><span class="string"><span class="str">"pqrs"</span></span><span class="pun">:{</span><span class="pln">
+            </span><span class="string"><span class="str">"t_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"misc`</span><span class="number"><span class="str">5</span></span><span class="str">w</span><span class="number"><span class="str">5</span></span><span class="str">rgfhfrtu</span><span class="number"><span class="str">5835</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419000999913</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"order"</span></span><span class="pun">:</span><span class="number"><span class="lit">23341</span></span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“UPDATE”</em> and only the edges which are replaced or added, are present here.</p><h5>3. Edge removal</h5><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"REMOVE"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"edges"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"pqrs"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"t_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">""</span></span><span class="pun">,</span><span class="pln">
+            </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419001116911</span></span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“REMOVE”</em> and <code>data.edges</code> includes edges which are deleted. Notice that <code>t_id</code> of the edge is empty and now it doesn’t point to any vertex.</p><h5>4. Do an “Off” request</h5><p>When you do a <code>ioClient.emit('edges off', requestObj)</code> to turn off the data listening, you receive a string as data. The value of this string is <code>"STOPPED"</code>. It simply tells you that the callback will never be called again, unless you request for the data again.</p><h5>5. Error</h5><p>Whenever an error occurs, the data will be a string, containing the error message.</p><h3 id="socketio-api-endpoints-parsing-the-data-namespace">Namespace</h3><p>Suppose that you are listening on the namespace <em>user</em>, so you build a <em>requestObject</em>, attached a callback and you requested for the data.</p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">var</span><span class="pln"> request </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"appname"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"chat_app"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"secret"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"dskfhyr</span><span class="number"><span class="str">987</span></span><span class="str">r</span><span class="number"><span class="str">09</span></span><span class="str">g</span><span class="number"><span class="str">8</span></span><span class="str">w</span><span class="number"><span class="str">00309309</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"namespace"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"listener_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asasasfasaef</span><span class="number"><span class="str">324</span></span><span class="str">"</span></span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="pln">JSON</span><span class="pun">.</span><span class="pln">stringify</span><span class="pun">(</span><span class="pln">request</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="comment"><span class="com">// ...</span></span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+ioClient</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="string"><span class="str">'new vertices'</span></span><span class="pun">,</span><span class="pln"> request</span><span class="pun">);</span></code></pre><p>When you listen on a namespace, you first get all the existing vertices, and then as vertices are added or removed, you get the changes.</p><h5>1. Retrieval</h5><p>Intially, all the vertices are retrieved as an array,</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">[</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"</span><span class="number"><span class="str">53</span></span><span class="str">f</span><span class="number"><span class="str">7785324</span></span><span class="str">ebdb</span><span class="number"><span class="str">4878</span></span><span class="str">cb</span><span class="number"><span class="str">677</span></span><span class="str">b"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"rootPath"</span></span><span class="pun">:</span><span class="string"><span class="str">"user/andy"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1408727123813</span></span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"</span><span class="number"><span class="str">549454913</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">836</span></span><span class="str">e"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419007121579</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"rootPath"</span></span><span class="pun">:</span><span class="string"><span class="str">"user/red"</span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">]</span></code></pre><p>You do NOT get the properties of the vertices, you just get thier timestaps, internal ids, and root-paths. Using the root-path, you can again listen on their properties if you want.</p><h5>2. Addition</h5><pre><code class="prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="str">"optype"</span><span class="pun">:</span><span class="str">"UPDATE"</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">"vertex"</span><span class="pun">:{</span><span class="pln">
+        </span><span class="str">"timestamp"</span><span class="pun">:</span><span class="lit">1419007153037</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"rootPath"</span><span class="pun">:</span><span class="str">"user/blue"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"_id"</span><span class="pun">:</span><span class="str">"user`549454b13b87a791550d836f"</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“UPDATE”</em>, and <code>data.vertex</code> is the newly added vertex in the namespace.</p><h5>3. Removal (Destruction)</h5><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"optype"</span></span><span class="pun">:</span><span class="string"><span class="str">"DESTROY"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"vertex"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="string"><span class="str">"user`</span><span class="number"><span class="str">549454</span></span><span class="str">b</span><span class="number"><span class="str">13</span></span><span class="str">b</span><span class="number"><span class="str">87</span></span><span class="str">a</span><span class="number"><span class="str">791550</span></span><span class="str">d</span><span class="number"><span class="str">836</span></span><span class="str">f"</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="number"><span class="lit">1419007160898</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"rootPath"</span></span><span class="pun">:</span><span class="string"><span class="str">"user/red"</span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p><code>data.optype</code> is <em>“REMOVE”</em>, and <code>data.vertex</code> is the vertex which got destroyed.</p></div>
+  <a class="edit" ng-href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v2.0/rest/api-reference.md" target="_blank" href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v2.0/rest/api-reference.md">
+    <span class="fa fa-pencil"></span>
+  </a>
+</div></div>
+  <script type="text/javascript" src="/scripts/analytics.js"></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body></html>

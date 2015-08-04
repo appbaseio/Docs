@@ -1,0 +1,463 @@
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Appbase Documentation</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+  <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="/bower_components/docbase/scripts/polyfill.js"></script>
+  <!-- Flatdoc -->
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/legacy.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/flatdoc.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/flatdoc/theme-white/style.css">
+  <script type="text/javascript" src="/bower_components/docbase/scripts/flatdoc-theme.js"></script>
+
+  <!-- DocBase -->
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
+
+  <script type="text/javascript" src="/bower_components/docbase/scripts/docbase.js"></script>
+  <script src="/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/google-code-prettify/bin/prettify.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
+  
+
+  <!-- Custom -->
+  <link rel="stylesheet" type="text/css" href="/styles/docs.css">
+
+</head>
+<body role="flatdoc" class="no-literate">
+  <!--[if lt IE 10]>
+     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- ngView:  --><div ng-view="" class="ng-scope"><!-- ngInclude: 'html/navbar.html' --><nav class="navbar navbar-default navbar-fixed-top ng-scope" ng-include="'html/navbar.html'"><div class="container-fluid ng-scope">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://appbase.io">
+      <img src="/images/logo.svg">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <!-- ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/concepts" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/concepts">Concepts</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="file.label" class="ng-binding" href=/v2.0/concepts/datamodel.html>Datamodel</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v2.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/javascript" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/javascript">Javascript</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/quick-start.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/quick-start.html>Quick start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/api-reference.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/angular.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/angular.html>Angular Binding</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/javascript/oauth.html ng-bind="file.label" class="ng-binding" href=/v2.0/javascript/oauth.html>OAuth</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v2.0/search" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v2.0/search">Search Queries</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/search/quick-start.html ng-bind="file.label" class="ng-binding" href=/v2.0/search/quick-start.html>Quick Start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v2.0/search/use-cases.html ng-bind="file.label" class="ng-binding" href=/v2.0/search/use-cases.html>Use-cases</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] -->
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           <span ng-bind="currentVersion" class="ng-binding">v2.0</span> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu version-switcher" role="menu">
+          <!-- ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/scalr/rest/intro.html ng-bind="version" class="ng-binding" href=/scalr/rest/intro.html>scalr</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="version" class="ng-binding" href=/v2.0/concepts/datamodel.html>v2.0</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="version" class="ng-binding" href=/v3.0/changelog/changelog.html>v3.0</a>
+          </li><!-- end ngRepeat: version in versions -->
+        </ul>
+      </li>
+      <li class="github-star">
+        <iframe src="https://ghbtns.com/github-btn.html?user=appbaseio&amp;repo=Docs&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid --></nav>
+<div role="flatdoc" class="content-root ng-scope">
+  <div class="menubar fixed">
+    <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="use-cases-item" class="level-1"><a id="use-cases-link" href="/v2.0/search/use-cases.html#use-cases" class="level-1" pref="#use-cases">Use-cases</a><ul class="level-2" id="use-cases-list"><li id="use-cases-elasticsearch-introduction-item" class="level-2"><a id="use-cases-elasticsearch-introduction-link" href="/v2.0/search/use-cases.html#use-cases-elasticsearch-introduction" class="level-2" pref="#use-cases-elasticsearch-introduction">Elasticsearch Introduction</a></li><li id="use-cases-data-mapping-item" class="level-2"><a id="use-cases-data-mapping-link" href="/v2.0/search/use-cases.html#use-cases-data-mapping" class="level-2" pref="#use-cases-data-mapping">Data Mapping</a></li><li id="use-cases-request-and-response-format-item" class="level-2"><a id="use-cases-request-and-response-format-link" href="/v2.0/search/use-cases.html#use-cases-request-and-response-format" class="level-2" pref="#use-cases-request-and-response-format">Request and Response Format</a><ul class="level-3" id="use-cases-request-and-response-format-list"><li id="use-cases-request-and-response-format-request-item" class="level-3"><a id="use-cases-request-and-response-format-request-link" href="/v2.0/search/use-cases.html#use-cases-request-and-response-format-request" class="level-3" pref="#use-cases-request-and-response-format-request">Request</a></li><li id="use-cases-request-and-response-format-response-item" class="level-3"><a id="use-cases-request-and-response-format-response-link" href="/v2.0/search/use-cases.html#use-cases-request-and-response-format-response" class="level-3" pref="#use-cases-request-and-response-format-response">Response</a></li></ul></li><li id="use-cases-searching-item" class="level-2"><a id="use-cases-searching-link" href="/v2.0/search/use-cases.html#use-cases-searching" class="level-2" pref="#use-cases-searching">Searching</a><ul class="level-3" id="use-cases-searching-list"><li id="use-cases-searching-simple-match-item" class="level-3"><a id="use-cases-searching-simple-match-link" href="/v2.0/search/use-cases.html#use-cases-searching-simple-match" class="level-3" pref="#use-cases-searching-simple-match">Simple Match</a></li><li id="use-cases-searching-fuzzy-item" class="level-3"><a id="use-cases-searching-fuzzy-link" href="/v2.0/search/use-cases.html#use-cases-searching-fuzzy" class="level-3" pref="#use-cases-searching-fuzzy">Fuzzy</a></li><li id="use-cases-searching-numeric-range-item" class="level-3"><a id="use-cases-searching-numeric-range-link" href="/v2.0/search/use-cases.html#use-cases-searching-numeric-range" class="level-3" pref="#use-cases-searching-numeric-range">Numeric-range</a></li><li id="use-cases-searching-geo-spatial-item" class="level-3"><a id="use-cases-searching-geo-spatial-link" href="/v2.0/search/use-cases.html#use-cases-searching-geo-spatial" class="level-3" pref="#use-cases-searching-geo-spatial">Geo spatial</a></li><li id="use-cases-searching-sorting-item" class="level-3"><a id="use-cases-searching-sorting-link" href="/v2.0/search/use-cases.html#use-cases-searching-sorting" class="level-3" pref="#use-cases-searching-sorting">Sorting</a></li><li id="use-cases-searching-aggregation-item" class="level-3"><a id="use-cases-searching-aggregation-link" href="/v2.0/search/use-cases.html#use-cases-searching-aggregation" class="level-3" pref="#use-cases-searching-aggregation">Aggregation</a></li><li id="use-cases-searching-combining-queriesfilters-item" class="level-3"><a id="use-cases-searching-combining-queriesfilters-link" href="/v2.0/search/use-cases.html#use-cases-searching-combining-queriesfilters" class="level-3" pref="#use-cases-searching-combining-queriesfilters">Combining queries/filters</a></li></ul></li><li id="use-cases-next-steps-item" class="level-2"><a id="use-cases-next-steps-link" href="/v2.0/search/use-cases.html#use-cases-next-steps" class="level-2" pref="#use-cases-next-steps">Next steps</a></li></ul></li></ul></li></ul></div>
+  </div>
+  <div role="flatdoc-content" class="content"><h1 id="use-cases">Use-cases</h1><p>Appbase uses opensource Elasticsearch in the backend, and provides all the powerful search features of ES, on the data stored in Appbase.</p><p>When you want to make some data <em>searchable</em>, you have to enable search on a namespace in the <em>Dashboard</em>. In the <em>Data Browser</em>, enable the search by toggling the <i class="fa fa-eye-slash"></i> switch on the namespace. If search is enabled, you should see this icon <i class="fa fa-eye"></i> next to the namespace. </p><p>Enabling search on a namespace causes all the vertices inside the namespace to be indexed inside Elasticsearch. New vertices created inside this namespace are automatically indexed, and searchable. When the data of a vertex is updated, the indices update automatically and new data is searchable.</p><h2 id="use-cases-elasticsearch-introduction">Elasticsearch Introduction</h2><p>ElasticSearch is powered by Lucene, a powerful open-source full-text search library, under the hood. More than just full-text queries, ES can be used for numeric range queries, geo spatial queries, aggregation/ordering/grouping search results etc. In addition, we can combine these queries (logical and/or) and search across multiple namespaces and properties. To learn more about Elasticsearch, checkout <a href="http://exploringelasticsearch.com/">this very effective guide</a>.</p><h2 id="use-cases-data-mapping">Data Mapping</h2><p>As in Appbase has the concepts of Namespaces, Vertices and Properties, Elasticsearch has Types, Documents, and Fields. Let’s see how Appbase data is indexed and how these concepts are mapped.</p><table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Appbase</th>
+<th>ES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Combining similar objects</td>
+<td>Namespace</td>
+<td>Type</td>
+</tr>
+<tr>
+<td>JSON Data Containers</td>
+<td>Vertex</td>
+<td>Document </td>
+</tr>
+<tr>
+<td>JSON Object’s Property</td>
+<td>Property</td>
+<td>Field</td>
+</tr>
+</tbody>
+</table><p>In a nutshell, All the <em>vertices</em> of Appbase are stored as <em>documents</em> inside ES, where the <em>namespace</em> of the vertex becomes its <em>type</em>. <em>Properties</em> of the vertex can be accessed and filtered as <em>fields</em> inside ES. </p><p>All the examples in this doc ES concepts (Type, Document and Field), as we will be making direct Elasticsearch DSL query, but the query is explained in context the of data in Appbase, so Appbase concepts (Namespace, Vertex and Property) are used.</p><h2 id="use-cases-request-and-response-format">Request and Response Format</h2><p>To do a raw ES query on the data, Appbase provides a <a href="">REST API endpoint</a> and the Javascript library method <a href=""><code>Appbase.rawSearch()</code></a>. Both of them, accepts similar request Query Object, and gives similar responses. </p><h3 id="use-cases-request-and-response-format-request">Request</h3><p>A typical request object defines:</p><ul>
+<li><strong>namespaces</strong> - <em>array</em> : The namespaces on which the query will run</li>
+<li><strong>body</strong> - <em>object</em> : The Elasticsearch Query DSL body</li>
+</ul><p>Elasticsearch provides rich Query DSL (Domain Specific Language) based on JSON to define queries. Queries involving major usecases are covered in this documentation, but if you want to know more about DSL, goto <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html">this link</a>.</p><p>This is a sample request Query Object: </p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln"> </span><span class="string"><span class="str">"tweet"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+             </span><span class="string"><span class="str">"multi_match"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                 </span><span class="string"><span class="str">"fields"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"msg"</span></span><span class="pun">,</span><span class="pln"> </span><span class="string"><span class="str">"name"</span></span><span class="pun">],</span><span class="pln">
+                 </span><span class="string"><span class="str">"query"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hello"</span></span><span class="pln">
+             </span><span class="pun">}</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+     </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>Do not worry about the <code>body</code> of this object for now, we will see how to define it for different use cases in this document.</p><h3 id="use-cases-request-and-response-format-response">Response</h3><p>We provide an unaltered DSL Response from ES. A typical response includes:</p><ul>
+<li><strong>took</strong> - <em>number</em> : The time it took for the query to run</li>
+<li><strong>timeout</strong> - <em>boolean</em> : If the was query timed out</li>
+<li><strong>_shards</strong> -  <em>object</em> : Sharding information</li>
+<li><strong>hits</strong> - <em>object</em> : Query results and more<ul>
+<li><strong>total</strong> - <em>number</em>: Number of results</li>
+<li><strong>max_score</strong> - <em>number</em> : The maximum <em>score</em> that matched the query. This score comes into picture when we do a full text query.</li>
+<li><strong>hits</strong> - <em>array</em> : The results that satisfied the query. Each object inside this array is a JSON object representing a <em>vertex</em>,  and has following perperties:<ul>
+<li><strong>_index</strong> - <em>string</em> : Index inside which the object is stored. Appbase stores all the vertices of a single application inside a single index. So this will equal to the name of Appbase application you are using.</li>
+<li><strong>_type</strong> - <em>string</em> : Type of the document. I.E. namespace of the vertex (As explained in the Data Mapping).</li>
+<li><strong>_id</strong> - <em>string</em> : Id of the document inside ES.</li>
+<li><strong>_score</strong> - <em>number</em> : The score by witch the vertex matched the query</li>
+<li><strong>_source</strong> - <em>object</em> : The data inside the document (vertex).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><blockquote>
+<p><sup>Elasticseach sidenote</sup>
+The <em>score</em> of a result describes how close it matches the query.</p>
+</blockquote><p>Example: </p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"took"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">9</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"timed_out"</span></span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"_shards"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"total"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">5</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"successful"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">5</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"failed"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">0</span></span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    </span><span class="string"><span class="str">"hits"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"total"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">2</span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"max_score"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="number"><span class="lit">6</span></span><span class="lit">.</span><span class="number"><span class="lit">41832</span></span></span><span class="pun">,</span><span class="pln">
+        </span><span class="string"><span class="str">"hits"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"_index"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"twitter"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_type"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"</span><span class="number"><span class="str">53</span></span><span class="str">fa</span><span class="number"><span class="str">820</span></span><span class="str">a</span><span class="number"><span class="str">5</span></span><span class="str">f</span><span class="number"><span class="str">1</span></span><span class="str">f</span><span class="number"><span class="str">08</span></span><span class="str">c</span><span class="number"><span class="str">11</span></span><span class="str">ecb</span><span class="number"><span class="str">0</span></span><span class="str">f</span><span class="number"><span class="str">95</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_score"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="number"><span class="lit">6</span></span><span class="lit">.</span><span class="number"><span class="lit">41832</span></span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_source"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">1408931734497</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"rootPath"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"user/hello"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"</span><span class="number"><span class="str">53</span></span><span class="str">fa</span><span class="number"><span class="str">820</span></span><span class="str">a</span><span class="number"><span class="str">5</span></span><span class="str">f</span><span class="number"><span class="str">1</span></span><span class="str">f</span><span class="number"><span class="str">08</span></span><span class="str">c</span><span class="number"><span class="str">11</span></span><span class="str">ecb</span><span class="number"><span class="str">0</span></span><span class="str">f</span><span class="number"><span class="str">95</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"name"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hello"</span></span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"_index"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"twitter"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_type"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"tweet"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"</span><span class="number"><span class="str">546</span></span><span class="str">a</span><span class="number"><span class="str">504316453</span></span><span class="str">f</span><span class="number"><span class="str">340</span></span><span class="str">d</span><span class="number"><span class="str">289</span></span><span class="str">d</span><span class="number"><span class="str">97</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_score"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="number"><span class="lit">3</span></span><span class="lit">.</span><span class="number"><span class="lit">7718577</span></span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"_source"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="string"><span class="str">"timestamp"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">1416253508159</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"rootPath"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"tweet/</span><span class="number"><span class="str">244</span></span><span class="str">caea</span><span class="number"><span class="str">78</span></span><span class="str">e</span><span class="number"><span class="str">32401</span></span><span class="str">c</span><span class="number"><span class="str">9</span></span><span class="str">b</span><span class="number"><span class="str">16788219</span></span><span class="str">d</span><span class="number"><span class="str">8</span></span><span class="str">efd</span><span class="number"><span class="str">5</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"_id"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"</span><span class="number"><span class="str">546</span></span><span class="str">a</span><span class="number"><span class="str">504316453</span></span><span class="str">f</span><span class="number"><span class="str">340</span></span><span class="str">d</span><span class="number"><span class="str">289</span></span><span class="str">d</span><span class="number"><span class="str">97</span></span><span class="str">"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"by"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"sid"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"msg"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hell"</span></span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">]</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><h2 id="use-cases-searching">Searching</h2><p>We see one by one, what queries apply in which search use cases, how you can combine them, and harness the full power that Elasticsearch provides. </p><p>In each use case below, it is first described how the data is stored, and what kind of search we are trying to achieve on the data. Let’s start with basic use case.</p><h3 id="use-cases-searching-simple-match">Simple <em>Match</em></h3><p>This is the most basic use case we can think of, where you want to just find out vertices which contain a certain <em>term</em>, either as a string or a number. </p><p>For example, <em>“give me all the..”</em></p><ul>
+<li>users with first name “Andrew”</li>
+<li>products priced at “$100”</li>
+<li>tweets which say “hello”</li>
+</ul><p>We can use the <em>term filter</em> or <em>term query</em> for such cases.</p><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>filter</em></strong> vs <strong><em>query</em></strong></h4>
+<p>A <strong>filter</strong> in Elasticsearch says Yes or No for a document. I.E. If the document should be present in the results, or not. 
+A <strong>query</strong> also <em>scores</em> the document (counts the relevance with the desired search term - a heavy operation) and results come sorted according to their score.</p>
+<p>Many filters and queries are similar and can be used interchangeably, but its preferred to use queries only for a full text search based on relevance.</p>
+<p>They can be used together. I.E. Filters are applied first and then on those results, the query is performed calculating the score. They can also be wrapped inside each other. </p>
+<p>Read more about them <a href="http://exploringelasticsearch.com/searching_data.html#sec-searching-filtering">here</a>.</p>
+</blockquote><p>For all the users with first name as “Andrew”,</p><ul>
+<li>Using the <em>term <strong>filter</strong></em>, the request object would be: </li>
+</ul><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"user"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"term"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"firstname"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Andrew"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><ul>
+<li>Using the <em>term <strong>query</strong></em>, the request object would be: </li>
+</ul><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"user"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"term"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"firstname"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Andrew"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p> The <em>term</em> filter can also be used for other datatypes, for e.g:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"product"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"term"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"price"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">100</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>Another useful query is a <em>match query</em>. It allows to define a string of terms and it will find the documents which contains any of these terms. The more matching terms a vertex contains, the higher its score and higher it will be in the sorted results.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"tweet"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"match"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"message"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hello world"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>The above search request would find tweets which contains terms “hello” or “world” or both. This behavior can be controlled with <code>operator</code>. Its value defaults to “or”, but we can set to “and” as well. </p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"tweet"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"match"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"message"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hello world"</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"operator"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"and"</span></span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>The above search request would find tweets which contains terms “hello” and “world”, both.</p><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>match</em></strong> <em>query</em> and <strong><em>terms</em></strong> <em>filter</em></h4>
+<p>The equivalent filter for a <em>match query</em> is the <em>terms filter</em>.
+Read more about them: 
+ -  <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"><em>match query</em> documentation</a>
+ -  <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-terms-filter.html"><em>terms filter</em> documentation</a></p>
+</blockquote><h4>Searching on multiple properties</h4><p>The <em>multi_match</em> query can search on multiple fields (properties) and returned if <em>any</em> of those properties match <em>any</em> of the terms.</p><p>The below query would search for users with either first name or last name, being “Andrew” or “Garlic”. I.E. also the users with first name as “Garlic” would be included, and vice versa.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"user"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"multi_match"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"query"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Andrew Garlic"</span></span><span class="pun">,</span><span class="pln"> 
+                </span><span class="string"><span class="str">"fields"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"firstname"</span></span><span class="pun">,</span><span class="pln"> </span><span class="string"><span class="str">"lastname"</span></span><span class="pun">]</span><span class="pln"> 
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>For more fine tuned searches, like on the users with first name as “Andrew” and last name as “Garlic”, we have to combine queries/filters. We see that later in this document.</p><h3 id="use-cases-searching-fuzzy">Fuzzy</h3><p>A fuzzy search matches with the documents who have the terms matching <em>nearly</em>  the search term.</p><p>This is very useful for Google-like searches, where there could be some typing mistakes, or the user is not sure what word exactly he is searching for. </p><p>The simplest way to do a <em>fuzzy query</em> is:</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"tweet"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"query"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"fuzzy"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"message"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"hello"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>The above query would return tweets with the message as “hella” or “hallo” etc. </p><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>fuzzy</em></strong> search</h4>
+<p>There are number of <em>fuzzy</em> queries in Elasticsearch and a number of ways to control the <em>fuzziness</em> of the term. Plus, you can search on a single or more properties (fields). Take a look at these documentations:
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html"><em>fuzzy</em> query</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-flt-query.html"><em>fuzzy-like-this</em> query</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html"><em>more-like-this</em> query</a></p>
+</blockquote><h3 id="use-cases-searching-numeric-range">Numeric-range</h3><p><em>“Give me all the…”</em></p><ul>
+<li>products priced at less than <em>$100</em>, more than <em>$50</em> </li>
+<li>pages between <em>5</em> and <em>10</em></li>
+</ul><p>We can use the <em>range filter</em>.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"product"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"range"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"price"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="string"><span class="str">"lt"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">100</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"gt"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">50</span></span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>range</em></strong> <em>filter</em></h4>
+<p>It can also perform greater/less <em>or equal </em> searches. See the <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-range-filter.html"><em>range</em> filter documentation</a> for more details.</p>
+</blockquote><h3 id="use-cases-searching-geo-spatial">Geo spatial</h3><p>Elasticsearch requires you to store your the geographic location using longitude and latitude, stored as a nested JSON object. Lets say that we are storing restaurants, along with their location. The data of a restaurant would be: </p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"name"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Sanro Vegetarian Restaurant"</span></span><span class="pun">,</span><span class="pln">
+    </span><span class="string"><span class="str">"location"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"lat"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="number"><span class="lit">40</span></span><span class="lit">.</span><span class="number"><span class="lit">12</span></span></span><span class="pln">
+        </span><span class="string"><span class="str">"lon"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="number"><span class="number"><span class="lit">71</span></span><span class="lit">.</span><span class="number"><span class="lit">34</span></span></span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><p>As long as the location is stored as above inside a vertex, we can do tons of geo spatial queries with Elasticsearch.</p><p>We can use <em>geo distance</em> filter to find vertices located within specific distance from a geo point.</p><p>Find restaurants located within 5km from the point 40, -70.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"restaurant"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"geo_distance"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"distance"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"</span><span class="number"><span class="str">5</span></span><span class="str">km"</span></span><span class="pun">,</span><span class="pln">
+                </span><span class="string"><span class="str">"location"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    </span><span class="string"><span class="str">"lat"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">40</span></span><span class="pun">,</span><span class="pln">
+                    </span><span class="string"><span class="str">"lon"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="number"><span class="lit">70</span></span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>geo spatial</em></strong> <em>search</em></h4>
+<p>You can define the distance in real world Units like km, miles etc. There many ways the shape (box, polygon etc) and the range of this distance can be customized. Check out these documents for more details: 
+- <a href="http://www.elasticsearch.org/blog/geo-location-and-search/">Elasticsearch Geo Location tutorial</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-distance-filter.html"><em>geo-distance</em> filter</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-distance-range-filter.html"><em>geo-distance-range</em> filter</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-bounding-box-filter.html"><em>geo-bounding-box</em> filter</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-polygon-filter.html"><em>geo-polygon</em> filter</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geo-shape-filter.html"><em>geo-shape</em> filter</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/0.90/query-dsl-geohash-cell-filter.html"><em>geohash-cell</em> filter</a></p>
+</blockquote><h3 id="use-cases-searching-sorting">Sorting</h3><p>Results are sorted according to their <em>score</em> by default. We can change this behavior by applying <em>sort</em> parameter in the request.</p><p>Earlier in the <em>numeric range</em> use case, we searched for products in price range $50 and $100. Let’s sort the results according to their price, and then name.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"product"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"term"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"price"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">100</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="string"><span class="str">"sort"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"price"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asc"</span></span><span class="pun">},</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"name"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"asc"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">],</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>sorting</em></strong></h4>
+<p>You can specify the order of the sort (asc, desc), you can also sort on multi-valued fields. Geo Location based sort is possible too.
+Take a look at the <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-sort.html"><em>sort</em> documentation</a>.</p>
+</blockquote><h3 id="use-cases-searching-aggregation">Aggregation</h3><p>There are types of aggregation supported in Elasticsearch. </p><ol>
+<li>Grouping (Bucketing): vertices are grouped together based on criteria.</li>
+<li>Metric: keep track and compute metrics over a set of documents.</li>
+</ol><p>There wide varieties of aggregations and criteria, based on string-terms, locations, dates, numbers, etc. Take a look at the <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-aggregations.html"><em>Aggregation API</em> documentation</a>.</p><h3 id="use-cases-searching-combining-queriesfilters">Combining queries/filters</h3><p><em>“Give me all the products which..”</em></p><ul>
+<li>are mobile phones
+<em>and</em></li>
+<li>are priced at lower than $800
+<em>and</em></li>
+<li>do not belong to the brand “Apple”
+<em>and</em></li>
+<li>are either <ul>
+<li>with brand “Samsung” <em>and</em> “white” colored
+<em>or</em></li>
+<li>with brand “Sony” <em>and</em> “black” colored
+<em>or</em></li>
+<li>any brand with “metal” color</li>
+</ul>
+</li>
+</ul><p>Writing these terms into a programming language like Javascript: </p><pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">product</span><span class="pun">.</span><span class="pln">type </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"mobile"</span></span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln">
+product</span><span class="pun">.</span><span class="pln">price </span><span class="pun">&lt;</span><span class="pln"> </span><span class="number"><span class="lit">800</span></span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln">
+product</span><span class="pun">.</span><span class="pln">brand </span><span class="pun">!=</span><span class="pln"> </span><span class="string"><span class="str">"Apple"</span></span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln">
+</span><span class="pun">(</span><span class="pln">
+    </span><span class="pun">(</span><span class="pln">product</span><span class="pun">.</span><span class="pln">brand </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"Samsung"</span></span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> product</span><span class="pun">.</span><span class="pln">color </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"white"</span></span><span class="pun">)</span><span class="pln"> </span><span class="pun">||</span><span class="pln">
+    </span><span class="pun">(</span><span class="pln">product</span><span class="pun">.</span><span class="pln">brand </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"Sony"</span></span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> product</span><span class="pun">.</span><span class="pln">color </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"white"</span></span><span class="pun">)</span><span class="pln"> </span><span class="pun">||</span><span class="pln">
+    product</span><span class="pun">.</span><span class="pln">color </span><span class="pun">==</span><span class="pln"> </span><span class="string"><span class="str">"metal"</span></span><span class="pln">
+</span><span class="pun">)</span></code></pre><p>For such a case, Elasticsearch provides <em>bool query</em> or <em>bool filter</em>. In a bool query/filter you define the the other kind of queries/filters which should or must be satisfied or, must not be satisfied.</p><p>A bool query/filter can have three kinds of clauses:</p><ul>
+<li><code>must</code> - all the conditions (query/filter) defined inside this clause must appear in matching documents.</li>
+<li><code>must_not</code> - the conditions must not appear in the matching documents.</li>
+<li><code>should</code> - any one of the conditions must appear in the matching documents.</li>
+</ul><p>Lets write the request to search the mobile phones we described above.</p><pre><code class="lang-json prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    </span><span class="string"><span class="str">"namespaces"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="string"><span class="str">"product"</span></span><span class="pun">],</span><span class="pln">
+    </span><span class="string"><span class="str">"body"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="string"><span class="str">"filter"</span></span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="string"><span class="str">"bool"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                </span><span class="string"><span class="str">"must"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> 
+                    </span><span class="pun">{</span><span class="pln">
+                        </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"type"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"mobile"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+                    </span><span class="pun">},</span><span class="pln"> 
+                    </span><span class="pun">{</span><span class="pln">
+                        </span><span class="string"><span class="str">"range"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"price"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"lt"</span></span><span class="pun">:</span><span class="pln"> </span><span class="number"><span class="lit">800</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">],</span><span class="pln">
+                </span><span class="string"><span class="str">"must_not"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+                    </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"brand"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Apple"</span></span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">}],</span><span class="pln">
+                </span><span class="string"><span class="str">"should"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+                    </span><span class="pun">{</span><span class="pln">
+                        </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="string"><span class="str">"color"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"metal"</span></span><span class="pun">}</span><span class="pln">
+                    </span><span class="pun">},</span><span class="pln">
+                    </span><span class="pun">{</span><span class="pln">
+                        </span><span class="string"><span class="str">"bool"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                            </span><span class="string"><span class="str">"must"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+                                </span><span class="pun">{</span><span class="pln">
+                                    </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="string"><span class="str">"brand"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Samsung"</span></span><span class="pun">}</span><span class="pln">
+                                </span><span class="pun">},</span><span class="pln">
+                                </span><span class="pun">{</span><span class="pln">
+                                    </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="string"><span class="str">"color"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"white"</span></span><span class="pun">}</span><span class="pln">
+                                </span><span class="pun">}</span><span class="pln">
+                            </span><span class="pun">]</span><span class="pln">
+                        </span><span class="pun">},</span><span class="pln">
+                    </span><span class="pun">},</span><span class="pln">
+                    </span><span class="pun">{</span><span class="pln">
+                        </span><span class="string"><span class="str">"bool"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                            </span><span class="string"><span class="str">"must"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+                                </span><span class="pun">{</span><span class="pln">
+                                    </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="string"><span class="str">"brand"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"Sony"</span></span><span class="pun">}</span><span class="pln">
+                                </span><span class="pun">},</span><span class="pln">
+                                </span><span class="pun">{</span><span class="pln">
+                                    </span><span class="string"><span class="str">"term"</span></span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="string"><span class="str">"color"</span></span><span class="pun">:</span><span class="pln"> </span><span class="string"><span class="str">"black"</span></span><span class="pun">}</span><span class="pln">
+                                </span><span class="pun">}</span><span class="pln">
+                            </span><span class="pun">]</span><span class="pln">
+                        </span><span class="pun">}</span><span class="pln">
+                    </span><span class="pun">}</span><span class="pln">
+                </span><span class="pun">]</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre><blockquote>
+<p><sup>Elasticseach sidenote</sup></p>
+<h4><strong><em>bool</em></strong> <em>query/filter</em></h4>
+<p>As you can see in the example here, we have using bool filters. This way you can write really complex search requests. To know more check out:
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html"><em>bool</em> query documentation</a>
+- <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-bool-filter.html"><em>bool</em> filter documentation</a></p>
+</blockquote><h2 id="use-cases-next-steps">Next steps</h2><p>This document may only be able to give you a headstart on Elasticsearch, and it is impossible to cover every use case and feature provided by Elasticsearch. </p><p>If you have confusions on any of the use cases covered here, see the additional notes and links provided beside them.</p><p>To understand the Elasticsearch from the basics to advanced level, the book <a href="http://exploringelasticsearch.com/">“Exploring Elasticsearch” by Andrew Cholakian</a>, and <a href="http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/index.html">Elasticsearch: The Definitive Guide</a> are definitely helpful.</p></div>
+  <a class="edit" ng-href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v2.0/search/use-cases.md" target="_blank" href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v2.0/search/use-cases.md">
+    <span class="fa fa-pencil"></span>
+  </a>
+</div></div>
+  <script type="text/javascript" src="/scripts/analytics.js"></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body></html>

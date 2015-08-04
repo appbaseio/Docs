@@ -2,7 +2,8 @@
   "name": "docbase",
   "homepage": "https://github.com/appbaseio/DocBase",
   "authors": [
-    "Henrique Sa <henriquepss@gmail.com>"
+    "Henrique Sa <henriquepss@gmail.com>",
+    "Mateus Freira <mateus.freira@gmail.com>"
   ],
   "description": "A fast and flexible single-page documentation engine",
   "license": "MIT",
@@ -21,14 +22,13 @@
     "angular-route": "~1.3.13",
     "js-schema": "~0.7.2"
   },
-  "_release": "24c6db531b",
+  "_release": "2f68153fc9",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "24c6db531b43f657edacc3b3fefc38f4a8b9b9ec"
+    "commit": "2f68153fc9da47c8f84dd042f5cfa4d311911ec0"
   },
   "_source": "git://github.com/appbaseio/DocBase.git",
   "_target": "*",
-  "_originalSource": "docbase",
-  "_direct": true
+  "_originalSource": "docbase"
 }

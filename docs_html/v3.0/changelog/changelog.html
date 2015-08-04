@@ -1,0 +1,168 @@
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Appbase Documentation</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+  <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="/bower_components/docbase/scripts/polyfill.js"></script>
+  <!-- Flatdoc -->
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/legacy.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/flatdoc.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/flatdoc/theme-white/style.css">
+  <script type="text/javascript" src="/bower_components/docbase/scripts/flatdoc-theme.js"></script>
+
+  <!-- DocBase -->
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
+
+  <script type="text/javascript" src="/bower_components/docbase/scripts/docbase.js"></script>
+  <script src="/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/google-code-prettify/bin/prettify.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
+  
+
+  <!-- Custom -->
+  <link rel="stylesheet" type="text/css" href="/styles/docs.css">
+
+</head>
+<body role="flatdoc" class="no-literate">
+  <!--[if lt IE 10]>
+     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- ngView:  --><div ng-view="" class="ng-scope"><!-- ngInclude: 'html/navbar.html' --><nav class="navbar navbar-default navbar-fixed-top ng-scope" ng-include="'html/navbar.html'"><div class="container-fluid ng-scope">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://appbase.io">
+      <img src="/images/logo.svg">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <!-- ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/changelog" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/changelog">Changelog</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="file.label" class="ng-binding" href=/v3.0/changelog/changelog.html>Changelog</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/search" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/search">Search</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/search/quick-start.html ng-bind="file.label" class="ng-binding" href=/v3.0/search/quick-start.html>Quick Start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/search/use-cases.html ng-bind="file.label" class="ng-binding" href=/v3.0/search/use-cases.html>Use-cases</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/concepts" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/concepts">Concepts</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/concepts/datamodel.html ng-bind="file.label" class="ng-binding" href=/v3.0/concepts/datamodel.html>Datamodel</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/javascript" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/javascript">Javascript</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/javascript/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/javascript/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] -->
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           <span ng-bind="currentVersion" class="ng-binding">v3.0</span> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu version-switcher" role="menu">
+          <!-- ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/scalr/rest/intro.html ng-bind="version" class="ng-binding" href=/scalr/rest/intro.html>scalr</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="version" class="ng-binding" href=/v2.0/concepts/datamodel.html>v2.0</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="version" class="ng-binding" href=/v3.0/changelog/changelog.html>v3.0</a>
+          </li><!-- end ngRepeat: version in versions -->
+        </ul>
+      </li>
+      <li class="github-star">
+        <iframe src="https://ghbtns.com/github-btn.html?user=appbaseio&amp;repo=Docs&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid --></nav>
+<div role="flatdoc" class="content-root ng-scope">
+  <div class="menubar fixed">
+    <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="major-changes-item" class="level-1"><a id="major-changes-link" href="/v3.0/changelog/changelog.html#major-changes" class="level-1" pref="#major-changes">Major changes</a><ul class="level-2" id="major-changes-list"><li id="root-item" class="level-2"><ul class="level-3" id="root-list"><li id="major-changes-1-json-document-based-model-item" class="level-3"><a id="major-changes-1-json-document-based-model-link" href="/v3.0/changelog/changelog.html#major-changes-1-json-document-based-model" class="level-3" pref="#major-changes-1-json-document-based-model">1. JSON Document based Model</a></li><li id="major-changes-2-rest-api-format-item" class="level-3"><a id="major-changes-2-rest-api-format-link" href="/v3.0/changelog/changelog.html#major-changes-2-rest-api-format" class="level-3" pref="#major-changes-2-rest-api-format">2. REST API Format</a></li></ul></li></ul></li></ul></li></ul></div>
+  </div>
+  <div role="flatdoc-content" class="content"><h1 id="major-changes">Major changes</h1><h3 id="major-changes-1-json-document-based-model">1. JSON Document based Model</h3><p>With v3.0, Appbase adopts the JSON based document schema model (similar to MongoDB and ElasticSearch). We are bringing the simplicity of JSON based data models to Appbase with this major revision while still maintaining index-free adjency references for each document.</p><p>Here’s how the mapping works if you are familiar with the v2.0 API:</p><table>
+<thead>
+<tr>
+<th>v3.0</th>
+<th>v2.0</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collection</td>
+<td>Namespace</td>
+<td>Grouping of similar data containers</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>Vertex</td>
+<td>Data containers which can contain any JSON data</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>Edge</td>
+<td>Path to another data container</td>
+</tr>
+</tbody>
+</table><h3 id="major-changes-2-rest-api-format">2. REST API Format</h3><p>The overall API format has been made more expressive.</p><ul>
+<li>Fetching documents and references are now completely supported by <code>GET</code> requests. There are additional filters supported by URL parameters like <strong>streaming queries</strong>, <strong>pagination</strong>, and <strong>timestamp</strong> based retrieval.</li>
+<li><code>PATCH</code> is used for creating and updating resources.</li>
+<li><code>POST</code> is used for all ElasticSearch queries.</li>
+</ul></div>
+  <a class="edit" ng-href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v3.0/changelog/changelog.md" target="_blank" href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v3.0/changelog/changelog.md">
+    <span class="fa fa-pencil"></span>
+  </a>
+</div></div>
+  <script type="text/javascript" src="/scripts/analytics.js"></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body></html>

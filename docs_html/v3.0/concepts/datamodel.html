@@ -1,0 +1,139 @@
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Appbase Documentation</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+  <script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="/bower_components/docbase/scripts/polyfill.js"></script>
+  <!-- Flatdoc -->
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/legacy.js"></script>
+  <script type="text/javascript" src="/bower_components/flatdoc/flatdoc.js"></script>
+
+  <!-- Flatdoc theme -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/flatdoc/theme-white/style.css">
+  <script type="text/javascript" src="/bower_components/docbase/scripts/flatdoc-theme.js"></script>
+
+  <!-- DocBase -->
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
+
+  <script type="text/javascript" src="/bower_components/docbase/scripts/docbase.js"></script>
+  <script src="/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/google-code-prettify/bin/prettify.min.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
+  
+
+  <!-- Custom -->
+  <link rel="stylesheet" type="text/css" href="/styles/docs.css">
+
+</head>
+<body role="flatdoc" class="no-literate">
+  <!--[if lt IE 10]>
+     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- ngView:  --><div ng-view="" class="ng-scope"><!-- ngInclude: 'html/navbar.html' --><nav class="navbar navbar-default navbar-fixed-top ng-scope" ng-include="'html/navbar.html'"><div class="container-fluid ng-scope">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://appbase.io">
+      <img src="/images/logo.svg">
+    </a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <!-- ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/changelog" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/changelog">Changelog</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="file.label" class="ng-binding" href=/v3.0/changelog/changelog.html>Changelog</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/search" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/search">Search</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/search/quick-start.html ng-bind="file.label" class="ng-binding" href=/v3.0/search/quick-start.html>Quick Start</a>
+          </li><!-- end ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/search/use-cases.html ng-bind="file.label" class="ng-binding" href=/v3.0/search/use-cases.html>Use-cases</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/concepts" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/concepts">Concepts</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/concepts/datamodel.html ng-bind="file.label" class="ng-binding" href=/v3.0/concepts/datamodel.html>Datamodel</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/rest" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/rest">REST</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/rest/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/rest/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] --><li class="dropdown ng-scope" ng-repeat="folder in map[currentVersion]">
+        <a ng-href="#/v3.0/javascript" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" ng-bind="folder.label" href="#/v3.0/javascript">Javascript</a>
+        <ul class="dropdown-menu">
+          <!-- ngRepeat: file in folder.files --><li ng-repeat="file in folder.files" class="ng-scope">
+            <a ng-href=/v3.0/javascript/api-reference.html ng-bind="file.label" class="ng-binding" href=/v3.0/javascript/api-reference.html>API Reference</a>
+          </li><!-- end ngRepeat: file in folder.files -->
+        </ul>
+      </li><!-- end ngRepeat: folder in map[currentVersion] -->
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+           <span ng-bind="currentVersion" class="ng-binding">v3.0</span> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu version-switcher" role="menu">
+          <!-- ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/scalr/rest/intro.html ng-bind="version" class="ng-binding" href=/scalr/rest/intro.html>scalr</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v2.0/concepts/datamodel.html ng-bind="version" class="ng-binding" href=/v2.0/concepts/datamodel.html>v2.0</a>
+          </li><!-- end ngRepeat: version in versions --><li ng-repeat="version in versions" class="ng-scope">
+            <a ng-href=/v3.0/changelog/changelog.html ng-bind="version" class="ng-binding" href=/v3.0/changelog/changelog.html>v3.0</a>
+          </li><!-- end ngRepeat: version in versions -->
+        </ul>
+      </li>
+      <li class="github-star">
+        <iframe src="https://ghbtns.com/github-btn.html?user=appbaseio&amp;repo=Docs&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid --></nav>
+<div role="flatdoc" class="content-root ng-scope">
+  <div class="menubar fixed">
+    <div class="menu section" role="flatdoc-menu"><ul><li id="root-item" class="level-0"><ul class="level-1" id="root-list"><li id="datamodel-item" class="level-1"><a id="datamodel-link" href="/v3.0/concepts/datamodel.html#datamodel" class="level-1" pref="#datamodel">Datamodel</a><ul class="level-2" id="datamodel-list"><li id="datamodel-data-in-appbase-item" class="level-2"><a id="datamodel-data-in-appbase-link" href="/v3.0/concepts/datamodel.html#datamodel-data-in-appbase" class="level-2" pref="#datamodel-data-in-appbase">Data in Appbase</a></li><li id="datamodel-understanding-data-item" class="level-2"><a id="datamodel-understanding-data-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data" class="level-2" pref="#datamodel-understanding-data">Understanding Data</a><ul class="level-3" id="datamodel-understanding-data-list"><li id="datamodel-understanding-data-document-item" class="level-3"><a id="datamodel-understanding-data-document-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data-document" class="level-3" pref="#datamodel-understanding-data-document">Document</a></li><li id="datamodel-understanding-data-collection-item" class="level-3"><a id="datamodel-understanding-data-collection-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data-collection" class="level-3" pref="#datamodel-understanding-data-collection">Collection</a></li><li id="datamodel-understanding-data-reference-item" class="level-3"><a id="datamodel-understanding-data-reference-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data-reference" class="level-3" pref="#datamodel-understanding-data-reference">Reference</a></li><li id="datamodel-understanding-data-path-item" class="level-3"><a id="datamodel-understanding-data-path-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data-path" class="level-3" pref="#datamodel-understanding-data-path">Path</a></li><li id="datamodel-understanding-data-url-item" class="level-3"><a id="datamodel-understanding-data-url-link" href="/v3.0/concepts/datamodel.html#datamodel-understanding-data-url" class="level-3" pref="#datamodel-understanding-data-url">URL</a></li></ul></li><li id="datamodel-saving-data-item" class="level-2"><a id="datamodel-saving-data-link" href="/v3.0/concepts/datamodel.html#datamodel-saving-data" class="level-2" pref="#datamodel-saving-data">Saving Data</a><ul class="level-3" id="datamodel-saving-data-list"><li id="datamodel-saving-data-writing-data-item" class="level-3"><a id="datamodel-saving-data-writing-data-link" href="/v3.0/concepts/datamodel.html#datamodel-saving-data-writing-data" class="level-3" pref="#datamodel-saving-data-writing-data">Writing Data</a></li><li id="datamodel-saving-data-modifying-data-item" class="level-3"><a id="datamodel-saving-data-modifying-data-link" href="/v3.0/concepts/datamodel.html#datamodel-saving-data-modifying-data" class="level-3" pref="#datamodel-saving-data-modifying-data">Modifying Data</a></li></ul></li><li id="datamodel-retrieving-data-and-queries-item" class="level-2"><a id="datamodel-retrieving-data-and-queries-link" href="/v3.0/concepts/datamodel.html#datamodel-retrieving-data-and-queries" class="level-2" pref="#datamodel-retrieving-data-and-queries">Retrieving Data and Queries</a><ul class="level-3" id="datamodel-retrieving-data-and-queries-list"><li id="datamodel-retrieving-data-and-queries-retrieving-document-properties-item" class="level-3"><a id="datamodel-retrieving-data-and-queries-retrieving-document-properties-link" href="/v3.0/concepts/datamodel.html#datamodel-retrieving-data-and-queries-retrieving-document-properties" class="level-3" pref="#datamodel-retrieving-data-and-queries-retrieving-document-properties">Retrieving Document Properties</a></li><li id="datamodel-retrieving-data-and-queries-references-item" class="level-3"><a id="datamodel-retrieving-data-and-queries-references-link" href="/v3.0/concepts/datamodel.html#datamodel-retrieving-data-and-queries-references" class="level-3" pref="#datamodel-retrieving-data-and-queries-references">References</a></li><li id="datamodel-retrieving-data-and-queries-streaming-vs-retrieval-item" class="level-3"><a id="datamodel-retrieving-data-and-queries-streaming-vs-retrieval-link" href="/v3.0/concepts/datamodel.html#datamodel-retrieving-data-and-queries-streaming-vs-retrieval" class="level-3" pref="#datamodel-retrieving-data-and-queries-streaming-vs-retrieval">Streaming vs Retrieval</a></li></ul></li></ul></li><li id="security-item" class="level-1"><a id="security-link" href="/v3.0/concepts/datamodel.html#security" class="level-1" pref="#security">Security</a><ul class="level-2" id="security-list"><li id="security-serverside-item" class="level-2"><a id="security-serverside-link" href="/v3.0/concepts/datamodel.html#security-serverside" class="level-2" pref="#security-serverside">Serverside</a><ul class="level-3" id="security-serverside-list"><li id="security-serverside-app-secret-item" class="level-3"><a id="security-serverside-app-secret-link" href="/v3.0/concepts/datamodel.html#security-serverside-app-secret" class="level-3" pref="#security-serverside-app-secret">App Secret</a></li></ul></li><li id="security-clientside-item" class="level-2"><a id="security-clientside-link" href="/v3.0/concepts/datamodel.html#security-clientside" class="level-2" pref="#security-clientside">Clientside</a></li></ul></li><li id="acidity-item" class="level-1"><a id="acidity-link" href="/v3.0/concepts/datamodel.html#acidity" class="level-1" pref="#acidity">ACIDity</a></li><li id="performance-item" class="level-1"><a id="performance-link" href="/v3.0/concepts/datamodel.html#performance" class="level-1" pref="#performance">Performance</a></li></ul></li></ul></div>
+  </div>
+  <div role="flatdoc-content" class="content"><h1 id="datamodel">Datamodel</h1><h2 id="datamodel-data-in-appbase">Data in Appbase</h2><h2 id="datamodel-understanding-data">Understanding Data</h2><h3 id="datamodel-understanding-data-document">Document</h3><h3 id="datamodel-understanding-data-collection">Collection</h3><h3 id="datamodel-understanding-data-reference">Reference</h3><h3 id="datamodel-understanding-data-path">Path</h3><h3 id="datamodel-understanding-data-url">URL</h3><h2 id="datamodel-saving-data">Saving Data</h2><h3 id="datamodel-saving-data-writing-data">Writing Data</h3><h3 id="datamodel-saving-data-modifying-data">Modifying Data</h3><h2 id="datamodel-retrieving-data-and-queries">Retrieving Data and Queries</h2><h3 id="datamodel-retrieving-data-and-queries-retrieving-document-properties">Retrieving Document Properties</h3><h3 id="datamodel-retrieving-data-and-queries-references">References</h3><h3 id="datamodel-retrieving-data-and-queries-streaming-vs-retrieval">Streaming vs Retrieval</h3><h1 id="security">Security</h1><h2 id="security-serverside">Serverside</h2><h3 id="security-serverside-app-secret">App Secret</h3><h2 id="security-clientside">Clientside</h2><h1 id="acidity">ACIDity</h1><h1 id="performance">Performance</h1></div>
+  <a class="edit" ng-href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v3.0/concepts/datamodel.md" target="_blank" href="https://github.com/appbaseio/Docs/tree/gh-pages/src/v3.0/concepts/datamodel.md">
+    <span class="fa fa-pencil"></span>
+  </a>
+</div></div>
+  <script type="text/javascript" src="/scripts/analytics.js"></script>
+  <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body></html>

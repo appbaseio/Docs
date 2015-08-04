@@ -1,0 +1,28 @@
+{
+  "name": "docbase",
+  "version": "0.0.1",
+  "authors": [
+    "Mateus Freira <mateus.freira@gmail.com>"
+  ],
+  "description": "Documentation for Appbase",
+  "contributors": [],
+  "scripts": {
+    "test": "grunt publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appbaseio/Docs"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-docbase": "git+https://github.com/mateusfreira/grunt-docbase.git",
+    "grunt-gh-pages": "^0.10.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8"
+  }
+}
