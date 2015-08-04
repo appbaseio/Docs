@@ -1,3 +1,4 @@
 node_modules
 .grunt/
+docs_html
 dist/
