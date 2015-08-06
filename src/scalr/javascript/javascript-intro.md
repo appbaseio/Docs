@@ -84,7 +84,7 @@ The ``elasticsearch`` lib comes in two flavors.
     });
     ```
 
-> <i class="fa fa-info-circle"></i> CORS headers need to enabled on the server side for allowing access from the origin URL. If you are using ElasticSearch via Appbase, we've got you covered here!
+> <span class="fa fa-info-circle"></span> CORS headers need to enabled on the server side for allowing access from the origin URL. If you are using ElasticSearch via Appbase, we've got you covered here!
 
 
 ### 1.a: Lib Test
@@ -132,15 +132,21 @@ client.index({
 
 where ``index: 'createnewtestapp01'`` uses the appname we created in Step 0. 
 
-> <i class="fa fa-external-link-square"></i> Check out the [ES API reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for more client methods.
+> <span class="fa fa-external-link-square"></span> Check out the [ES API reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for more client methods.
 
-> <i class="fa fa-info-circle"></i> If you have noticed, SCALR uses the same APIs as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
+> <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
 
 ## Step 3: <s>GETing</s> err, Streaming Data
 
 Getting live updates to a document using the ``streamDocument`` method. It's so awesome that we recommend using this as the default way instead of the [``client.get()``](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-get) method supported by elasticsearch.js.
 
 ```js
+// we instantiate appbase client here. We use it for streaming data updates.
+var streamingClient = appbase.newClient({
+    url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
+    appname: 'createnewtestapp01',
+});
+
 streamingClient.streamDocument({
       type: 'books',
       id: '1'
