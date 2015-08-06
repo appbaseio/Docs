@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 			def: {
 				options: {
 					generatePath: "docs_html/",
-					baseUrl: "/",
+					baseUrl: "/Docs",
 					checkLoadedSelector: "[role='flatdoc-menu'], .fa-code",
 				}
 			}
