@@ -17,6 +17,7 @@ Reference | Edge | Path to another data container
 
 The overall API format has been made more expressive.
 
+
 * Fetching documents and references are now completely supported by ``GET`` requests. There are additional filters supported by URL parameters like **streaming queries**, **pagination**, and **timestamp** based retrieval.
 * ``PATCH`` is used for creating and updating resources.
 * ``POST`` is used for all ElasticSearch queries.

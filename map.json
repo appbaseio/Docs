@@ -1,6 +1,16 @@
 {   
     "scalr": [
         {
+            "label": "Concepts",
+            "name": "concepts",
+            "files": [
+                {
+                    "label": "Intro",
+                    "name": "intro"
+                }
+            ]
+        },    
+        {
             "label": "REST",
             "name": "rest",
             "files": [
@@ -9,7 +19,7 @@
                     "name": "intro"
                 }
             ]
-        }
+        }       
     ],
     "v2.0" : [
         {

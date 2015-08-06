@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.3.13
+ * @license AngularJS v1.3.17
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -440,9 +440,11 @@ function $RouteProvider() {
      * @name $route#$routeUpdate
      * @eventType broadcast on root scope
      * @description
-     *
      * The `reloadOnSearch` property has been set to false, and we are reusing the same
      * instance of the Controller.
+     *
+     * @param {Object} angularEvent Synthetic event object
+     * @param {Route} current Current/previous route information.
      */
 
     var forceReload = false,
@@ -594,9 +596,8 @@ function $RouteProvider() {
                 if (angular.isFunction(templateUrl)) {
                   templateUrl = templateUrl(nextRoute.params);
                 }
-                templateUrl = $sce.getTrustedResourceUrl(templateUrl);
                 if (angular.isDefined(templateUrl)) {
-                  nextRoute.loadedTemplateUrl = templateUrl;
+                  nextRoute.loadedTemplateUrl = $sce.valueOf(templateUrl);
                   template = $templateRequest(templateUrl);
                 }
               }
