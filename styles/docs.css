@@ -266,7 +266,7 @@ body.no-literate .content h1:first-child {
   font-size: 1.4em;
   font-weight: 200;
   text-align: center;
-  border:1px solid #666;
+  border:1px solid #fff;
   padding: 0;
 }
 
@@ -274,7 +274,9 @@ body.no-literate .content h1:first-child {
   font-family: 'Source Sans Pro';
   font-weight: 200;
 }
-
+.list a span sub {
+  font-size: 0.5em;
+}
 .list a:hover, .list a:active, .list a:visited {
   font-style: default;
   text-decoration: none;
