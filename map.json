@@ -1,4 +1,4 @@
-{   
+{
     "scalr": [
         {
             "label": "Concepts",
@@ -6,10 +6,24 @@
             "files": [
                 {
                     "label": "Intro",
-                    "name": "intro"
+                    "name": "intro",
                 }
             ]
-        },    
+        },
+        {
+          "label": "Javascript",
+          "name": "javascript",
+          "files": [
+            {
+              "label": "Javascript Quick Start",
+              "name": "javascript-intro"
+            },
+            {
+              "label": "Node.JS Quick Start",
+              "name": "nodejs-intro"
+            }
+          ]
+        },
         {
             "label": "REST",
             "name": "rest",
@@ -19,7 +33,7 @@
                     "name": "intro"
                 }
             ]
-        }       
+        }
     ],
     "v2.0" : [
         {
