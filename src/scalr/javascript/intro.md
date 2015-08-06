@@ -169,7 +169,7 @@ INITIAL RESPONSE
 }
 ```
 
-Appbase.io keeps an open connection so that every time there is an update in the ``/$app/books/1`` document, it is streamed via the connection.
+Now everytime there is a document update, ``streamingClient.streamDocument(...)`` will emit the "data" event and we will print the parsed JSON on the console.
 
 ### 3.a: Modify the Document
 
@@ -199,16 +199,6 @@ client.index({
 ### 3.b: Observe the Streams
 
 ```js
-streamingClient.streamDocument({
-      type: 'books',
-      id: '1'
-}).on('data', function(res) {
-      // client would emit "data" event every time there is a document update.
-      console.log(res)
-}).on('error', function(err) {
-      console.log(err)
-})
-
 RESPONSE AFTER 3.a
 {
   "_type": "books",
