@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 			def: {
 				options: {
 					generatePath: "docs_html/",
-					baseUrl: "/Docs/",
+					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME'],
 					checkLoadedSelector: "[role='flatdoc-menu'], .fa-code",
 				}
