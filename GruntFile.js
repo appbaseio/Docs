@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 						name: 'Travis',
 						email: 'mateusfreira@gmail.com'
 					},
-					repo: 'https://' + process.env.GH_TOKEN + '@github.com/mateusfreira/Docs.git',
+					repo: 'https://' + process.env.GH_TOKEN + '@github.com/appbaseio/Docs.git',
 					message: 'publish gh-pages (auto)',
 					silent: false,
 				},
