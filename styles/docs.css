@@ -6,6 +6,10 @@
 	height: 34px;
 }
 .navbar-default {
+    z-index: 10000;
+    margin: 0px;
+    border: 0px;
+    box-shadow: none;
 }
 
 body {
