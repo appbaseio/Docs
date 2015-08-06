@@ -13,7 +13,7 @@
 	    user: 'appbaseio',
 	    repo: 'Docs',
 	    path: 'src',
-	    branch: 'gh-pages'
+	    branch: 'master'
 	  },
 	  file: {
 	      src: 'map.json',
