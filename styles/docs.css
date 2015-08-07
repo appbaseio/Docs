@@ -26,7 +26,6 @@ body:not(.no-literate) .content h1 {
 .menu a.active:after {
 	top: 10px;
 	left: -15px;
-	width: 9px;
 }
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6, .menu {
@@ -36,7 +35,7 @@ body:not(.no-literate) .content h1 {
 
 .menu a.level-1 {
 	font-family: 'Source Sans Pro';
-	font-weight: 700; 
+	font-weight: 700;
 }
 
 .dropdown-menu.version-switcher {
@@ -51,14 +50,14 @@ body:not(.no-literate) .content h1 {
   top: 60px;
   background: white;
   left: 230px;
-  width: 30px;
-  padding: 5px 0 5px 8px;
+  padding: 5px 5px 5px 8px;
   line-height: 1.5em;
   border-top: 1px solid #eee;
   color: #aaa;
   transition: all 0.3s ease;
   border-left: 0;
   border-right: 1px solid #eee;
+	opacity: 0.4;
 }
 
 @media (min-width: 1350px) {
@@ -147,7 +146,6 @@ body:not(.no-literate) .content h1 {
 
   .edit {
     border-left: 1px solid #eee;
-    border-right:none;
     left: 820px;
   }
 
@@ -200,12 +198,16 @@ li.active {
 .edit:hover{
   color: #444;
   left:230px;
-  width: 35px;
-  border-color: #bbb;
+	border-right: 1px solid #bbb !important;
+	border-color: #bbb;
+	opacity: 1;
+	padding-left: 10px;
+	-webkit-filter: brightness(110%);
+	filter: brightness(110%);
 }
 
 .edit:active, .edit:focus {
-  color: #aaa;
+  //color: #aaa;
   border-color: #eee;
 }
 
@@ -216,7 +218,7 @@ body.no-literate .edit {
 }
 
 body.no-literate .edit:hover {
-  padding-left: 10px;
+  //padding-left: 10px;
 }
 
 body.no-literate .content h1:first-child {
