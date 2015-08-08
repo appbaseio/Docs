@@ -55,7 +55,6 @@ body:not(.no-literate) .content h1 {
   border-top: 1px solid #eee;
   color: #aaa;
   transition: all 0.3s ease;
-  border-left: 0;
   border-right: 1px solid #eee;
 	opacity: 0.4;
 }
@@ -168,6 +167,19 @@ body:not(.no-literate) .content h1 {
     width: 420px;
   }
 }
+
+@media (max-width: 768px) {
+	body .edit {
+		right: 80px;
+		left: initial;
+		border-left: 1px solid #eee;
+	}
+	body.edit:hover {
+		left: initial !important;
+		right: 80px;
+	}
+}
+
 li.active {
   text-decoration: underline;
 }
@@ -197,9 +209,7 @@ li.active {
 
 .edit:hover{
   color: #444;
-  left:230px;
-	border-right: 1px solid #bbb !important;
-	border-color: #bbb;
+	border: 1px solid #bbb !important;
 	opacity: 1;
 	padding-left: 10px;
 	-webkit-filter: brightness(110%);
@@ -207,18 +217,16 @@ li.active {
 }
 
 .edit:active, .edit:focus {
-  //color: #aaa;
+  color: #aaa;
   border-color: #eee;
 }
 
 body.no-literate .edit {
-  left: 230px;
-  border-left: 0;
   border-right: 1px solid #eee;
 }
 
 body.no-literate .edit:hover {
-  //padding-left: 10px;
+  padding-left: 10px;
 }
 
 body.no-literate .content h1:first-child {
