@@ -405,9 +405,6 @@ body:not(.big-h3) .content h3 {
 }
 body.no-literate .content pre > code {
   background: #f3f6fb;
-  border: solid 1px #e7eaee;
-  border-top: solid 1px #dbdde2;
-  border-left: solid 1px #e2e5e9;
   display: block;
   padding: 10px;
   -webkit-border-radius: 2px;
@@ -435,9 +432,6 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 @media (max-width: 1180px) {
   .content pre > code {
     background: #f3f6fb;
-    border: solid 1px #e7eaee;
-    border-top: solid 1px #dbdde2;
-    border-left: solid 1px #e2e5e9;
     display: block;
     padding: 10px;
     -webkit-border-radius: 2px;
@@ -876,4 +870,3 @@ code .comment {
   position: relative;
   z-index: 1;
 }
-
