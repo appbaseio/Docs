@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 		docbase: {
 			def: {
 				options: {
+					checkLoadedSelector : '#navbar-collapse',
 					generatePath: "docs_html/",
 					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME'],
