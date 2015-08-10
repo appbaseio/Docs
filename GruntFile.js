@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 					generatePath: "docs_html/",
 					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME'],
-					checkLoadedSelector: "[role='flatdoc-menu'], .fa-code",
+					checkLoadedSelector : '#navbar-collapse',
 				}
 			}
 		},
