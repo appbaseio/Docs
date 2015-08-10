@@ -4,7 +4,6 @@
 
 	Docbase.run({
 	  method: 'github',
-	  path: 'src',
 	  map: {
 	      file: 'map.json',
 	      path: '/'
@@ -14,10 +13,6 @@
 	    repo: 'Docs',
 	    path: 'src',
 	    branch: 'master'
-	  },
-	  file: {
-	      src: 'map.json',
-	      path: 'src'
 	  },
 	  indexType: 'html',
 	  indexHtml: 'html/main.html',
@@ -37,7 +32,7 @@
 		                         "color": "#333"});
 		  $(this).css({"padding": "10px"});
 		});
-		
+
 		if(typeof(ga) === 'function'){
 			ga('send', 'pageview',window.location.href);
 		}
