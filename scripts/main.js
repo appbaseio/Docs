@@ -3,17 +3,11 @@
 	var jWindow = $(window);
 
 	Docbase.run({
-	  method: 'github',
+	  method: 'file',
 	  path: 'src',
 	  map: {
 	      file: 'map.json',
 	      path: '/'
-	  },
-	  github: {
-	    user: 'appbaseio',
-	    repo: 'Docs',
-	    path: 'src',
-	    branch: 'master'
 	  },
 	  file: {
 	      src: 'map.json',
