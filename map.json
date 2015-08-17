@@ -7,6 +7,10 @@
                 {
                     "label": "Intro",
                     "name": "intro"
+                },
+                {
+                    "label": "Data Model",
+                    "name": "datamodel"
                 }
             ]
         },
