@@ -1,3 +1,5 @@
+{"threeColumns": false, "bigh3": true, "largeBrief": true}
+
 # Modeling your App Data
 
 ## What is appbase.io
