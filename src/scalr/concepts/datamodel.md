@@ -2,6 +2,7 @@
 
 # Modeling your App Data
 
+
 ## What is appbase.io
 
 [Appbase.io](https://appbase.io) is a data streams API service for continuous search and aggregation queries. You can build reactive apps with Appbase.io, where views update in conjunction with the data changes.
@@ -25,10 +26,17 @@ There are some catches if you intend to:
 * Use it for OLAP use-cases - Appbase.io is designed as an OLTP system although it supports aggregations and queries on data sets of the size of terabytes. There are plenty of ideal tools for OLAP use-cases - Amazon Redshift, Google Big Query, Apache Hadoop and Appbase.io can be used with any of them (via REST API).
 
 
+## Migrating from MongoDB / SQL
 
 
+## How to write data
 
 
+## How to read data
 
-##
+## How to stream data
+
+## Search Queries
+
+## Authentication & Security
 
