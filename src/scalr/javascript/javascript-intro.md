@@ -5,7 +5,7 @@
 
 It can:
 
-* Continuously stream documents, apply filters and query results over ``http-streams``.
+* Continuously stream documents, apply filters and query results over ``websockets`` (for browsers) and ``http-streams``.
 
 It can't:  
 
@@ -24,18 +24,26 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-Setting up [Appbase.js](https://github.com/appbaseio/appbase-js/blob/master/browser/appbase.js) (or it's [minified counterpart](https://github.com/appbaseio/appbase-js/blob/master/browser/appbase.min.js)) is just one line of html script injection.
-
-```html
-<script src="https://cdn.appbase.io/scalr/appbase.js"></script>
-```
-
-``appbase`` is the global object exposed by the appbase.js lib. We instantiate a streaming client by passing the Appbase URL which is always of the form 'https://'+username+':'+password+'@scalr.api.appbase.io' and the appname.
+We will be setting up appbase-js with bower.
 
 ```js
-var streamingClient = appbase.newClient({
-  url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
-  appname: 'createnewtestapp01'
+bower install appbase-js#0.2.0
+```
+
+Building the lib:
+
+```html
+<script src="bower_components/appbase-js/browser/appbase.js"></script>
+```
+
+We instantiate a streaming client by passing the Appbase URL which is always of the form 'https://scalr.api.appbase.io', appname, username and password.
+
+```js
+var streamingClient = new appbase({
+  url: 'https://scalr.api.appbase.io',
+  appname: 'createnewtestapp01',
+  username: 'RIvfxo1u1',
+  password: 'dee8ee52-8b75-4b5b-be4f-9df3c364f59f'
 });
 
 ```
@@ -142,12 +150,8 @@ Getting live updates to a document using the ``streamDocument`` method. It's so 
 
 ```js
 // we instantiate appbase client here. We use it for streaming data updates.
-var streamingClient = appbase.newClient({
-    url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
-    appname: 'createnewtestapp01',
-});
-
-streamingClient.streamDocument({
+var responseStream = streamingClient.streamDocument({
+      stream: true,     // we pass stream: true parameter to fetch current results and then stream new results.
       type: 'books',
       id: '1'
 }).on('data', function(res) {
@@ -229,6 +233,7 @@ We will see it here with a ``match_all`` query request.
 
 ```js
 streamingClient.streamSearch({
+    stream: true,     // we pass stream: true parameter to fetch current results and then stream new results.
     type: 'books',
     body: {
         query: {
