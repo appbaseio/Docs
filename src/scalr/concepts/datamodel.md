@@ -61,20 +61,3 @@ A **document** is the actual data stored in Appbase. Documents are ``JSON`` obje
 An app can have one or more types and each type is a container for JSON documents. Visually, the arrangement looks like below:
 
 ![img](https://farm1.staticflickr.com/616/21319701888_dbe75d9f6f_c.jpg)
-
-
-
-## Migrating from MongoDB / SQL
-
-
-## How to write data
-
-
-## How to read data
-
-## How to stream data
-
-## Search Queries
-
-## Authentication & Security
-
