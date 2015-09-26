@@ -5,11 +5,14 @@
 
 It can:
 
-* Continuously stream documents, apply filters and query results over ``http-streams``.
+* Continuously stream updates to documents, queries or filters over ``websockets`` (for browsers) and ``http-streams``.
+* Index new documents or update / delete existing ones.
 
 It can't:  
 
-* Index documents, configure mappings, change analyzers. All these are provided by [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official ElasticSearch JS client library, which we will be using in this guide. 
+* Configure mappings, change analyzers, or capture snapshots. All these are provided by [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official ElasticSearch JS client library.
+
+[Appbase](https://appbase.io) is opinionated about the cluster setup and doesn't support the ElasticSearch devops APIs.
 
 This is a quick start guide to whet the appetite with the possibilities of data streams.
 
@@ -20,68 +23,51 @@ Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://a
 
 For this tutorial, we will use an app called "createnewtestapp01". The &lt;username>:&lt;password> combination for this app is RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f.
 
-> SCALR uses *HTTP Basic Auth*, a widely used protocol for simple username/password authentication.
+> SCALR uses *HTTP Basic Auth*, a widely used protocol for a simple username/password authentication.
 
 ## Step 1: Lib Setup
 
-1. Setting up [appbase-js](https://www.npmjs.com/package/appbase-js) is easy.
-
-  ```
-  npm install appbase-js
-  ```
-
-2. For this tutorial, we will use [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official ElasticSearch client for indexing data.
-
-  ```js
-  npm install elasticsearch
-  ```
-
-3. Code setup:
-
-  ```js
-  // app and authentication configurations  
-  const HOSTNAME = "scalr.api.appbase.io"
-  const APPNAME = "createnewtestapp01"
-  const USERNAME = "RIvfxo1u1"
-  const PASSWORD = "dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
-
-  // load 'appbase' and 'elasticsearch' modules
-  var appbase = require("appbase-js")
-  var elasticsearch = require('elasticsearch')
-  
-  // elasticsearch client. we use it for indexing, mappings, search settings, etc.
-  var client = new elasticsearch.Client({
-    host: 'https://'+USERNAME+":"+PASSWORD+"@"+HOSTNAME,
-  });
-  
-  // we will instantiate 'appbase' client when we need streams.
-  ```
-
-``HOSTNAME`` for SCALR API always points to "scalr.api.appbase.io". Values of ``APPNAME``, ``USERNAME`` and ``PASSWORD`` are taken from Step 0.
-
-> <span class="fa fa-info-circle"></span> Setting ``USERNAME`` and ``PASSWORD`` are necessary, as SCALR API only allows authenticated requests.
-
-### 1.a: Lib Test
-
-We send a HEAD request to https://scalr.api.appbase.io/?hello=appbase and allow up to 10 seconds for it to complete.
+We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.3.0.
 
 ```js
-client.ping({
-  requestTimeout: 10000,
-  hello: "appbase" // appended as query string
-}).then(function (body) {
-    console.log('All is well');
-  }, function(error) {
-    console.error('elasticsearch cluster is down!', error);
-  }
-);
+npm install appbase-js
 ```
 
-If we are doing things correctly, we should see the console beeping "All is well".
+Requiring the lib takes one line:
+
+```js
+var Appbase = require('appbase-js');
+```
+
+To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the API URL, appname, and a username:password combination into the ``Appbase`` constructor:
+
+```js
+var appbase = new Appbase({
+  url: 'https://scalr.api.appbase.io',
+  appname: 'createnewtestapp01',
+  username: 'RIvfxo1u1',
+  password: 'dee8ee52-8b75-4b5b-be4f-9df3c364f59f'
+});
+
+```
+
+**OR**
+
+```js
+var appbase = new Appbase({
+  url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
+  appname: 'createnewtestapp01'
+ })
+```
+
+Alternatively, username:password can be passed as a part of the API URL in the constructor.
+
+
 
 ## Step 2: Storing Data
 
-Let's insert a JSON object. We create a **type** ``books`` inside our app and add a JSON document ``1`` with a ``.index`` request.
+Once we have the reference object (called ``appbase`` in this tutorial), we can insert any JSON object into it with the ``index()`` method.
+
 
 ```js
 var jsonObject = {
@@ -90,47 +76,38 @@ var jsonObject = {
     "department_id":1,
     "name":"A Fake Book on Network Routing",
     "price":5595
-  }
-client.index({
-  index: 'createnewtestapp01',
-  type: 'books',
-  id: '1',
-  body: jsonObject
-}).then(function(response) {
+}
+```
+```
+appbase.index({
+    type: 'books',
+    id: '1',
+    body: jsonObject
+}).on('data', function(response) {
     console.log(response);
-  }, function(error) {
+}).on('error', function(error) {
     console.log(error);
-  }
-);
+});
 ```
 
-where ``index: 'createnewtestapp01'`` uses the appname we created in Step 0. 
+where ``type: 'books'`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
 
-> <span class="fa fa-external-link-square"></span> Check out the [ES API reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for more client methods.
+The ``index()`` method (and all the other ``appbase`` methods) return a [stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) object. A 'data' event handler can be used on the returned object (or in a chained fashion) for listening to all the data changes.
 
-> <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
+> <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
 
 ## Step 3: <s>GETing</s> err, Streaming Data
 
-Getting live updates to a document using the ``streamDocument`` method. It's so awesome that we recommend using this as the default way instead of the [``client.get()``](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-get) method supported by elasticsearch.js.
+Now that we are able to store data, let's try to get the data back from [appbase.io](https://appbase.io) with the ``streamDocument()`` method.
 
 ```js
-// we instantiate appbase client here. We use it for streaming data updates.
-var streamingClient = appbase.newClient({
-    url: 'https://'+HOSTNAME,
-    appname: APPNAME,
-    username: USERNAME,
-    password: PASSWORD
-});
-
-streamingClient.streamDocument({
+appbase.streamDocument({
       type: 'books',
       id: '1'
-}).on('data', function(res) {
-      // client would emit "data" event every time there is a document update.
-      console.log(res)
-}).on('error', function(err) {
-      console.log(err)
+}).on('data', function(response) {
+      console.log(response)
+}).on('error', function(error) {
+      console.log(error)
 })
 
 
@@ -151,11 +128,11 @@ INITIAL RESPONSE
 }
 ```
 
-Now everytime there is a document update, ``streamingClient.streamDocument(...)`` will emit the "data" event and we will print the parsed JSON on the console.
+Now everytime there is a document update, our 'data' event handler will emit the document with the final value.
 
 ### 3.a: Modify the Document
 
-Let's modify the book price to 6034.
+Let's see this in action. We will modify the book price in our original ``jsonObject`` variable from 5595 to 6034.
 
 ```js
 var jsonObject = {
@@ -165,17 +142,6 @@ var jsonObject = {
     "name":"A Fake Book on Network Routing",
     "price":6034
   }
-client.index({
-  index: 'createnewtestapp01',
-  type: 'books',
-  id: '1',
-  body: jsonObject
-}).then(function(response) {
-    console.log(response);
-  }, function(error) {
-    console.log(error);
-  }
-);
 ```
 
 ### 3.b: Observe the Streams
@@ -197,24 +163,27 @@ RESPONSE AFTER 3.a
 
 In the new document update, we can see the price change (5595 -> 6034) being reflected. Subsequent changes will be streamed as JSON objects.
 
-## Step 4: Streaming Search
+``Note:`` Appbase always streams the final state of an object, and not the diff b/w the old state and the new state. You can compute diffs on the client side by keeping the state using the composition of (_type, _id) fields.
 
-Streaming document updates seems straightforward, can we apply rich filters and queries to our streams? Yes, we can. We can specify any ElasticSearch Query DSL request, and get responses via streams using the ``streamSearch`` method.
 
-We will see it here with a ``match_all`` query request.
+## Step 4: Streaming Rich Queries
+
+Streaming document updates are great for building messaging systems or notification feeds on individual objects. What if we were interested in continuously listening to a broader set of data? The ``streamSearch()`` method scratches this itch perfectly. 
+
+In the example below, we will see it in action with a ``match_all`` query that returns any time a new document is added to the type 'books' or when any of the existing documents are modified.
 
 ```js
-streamingClient.streamSearch({
+appbase.streamSearch({
     type: 'books',
     body: {
         query: {
             match_all: {}
         }
     }
-}).on('data', function(res) {
-    console.log(res);
-}).on('error', function(err) {
-    console.log("caught a stream error", err)
+}).on('data', function(response) {
+    console.log(response);
+}).on('error', function(error) {
+    console.log("caught a stream error", error)
 })
 
 INITIAL RESPONSE
@@ -247,3 +216,7 @@ INITIAL RESPONSE
   }
 }
 ```
+
+In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
+
+For next steps, check out our [Javascript API reference]() or take a look at the <span class="fa fa-external-link-square"></span>[ElasticSearch JS reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for a deeper dive.
