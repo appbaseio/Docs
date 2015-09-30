@@ -90,7 +90,7 @@ appbase.index({
 });
 ```
 
-where ``type: 'books'`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
+where ``type: 'books'`` indicates the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
 
 The ``index()`` method (and all the other ``appbase`` methods) return a [stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) object. A 'data' event handler can be used on the returned object (or in a chained fashion) for listening to all the data changes.
 
@@ -128,7 +128,7 @@ INITIAL RESPONSE
 }
 ```
 
-Now everytime there is a document update, our 'data' event handler will emit the document with the final value.
+Everytime there is a document update, our 'data' event handler will emit the document with the final value.
 
 ### 3.a: Modify the Document
 
@@ -217,6 +217,6 @@ INITIAL RESPONSE
 }
 ```
 
-In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
+In this tutorial, we learned how to index new data and stream 1.) individual data document and 2.) results of a data query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
 For next steps, check out our [Javascript API reference]() or take a look at the <span class="fa fa-external-link-square"></span>[ElasticSearch JS reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for a deeper dive.
