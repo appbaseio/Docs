@@ -143,7 +143,8 @@ Continuously stream a specific JSON document.
 ```js
 appbaseObj.streamDocument({
   type: "tweet",
-  id: 1
+  id: 1,
+  streamonly: false
 }).on('data', function(res) {
   console.log("data update: ", res);
 }).on('error', function(err) {
@@ -155,16 +156,39 @@ appbaseObj.streamDocument({
 
 ``appbaseObj.streamDocument(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed
+- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed. Optionally, it can also contain a ``streamonly`` field to stream only the new updates and not return the original value
 
 	- **type** ``String`` - Document type
 	- **id** ``String`` - Document ID
+	- ***streamonly** ``Boolean`` - ``false`` by default. A value ``true`` returns only the new document updates and not the original value
+
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers
+- a **stop()** method to stop the stream
+
+```js
+var responseStream = appbaseObj.streamDocument({
+  type: "tweet",
+  id: 1,
+  streamonly: false
+})
+
+responseStream.on('data', function(res) {
+  console.log("data update: ", res);
+});
+
+responseStream.stop();
+```
+
 
 ``Note:`` appbase.js lib uses websockets (on the browser) and http-streams (on node.js) to stream the updates.
 
 ### streamSearch()
 
-Continuously stream results of search query on a ``type``.
+Continuously stream results of search query on a given ``type``. Search queries can be simple monitoring queries, finding an exact set of documents, full-text search queries, geolocation queries.
 
 ```js
 appbaseObj.streamSearch({
@@ -173,7 +197,8 @@ appbaseObj.streamSearch({
     query: {
       match_all: {}
     }
-  }
+  },
+  streamonly: true
 }).on('data', function(res) {
   console.log("query update: ", res);
 }).on('error', function(err) {
@@ -185,9 +210,33 @@ appbaseObj.streamSearch({
 
 ``appbaseObj.streamSearch(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed
+- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``, and optionally a ``streamonly`` field to stream only the new matching documents (without returning the existing matches)
 
 	- **type** ``String`` - Document type
 	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- ***streamonly** ``Boolean`` - ``false`` by default. A value ``true`` returns only the new matches after the query and not the existing ones
 
-``Note:`` appbase.js lib uses websockets (on the browser) and http-streams (on node.js) to stream the updates.
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers
+- a **stop()** method to stop the stream
+
+```js
+var responseStream = appbaseObj.streamSearch({
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  },
+  streamonly: true
+})
+
+responseStream.on('data', function(res) {
+  console.log("data update: ", res);
+});
+
+setTimeout(responseStream.stop, 5000); // stop stream after 5s
+```
