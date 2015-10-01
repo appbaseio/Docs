@@ -219,4 +219,4 @@ INITIAL RESPONSE
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
-For next steps, check out our [Javascript API reference]() or take a look at the <span class="fa fa-external-link-square"></span>[ElasticSearch JS reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for a deeper dive.
+For next steps, check out our [Javascript API reference](http://docs.appbase.io/scalr/javascript/api-reference.html) or take a look at the <span class="fa fa-external-link-square"></span>[ElasticSearch JS reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html) for a deeper dive.
