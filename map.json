@@ -19,11 +19,11 @@
           "name": "javascript",
           "files": [
             {
-              "label": "Javascript Quick Start",
+              "label": "JS Quick Start",
               "name": "javascript-intro"
             },
             {
-              "label": "Node.JS Quick Start",
+              "label": "Node Quick Start",
               "name": "nodejs-intro"
             },
             {
