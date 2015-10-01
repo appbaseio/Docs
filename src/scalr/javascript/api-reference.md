@@ -33,7 +33,7 @@ var appbaseObj = new Appbase({
 
 - **appData** ``Object`` - A Javascript object containing the following fields and values
 
-	- **url** ``String`` - URL with the API version, always ``https://scalr.api.appbase.io``
+	- **url** ``String`` - URL with the API version, always *https://scalr.api.appbase.io*
 	- **appname** ``String`` - name of the app as displayed in the [dashboard](https://appbase.io/scalr)
 	- **username** ``String`` - username as displayed in the app dashboard
 	- **password** ``String`` - password as displayed in the app dashboard
@@ -80,7 +80,7 @@ appbaseObj.index({
 Delete a JSON data object by ``id``.
 
 ```js
-appbaseObj.index({
+appbaseObj.delete({
   type: "tweet",
   id: "1"
 }).on('data', function(res) {
