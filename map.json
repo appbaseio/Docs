@@ -25,6 +25,10 @@
             {
               "label": "Node.JS Quick Start",
               "name": "nodejs-intro"
+            },
+            {
+                "label": "JS API Reference",
+                "name": "api-reference"
             }
           ]
         },
