@@ -44,7 +44,7 @@ var appbaseObj = new Appbase({
 
 ### index()
 
-Writes a new JSON data object inside the given ``type``.
+Writes (or overwrites) a JSON data object at a given ``type`` and ``id`` location.
 
 ```js
 appbaseObj.index({
@@ -56,9 +56,19 @@ appbaseObj.index({
     "using": ["appbase.io", "javascript", "streams"],
     "test": true
   }
+}).on('data', function(res) {
+  console.log("successfully indexed: ", res);
+}).on('error', function(err) {
+  console.log("indexing error: ", err);
 })
 ```
 
 **Usage**
 
-``
+``appbaseObj.index(params)``
+
+- **params** ``Object`` - A Javascript object containing the type, id and the JSON data to be indexed
+
+	- **type** ``String`` - The type (aka collection) under which the data will be indexed
+	- **body** ``Object`` - Data to be indexed, a valid JSON object
+	- ***id** ``String`` - ID for the JSON data. ``id`` is auto generated if not specified
