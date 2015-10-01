@@ -1,4 +1,4 @@
-{"threeColumns": false}
+{"threeColumns": true}
 
 # Javascript API Reference
 
