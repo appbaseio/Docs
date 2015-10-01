@@ -1,4 +1,4 @@
-{"threeColumns": true, "bigh3": true}
+{"threeColumns": true}
 
 # Javascript API Reference
 
@@ -9,6 +9,8 @@ It can:
 * Continuously stream updates to documents, queries or filters over websockets (for browsers) and http-streams.
 * Index new documents or update / delete existing ones.
 * Is compatible with [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html), which can be used for modifying the ES configurations and for using more esoteric methods.
+
+You can read the [Javascript](http://docs.appbase.io/scalr/javascript/javascript-intro.html) or [Node.JS](http://docs.appbase.io/scalr/javascript/nodejs-intro.html) quick-start guides for installation and basic usage.
 
 ## SETUP
 
