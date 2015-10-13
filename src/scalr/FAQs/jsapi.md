@@ -1,4 +1,4 @@
-## How to unsubscribe from / stop a streaming query?
+## How to unsubscribe from a streaming query?
 
 The JS API methods for the [``appbaseRef``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-setup-new-appbase) object implement a **streams** interface. Let's see an example:
 
@@ -29,6 +29,19 @@ Unsubscribing from the ``responseStream`` is simple: using ``stop()`` method.
 ```js
 setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s timeout
 ```
+
+``Note:`` The same is true for all other methods (like ``index()``, ``streamDocument()``) as well, data is returned asynchronously via the 'data' event handler.
+
+## How to pause a streaming query?
+
+[Pausing a response stream object](https://nodejs.org/api/stream.html#stream_readable_pause) prevents new data responses from emitting. The stream can be resumed again via conveniently named ``responseStream.resume()``.
+
+```js
+responseStream.pause();
+```
+
+``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the streamQuery() method. In contrast, stop() unsubscribes from the query kills the response stream object.
+
 
 ## How to stream results of a range query?
 
