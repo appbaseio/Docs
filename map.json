@@ -41,6 +41,16 @@
                     "name": "intro"
                 }
             ]
+        },
+        {
+            "label": "FAQs",
+            "name": "FAQs",
+            "files": [
+                {
+                    "label": "JS API",
+                    "name": "jsapi.md"
+                }
+            ]
         }
     ],
     "v2.0" : [
