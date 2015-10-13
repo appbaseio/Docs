@@ -40,7 +40,7 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 responseStream.pause();
 ```
 
-``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the streamQuery() method. In contrast, stop() unsubscribes from the query kills the response stream object.
+``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the streamQuery() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
 
 ## How to stream results of a range query?
