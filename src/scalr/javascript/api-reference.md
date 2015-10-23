@@ -136,6 +136,61 @@ appbaseObj.bulk({
 	- ***type** ``String`` - Default document type for actions that don't provide one
 
 
+## GETTING DATA
+
+### getTypes()
+
+Get all the ``types`` of an appname.
+
+```js
+appbaseObj.getTypes().on('data', function(res) {
+  console.log("All app types: ", res);
+}).on('error', function(err) {
+  console.log("getTypes() failed: ", err);
+})
+```
+
+**Usage**
+
+``appbaseObj.getTypes()``
+
+Returns all the ``types`` as an array.
+
+### search()
+
+Search for matching documents in a type. It's a convenience method for ElasticSearch's ``/_search`` endpoint.
+
+```js
+appbaseObj.search({
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
+}).on('data', function(res) {
+  console.log("query result: ", res);
+}).on('error', function(err) {
+  console.log("search error: ", err);
+})
+```
+
+**Usage**
+
+``appbaseObj.search(params)``
+
+- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``.
+
+	- **type** ``String`` - Document type
+	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers to return the results and any errors.
+
+
 ## STREAMING DATA
 
 ### readStream()
