@@ -6,7 +6,7 @@ The JS API methods for the [``appbaseRef``](http://docs.appbase.io/scalr/javascr
 
 ```js
 // responseStream implements the streams interface.
-var responseStream = appbaseRef.streamSearch({
+var responseStream = appbaseRef.searchStream({
     type: "tweet",
     body: {
         query: {
@@ -32,7 +32,7 @@ Unsubscribing from the ``responseStream`` is simple: using ``stop()`` method.
 setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s timeout
 ```
 
-``Note:`` The same is true for all other methods (like ``index()``, ``streamDocument()``) as well, data is returned asynchronously via the 'data' event handler.
+``Note:`` The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
 
 ## pause a streaming query
 
@@ -42,7 +42,7 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 responseStream.pause();
 ```
 
-``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the streamQuery() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
+``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
 
 ## stream results of a range query
@@ -62,7 +62,7 @@ Let's say we have a **type** called *items* which contains items with their corr
 Composing the query:
 
 ```js
-var responseStream = appbaseRef.streamSearch({
+var responseStream = appbaseRef.searchStream({
       type: "items",
       body: {
           query: {
