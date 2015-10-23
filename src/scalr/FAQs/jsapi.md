@@ -1,6 +1,6 @@
 # How to
 
-## unsubscribe from a streaming query
+## Unsubscribe from a streaming query
 
 The JS API methods for the [``appbaseRef``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-setup-new-appbase) object implement a **streams** interface. Let's see an example:
 
@@ -34,7 +34,7 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 
 ``Note:`` The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
 
-## pause a streaming query
+## Pause a streaming query
 
 [Pausing a response stream object](https://nodejs.org/api/stream.html#stream_readable_pause) prevents new data responses from emitting. The stream can be resumed again via conveniently named ``responseStream.resume()``.
 
@@ -45,7 +45,7 @@ responseStream.pause();
 ``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
 
-## stream results of a range query
+## Stream results of a range query
 
 Appbase.io implements a streaming interface for the entire [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/query-dsl.html) supported by ElasticSearch. So if we can compose a range query, making it return continuous results is easy.
 
