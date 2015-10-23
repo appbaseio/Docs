@@ -16,10 +16,10 @@ You can read the [Javascript](http://docs.appbase.io/scalr/javascript/javascript
 
 ### new Appbase()
 
-Returns a new Appbase object (refered to as ``appbaseObj`` in all the following examples) using the ``url``, ``appname`` and ``username``:``password`` credentials.
+Returns a new Appbase object (refered to as ``appbaseRef`` in all the following examples) using the ``url``, ``appname`` and ``username``:``password`` credentials.
 
 ```js
-var appbaseObj = new Appbase({
+var appbaseRef = new Appbase({
 	"url": "https://scalr.api.appbase.io",
 	"appname": <YOUR_APP_NAME>,
 	"username": <APP_CREDENTIAL>,
@@ -40,7 +40,7 @@ var appbaseObj = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseObj** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``readStream()`` and ``searchStream()`` methods.
+``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``readStream()`` and ``searchStream()`` methods.
 
 ## WRITING DATA
 
@@ -49,7 +49,7 @@ var appbaseObj = new Appbase({
 Writes a JSON data object at a given ``type`` and ``id`` location, or updates if an object already exists.
 
 ```js
-appbaseObj.index({
+.index({
   type: "tweet",
   id: "1",
   body: {
@@ -67,7 +67,7 @@ appbaseObj.index({
 
 **Usage**
 
-``appbaseObj.index(params)``
+``appbaseRef.index(params)``
 
 - **params** ``Object`` - A Javascript object containing the type, id and the JSON data to be indexed
 
@@ -80,7 +80,7 @@ appbaseObj.index({
 Delete a JSON data object by ``id``.
 
 ```js
-appbaseObj.delete({
+appbaseRef.delete({
   type: "tweet",
   id: "1"
 }).on('data', function(res) {
@@ -92,7 +92,7 @@ appbaseObj.delete({
 
 **Usage**
 
-``appbaseObj.delete(params)``
+``appbaseRef.delete(params)``
 
 - **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the JSON object to be deleted
 
@@ -104,7 +104,7 @@ appbaseObj.delete({
 Apply many index / delete operations together, useful when importing data for the first time.
 
 ```js
-appbaseObj.bulk({
+appbaseRef.bulk({
   type: "tweet",
   body: [
     // action#1 description
@@ -128,7 +128,7 @@ appbaseObj.bulk({
 
 **Usage**
 
-``appbaseObj.bulk(params)``
+``appbaseRef.bulk(params)``
 
 - **params** ``Object`` - A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
 
@@ -143,7 +143,7 @@ appbaseObj.bulk({
 Get all the ``types`` of an appname.
 
 ```js
-appbaseObj.getTypes().on('data', function(res) {
+appbaseRef.getTypes().on('data', function(res) {
   console.log("All app types: ", res);
 }).on('error', function(err) {
   console.log("getTypes() failed: ", err);
@@ -152,7 +152,7 @@ appbaseObj.getTypes().on('data', function(res) {
 
 **Usage**
 
-``appbaseObj.getTypes()``
+``appbaseRef.getTypes()``
 
 Returns all the ``types`` as an array.
 
@@ -161,7 +161,7 @@ Returns all the ``types`` as an array.
 Search for matching documents in a type. It's a convenience method for ElasticSearch's ``/_search`` endpoint.
 
 ```js
-appbaseObj.search({
+appbaseRef.search({
   type: "tweet",
   body: {
     query: {
@@ -177,7 +177,7 @@ appbaseObj.search({
 
 **Usage**
 
-``appbaseObj.search(params)``
+``appbaseRef.search(params)``
 
 - **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``.
 
@@ -198,7 +198,7 @@ appbaseObj.search({
 Continuously stream a specific JSON document.
 
 ```js
-appbaseObj.readStream({
+appbaseRef.readStream({
   type: "tweet",
   id: 1,
   streamonly: false
@@ -211,7 +211,7 @@ appbaseObj.readStream({
 
 **Usage**
 
-``appbaseObj.readStream(params)``
+``appbaseRef.readStream(params)``
 
 - **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed. Optionally, it can also contain a ``streamonly`` field to stream only the new updates and not return the original value
 
@@ -227,7 +227,7 @@ appbaseObj.readStream({
 - a **stop()** method to stop the stream
 
 ```js
-var responseStream = appbaseObj.readStream({
+var responseStream = appbaseRef.readStream({
   type: "tweet",
   id: 1,
   streamonly: false
@@ -248,7 +248,7 @@ responseStream.stop();
 Continuously stream results of search query on a given ``type``. Search queries can be simple monitoring queries, finding an exact set of documents, full-text search queries, geolocation queries.
 
 ```js
-appbaseObj.searchStream({
+appbaseRef.searchStream({
   type: "tweet",
   body: {
     query: {
@@ -265,7 +265,7 @@ appbaseObj.searchStream({
 
 **Usage**
 
-``appbaseObj.searchStream(params)``
+``appbaseRef.searchStream(params)``
 
 - **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``, and optionally a ``streamonly`` field to stream only the new matching documents (without returning the existing matches)
 
@@ -281,7 +281,7 @@ appbaseObj.searchStream({
 - a **stop()** method to stop the stream
 
 ```js
-var responseStream = appbaseObj.searchStream({
+var responseStream = appbaseRef.searchStream({
   type: "tweet",
   body: {
     query: {
