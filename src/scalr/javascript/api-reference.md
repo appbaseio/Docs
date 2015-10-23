@@ -40,7 +40,7 @@ var appbaseObj = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseObj** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``streamDocument()`` and ``streamSearch()`` methods.
+``Object`` **appbaseObj** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``readStream()`` and ``searchStream()`` methods.
 
 ## WRITING DATA
 
@@ -138,12 +138,12 @@ appbaseObj.bulk({
 
 ## STREAMING DATA
 
-### streamDocument()
+### readStream()
 
 Continuously stream a specific JSON document.
 
 ```js
-appbaseObj.streamDocument({
+appbaseObj.readStream({
   type: "tweet",
   id: 1,
   streamonly: false
@@ -156,7 +156,7 @@ appbaseObj.streamDocument({
 
 **Usage**
 
-``appbaseObj.streamDocument(params)``
+``appbaseObj.readStream(params)``
 
 - **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed. Optionally, it can also contain a ``streamonly`` field to stream only the new updates and not return the original value
 
@@ -172,7 +172,7 @@ appbaseObj.streamDocument({
 - a **stop()** method to stop the stream
 
 ```js
-var responseStream = appbaseObj.streamDocument({
+var responseStream = appbaseObj.readStream({
   type: "tweet",
   id: 1,
   streamonly: false
@@ -193,7 +193,7 @@ responseStream.stop();
 Continuously stream results of search query on a given ``type``. Search queries can be simple monitoring queries, finding an exact set of documents, full-text search queries, geolocation queries.
 
 ```js
-appbaseObj.streamSearch({
+appbaseObj.searchStream({
   type: "tweet",
   body: {
     query: {
@@ -210,7 +210,7 @@ appbaseObj.streamSearch({
 
 **Usage**
 
-``appbaseObj.streamSearch(params)``
+``appbaseObj.searchStream(params)``
 
 - **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``, and optionally a ``streamonly`` field to stream only the new matching documents (without returning the existing matches)
 
@@ -226,7 +226,7 @@ appbaseObj.streamSearch({
 - a **stop()** method to stop the stream
 
 ```js
-var responseStream = appbaseObj.streamSearch({
+var responseStream = appbaseObj.searchStream({
   type: "tweet",
   body: {
     query: {
