@@ -98,10 +98,10 @@ The ``index()`` method (and all the other ``appbase`` methods) return a [stream]
 
 ## Step 3: <s>GETing</s> err, Streaming Data
 
-Now that we are able to store data, let's try to get the data back from [appbase.io](https://appbase.io) with the ``streamDocument()`` method.
+Now that we are able to store data, let's try to get the data back from [appbase.io](https://appbase.io) with the ``readStream()`` method.
 
 ```js
-appbase.streamDocument({
+appbase.readStream({
       type: 'books',
       id: '1'
 }).on('data', function(response) {
@@ -168,12 +168,12 @@ In the new document update, we can see the price change (5595 -> 6034) being ref
 
 ## Step 4: Streaming Rich Queries
 
-Streaming document updates are great for building messaging systems or notification feeds on individual objects. What if we were interested in continuously listening to a broader set of data? The ``streamSearch()`` method scratches this itch perfectly. 
+Streaming document updates are great for building messaging systems or notification feeds on individual objects. What if we were interested in continuously listening to a broader set of data? The ``searchStream()`` method scratches this itch perfectly. 
 
 In the example below, we will see it in action with a ``match_all`` query that returns any time a new document is added to the type 'books' or when any of the existing documents are modified.
 
 ```js
-appbase.streamSearch({
+appbase.searchStream({
     type: 'books',
     body: {
         query: {
