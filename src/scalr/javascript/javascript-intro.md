@@ -27,10 +27,10 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib using [bower](bower.io). We will use ``v0.3.0`` for specificity. 
+We will fetch and install the **appbase-js** lib using [bower](bower.io). We will use ``v0.8.0`` for specificity. 
 
 ```js
-bower install appbase-js#0.3.0
+bower install appbase-js#0.8.0
 ```
 
 Requiring the lib takes just one line of html script injection:
