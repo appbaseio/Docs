@@ -27,7 +27,7 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.3.0.
+We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.8.0.
 
 ```js
 npm install appbase-js
