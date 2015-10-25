@@ -97,11 +97,11 @@ We are often asked to update a mapping of a field. But once the data is indexed 
 
 > This applies not just to Elasticsearch, but to any database that uses indices for searching. And if it isn't using indices then it is sacrificing speed for flexibility.
 
-**Althought adding a new field does not require you to reindex your database.**
+**Althought adding a new field does not require you to reindex your database.**    
 
 > A segment only contains indices for fields that actually exist in the documents for that segment. This means that you can add new fields for free, using the put_mapping API. There is no need to reindex.
 
-**Reindexing your data**
+**Reindexing your data**    
 The process for reindexing your data is quite simple. First, create a new index with the new mapping and settings:
 
     curl -XPUT localhost:9200/new_index -d '
@@ -117,7 +117,7 @@ Note: make sure that you include search_type=scan in your search request. This d
 
 The problem with this approach is that the index name changes, which means that you need to change your application to use the new index name
 
-**Reindexing your data with zero downtime**
+**Reindexing your data with zero downtime**    
 Index aliases give us the flexibility to reindex data in the background, making the change completely transparent to our application. An alias is like a symbolic link which can point to one or more real indices.
 
 The typical workflow is as follows. First, create an index, appending a version or timestamp to the name:
