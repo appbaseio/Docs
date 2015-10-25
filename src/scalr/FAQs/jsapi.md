@@ -93,9 +93,9 @@ responseStream.on("data", function(res) {
 
 We are often asked to update a mapping of a field. But once the data is indexed in to ES it cannot be modified. Appbase is built on Elastic search. According to elastic search doc [here](https://www.elastic.co/blog/changing-mapping-with-zero-downtime):
 
-    You can only find that which is stored in your index. In order to make your data searchable, your database needs to know what type of data each field contains and how it should be indexed. If you switch a field type from e.g. a string to a date, all of the data for that field that you already have indexed becomes useless. One way or another, you need to reindex that field.
-    
-    This applies not just to Elasticsearch, but to any database that uses indices for searching. And if it isn't using indices then it is sacrificing speed for flexibility.
+> You can only find that which is stored in your index. In order to make your data searchable, your database needs to know what type of data each field contains and how it should be indexed. If you switch a field type from e.g. a string to a date, all of the data for that field that you already have indexed becomes useless. One way or another, you need to reindex that field.
+
+> This applies not just to Elasticsearch, but to any database that uses indices for searching. And if it isn't using indices then it is sacrificing speed for flexibility.
 
 ###Althought adding a new field does not require you to reindex your database.
 
