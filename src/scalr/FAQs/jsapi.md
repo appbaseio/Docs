@@ -99,7 +99,7 @@ We are often asked to update a mapping of a field. But once the data is indexed 
 
 ###Althought adding a new field does not require you to reindex your database.
 
-    A segment only contains indices for fields that actually exist in the documents for that segment. This means that you can add new fields for free, using the put_mapping API. There is no need to reindex.
+> A segment only contains indices for fields that actually exist in the documents for that segment. This means that you can add new fields for free, using the put_mapping API. There is no need to reindex.
 
 ###Reindexing your data
 The process for reindexing your data is quite simple. First, create a new index with the new mapping and settings:
