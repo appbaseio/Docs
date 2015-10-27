@@ -49,6 +49,10 @@
                 {
                     "label": "JS API",
                     "name": "jsapi"
+                },
+                {
+                    "label": "REST",
+                    "name": "rest"
                 }
             ]
         }
