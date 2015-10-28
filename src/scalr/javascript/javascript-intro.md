@@ -5,7 +5,7 @@
 
 It can:
 
-* Continuously stream updates to documents, queries or filters over ``websockets`` (for browsers) and ``http-streams``.
+* Continuously stream updates to documents, queries or filters over ``websockets``.
 * Index new documents or update / delete existing ones.
 
 It can't:  
