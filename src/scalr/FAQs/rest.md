@@ -47,8 +47,8 @@ You can run multiple reindexing jobs at the same time, but you obviously don’t
 	    "query": {
 	        "range": {
 	            "date": {
-	                "gte":  "2014-01-01",
-	                "lt":   "2014-02-01"
+	                "gte":  "2015-01-01",
+	                "lt":   "2015-02-01"
 	            }
 	        }
 	    },
