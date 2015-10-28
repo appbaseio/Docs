@@ -40,20 +40,20 @@ One of the advantages of the _source field is that you already have the whole do
 To reindex all of the documents from the old index efficiently, use [scan-and-scroll](https://www.elastic.co/guide/en/elasticsearch/guide/current/scan-scroll.html) to retrieve batches of documents from the old index, and the [bulk API](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-writing-data-bulk) to push them into the new index.
 
 ###Reindexing in Batches
-You can run multiple reindexing jobs at the same time, but you obviously don’t want their results to overlap. Instead, break a big reindex down into smaller jobs by filtering on a date or timestamp field:
+You can run multiple reindexing jobs at the same time, but you obviously don’t want their results to overlap. Instead, break a big reindex down into smaller jobs by filtering on a date or timestamp field:  
 
-GET https://$user:$pass@scalr.api.appbase.io/old_app/_search?search_type=scan&scroll=1m
-{
-    "query": {
-        "range": {
-            "date": {
-                "gte":  "2014-01-01",
-                "lt":   "2014-02-01"
-            }
-        }
-    },
-    "size":  1000
-}
+	GET https://$user:$pass@scalr.api.appbase.io/old_app/_search?search_type=scan&scroll=1m
+	{
+	    "query": {
+	        "range": {
+	            "date": {
+	                "gte":  "2014-01-01",
+	                "lt":   "2014-02-01"
+	            }
+	        }
+	    },
+	    "size":  1000
+	}
 If you continue making changes to the old app, you will want to make sure that you include the newly added documents in your new app as well. This can be done by rerunning the reindex process, but again filtering on a date field to match only documents that have been added since the last reindex process started.
 
 Reference: [Elastic Search blog](https://www.elastic.co/blog/changing-mapping-with-zero-downtime)
