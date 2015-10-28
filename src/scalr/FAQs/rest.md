@@ -4,7 +4,7 @@
 
 ## Update mapping without losing data
 
-We are often asked to update the mapping for a particular field. A mapping is assigned once the data is indexed. Here's a short gist on how mappings work:
+Although you can add new types to an index, or add new fields to a type, you can’t add new analyzers or make changes to existing fields. If you were to do so, the data that had already been indexed would be incorrect and your searches would no longer work as expected. Here's a short gist on how mappings work:
 
 In order to make your data searchable, your database needs to know what type of data each field contains and how it should be indexed. If you switch a field type from e.g. a string to a date, all of the data for that field that you already have indexed cannot be used because of the datatype mismatch. In such situations, you need to reindex that field.
 
@@ -16,7 +16,7 @@ Since updating mapping => reindexing data, let's take a look at that.
 
 **Reindexing your data**    
 The process for reindexing your data is quite simple. First, create a new app in appbase and update the new mapping and settings:  
-	
+
 	//Close the Index
 	curl -XPOST https://$user:$pass@scalr.api.appbase.io/new_app/_close
 	// Update the Settings
@@ -35,63 +35,25 @@ The process for reindexing your data is quite simple. First, create a new app in
 	    }
 	}'
 
-Then, pull the documents in from your old index, using a scrolled search and index them into the new index using the bulk API. Many of the client APIs provide a reindex() method which will do all of this for you. Once you are done, you can delete the old index.
+One of the advantages of the _source field is that you already have the whole document available to you in Elasticsearch itself. You don’t have to rebuild your index from the database, which is usually much slower.
 
-Note: make sure that you include search_type=scan in your search request. This disables sorting and makes “deep paging" efficient.
+To reindex all of the documents from the old index efficiently, use [scan-and-scroll](https://www.elastic.co/guide/en/elasticsearch/guide/current/scan-scroll.html) to retrieve batches of documents from the old index, and the [bulk API](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-writing-data-bulk) to push them into the new index.
 
-The problem with this approach is that the index name changes, which means that you need to change your application to use the new index name
+###Reindexing in Batches
+You can run multiple reindexing jobs at the same time, but you obviously don’t want their results to overlap. Instead, break a big reindex down into smaller jobs by filtering on a date or timestamp field:
 
-**Reindexing your data with zero downtime**    
-Index aliases give us the flexibility to reindex data in the background, making the change completely transparent to our application. An alias is like a symbolic link which can point to one or more real indices.
-
-The typical workflow is as follows. First, create an index, appending a version or timestamp to the name:
-
-  curl -XPUT localhost:9200/my_index_v1 -d '
-  { 
-	    ... mappings ... 
-	}'
-
-Create an alias which points to the index:
-
-    curl -XPOST localhost:9200/_aliases -d '
-    {
-        "actions": [
-            { "add": {
-                "alias": "my_index",
-                "index": "my_index_v1"
-            }}
-        ]
-    }'
-
-Now your application can speak to my_index as if it were a real index.
-
-When you need to reindex your data, you can create a new index, appending a new version number:
-
-    curl -XPUT localhost:9200/my_index_v2 -d '
-    { 
-	    ... mappings ...
-	}'
-
-Reindex data from my_index_v1 to the new my_index_v2, then change the myindex alias to point to the new index, in a single atomic step:
-
-    curl -XPOST localhost:9200/_aliases -d '
-    {
-        "actions": [
-            { "remove": {
-                "alias": "my_index",
-                "index": "my_index_v1"
-            }},
-            { "add": {
-                "alias": "my_index",
-                "index": "my_index_v2"
-            }}
-        ]
-    }'
-
-And finally, delete the old index:
-
-    curl -XDELETE localhost:9200/my_index_v1
-
-You have successfully reindexed all of your data in the background without any downtime. Your application is blissfully unaware that the index has changed.
+GET https://$user:$pass@scalr.api.appbase.io/old_app/_search?search_type=scan&scroll=1m
+{
+    "query": {
+        "range": {
+            "date": {
+                "gte":  "2014-01-01",
+                "lt":   "2014-02-01"
+            }
+        }
+    },
+    "size":  1000
+}
+If you continue making changes to the old app, you will want to make sure that you include the newly added documents in your new app as well. This can be done by rerunning the reindex process, but again filtering on a date field to match only documents that have been added since the last reindex process started.
 
 Reference: [Elastic Search blog](https://www.elastic.co/blog/changing-mapping-with-zero-downtime)
