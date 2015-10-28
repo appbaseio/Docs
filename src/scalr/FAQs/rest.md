@@ -16,11 +16,21 @@ Since updating mapping => reindexing data, let's take a look at that.
 
 **Reindexing your data**    
 The process for reindexing your data is quite simple. First, create a new app in appbase and update the new mapping and settings:
-
+	//Close the Index
+	curl -XPOST https://$user:$pass@scalr.api.appbase.io/new_app/_close
+	// Update the Settings
+	curl -XPUT https://$user:$pass@scalr.api.appbase.io/new_app/_setting -d '
+	{
+	    ... new setting definition ...  
+	}'
+	// Open the Index
+	curl -XPOST  https://dkgImimNz:fa0d3265-f134-49bd-87f3-305f78c26a33@scalr.api.appbase.io/new_app/_open	
+	
+	// Update the Mapping
 	curl -XPUT https://$user:$pass@scalr.api.appbase.io/new_app/_mapping/new_type -d '
 	{
 	     "new_type" : {
-		... new mapping definition ...	
+			... new mapping definition ...	
 	    }
 	}'
 
