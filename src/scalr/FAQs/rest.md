@@ -15,7 +15,8 @@ There is one situation where re-indexing is not required: when adding a field, a
 Since updating mapping => reindexing data, let's take a look at that.
 
 **Reindexing your data**    
-The process for reindexing your data is quite simple. First, create a new app in appbase and update the new mapping and settings:
+The process for reindexing your data is quite simple. First, create a new app in appbase and update the new mapping and settings:  
+	
 	//Close the Index
 	curl -XPOST https://$user:$pass@scalr.api.appbase.io/new_app/_close
 	// Update the Settings
