@@ -1,3 +1,5 @@
+{"bigh3":true}
+
 # How to
 
 ## Unsubscribe from a streaming query
@@ -88,3 +90,30 @@ responseStream.on("data", function(res) {
     }
 })
 ```
+
+## Change the default results in a search query
+
+Appbase returns 10 objects in the initial response to ``searchStream()`` method. Sometimes, we need to return more objects. We can do this by specifying the ``size`` attribute inside our query like this:
+
+```
+var responseStream = appbaseRef.searchStream({
+      type: "items",
+      size: 100,
+      body: {
+          query: {
+              range: {
+                  value: {
+                      lte: 300,
+                      gte: 200
+                  }
+              }
+          }
+      }
+})
+```
+
+The ``responseStream`` object will now return max(total_objects_matching_our_query, 100) objects on the ``'data'`` event handler.
+
+> <span class="fa fa-star"></span> The ``size`` attribute can specify a maximum of 1000 objects to return in one response.
+
+> <span class="fa fa-info-circle"></span> ``size`` attribute can be applied on both ``searchStream()`` and ``search()`` methods.
