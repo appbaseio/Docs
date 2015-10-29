@@ -243,7 +243,7 @@ responseStream.stop();
 
 ``Note:`` appbase.js lib uses websockets (on the browser) and http-streams (on node.js) to stream the updates.
 
-### streamSearch()
+### searchStream()
 
 Continuously stream results of search query on a given ``type``. Search queries can be simple monitoring queries, finding an exact set of documents, full-text search queries, geolocation queries.
 
