@@ -34,7 +34,7 @@ Unsubscribing from the ``responseStream`` is simple: using ``stop()`` method.
 setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s timeout
 ```
 
-``Note:`` The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
+> <span class="fa fa-info-circle"></span> The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
 
 ## Pause a streaming query
 
@@ -44,7 +44,7 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 responseStream.pause();
 ```
 
-``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
+> <span class="fa fa-info-circle"></span> **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
 
 ## Stream results of a range query
