@@ -369,7 +369,7 @@
                 var options = Docbase.options;
                 var file_path = $route.current.params;
                 var full_path = options.github.path+'/'+file_path.version+'/'+file_path.folder+'/'+file_path.file;
-                return $http.get('https://api.github.com/repos/'+ options.github.user +'/'+ options.github.repo+'/commits?path='+full_path+'.md');
+                return $http.get('https://api.github.com/repos/'+ options.github.user +'/'+ options.github.repo+'/commits?path='+full_path+'.md'+'&client_id=2189c9f3da189f760f69&client_secret=5385328f8910540ae0e5fde1df78fba6686651cd');
             }
         };
     };
@@ -400,7 +400,7 @@
             var contributors = $('<div>').addClass('contributor-container');
             for(var i =0; i < contributors_data.length; i++ ){
                 var contributor_d = contributors_data[i].committer;
-                if(jQuery.inArray(contributor_d.login, contribut_array) == -1)
+                if(contributor_d && jQuery.inArray(contributor_d.login, contribut_array) == -1)
                 {
                     contribut_array.push(contributor_d.login);
                     var contributor_img = $('<img>').addClass('contributor_img img-rounded').attr({
