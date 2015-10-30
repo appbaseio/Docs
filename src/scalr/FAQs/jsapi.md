@@ -46,6 +46,7 @@ responseStream.pause();
 
 > <span class="fa fa-info-circle"></span> **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
+> <span class="fa fa-star"></span> Check out more things you can do with streams here -  http://www.sitepoint.com/basics-node-js-streams/.
 
 ## Stream results of a range query
 
