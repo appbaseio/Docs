@@ -1,3 +1,5 @@
+{"bigh3":true}
+
 # How to
 
 ## Unsubscribe from a streaming query
@@ -32,7 +34,7 @@ Unsubscribing from the ``responseStream`` is simple: using ``stop()`` method.
 setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s timeout
 ```
 
-``Note:`` The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
+> <span class="fa fa-info-circle"></span> The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
 
 ## Pause a streaming query
 
@@ -42,8 +44,9 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 responseStream.pause();
 ```
 
-``Note:`` **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
+> <span class="fa fa-info-circle"></span> **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
 
+> <span class="fa fa-star"></span> Check out more things you can do with streams here -  http://www.sitepoint.com/basics-node-js-streams/.
 
 ## Stream results of a range query
 
@@ -88,3 +91,30 @@ responseStream.on("data", function(res) {
     }
 })
 ```
+
+## Change the default results in a search query
+
+Appbase returns 10 objects in the initial response to ``searchStream()`` method. Sometimes, we need to return more objects. We can do this by specifying the ``size`` attribute inside our query like this:
+
+```
+var responseStream = appbaseRef.searchStream({
+      type: "items",
+      size: 100,
+      body: {
+          query: {
+              range: {
+                  value: {
+                      lte: 300,
+                      gte: 200
+                  }
+              }
+          }
+      }
+})
+```
+
+The ``responseStream`` object will now return max(total_objects_matching_our_query, 100) objects on the ``'data'`` event handler.
+
+> <span class="fa fa-star"></span> The ``size`` attribute can specify a maximum of 1000 objects to return in one response.
+
+> <span class="fa fa-info-circle"></span> ``size`` attribute can be applied on both ``searchStream()`` and ``search()`` methods.

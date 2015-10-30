@@ -14,7 +14,8 @@ There is one situation where re-indexing is not required: when adding a field, a
 
 Since updating mapping => reindexing data, let's take a look at that.
 
-**Reindexing your data**    
+### Reindexing your data  
+
 The process for reindexing your data is quite simple. First, create a new app in appbase and update the new mapping and settings:  
 
 	//Close the Index
@@ -39,7 +40,8 @@ One of the advantages of the _source field is that you already have the whole do
 
 To reindex all of the documents from the old index efficiently, use [scan-and-scroll](https://www.elastic.co/guide/en/elasticsearch/guide/current/scan-scroll.html) to retrieve batches of documents from the old index, and the [bulk API](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-writing-data-bulk) to push them into the new index.
 
-**Reindexing in Batches**  
+### Reindexing in Batches  
+
 You can run multiple reindexing jobs at the same time, but you obviously don’t want their results to overlap. Instead, break a big reindex down into smaller jobs by filtering on a date or timestamp field:  
 
 	GET https://$user:$pass@scalr.api.appbase.io/old_app/_search?search_type=scan&scroll=1m
