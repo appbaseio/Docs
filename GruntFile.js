@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 			def: {
 				options: {
 					generatePath: "docs_html/",
+					generateSearchIndex : true,
 					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME'],
 					checkLoadedSelector : '#navbar-collapse',
