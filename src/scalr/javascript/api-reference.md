@@ -51,7 +51,7 @@ Writes a JSON data object at a given ``type`` and ``id`` location, or updates if
 ```js
 .index({
   type: "tweet",
-  id: "1",
+  id: "aX12c5",
   body: {
     "msg": "writing my first tweet!",
     "by": "jack",
@@ -73,7 +73,7 @@ Writes a JSON data object at a given ``type`` and ``id`` location, or updates if
 
 	- **type** ``String`` - The type (aka collection) under which the data will be indexed
 	- **body** ``Object`` - Data to be indexed, a valid JSON object
-	- ***id** ``String`` - ID for the JSON data. ``id`` is auto generated if not specified
+	- ***id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
 
 ### delete()
 
@@ -82,7 +82,7 @@ Delete a JSON data object by ``id``.
 ```js
 appbaseRef.delete({
   type: "tweet",
-  id: "1"
+  id: "aX12c5"
 }).on('data', function(res) {
   console.log("successfully deleted: ", res);
 }).on('error', function(err) {
@@ -97,7 +97,7 @@ appbaseRef.delete({
 - **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the JSON object to be deleted
 
 	- **type** ``String`` - The type (aka collection) of the object to be deleted
-	- **id** ``String`` - ID for the JSON data
+	- **id** ``String`` - Unique ID for the JSON data
 
 ### bulk()
 
