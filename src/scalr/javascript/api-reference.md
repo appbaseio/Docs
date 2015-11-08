@@ -40,7 +40,7 @@ var appbaseRef = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``readStream()`` and ``searchStream()`` methods.
+``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()`` and ``searchStream()`` methods.
 
 ## WRITING DATA
 
@@ -73,7 +73,7 @@ Writes a JSON data object at a given ``type`` and ``id`` location, or updates if
 
 	- **type** ``String`` - The type (aka collection) under which the data will be indexed
 	- **body** ``Object`` - Data to be indexed, a valid JSON object
-	- ***id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
+	- **id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
 
 ### delete()
 
@@ -133,10 +133,36 @@ appbaseRef.bulk({
 - **params** ``Object`` - A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
 
 	- **body** ``String`` - A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
-	- ***type** ``String`` - Default document type for actions that don't provide one
+	- **type** ``String`` - Default document type for actions that don't provide one
 
 
 ## GETTING DATA
+
+### get()
+
+Get the JSON document from a particular ``type`` and ``id``. For subscribing to realtime updates on a document, check out ``getStream()``.
+
+```js
+appbaseRef.get({
+  "type": "tweet",
+  "id": "aX12c5"
+}).on('data', function(res) {
+  console.log("The document data: ", res);
+}).on('error', function(err) {
+  console.log("get() method failed with: ", err);
+})
+```
+
+**Usage**
+
+``appbaseRef.get(params)``
+
+- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to retrieve.  
+	- **type** ``String`` - Document Type
+	- **id** ``String`` - Unique ID of the JSON document
+
+Returns the document at the given ``type`` and ``id``.
+
 
 ### getTypes()
 
@@ -158,7 +184,7 @@ Returns all the ``types`` as an array.
 
 ### search()
 
-Search for matching documents in a type. It's a convenience method for ElasticSearch's ``/_search`` endpoint.
+Search for matching documents in a type. It's a convenience method for ElasticSearch's ``/_search`` endpoint.  For subscribing to realtime updates on the search query, check out ``searchStream()``.
 
 ```js
 appbaseRef.search({
@@ -193,15 +219,14 @@ appbaseRef.search({
 
 ## STREAMING DATA
 
-### readStream()
+### getStream()
 
-Continuously stream a specific JSON document.
+Continuously stream new updates to a specific JSON document. If you wish to only fetch the existing value, ``get()`` is sufficient.
 
 ```js
-appbaseRef.readStream({
+appbaseRef.getStream({
   type: "tweet",
-  id: 1,
-  streamonly: false
+  id: "1",
 }).on('data', function(res) {
   console.log("data update: ", res);
 }).on('error', function(err) {
@@ -211,13 +236,12 @@ appbaseRef.readStream({
 
 **Usage**
 
-``appbaseRef.readStream(params)``
+``appbaseRef.getStream(params)``
 
 - **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed. Optionally, it can also contain a ``streamonly`` field to stream only the new updates and not return the original value
 
 	- **type** ``String`` - Document type
-	- **id** ``String`` - Document ID
-	- ***streamonly** ``Boolean`` - ``false`` by default. A value ``true`` returns only the new document updates and not the original value
+	- **id** ``String`` - Document ID (The ID is always a ``String`` value)
 
 **Returns**
 
@@ -227,10 +251,9 @@ appbaseRef.readStream({
 - a **stop()** method to stop the stream
 
 ```js
-var responseStream = appbaseRef.readStream({
+var responseStream = appbaseRef.getStream({
   type: "tweet",
   id: 1,
-  streamonly: false
 })
 
 responseStream.on('data', function(res) {
@@ -241,11 +264,13 @@ responseStream.stop();
 ```
 
 
-``Note:`` appbase.js lib uses websockets (on the browser) and http-streams (on node.js) to stream the updates.
+``Note:`` appbase.js lib uses websockets to stream the updates.
 
 ### searchStream()
 
-Continuously stream results of search query on a given ``type``. Search queries can be simple monitoring queries, finding an exact set of documents, full-text search queries, geolocation queries.
+Continuously stream results of search query on a given ``type``. Search queries can be a variety of things: from simple monitoring queries, finding an exact set of documents, full-text search queries, to geolocation queries.
+
+``searchStream()`` only returns new search results after the query is performed, existing search results can be obtained via ``search()`` method.
 
 ```js
 appbaseRef.searchStream({
@@ -254,8 +279,7 @@ appbaseRef.searchStream({
     query: {
       match_all: {}
     }
-  },
-  streamonly: true
+  }
 }).on('data', function(res) {
   console.log("query update: ", res);
 }).on('error', function(err) {
@@ -267,11 +291,13 @@ appbaseRef.searchStream({
 
 ``appbaseRef.searchStream(params)``
 
-- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``, and optionally a ``streamonly`` field to stream only the new matching documents (without returning the existing matches)
+- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``
 
 	- **type** ``String`` - Document type
 	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
-	- ***streamonly** ``Boolean`` - ``false`` by default. A value ``true`` returns only the new matches after the query and not the existing ones
+
+
+> <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``getStream()`` and ``searchStream()`` work.
 
 **Returns**
 
@@ -287,8 +313,7 @@ var responseStream = appbaseRef.searchStream({
     query: {
       match_all: {}
     }
-  },
-  streamonly: true
+  }
 })
 
 responseStream.on('data', function(res) {
