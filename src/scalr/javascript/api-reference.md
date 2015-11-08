@@ -226,7 +226,7 @@ Continuously stream new updates to a specific JSON document. If you wish to only
 ```js
 appbaseRef.getStream({
   type: "tweet",
-  id: "1",
+  id: "aX12c5",
 }).on('data', function(res) {
   console.log("data update: ", res);
 }).on('error', function(err) {
@@ -238,10 +238,12 @@ appbaseRef.getStream({
 
 ``appbaseRef.getStream(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed. Optionally, it can also contain a ``streamonly`` field to stream only the new updates and not return the original value
+- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed.
 
 	- **type** ``String`` - Document type
 	- **id** ``String`` - Document ID (The ID is always a ``String`` value)
+
+> <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``getStream()`` works (previously ``readStream()``).
 
 **Returns**
 
@@ -297,7 +299,7 @@ appbaseRef.searchStream({
 	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 
-> <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``getStream()`` and ``searchStream()`` work.
+> <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``searchStream()`` works.
 
 **Returns**
 
