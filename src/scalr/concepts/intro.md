@@ -1,4 +1,4 @@
-{"title": "SCALR API 101", "threeColumns": false}
+{"title": "SCALR API 101", "threeColumns": false, "bigh3": true}
 
 # ![SCALR](http://i.imgur.com/Eppz2lz.png?1) API Prime Objective: Scale
 
