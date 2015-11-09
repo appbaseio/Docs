@@ -20,11 +20,8 @@ var responseStream = appbaseRef.searchStream({
 // You can attach a 'data' handler to responseStream and get new events
 // when documents match the query
 responseStream.on("data", function(res) {
-    if (res.hits) { 
-        // handle initial data
-    } else {
-        // handle new updates, one at a time.
-    }
+    // handle new updates, one at a time.
+    console.log(res);
 });
 ```
 
@@ -34,7 +31,7 @@ Unsubscribing from the ``responseStream`` is simple: using ``stop()`` method.
 setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s timeout
 ```
 
-> <span class="fa fa-info-circle"></span> The same is true for all other methods (like ``index()``, ``readStream()``) as well, data is returned asynchronously via the 'data' event handler.
+> <span class="fa fa-info-circle"></span> The same is true for all other methods (like ``index()``, ``getStream()``) as well, data is returned asynchronously via the 'data' event handler.
 
 ## Pause a streaming query
 
@@ -44,7 +41,9 @@ setTimeout(function() {responseStream.stop()}, 10000); // unsubscribes after 10s
 responseStream.pause();
 ```
 
-> <span class="fa fa-info-circle"></span> **pause()** vs **stop()** - pause() merely prevents emitting new 'data' event handlers, the response stream object still continues to capture the new events emitted by the searchStream() method. In contrast, stop() unsubscribes from the query and kills the response stream object.
+> <span class="fa fa-info-circle"></span> **pause()** vs **stop()** - pause() merely prevents emitting new responses in the 'data' event handler, all the response stream object buffers the new events emitted by the ``searchStream()`` method. When resume() is called, all these responses are returned by the 'data' event handler. 
+
+By contrast, ``stop()`` unsubscribes from the query and kills the response stream object.
 
 > <span class="fa fa-star"></span> Check out more things you can do with streams here -  http://www.sitepoint.com/basics-node-js-streams/.
 
