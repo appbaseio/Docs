@@ -66,7 +66,7 @@ Alternatively, username:password can be passed as a part of the API URL in the c
 
 ## Step 2: Storing Data
 
-Once we have the reference object (called ``appbase`` in this tutorial), we can insert any JSON object into it with the ``index()`` method.
+Once we have the reference object (called ``appbaseRef`` in this tutorial), we can insert any JSON object into it with the ``index()`` method.
 
 
 ```js
@@ -96,9 +96,9 @@ The ``index()`` method (and all the other ``appbase`` methods) return a [stream]
 
 > <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
 
-## Step 3: <s>GETing</s> and Streaming Data
+## Step 3: <s>GETing</s> vs Streaming Data
 
-Unlike typical databases that support GET operations (or Read) for fetching data and queries, Appbase.io operates on both GET and streaming modes. We will first apply the GET mode to read our just inserted object.
+Unlike typical databases that support GET operations (or Read) for fetching data and queries, Appbase.io operates on both GET and stream modes. We will first apply the GET mode to read our just inserted object.
 
 Now that we are able to store data, let's try to get the data back from [appbase.io](https://appbase.io) with the ``get()`` method.
 
@@ -113,7 +113,7 @@ appbaseRef.get({
 })
 
 
-INITIAL RESPONSE
+GET() RESPONSE
 {
   "_index": "createnewtestapp01",
   "_type": "books",
@@ -130,10 +130,10 @@ INITIAL RESPONSE
 }
 ```
 
-Even though ``get()`` returns a single document data, we return it as a stream object with the 'data' event handler.
+Even though ``get()`` returns a single document data, appbase.io returns it as a stream object with the 'data' event handler.
 
 
-Let's say that we are interested in not just the existing document state, but in subscribing to all the state changes. Here, we would use the ``getStream()`` method instead, which keeps returning new changes made to the document.
+Let's say that we are interested in subscribing to all the state changes that happen on a document. Here, we would use the ``getStream()`` method over ``get()``, which keeps returning new changes made to the document.
 
 ### 3.a: Subscribing to document stream
 
@@ -154,22 +154,10 @@ Don't be surprised if you don't see anything printed, ``getStream()`` only retur
 
 Let's see live updates in action. We will modify the book price in our original ``jsonObject`` variable from 5595 to 6034 and apply ``index()`` again.
 
-```js
-var jsonObject = {
-    "department_name":"Books",
-    "department_name_analyzed":"Books",
-    "department_id":1,
-    "name":"A Fake Book on Network Routing",
-    "price":6034
-  }
-```
-
 For brevity, we will not show the ``index()`` operation here.
 
-### 3.c: Observe the Streams
-
 ```js
-RESPONSE AFTER 3.b
+GETSTREAM() RESPONSE
 {
   "_type": "books",
   "_id": "X1",
