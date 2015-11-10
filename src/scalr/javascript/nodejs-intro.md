@@ -1,4 +1,5 @@
-{"threeColumns": false}
+{"threeColumns": false, "bigh3": true}
+
 # Quick Start to the ![Scalr](http://i.imgur.com/Eppz2lz.png?1) Node.JS API
 
 [Appbase.JS](https://github.com/appbaseio/appbase-js) is a minimalistic library for data streams.  
