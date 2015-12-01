@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		docbase: {
 			def: {
 				options: {
-					urlToAccess: "http://localhost:8080/",
+					urlToAccess: "http://localhost:9001/",
 					generatePath: "docs_html/",
 					generateSearchIndex : true,
 					baseUrl: "/",
