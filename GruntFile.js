@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'map.json'],
 					checkLoadedSelector : '#navbar-collapse',
-					endDocument: "<script>$(function(){  $('.search_field').searchAppbase('./search-index.json'); })</script></html>"
+					endDocument: "<script>$(function(){  $('.search_field').searchAppbase('/search-index.json'); })</script></html>"
 				}
 			}
 		},
