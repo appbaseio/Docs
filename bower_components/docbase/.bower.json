@@ -23,11 +23,11 @@
     "google-code-prettify": "~1.0.4",
     "js-schema": "~0.7.2"
   },
-  "_release": "c8082096ba",
+  "_release": "1538f7d91d",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "c8082096ba6eb5867a8e458e863267cddeac93a5"
+    "commit": "1538f7d91d5fbe4e6643714327725f4d63897993"
   },
   "_source": "git://github.com/appbaseio/DocBase.git",
   "_target": "*",
