@@ -258,10 +258,17 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
     border: 13px solid #000;
     border-color: transparent transparent #fff transparent;
 }
+
 .search-form{
-    display: none;
     top: 8px !important;    
     position: absolute !important;
     width: 200px;
     right: 0; 
+}
+
+#navbar-collapse > ul.nav.navbar-nav.navbar-right > li.dropdown.search-dropdown > div > span > span:nth-child(2){
+    position: absolute !important;
+    display: inline-block !important;
+    top: 0px;
+    left: 0;
 }
