@@ -4,48 +4,24 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="viewport" content="width=device-width">
-
-  <title>Appbase Documentation</title>
-
-  <!-- Bootstrap -->
+  <base href="/">
+  <title>Documentation</title>
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
-
-  <script type="text/javascript" src="/bower_components/docbase/scripts/polyfill.js"></script>
-  <!-- Flatdoc -->
-  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="/bower_components/flatdoc/legacy.js"></script>
-  <script type="text/javascript" src="/bower_components/flatdoc/flatdoc.js"></script>
-
   <!-- Flatdoc theme -->
-  <link rel="stylesheet" type="text/css" href="/bower_components/flatdoc/theme-white/style.css">
-  <script type="text/javascript" src="/bower_components/docbase/scripts/flatdoc-theme.js"></script>
-
+  <link  href="/bower_components/flatdoc/theme-white/style.css" rel="stylesheet">
   <!-- DocBase -->
-  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
-  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
-  <script type="text/javascript" src="/bower_components/js-schema/js-schema.min.js"></script>
-<script type="text/javascript" src="/bower_components/docbase/scripts/docbase-html-mode.js"></script>
-  <script type="text/javascript" src="/bower_components/docbase/scripts/searchAppbase.js"></script>
-  <script type="text/javascript" src="/bower_components/docbase/scripts/docbase.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
   <script src="/bower_components/google-code-prettify/bin/prettify.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/bower_components/google-code-prettify/bin/prettify.min.css">
-  <link rel="stylesheet" type="text/css" href="/bower_components/docbase/styles/main.css">
-  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
-  
-
-  <!-- Custom -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/styles/docs.css">
-
 </head>
-<body role="flatdoc" class="no-literate">
-  <!--[if lt IE 10]>
-     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
+<body role="flatdoc">
   <div ng-view></div>
+  <script type="text/javascript" src='/docbase-config.js'></script>
+  <script type="text/javascript" src="/bower_components/docbase/dist/main.unique.js"></script>
   <script type="text/javascript" src="/scripts/analytics.js"></script>
   <script type="text/javascript" src="/scripts/main.js"></script>
-  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

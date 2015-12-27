@@ -1,5 +1,6 @@
 {
   "name": "docbase",
+  "version": "0.2.6",
   "homepage": "https://github.com/appbaseio/Docbase",
   "authors": [
     "Henrique Sa <henriquepss@gmail.com>",
@@ -21,13 +22,14 @@
     "angular": "~1.3.13",
     "angular-route": "~1.3.13",
     "google-code-prettify": "~1.0.4",
-    "js-schema": "~0.7.2"
+    "js-schema": "~0.7.2",
+    "font-awesome": "~4.5.0"
   },
-  "_release": "1538f7d91d",
+  "_release": "0.2.6",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "1538f7d91d5fbe4e6643714327725f4d63897993"
+    "type": "version",
+    "tag": "v0.2.6",
+    "commit": "09f10bc1fd2ada8048e98267b046900e9a46ab33"
   },
   "_source": "git://github.com/appbaseio/DocBase.git",
   "_target": "*",

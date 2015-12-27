@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 					generatePath: "docs_html/",
 					generateSearchIndex : true,
 					baseUrl: "/",
-					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'map.json'],
+					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'docbase-config.js'],
 					checkLoadedSelector : '#navbar-collapse',
 					endDocument: "<script>$(function(){  $('.search_field').searchAppbase('/search-index.json'); })</script></html>"
 				}
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 					message: 'publish gh-pages (auto)',
 					silent: false,
 				},
-				src: ['**']				
+				src: ['**']
 			}
 		}
 	});
