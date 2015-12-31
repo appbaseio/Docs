@@ -74,7 +74,7 @@ var docbaseConfig = {
                       "name": "intro"
                   }
               ]
-          }
+          },
           {
               "label": "FAQs",
               "name": "FAQs",
