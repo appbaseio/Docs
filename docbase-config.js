@@ -66,6 +66,16 @@ var docbaseConfig = {
               ]
           },
           {
+              "label": "Go",
+              "name": "golang",
+              "files": [
+                  {
+                      "label": "Quick Start",
+                      "name": "intro"
+                  }
+              ]
+          }
+          {
               "label": "FAQs",
               "name": "FAQs",
               "files": [
