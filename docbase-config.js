@@ -71,7 +71,7 @@ var docbaseConfig = {
               "files": [
                   {
                       "label": "Quick Start",
-                      "name": "intro"
+                      "name": "golang-intro"
                   }
               ]
           },
