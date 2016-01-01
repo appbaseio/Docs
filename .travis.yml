@@ -6,6 +6,7 @@ branches:
   - master
 before_script:
 - npm install -g grunt-cli
+- npm install -g bower
 - grunt gh-pages-clean
 - bower install
 env:
