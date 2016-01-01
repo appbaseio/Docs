@@ -7,6 +7,7 @@ branches:
 before_script:
 - npm install -g grunt-cli
 - grunt gh-pages-clean
+- bower install
 env:
   global:
     secure: dDcMjH6yVlKq5MVftP4iffnJy1jthWBqCE47DmlLH27OOTY5OYd//JGHt4/x6MS7RiX3iRR0HtT035+0v0g0WKa7/1xsA5bUvfCiae5s/sdyHWrrKpMMWfWr+JpwrpK8zQ1qRMb+TBWc24nE2xZacyKE/c75ZN2cM7zrOPY6S+w=
