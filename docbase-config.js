@@ -50,8 +50,12 @@ var docbaseConfig = {
                 "name": "nodejs-intro"
               },
               {
-                  "label": "JS API Reference",
+                  "label": "API Reference",
                   "name": "api-reference"
+              },
+              {
+                  "label": "Webhooks Guide",
+                  "name": "javascript-webhooks"
               }
             ]
           },
