@@ -324,3 +324,79 @@ responseStream.on('data', function(res) {
 
 setTimeout(responseStream.stop, 5000); // stop stream after 5s
 ```
+
+### searchStreamToURL()
+
+Continuously stream results of search query on a given ``type`` to a URL. **searchStreamToURL()** executes a webhook query on document insertion.
+
+Like ``searchStream()``, ``searchStreamToURL()`` only returns new search results after the query is performed.
+
+```js
+appbaseRef.searchStreamToURL(
+{
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
+}, {
+  url: 'http://requestb.in/v0mz3hv0?inspect',
+  string_body: {{{_source}}}
+}).on('data', function(res) {
+  console.log("Webhook registered: ", res);
+}).on('error', function(err) {
+  console.log("Error in registering webhook: ", err);
+})
+```
+
+**Usage**
+
+``appbaseRef.searchStreamToURL(queryParams, urlParams)``
+
+- **queryParams** ``Object`` - A Javascript object containing the query ``type`` and ``body``
+
+	- **type** ``String`` - Document type
+	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+
+- **urlParams** ``Object`` - A Javascript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
+ 
+	- **url** ``String`` - A URL string
+	- **body** ``Object`` - A JSON object to be sent to the URL (used as an alternative to **string_body**)
+	- **string_body** ``String`` - A raw string to be sent to the URL (used as an alternative to **body**)
+	- **count** ``Number`` - # of times the result-request should be sent before terminating the webhook
+	- **interval** ``Number`` - Wait duration in seconds before the next result-request
+
+<span class="fa fa-star"></span> **body** and **string_body** fields support [mustache syntax](http://mustache.github.io/mustache.5.html) for accessing values inside the matching result object.
+
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers
+- a **change()** method to replace the destination URL object
+- a **stop()** method to de-register the webhook
+
+<span class="fa fa-info-circle"></span> We recommend using both **change()** and **stop()** methods inside the ``data`` or ``error`` event handlers due to the async nature of the ``searchStreamToURL()`` method.
+
+```js
+var responseStream = appbaseRef.searchStreamToURL(
+{
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
+}, {
+  url: "http://requestb.in/v0mz3hv0?inspect"
+}
+)
+
+responseStream.on('data', function(res) {
+  console.log("webhook registered: ", res);
+  responseStream.stop().on('data' function(res) {
+    console.log("webhook de-registered: ", res);
+  });
+});
+```
