@@ -28,7 +28,7 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.9.0.
+We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.10.1.
 
 ```js
 npm install appbase-js
@@ -214,6 +214,8 @@ RESPONSE WHEN NEW DATA MATCHES
 ```
 
 ``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches. For fetching existing search results, check out [``search()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-getting-data-search).
+
+**v0.10.0** introduces a new method [``searchStreamToURL()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl) that streams results directly to a URL instead of streaming back.
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
