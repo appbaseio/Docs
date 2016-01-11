@@ -272,7 +272,7 @@ responseStream.stop();
 
 Continuously stream results of search query on a given ``type``. Search queries can be a variety of things: from simple monitoring queries, finding an exact set of documents, full-text search queries, to geolocation queries.
 
-``searchStream()`` only returns new search results after the query is performed, existing search results can be obtained via ``search()`` method.
+``searchStream()`` subscribes to search results on new document inserts, existing search results can be fetched via ``search()`` method.
 
 ```js
 appbaseRef.searchStream({
@@ -329,7 +329,7 @@ setTimeout(responseStream.stop, 5000); // stop stream after 5s
 
 Continuously stream results of search query on a given ``type`` to a URL. **searchStreamToURL()** executes a webhook query on document insertion.
 
-Like ``searchStream()``, ``searchStreamToURL()`` only returns new search results after the query is performed.
+``searchStreamToURL()`` subscribes to search query results on new document inserts.
 
 ```js
 appbaseRef.searchStreamToURL(
