@@ -395,7 +395,7 @@ var responseStream = appbaseRef.searchStreamToURL(
 
 responseStream.on('data', function(res) {
   console.log("webhook registered: ", res);
-  responseStream.stop().on('data' function(res) {
+  responseStream.stop().on('data', function(res) {
     console.log("webhook de-registered: ", res);
   });
 });
