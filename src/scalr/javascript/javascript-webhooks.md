@@ -2,9 +2,9 @@
 
 > Introduced in [appbase-js](https://github.com/appbaseio/appbase-js) ``v0.10.0``. Read the [getting started guide](http://docs.appbase.io/scalr/javascript/javascript-intro.html) for some familiarity with the JS lib.
 
-# Intro to Webhooks (aka streaming to a URL)
+# Intro to Webhooks
 
-Webhooks allow you to set up declarative integrations which respond to events in appbase.io. When one of those events is triggered (a new document being inserted, a document's field changing it's value, a search query condition matching on document inserts), we'll send a HTTP POST payload to the webhooks configured URL. Webhooks can be used to send transaction emails, post on a slack channel when a new user signs up, update the pricing plan when the data storage crosses a threshold.
+Webhooks (aka streaming to a URL) allows you to set up declarative integrations which respond to events in appbase.io. When one of those events is triggered (a new document being inserted, a document's field changing it's value, a search query condition matching on document inserts), we'll send a HTTP POST payload to the webhooks configured URL. Webhooks can be used to send transaction emails, post on a slack channel when a new user signs up, update the pricing plan when the data storage crosses a threshold.
 
 Webhooks in appbase.io are designed for configurability.
 
