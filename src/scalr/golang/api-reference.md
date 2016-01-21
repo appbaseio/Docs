@@ -23,7 +23,7 @@ type Client struct {
 ```
 
 
-#### NewClient
+### NewClient
 
 ```go
 client, _ := NewClient("https://scalr.api.appbase.io", "QEVrcElba", "5c13d943-a5d1-4b05-92f3-42707d49fcbb", "es2test1")
@@ -49,7 +49,7 @@ fmt.Println("Client created")
 
 Returns a **Client** struct which has - ``Ping()``, ``Index()``, ``Get()``, ``GetStream()``, ``Update()``, ``Delete()``, ``Search()``, ``SearchStream()``, and ``SearchStreamToURL()``.
 
-#### Delete
+### Delete
 
 Delete returns a DeleteService which is used to delete a document
 
@@ -57,7 +57,7 @@ Delete returns a DeleteService which is used to delete a document
 func (c *Client) Delete() *actions.DeleteService
 ```
 
-#### Get
+### Get
 
 Get returns a GetService which is used to retrieve a document
 
@@ -65,7 +65,7 @@ Get returns a GetService which is used to retrieve a document
 func (c *Client) Get() *actions.GetService
 ```
 
-#### GetStream
+### GetStream
 
 GetStream is used to start a stream of updates corresponding to a document
 
@@ -73,7 +73,7 @@ GetStream is used to start a stream of updates corresponding to a document
 func (c *Client) GetStream() *actions.GetStreamService
 ```
 
-#### Index
+### Index
 
 Index returns an IndexService which is used to index a document
 
@@ -81,13 +81,13 @@ Index returns an IndexService which is used to index a document
 func (c *Client) Index() *actions.IndexService
 ```
 
-#### Ping
+### Ping
 
 ```go
 func (c *Client) Ping() error
 ```
 
-#### Search
+### Search
 
 Search provides access to Elasticsearch's search functionality
 
@@ -95,7 +95,7 @@ Search provides access to Elasticsearch's search functionality
 func (c *Client) Search() *actions.SearchService
 ```
 
-#### SearchStream
+### SearchStream
 
 SearchStream is used to get updates corresponding to a query
 
@@ -103,7 +103,7 @@ SearchStream is used to get updates corresponding to a query
 func (c *Client) SearchStream() *actions.SearchStreamService
 ```
 
-#### SearchStreamToURL
+### SearchStreamToURL
 
 SearchStream is used to send updates corresponding to a query to an URL
 
@@ -111,7 +111,7 @@ SearchStream is used to send updates corresponding to a query to an URL
 func (c *Client) SearchStreamToURL() *actions.SearchStreamToURLService
 ```
 
-#### Update
+### Update
 
 Update returns an UpdateService which is used to update a document
 
