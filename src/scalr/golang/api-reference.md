@@ -38,9 +38,8 @@ fmt.Println("Client created")
 
 **Usage**
 
-``
-func NewClient(URL string, username string, password string, appname string) (*Client, error)
-``
+``func NewClient(URL string, username string, password string, appname string) (*Client, error)``  
+
 - **URL** ``string``- URL with the API version, always *https://scalr.api.appbase.io* 
 - **username** ``string`` - username for the app as displayed in the dashboard
 - **password** ``string`` - password for the app as displayed in the dashboard
