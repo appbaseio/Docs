@@ -1,3 +1,5 @@
+{"threeColumns": true, "bigh3": true}
+
 # GOLANG API REFERENCE
 
 [go-appbase](https://github.com/appbaseio/go-appbase) is a data streams library for Go.
