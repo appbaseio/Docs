@@ -76,6 +76,10 @@ var docbaseConfig = {
                   {
                       "label": "Quick Start",
                       "name": "golang-intro"
+                  },
+                  {
+                      "label": "API Reference",
+                      "name": "api-reference"
                   }
               ]
           },
