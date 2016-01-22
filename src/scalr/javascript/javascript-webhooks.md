@@ -55,6 +55,29 @@ Webhooks in appbase.io are designed for configurability.
 
 Together, these three features allow for a very versatile webhooks streaming. In this doc, we will look at composing webhook queries and a number of different usage scenarios for webhooks.
 
+### Mustache Syntax
+
+One of the biggest uses of webhooks is sending transaction notifications, like sending an email or a push notification within the app. We support Mustache syntax for enabling sending dynamic data in webhook request's body payload.
+
+
+
+```js
+{
+  "tweet": {
+      "msg": "#Expanse has to be one of the best television space opera after firefly #scifi",
+      "tags": ["Expanse", "scifi"],
+      "by": "@siddharthlatest",
+      "timestamp": 14224544242
+  }
+}
+```
+
+| Mustache                          | Rendered                                                                                                                                                                               | Note(s)                                          |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| {{{_source}}}                     | {"tweet": {"msg": "#Expanse has to be one of the best television space opera after firefly #scifi", "tags": ["Expanse", "scifi"], "by": "@siddharthlatest", "timestamp": 14224544242}} | Renders the entire data JSON                     |
+| {{#tweet}}{{timestamp}}{{/tweet}} | 14224544242                                                                                                                                                                            | Renders the nested property inside tweet         |
+| {{#tweet}}{{tags}}{{/tweet}}      | ["Expanse", "scifi"]                                                                                                                                                                   | Renders the nested array inside the tweet object |
+
 ## Usage Scenarios
 
 ### 1. Top 10 daily recommendations
