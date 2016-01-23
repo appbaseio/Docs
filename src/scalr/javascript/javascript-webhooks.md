@@ -40,10 +40,63 @@ Webhooks in appbase-js are supported by [``searchStreamToURL()``](http://docs.ap
     interval: 60
  }).on('data', function(res) {
      console.log("webhook successfully registered: ", res);
- })
+ });
  ```
  
 Here, we set the webhook request to be sent every time there is a document insert in the ``type`` tweet. To control for the noise, we set the ``interval`` to 60s.
+
+### Modifying a Webhook's URL
+
+The ``searchStreamToURL()`` method returns a stream object with a method ``change()`` which can be used to change the webhook's subscribed URL for the original continuous query.
+
+```js
+appbaseRef.searchStreamToURL(
+ {
+    type: 'tweet',
+    body: {
+      query: {
+        match_all: {}
+      }
+    }
+ }, {
+    url: "http://requestb.in/v0mz3hv0",
+    interval: 60
+ }).on('data', function(res) {
+    console.log("webhook successfully registered: ", res);
+    this.change({
+      url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84",
+      interval: 60
+    });
+ });
+```
+
+``change(object)`` method accepts a URL object which completely replaces the previous URL object.
+
+### Deregistering the Webhook Query
+
+The ``searchStreamToURL()`` method returns a stream object with a method ``stop()`` which deletes the webhook query.
+
+```js
+appbaseRef.searchStreamToURL(
+ {
+    type: 'tweet',
+    body: {
+      query: {
+        match_all: {}
+      }
+    }
+ }, {
+    url: "http://requestb.in/v0mz3hv0",
+    interval: 60
+ }).on('data', function(res) {
+    console.log("webhook successfully registered: ", res);
+    this.stop().on('data', function(res) {
+      console.log("webhook successfully stopped: ", res);
+    });
+ });
+```
+
+``stop()`` method deletes the webhook query. It's important to call this method only after the webhook is successfully registered.
 
 ## Adding Dynamic Data in Webhooks
 
