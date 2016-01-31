@@ -40,7 +40,7 @@ var appbaseRef = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``update()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()`` and ``searchStream()`` methods.
+``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``update()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()``, ``searchStream()`` and ``searchStreamToURL()`` methods.
 
 ## WRITING DATA
 
