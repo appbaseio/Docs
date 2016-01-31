@@ -58,7 +58,7 @@ var appbaseRef = new Appbase({
 var appbaseRef = new Appbase({
   url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
   appname: 'createnewtestapp01'
- })
+ });
 ```
 
 Alternatively, username:password can be passed as a part of the API URL in the constructor.
@@ -77,9 +77,9 @@ var jsonObject = {
     "department_id":1,
     "name":"A Fake Book on Network Routing",
     "price":5595
-}
+};
 ```
-```
+```js
 appbaseRef.index({
     type: 'books',
     id: 'X1',
@@ -111,7 +111,7 @@ appbaseRef.get({
       console.log(response)
 }).on('error', function(error) {
       console.log(error)
-})
+});
 
 
 GET() RESPONSE
@@ -146,7 +146,7 @@ appbaseRef.getStream({
       console.log("new document update: ", response)
 }).on('error', function(error) {
       console.log("getStream() failed with: ", error)
-})
+});
 ```
 
 Don't be surprised if you don't see anything printed, ``getStream()`` only returns when new updates are made to the document.
@@ -195,7 +195,7 @@ appbaseRef.searchStream({
     console.log("searchStream(), new match: ", response);
 }).on('error', function(error) {
     console.log("caught a searchStream() error: ", error)
-})
+});
 
 RESPONSE WHEN NEW DATA MATCHES
 {
