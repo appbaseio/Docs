@@ -40,13 +40,13 @@ var appbaseRef = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()`` and ``searchStream()`` methods.
+``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``update()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()`` and ``searchStream()`` methods.
 
 ## WRITING DATA
 
 ### index()
 
-Writes a JSON data object at a given ``type`` and ``id`` location, or updates if an object already exists.
+Writes a JSON data object at a given ``type`` and ``id`` location, or replaces if an object already exists.
 
 ```js
 appbaseRef.index({
@@ -74,6 +74,39 @@ appbaseRef.index({
 	- **type** ``String`` - The type (aka collection) under which the data will be indexed
 	- **body** ``Object`` - Data to be indexed, a valid JSON object
 	- **id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
+
+### update()
+
+Partially updates an existing document at a given ``type`` and ``id`` location. The important difference with the index() method is that the latter replaces the existing data values wholesale, while update() only replaces the values that are specified in the ``body.doc`` field.
+
+```js
+appbaseRef.update({
+  type: "tweet",
+  id: "aX12c5",
+  body: {
+    doc: {
+      "msg": "editing my first tweet!",
+      "by": "ev"
+    }
+  }
+}).on('data', function(res) {
+  console.log("successfully updated: ", res);
+}).on('error', function(err) {
+  console.log("update document error: ", err);
+})
+```
+
+
+**Usage**
+
+``appbaseRef.update(params)``
+
+- **params** ``Object`` - A Javascript object containing the type, id, and the partial JSON data to be updated
+
+	- **type** ``String`` - The type (aka collection) under which the data will be indexed
+	- **body.doc** ``Object`` - Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
+	- **id** ``String`` - Unique ID of the JSON document to be updated. ``id`` here is mandatory and should match an existing object.
+
 
 ### delete()
 
