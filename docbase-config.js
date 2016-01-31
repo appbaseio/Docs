@@ -54,6 +54,10 @@ var docbaseConfig = {
                   "name": "api-reference"
               },
               {
+                  "label": "Meteor Quick Start",
+                  "name": "meteor-intro"
+              },
+              {
                   "label": "Webhooks Guide",
                   "name": "javascript-webhooks"
               }
