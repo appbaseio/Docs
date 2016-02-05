@@ -374,7 +374,7 @@ appbaseRef.searchStreamToURL(
     }
   }
 }, {
-  url: 'http://requestb.in/v0mz3hv0?inspect',
+  url: 'http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84',
   string_body: {{{_source}}}
 }).on('data', function(res) {
   console.log("Webhook registered: ", res);
@@ -422,7 +422,7 @@ var responseStream = appbaseRef.searchStreamToURL(
     }
   }
 }, {
-  url: "http://requestb.in/v0mz3hv0?inspect"
+  url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84"
 }
 )
 
