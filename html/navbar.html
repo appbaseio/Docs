@@ -21,7 +21,7 @@
            aria-expanded="false"
            ng-bind="folder.label"></a>
         <ul class="dropdown-menu">
-          <li ng-repeat="file in folder.files">
+          <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
             <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" ng-bind="file.label"></a>
           </li>
         </ul>
