@@ -11,6 +11,18 @@ module.exports = function(grunt) {
 					checkLoadedSelector : '#navbar-collapse',
 					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json'); })</script></html>"
 				}
+			},
+			spa : {
+				options: {
+					onlysearchIndex: true,
+					urlToAccess: "http://localhost:9001/",
+					generatePath: "docs_html/",
+					generateSearchIndex: true,
+					baseUrl: "/",
+					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'docbase-config.js'],
+					checkLoadedSelector : '#navbar-collapse',
+					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json'); })</script></html>"
+				}
 			}
 		},
 		connect: {
@@ -43,7 +55,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-docbase');
 	grunt.loadNpmTasks('grunt-gh-pages');
 	// Default task.
-	grunt.registerTask('default', ['connect', 'docbase']);
-	grunt.registerTask('publish', ['connect', 'docbase', 'gh-pages']);
 
+	var target = grunt.option('target') || 'def';
+	grunt.registerTask('default', ['connect', 'docbase:'+target]);
+	grunt.registerTask('publish', ['connect', 'docbase', 'gh-pages']);
 };
