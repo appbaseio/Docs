@@ -58,5 +58,5 @@ module.exports = function(grunt) {
 
 	var target = grunt.option('target') || 'def';
 	grunt.registerTask('default', ['connect', 'docbase:'+target]);
-	grunt.registerTask('publish', ['connect', 'docbase', 'gh-pages']);
+	grunt.registerTask('publish', ['connect', 'docbase:'+target, 'gh-pages']);
 };
