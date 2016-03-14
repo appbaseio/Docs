@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'docbase-config.js'],
 					checkLoadedSelector : '#navbar-collapse',
-					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json'); })</script></html>"
+					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json', true); })</script></html>"
 				}
 			},
 			spa : {
@@ -58,5 +58,6 @@ module.exports = function(grunt) {
 
 	var target = grunt.option('target') || 'def';
 	grunt.registerTask('default', ['connect', 'docbase:'+target]);
+	grunt.registerTask('spa', ['connect', 'docbase:spa']);
 	grunt.registerTask('publish', ['connect', 'docbase:'+target, 'gh-pages']);
 };
