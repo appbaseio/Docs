@@ -16,10 +16,10 @@ var docbaseConfig = {
     branch: 'master'
   },
   indexType: 'html',
-  indexHtml: 'html/main.html',
+  indexHtml: './html/main.html',
   editGithubBtn: true,
   html5mode: false,
-  flatdocHtml: 'html/flatdoc.html',
+  flatdocHtml: './html/flatdoc.html',
   angularAppName: 'docbaseApp',
   versions : {
       "scalr": [
