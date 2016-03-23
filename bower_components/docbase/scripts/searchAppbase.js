@@ -1,14 +1,25 @@
 (function($) {
-	$.fn.searchAppbase = function(searchIndexUrl) {
-		var $search = this;
+	$.fn.searchAppbase = function(searchIndexUrl, htmlMode) {
+		
+		//Create the search input element and insert it into html
+		var $search = $('<input>').attr({
+			'class':"search_field form-control dropdown-toggle",
+			'type':'text',
+			'placeholder':'search'
+		});
+		$(this).html($search);
 		$search.addClass('appbase-search');
 
 		function searchTag(data) {
+			var singleId = data.singleId;
+			var sectionId = singleId.substring(singleId.indexOf('"')+1, singleId.lastIndexOf('"'));
+			var filesplit = data.link.split('/');
+			var fileName = htmlMode ? filesplit[filesplit.length - 1].replace('.html','') : filesplit[filesplit.length - 2];
 			var link_part =  data.link.split('/');
 			data.version = link_part.length > 1 ? '<span class="result_record_version">'+link_part[1]+'</span>' : null;
-			data.folder = link_part.length > 2 ? '<span class="result_record_folder">'+link_part[2]+'</span>' : null;
+			data.folder = link_part.length > 2 ? '<span class="result_record_folder">'+fileName+'</span>' : null;
 			var	result_info = link_part.length > 1 ? $("<div>").addClass('result_record_info').append(data.folder).append(data.version) : null;	
-			var result_a = $('<a>').addClass('result_record_a pointer').attr('link',data.link).text(data.title).append(result_info);
+			var result_a = $('<a>').addClass('result_record_a pointer').attr({'link':data.link, 'sectionId':sectionId, 'spaLink': data.spaLink}).text(data.title).append(result_info);
 			var result_div = $('<div>').addClass('result_record').append(result_a);
 			result_a.on('click',function(){
 				gotoLink(this);
@@ -20,7 +31,9 @@
 		};
 		var success = function(searchData) {
 			searchData.forEach(function(searchSingle) {
-				searchSingle.content = searchSingle.content.replace(/<\/?[^>]+(>|$)/g, " ");
+				var content = searchSingle.content;
+				searchSingle.singleId = content.substring(content.indexOf('<'), content.indexOf('>'));
+				searchSingle.content = content.replace(/<\/?[^>]+(>|$)/g, " ");
 			});
 
 			var posts = new Bloodhound({
@@ -63,15 +76,19 @@
 			setQueryText();
 		};
 		//goto page with query string
-		var gotoLink = function(eve){
-			var fullLink = $(eve).attr('link')+'?q='+$search.val();
+		var gotoLink = function(eve) {
+			var linkMode = htmlMode ? $(eve).attr('link') : $(eve).attr('spaLink'); 
+			var fullLink = linkMode+'?q='+$search.val()+'#'+$(eve).attr('sectionId');
 			window.location.href = fullLink;
 		};
 		//set initial higlhight according to previous page query
 		var setQueryText = function(){
-			var queryText = window.location.href.split('?q=')[1];
-			$search.val(queryText);
-			$search.trigger('keyup');
+			var winhref = window.location.href;
+			if(winhref.indexOf('?q=') != -1){
+				var queryText = winhref.substring(winhref.indexOf('?q=')+3,winhref.lastIndexOf('#')).replace(/%20/g,' ');
+				$search.val(queryText);
+				$search.trigger('keyup');
+			}
 		};
 		//Fetch search index json data
 		var intializeCall = function() {
