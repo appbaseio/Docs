@@ -8,7 +8,7 @@ var docbaseConfig = {
     'path': ''
   },
   github: {
-    "access_token": "MzNlYmQ5NzA3NWQyODAyZGZiZDE2ZjBiZjkzMGViZWI0NmU5MDVjNQ==",
+    "access_token": "YjExZDU1Njg0NzQ4Y2M4YWYyNDE2ZTVjMjI1YjQ4ZGY4MzQ0MDgwYg==",
     user: 'appbaseio',
     repo: 'Docs',
     path: 'src',
