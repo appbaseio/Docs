@@ -4,6 +4,8 @@ node_js:
 branches:
   only:
   - master
+before_install:
+  - gem install sass
 before_script:
 - npm install -g grunt-cli
 - npm install -g bower
@@ -11,5 +13,5 @@ before_script:
 - bower update
 env:
   global:
-    secure: dDcMjH6yVlKq5MVftP4iffnJy1jthWBqCE47DmlLH27OOTY5OYd//JGHt4/x6MS7RiX3iRR0HtT035+0v0g0WKa7/1xsA5bUvfCiae5s/sdyHWrrKpMMWfWr+JpwrpK8zQ1qRMb+TBWc24nE2xZacyKE/c75ZN2cM7zrOPY6S+w=
+  - DOCBASE_TOKEN="YjExZDU1Njg0NzQ4Y2M4YWYyNDE2ZTVjMjI1YjQ4ZGY4MzQ0MDgwYg=="
 sudo: false

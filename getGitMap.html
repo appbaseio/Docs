@@ -44,6 +44,8 @@
       deleted = deleted[0];
       $scope.versions = [];
 
+      options.access_token = atob(options.access_token);
+      
       var baseurl = 'https://api.github.com/repos/' + options.user + '/' + options.repo + '/';   
       var url = baseurl + 'contents?ref='+options.branch;
       if (options.access_token) {
