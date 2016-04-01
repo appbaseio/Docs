@@ -1,11 +1,11 @@
 var docbaseConfig = {
-  method: 'file',
+  method: 'github',
   map: {
       file: 'map.json',
       path: '/'
   },
   "file" : {
-    'path': 'src'
+    'path': ''
   },
   github: {
     access_token: '945751d3f595b888024dbcab62b339134d2cac9f',
@@ -16,10 +16,10 @@ var docbaseConfig = {
   },
   indexType: 'html',
   indexHtml: './html/main.html',
-  editGithubBtn: true,
   html5mode: false,
   flatdocHtml: './html/flatdoc.html',
   angularAppName: 'docbaseApp',
+  manual_override: true,
   versions : {
       "scalr": [
           {
