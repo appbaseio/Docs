@@ -115,7 +115,7 @@ The ``responseStream`` object will now return max(total_objects_matching_our_que
 > <span class="fa fa-info-circle"></span> ``size`` attribute can be applied on both ``searchStream()`` and ``search()`` methods.
 
 
-## Scrolling results in a search query
+## Scroll results in a search query
 
 While the ``size`` attribute inside the query can allow you to control the number of results to return initially, it does not let you implement a scroll like functionality: i.e. showing results from a particular offset in correspondence with user's navigation behavior. The ``from`` parameter comes handy here.
 
@@ -138,3 +138,5 @@ var response = appbaseRef.search({
 ```
 
 The ``response`` object will now return up to 100 objects starting from the 51<sup>st</sup> object.
+
+> <span class="fa fa-info-circle"></span> ``from`` attribute is effective for the ``search()`` method, but not for the ``searchStream()`` method as the latter only returns one result at a time.
