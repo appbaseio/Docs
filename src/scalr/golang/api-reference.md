@@ -1,6 +1,6 @@
 {"threeColumns": true, "bigh3": true}
 
-<h1><a href="https://godoc.org/github.com/appbaseio/go-appbase" target="_blank">APIreference@godoc <i class="fa fa-external-link"></i></a></h1>
+<h1><a href="https://godoc.org/github.com/appbaseio/go-appbase" target="_blank">APIreference@godoc <span class="fa fa-external-link"></span></a></h1>
 
 [go-appbase](https://github.com/appbaseio/go-appbase) is a data streams library for Go.
 
