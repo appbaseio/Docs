@@ -83,11 +83,7 @@ The default state of ``responseStream`` object is paused. As soon as attach a da
 
 ```js
 responseStream.on("data", function(res) {
-    if (res.hits) {
-        console.log(res.hits.hits); // returns an array of initially matching objects
-    } else {
-        console.log(res._source);   // a newly inserted document just matched the range query 
-    }
+    console.log(res._source);   // a newly inserted document just matched the range query 
 })
 ```
 
@@ -117,3 +113,30 @@ The ``responseStream`` object will now return max(total_objects_matching_our_que
 > <span class="fa fa-star"></span> The ``size`` attribute can specify a maximum of 1000 objects to return in one response.
 
 > <span class="fa fa-info-circle"></span> ``size`` attribute can be applied on both ``searchStream()`` and ``search()`` methods.
+
+
+## Scroll results in a search query
+
+While the ``size`` attribute inside the query can allow you to control the number of results to return initially, it does not let you implement a scroll like functionality: i.e. showing results from a particular offset in correspondence with user's navigation behavior. The ``from`` parameter comes handy here.
+
+```
+var response = appbaseRef.search({
+      type: "items",
+      size: 100,
+      from: 50,
+      body: {
+          query: {
+              range: {
+                  value: {
+                      lte: 300,
+                      gte: 200
+                  }
+              }
+          }
+      }
+})
+```
+
+The ``response`` object will now return up to 100 objects starting from the 51<sup>st</sup> object.
+
+> <span class="fa fa-info-circle"></span> ``from`` attribute is effective for the ``search()`` method, but not for the ``searchStream()`` method as the latter only returns one result at a time.

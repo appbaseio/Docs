@@ -40,13 +40,13 @@ var appbaseRef = new Appbase({
 
 **Returns**
 
-``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()`` and ``searchStream()`` methods.
+``Object`` **appbaseRef** *Appbase reference object* - has ``index()``, ``update()``, ``delete()``, ``bulk()``, ``search()``, ``get()``, ``getTypes()``, ``getStream()``, ``searchStream()`` and ``searchStreamToURL()`` methods.
 
 ## WRITING DATA
 
 ### index()
 
-Writes a JSON data object at a given ``type`` and ``id`` location, or updates if an object already exists.
+Writes a JSON data object at a given ``type`` and ``id`` location, or replaces if an object already exists.
 
 ```js
 appbaseRef.index({
@@ -74,6 +74,39 @@ appbaseRef.index({
 	- **type** ``String`` - The type (aka collection) under which the data will be indexed
 	- **body** ``Object`` - Data to be indexed, a valid JSON object
 	- **id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
+
+### update()
+
+Partially updates an existing document at a given ``type`` and ``id`` location. The important difference with the index() method is that the latter replaces the existing data values wholesale, while update() only replaces the values that are specified in the ``body.doc`` field.
+
+```js
+appbaseRef.update({
+  type: "tweet",
+  id: "aX12c5",
+  body: {
+    doc: {
+      "msg": "editing my first tweet!",
+      "by": "ev"
+    }
+  }
+}).on('data', function(res) {
+  console.log("successfully updated: ", res);
+}).on('error', function(err) {
+  console.log("update document error: ", err);
+})
+```
+
+
+**Usage**
+
+``appbaseRef.update(params)``
+
+- **params** ``Object`` - A Javascript object containing the type, id, and the partial JSON data to be updated
+
+	- **type** ``String`` - The type (aka collection) under which the data will be indexed
+	- **body.doc** ``Object`` - Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
+	- **id** ``String`` - Unique ID of the JSON document to be updated. ``id`` here is mandatory and should match an existing object.
+
 
 ### delete()
 
@@ -272,7 +305,7 @@ responseStream.stop();
 
 Continuously stream results of search query on a given ``type``. Search queries can be a variety of things: from simple monitoring queries, finding an exact set of documents, full-text search queries, to geolocation queries.
 
-``searchStream()`` only returns new search results after the query is performed, existing search results can be obtained via ``search()`` method.
+``searchStream()`` subscribes to search results on new document inserts, existing search results can be fetched via ``search()`` method.
 
 ```js
 appbaseRef.searchStream({
@@ -323,4 +356,80 @@ responseStream.on('data', function(res) {
 });
 
 setTimeout(responseStream.stop, 5000); // stop stream after 5s
+```
+
+### searchStreamToURL()
+
+Continuously stream results of search query on a given ``type`` to a URL. **searchStreamToURL()** executes a webhook query on document insertion.
+
+``searchStreamToURL()`` subscribes to search query results on new document inserts.
+
+```js
+appbaseRef.searchStreamToURL(
+{
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
+}, {
+  url: 'http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84',
+  string_body: {{{_source}}}
+}).on('data', function(res) {
+  console.log("Webhook registered: ", res);
+}).on('error', function(err) {
+  console.log("Error in registering webhook: ", err);
+})
+```
+
+**Usage**
+
+``appbaseRef.searchStreamToURL(queryParams, urlParams)``
+
+- **queryParams** ``Object`` - A Javascript object containing the query ``type`` and ``body``
+
+	- **type** ``String`` - Document type
+	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+
+- **urlParams** ``Object`` - A Javascript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
+ 
+	- **url** ``String`` - A URL string
+	- **body** ``Object`` - A JSON object to be sent to the URL (used as an alternative to **string_body**)
+	- **string_body** ``String`` - A raw string to be sent to the URL (used as an alternative to **body**)
+	- **count** ``Number`` - # of times the result-request should be sent before terminating the webhook
+	- **interval** ``Number`` - Wait duration in seconds before the next result-request
+
+<span class="fa fa-star"></span> **body** and **string_body** fields support [mustache syntax](http://mustache.github.io/mustache.5.html) for accessing values inside the matching result object.
+
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers
+- a **change()** method to replace the destination URL object
+- a **stop()** method to de-register the webhook
+
+<span class="fa fa-info-circle"></span> We recommend using both **change()** and **stop()** methods inside the ``data`` or ``error`` event handlers due to the async nature of the ``searchStreamToURL()`` method.
+
+```js
+var responseStream = appbaseRef.searchStreamToURL(
+{
+  type: "tweet",
+  body: {
+    query: {
+      match_all: {}
+    }
+  }
+}, {
+  url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84"
+}
+)
+
+responseStream.on('data', function(res) {
+  console.log("webhook registered: ", res);
+  responseStream.stop().on('data', function(res) {
+    console.log("webhook de-registered: ", res);
+  });
+});
 ```

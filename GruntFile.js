@@ -3,13 +3,28 @@ module.exports = function(grunt) {
 		docbase: {
 			def: {
 				options: {
+					generatePath: "build_html/",
+					generateSearchIndex: true,
+					generateHtml: true,
+					baseUrl: "./",
+					operation: 'parallel',
 					urlToAccess: "http://localhost:9001/",
-					generatePath: "docs_html/",
-					generateSearchIndex : true,
-					baseUrl: "/",
 					assets: ['bower_components', 'styles', 'scripts', 'images', 'CNAME', 'docbase-config.js'],
-					checkLoadedSelector : '#navbar-collapse',
-					endDocument: "<script>$(function(){  $('.search_field').searchAppbase('/search-index.json'); })</script></html>"
+					checkLoadedSelector: '#navbar-collapse',
+					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('./search-index.json', true); $(document).ready(function(){ setTimeout(function(){ $('#folder-navbar').megaMenu(); },200); }); });</script></html>"
+				}
+			},
+			spa: {
+				options: {
+					onlysearchIndex: true,
+					generatePath: "spa/",
+					generateSearchIndex : true,
+					generateHtml : false,
+					baseUrl: "./",
+					operation: 'parallel',
+					urlToAccess: "http://localhost:9001/",
+					assets: ['example_docs', 'html', 'index.html', 'bower_components', 'styles', 'scripts', 'CNAME', 'images', 'docbase-config.js', 'search-index.json' ],
+					checkLoadedSelector : '#navbar-collapse'
 				}
 			}
 		},
@@ -25,12 +40,12 @@ module.exports = function(grunt) {
 		'gh-pages': {
 			def: {
 				options: {
-					base: 'docs_html',
+					base: 'build_html',
 					user: {
-						name: 'Travis',
-						email: 'mateusfreira@gmail.com'
+						name: 'Docbase bot',
+						email: 'awesome@docba.se'
 					},
-					repo: 'https://' + process.env.GH_TOKEN + '@github.com/appbaseio/Docs.git',
+					repo: 'https://' + new Buffer(process.env.DOCBASE_TOKEN, 'base64').toString() + '@github.com/appbaseio/Docs.git',
 					message: 'publish gh-pages (auto)',
 					silent: false,
 				},
@@ -42,8 +57,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-docbase');
 	grunt.loadNpmTasks('grunt-gh-pages');
+
 	// Default task.
-	grunt.registerTask('default', ['connect', 'docbase']);
-	grunt.registerTask('publish', ['connect', 'docbase', 'gh-pages']);
+
+	var target = grunt.option('target') || 'def';
+
+	grunt.registerTask('default', ['connect', 'docbase:'+target]);
+	grunt.registerTask('publish', ['connect', 'docbase:'+target, 'gh-pages']);
+	grunt.registerTask('spa', ['connect', 'docbase:spa']);
 
 };

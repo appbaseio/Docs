@@ -1,0 +1,172 @@
+<!doctype html>
+<html data-ng-app="GitMap">
+<head>
+</head>
+<body data-ng-controller="GitMapController">
+    <ul class="nav navbar-nav">
+      <div ng-repeat="currentVersion in versions">
+        <li class="dropdown" ng-repeat="folder in map[currentVersion]">
+          <a 
+             class="dropdown-toggle"
+             data-toggle="dropdown"
+             role="button"
+             aria-expanded="false"
+             ng-bind="folder.label"></a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="file in folder.files">
+              <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" ng-bind="file.label"></a>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </ul>
+    <div class="onlyMap">
+      {{map | json}}
+    </div>
+
+  <script type="text/javascript" src="docbase-config.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+  
+  var app = angular.module('GitMap', []);
+
+  app.controller('GitMapController', function($scope, $http, $timeout){
+    
+    $scope.init = function(callback) {
+
+      var options = docbaseConfig.github;
+      var full_path = options.path;
+      var path = full_path.split('/');
+      var deleted = path.splice(path.length - 1, 1);
+      path.join('/');
+      deleted = deleted[0];
+      $scope.versions = [];
+
+      options.access_token = atob(options.access_token);
+      
+      var baseurl = 'https://api.github.com/repos/' + options.user + '/' + options.repo + '/';   
+      var url = baseurl + 'contents?ref='+options.branch;
+      if (options.access_token) {
+        url += '&access_token=' + options.access_token;
+      }
+    
+      $.get(url, {
+        ref: options.branch
+      })
+      .success(function(data) {
+
+        var commitData = data.filter(function(each) {
+          return each.name === deleted;
+        });
+        if (commitData[0]) {
+          var sha = commitData[0].sha;
+          var treeUrl = baseurl + 'git/trees/' + sha + '?recursive=1';
+          
+          if (options.access_token) {
+            treeUrl += '&access_token=' + options.access_token;
+          }
+
+          $.get(treeUrl)
+            .success(function(tree) {
+              tree = tree.tree.filter(function(each) {
+                return endsWith(each.path, '.md');
+              });
+
+              var map = {};
+
+              tree.forEach(function(each) {
+                var sub_path = each.path.split('/');
+                /* assuming sub_path[0] is the version,
+                 * sub_path[1] is the folder,
+                 * and sub_path[2] is the file.
+                 */
+                if (sub_path.length >= 3) {
+                  var version = sub_path[0];
+                  var folder = sub_path[1];
+                  var file = sub_path[2].substring(0, sub_path[2].length - 3);
+
+                  // Version is new
+                  if (!map[version]) {
+                    map[version] = [];
+                    $scope.versions.push(version);
+                  }
+
+                  // Folder is new
+                  if (!map[version].filter(function(a) {
+                      return a.name === folder;
+                    }).length) {
+                    map[version].push({
+                      label: folder,
+                      name: folder,
+                      files: []
+                    });
+                  }
+
+                  // Add file
+                  map[version].forEach(function(each) {
+                    if (each.name === folder)
+                      each.files.push({
+                        name: file,
+                        label: file
+                      });
+                  });
+                }
+              });
+
+              $timeout(function(){
+                $scope.map = _index(map);
+                console.log($scope.map);
+              },0);
+
+              callback(null, map);
+            })
+            .error(function(error) {
+              callback(error);
+            });
+        }
+      })
+      .error(function(error) {
+        callback(error);
+      });
+    }  
+
+    /**
+   * endsWith polyfill, from MDN
+   * Created by Ripter, last edited by Mathias Bynens
+   */
+  function endsWith(subjectString, searchString, position) {
+    if (position === undefined || position > subjectString.length) {
+      position = subjectString.length;
+    }
+    position -= searchString.length;
+    var lastIndex = subjectString.indexOf(searchString, position);
+    return lastIndex !== -1 && lastIndex === position;
+  }
+
+  _index = function(versions) {
+    var indexFile = {
+      label: 'index',
+      name: 'index'
+    };
+
+    function folderIn(folder) {
+      folder.files.push(indexFile);
+    }
+    for (var v in versions) {
+      var version = versions[v];
+      if (version !== null) {
+        for (var i = 0; i < version.length; i++) {
+          folderIn(version[i]);
+        }
+      }
+    }
+    return versions;
+  };
+
+    $scope.init(function(){});
+  });
+  </script>
+</body>
+</html>
