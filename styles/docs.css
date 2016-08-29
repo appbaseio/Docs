@@ -10,8 +10,11 @@
     margin: 0px;
     border: 0px;
     box-shadow: none;
+    background: #232E44;
 }
-
+ul.nav li.dropdown > a {
+  color: #86DDF8;
+}
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
@@ -245,9 +248,9 @@ body.no-literate .content h1:first-child {
 
 .landing{
   height: 300px;
-  background-color: #50BAEF;
+  background: #232E44;
   text-align: center;
-  color: white;
+  color: #86DDF8;
   padding-top: 100px;
 }
 
