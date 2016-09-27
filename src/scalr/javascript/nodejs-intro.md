@@ -44,10 +44,10 @@ To write data or stream updates from [appbase.io](https://appbase.io), we need t
 
 ```js
 var appbaseRef = new Appbase({
-  url: 'https://scalr.api.appbase.io',
-  appname: 'createnewtestapp01',
-  username: 'RIvfxo1u1',
-  password: 'dee8ee52-8b75-4b5b-be4f-9df3c364f59f'
+  url: "https://scalr.api.appbase.io",
+  appname: "createnewtestapp01",
+  username: "RIvfxo1u1",
+  password: "dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
 });
 
 ```
@@ -56,8 +56,8 @@ var appbaseRef = new Appbase({
 
 ```js
 var appbaseRef = new Appbase({
-  url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
-  appname: 'createnewtestapp01'
+  url: "https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io",
+  appname: "createnewtestapp01"
  });
 ```
 
@@ -72,18 +72,18 @@ Once we have the reference object (called ``appbaseRef`` in this tutorial), we c
 
 ```js
 var jsonObject = {
-    "department_name":"Books",
-    "department_name_analyzed":"Books",
-    "department_id":1,
-    "name":"A Fake Book on Network Routing",
-    "price":5595
+    "department_name": "Books",
+    "department_name_analyzed": "Books",
+    "department_id": 1,
+    "name": "A Fake Book on Network Routing",
+    "price": 5595
 };
 ```
 
 ```js
 appbaseRef.index({
-    type: 'books',
-    id: 'X1',
+    type: "books",
+    id: "X1",
     body: jsonObject
 }).on('data', function(response) {
     console.log(response);
@@ -92,11 +92,11 @@ appbaseRef.index({
 });
 ```
 
-where ``type: 'books'`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
+where ``type: "books"`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
 
 The ``index()`` method (and all the other ``appbase`` methods) return a [stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) object. A 'data' event handler can be used on the returned object (or in a chained fashion) for listening to all the data changes.
 
-> <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a *collection in MongoDB* or a *table in SQL*, and a document is similar to the document in MongoDB and equivalent to a *row in SQL*.
+> <span class="fa fa-info-circle"></span> If you have noticed, SCALR uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a collection in MongoDB or a table in SQL, and a **document** is similar to the document in MongoDB and equivalent to a row in SQL.
 
 ## Step 3: <s>GETing</s> vs Streaming Data
 
@@ -106,8 +106,8 @@ Now that we are able to store data, let's try to get the data back from [appbase
 
 ```js
 appbaseRef.get({
-      type: 'books',
-      id: 'X1'
+      type: "books",
+      id: "X1"
 }).on('data', function(response) {
       console.log(response)
 }).on('error', function(error) {
@@ -141,8 +141,8 @@ Let's say that we are interested in subscribing to all the state changes that ha
 
 ```js
 appbaseRef.getStream({
-      type: 'books',
-      id: 'X1'
+      type: "books",
+      id: "X1"
 }).on('data', function(response) {
       console.log("new document update: ", response)
 }).on('error', function(error) {
@@ -186,7 +186,7 @@ In the example below, we will see it in action with a ``match_all`` query that r
 
 ```js
 appbaseRef.searchStream({
-    type: 'books',
+    type: "books",
     body: {
         query: {
             match_all: {}
