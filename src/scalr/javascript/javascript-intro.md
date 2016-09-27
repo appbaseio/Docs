@@ -43,17 +43,17 @@ Requiring the lib takes just one line of html script injection:
 Alternatively, a cdnjs version of the library can be used without requiring a bower install.
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/0.10.8/appbase.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/0.10.8/appbase.min.js"></script>
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the API URL, appname, and a username:password combination into the ``Appbase`` constructor:
 
 ```js
 var appbaseRef = new Appbase({
-  url: 'https://scalr.api.appbase.io',
-  appname: 'createnewtestapp01',
-  username: 'RIvfxo1u1',
-  password: 'dee8ee52-8b75-4b5b-be4f-9df3c364f59f'
+  url: "https://scalr.api.appbase.io",
+  appname: "createnewtestapp01",
+  username: "RIvfxo1u1",
+  password: "dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
 });
 
 ```
@@ -62,8 +62,8 @@ var appbaseRef = new Appbase({
 
 ```js
 var appbaseRef = new Appbase({
-  url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
-  appname: 'createnewtestapp01'
+  url: "https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io",
+  appname: "createnewtestapp01"
  });
 ```
 
