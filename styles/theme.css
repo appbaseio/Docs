@@ -1,11 +1,11 @@
-.landing, .button, .navbar-fixed-top {
+.landing, .button, .navbar-fixed-top, .menu a.active:after {
 	background-color: #50BAEF;
 }
-.index-container li a, .menu a, .menu a:visited, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a {
+.index-container li a, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a {
 	color: #50BAEF;
 }
 a:active, a:hover, .menu a:hover{
-	color: #50BAEF;	
+	color: #50BAEF;
 }
  .tt-menu:before {
  	border-bottom-color: #50BAEF;
@@ -20,4 +20,8 @@ a:active, a:hover, .menu a:hover{
 .megamenu> li > ul > li.dropdown-header > a {
   color: #50BAEF;
   border-bottom-color: #50BAEF;
+}
+.menu a.active, .menu a.active:visited, .menu a.active:hover {
+	color: #50BAEF !important;
+	font-weight: normal !important;
 }
