@@ -31,12 +31,12 @@ var appbaseRef = new Appbase({
 
 ``new Appbase(appData)``
 
-- **appData** ``Object`` - A Javascript object containing the following fields and values
+- **appData** ``Object`` <br>A Javascript object containing the following fields and values
 
-	- **url** ``String`` - URL with the API version, always *https://scalr.api.appbase.io*
-	- **appname** ``String`` - name of the app as displayed in the [dashboard](https://appbase.io/scalr)
-	- **username** ``String`` - username as displayed in the app dashboard
-	- **password** ``String`` - password as displayed in the app dashboard
+	- **url** ``String`` <br>URL with the API version, always *https://scalr.api.appbase.io*
+	- **appname** ``String`` <br>name of the app as displayed in the [dashboard](https://appbase.io/scalr)
+	- **username** ``String`` <br>username as displayed in the app dashboard
+	- **password** ``String`` <br>password as displayed in the app dashboard
 
 **Returns**
 
@@ -69,11 +69,11 @@ appbaseRef.index({
 
 ``appbaseRef.index(params)``
 
-- **params** ``Object`` - A Javascript object containing the type, id and the JSON data to be indexed
+- **params** ``Object`` <br>A Javascript object containing the type, id and the JSON data to be indexed
 
-	- **type** ``String`` - The type (aka collection) under which the data will be indexed
-	- **body** ``Object`` - Data to be indexed, a valid JSON object
-	- **id** ``String`` - Unique ID for the JSON data. ``id`` is auto generated if not specified
+	- **type** ``String`` <br>The type (aka collection) under which the data will be indexed
+	- **body** ``Object`` <br>Data to be indexed, a valid JSON object
+	- **id** ``String`` <br>Unique ID for the JSON data. ``id`` is auto generated if not specified
 
 ### update()
 
@@ -101,11 +101,11 @@ appbaseRef.update({
 
 ``appbaseRef.update(params)``
 
-- **params** ``Object`` - A Javascript object containing the type, id, and the partial JSON data to be updated
+- **params** ``Object`` <br>A Javascript object containing the type, id, and the partial JSON data to be updated
 
-	- **type** ``String`` - The type (aka collection) under which the data will be indexed
-	- **body.doc** ``Object`` - Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
-	- **id** ``String`` - Unique ID of the JSON document to be updated. ``id`` here is mandatory and should match an existing object.
+	- **type** ``String`` <br>The type (aka collection) under which the data will be indexed
+	- **body.doc** ``Object`` <br>Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
+	- **id** ``String`` <br>Unique ID of the JSON document to be updated. ``id`` here is mandatory and should match an existing object.
 
 
 ### delete()
@@ -127,10 +127,10 @@ appbaseRef.delete({
 
 ``appbaseRef.delete(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the JSON object to be deleted
+- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the JSON object to be deleted
 
-	- **type** ``String`` - The type (aka collection) of the object to be deleted
-	- **id** ``String`` - Unique ID for the JSON data
+	- **type** ``String`` <br>The type (aka collection) of the object to be deleted
+	- **id** ``String`` <br>Unique ID for the JSON data
 
 ### bulk()
 
@@ -163,10 +163,10 @@ appbaseRef.bulk({
 
 ``appbaseRef.bulk(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
+- **params** ``Object`` <br>A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
 
-	- **body** ``String`` - A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
-	- **type** ``String`` - Default document type for actions that don't provide one
+	- **body** ``String`` <br>A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
+	- **type** ``String`` <br>Default document type for actions that don't provide one
 
 
 ## GETTING DATA
@@ -190,9 +190,9 @@ appbaseRef.get({
 
 ``appbaseRef.get(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to retrieve.  
-	- **type** ``String`` - Document Type
-	- **id** ``String`` - Unique ID of the JSON document
+- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the document to retrieve.  
+	- **type** ``String`` <br>Document Type
+	- **id** ``String`` <br>Unique ID of the JSON document
 
 Returns the document at the given ``type`` and ``id``.
 
@@ -238,10 +238,10 @@ appbaseRef.search({
 
 ``appbaseRef.search(params)``
 
-- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``.
+- **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``.
 
-	- **type** ``String`` - Document type
-	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **type** ``String`` <br>Document type
+	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 **Returns**
 
@@ -271,10 +271,10 @@ appbaseRef.getStream({
 
 ``appbaseRef.getStream(params)``
 
-- **params** ``Object`` - A Javascript object containing the ``type`` and ``id`` of the document to be streamed.
+- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the document to be streamed.
 
-	- **type** ``String`` - Document type
-	- **id** ``String`` - Document ID (The ID is always a ``String`` value)
+	- **type** ``String`` <br>Document type
+	- **id** ``String`` <br>Document ID (The ID is always a ``String`` value)
 
 <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``getStream()`` works (previously ``readStream()``).
 
@@ -326,10 +326,10 @@ appbaseRef.searchStream({
 
 ``appbaseRef.searchStream(params)``
 
-- **params** ``Object`` - A Javascript object containing the query ``type`` and ``body``
+- **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
 
-	- **type** ``String`` - Document type
-	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **type** ``String`` <br>Document type
+	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 
 <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``searchStream()`` works.
@@ -387,18 +387,18 @@ appbaseRef.searchStreamToURL(
 
 ``appbaseRef.searchStreamToURL(queryParams, urlParams)``
 
-- **queryParams** ``Object`` - A Javascript object containing the query ``type`` and ``body``
+- **queryParams** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
 
-	- **type** ``String`` - Document type
-	- **body** ``String`` - A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **type** ``String`` <br>Document type
+	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 - **urlParams** ``Object`` - A Javascript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
  
-	- **url** ``String`` - A URL string
-	- **body** ``Object`` - A JSON object to be sent to the URL (used as an alternative to **string_body**)
-	- **string_body** ``String`` - A raw string to be sent to the URL (used as an alternative to **body**)
-	- **count** ``Number`` - # of times the result-request should be sent before terminating the webhook
-	- **interval** ``Number`` - Wait duration in seconds before the next result-request
+	- **url** ``String`` <br>A URL string
+	- **body** ``Object`` <br>A JSON object to be sent to the URL (used as an alternative to **string_body**)
+	- **string_body** ``String`` <br>A raw string to be sent to the URL (used as an alternative to **body**)
+	- **count** ``Number`` <br># of times the result-request should be sent before terminating the webhook
+	- **interval** ``Number`` <br>Wait duration in seconds before the next result-request
 
 <span class="fa fa-star"></span> **body** and **string_body** fields support [mustache syntax](http://mustache.github.io/mustache.5.html) for accessing values inside the matching result object.
 
