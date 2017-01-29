@@ -1,11 +1,11 @@
 {"threeColumns": false}  
 
-# Quick Start to the ![Scalr](http://i.imgur.com/a1KAate.png) REST API:
+# Quick Start to the ![Scalr](https://i.imgur.com/a1KAate.png) REST API:
 
 ## Step 0: Creating an App
 
 <a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgflip.com/opgl9.gif"/></a>  
-Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://appbase.io/scalr/), and create a new app.
+Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.
 
 For this tutorial, we will use an app called "createnewtestapp01". The &lt;username>:&lt;password> combination for this app is RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f.
 
