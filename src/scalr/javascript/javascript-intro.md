@@ -1,6 +1,6 @@
 {"threeColumns": false, "bigh3": true}
 
-# Quick Start to the ![Scalr](http://i.imgur.com/Eppz2lz.png?1) JS API
+# Quick Start to the ![Scalr](https://i.imgur.com/Eppz2lz.png?1) JS API
 
 [Appbase.JS](https://github.com/appbaseio/appbase-js) is a minimalistic library for data streams.  
 
@@ -28,7 +28,7 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib using [bower](http://bower.io). We will use ``v0.10.8`` for specificity. 
+We will fetch and install the **appbase-js** lib using [bower](https://bower.io). We will use ``v0.10.8`` for specificity. 
 
 ```js
 bower install appbase-js#0.10.8
@@ -219,10 +219,10 @@ RESPONSE WHEN NEW DATA MATCHES
 }
 ```
 
-``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches. For fetching existing search results, check out [``search()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-getting-data-search).
+``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches. For fetching existing search results, check out [``search()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-getting-data-search).
 
-**v0.10.0** introduces a new method [``searchStreamToURL()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl) that streams results directly to a URL instead of streaming back.
+**v0.10.0** introduces a new method [``searchStreamToURL()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl) that streams results directly to a URL instead of streaming back.
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
-For next steps, check out our [Javascript API reference](http://docs.appbase.io/scalr/javascript/api-reference.html).
+For next steps, check out our [Javascript API reference](https://docs.appbase.io/scalr/javascript/api-reference.html).
