@@ -17,9 +17,9 @@ meteor add appbaseio:appbase
 
 ## Using it client-side
 
-You can read the [Javascript](http://docs.appbase.io/scalr/javascript/javascript-intro.html) quick-start guide for basic usage. 
+You can read the [Javascript](https://docs.appbase.io/scalr/javascript/javascript-intro.html) quick-start guide for basic usage. 
 
-The API reference for using the library client-side can be found [here](http://docs.appbase.io/scalr/javascript/api-reference.html).
+The API reference for using the library client-side can be found [here](https://docs.appbase.io/scalr/javascript/api-reference.html).
 
 ## Using it server-side
 
@@ -42,7 +42,7 @@ var appbaseRef = new Appbase({
 
 An example using the ``index`` method is given below. Other methods like ``update``, ``get``, ``delete``, ``search`` and ``searchStreamToURL`` can be used in a similar manner. 
 
-Refer to the client-side [documentation](http://docs.appbase.io/scalr/javascript/api-reference.html) for the parameters they can take. 
+Refer to the client-side [documentation](https://docs.appbase.io/scalr/javascript/api-reference.html) for the parameters they can take. 
 
 #### index()
 
