@@ -4,7 +4,7 @@
 
 ## Unsubscribe from a streaming query
 
-The JS API methods for the [``appbaseRef``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-setup-new-appbase) object implement a **streams** interface. Let's see an example:
+The JS API methods for the [``appbaseRef``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-setup-new-appbase) object implement a **streams** interface. Let's see an example:
 
 ```js
 // responseStream implements the streams interface.
