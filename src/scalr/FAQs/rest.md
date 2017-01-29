@@ -38,7 +38,7 @@ The process for reindexing your data is quite simple. First, create a new app in
 
 One of the advantages of the _source field is that you already have the whole document available to you in Elasticsearch itself. You don’t have to rebuild your index from the database, which is usually much slower.
 
-To reindex all of the documents from the old index efficiently, use [scan-and-scroll](https://www.elastic.co/guide/en/elasticsearch/guide/current/scan-scroll.html) to retrieve batches of documents from the old index, and the [bulk API](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-writing-data-bulk) to push them into the new index.
+To reindex all of the documents from the old index efficiently, use [scan-and-scroll](https://www.elastic.co/guide/en/elasticsearch/guide/current/scan-scroll.html) to retrieve batches of documents from the old index, and the [bulk API](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-writing-data-bulk) to push them into the new index.
 
 ### Reindexing in Batches  
 
