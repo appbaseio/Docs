@@ -13,7 +13,7 @@ It enables you to:
 * Stream JSON results directly as new data is added or the original data is updated,  
 * Scale seamlessly upto 10,000 updates per second and store at terbyte scale.
 
-![Appbase Architecture](http://i.imgur.com/iJpqtks.png?1)  
+![Appbase Architecture](https://i.imgur.com/iJpqtks.png?1)  
 **Image 1:** It provides a reliable data streams API as a service, while leveraging ElasticSearch (and Lucene) for storage and search.
 
 While not primarily intended, Appbase.io can also be used as a hosted ElasticSearch API or as a message queue with a publish / subscribe model.
