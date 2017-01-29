@@ -1,6 +1,6 @@
 {"threeColumns": false, "bigh3": true}
 
-# Quick Start to the ![Scalr](http://i.imgur.com/Eppz2lz.png?1) Node.JS API
+# Quick Start to the ![Scalr](https://i.imgur.com/Eppz2lz.png?1) Node.JS API
 
 [Appbase.JS](https://github.com/appbaseio/appbase-js) is a minimalistic library for data streams.  
 
@@ -20,7 +20,7 @@ This is a quick start guide to whet the appetite with the possibilities of data 
 ## Step 0: Creating an App
 
 <a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgflip.com/opgl9.gif"/></a>  
-Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](http://appbase.io/scalr/), and create a new app.
+Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.
 
 For this tutorial, we will use an app called "createnewtestapp01". The &lt;username>:&lt;password> combination for this app is RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f.
 
@@ -214,10 +214,10 @@ RESPONSE WHEN NEW DATA MATCHES
 }
 ```
 
-``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches. For fetching existing search results, check out [``search()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-getting-data-search).
+``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches. For fetching existing search results, check out [``search()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-getting-data-search).
 
-**v0.10.0** introduces a new method [``searchStreamToURL()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl) that streams results directly to a URL instead of streaming back.
+**v0.10.0** introduces a new method [``searchStreamToURL()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl) that streams results directly to a URL instead of streaming back.
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
-For next steps, check out our [Javascript API reference](http://docs.appbase.io/scalr/javascript/api-reference.html).
+For next steps, check out our [Javascript API reference](https://docs.appbase.io/scalr/javascript/api-reference.html).
