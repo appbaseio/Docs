@@ -1,6 +1,6 @@
 {"threeColumns": false, "bigh3": true}
 
-> Introduced in [appbase-js](https://github.com/appbaseio/appbase-js) ``v0.10.0``. Read the [getting started guide](http://docs.appbase.io/scalr/javascript/javascript-intro.html) for some familiarity with the JS lib.
+> Introduced in [appbase-js](https://github.com/appbaseio/appbase-js) ``v0.10.0``. Read the [getting started guide](https://docs.appbase.io/scalr/javascript/javascript-intro.html) for some familiarity with the JS lib.
 
 # Webhooks Guide
 
@@ -24,7 +24,7 @@ var appbaseRef = new Appbase({
  })
  ```
  
-Webhooks in appbase-js are supported by [``searchStreamToURL()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl). The behavior is very similar to  [``searchStream()``](http://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
+Webhooks in appbase-js are supported by [``searchStreamToURL()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl). The behavior is very similar to  [``searchStream()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
  
  ```js
  appbaseRef.searchStreamToURL(
