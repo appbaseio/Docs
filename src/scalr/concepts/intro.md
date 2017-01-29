@@ -1,6 +1,6 @@
 {"title": "SCALR API 101", "threeColumns": false, "bigh3": true}
 
-# ![SCALR](http://i.imgur.com/Eppz2lz.png?1) API Prime Objective: Scale
+# ![SCALR](https://i.imgur.com/Eppz2lz.png?1) API Prime Objective: Scale
 
 As the name suggests, our prime focus with this iteration of the API has been achieving a massive scale of API operations, to the tune of [100,000 writes](http://news.appbase.io/scaling-elasticsearch-writes/) and reads (yet to corroborate) per second. 
 
@@ -17,7 +17,7 @@ Not only does addressing scale solve the burning pain points faced by the 0.01%,
 
 Welcome to the land of SCALR, where everyone smiles and the sun shines bright. 
 
-![SCALR banner image](http://i.imgur.com/3nYaIQM.png?1)
+![SCALR banner image](https://i.imgur.com/3nYaIQM.png?1)
 
 Our beloved Hobo Lobo is chalking a 'SCALR' 101. 
 
@@ -26,7 +26,7 @@ Our beloved Hobo Lobo is chalking a 'SCALR' 101.
 
 ## ``SCALR`` - What's in a name
 
-The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [http://docs.appbase.io/]() and the API base URL would be ``https://scalr.api.appbase.io``.
+The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [https://docs.appbase.io/]() and the API base URL would be ``https://scalr.api.appbase.io``.
 
 ## Compatibility with ElasticSearch
 
