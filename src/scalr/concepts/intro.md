@@ -28,24 +28,22 @@ Our beloved Hobo Lobo is chalking a 'SCALR' 101.
 
 The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [https://docs.appbase.io/]() and the API base URL would be ``https://scalr.api.appbase.io``.
 
-## Compatibility with ElasticSearch
+### Compatible with ElasticSearch
 
-``scalr`` is compatible out of the box with the ElasticSearch APIs. This means our users can take advantage of the vast plethora of client libraries made available by the folks at Elastic, have access to a vibrant open-source community and have the freedom to import / export data from Appbase.io conveniently. 
+``scalr`` is compatible out of the box with v2.4 ElasticSearch API. This means our users can take advantage of the vast plethora of client libraries made available by the folks at Elastic, have access to a vibrant open-source community and have the freedom to import / export data from Appbase.io conveniently. 
+
+### Data Streams 2.0
+
+Data Streams aka realtime events are rethought in ``SCALR``. Instead of being a websockets based extension of the API to track just the document and reference changes, data streams are deeply baked into the ``SCALR`` API. Data Streams are implemented over both **websockets** (for browsers) and **http-streaming** (for other runtimes) and are pervasive over web, mobile and language native libraries. Data Streams can stream results of queries and filters as new data is indexed into an app.
+
 
 ### HTTP Basic Authentication
 
-``scalr`` uses HTTP Basic Authentication for securing app access (similar to Github and Wordpress's authentication mechanisms). Every Appbase app can have one or more access tokens (username, password) with differing read and write permissions to allow fine-grained access. ElasticSearch's access tokens work in the same way, a major compatibility win.
+``scalr`` uses HTTP Basic Authentication for securing app access (similar to Github and Wordpress's authentication mechanisms). Every Appbase app can have one or more access tokens (username, password) with differing read and write permissions to allow fine-grained access. Most ElasticSearch libraries support HTTP Basic Auth already, a major compatibility win.
 
-> Note: This is a change from the earlier use of authentication header called ``Appbase-Secret``.
+What's more, multiple appbase.io Basic Auth credentials can be generated per app with (read, write) controllable permissions.
 
-### What's not compatible?
+### Zero Ops
 
-The APIs related to devops, like clusters, multi-index operations, index creation are not a part of Appbase.io. Appbase is opinionated about devops.
+The APIs related to devops, like clusters, multi-index operations, index creation are not a part of Appbase.io. Appbase is opinionated about devops and handles that internally.
                         
-## Data Streams 2.0
-
-Data Streams aka realtime events are rethought in ``SCALR``. Instead of being a websockets based extension of the API to track just the document and reference changes, data streams are deeply baked into the ``SCALR`` API. Data Streams are implemented over both **websockets** (for browsers) and **http-streaming** (for other runtimes) and are pervasive over web, mobile and language native libraries. Data Streams can stream results of queries and filters as new data comes into the system.
-
-## Adieu to Graph datamodel
-
-``SCALR`` the JSON based schema-free datamodel of ElasticSearch. This is a major change over the graph datamodel extensively used by the ``v2`` API. The move is aimed at simplicity and to provide a less opinionated data model. True graph relationships can still be modeled in ``SCALR``.
