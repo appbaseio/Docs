@@ -13,7 +13,7 @@ This quote from Ryan Singer especially sings true when one thinks of scaling dat
 
 Not only does addressing scale solve the burning pain points faced by the 0.01%, it provides confidence around the edge-cases and leads to faster adoption in production environments and success stories. We hope all of these come true for SCALR. In building SCALR, focusing on scale has lead us to a better foundational design, a more rigorously tested codebase, and a fine-grained monitoring of our deployment infrastructure. We'll go more in depth about these learnings over the next few months, but most importantly - for the 99.9% folks reading this, ``SCALR`` has tons of improvements and features over ``v2``.
 
-# git diff changes - -  human
+# API Intro
 
 Welcome to the land of SCALR, where everyone smiles and the sun shines bright. 
 
