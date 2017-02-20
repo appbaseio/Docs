@@ -59,6 +59,6 @@ A **document** is the actual data stored in an app. Documents are ``JSON`` objec
 
 An app can have one or more types and each type is a container for JSON documents. Visually, the arrangement looks like below:
 
-[![Data Model View](https://i.imgur.com/LCvdVuu.png)](appbaseio.github.io/dejavu/live/#?input_state=XQAAAAJyAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsnR3mLY6qp78UrdyiX4kf3rJXqxmkCAfGPRGyyY4NGU7xDzBus7B3hXJNG4yyaH1H8guySgP4Wo-ZoNcdRwQLUR0z6eRlUmgmT3EhyDSjc2FAfNrp-UQUzBSnnBhUAyhUc5rRuJyHSzSRV3a7TCE0Kd0o7yFwt-ipsw76R6tWjdWWcUyRSNy1GB4J7q98DAmFVqpjdXO37X35pXONcdFgA4urdMJ5Q2oh_uG1Wf-mubQFDVcFYBy16t61GMMPqMmP_hyRVIOFI-kkHGSn0CWT8Iw1uS7K6C38TKBcr7Z2hjCiU3GHOVD2LhwKjDSrwV33ZTqcTd_Rh2ZWdSlokfaXOZmfVU7EcpaQjtZEEEat9eXD9UpGpX_ov1vAA)
+[![Data Model View](https://i.imgur.com/LCvdVuu.png)](https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAJyAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsnR3mLY6qp78UrdyiX4kf3rJXqxmkCAfGPRGyyY4NGU7xDzBus7B3hXJNG4yyaH1H8guySgP4Wo-ZoNcdRwQLUR0z6eRlUmgmT3EhyDSjc2FAfNrp-UQUzBSnnBhUAyhUc5rRuJyHSzSRV3a7TCE0Kd0o7yFwt-ipsw76R6tWjdWWcUyRSNy1GB4J7q98DAmFVqpjdXO37X35pXONcdFgA4urdMJ5Q2oh_uG1Wf-mubQFDVcFYBy16t61GMMPqMmP_hyRVIOFI-kkHGSn0CWT8Iw1uS7K6C38TKBcr7Z2hjCiU3GHOVD2LhwKjDSrwV33ZTqcTd_Rh2ZWdSlokfaXOZmfVU7EcpaQjtZEEEat9eXD9UpGpX_ov1vAA)
 
 Click on the image above to see the actual data, visualized with [dejavu](https://opensource.appbase.io/dejavu) data browser.
