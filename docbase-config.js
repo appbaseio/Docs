@@ -52,10 +52,6 @@ var docbaseConfig = {
           "name": "api-reference"
         },
         {
-          "label": "Meteor Quick Start",
-          "name": "meteor-intro"
-        },
-        {
           "label": "Webhooks Guide",
           "name": "javascript-webhooks"
         }
@@ -75,10 +71,6 @@ var docbaseConfig = {
       "label": "Go",
       "name": "golang",
       "files": [
-        {
-          "label": "Quick Start",
-          "name": "golang-intro"
-        },
         {
           "label": "API Reference",
           "name": "api-reference"
