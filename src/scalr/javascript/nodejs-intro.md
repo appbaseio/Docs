@@ -28,7 +28,7 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.10.1.
+We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.11.0.
 
 ```js
 npm install appbase-js
@@ -40,14 +40,13 @@ Requiring the lib takes one line:
 var Appbase = require('appbase-js');
 ```
 
-To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the API URL, appname, and a username:password combination into the ``Appbase`` constructor:
+To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
 
 ```js
 var appbaseRef = new Appbase({
   url: "https://scalr.api.appbase.io",
-  appname: "createnewtestapp01",
-  username: "RIvfxo1u1",
-  password: "dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
+  app: "createnewtestapp01",
+  credentials: "RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
 });
 
 ```
@@ -57,13 +56,11 @@ var appbaseRef = new Appbase({
 ```js
 var appbaseRef = new Appbase({
   url: "https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io",
-  appname: "createnewtestapp01"
+  app: "createnewtestapp01"
  });
 ```
 
-Alternatively, username:password can be passed as a part of the API URL in the constructor.
-
-
+Credentials can also be directly passed as a part of the API URL.
 
 ## Step 2: Storing Data
 
