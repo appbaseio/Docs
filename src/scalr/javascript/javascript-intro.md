@@ -28,10 +28,10 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib using [bower](https://bower.io). We will use ``v0.11.0`` for specificity. 
+We will fetch and install the **appbase-js** lib using [bower](https://bower.io). We will use ``v0.11.1`` for specificity. 
 
 ```js
-bower install appbase-js#0.11.0
+bower install appbase-js#0.11.1
 ```
 
 Requiring the lib takes just one line of html script injection:
@@ -43,7 +43,7 @@ Requiring the lib takes just one line of html script injection:
 Alternatively, a cdnjs version of the library can be used without requiring a bower install.
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/0.11.0/appbase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/0.11.1/appbase.min.js"></script>
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
