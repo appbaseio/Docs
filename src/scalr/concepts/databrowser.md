@@ -6,6 +6,13 @@ Data Browser is a WYSIWG GUI for adding, modifying and viewing your appbase.io a
 
 Data is stored as JSON documents in a **type**. You can read more about the data schema [here](http://docs.appbase.io/scalr/concepts/datamodel.html#appbase-data-schema).
 
+## Installation
+
+The data browser is available within appbase.io app dashboard. But it can also be:
+- downloaded as a [chrome extension](https://chrome.google.com/webstore/detail/dejavu/jopjeaiilkcibeohjdmejhoifenbnmlh),
+- run as a [docker container](dockerhub.com/r/appbaseio/dejavu) or
+- used as a hosted app [here](https://opensource.appbase.io/dejavu/live).
+
 ## Adding Your First Data
 
 ![](https://i.imgur.com/Bh59Ej1.gif)
