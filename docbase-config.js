@@ -32,6 +32,10 @@ var docbaseConfig = {
         {
           "label": "Data Model",
           "name": "datamodel"
+        },
+        {
+          "label": "Data Browser",
+          "name": "databrowser"
         }
       ]
     },
