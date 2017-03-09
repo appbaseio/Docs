@@ -34,5 +34,5 @@ Data records can also be deleted easily. Select a record (or multiple) from the 
 
 While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programatically is via the [REST API](http://docs.appbase.io/scalr/rest/intro.html) or one of the [Node.JS](http://docs.appbase.io/scalr/javascript/nodejs-intro.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
 
-The data browser is still a great place to visualize and debug the existing data records with it's filters and continuous query functionality.
+The data browser is still a great place to visualize and debug the existing data records with its filters and continuous query functionalites.
 
