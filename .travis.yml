@@ -5,10 +5,12 @@ branches:
   only:
   - master
 before_install:
-  - gem install sass
-before_script:
+- gem install sass
+install:
+- npm install
 - npm install -g grunt-cli
 - npm install -g bower
+before_script:
 - grunt gh-pages-clean
 - bower update
 env:
