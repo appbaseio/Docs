@@ -61,3 +61,23 @@ bulk operations on a specific type.
 
 - [**Getting a Document's Term Vectors** `GET /:app/:type/:id/_termvector`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/docs-termvectors.html)
 
+## Search APIs
+
+- [**Search with query strings** `GET /:app/:type/_search?q=*:*`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/search-search.html#search-search)  
+
+- [**Search with a request body** `POST /:app/:type/_search`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/search-request-body.html)  
+Everything in the [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl.html) is supported for the **query** object in the request body.
+
+Popular Queries:
+
+1. [Full-text search](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/full-text-queries.html)  
+
+2. [Term Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/term-level-queries.html)  
+
+3. [Compound Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/compound-queries.html)  
+
+4. [Geo Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/geo-queries.html)  
+
+5. [Query Joins](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/joining-queries.html)  
+
+6. [Span Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/span-queries.html)  
