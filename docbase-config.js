@@ -68,6 +68,10 @@ var docbaseConfig = {
         {
           "label": "Quick Start",
           "name": "intro"
+        },
+        {
+          "label": "API Endpoints",
+          "name": "endpoints"
         }
       ]
     },
