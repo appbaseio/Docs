@@ -14,6 +14,9 @@ Informational endpoint
 - [**Get an App's Settings** `GET /:app/_settings`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-get-settings.html)  
 Get settings in an app
 
+- [**Analyze a text** `GET /:app/_analyze`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-analyze.html#indices-analyze)   
+Run a specific analyzer against a text
+
 - [**Get an App's Mapping** `GET /:app/_mapping`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/indices-get-mapping.html)  
 Get mappings for an app
 
@@ -81,3 +84,12 @@ Popular Queries:
 5. [Query Joins](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/joining-queries.html)  
 
 6. [Span Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/span-queries.html)  
+
+
+## Streaming APIs
+
+- **Stream a Document** `GET /:app/:type/:id?stream=true`  
+Fetches the document and streams further updates to the document.
+
+- **Stream a Query** `GET /:app/:type/_search?stream=true` (or POST)  
+Fetches a query's response and streams further updates to the query.
