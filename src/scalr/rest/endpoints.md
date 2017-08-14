@@ -71,20 +71,22 @@ bulk operations on a specific type.
 - [**Search with a request body** `POST /:app/:type/_search`](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/search-request-body.html)  
 Everything in the [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl.html) is supported for the **query** object in the request body.
 
-Popular Queries:
+    Popular Queries:
 
-1. [Full-text search](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/full-text-queries.html)  
+    1. [Full-text search](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/full-text-queries.html)  
 
-2. [Term Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/term-level-queries.html)  
+    2. [Term Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/term-level-queries.html)  
 
-3. [Compound Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/compound-queries.html)  
+    3. [Compound Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/compound-queries.html)  
 
-4. [Geo Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/geo-queries.html)  
+    4. [Geo Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/geo-queries.html)  
 
-5. [Query Joins](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/joining-queries.html)  
+    5. [Query Joins](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/joining-queries.html)  
 
-6. [Span Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/span-queries.html)  
+    6. [Span Queries](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/span-queries.html)  
 
+- [**Delete by query** `DELETE /:app/:type/_query`](https://www.elastic.co/guide/en/elasticsearch/plugins/2.4/delete-by-query-usage.html)  
+Delete documents matching the search query, everything in the [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/query-dsl.html) is supported for the **query** object in the request body.
 
 ## Streaming APIs
 
