@@ -165,7 +165,7 @@ appbaseRef.bulk({
 
 - **params** ``Object`` <br>A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
 
-	- **body** ``String`` <br>A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
+	- **body** ``Array`` <br>A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
 	- **type** ``String`` <br>Default document type for actions that don't provide one
 
 
