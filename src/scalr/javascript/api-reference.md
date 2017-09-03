@@ -329,7 +329,7 @@ appbaseRef.searchStream({
 - **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
 
 	- **type** ``String`` <br>Document type
-	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 
 <span class="fa fa-info-circle"></span> The ``streamOnly`` field parameter is deprecated starting v0.9.0 onwards, and is the default for how ``searchStream()`` works.
@@ -390,7 +390,7 @@ appbaseRef.searchStreamToURL(
 - **queryParams** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
 
 	- **type** ``String`` <br>Document type
-	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 - **urlParams** ``Object`` - A Javascript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
  
