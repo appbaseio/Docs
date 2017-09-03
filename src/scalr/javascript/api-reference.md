@@ -241,7 +241,7 @@ appbaseRef.search({
 - **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``.
 
 	- **type** ``String`` <br>Document type
-	- **body** ``String`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
+	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 **Returns**
 
