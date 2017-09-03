@@ -299,7 +299,7 @@ responseStream.stop();
 ```
 
 
-``Note:`` appbase.js lib uses websockets to stream the updates.
+``Note:`` appbase.js lib uses [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to stream the updates.
 
 ### searchStream()
 
