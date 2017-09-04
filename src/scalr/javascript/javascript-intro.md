@@ -13,7 +13,7 @@ It can't:
 
 * Configure mappings, change analyzers, or capture snapshots. All these are provided by [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official ElasticSearch JS client library.
 
-[Appbase](https://appbase.io) is opinionated about the cluster setup and doesn't support the ElasticSearch devops APIs.
+[Appbase](https://appbase.io) is opinionated about the cluster setup and doesn't support the ElasticSearch DevOps APIs.
 
 This is a quick start guide to whet the appetite with the possibilities of data streams.
 
