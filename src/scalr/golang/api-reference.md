@@ -10,4 +10,3 @@ It can:
 * Index new documents and update existing ones.  
 * Is compatible with [Elasticsearch's Go Client](https://github.com/olivere/elastic) maintained by Olivere. 
 
-You can read the [quick start guide](http://docs.appbase.io/scalr/golang/golang-intro.html) for installation and basic usage.
