@@ -28,16 +28,16 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v0.11.1.
+We will fetch and install the **appbase-js** lib via [npm](https://www.npmjs.com/package/appbase-js), current version should be v2.1.0.
 
 ```js
-npm install appbase-js
+npm i appbase-js
 ```
 
 Requiring the lib takes one line:
 
 ```js
-var Appbase = require('appbase-js');
+import Appbase from 'appbase-js';
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:

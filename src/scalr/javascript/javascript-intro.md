@@ -34,7 +34,13 @@ We will fetch and install the **appbase-js** lib using npm. ``v2.1.0`` is the mo
 npm i appbase-js
 ```
 
-Alternatively, a UMD build of the library can be used directly using the following script addition.
+Adding it in the browser should be a one line script addition.
+
+```html
+<script src="node_modules/appbase-js/dist/appbase.js.gz"></script>
+```
+
+Alternatively, a UMD build of the library can be used directly from Github via rawgit.
 
 ```html
 <script src="https://rawgit.com/appbaseio/appbase-js/master/dist/appbase.js.gz"></script>
