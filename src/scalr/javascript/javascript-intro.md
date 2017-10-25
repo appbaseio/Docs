@@ -2,7 +2,7 @@
 
 # Quick Start to the ![Scalr](https://i.imgur.com/Eppz2lz.png?1) JS API
 
-[Appbase.JS](https://github.com/appbaseio/appbase-js) is a minimalistic library for data streams.  
+[Appbase.JS](https://github.com/appbaseio/appbase-js) is a minimalistic library for working with appbase.io.  
 
 It can:
 
@@ -13,7 +13,7 @@ It can't:
 
 * Configure mappings, change analyzers, or capture snapshots. All these are provided by [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official ElasticSearch JS client library.
 
-[Appbase](https://appbase.io) is opinionated about the cluster setup and doesn't support the ElasticSearch devops APIs.
+[Appbase](https://appbase.io) is opinionated about the cluster setup and doesn't support the ElasticSearch devops APIs. See https://rest.appbase.io to see the supported APIs.
 
 This is a quick start guide to whet the appetite with the possibilities of data streams.
 
@@ -28,22 +28,16 @@ For this tutorial, we will use an app called "createnewtestapp01". The &lt;usern
 
 ## Step 1: Lib Setup
 
-We will fetch and install the **appbase-js** lib using [bower](https://bower.io). We will use ``v0.11.1`` for specificity. 
+We will fetch and install the **appbase-js** lib using npm. ``v2.1.0`` is the most current version.
 
 ```js
-bower install appbase-js#0.11.1
+npm i appbase-js
 ```
 
-Requiring the lib takes just one line of html script injection:
+Alternatively, a UMD build of the library can be used directly using the following script addition.
 
 ```html
-<script src="bower_components/appbase-js/browser/appbase.js"></script>
-``` 
-
-Alternatively, a cdnjs version of the library can be used without requiring a bower install.
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/0.11.1/appbase.min.js"></script>
+<script src="https://rawgit.com/appbaseio/appbase-js/master/dist/appbase.js.gz"></script>
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
