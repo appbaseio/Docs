@@ -4,12 +4,14 @@
 
 ## Step 0: Creating an App
 
-<a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgflip.com/opgl9.gif"/></a>  
+<a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgur.com/r6hWKAG.gif"/></a>  
 Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.
 
-For this tutorial, we will use an app called "createnewtestapp01". The &lt;username>:&lt;password> combination for this app is RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f.
+For this tutorial, we will use an app called `newstreamingapp`. The credentials for this app are `meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda`.
 
-> SCALR uses *HTTP Basic Auth*, a widely used protocol for simple username/password authentication. This is similar to how GitHub's authentication works over ``https``, just imagine every repository (app in our context) having it's unique &lt;username>:&lt;password> combination.
+> SCALR uses *HTTP Basic Auth*, a widely used protocol for simple username/password authentication. This is similar to how GitHub's authentication works over ``https``, just imagine every repository (app in our context) having it's unique &lt;username>:&lt;password> combination, found under the **Credentials** tab of the dashboard.
+
+> The full REST API reference is available at https://rest.appbase.io.
 
 ## Step 1: Making Requests
 
@@ -17,16 +19,15 @@ Here's an example authenticated ``GET`` request. We will set the app name, usern
 
 ```js
 SET BASH VARIABLES
-user="RIvfxo1u1"
-pass="dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
-app="createnewtestapp01"
+credentials="meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
+app="newstreamingapp"
 
-curl https://$user:$pass@scalr.api.appbase.io/$app
+curl https://$credentials@scalr.api.appbase.io/$app
 
 RESPONSE
 {
     status: 200,
-    message: "You have reached /createnewtestapp01/ and are all set to make API requests"
+    message: "You have reached /newstreamingapp/ and are all set to make API requests"
 }
 ```
 
@@ -35,7 +36,7 @@ RESPONSE
 Let's insert a JSON object. We create a **type** ``books`` inside our app and add a JSON document ``1`` with a PUT request.
 
 ```js
-curl -XPUT https://$user:$pass@scalr.api.appbase.io/$app/books/1 --data-binary '{  
+curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 --data-binary '{  
    "department_name":"Books",
    "department_name_analyzed":"Books",
    "department_id":1,
@@ -51,7 +52,7 @@ curl -XPUT https://$user:$pass@scalr.api.appbase.io/$app/books/1 --data-binary '
 Getting live updates to a document is as simple as suffixing ``?stream=true`` to a GET request. It's so awesome that we recommend using this as the default way to GET things.
 
 ```js
-curl -N https://$user:$pass@scalr.api.appbase.io/$app/books/1?stream=true
+curl -N https://$credentials@scalr.api.appbase.io/$app/books/1?stream=true
 
 INITIAL RESPONSE
 {
@@ -77,7 +78,7 @@ Appbase.io keeps an open connection so that every time there is an update in the
 Let's modify the book price to 6034.
 
 ```js
-curl -XPUT https://$user:$pass@scalr.api.appbase.io/$app/books/1 --data-binary '{  
+curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 --data-binary '{  
    "price":6034,
    "department_name":"Books",
    "department_name_analyzed":"Books",
@@ -89,7 +90,7 @@ curl -XPUT https://$user:$pass@scalr.api.appbase.io/$app/books/1 --data-binary '
 ### Step 2.b: Observe the Streams
 
 ```js
-curl -N https://$user:$pass@scalr.api.appbase.io/$app/books/1?stream=true
+curl -N https://$credentials@scalr.api.appbase.io/$app/books/1?stream=true
 
 RESPONSE AFTER 2.a
 {
@@ -130,7 +131,7 @@ Streaming document updates seems straightforward, can we apply rich filters and 
 We will see it here with a ``match_all`` query request.
 
 ```js
-curl -N -XPOST https://$user:$pass@scalr.api.appbase.io/$app/books/_search?stream=true --data-binary '{"query": {"match_all":{}}}'
+curl -N -XPOST https://$credentials@scalr.api.appbase.io/$app/books/_search?stream=true --data-binary '{"query": {"match_all":{}}}'
 
 INITIAL RESPONSE
 {
@@ -162,3 +163,8 @@ INITIAL RESPONSE
   }
 }
 ```
+
+# API Reference
+
+The full API reference with example snippets in cURL, Ruby, Python, Node, PHP, Go, jQuery can be browsed at [rest.appbase.io](https://rest.appbase.io).
+
