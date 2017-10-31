@@ -19,10 +19,10 @@ This is a quick start guide to whet the appetite with the possibilities of data 
 
 ## Step 0: Creating an App
 
-<a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgflip.com/opgl9.gif"/></a>  
+![](https://i.imgur.com/r6hWKAG.gif) 
 Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.
 
-For this tutorial, we will use an app called "createnewtestapp01". The &lt;username>:&lt;password> combination for this app is RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f.
+For this tutorial, we will use an app called `newstreamingapp`. The credentials for this app are `meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda`.
 
 > SCALR uses *HTTP Basic Auth*, a widely used protocol for a simple username/password authentication.
 
@@ -45,8 +45,8 @@ To write data or stream updates from [appbase.io](https://appbase.io), we need t
 ```js
 var appbaseRef = new Appbase({
   url: "https://scalr.api.appbase.io",
-  app: "createnewtestapp01",
-  credentials: "RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
+  app: "newstreamingapp",
+  credentials: "meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
 });
 
 ```
@@ -55,8 +55,8 @@ var appbaseRef = new Appbase({
 
 ```js
 var appbaseRef = new Appbase({
-  url: "https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io",
-  app: "createnewtestapp01"
+  url: "https://meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda@scalr.api.appbase.io",
+  app: "newstreamingapp"
  });
 ```
 
