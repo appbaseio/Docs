@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Dependency directories
+node_modules
+bower_components
+
+# OSX metadata
+*.DS_Store

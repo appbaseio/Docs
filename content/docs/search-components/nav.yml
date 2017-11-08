@@ -1,0 +1,292 @@
+- title: Search Components
+  items:
+    - id: categorysearch
+      title: CategorySearch
+      href: /docs/search-components/categorysearch.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/categorysearch.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/categorysearch.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/categorysearch.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/categorysearch.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/categorysearch.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/categorysearch.html#examples
+          forceInternal: true
+    - id: multilevelmenu
+      title: MultiLevelMenu
+      href: /docs/search-components/multilevelmenu.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/multilevelmenu.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/multilevelmenu.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/multilevelmenu.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/multilevelmenu.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/multilevelmenu.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/multilevelmenu.html#examples
+          forceInternal: true
+    - id: dynamicrangeslider
+      title: DynamicRangeSlider
+      href: /docs/search-components/dynamicrangeslider.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/dynamicrangeslider.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/dynamicrangeslider.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/dynamicrangeslider.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/dynamicrangeslider.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/dynamicrangeslider.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/dynamicrangeslider.html#examples
+          forceInternal: true
+    - id: ratingsfilter
+      title: RatingsFilter
+      href: /docs/search-components/ratingsfilter.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/ratingsfilter.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/ratingsfilter.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/ratingsfilter.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/ratingsfilter.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/ratingsfilter.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/ratingsfilter.html#examples
+          forceInternal: true
+    - id: tagcloud
+      title: TagCloud
+      href: /docs/search-components/tagcloud.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/tagcloud.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/tagcloud.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/tagcloud.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/tagcloud.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/tagcloud.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/tagcloud.html#examples
+          forceInternal: true
+    - id: nestedlist
+      title: NestedList
+      href: /docs/search-components/nestedlist.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/nestedlist.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/nestedlist.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/nestedlist.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/nestedlist.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/nestedlist.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/nestedlist.html#examples
+          forceInternal: true
+    - id: nestedmultilist
+      title: NestedMultiList
+      href: /docs/search-components/nestedmultilist.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/nestedmultilist.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/nestedmultilist.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/nestedmultilist.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/nestedmultilist.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/nestedmultilist.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/nestedmultilist.html#examples
+          forceInternal: true
+    - id: resultcard
+      title: ResultCard
+      href: /docs/search-components/resultcard.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/resultcard.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/resultcard.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/resultcard.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/resultcard.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/resultcard.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/resultcard.html#examples
+          forceInternal: true
+    - id: resultlist
+      title: ResultList
+      href: /docs/search-components/resultlist.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/resultlist.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/resultlist.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/resultlist.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/resultlist.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/resultlist.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/resultlist.html#examples
+          forceInternal: true
+    - id: viewswitcher
+      title: ViewSwitcher
+      href: /docs/search-components/viewswitcher.html
+      forceInternal: true
+      subitems:
+        - id: usage
+          title: Usage
+          href: /docs/search-components/viewswitcher.html#usage
+          forceInternal: true
+        - id: props
+          title: Props
+          href: /docs/search-components/viewswitcher.html#props
+          forceInternal: true
+        - id: syntax
+          title: Syntax
+          href: /docs/search-components/viewswitcher.html#syntax
+          forceInternal: true
+        - id: styles
+          title: Styles
+          href: /docs/search-components/viewswitcher.html#styles
+          forceInternal: true
+        - id: extending
+          title: Extending
+          href: /docs/search-components/viewswitcher.html#extending
+          forceInternal: true
+        - id: examples
+          title: Examples
+          href: /docs/search-components/viewswitcher.html#examples
+          forceInternal: true
