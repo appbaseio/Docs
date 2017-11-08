@@ -97,7 +97,7 @@
     "build": "gatsby build",
     "check-all": "yarn prettier && yarn lint && yarn flow",
     "ci-check": "yarn prettier:diff && yarn lint && yarn flow",
-    "dev": "gatsby develop",
+    "start": "gatsby develop",
     "lint": "eslint .",
     "netlify": "yarn install && yarn build",
     "prettier": "prettier --config .prettierrc --write \"{gatsby-*.js,{flow-typed,plugins,src}/**/*.js}\"",
