@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
     title:
-      'Reactive Manual: Data-driven components for building Maps and Search UIs',
+      'Appbase.io Docs',
     siteUrl: 'https://divyanshu013.github.io/reactive-manual-new',
-    rssFeedTitle: 'Reactive Manual',
+    rssFeedTitle: 'Appbase.io Docs',
     rssFeedDescription:
-      'Data-driven components for building Maps and Search UIs',
+      'Appbase.io Docs Reference - Javascript and REST APIs for indexing, querying and streaming data.',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',

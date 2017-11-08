@@ -1,192 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="62.573px" height="79.718px" viewBox="0 0 62.573 79.718" enable-background="new 0 0 62.573 79.718" xml:space="preserve">
+	 width="246.085px" height="50px" viewBox="0 0 246.085 50" enable-background="new 0 0 246.085 50" xml:space="preserve">
 <g>
-	<g>
-		<path fill="#DEFFFF" d="M23.154,20.497h16.174v3.047v2.024v5.059v2.024v5.066l0.254,2.021l0.062,0.062l3.92,5.007l1.326,2.021
-			c0,0,10.77,18.413,13.295,23.116c3.565,6.639-1.705,6.941-1.705,6.941L6.665,76.707c0,0-5.522-1.02-2.726-5.647
-			c4.736-7.841,18.9-31.194,18.9-31.194l0.316-0.506V20.494L23.154,20.497z"/>
-	</g>
+	<path fill="#FFFFFF" d="M25.119-0.214C11.247-0.214,0,11.026,0,24.893C0,38.758,11.247,50,25.119,50s25.12-11.242,25.12-25.107
+		C50.24,11.026,38.992-0.214,25.119-0.214z M25.119,48.601C12.017,48.601,1.4,37.983,1.4,24.893
+		c0-13.094,10.617-23.709,23.719-23.709c13.097,0,23.72,10.615,23.72,23.709C48.839,37.983,38.216,48.601,25.119,48.601z"/>
+	<path fill="#FFFFFF" d="M35.848,20.297c-0.831,0-1.567,0.424-2,1.069l-7.938-2.183c0.02-0.163,0.037-0.327,0.037-0.489
+		c0-1.953-1.583-3.535-3.532-3.535c-1.952,0-3.534,1.582-3.534,3.535c0,1.546,1.002,2.864,2.396,3.338l-0.681,4.266
+		c-0.346-0.075-0.702-0.115-1.073-0.115c-2.781,0-5.032,2.252-5.032,5.028c0,2.78,2.251,5.032,5.032,5.032
+		c2.777,0,5.034-2.252,5.034-5.032c0-0.719-0.154-1.4-0.428-2.021l9.751-5.106c0.434,0.62,1.156,1.028,1.968,1.028
+		c1.336,0,2.415-1.079,2.415-2.408C38.262,21.373,37.185,20.297,35.848,20.297z M23.719,28.439c-0.557-0.839-1.355-1.5-2.299-1.884
+		l0.695-4.346c0.099,0.008,0.195,0.012,0.3,0.012c1.486,0,2.755-0.916,3.273-2.212l7.816,2.149
+		c-0.036,0.174-0.062,0.355-0.062,0.544c0,0.208,0.03,0.409,0.079,0.604L23.719,28.439z"/>
+</g>
+<g>
 	<g>
 		<g>
 			<defs>
-				<path id="SVGID_1_" d="M60.014,73.508c-0.061-0.01-11.697-21.843-11.697-21.843s-4.892,1.378-10.854-0.142
-					c-4.557-1.157-7.73-4.639-13.696-4.826c-6.212-0.194-9.495,4.968-9.495,4.968L2.559,73.508l3.418,3.836h50.049L60.014,73.508z"
-					/>
+				<rect id="SVGID_1_" x="62.506" y="6.883" width="183.579" height="36.234"/>
 			</defs>
 			<clipPath id="SVGID_2_">
 				<use xlink:href="#SVGID_1_"  overflow="visible"/>
 			</clipPath>
-			<path clip-path="url(#SVGID_2_)" fill="#7590F7" d="M2.557,77.445h57.457H2.557z"/>
-			<rect x="2.916" y="77.445" clip-path="url(#SVGID_2_)" fill="#7590F7" width="57" height="0"/>
-			<rect x="2.916" y="76.445" clip-path="url(#SVGID_2_)" fill="#758FF7" width="57" height="1"/>
-			<rect x="2.916" y="76.445" clip-path="url(#SVGID_2_)" fill="#748FF7" width="57" height="0"/>
-			<rect x="2.916" y="76.445" clip-path="url(#SVGID_2_)" fill="#748EF7" width="57" height="0"/>
-			<rect x="2.916" y="76.445" clip-path="url(#SVGID_2_)" fill="#748DF7" width="57" height="0"/>
-			<rect x="2.916" y="76.445" clip-path="url(#SVGID_2_)" fill="#738CF7" width="57" height="0"/>
-			<rect x="2.916" y="75.445" clip-path="url(#SVGID_2_)" fill="#738CF7" width="57" height="1"/>
-			<rect x="2.916" y="75.445" clip-path="url(#SVGID_2_)" fill="#738BF7" width="57" height="0"/>
-			<rect x="2.916" y="75.445" clip-path="url(#SVGID_2_)" fill="#728AF7" width="57" height="0"/>
-			<rect x="2.916" y="75.445" clip-path="url(#SVGID_2_)" fill="#7289F7" width="57" height="0"/>
-			<rect x="2.916" y="75.445" clip-path="url(#SVGID_2_)" fill="#7288F7" width="57" height="0"/>
-			<rect x="2.916" y="74.445" clip-path="url(#SVGID_2_)" fill="#7187F7" width="57" height="1"/>
-			<rect x="2.916" y="74.445" clip-path="url(#SVGID_2_)" fill="#7187F8" width="57" height="0"/>
-			<rect x="2.916" y="74.445" clip-path="url(#SVGID_2_)" fill="#7186F8" width="57" height="0"/>
-			<rect x="2.916" y="74.445" clip-path="url(#SVGID_2_)" fill="#7085F8" width="57" height="0"/>
-			<rect x="2.916" y="73.445" clip-path="url(#SVGID_2_)" fill="#7084F8" width="57" height="1"/>
-			<rect x="2.916" y="73.445" clip-path="url(#SVGID_2_)" fill="#7083F8" width="57" height="0"/>
-			<rect x="2.916" y="73.445" clip-path="url(#SVGID_2_)" fill="#6F82F8" width="57" height="0"/>
-			<rect x="2.916" y="73.445" clip-path="url(#SVGID_2_)" fill="#6F81F8" width="57" height="0"/>
-			<rect x="2.916" y="73.445" clip-path="url(#SVGID_2_)" fill="#6E80F8" width="57" height="0"/>
-			<rect x="2.916" y="72.445" clip-path="url(#SVGID_2_)" fill="#6E7FF8" width="57" height="1"/>
-			<rect x="2.916" y="72.445" clip-path="url(#SVGID_2_)" fill="#6E7FF8" width="57" height="0"/>
-			<rect x="2.916" y="72.445" clip-path="url(#SVGID_2_)" fill="#6D7EF8" width="57" height="0"/>
-			<rect x="2.916" y="72.445" clip-path="url(#SVGID_2_)" fill="#6D7DF8" width="57" height="0"/>
-			<rect x="2.916" y="72.445" clip-path="url(#SVGID_2_)" fill="#6C7CF8" width="57" height="0"/>
-			<rect x="2.916" y="71.445" clip-path="url(#SVGID_2_)" fill="#6C7BF8" width="57" height="1"/>
-			<rect x="2.916" y="71.445" clip-path="url(#SVGID_2_)" fill="#6C7AF8" width="57" height="0"/>
-			<rect x="2.916" y="71.445" clip-path="url(#SVGID_2_)" fill="#6B79F8" width="57" height="0"/>
-			<rect x="2.916" y="71.445" clip-path="url(#SVGID_2_)" fill="#6B78F8" width="57" height="0"/>
-			<rect x="2.916" y="71.445" clip-path="url(#SVGID_2_)" fill="#6A77F8" width="57" height="0"/>
-			<rect x="2.916" y="70.445" clip-path="url(#SVGID_2_)" fill="#6A76F8" width="57" height="1"/>
-			<rect x="2.916" y="70.445" clip-path="url(#SVGID_2_)" fill="#6A75F8" width="57" height="0"/>
-			<rect x="2.916" y="70.445" clip-path="url(#SVGID_2_)" fill="#6974F9" width="57" height="0"/>
-			<rect x="2.916" y="70.445" clip-path="url(#SVGID_2_)" fill="#6973F9" width="57" height="0"/>
-			<rect x="2.916" y="69.445" clip-path="url(#SVGID_2_)" fill="#6872F9" width="57" height="1"/>
-			<rect x="2.916" y="69.445" clip-path="url(#SVGID_2_)" fill="#6871F9" width="57" height="0"/>
-			<rect x="2.916" y="69.445" clip-path="url(#SVGID_2_)" fill="#6870F9" width="57" height="0"/>
-			<rect x="2.916" y="69.445" clip-path="url(#SVGID_2_)" fill="#676FF9" width="57" height="0"/>
-			<rect x="2.916" y="69.445" clip-path="url(#SVGID_2_)" fill="#676EF9" width="57" height="0"/>
-			<rect x="2.916" y="68.445" clip-path="url(#SVGID_2_)" fill="#666DF9" width="57" height="1"/>
-			<rect x="2.916" y="68.445" clip-path="url(#SVGID_2_)" fill="#666DF9" width="57" height="0"/>
-			<rect x="2.916" y="68.445" clip-path="url(#SVGID_2_)" fill="#666CF9" width="57" height="0"/>
-			<rect x="2.916" y="68.445" clip-path="url(#SVGID_2_)" fill="#656BF9" width="57" height="0"/>
-			<rect x="2.916" y="68.445" clip-path="url(#SVGID_2_)" fill="#656AF9" width="57" height="0"/>
-			<rect x="2.916" y="67.445" clip-path="url(#SVGID_2_)" fill="#6469F9" width="57" height="1"/>
-			<rect x="2.916" y="67.445" clip-path="url(#SVGID_2_)" fill="#6468F9" width="57" height="0"/>
-			<rect x="2.916" y="67.445" clip-path="url(#SVGID_2_)" fill="#6367F9" width="57" height="0"/>
-			<rect x="2.916" y="67.445" clip-path="url(#SVGID_2_)" fill="#6366F9" width="57" height="0"/>
-			<rect x="2.916" y="66.445" clip-path="url(#SVGID_2_)" fill="#6365F9" width="57" height="1"/>
-			<rect x="2.916" y="66.445" clip-path="url(#SVGID_2_)" fill="#6264F9" width="57" height="0"/>
-			<rect x="2.916" y="66.445" clip-path="url(#SVGID_2_)" fill="#6263FA" width="57" height="0"/>
-			<rect x="2.916" y="66.445" clip-path="url(#SVGID_2_)" fill="#6162FA" width="57" height="0"/>
-			<rect x="2.916" y="66.445" clip-path="url(#SVGID_2_)" fill="#6161FA" width="57" height="0"/>
-			<rect x="2.916" y="65.445" clip-path="url(#SVGID_2_)" fill="#6160FA" width="57" height="1"/>
-			<rect x="2.916" y="65.445" clip-path="url(#SVGID_2_)" fill="#605FFA" width="57" height="0"/>
-			<rect x="2.916" y="65.445" clip-path="url(#SVGID_2_)" fill="#605EFA" width="57" height="0"/>
-			<rect x="2.916" y="65.445" clip-path="url(#SVGID_2_)" fill="#5F5DFA" width="57" height="0"/>
-			<rect x="2.916" y="65.445" clip-path="url(#SVGID_2_)" fill="#5F5CFA" width="57" height="0"/>
-			<rect x="2.916" y="64.445" clip-path="url(#SVGID_2_)" fill="#5E5BFA" width="57" height="1"/>
-			<rect x="2.916" y="64.445" clip-path="url(#SVGID_2_)" fill="#5E5AFA" width="57" height="0"/>
-			<rect x="2.916" y="64.445" clip-path="url(#SVGID_2_)" fill="#5E59FA" width="57" height="0"/>
-			<rect x="2.916" y="64.445" clip-path="url(#SVGID_2_)" fill="#5D58FA" width="57" height="0"/>
-			<rect x="2.916" y="63.445" clip-path="url(#SVGID_2_)" fill="#5D57FA" width="57" height="1"/>
-			<rect x="2.916" y="63.445" clip-path="url(#SVGID_2_)" fill="#5C56FA" width="57" height="0"/>
-			<rect x="2.916" y="63.445" clip-path="url(#SVGID_2_)" fill="#5C55FA" width="57" height="0"/>
-			<rect x="2.916" y="63.445" clip-path="url(#SVGID_2_)" fill="#5B53FA" width="57" height="0"/>
-			<rect x="2.916" y="63.445" clip-path="url(#SVGID_2_)" fill="#5B52FA" width="57" height="0"/>
-			<rect x="2.916" y="62.445" clip-path="url(#SVGID_2_)" fill="#5A51FA" width="57" height="1"/>
-			<rect x="2.916" y="62.445" clip-path="url(#SVGID_2_)" fill="#5A50FB" width="57" height="0"/>
-			<rect x="2.916" y="62.445" clip-path="url(#SVGID_2_)" fill="#5A4FFB" width="57" height="0"/>
-			<rect x="2.916" y="62.445" clip-path="url(#SVGID_2_)" fill="#594EFB" width="57" height="0"/>
-			<rect x="2.916" y="62.445" clip-path="url(#SVGID_2_)" fill="#594DFB" width="57" height="0"/>
-			<rect x="2.916" y="61.445" clip-path="url(#SVGID_2_)" fill="#584CFB" width="57" height="1"/>
-			<rect x="2.916" y="61.445" clip-path="url(#SVGID_2_)" fill="#584BFB" width="57" height="0"/>
-			<rect x="2.916" y="61.445" clip-path="url(#SVGID_2_)" fill="#574AFB" width="57" height="0"/>
-			<rect x="2.916" y="61.445" clip-path="url(#SVGID_2_)" fill="#5749FB" width="57" height="0"/>
-			<rect x="2.916" y="61.445" clip-path="url(#SVGID_2_)" fill="#5748FB" width="57" height="0"/>
-			<rect x="2.916" y="60.445" clip-path="url(#SVGID_2_)" fill="#5647FB" width="57" height="1"/>
-			<rect x="2.916" y="60.445" clip-path="url(#SVGID_2_)" fill="#5646FB" width="57" height="0"/>
-			<rect x="2.916" y="60.445" clip-path="url(#SVGID_2_)" fill="#5545FB" width="57" height="0"/>
-			<rect x="2.916" y="60.445" clip-path="url(#SVGID_2_)" fill="#5544FB" width="57" height="0"/>
-			<rect x="2.916" y="59.445" clip-path="url(#SVGID_2_)" fill="#5443FB" width="57" height="1"/>
-			<rect x="2.916" y="59.445" clip-path="url(#SVGID_2_)" fill="#5442FB" width="57" height="0"/>
-			<rect x="2.916" y="59.445" clip-path="url(#SVGID_2_)" fill="#5341FB" width="57" height="0"/>
-			<rect x="2.916" y="59.445" clip-path="url(#SVGID_2_)" fill="#5340FB" width="57" height="0"/>
-			<rect x="2.916" y="59.445" clip-path="url(#SVGID_2_)" fill="#533FFC" width="57" height="0"/>
-			<rect x="2.916" y="58.445" clip-path="url(#SVGID_2_)" fill="#523EFC" width="57" height="1"/>
-			<rect x="2.916" y="58.445" clip-path="url(#SVGID_2_)" fill="#523DFC" width="57" height="0"/>
-			<rect x="2.916" y="58.445" clip-path="url(#SVGID_2_)" fill="#513CFC" width="57" height="0"/>
-			<rect x="2.916" y="58.445" clip-path="url(#SVGID_2_)" fill="#513BFC" width="57" height="0"/>
-			<rect x="2.916" y="58.445" clip-path="url(#SVGID_2_)" fill="#5039FC" width="57" height="0"/>
-			<rect x="2.916" y="57.445" clip-path="url(#SVGID_2_)" fill="#5038FC" width="57" height="1"/>
-			<rect x="2.916" y="57.445" clip-path="url(#SVGID_2_)" fill="#4F37FC" width="57" height="0"/>
-			<rect x="2.916" y="57.445" clip-path="url(#SVGID_2_)" fill="#4F36FC" width="57" height="0"/>
-			<rect x="2.916" y="57.445" clip-path="url(#SVGID_2_)" fill="#4F35FC" width="57" height="0"/>
-			<rect x="2.916" y="56.445" clip-path="url(#SVGID_2_)" fill="#4E34FC" width="57" height="1"/>
-			<rect x="2.916" y="56.445" clip-path="url(#SVGID_2_)" fill="#4E33FC" width="57" height="0"/>
-			<rect x="2.916" y="56.445" clip-path="url(#SVGID_2_)" fill="#4D32FC" width="57" height="0"/>
-			<rect x="2.916" y="56.445" clip-path="url(#SVGID_2_)" fill="#4D31FC" width="57" height="0"/>
-			<rect x="2.916" y="56.445" clip-path="url(#SVGID_2_)" fill="#4C30FC" width="57" height="0"/>
-			<rect x="2.916" y="55.445" clip-path="url(#SVGID_2_)" fill="#4C2FFC" width="57" height="1"/>
-			<rect x="2.916" y="55.445" clip-path="url(#SVGID_2_)" fill="#4B2EFC" width="57" height="0"/>
-			<rect x="2.916" y="55.445" clip-path="url(#SVGID_2_)" fill="#4B2DFD" width="57" height="0"/>
-			<rect x="2.916" y="55.445" clip-path="url(#SVGID_2_)" fill="#4A2CFD" width="57" height="0"/>
-			<rect x="2.916" y="55.445" clip-path="url(#SVGID_2_)" fill="#4A2BFD" width="57" height="0"/>
-			<rect x="2.916" y="54.445" clip-path="url(#SVGID_2_)" fill="#4A29FD" width="57" height="1"/>
-			<rect x="2.916" y="54.445" clip-path="url(#SVGID_2_)" fill="#4928FD" width="57" height="0"/>
-			<rect x="2.916" y="54.445" clip-path="url(#SVGID_2_)" fill="#4927FD" width="57" height="0"/>
-			<rect x="2.916" y="54.445" clip-path="url(#SVGID_2_)" fill="#4826FD" width="57" height="0"/>
-			<rect x="2.916" y="53.445" clip-path="url(#SVGID_2_)" fill="#4825FD" width="57" height="1"/>
-			<rect x="2.916" y="53.445" clip-path="url(#SVGID_2_)" fill="#4724FD" width="57" height="0"/>
-			<rect x="2.916" y="53.445" clip-path="url(#SVGID_2_)" fill="#4723FD" width="57" height="0"/>
-			<rect x="2.916" y="53.445" clip-path="url(#SVGID_2_)" fill="#4622FD" width="57" height="0"/>
-			<rect x="2.916" y="53.445" clip-path="url(#SVGID_2_)" fill="#4621FD" width="57" height="0"/>
-			<rect x="2.916" y="52.445" clip-path="url(#SVGID_2_)" fill="#4520FD" width="57" height="1"/>
-			<rect x="2.916" y="52.445" clip-path="url(#SVGID_2_)" fill="#451FFD" width="57" height="0"/>
-			<rect x="2.916" y="52.445" clip-path="url(#SVGID_2_)" fill="#451EFD" width="57" height="0"/>
-			<rect x="2.916" y="52.445" clip-path="url(#SVGID_2_)" fill="#441DFD" width="57" height="0"/>
-			<rect x="2.916" y="52.445" clip-path="url(#SVGID_2_)" fill="#441BFD" width="57" height="0"/>
-			<rect x="2.916" y="51.445" clip-path="url(#SVGID_2_)" fill="#431AFE" width="57" height="1"/>
-			<rect x="2.916" y="51.445" clip-path="url(#SVGID_2_)" fill="#4319FE" width="57" height="0"/>
-			<rect x="2.916" y="51.445" clip-path="url(#SVGID_2_)" fill="#4218FE" width="57" height="0"/>
-			<rect x="2.916" y="51.445" clip-path="url(#SVGID_2_)" fill="#4217FE" width="57" height="0"/>
-			<rect x="2.916" y="51.445" clip-path="url(#SVGID_2_)" fill="#4116FE" width="57" height="0"/>
-			<rect x="2.916" y="50.445" clip-path="url(#SVGID_2_)" fill="#4115FE" width="57" height="1"/>
-			<rect x="2.916" y="50.445" clip-path="url(#SVGID_2_)" fill="#4014FE" width="57" height="0"/>
-			<rect x="2.916" y="50.445" clip-path="url(#SVGID_2_)" fill="#4013FE" width="57" height="0"/>
-			<rect x="2.916" y="50.445" clip-path="url(#SVGID_2_)" fill="#3F12FE" width="57" height="0"/>
-			<rect x="2.916" y="49.445" clip-path="url(#SVGID_2_)" fill="#3F11FE" width="57" height="1"/>
-			<rect x="2.916" y="49.445" clip-path="url(#SVGID_2_)" fill="#3F0FFE" width="57" height="0"/>
-			<rect x="2.916" y="49.445" clip-path="url(#SVGID_2_)" fill="#3E0EFE" width="57" height="0"/>
-			<rect x="2.916" y="49.445" clip-path="url(#SVGID_2_)" fill="#3E0DFE" width="57" height="0"/>
-			<rect x="2.916" y="49.445" clip-path="url(#SVGID_2_)" fill="#3D0CFE" width="57" height="0"/>
-			<rect x="2.916" y="48.445" clip-path="url(#SVGID_2_)" fill="#3D0BFE" width="57" height="1"/>
-			<rect x="2.916" y="48.445" clip-path="url(#SVGID_2_)" fill="#3C0AFE" width="57" height="0"/>
-			<rect x="2.916" y="48.445" clip-path="url(#SVGID_2_)" fill="#3C09FF" width="57" height="0"/>
-			<rect x="2.916" y="48.445" clip-path="url(#SVGID_2_)" fill="#3B08FF" width="57" height="0"/>
-			<rect x="2.916" y="48.445" clip-path="url(#SVGID_2_)" fill="#3B07FF" width="57" height="0"/>
-			<rect x="2.916" y="47.445" clip-path="url(#SVGID_2_)" fill="#3A06FF" width="57" height="1"/>
-			<rect x="2.916" y="47.445" clip-path="url(#SVGID_2_)" fill="#3A04FF" width="57" height="0"/>
-			<rect x="2.916" y="47.445" clip-path="url(#SVGID_2_)" fill="#3903FF" width="57" height="0"/>
-			<rect x="2.916" y="47.445" clip-path="url(#SVGID_2_)" fill="#3902FF" width="57" height="0"/>
-			<rect x="2.916" y="46.445" clip-path="url(#SVGID_2_)" fill="#3801FF" width="57" height="1"/>
-			<rect x="2.916" y="46.445" clip-path="url(#SVGID_2_)" fill="#3800FF" width="57" height="0"/>
-			<rect x="2.916" y="46.445" clip-path="url(#SVGID_2_)" fill="#3800FF" width="57" height="0"/>
+			<path clip-path="url(#SVGID_2_)" fill="#FFFFFF" d="M74.479,33.15c-3.066,1.382-7.519,1.133-9.413-1.23
+				c-1.205-1.501-1.277-5.82,3.552-6.801c4.922-1.001,8.167,0,8.167,0S77.694,31.701,74.479,33.15L74.479,33.15z M68.186,14.594
+				c-2.269,0.303-3.698,1.61-3.698,1.61l1.112,1.863c0,0,2.537-2.174,6.885-1.495c2.358,0.369,4.072,1.819,4.29,6.394
+				c0,0-13.167-1.82-14.153,4.881c-1.194,8.118,7.172,8.902,11.606,7.504c3.24-1.022,3.977-3.314,4.392-4.921
+				c0.635-2.45,0.454-6.275,0.025-9.465C78.462,19.608,78.106,13.268,68.186,14.594L68.186,14.594z"/>
 		</g>
 	</g>
-	<g>
-		<path fill="#AAD7FF" d="M18.213,17.673c-1.08,0.1-1.871,1.06-1.771,2.138c0.101,1.08,1.06,1.876,2.14,1.773l0,0h0.976v16.927
-			L1.709,68.287C0.9,69.5,0,70.941,0,72.871c0,1.728,0.463,3.695,2.08,5.012v0.062c1.199,0.961,2.839,1.772,4.768,1.772h48.898
-			c1.554,0,3.674-0.146,5.074-1.894c0.961-1.204,1.753-2.37,1.753-4.296c0-1.881-0.712-3.343-1.692-5.06l-0.061-0.124L43.033,38.57
-			V21.584h0.979c1.078,0,1.954-0.876,1.954-1.955c0-1.081-0.876-1.956-1.954-1.956H18.584c-0.063-0.004-0.123-0.004-0.184,0
-			c-0.063-0.004-0.124-0.004-0.186,0H18.213z M23.469,21.584h15.648v2.911h-2.932c-0.061-0.002-0.121-0.002-0.186,0
-			c-0.539,0.055-0.936,0.532-0.885,1.074c0.051,0.536,0.53,0.937,1.07,0.884l0,0h2.932v4.866h-2.932
-			c-0.061-0.005-0.121-0.005-0.186,0c-0.539,0.052-0.936,0.532-0.885,1.069c0.051,0.539,0.53,0.938,1.07,0.887l0,0h2.932v4.868
-			h-2.932c-0.061-0.006-0.121-0.006-0.186,0c-0.539,0.052-0.936,0.53-0.885,1.07c0.051,0.544,0.53,0.94,1.07,0.885l0,0h3.177
-			l0.063,0.062l3.791,4.81h-3.121c-0.061-0.006-0.121-0.006-0.184,0c-0.54,0.053-0.937,0.528-0.887,1.068
-			c0.053,0.538,0.531,0.938,1.07,0.886l0,0h4.401c0,0,10.419,17.813,12.863,22.366c3.448,6.421-1.651,6.713-1.651,6.713
-			L7.521,75.827c0,0-5.343-0.981-2.637-5.462C9.466,62.777,23.168,40.22,23.168,40.22l0.305-0.489V21.584H23.469z"/>
-	</g>
-	<circle fill="#AAD7FF" cx="24.997" cy="56.997" r="2.677"/>
-	<path fill="#FF307A" d="M29.011,34.328c0,0.656-0.532,1.187-1.188,1.187c-0.653,0-1.184-0.53-1.184-1.187
-		c0-0.652,0.53-1.185,1.184-1.185C28.479,33.144,29.011,33.676,29.011,34.328z"/>
-	<circle fill="#3800FF" cx="20.531" cy="8.472" r="2.899"/>
-	<path fill="#AAD7FF" d="M35.643,11.868c0,1.158-0.938,2.096-2.094,2.096s-2.094-0.938-2.094-2.096c0-1.154,0.938-2.092,2.094-2.092
-		S35.643,10.714,35.643,11.868z"/>
-	<circle fill="#7590F7" cx="31.036" cy="2.096" r="2.093"/>
-	<circle fill="#7590F7" cx="32.645" cy="25.177" r="1.393"/>
+	<path fill="#FFFFFF" d="M162.529,33.15c-3.064,1.382-7.52,1.133-9.411-1.23c-1.206-1.501-1.277-5.82,3.55-6.801
+		c4.924-1.001,8.168,0,8.168,0S165.745,31.701,162.529,33.15L162.529,33.15z M156.237,14.594c-2.269,0.303-3.697,1.61-3.697,1.61
+		l1.111,1.863c0,0,2.537-2.174,6.886-1.495c2.357,0.369,4.07,1.819,4.288,6.394c0,0-13.166-1.82-14.152,4.881
+		c-1.195,8.118,7.17,8.902,11.605,7.504c3.24-1.022,3.979-3.314,4.393-4.921c0.634-2.45,0.454-6.275,0.024-9.465
+		C166.517,19.608,166.157,13.268,156.237,14.594L156.237,14.594z"/>
+	<path fill="#FFFFFF" d="M182.34,17.969c0,0-2.713-2.811-6.534-1.294c-1.741,0.689-2.469,2.502-2.116,3.856
+		c0.422,1.631,2.043,2.704,4.166,3.262c4.821,1.267,6.106,3.049,6.422,5.314c0.462,3.32-2.152,6.725-6,6.74
+		c-4.71,0.021-7.428-3.237-7.428-3.237l1.721-1.45c0,0,5.982,5.441,9.391,0.544c0.966-1.389,0.725-4.167-2.688-5.436
+		c-3.912-1.454-7.034-2.173-7.699-5.312c-1.197-5.658,6.341-8.879,12.079-4.413L182.34,17.969L182.34,17.969z"/>
+	<path fill="#FFFFFF" d="M198.409,16.303c7.486,0.072,6.791,8.334,6.791,8.334h-14.062
+		C191.139,23.551,192.188,16.244,198.409,16.303L198.409,16.303z M205.187,32.452c-4.105,2.439-8.553,1.716-10.629,0.447
+		c-3.456-2.113-3.443-6.522-3.443-6.522l15.809,0.015c0.182-1.01,0.071-3.173,0-4.227c-0.311-4.594-3.343-7.628-8.476-7.685
+		c-5.496-0.062-8.555,4.166-9.16,8.031c-1.149,7.361,1.391,13.287,10.155,13.333c4.631,0.022,6.702-1.732,6.702-1.732
+		L205.187,32.452L205.187,32.452z"/>
+	<path fill="#FFFFFF" d="M137.726,34.077c-5.229,0.35-6.426-4.234-6.537-5.214c-0.256-2.278-0.198-6.218-0.139-10.204
+		c0,0,1.701-2.396,6.586-2.065c4.029,0.271,6.679,2.783,6.541,8.57C144.058,30.206,142.788,33.74,137.726,34.077L137.726,34.077z
+		 M145.164,31.042c1.264-2.89,1.591-8.503-0.305-12.008c-1.497-2.763-4.019-4.426-7.758-4.426c-4.188,0-6.111,1.624-6.111,1.624
+		V7.245h-2.175v9.301c0,4.285,0,9.916,0,9.916c0,2.673,0.812,5.375,2.291,7.067c1.295,1.48,4.054,2.86,7.908,2.221
+		C142.383,35.189,144.06,33.563,145.164,31.042L145.164,31.042z"/>
+	<path fill="#FFFFFF" d="M99.488,25.237c0.139,5.786-2.512,8.3-6.541,8.57c-4.884,0.329-6.586-2.065-6.586-2.065
+		c-0.062-3.985-0.117-7.926,0.138-10.204c0.111-0.979,1.309-5.564,6.537-5.214C98.099,16.662,99.367,20.194,99.488,25.237
+		L99.488,25.237z M94.355,14.653c-3.854-0.64-6.583,0.741-7.877,2.219c-1.479,1.691-2.231,4.394-2.231,7.067c0,0,0,5.633,0,9.916
+		v9.263h2.174v-8.948c0,0,1.863,1.624,6.051,1.624c3.739,0,6.202-1.664,7.696-4.427c1.896-3.506,1.569-9.12,0.305-12.007
+		C99.369,16.836,97.723,15.212,94.355,14.653L94.355,14.653z"/>
+	<path fill="#FFFFFF" d="M121.591,25.237c0.14,5.786-2.512,8.3-6.54,8.57c-4.883,0.329-6.585-2.065-6.585-2.065
+		c-0.061-3.985-0.118-7.926,0.139-10.204c0.11-0.979,1.309-5.564,6.536-5.214C120.202,16.662,121.47,20.194,121.591,25.237
+		L121.591,25.237z M116.458,14.653c-3.854-0.64-6.583,0.741-7.877,2.219c-1.48,1.691-2.231,4.394-2.231,7.067c0,0,0,5.633,0,9.916
+		v9.263h2.174v-8.948c0,0,1.863,1.624,6.05,1.624c3.739,0,6.202-1.664,7.696-4.427c1.896-3.506,1.57-9.12,0.306-12.007
+		C121.472,16.836,119.827,15.212,116.458,14.653L116.458,14.653z"/>
+	<polygon fill="#FFFFFF" points="221.579,6.883 221.579,10.869 220.131,10.869 220.131,6.883 	"/>
+	<polygon fill="#FFFFFF" points="214.332,31.885 214.332,35.871 212.884,35.871 212.884,31.885 	"/>
+	<polygon fill="#FFFFFF" points="220.131,14.492 220.131,35.871 221.579,35.871 221.579,14.492 	"/>
+	<path fill="#FFFFFF" d="M236.483,34.271c-4.529,0-8.2-4.063-8.2-9.074c0-5.012,3.669-9.074,8.2-9.074
+		c4.529,0,8.201,4.062,8.201,9.074C244.685,30.207,241.013,34.271,236.483,34.271L236.483,34.271z M236.483,14.49
+		c-5.304,0-9.604,4.756-9.604,10.623c0,5.867,4.3,10.624,9.604,10.624c5.302,0,9.602-4.757,9.602-10.624
+		C246.085,19.247,241.785,14.49,236.483,14.49L236.483,14.49z"/>
 </g>
 </svg>

@@ -72,7 +72,6 @@ const Header = ({location}) => (
                 marginTop: 1,
               },
             }}>
-            Reactive Manual
           </span>
         </Link>
 

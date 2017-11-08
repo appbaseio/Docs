@@ -11,7 +11,7 @@ class Home extends Component {
   render() {
     const {data} = this.props;
     const title =
-      'Reactive Manual - Data-driven components for building Maps and Search UIs';
+      'Appbase.io Docs';
 
     return (
       <div css={{width: '100%'}}>
@@ -26,17 +26,15 @@ class Home extends Component {
           }}>
           <div
             css={{
-              paddingTop: 45,
+              paddingTop: 30,
               paddingBottom: 20,
 
               [media.greaterThan('small')]: {
-                paddingTop: 60,
-                paddingBottom: 70,
+                paddingTop: 45,
+                paddingBottom: 40,
               },
 
               [media.greaterThan('xlarge')]: {
-                paddingTop: 95,
-                paddingBottom: 85,
                 marginLeft: 'auto',
                 marginRight: 'auto',
               },
@@ -47,18 +45,18 @@ class Home extends Component {
                   color: colors.brand,
                   textAlign: 'center',
                   margin: 0,
-                  fontSize: 45,
+                  fontSize: 35,
                   letterSpacing: '0.01em',
                   [media.size('xsmall')]: {
                     fontSize: 30,
                   },
                   [media.greaterThan('xlarge')]: {
-                    fontSize: 60,
+                    fontSize: 40,
                   },
                 }}>
-                Reactive Manual
+                Appbase.io Docs
               </h1>
-              <p
+              {/*<!--p
                 css={{
                   paddingTop: 15,
                   textAlign: 'center',
@@ -78,8 +76,8 @@ class Home extends Component {
                     fontSize: 30,
                   },
                 }}>
-                Data-driven components for building Maps and Search UIs
-              </p>
+                The streaming NoSQL database
+              </p-->*/}
               <Flex
                 valign="center"
                 css={{
@@ -207,6 +205,12 @@ const markdownStyles = {
       display: 'block',
       whiteSpace: 'nowrap',
     },
+
+    '&:nth-child(n+1)': {
+      [media.greaterThan('medium')]: {
+        marginTop: 60,
+      },
+    },
   },
 
   '& .marketing-col': {
@@ -224,11 +228,12 @@ const markdownStyles = {
     },
 
     [media.lessThan('medium')]: {
-      display: 'inline-block',
+      display: 'block',
       verticalAlign: 'top',
       marginLeft: 0,
       whiteSpace: 'normal',
-      width: '75%',
+      width: '90%',
+      marginLeft: 10,
       marginRight: 20,
       paddingBottom: 40,
 
