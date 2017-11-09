@@ -48,7 +48,9 @@ const Footer = ({layoutHasSidebar = false}) => (
             <FooterLink to="rest/getting-started.html">
               REST Quick Start
             </FooterLink>
-            <ExternalFooterLink to="https://rest.appbase.io">
+            <ExternalFooterLink href="https://rest.appbase.io"
+            target="_blank"
+            rel="noopener">
               REST API Reference
             </ExternalFooterLink>
           </FooterNav>
