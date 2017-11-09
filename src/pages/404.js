@@ -8,10 +8,11 @@ const PageNotFound = () => (
   <Container>
     <div css={sharedStyles.articleLayout.container}>
       <div css={sharedStyles.articleLayout.content}>
-        <Header>Page Not Found</Header>
-        <TitleAndMetaTags title="Reactive Manual - Page Not Found" />
+        <Header>404!</Header>
+        <TitleAndMetaTags title="Appbase.io Docs - 404, Page Not Found" />
         <div css={sharedStyles.markdown}>
-          <p>We couldn't find what you were looking for.</p>
+          <p>Sorry, but the page you were trying to view does not exist.
+          </p>
         </div>
       </div>
     </div>

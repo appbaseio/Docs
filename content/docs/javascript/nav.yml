@@ -1,0 +1,14 @@
+- title: Javascript
+  items:
+    - id: js-quickstart
+      title: Quick Start
+      href: /javascript/quickstart.html
+      forceInternal: true
+    - id: js-api-reference
+      title: API Reference
+      href: /javascript/api-reference.html
+      forceInternal: true
+    - id: js-webhooks-guide
+      title: Webhooks Guide
+      href: /javascript/webhooks-guide.html
+      forceInternal: true

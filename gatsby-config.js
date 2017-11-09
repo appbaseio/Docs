@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title:
       'Appbase.io Docs',
-    siteUrl: 'https://divyanshu013.github.io/reactive-manual-new',
+    siteUrl: 'https://github.com/appbaseio/Docs',
     rssFeedTitle: 'Appbase.io Docs',
     rssFeedDescription:
       'Appbase.io Docs Reference - Javascript and REST APIs for indexing, querying and streaming data.',

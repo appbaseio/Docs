@@ -20,7 +20,6 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
   // Used to detect and prevent duplicate redirects
   const redirectToSlugMap = {};
 
-  const blogTemplate = resolve('./src/templates/blog.js');
   const communityTemplate = resolve('./src/templates/community.js');
   const docsTemplate = resolve('./src/templates/docs.js');
   const tutorialTemplate = resolve('./src/templates/tutorial.js');
@@ -60,33 +59,12 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
           slug,
         },
       });
-    } else if (
-      slug.includes('blog/') ||
-      slug.includes('community/') ||
-      slug.includes('contributing/') ||
-      slug.includes('docs/') ||
-      slug.includes('getting-started/') ||
-      slug.includes('warnings/')
-    ) {
-      let template;
-      if (slug.includes('blog/')) {
-        template = blogTemplate;
-      } else if (slug.includes('community/')) {
-        template = communityTemplate;
-      } else if (
-        slug.includes('contributing/') ||
-        slug.includes('docs/') ||
-        slug.includes('warnings/')
-      ) {
-        template = docsTemplate;
-      } else if (slug.includes('getting-started/')) {
-        template = tutorialTemplate;
-      }
-
+    } else {
+      console.log("slug", slug);
       const createArticlePage = path =>
         createPage({
           path: path,
-          component: template,
+          component: docsTemplate,
           context: {
             slug,
           },
@@ -127,38 +105,7 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
       }
     }
   });
-
-  const newestBlogEntry = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          limit: 1
-          filter: {id: {regex: "/blog/"}}
-          sort: {fields: [fields___date], order: DESC}
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `,
-  );
-  const newestBlogNode = newestBlogEntry.data.allMarkdownRemark.edges[0].node;
-
-  // Blog landing page should always show the most recent blog entry.
-  createRedirect({
-    fromPath: '/blog/',
-    redirectInBrowser: true,
-    toPath: newestBlogNode.fields.slug,
-  });
 };
-
-// Parse date information out of blog post filename.
-const BLOG_POST_FILENAME_REGEX = /([0-9]+)\-([0-9]+)\-([0-9]+)\-(.+)\.md$/;
 
 // Add custom fields to MarkdownRemark nodes.
 exports.onCreateNode = ({node, boundActionCreators, getNode}) => {
@@ -170,30 +117,6 @@ exports.onCreateNode = ({node, boundActionCreators, getNode}) => {
       const {relativePath} = getNode(node.parent);
 
       let slug = permalink;
-
-      if (!slug) {
-        if (relativePath.includes('blog')) {
-          // Blog posts don't have embedded permalinks.
-          // Their slugs follow a pattern: /blog/<year>/<month>/<day>/<slug>.html
-          // The date portion comes from the file name: <date>-<title>.md
-          const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
-          const year = match[1];
-          const month = match[2];
-          const day = match[3];
-          const filename = match[4];
-
-          slug = `/blog/${year}/${month}/${day}/${filename}.html`;
-
-          const date = new Date(year, month - 1, day);
-
-          // Blog posts are sorted by date and display the date in their header.
-          createNodeField({
-            node,
-            name: 'date',
-            value: date.toJSON(),
-          });
-        }
-      }
 
       if (!slug) {
         slug = `/${relativePath.replace('.md', '.html')}`;

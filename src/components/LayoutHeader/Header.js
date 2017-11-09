@@ -51,7 +51,7 @@ const Header = ({location}) => (
           to="/">
           <img
             src={logoSvg}
-            alt="Reactive Manual Logo"
+            alt="Appbase.io Logo"
             css={{
               height: 40,
 
@@ -104,29 +104,19 @@ const Header = ({location}) => (
             },
           }}>
           <HeaderLink
-            isActive={location.pathname.includes('/getting-started/')}
-            title="Getting Started"
-            to="/getting-started/installation.html"
+            isActive={location.pathname.includes('/concepts/')}
+            title="Concepts"
+            to="/concepts/intro.html"
           />
           <HeaderLink
-            isActive={location.pathname.includes('/basic-components/')}
-            title="Basic Components"
-            to="/docs/basic-components"
+            isActive={location.pathname.includes('/javascript/')}
+            title="Javascript"
+            to="/javascript/quickstart.html"
           />
           <HeaderLink
-            isActive={location.pathname.includes('/map-components/')}
-            title="Map Components"
-            to="/docs/map-components"
-          />
-          <HeaderLink
-            isActive={location.pathname.includes('/search-components/')}
-            title="Search Components"
-            to="/docs/search-components"
-          />
-          <HeaderLink
-            isActive={location.pathname.includes('/advanced/')}
-            title="Advanced"
-            to="/docs/advanced"
+            isActive={location.pathname.includes('/rest/')}
+            title="REST API"
+            to="/rest/quickstart.html"
           />
         </nav>
       </div>

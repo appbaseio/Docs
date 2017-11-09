@@ -21,7 +21,7 @@ const Docs = ({data, location}) => {
       location={location}
       markdownRemark={data.markdownRemark}
       sectionList={sectionListDocs}
-      titlePostfix=" - Reactive Manual"
+      titlePostfix=" - Appbase.io Docs"
     />
   );
 };
