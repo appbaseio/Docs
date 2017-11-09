@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/Docs`,
   siteMetadata: {
     title:
       'Appbase.io Docs',
