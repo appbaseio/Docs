@@ -10,7 +10,7 @@ prevTitle: "Data Model"
 
 Data Browser is a WYSIWG GUI for adding, modifying and viewing your appbase.io app's data.
 
-Data is stored as JSON documents in a **type**. You can read more about the data schema [here](datamodel.html#appbase-data-schema).
+Data is stored as JSON documents in a **type**. You can read more about the data schema [here](/concepts/datamodel.html#appbase-data-schema).
 
 ## Installation
 
@@ -45,6 +45,6 @@ Data records can also be deleted easily. Select a record (or multiple) from the 
 
 ## Doing more with data
 
-While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](../rest/getting-started.html) or one of the [Javascript](../javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
+While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest/getting-started.html) or one of the [Javascript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
 
 The data browser is still a great place to visualize and debug the existing data records with its filters and continuous query functionalities.

@@ -12,6 +12,8 @@ As the name suggests, our prime focus with this iteration of the API has been ac
 
 You might wonder - why is addressing scale so important? A typical successful application would never exceed a throughput of a  few hundred requests per second and generally be okay with serving responses in time.
 
+>  
+>
 > So much complexity in software comes from trying to make one thing do two things.  
 -Ryan Singer
 
