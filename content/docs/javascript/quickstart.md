@@ -50,7 +50,7 @@ Adding it in the browser should be a one line script addition.
 <script src="node_modules/appbase-js/dist/appbase.js.gz"></script>
 ```
 
-Alternatively, a UMD build of the library can be used directly from Github via [CDN.js](https://cdnjs.com/libraries/appbase-js) or [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
+Alternatively, a UMD build of the library can be used directly from either  [CDN.js](https://cdnjs.com/libraries/appbase-js) or [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/2.2.1/appbase.js"></script>

@@ -16,7 +16,7 @@ id: home
       <p><a href="/rest/getting-started.html">Get started with the REST APIs</a> for indexing, querying and streaming data.</p>
     </div>
     <div class="marketing-col">
-      <h3>API Reference</h3>
+      <h3>REST API Reference</h3>
       <p>Read the <a href="https://rest.appbase.io">complete API reference</a>.</p>
     </div>
   </div>
