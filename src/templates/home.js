@@ -88,13 +88,13 @@ class Home extends Component {
                   },
                 }}>
                 <CtaItem>
-                  <ButtonLink to="/docs" type="primary">
+                  <ButtonLink to="/concepts/intro.html" type="primary">
                     Docs
                   </ButtonLink>
                 </CtaItem>
                 <CtaItem>
                   <ButtonLink
-                    to="/getting-started/installation.html"
+                    to="/javascript/quickstart.html"
                     type="secondary">
                     Getting Started
                   </ButtonLink>
