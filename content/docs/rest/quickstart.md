@@ -1,11 +1,9 @@
 ---
-id: rest-quickstart
+id: getting-started
 title: "REST API Quick Start"
 layout: docs
-sectionid: rest-quickstart
-permalink: rest/quick-start.html
-next: https://rest.appbase.io
-nextTitle: "REST API Reference"
+sectionid: getting-started
+permalink: rest/getting-started.html
 ---
 
 This is a quick start guide to working with the [appbase.io REST API](https://rest.appbase.io).

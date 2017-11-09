@@ -5,7 +5,7 @@ import navJavascript from
 import navREST from
 '../../content/docs/rest/nav.yml';
 
-const nav = [...navConcepts, ...navJavascript];
+const nav = [...navConcepts, ...navJavascript, ...navREST];
 
 console.log("nav", nav);
 const sectionListDocs = nav.map(item => ({

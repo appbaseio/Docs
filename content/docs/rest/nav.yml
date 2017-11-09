@@ -1,31 +1,31 @@
 - title: REST
   items:
-    - id: rest-quickstart
-      title: "Quicky Start"
-      href: /rest/quick-start.html
+    - id: getting-started
+      title: "Quick Start"
+      href: /rest/getting-started.html
       forceInternal: true
       subitems:
         - id: create-an-app
           title: "Before you start: Create An App"
-          href: /rest/quickstart.html#create-an-app
+          href: /rest/getting-started.html#create-an-app
           forceInternal: true
         - id: setup
           title: "Step 1: Setup"
-          href: /rest/quickstart.html#setup
+          href: /rest/getting-started.html#setup
           forceInternal: true
         - id: storing-data
           title: "Step 2: Storing Data"
-          href: /rest/quickstart.html#storing-data
+          href: /rest/getting-started.html#storing-data
           forceInternal: true
         - id: sgetings-err-streaming-data
           title: "Step 3: GETing v/s Streaming Data"
-          href: /rest/quickstart.html#sgetings-err-streaming-data
+          href: /rest/getting-started.html#sgetings-err-streaming-data
           forceInternal: true
         - id: streaming-search
           title: "Step 4: Streaming Rich Queries"
-          href: /rest/quickstart.html#streaming-search
+          href: /rest/getting-started.html#streaming-search
           forceInternal: true
         - id: api-reference
           title: "REST API Reference"
-          href: /rest/quickstart.html#api-reference
+          href: /rest/getting-started.html#api-reference
           forceInternal: true

@@ -116,7 +116,7 @@ const Header = ({location}) => (
           <HeaderLink
             isActive={location.pathname.includes('/rest/')}
             title="REST API"
-            to="/rest/quickstart.html"
+            to="/rest/getting-started.html"
           />
         </nav>
       </div>
