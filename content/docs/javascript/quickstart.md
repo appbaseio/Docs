@@ -1,8 +1,8 @@
 ---
-id: js-quickstart
+id: quickstart
 title: "Javascript Quick Start"
 layout: docs
-sectionid: js-quickstart
+sectionid: quickstart
 permalink: javascript/quickstart.html
 next: api-reference.html
 nextTitle: "Javascript API Reference"

@@ -1,5 +1,5 @@
 ---
-id: js-api-reference
+id: api-reference
 title: "Javascript API Reference"
 layout: docs
 sectionid: api-reference

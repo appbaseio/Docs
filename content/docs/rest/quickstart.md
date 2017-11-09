@@ -3,14 +3,14 @@ id: rest-quickstart
 title: "REST API Quick Start"
 layout: docs
 sectionid: rest-quickstart
-permalink: rest/quickstart.html
+permalink: rest/quick-start.html
 next: https://rest.appbase.io
 nextTitle: "REST API Reference"
 ---
 
 This is a quick start guide to working with the [appbase.io REST API](https://rest.appbase.io).
 
-## Creating an App
+## Create an App
 
 <a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgur.com/r6hWKAG.gif"/></a>  
 Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.

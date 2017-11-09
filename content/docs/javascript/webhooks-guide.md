@@ -1,8 +1,8 @@
 ---
-id: js-webhooks-guide
+id: webhooks-guide
 title: "Webhooks Guide"
 layout: docs
-sectionid: webhooksguide
+sectionid: webhooks-guide
 permalink: javascript/webhooks-guide.html
 prev: api-reference.html
 prevTitle: "Javascript API Reference"
