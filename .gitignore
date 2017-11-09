@@ -11,3 +11,6 @@ bower_components
 
 # OSX metadata
 *.DS_Store
+
+# Ignore .cache
+.cache/*
