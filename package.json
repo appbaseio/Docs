@@ -98,6 +98,7 @@
     "check-all": "yarn prettier && yarn lint && yarn flow",
     "ci-check": "yarn prettier:diff && yarn lint && yarn flow",
     "start": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "lint": "eslint .",
     "netlify": "yarn install && yarn build",
     "prettier": "prettier --config .prettierrc --write \"{gatsby-*.js,{flow-typed,plugins,src}/**/*.js}\"",
@@ -105,6 +106,7 @@
     "reset": "rimraf ./.cache"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^2.6.0"
+    "eslint-config-prettier": "^2.6.0",
+    "gh-pages": "^1.0.0"
   }
 }
