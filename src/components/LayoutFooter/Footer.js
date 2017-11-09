@@ -57,10 +57,10 @@ const Footer = ({layoutHasSidebar = false}) => (
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <MetaTitle onDark={true}>Community</MetaTitle>
             <ExternalFooterLink
-              href="https://github.com/appbaseio/appbase-js/issues"
+              href="https://github.com/appbaseio/Docs/"
               target="_blank"
               rel="noopener">
-              Issues
+              Github
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://slack.appbase.io/"
