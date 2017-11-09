@@ -1,18 +1,9 @@
 language: node_js
 node_js:
-- '6.9.5'
+- '8.9.1'
 branches:
   only:
   - master
-before_install:
-  - rvm install 2.4.1
-  - gem install sass
-before_script:
-- npm install -g grunt-cli
-- npm install -g bower
-- grunt gh-pages-clean
-- bower update
-env:
-  global:
-  - DOCBASE_TOKEN="OTAwNDU5MTk4M2NlYzViYzQxNzFlN2E3Yjk1MWQ2ZjhkODRjMTg5Yg=="
+script:
+  - yarn run deploy
 sudo: false
