@@ -44,33 +44,27 @@ const Footer = ({layoutHasSidebar = false}) => (
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <MetaTitle onDark={true}>Docs</MetaTitle>
-            <FooterLink to="/getting-started">Quick Start</FooterLink>
-            <FooterLink to="/docs/basic-components">
-              Basic Components
+            <FooterLink to="javascript/quickstart.html">Javascript Quick Start</FooterLink>
+            <FooterLink to="rest/getting-started.html">
+              REST Quick Start
             </FooterLink>
-            <FooterLink to="/docs/map-components">
-              Map Components
-            </FooterLink>
-            <FooterLink to="/docs/search-components">
-              Search Components
-            </FooterLink>
-            <FooterLink to="/docs/advanced">
-              Advanced
-            </FooterLink>
+            <ExternalFooterLink to="https://rest.appbase.io">
+              REST API Reference
+            </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <MetaTitle onDark={true}>Community</MetaTitle>
             <ExternalFooterLink
-              href="https://gitter.im/appbaseio/reactivesearch"
+              href="https://github.com/appbaseio/appbase-js/issues"
               target="_blank"
               rel="noopener">
-              Chat on Gitter
+              Issues
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://slack.appbase.io/"
               target="_blank"
               rel="noopener">
-              Join us on Slack
+              Slack
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://twitter.com/appbaseio"
@@ -80,24 +74,24 @@ const Footer = ({layoutHasSidebar = false}) => (
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>Tools</MetaTitle>
+            <MetaTitle onDark={true}>Helpful Tools</MetaTitle>
             <ExternalFooterLink
               href="https://opensource.appbase.io/dejavu/"
               target="_blank"
               rel="noopener">
-              DejaVu
+              Data browser
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://opensource.appbase.io/mirage/"
               target="_blank"
               rel="noopener">
-              Mirage
+              GUI Query Builder
             </ExternalFooterLink>
             <ExternalFooterLink
-              href="https://opensource.appbase.io/gem/"
+              href="https://opensource.appbase.io/reactivesearch/"
               target="_blank"
               rel="noopener">
-              Gem
+              React UI Components
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
@@ -106,13 +100,13 @@ const Footer = ({layoutHasSidebar = false}) => (
               href="https://medium.appbase.io/"
               target="_blank"
               rel="noopener">
-              Blog
+              Medium Publication
             </ExternalFooterLink>
             <ExternalFooterLink
-              href="https://github.com/appbaseio"
+              href="mailto:support@appbase.io"
               target="_blank"
               rel="noopener">
-              GitHub
+              Support Email
             </ExternalFooterLink>
           </FooterNav>
         </div>

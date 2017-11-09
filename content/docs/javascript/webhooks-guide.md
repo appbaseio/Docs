@@ -10,14 +10,14 @@ prevTitle: "Javascript API Reference"
 
 > Note <i class="fa fa-info-circle"></i>
 >
-> Introduced in [appbase-js](https://github.com/appbaseio/appbase-js) ``v0.10.0``. Read the [getting started guide](https://docs.appbase.io/scalr/javascript/javascript-intro.html) for some familiarity with the JS lib.
+> Introduced in [appbase-js](https://github.com/appbaseio/appbase-js) ``v0.10.0``. Read the [getting started guide](quickstart.html) for some familiarity with the JS lib.
 
 
 Webhooks (aka streaming to a URL) allows you to set up integrations which respond to events in appbase.io. Webhooks can be used to send transaction emails, post on a slack channel when a new user signs up, update the pricing plan when the data storage crosses a threshold.
 
 ## How webhooks are triggered
 
-Webooks are continuous queries whose results are subscribed by a URL. A webhooks object contains 1) continuous query and 2) subscribed URL's configurations (headers, body payload, count, interval).
+Webhooks are continuous queries whose results are subscribed by a URL. A webhooks object contains 1) continuous query and 2) subscribed URL's configurations (headers, body payload, count, interval).
 
 Webhooks can be triggered when a new document is inserted, an existing document changes it's value, or when a new document matches a specific continuous query condition.
 
@@ -33,7 +33,7 @@ var appbaseRef = new Appbase({
  })
  ```
 
-Webhooks in appbase-js are supported by [``searchStreamToURL()``](javascript/api-reference.html#searchstreamtourl). The behavior is very similar to  [``searchStream()``](javascript/api-reference.html#searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
+Webhooks in appbase-js are supported by [``searchStreamToURL()``](api-reference.html#searchstreamtourl). The behavior is very similar to  [``searchStream()``](api-reference.html#searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
 
  ```js
  appbaseRef.searchStreamToURL(
