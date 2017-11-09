@@ -25,7 +25,7 @@
           title: "Step 4: Streaming Rich Queries"
           href: /rest/getting-started.html#streaming-search
           forceInternal: true
-        - id: api-reference
+        - id: rest-api-reference
           title: "REST API Reference"
-          href: /rest/getting-started.html#api-reference
+          href: /rest/getting-started.html#rest-api-reference
           forceInternal: true

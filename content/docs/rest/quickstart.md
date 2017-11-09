@@ -174,6 +174,6 @@ INITIAL RESPONSE
 }
 ```
 
-# API Reference
+# REST API Reference
 
 The full API reference with example snippets in cURL, Ruby, Python, Node, PHP, Go, jQuery can be browsed at [rest.appbase.io](https://rest.appbase.io).
