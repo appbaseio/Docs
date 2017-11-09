@@ -7,7 +7,6 @@ import navREST from
 
 const nav = [...navConcepts, ...navJavascript, ...navREST];
 
-console.log("nav", nav);
 const sectionListDocs = nav.map(item => ({
   ...item,
   directory: 'docs',

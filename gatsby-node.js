@@ -60,7 +60,6 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
         },
       });
     } else {
-      console.log("slug", slug);
       const createArticlePage = path =>
         createPage({
           path: path,
