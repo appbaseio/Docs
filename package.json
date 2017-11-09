@@ -94,7 +94,7 @@
     "url": "git+https://github.com/divyanshu013/reactive-manual-new.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "check-all": "yarn prettier && yarn lint && yarn flow",
     "ci-check": "yarn prettier:diff && yarn lint && yarn flow",
     "start": "gatsby develop",
