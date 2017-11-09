@@ -1,0 +1,31 @@
+- title: REST
+  items:
+    - id: getting-started
+      title: "Quick Start"
+      href: /rest/getting-started.html
+      forceInternal: true
+      subitems:
+        - id: create-an-app
+          title: "Before you start: Create An App"
+          href: /rest/getting-started.html#create-an-app
+          forceInternal: true
+        - id: setup
+          title: "Step 1: Setup"
+          href: /rest/getting-started.html#setup
+          forceInternal: true
+        - id: storing-data
+          title: "Step 2: Storing Data"
+          href: /rest/getting-started.html#storing-data
+          forceInternal: true
+        - id: sgetings-err-streaming-data
+          title: "Step 3: GETing v/s Streaming Data"
+          href: /rest/getting-started.html#sgetings-err-streaming-data
+          forceInternal: true
+        - id: streaming-search
+          title: "Step 4: Streaming Rich Queries"
+          href: /rest/getting-started.html#streaming-search
+          forceInternal: true
+        - id: rest-api-reference
+          title: "REST API Reference"
+          href: /rest/getting-started.html#rest-api-reference
+          forceInternal: true

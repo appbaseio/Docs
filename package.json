@@ -1,29 +1,112 @@
 {
-  "name": "docbase",
-  "version": "0.0.1",
-  "authors": [
-    "Mateus Freira <mateus.freira@gmail.com>"
-  ],
-  "description": "Documentation for Appbase",
-  "contributors": [],
-  "scripts": {
-    "test": "grunt publish"
+  "name": "reactive-manual-new",
+  "description": "Data-driven components for building Maps and Search UIs",
+  "author": {
+    "name": "Divyanshu Maithani",
+    "email": "div.blackcat@gmail.com",
+    "url": "https://github.com/divyanshu013"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/appbaseio/Docs"
+  "contributors": [
+    {
+      "name": "Deepak Grover",
+      "email": "deepakgrover333@gmail.com",
+      "url": "https://github.com/metagrover"
+    },
+    {
+      "name": "Siddharth Kothari",
+      "email": "siddharth@appbase.io",
+      "url": "https://github.com/siddharthlatest"
+    }
+  ],
+  "version": "0.0.1",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/divyanshu013/reactive-manual-new"
+  },
+  "resolutions": {
+    "gatsby/graphql": "0.10.5",
+    "gatsby/react": "16.0.0",
+    "gatsby/react-dom": "16.0.0"
   },
   "dependencies": {
-    "grunt": "~0.4.0"
+    "@gaearon/react-live": "1.7.1-with-safari-fix",
+    "array-from": "^2.1.1",
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-fbjs": "^2.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-relay": "^0.0.19",
+    "flow-bin": "^0.56.0",
+    "gatsby": "^1.9.9",
+    "gatsby-link": "^1.6.9",
+    "gatsby-plugin-catch-links": "^1.0.9",
+    "gatsby-plugin-feed": "^1.3.9",
+    "gatsby-plugin-glamor": "^1.6.4",
+    "gatsby-plugin-google-analytics": "^1.0.4",
+    "gatsby-plugin-manifest": "^1.0.4",
+    "gatsby-plugin-netlify": "^1.0.4",
+    "gatsby-plugin-nprogress": "^1.0.7",
+    "gatsby-plugin-react-helmet": "^1.0.3",
+    "gatsby-plugin-react-next": "^1.0.3",
+    "gatsby-plugin-sharp": "^1.6.2",
+    "gatsby-plugin-twitter": "^1.0.10",
+    "gatsby-remark-autolink-headers": "^1.4.4",
+    "gatsby-remark-copy-linked-files": "^1.5.2",
+    "gatsby-remark-images": "^1.5.11",
+    "gatsby-remark-prismjs": "^1.2.1",
+    "gatsby-remark-responsive-iframe": "^1.4.3",
+    "gatsby-remark-smartypants": "^1.4.3",
+    "gatsby-source-filesystem": "^1.4.4",
+    "gatsby-transformer-remark": "^1.7.2",
+    "gatsby-transformer-sharp": "^1.6.1",
+    "glamor": "^2.20.40",
+    "hex2rgba": "^0.0.1",
+    "prettier": "^1.7.4",
+    "remarkable": "^1.7.1",
+    "request-promise": "^4.2.2",
+    "rimraf": "^2.6.1",
+    "slugify": "^1.2.1",
+    "string.prototype.includes": "^1.0.0",
+    "string.prototype.repeat": "^0.2.0",
+    "unist-util-visit": "^1.1.3"
+  },
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "homepage": "https://divyanshu013.github.io/reactive-manual-new",
+  "keywords": [
+    "appbaseio",
+    "reactive",
+    "search",
+    "maps",
+    "manual",
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyanshu013/reactive-manual-new.git"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "check-all": "yarn prettier && yarn lint && yarn flow",
+    "ci-check": "yarn prettier:diff && yarn lint && yarn flow",
+    "start": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "lint": "eslint .",
+    "netlify": "yarn install && yarn build",
+    "prettier": "prettier --config .prettierrc --write \"{gatsby-*.js,{flow-typed,plugins,src}/**/*.js}\"",
+    "prettier:diff": "prettier --config .prettierrc --list-different \"{gatsby-*.js,{flow-typed,plugins,src}/**/*.js}\"",
+    "reset": "rimraf ./.cache"
   },
   "devDependencies": {
-    "grunt-contrib-connect": "^0.10.1",
-    "grunt-gh-pages": "^0.10.0",
-    "grunt-docbase": "latest",
-    "progress": "^1.1.8"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=0.8"
+    "eslint-config-prettier": "^2.6.0",
+    "gh-pages": "^1.0.0"
   }
 }

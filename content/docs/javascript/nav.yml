@@ -1,0 +1,101 @@
+- title: Javascript
+  items:
+    - id: quickstart
+      title: Quick Start
+      href: /javascript/quickstart.html
+      forceInternal: true
+      subitems:
+        - id: creating-an-app
+          title: "Before you start: Create An App"
+          href: /javascript/quickstart.html#creating-an-app
+          forceInternal: true
+        - id: install-appbase-js
+          title: "Step 1: Install appbase-js"
+          href: /javascript/quickstart.html#install-appbase-js
+          forceInternal: true
+        - id: storing-data
+          title: "Step 2: Storing Data"
+          href: /javascript/quickstart.html#storing-data
+          forceInternal: true
+        - id: sgetings-vs-streaming-data
+          title: "Step 3: Streaming Data"
+          href: /javascript/quickstart.html#sgetings-vs-streaming-data
+          forceInternal: true
+        - id: streaming-rich-queries
+          title: "Step 4: Streaming Rich Queries"
+          href: /javascript/quickstart.html#streaming-rich-queries
+          forceInternal: true
+    - id: api-reference
+      title: API Reference
+      href: /javascript/api-reference.html
+      forceInternal: true
+      subitems:
+        - id: new-appbase
+          title: "new Appbase()"
+          href: /javascript/api-reference.html#new-appbase
+          forceInternal: true
+        - id: index
+          title: "index()"
+          href: /javascript/api-reference.html#index
+          forceInternal: true
+        - id: update
+          title: "update()"
+          href: /javascript/api-reference.html#update
+          forceInternal: true
+        - id: delete
+          title: "delete()"
+          href: /javascript/api-reference.html#delete
+          forceInternal: true
+        - id: bulk
+          title: "bulk()"
+          href: /javascript/api-reference.html#bulk
+          forceInternal: true
+        - id: get
+          title: "get()"
+          href: /javascript/api-reference.html#get
+          forceInternal: true
+        - id: gettypes
+          title: "getTypes()"
+          href: /javascript/api-reference.html#gettypes
+          forceInternal: true
+        - id: search
+          title: "search()"
+          href: /javascript/api-reference.html#search
+          forceInternal: true
+        - id: getstream
+          title: "getStream()"
+          href: /javascript/api-reference.html#getstream
+          forceInternal: true
+        - id: searchstream
+          title: "searchStream()"
+          href: /javascript/api-reference.html#searchstream
+          forceInternal: true
+        - id: searchstreamtourl
+          title: "searchStreamToURL()"
+          href: /javascript/api-reference.html#searchstreamtourl
+          forceInternal: true
+    - id: webhooks-guide
+      title: Webhooks Guide
+      href: /javascript/webhooks-guide.html
+      forceInternal: true
+      subitems:
+        - id: how-webhooks-are-triggered
+          title: "How Webhooks Are Triggered"
+          href: /javascript/webhooks-guide.html#how-webhooks-are-triggered
+          forceInternal: true
+        - id: composing-webhooks-queries
+          title: "Composing Webhook Queries"
+          href: /javascript/webhooks-guide.html#composing-webhooks-queries
+          forceInternal: true
+        - id: modifying-a-webhooks-url
+          title: "Modifying A Webhook's URL"
+          href: /javascript/webhooks-guide.html#modifying-a-webhooks-url
+          forceInternal: true
+        - id: deregistering-the-webhook-query
+          title: "Deregistering The Webhook Query"
+          href: /javascript/webhooks-guide.html#deregistering-the-webhook-query
+          forceInternal: true
+        - id: adding-dynamic-data-in-webhooks
+          title: "Adding Dynamic Data In Webhooks"
+          href: /javascript/webhooks-guide.html#adding-dynamic-data-in-webhooks
+          forceInternal: true
