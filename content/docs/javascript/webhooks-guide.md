@@ -33,7 +33,7 @@ var appbaseRef = new Appbase({
  })
  ```
 
-Webhooks in appbase-js are supported by [``searchStreamToURL()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstreamtourl). The behavior is very similar to  [``searchStream()``](https://docs.appbase.io/scalr/javascript/api-reference.html#javascript-api-reference-streaming-data-searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
+Webhooks in appbase-js are supported by [``searchStreamToURL()``](javascript/api-reference.html#searchstreamtourl). The behavior is very similar to  [``searchStream()``](javascript/api-reference.html#searchstream), where the results are subscribed via a streams interface. Instead of subscribing the results back to the user, webhooks subscribe them to a URL.
 
  ```js
  appbaseRef.searchStreamToURL(

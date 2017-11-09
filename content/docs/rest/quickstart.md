@@ -10,7 +10,8 @@ This is a quick start guide to working with the [appbase.io REST API](https://re
 
 ## Create an App
 
-<a href="https://imgflip.com/gif/opgl9"><img src="https://i.imgur.com/r6hWKAG.gif"/></a>  
+![](https://i.imgur.com/r6hWKAG.gif")
+
 Log in to <span class="fa fa-external-link"></span> [Appbase Dashboard](https://appbase.io/scalr/), and create a new app.
 
 For this tutorial, we will use an app called `newstreamingapp`. The credentials for this app are `meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda`.
