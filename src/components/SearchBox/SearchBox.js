@@ -18,10 +18,9 @@ search.addIndex('title');
 search.addIndex('heading');
 search.addIndex('tokens');
 search.addDocuments(data);
-console.log(nav)
+
 const getSection = value => {
   let currentSection = null;
-  console.log(value)
   nav.forEach(section => {
     if (section.items.some(item => item.title === value)) {
       currentSection = section.title;
