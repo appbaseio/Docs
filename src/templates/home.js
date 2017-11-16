@@ -67,7 +67,7 @@ class Home extends Component {
                   },
                 }}
               >
-                <SearchBox />
+                <SearchBox prefixSlash />
               </Flex>
               {/*<!--p
                 css={{

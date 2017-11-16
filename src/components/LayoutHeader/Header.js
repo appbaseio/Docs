@@ -169,7 +169,7 @@ class Header extends Component {
                   },
                 }}
               >
-                <SearchBox handleBlur={this.toggleSearch} />
+                <SearchBox handleBlur={this.toggleSearch} prefixSlash />
               </div>
             }
           </div>
