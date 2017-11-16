@@ -1,6 +1,7 @@
 import ButtonLink from './components/ButtonLink';
 import Container from 'components/Container';
 import Flex from 'components/Flex';
+import SearchBox from 'components/SearchBox';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
@@ -56,6 +57,18 @@ class Home extends Component {
                 }}>
                 Appbase.io Docs
               </h1>
+              <Flex
+                halign="center"
+                css={{
+                  paddingTop: 40,
+
+                  [media.greaterThan('xlarge')]: {
+                    paddingTop: 65,
+                  },
+                }}
+              >
+                <SearchBox prefixSlash={location.pathname.includes('/reactive-manual/')} />
+              </Flex>
               {/*<!--p
                 css={{
                   paddingTop: 15,
