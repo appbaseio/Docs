@@ -67,7 +67,7 @@ class Home extends Component {
                   },
                 }}
               >
-                <SearchBox prefixSlash={location.pathname.includes('/reactive-manual/')} />
+                <SearchBox />
               </Flex>
               {/*<!--p
                 css={{
