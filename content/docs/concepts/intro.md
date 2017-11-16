@@ -32,7 +32,7 @@ Our beloved Hobo Lobo is chalking a 'SCALR' 101.
 > "changes what?", asks someone.  
 "Everything", says Hobo Lobo rather curtly.
 
-## ``SCALR`` - What's in a name
+## SCALR - What's in a name
 
 The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [https://docs.appbase.io/]() and the API base URL would be ``https://scalr.api.appbase.io``.
 
