@@ -8,7 +8,7 @@ prev: datamodel.html
 prevTitle: "Data Model"
 ---
 
-Data Browser is a WYSIWG GUI for adding, modifying and viewing your appbase.io app's data.
+Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
 
 Data is stored as JSON documents in a **type**. You can read more about the data schema [here](/concepts/datamodel.html#appbase-data-schema).
 
