@@ -44,8 +44,8 @@ const Footer = ({layoutHasSidebar = false}) => (
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <MetaTitle onDark={true}>Docs</MetaTitle>
-            <FooterLink to="javascript/quickstart.html">Javascript Quick Start</FooterLink>
-            <FooterLink to="rest/getting-started.html">
+            <FooterLink to="/javascript/quickstart.html">Javascript Quick Start</FooterLink>
+            <FooterLink to="/rest/getting-started.html">
               REST Quick Start
             </FooterLink>
             <ExternalFooterLink href="https://rest.appbase.io"
