@@ -12,4 +12,4 @@ const sectionListDocs = nav.map(item => ({
   directory: 'docs',
 }));
 
-export {sectionListDocs};
+export {sectionListDocs, nav};

@@ -1,11 +1,11 @@
 - title: Concepts
   items:
     - id: intro
-      title: Introduction
+      title: Concepts Introduction
       href: /concepts/intro.html
       forceInternal: true
     - id: datamodel
-      title: Data Model
+      title: Appbase Data Model
       href: /concepts/datamodel.html
       forceInternal: true
     - id: databrowser

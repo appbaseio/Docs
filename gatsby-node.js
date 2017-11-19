@@ -102,6 +102,11 @@ exports.createPages = async ({graphql, boundActionCreators}) => {
           });
         });
       }
+      createRedirect({
+        fromPath: '/index.html',
+        redirectInBrowser: true,
+        toPath: '/',
+      });
     }
   });
 };
