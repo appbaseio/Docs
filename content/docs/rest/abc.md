@@ -97,3 +97,13 @@ App Deleted
 ### Importing Data
 
 Last but not least, the `import` command allows importing data from sources like Postgres, MongoDB, MySQL, SQL Server, JSON and CSV into your appbase.io app.
+
+Here is an example import command showing data from MySQL being imported to an appbased.io app.
+
+```bash
+abc import --src_type=mysql --src_uri="USER:PASS@tcp(HOST:PORT)/DBNAME" "https://USER:PASS@scalr.api.appbase.io/APPNAME"
+```
+
+`import` uses the `--src_type` and `--src_uri` switches to set the source database. It takes a required destination URL for the appbase.io app (or Elasticsearch index) into which the data is being imported to. You can follow this step-by-step guide for [importing data from MySQL](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d).
+
+Since the `import` command can do so many things, we have a dedicated post explaining [how it works](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d).
