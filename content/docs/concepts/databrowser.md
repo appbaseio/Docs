@@ -19,11 +19,19 @@ The data browser is available within appbase.io app dashboard. But it can also b
 - run as a [docker container](https://hub.docker.com/r/appbaseio/dejavu) or
 - used as a hosted app [here](https://opensource.appbase.io/dejavu/live).
 
+## Creating An App
+
+You can go to the [appbase.io dashboard](https://dashboard.appbase.io) and create an app. In the below gif, we create an app called `newstreamingapp`.
+
+![](https://i.imgur.com/r6hWKAG.gif)
+
 ## Adding Your First Data
+
+You can access the databrowser [from the dashboard](http://dashboard.appbase.io/browser/) or independently via [dejavu app](https://opensource.appbase.io/dejavu/live/). 
 
 ![](https://i.imgur.com/Bh59Ej1.gif)
 
-Follow the above gif to add your first data.
+Follow the above steps to add your first data.
 
 ## Operations
 
