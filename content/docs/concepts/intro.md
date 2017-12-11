@@ -8,49 +8,42 @@ next: datamodel.html
 nextTitle: "Data Model"
 ---
 
-As the name suggests, our prime focus with this iteration of the API has been achieving a massive scale of API operations, to the tune of [100,000 writes](http://news.appbase.io/scaling-elasticsearch-writes/) per second.
+## What is appbase.io
 
-You might wonder - why is addressing scale so important? A typical successful application would never exceed a throughput of a  few hundred requests per second and generally be okay with serving responses in time.
+[Appbase.io](https://appbase.io) is a hosted Elasticsearch service with built-in publish/subscribe support for streaming document updates 
 
->  
->
-> So much complexity in software comes from trying to make one thing do two things.  
--Ryan Singer
+It enables you to:  
 
-This quote from Ryan Singer especially sings true when one thinks of scaling database operations. So much of the software service complexities stem from keeping up with the infrastructure needs, that those end up turning into burning pain points. It should come as no surprise that most mainstream distributed systems were born out of the scaling pain points faced by the 0.01% of applications.
+* Build a blazing fast text search, pub/sub based messaging system, or implement a combination of esoteric filters (fuzzy, geo, terms, range, multiple items),
+* Stream JSON results directly as new data is added or when the original data is updated,  
+* Launch in days with our hosted APIs and scale without vendor-lockin by deploying appbase.io on your choice of cloud provider, 
 
-Not only does addressing scale solve the burning pain points faced by the 0.01%, it provides confidence around the edge-cases and leads to faster adoption in production environments and success stories. We hope all of these come true for SCALR. In building SCALR, focusing on scale has lead us to a better foundational design, a more rigorously tested codebase, and a fine-grained monitoring of our deployment infrastructure. We'll go more in depth about these learnings over the next few months, but most importantly - for the 99.9% folks reading this, ``SCALR`` has tons of improvements and features over ``v2``.
 
-# API Intro
+![Appbase Architecture](https://i.imgur.com/iJpqtks.png?1)  
+**Image 1:** It provides a reliable data streams API as a service, while leveraging ElasticSearch (and Lucene) for storage and search.
 
-Welcome to the land of SCALR, where everyone smiles and the sun shines bright.
+We have production users running e-Commerce stores, analytics dashboards, feeds, and realtime backends using appbase.io.
+
+There are some catches if you intend to:  
+
+* Model financial or sensitive data - Appbase.io is not ACIDic and doesn't support multi-document transactions. A good design choice in such a situation would be to use something that supports ACID transactions for storing sensitive data, and use Appbase.io for the data that needs to be searchable in realtime.
+* OLAP use-cases - Being based on Elasticsearch, appbase.io is designed as an OLTP system although it supports aggregations and queries on data sets of the size of several gigabytes. There are plenty of ideal tools for OLAP use-cases - Amazon Redshift, Google Big Query, Apache Hadoop and Appbase.io can be used with any of them (via REST API).
+
+
+## API Intro
+
+appbase.io APIs are 100% RESTful, work with JSON and are compatible with Elasticsearch. The publish/subscribe streaming is supported via HTTP Streaming and Websockets.
 
 ![SCALR banner image](https://i.imgur.com/3nYaIQM.png?1)
 
-Our beloved Hobo Lobo is chalking a 'SCALR' 101.
-
-> "changes what?", asks someone.  
-"Everything", says Hobo Lobo rather curtly.
-
-## SCALR - What's in a name
-
-The most tangible change is in the codename - ``scalr``. Breaking the convention of keeping a dull version name like ``v2.0``, we will go with the version ``scalr``. Docs for scalr are available at [https://docs.appbase.io/]() and the API base URL would be ``https://scalr.api.appbase.io``.
-
-### Compatible with ElasticSearch
-
-``scalr`` is compatible out of the box with v2.4 ElasticSearch API. This means our users can take advantage of the vast plethora of client libraries made available by the folks at Elastic, have access to a vibrant open-source community and have the freedom to import / export data from Appbase.io conveniently.
-
-### Data Streams 2.0
-
-Data Streams aka realtime events are rethought in ``SCALR``. Instead of being a websockets based extension of the API to track just the document and reference changes, data streams are deeply baked into the ``SCALR`` API. Data Streams are implemented over both **websockets** (for browsers) and **http-streaming** (for other runtimes) and are pervasive over web, mobile and language native libraries. Data Streams can stream results of queries and filters as new data is indexed into an app.
+There are some places we differ from the Elasticsearch. Most importantly, a user in appbase.io only has access to an index or indices, the cluster APIs are managed by appbase.io. Full list of supported endpoints is available at https://rest.appbase.io.
 
 
-### HTTP Basic Authentication
+## Out of the Box Features
 
-``scalr`` uses HTTP Basic Authentication for securing app access (similar to Github and Wordpress's authentication mechanisms). Every Appbase app can have one or more access tokens (username, password) with differing read and write permissions to allow fine-grained access. Most ElasticSearch libraries support HTTP Basic Auth already, a major compatibility win.
+appbase.io offers following advantages over running a raw Elasticsearch cluster / index.
 
-What's more, multiple appbase.io Basic Auth credentials can be generated per app with (read, write) controllable permissions.
-
-### Zero Ops
-
-The APIs related to devops, like clusters, multi-index operations, index creation are not a part of Appbase.io. Appbase is opinionated about devops and handles that internally.
+1. **Built-in Realtime Streaming** - appbase.io is the only Elasticsearch service offering a realtime pub/sub API for the entire Elasticsearch Query DSL.  
+2. **Security** - Read and Write access credentials so your app can directly connect to the appbase.io DB.  
+3. **Daily Backups** - Automated daily backups so you can have a peace of mind.  
+4. **An Active Ecosystem** - From UI toolkits to build [search interfaces](https://opensource.appbase.io/reactivesearch) and [map UIs](https://opensource.appbase.io/reactivesearch), to the [leading Elasticsearch data browser](https://opensource.appbase.io/dejavu/) to a [GUI for writing queries](https://opensource.appbase.io/mirage/) to [backend data connectors](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d) to import data from SQL, MongoDB, JSON, CSV sources into Elasticsearch, we are actively working on open-standards to improve accessibility of building apps with appbase.io and Elasticsearch.
