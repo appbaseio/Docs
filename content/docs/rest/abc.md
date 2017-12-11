@@ -107,3 +107,11 @@ abc import --src_type=mysql --src_uri="USER:PASS@tcp(HOST:PORT)/DBNAME" "https:/
 `import` uses the `--src_type` and `--src_uri` switches to set the source database. It takes a required destination URL for the appbase.io app (or Elasticsearch index) into which the data is being imported to. You can follow this step-by-step guide for [importing data from MySQL](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d).
 
 Since the `import` command can do so many things, we have a dedicated post explaining [how it works](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d).
+
+Other specific guides:
+1. [Importing your MongoDB data](https://medium.appbase.io/cli-for-indexing-data-from-mongodb-to-elasticsearch-ee5a74695945)  
+2. [Importing your Postgres data](https://medium.appbase.io/cli-for-indexing-data-from-postgres-to-elasticsearch-6eebc5cc0f0f)  
+3. [Importing data from MS SQL](https://medium.appbase.io/cli-for-indexing-data-from-mssql-to-elasticsearch-341963a054dd)  
+4. [Importing data from one Elasticsearch to another](https://medium.appbase.io/cli-for-indexing-data-from-elasticsearch-to-elasticsearch-301c7a243c84)  
+5. [Importing JSON files](https://medium.appbase.io/cli-for-indexing-data-from-json-to-elasticsearch-92f582c53df4)  
+6. [Importing CSV files](https://medium.appbase.io/cli-for-indexing-data-from-csv-to-elasticsearch-17d290a5974f)
