@@ -20,7 +20,7 @@ It enables you to:
 
 
 ![Appbase Architecture](https://i.imgur.com/iJpqtks.png?1)  
-**Image 1:** It provides a reliable data streams API as a service, while leveraging ElasticSearch (and Lucene) for storage and search.
+**Image:** It provides a reliable data streams API as a service, while leveraging ElasticSearch (and Lucene) for storage and search.
 
 We have production users running e-Commerce stores, analytics dashboards, feeds, and realtime backends using appbase.io.
 
