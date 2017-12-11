@@ -1,6 +1,6 @@
 ---
 id: intro
-title: "Concepts Introduction"
+title: "Introduction"
 layout: docs
 sectionid: intro
 permalink: concepts/intro.html
