@@ -4,6 +4,8 @@ title: "REST API Quick Start"
 layout: docs
 sectionid: getting-started
 permalink: rest/getting-started.html
+next: abc.html
+nextTitle: "ABC - appbase.io via CLI"
 ---
 
 This is a quick start guide to working with the [appbase.io REST API](https://rest.appbase.io).

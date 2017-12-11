@@ -29,3 +29,16 @@
           title: "REST API Reference"
           href: /rest/getting-started.html#rest-api-reference
           forceInternal: true
+    - id: abc
+      title: "ABC - AppBase via Commandline"
+      href: /rest/abc.html
+      forceInternal: true
+      subitems:
+        - id: how-it-works
+          title: "How It Works"
+          href: /rest/abc.html#how-it-works
+          forceInternal: true
+        - id: importing-data
+          title: "Importing Data"
+          href: /rest/abc.html#importing-data
+          forceInternal: true
