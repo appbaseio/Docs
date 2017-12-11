@@ -21,7 +21,7 @@
   "version": "0.0.1",
   "private": false,
   "bugs": {
-    "url": "https://github.com/divyanshu013/reactive-manual-new"
+    "url": "https://github.com/appbaseio/reactive-manual/issues"
   },
   "resolutions": {
     "gatsby/graphql": "0.10.5",
