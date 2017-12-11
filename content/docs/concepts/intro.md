@@ -10,7 +10,7 @@ nextTitle: "Data Model"
 
 ## What is appbase.io
 
-[Appbase.io](https://appbase.io) is a hosted Elasticsearch service with built-in publish/subscribe support for streaming document updates 
+[Appbase.io](https://appbase.io) is a hosted Elasticsearch service with built-in publish/subscribe support for streaming document updates and query results.
 
 It enables you to:  
 
