@@ -33,6 +33,16 @@ You can access the databrowser [from the dashboard](http://dashboard.appbase.io/
 
 Follow the above steps to add your first data.
 
+## Adding New Field
+
+Dejavu now also supports adding new fields, including setting the appropriate mappings for the field.
+
+You have to first be in the **Editing** mode. And then select the `+` button near the field name headers in the column display on the top right.
+
+![](https://i.imgur.com/Z7QaURd.png)
+
+You can pick from the one of the available data types or set your own mapping.
+
 ## Operations
 
 ### Adding Data
