@@ -199,7 +199,7 @@ Returns the document at the given ``type`` and ``id``.
 
 ### getTypes()
 
-Get all the ``types`` of an appname.
+Get all the ``types`` of an app.
 
 ```js
 appbaseRef.getTypes().on('data', function(res) {
@@ -214,6 +214,24 @@ appbaseRef.getTypes().on('data', function(res) {
 ``appbaseRef.getTypes()``
 
 Returns all the ``types`` as an array.
+
+### getMappings()
+
+Get the mapping scheme of an app. You can read more about mappings [over here](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/mapping.html#mapping).
+
+```js
+appbaseRef.getMappings().on('data', function(res) {
+  console.log("Mapping scheme is: ", res);
+}).on('error', function(err) {
+  console.log("getMappings() failed: ", err);
+})
+```
+
+**Usage**
+
+``appbaseRef.getMappings()``
+
+Returns the current app's mapping scheme as an object.
 
 ### search()
 
