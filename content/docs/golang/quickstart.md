@@ -17,7 +17,7 @@ It can't:
 
 * Configure mappings, change analyzers, or capture snapshots. These are provided by Elasticsearch client libraries. We recommend the golang [elastic](https://olivere.github.io/elastic/) library by Olivere.
 
-[Appbase.io - the database service](https://appbase.io) is opinionated about cluster setup and hence doesn't support the ElasticSearch devops APIs. See (rest.appbase.io)[https://rest.appbase.io] for a full reference on the supported APIs.
+[Appbase.io - the database service](https://appbase.io) is opinionated about cluster setup and hence doesn't support the ElasticSearch devops APIs. See [rest.appbase.io](https://rest.appbase.io) for a full reference on the supported APIs.
 
 This is a quick start guide to whet the appetite with the possibilities of data streams.
 
@@ -54,7 +54,7 @@ To write data or stream updates from [appbase.io](https://appbase.io), we need t
 client, _ = NewClient("https://scalr.api.appbase.io", "meqRf8KJC", "65cc161a-22ad-40c5-aaaf-5c082d5dcfda", "newstreamingapp")
 err := client.Ping()
 if err != nil {
-  log.Println(err)
+    log.Println(err)
 }
 // Import `fmt` package before printing
 fmt.Println("Client created")
@@ -70,18 +70,18 @@ Once we have the reference object (called ``client`` in this tutorial), we can i
 
 ```go
 const jsonObject = `{
-  "department_name": "Books",
-  "department_name_analyzed": "Books",
-  "department_id": 1,
-  "name": "A Fake Book on Network Routing",
-  "price": 5595
+    "department_name": "Books",
+    "department_name_analyzed": "Books",
+    "department_id": 1,
+    "name": "A Fake Book on Network Routing",
+    "price": 5595
 }`
 ```
 ```go
 result, err := client.Index().Type("books").Id("1").Body(jsonObject).Do()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 fmt.Println("Data Inserted. ID: ", result.ID)
 ```
@@ -101,49 +101,52 @@ Now that we are able to store data, let's try to get the data back from [appbase
 ```go
 response, err := client.Get().Type("books").Id("1").Do()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
-document, err := response.Source.MarshalJSON()
+// MarshalIndent for pretty printing Json
+document, err := json.MarshalIndent(response.Source, "", "  ")
 if err != nil {
-  log.Println(err)
-  return
+    log.Println("error:", err)
 }
 fmt.Println("Document: ",string(document), ", ", "ID: ", response.Id)
 
 
-Output:
-{
-  Document: {
+GET() RESPONSE:
+
+Document: {
     "department_name": "Books",
     "department_name_analyzed": "Books",
     "department_id": 1,
     "name": "A Fake Book on Network Routing",
-  },
-  ID: "1"
-}
+},
+ID: "1"
 ```
 
-Even though ``get()`` returns a single document data, appbase.io returns it as a stream object with the 'data' event handler.
+Even though ``Get()`` returns a single document data, appbase.io returns it as a stream object with the 'data' event handler.
 
 
-Let's say that we are interested in subscribing to all the state changes that happen on a document. Here, we would use the ``getStream()`` method over ``get()``, which keeps returning new changes made to the document.
+Let's say that we are interested in subscribing to all the state changes that happen on a document. Here, we would use the ``GetStream()`` method over ``Get()``, which keeps returning new changes made to the document.
 
 ### Subscribing to document stream
 
 ```go
 response,err := client.GetStream().Type(testtype).Id("1").Do()
 if err != nil {
-  log.Println(err)
+    log.Println(err)
 }
 for {
-  data, _ := response.Next()
-  document, _ := data.Source.MarshalJSON()
-  fmt.Println("Document: ",string(document), ", ID: ", data.Id)
+    data, _ := response.Next()
+    // MarshalIndent for pretty printing Json
+    document, err := json.MarshalIndent(data.Source, "", "  ")
+    if err != nil {
+        log.Println("error:", err)
+    }
+    fmt.Println("Document: ",string(document), ", ID: ", data.Id)
 }
 ```
 
-Don't be surprised if you don't see anything printed, ``getStream()`` only returns when new updates are made to the document.
+Don't be surprised if you don't see anything printed, ``GetStream()`` only returns when new updates are made to the document.
 
 ### Observe the updates in realtime
 
@@ -153,16 +156,14 @@ For brevity, we will not show the ``Index()`` operation here.
 
 ```go
 GETSTREAM() RESPONSE
-{
-  Document: {
+Document: {
     "department_name": "Books",
     "department_name_analyzed": "Books",
     "department_id": 1,
     "name": "A Fake Book on Network Routing",
     "price": 6034
-  },
-  ID: "1"
-}
+},
+ID: "1"
 ```
 
 In the new document update, we can see the price change (5595 -> 6034) being reflected. Subsequent changes will be streamed as JSON objects.
@@ -172,7 +173,7 @@ In the new document update, we can see the price change (5595 -> 6034) being ref
 
 ## Streaming Rich Queries
 
-Streaming document updates are great for building messaging systems or notification feeds on individual objects. What if we were interested in continuously listening to a broader set of data changes? The ``searchStream()`` method scratches this itch perfectly.
+Streaming document updates are great for building messaging systems or notification feeds on individual objects. What if we were interested in continuously listening to a broader set of data changes? The ``SearchStream()`` method scratches this itch perfectly.
 
 In the example below, we will see it in action with a ``match_all`` query that returns any time a new document is added to the type 'books' or when any of the existing documents are modified.
 
@@ -181,46 +182,45 @@ const matchAllQuery string = `{"query":{"match_all":{}}}`
 const anotherBook string = `{"department_name": "Books", "department_name_analyzed": "Books", "department_id": 2, "name": "A Fake Book on Load balancing", "price": 7510}`
 response, err := client.SearchStream().Type(testtype).Body(matchAllQuery).Do()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 
 _, err = client.Index().Type("books").Id("3").Body(anotherBook).Do()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 
 data, err := response.Next()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 fmt.Println("ID: ", data.Id)
 
-document,err := data.Source.MarshalJSON()
+// MarshalIndent for pretty printing Json
+document, err := json.MarshalIndent(data.Source, "", "  ")
 if err != nil {
-  log.Println(err)
+    log.Println("error:", err)
 }
 fmt.Println("Document: ", string(document))
 ```
 ```
 RESPONSE WHEN NEW DATA MATCHES
-{
-  ID: "3"
-  Document: {
-    "department_name": "Books",
-    "department_name_analyzed": "Books",
-    "department_id": 2,
-    "name": "A Fake Book on Load balancing",
-    "price": 7510
-  }
-}
+    ID: "3"
+    Document: {
+        "department_name": "Books",
+        "department_name_analyzed": "Books",
+        "department_id": 2,
+        "name": "A Fake Book on Load balancing",
+        "price": 7510
+    }
 ```
 
-## Streaming Rich Queries to an URL
+## Streaming Rich Queries to a URL
 
-This method was introduced in **v0.10.0**. ``searchStreamToURL()`` streams results directly to a URL instead of streaming back. In the example below we will see with a ``match_all`` query that sends anytime a new document is added to the type 'books' to an URL.
+This method was introduced in **v0.10.0**. ``SearchStreamToURL()`` streams results directly to a URL instead of streaming back. In the example below we will see with a ``match_all`` query that sends anytime a new document is added to the type 'books' to an URL.
 
 ```go
 // Similar to NewClient, we will instiate a webhook instance with appbase.NewWebhook()
@@ -234,28 +234,28 @@ const matchAllQuery string = `{"query":{"match_all":{}}}`
 
 response, err := client.SearchStreamToURL().Type("books").Query(matchAllQuery).AddWebhook(webhook).Do()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 
 stopSearchStream, err := response.Stop()
 if err != nil {
-  log.Println(err)
-  return
+    log.Println(err)
+    return
 }
 fmt.Println(response.Id == stopSearchStream.Id)
 ```
 
 ```
-searchStreamToURL() response
+SEARCHSTREAMTOURL() response
 {
-  true
+    true
 }
 ```
 
 
-``Note:`` Like ``getStream()``, ``searchStream()`` subscribes to the new matches.
+``Note:`` Like ``GetStream()``, ``SearchStream()`` subscribes to the new matches.
 
-**v0.10.0** introduces a new method [``searchStreamToURL()``](#streaming-rich-queries-to-an-url) that streams results directly to a URL instead of streaming back.
+**v0.10.0** introduces a new method [``SearchStreamToURL()``](#streaming-rich-queries-to-an-url) that streams results directly to a URL instead of streaming back.
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
