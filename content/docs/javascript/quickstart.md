@@ -63,7 +63,7 @@ var appbaseRef = new Appbase({
 	url: "https://scalr.api.appbase.io",
 	app: "newstreamingapp",
 	credentials: "meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
-});
+})
 
 ```
 
@@ -73,7 +73,7 @@ var appbaseRef = new Appbase({
 var appbaseRef = new Appbase({
 	url: "https://meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda@scalr.api.appbase.io",
 	app: "newstreamingapp"
-});
+})
 ```
 
 Credentials can also be directly passed as a part of the API URL.
@@ -92,7 +92,7 @@ var jsonObject = {
 	"department_id": 1,
 	"name": "A Fake Book on Network Routing",
 	"price": 5595
-};
+}
 ```
 ```js
 appbaseRef.index({
@@ -103,7 +103,7 @@ appbaseRef.index({
 	console.log(response);
 }).on('error', function(error) {
 	console.log(error);
-});
+})
 ```
 
 where ``type: 'books'`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
@@ -128,7 +128,7 @@ appbaseRef.get({
 	console.log(response)
 }).on('error', function(error) {
 	console.log(error)
-});
+})
 
 
 GET() RESPONSE
@@ -212,7 +212,7 @@ appbaseRef.searchStream({
 	console.log("searchStream(), new match: ", response);
 }).on('error', function(error) {
 	console.log("caught a searchStream() error: ", error)
-});
+})
 
 RESPONSE WHEN NEW DATA MATCHES
 {
