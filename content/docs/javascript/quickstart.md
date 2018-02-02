@@ -60,9 +60,9 @@ To write data or stream updates from [appbase.io](https://appbase.io), we need t
 
 ```js
 var appbaseRef = new Appbase({
-  url: "https://scalr.api.appbase.io",
-  app: "newstreamingapp",
-  credentials: "meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
+	url: "https://scalr.api.appbase.io",
+	app: "newstreamingapp",
+	credentials: "meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
 });
 
 ```
@@ -71,9 +71,9 @@ var appbaseRef = new Appbase({
 
 ```js
 var appbaseRef = new Appbase({
-  url: "https://meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda@scalr.api.appbase.io",
-  app: "newstreamingapp"
- });
+	url: "https://meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda@scalr.api.appbase.io",
+	app: "newstreamingapp"
+});
 ```
 
 Credentials can also be directly passed as a part of the API URL.
@@ -87,22 +87,22 @@ Once we have the reference object (called ``appbaseRef`` in this tutorial), we c
 
 ```js
 var jsonObject = {
-    "department_name": "Books",
-    "department_name_analyzed": "Books",
-    "department_id": 1,
-    "name": "A Fake Book on Network Routing",
-    "price": 5595
+	"department_name": "Books",
+	"department_name_analyzed": "Books",
+	"department_id": 1,
+	"name": "A Fake Book on Network Routing",
+	"price": 5595
 };
 ```
 ```js
 appbaseRef.index({
-    type: "books",
-    id: "X1",
-    body: jsonObject
+	type: "books",
+	id: "X1",
+	body: jsonObject
 }).on('data', function(response) {
-    console.log(response);
+	console.log(response);
 }).on('error', function(error) {
-    console.log(error);
+	console.log(error);
 });
 ```
 
@@ -122,29 +122,29 @@ Now that we are able to store data, let's try to get the data back from [appbase
 
 ```js
 appbaseRef.get({
-      type: "books",
-      id: "X1"
+	type: "books",
+	id: "X1"
 }).on('data', function(response) {
-      console.log(response)
+	console.log(response)
 }).on('error', function(error) {
-      console.log(error)
+	console.log(error)
 });
 
 
 GET() RESPONSE
 {
-  "_index": "newstreamingapp",
-  "_type": "books",
-  "_id": "X1",
-  "_version": 5,
-  "found": true,
-  "_source": {
-    "department_name": "Books",
-    "department_name_analyzed": "Books",
-    "department_id": 1,
-    "name": "A Fake Book on Network Routing",
-    "price": 5595
-  }
+	"_index": "newstreamingapp",
+	"_type": "books",
+	"_id": "X1",
+	"_version": 5,
+	"found": true,
+	"_source": {
+		"department_name": "Books",
+		"department_name_analyzed": "Books",
+		"department_id": 1,
+		"name": "A Fake Book on Network Routing",
+		"price": 5595
+	}
 }
 ```
 
@@ -157,12 +157,12 @@ Let's say that we are interested in subscribing to all the state changes that ha
 
 ```js
 appbaseRef.getStream({
-      type: "books",
-      id: "X1"
+	type: "books",
+	id: "X1"
 }).on('data', function(response) {
-      console.log("new document update: ", response)
+	console.log("new document update: ", response)
 }).on('error', function(error) {
-      console.log("getStream() failed with: ", error)
+	console.log("getStream() failed with: ", error)
 });
 ```
 
@@ -177,15 +177,15 @@ For brevity, we will not show the ``index()`` operation here.
 ```js
 GETSTREAM() RESPONSE
 {
-  "_type": "books",
-  "_id": "X1",
-  "_source": {
-    "department_id": 1,
-    "department_name": "Books",
-    "department_name_analyzed": "Books",
-    "name": "A Fake Book on Network Routing",
-    "price": 6034
-  }
+	"_type": "books",
+	"_id": "X1",
+	"_source": {
+		"department_id": 1,
+		"department_name": "Books",
+		"department_name_analyzed": "Books",
+		"name": "A Fake Book on Network Routing",
+		"price": 6034
+	}
 }
 ```
 
@@ -202,31 +202,31 @@ In the example below, we will see it in action with a ``match_all`` query that r
 
 ```js
 appbaseRef.searchStream({
-    type: "books",
-    body: {
-        query: {
-            match_all: {}
-        }
-    }
+	type: "books",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 }).on('data', function(response) {
-    console.log("searchStream(), new match: ", response);
+	console.log("searchStream(), new match: ", response);
 }).on('error', function(error) {
-    console.log("caught a searchStream() error: ", error)
+	console.log("caught a searchStream() error: ", error)
 });
 
 RESPONSE WHEN NEW DATA MATCHES
 {
-  "_type": "books",
-  "_id": "X1",
-  "_version": 5,
-  "found": true,
-  "_source": {
-    "department_name": "Books",
-    "department_name_analyzed": "Books",
-    "department_id": 1,
-    "name": "A Fake Book on Network Routing",
-    "price": 6034
-  }
+	"_type": "books",
+	"_id": "X1",
+	"_version": 5,
+	"found": true,
+	"_source": {
+		"department_name": "Books",
+		"department_name_analyzed": "Books",
+		"department_id": 1,
+		"name": "A Fake Book on Network Routing",
+		"price": 6034
+	}
 }
 ```
 
