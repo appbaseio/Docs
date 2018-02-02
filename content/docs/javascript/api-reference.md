@@ -50,18 +50,18 @@ Writes a JSON data object at a given ``type`` and ``id`` location, or replaces i
 
 ```js
 appbaseRef.index({
-  type: "tweet",
-  id: "aX12c5",
-  body: {
-    "msg": "writing my first tweet!",
-    "by": "jack",
-    "using": ["appbase.io", "javascript", "streams"],
-    "test": true
-  }
+	type: "tweet",
+	id: "aX12c5",
+	body: {
+		"msg": "writing my first tweet!",
+		"by": "jack",
+		"using": ["appbase.io", "javascript", "streams"],
+		"test": true
+	}
 }).on('data', function(res) {
-  console.log("successfully indexed: ", res);
+	console.log("successfully indexed: ", res)
 }).on('error', function(err) {
-  console.log("indexing error: ", err);
+	console.log("indexing error: ", err)
 })
 ```
 
@@ -81,18 +81,18 @@ Partially updates an existing document at a given ``type`` and ``id`` location. 
 
 ```js
 appbaseRef.update({
-  type: "tweet",
-  id: "aX12c5",
-  body: {
-    doc: {
-      "msg": "editing my first tweet!",
-      "by": "ev"
-    }
-  }
+	type: "tweet",
+	id: "aX12c5",
+	body: {
+		doc: {
+			"msg": "editing my first tweet!",
+			"by": "ev"
+		}
+	}
 }).on('data', function(res) {
-  console.log("successfully updated: ", res);
+	console.log("successfully updated: ", res)
 }).on('error', function(err) {
-  console.log("update document error: ", err);
+	console.log("update document error: ", err)
 })
 ```
 
@@ -114,12 +114,12 @@ Delete a JSON data object by ``id``.
 
 ```js
 appbaseRef.delete({
-  type: "tweet",
-  id: "aX12c5"
+	type: "tweet",
+	id: "aX12c5"
 }).on('data', function(res) {
-  console.log("successfully deleted: ", res);
+	console.log("successfully deleted: ", res)
 }).on('error', function(err) {
-  console.log("deletion error: ", err);
+	console.log("deletion error: ", err)
 })
 ```
 
@@ -138,24 +138,24 @@ Apply many index / delete operations together, useful when importing data for th
 
 ```js
 appbaseRef.bulk({
-  type: "tweet",
-  body: [
-    // action#1 description
-    { index: { _id: 2 } },
-    // the JSON data to index
-    { "msg": "writing my second tweet!",
-      "by": "Ev",
-      "using": ["appbase.io", "javascript", "streams"],
-      "test": true
-    },
-    // action#2 description
-    { delete: { _id: 2 } },
-    // deletion doesn't any further input
-  ]
+	type: "tweet",
+	body: [
+		// action#1 description
+		{ index: { _id: 2 } },
+		// the JSON data to index
+		{ "msg": "writing my second tweet!",
+		  "by": "Ev",
+		  "using": ["appbase.io", "javascript", "streams"],
+		  "test": true
+		},
+		// action#2 description
+		{ delete: { _id: 2 } },
+		// deletion doesn't any further input
+	]
 }).on('data', function(res) {
-  console.log("successful bulk: ", res);
+	console.log("successful bulk: ", res)
 }).on('error', function(err) {
-  console.log("bulk failed: ", err);
+	console.log("bulk failed: ", err)
 })
 ```
 
@@ -177,12 +177,12 @@ Get the JSON document from a particular ``type`` and ``id``. For subscribing to 
 
 ```js
 appbaseRef.get({
-  "type": "tweet",
-  "id": "aX12c5"
+	"type": "tweet",
+ 	"id": "aX12c5"
 }).on('data', function(res) {
-  console.log("The document data: ", res);
+	console.log("The document data: ", res)
 }).on('error', function(err) {
-  console.log("get() method failed with: ", err);
+	console.log("get() method failed with: ", err)
 })
 ```
 
@@ -203,9 +203,9 @@ Get all the ``types`` of an app.
 
 ```js
 appbaseRef.getTypes().on('data', function(res) {
-  console.log("All app types: ", res);
+	console.log("All app types: ", res)
 }).on('error', function(err) {
-  console.log("getTypes() failed: ", err);
+	console.log("getTypes() failed: ", err)
 })
 ```
 
@@ -221,9 +221,9 @@ Get the mapping scheme of an app. You can read more about mappings [over here](h
 
 ```js
 appbaseRef.getMappings().on('data', function(res) {
-  console.log("Mapping scheme is: ", res);
+	console.log("Mapping scheme is: ", res)
 }).on('error', function(err) {
-  console.log("getMappings() failed: ", err);
+	console.log("getMappings() failed: ", err)
 })
 ```
 
@@ -239,16 +239,16 @@ Search for matching documents in a type. It's a convenience method for ElasticSe
 
 ```js
 appbaseRef.search({
-  type: "tweet",
-  body: {
-    query: {
-      match_all: {}
-    }
-  }
+	type: "tweet",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 }).on('data', function(res) {
-  console.log("query result: ", res);
+	console.log("query result: ", res)
 }).on('error', function(err) {
-  console.log("search error: ", err);
+	console.log("search error: ", err)
 })
 ```
 
@@ -276,12 +276,12 @@ Continuously stream new updates to a specific JSON document. If you wish to only
 
 ```js
 appbaseRef.getStream({
-  type: "tweet",
-  id: "aX12c5",
+	type: "tweet",
+	id: "aX12c5",
 }).on('data', function(res) {
-  console.log("data update: ", res);
+	console.log("data update: ", res)
 }).on('error', function(err) {
-  console.log("streaming error: ", err);
+	console.log("streaming error: ", err)
 })
 ```
 
@@ -307,15 +307,15 @@ appbaseRef.getStream({
 
 ```js
 var responseStream = appbaseRef.getStream({
-  type: "tweet",
-  id: 1,
+	type: "tweet",
+	id: 1,
 })
 
 responseStream.on('data', function(res) {
-  console.log("data update: ", res);
+	console.log("data update: ", res)
 });
 
-responseStream.stop();
+responseStream.stop()
 ```
 
 
@@ -331,16 +331,16 @@ Continuously stream results of search query on a given ``type``. Search queries 
 
 ```js
 appbaseRef.searchStream({
-  type: "tweet",
-  body: {
-    query: {
-      match_all: {}
-    }
-  }
+	type: "tweet",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 }).on('data', function(res) {
-  console.log("query update: ", res);
+	console.log("query update: ", res)
 }).on('error', function(err) {
-  console.log("streaming error: ", err);
+	console.log("streaming error: ", err)
 })
 ```
 
@@ -367,19 +367,19 @@ appbaseRef.searchStream({
 
 ```js
 var responseStream = appbaseRef.searchStream({
-  type: "tweet",
-  body: {
-    query: {
-      match_all: {}
-    }
-  }
+	type: "tweet",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 })
 
 responseStream.on('data', function(res) {
-  console.log("data update: ", res);
+	console.log("data update: ", res)
 });
 
-setTimeout(responseStream.stop, 5000); // stop stream after 5s
+setTimeout(responseStream.stop, 5000) // stop stream after 5s
 ```
 
 ### searchStreamToURL()
@@ -391,19 +391,19 @@ Continuously stream results of search query on a given ``type`` to a URL. **sear
 ```js
 appbaseRef.searchStreamToURL(
 {
-  type: "tweet",
-  body: {
-    query: {
-      match_all: {}
-    }
-  }
+	type: "tweet",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 }, {
-  url: 'http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84',
-  string_body: {{{_source}}}
+	url: 'http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84',
+	string_body: {{{_source}}}
 }).on('data', function(res) {
-  console.log("Webhook registered: ", res);
+	console.log("Webhook registered: ", res)
 }).on('error', function(err) {
-  console.log("Error in registering webhook: ", err);
+	console.log("Error in registering webhook: ", err)
 })
 ```
 
@@ -443,21 +443,20 @@ appbaseRef.searchStreamToURL(
 ```js
 var responseStream = appbaseRef.searchStreamToURL(
 {
-  type: "tweet",
-  body: {
-    query: {
-      match_all: {}
-    }
-  }
+	type: "tweet",
+	body: {
+		query: {
+			match_all: {}
+		}
+	}
 }, {
-  url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84"
-}
-)
+	url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84"
+})
 
 responseStream.on('data', function(res) {
-  console.log("webhook registered: ", res);
-  responseStream.stop().on('data', function(res) {
-    console.log("webhook de-registered: ", res);
-  });
-});
+	console.log("webhook registered: ", res)
+	responseStream.stop().on('data', function(res) {
+		console.log("webhook de-registered: ", res)
+	})
+})
 ```
