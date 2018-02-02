@@ -38,7 +38,7 @@ For this tutorial, we will use an app called `newstreamingapp`. The credentials 
 We will fetch and install the **go-appbase** lib using git.
 
 ```
-go get -t github.com/appbaseio/go-appbase
+    go get -t github.com/appbaseio/go-appbase
 ```
 
 Adding it in the project should be a one line import syntax.
@@ -81,7 +81,7 @@ Once we have the reference object (called ``client`` in this tutorial), we can i
     result, err := client.Index().Type("books").Id("1").Body(jsonObject).Do()
 	if err != nil {
 	    log.Println(err)
-		return
+	    return
 	}
     fmt.Println("Data Inserted. ID: ", result.ID)
 ```
@@ -138,7 +138,7 @@ Let's say that we are interested in subscribing to all the state changes that ha
             data, _ := response.Next()
             document, _ := data.Source.MarshalJSON()
             fmt.Println("Document: ",string(document), ", ID: ", data.Id)
-		}
+            }
 ```
 
 Don't be surprised if you don't see anything printed, ``getStream()`` only returns when new updates are made to the document.
@@ -195,8 +195,9 @@ In the example below, we will see it in action with a ``match_all`` query that r
 		return
 	}
 	fmt.Println("ID: ", data.Id)
-    document,_ := data.Source.MarshalJSON()
-    fmt.Println("Document : ", string(document))
+
+	document,_ := data.Source.MarshalJSON()
+	fmt.Println("Document : ", string(document))
 ```
 ```
 RESPONSE WHEN NEW DATA MATCHES
