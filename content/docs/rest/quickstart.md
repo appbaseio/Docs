@@ -1,6 +1,6 @@
 ---
 id: rest-quickstart
-title: "REST API: Quick Start"
+title: "REST API - Quickstart"
 layout: docs
 sectionid: rest-quickstart
 permalink: rest-quickstart.html

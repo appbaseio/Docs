@@ -1,7 +1,7 @@
 - title: Golang
   items:
     - id: go-quickstart
-      title: "Golang Quick Start Guide"
+      title: "Golang Quickstart"
       href: /go-quickstart.html
       forceInternal: true
       subitems:

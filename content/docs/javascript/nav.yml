@@ -1,7 +1,7 @@
 - title: Javascript
   items:
     - id: quickstart
-      title: Javascript Quick Start
+      title: Javascript Quickstart
       href: /javascript/quickstart.html
       forceInternal: true
       subitems:

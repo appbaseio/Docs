@@ -1,6 +1,6 @@
 ---
 id: quickstart
-title: "Javascript Quick Start"
+title: "Javascript Quickstart"
 layout: docs
 sectionid: quickstart
 permalink: javascript/quickstart.html

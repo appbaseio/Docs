@@ -1,9 +1,11 @@
 ---
 id: go-quickstart
-title: "Golang Quick Start"
+title: "Golang Quickstart"
 layout: docs
 sectionid: go-quickstart
 permalink: go-quickstart.html
+prev: rest-quickstart.html
+prevTitle: "REST API: Quickstart"
 ---
 
 [go-appbase](godoc.org/github.com/appbaseio/go-appbase/) is a universal Golang client library for working with the appbase.io database.

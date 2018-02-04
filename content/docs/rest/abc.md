@@ -5,7 +5,9 @@ layout: docs
 sectionid: abc
 permalink: abc.html
 prev: rest-quickstart.html
-prevTitle: "REST API Quick Start"
+prevTitle: "REST API - Quickstart"
+next: go-quickstart.html
+nextTitle: "Golang Quickstart"
 ---
 
 ABC is the commandline interface for working with appbase.io.
