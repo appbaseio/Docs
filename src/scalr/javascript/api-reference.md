@@ -34,7 +34,7 @@ var appbaseRef = new Appbase({
 - **appData** ``Object`` <br>A Javascript object containing the following fields and values
 
 	- **url** ``String`` <br>URL with the API version, always *https://scalr.api.appbase.io*
-	- **appname** ``String`` <br>name of the app as displayed in the [dashboard](https://appbase.io/scalr)
+	- **appname** ``String`` <br>name of the app as displayed in the [dashboard](https://dashboard.appbase.io)
 	- **username** ``String`` <br>username as displayed in the app dashboard
 	- **password** ``String`` <br>password as displayed in the app dashboard
 
@@ -299,7 +299,7 @@ responseStream.stop();
 ```
 
 
-``Note:`` appbase.js lib uses websockets to stream the updates.
+``Note:`` appbase.js lib uses [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to stream the updates.
 
 ### searchStream()
 

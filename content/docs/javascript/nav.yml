@@ -58,6 +58,10 @@
           title: "getTypes()"
           href: /javascript/api-reference.html#gettypes
           forceInternal: true
+        - id: getmappings
+          title: "getMappings()"
+          href: /javascript/api-reference.html#getmappings
+          forceInternal: true
         - id: search
           title: "search()"
           href: /javascript/api-reference.html#search
