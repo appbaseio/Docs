@@ -3,8 +3,8 @@ id: abc
 title: "ABC - Appbase.io via Commandline"
 layout: docs
 sectionid: abc
-permalink: rest/abc.html
-prev: getting-started.html
+permalink: abc.html
+prev: rest-quickstart.html
 prevTitle: "REST API Quick Start"
 ---
 
