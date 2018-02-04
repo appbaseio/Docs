@@ -1,0 +1,27 @@
+- title: Golang
+  items:
+    - id: go-quickstart
+      title: "Golang Quick Start Guide"
+      href: /go-quickstart.html
+      forceInternal: true
+      subitems:
+        - id: creating-an-app
+          title: "Creating An App"
+          href: /go-quickstart.html#creating-an-app
+          forceInternal: true
+        - id: import-go-appbase
+          title: "Import go-appbase"
+          href: /go-quickstart.html#import-go-appbase
+          forceInternal: true
+        - id: storing-data
+          title: "Storing Data"
+          href: /go-quickstart.html#storing-data
+          forceInternal: true
+        - id: sgetings-vs-streaming-data
+          title: "Getting or Subscribing to Data"
+          href: /go-quickstart.html#sgetings-vs-streaming-data
+          forceInternal: true
+        - id: streaming-rich-queries
+          title: "Streaming Rich Queries"
+          href: /go-quickstart.html#streaming-rich-queries
+          forceInternal: true

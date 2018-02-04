@@ -4,8 +4,10 @@ import navJavascript from
 '../../content/docs/javascript/nav.yml';
 import navREST from
 '../../content/docs/rest/nav.yml';
+import navGolang from
+'../../content/docs/golang/nav.yml';
 
-const nav = [...navConcepts, ...navJavascript, ...navREST];
+const nav = [...navConcepts, ...navJavascript, ...navREST, ...navGolang];
 
 const sectionListDocs = nav.map(item => ({
   ...item,
