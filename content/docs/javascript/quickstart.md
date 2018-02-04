@@ -34,7 +34,7 @@ For this tutorial, we will use an app called `newstreamingapp`. The credentials 
 
 > Note <i class="fa fa-info-circle"></i>
 >
-> SCALR uses **HTTP Basic Auth**, a widely used protocol for a username:password based authentication.
+> appbase.io uses **HTTP Basic Auth**, a widely used protocol for a username:password based authentication.
 
 ## Install appbase-js
 
@@ -112,11 +112,13 @@ The ``index()`` method (and all the other ``appbase`` methods) return a [stream]
 
 > Note <span class="fa fa-info-circle"></span>
 >
-> If you have noticed, SCALR uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a collection in MongoDB or a table in SQL, and a **document** is similar to the document in MongoDB and equivalent to a row in SQL.
+> appbase.io uses the same APIs and data modeling conventions as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a collection in MongoDB or a table in SQL, and a **document** is similar to the document in MongoDB and equivalent to a row in SQL.
 
-## <s>GETing</s> vs Streaming Data
+## GETing or Streaming Data
 
-Unlike typical databases that support GET operations (or Read) for fetching data and queries, Appbase.io operates on both GET and stream modes. We will first apply the GET mode to read our just inserted object.
+Unlike typical databases that support GET operations (or Read) for fetching data and queries, Appbase.io operates on both GET and stream modes.
+
+### Getting a Document Back
 
 Now that we are able to store data, let's try to get the data back from [appbase.io](https://appbase.io) with the ``get()`` method.
 
@@ -130,8 +132,7 @@ appbaseRef.get({
 	console.log(error)
 })
 
-
-GET() RESPONSE
+/* get() response */
 {
 	"_index": "newstreamingapp",
 	"_type": "books",
@@ -150,10 +151,9 @@ GET() RESPONSE
 
 Even though ``get()`` returns a single document data, appbase.io returns it as a stream object with the 'data' event handler.
 
+### Subscribing to a Document Stream
 
 Let's say that we are interested in subscribing to all the state changes that happen on a document. Here, we would use the ``getStream()`` method over ``get()``, which keeps returning new changes made to the document.
-
-### Subscribing to document stream
 
 ```js
 appbaseRef.getStream({
@@ -175,7 +175,7 @@ Let's see live updates in action. We will modify the book price in our original 
 For brevity, we will not show the ``index()`` operation here.
 
 ```js
-GETSTREAM() RESPONSE
+/* getStream() response */
 {
 	"_type": "books",
 	"_id": "X1",
@@ -214,7 +214,7 @@ appbaseRef.searchStream({
 	console.log("caught a searchStream() error: ", error)
 })
 
-RESPONSE WHEN NEW DATA MATCHES
+/* Response when a new data matches */
 {
 	"_type": "books",
 	"_id": "X1",
@@ -234,4 +234,4 @@ RESPONSE WHEN NEW DATA MATCHES
 
 **v0.10.0** introduces a new method [``searchStreamToURL()``](/javascript/api-reference.html#searchstreamtourl) that streams results directly to a URL instead of streaming back.
 
-In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
+In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query.

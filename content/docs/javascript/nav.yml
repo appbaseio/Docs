@@ -6,23 +6,23 @@
       forceInternal: true
       subitems:
         - id: creating-an-app
-          title: "Before you start: Create An App"
+          title: "Creating an App"
           href: /javascript/quickstart.html#creating-an-app
           forceInternal: true
         - id: install-appbase-js
-          title: "Step 1: Install appbase-js"
+          title: "Install appbase-js"
           href: /javascript/quickstart.html#install-appbase-js
           forceInternal: true
         - id: storing-data
-          title: "Step 2: Storing Data"
+          title: "Storing Data"
           href: /javascript/quickstart.html#storing-data
           forceInternal: true
-        - id: sgetings-vs-streaming-data
-          title: "Step 3: Streaming Data"
-          href: /javascript/quickstart.html#sgetings-vs-streaming-data
+        - id: geting-or-streaming-data
+          title: "Streaming Data"
+          href: /javascript/quickstart.html#geting-or-streaming-data
           forceInternal: true
         - id: streaming-rich-queries
-          title: "Step 4: Streaming Rich Queries"
+          title: "Streaming Rich Queries"
           href: /javascript/quickstart.html#streaming-rich-queries
           forceInternal: true
     - id: api-reference
