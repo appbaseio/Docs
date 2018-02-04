@@ -18,7 +18,7 @@
           href: /javascript/quickstart.html#storing-data
           forceInternal: true
         - id: geting-or-streaming-data
-          title: "Streaming Data"
+          title: "GETing or Streaming Data"
           href: /javascript/quickstart.html#geting-or-streaming-data
           forceInternal: true
         - id: streaming-rich-queries
