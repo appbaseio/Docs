@@ -195,6 +195,7 @@ if err != nil {
 	return
 }
 
+// This should trigger a new streaming match.
 data, err := response.Next()
 if err != nil {
 	log.Println(err)
