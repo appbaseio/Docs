@@ -27,7 +27,7 @@ You can go to the [appbase.io dashboard](https://dashboard.appbase.io) and creat
 
 ## Adding Your First Data
 
-You can access the databrowser [from the dashboard](http://dashboard.appbase.io/browser/) or independently via [dejavu app](https://opensource.appbase.io/dejavu/live/). 
+You can access the databrowser [from the dashboard](http://dashboard.appbase.io/browser/) or independently via [dejavu app](https://opensource.appbase.io/dejavu/live/).
 
 ![](https://i.imgur.com/Bh59Ej1.gif)
 
@@ -63,6 +63,6 @@ Data records can also be deleted easily. Select a record (or multiple) from the 
 
 ## Doing more with data
 
-While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest/getting-started.html) or one of the [Javascript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
+While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest-quickstart.html) or one of the [Javascript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
 
 The data browser is still a great place to visualize and debug the existing data records with its filters and continuous query functionalities.

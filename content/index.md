@@ -13,7 +13,7 @@ id: home
     </div>
     <div class="marketing-col">
       <h3>REST API Quick Start</h3>
-      <p><a href="/rest/getting-started.html">Get started with the REST APIs</a> for indexing, querying and streaming data.</p>
+      <p><a href="/rest-quickstart.html">Get started with the REST APIs</a> for indexing, querying and streaming data.</p>
     </div>
     <div class="marketing-col">
       <h3>REST API Reference</h3>

@@ -72,12 +72,12 @@ class Header extends Component {
                 height: '100%',
                 alignItems: 'center',
                 color: colors.brand,
-    
+
                 ':focus': {
                   outline: 0,
                   color: colors.white,
                 },
-    
+
                 [media.lessThan('small')]: {
                   flex: '0 0 auto',
                 },
@@ -88,7 +88,7 @@ class Header extends Component {
                 alt="Appbase.io Logo"
                 css={{
                   height: 40,
-    
+
                   [media.lessThan('small')]: {
                     height: 30,
                   },
@@ -108,7 +108,7 @@ class Header extends Component {
                 }}>
               </span>
             </Link>
-    
+
             <nav
               css={{
                 display: 'flex',
@@ -121,7 +121,7 @@ class Header extends Component {
                 WebkitOverflowScrolling: 'touch',
                 height: '100%',
                 width: '60%',
-    
+
                 [media.size('xsmall')]: {
                   flexGrow: '1',
                   width: 'auto',
@@ -150,7 +150,7 @@ class Header extends Component {
               <HeaderLink
                 isActive={location.pathname.includes('/rest/')}
                 title="REST API"
-                to="/rest/getting-started.html"
+                to="/rest-quickstart.html"
               />
             </nav>
             {location.pathname !== '/' && !this.state.showSearch && (
