@@ -8,7 +8,7 @@ prev: rest-quickstart.html
 prevTitle: "REST API: Quickstart"
 ---
 
-[go-appbase](godoc.org/github.com/appbaseio/go-appbase/) is a universal Golang client library for working with the appbase.io database.
+[go-appbase](https://godoc.org/github.com/appbaseio/go-appbase/) is a universal Golang client library for working with the appbase.io database.
 
 It can:
 
@@ -21,7 +21,7 @@ It can't:
 
 [Appbase.io - the database service](https://appbase.io) is opinionated about cluster setup and hence doesn't support the ElasticSearch devops APIs. See [rest.appbase.io](https://rest.appbase.io) for a full reference on the supported APIs.
 
-This is a quick start guide to whet the appetite with the possibilities of data streams. The full client API reference can be found [here](godoc.org/github.com/appbaseio/go-appbase/).
+This is a quick start guide to whet the appetite with the possibilities of data streams. The full client API reference can be found [here](https://godoc.org/github.com/appbaseio/go-appbase/).
 
 ## Creating an App
 
@@ -262,4 +262,4 @@ SearchStreamToURL() response
 }
 ```
 
-In this tutorial, we have learnt how to index new data and stream both individual data as well as query results. Go check out the full Golang client reference over [here](godoc.org/github.com/appbaseio/go-appbase/).
+In this tutorial, we have learnt how to index new data and stream both individual data as well as query results. Go check out the full Golang client reference over [here](https://godoc.org/github.com/appbaseio/go-appbase/).
