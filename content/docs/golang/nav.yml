@@ -25,3 +25,32 @@
           title: "Streaming Rich Queries"
           href: /go-quickstart.html#streaming-rich-queries
           forceInternal: true
+    - id: queries-with-golang
+      title: "Golang Complex Queries"
+      href: /queries-with-golang.html
+      forceInternal: true
+      subitems:
+        - id: find-documents-within-a-range-of-databases
+        - title: "Find Documents Within A Range Of databases"
+        - href: /queries-with-golang.html#find-documents-within-a-range-of-databases
+        - forceInternal: true
+        - id: compound-query
+        - title: "Compound Query"
+        - href: /queries-with-golang.html#compound-query
+        - forceInternal: true
+        - id: sorting-the-documents
+        - title: "Sorting the Documents"
+        - href: /queries-with-golang.html#sorting-the-documents
+        - forceInternal: true
+        - id: match-queries
+        - title: "Match Queries"
+        - href: /queries-with-golang.html#match-queries
+        - forceInternal: true
+        - id: match-phrase-queries
+        - title: "Match Phrase Queries"
+        - href: /queries-with-golang.html#match-phrase-queries
+        - forceInternal: true
+        - id: match-phrase-prefix-queries
+        - title: "Match Phrase Prefix Queries"
+        - href: /queries-with-golang.html#match-phrase-prefix-queries
+        - forceInternal: true
