@@ -25,32 +25,32 @@
           title: "Streaming Rich Queries"
           href: /go-quickstart.html#streaming-rich-queries
           forceInternal: true
-    - id: queries-with-golang
-      title: "Golang Complex Queries"
-      href: /queries-with-golang.html
+    - id: go-queries
+      title: "Queries With Go"
+      href: /go-queries.html
       forceInternal: true
       subitems:
-        - id: find-documents-within-a-range-of-databases
-        - title: "Find Documents Within A Range Of databases"
-        - href: /queries-with-golang.html#find-documents-within-a-range-of-databases
-        - forceInternal: true
+        - id: date-range-query
+          title: "Date Range Query"
+          href: /go-queries.html#date-range-query
+          forceInternal: true
         - id: compound-query
-        - title: "Compound Query"
-        - href: /queries-with-golang.html#compound-query
-        - forceInternal: true
-        - id: sorting-the-documents
-        - title: "Sorting the Documents"
-        - href: /queries-with-golang.html#sorting-the-documents
-        - forceInternal: true
-        - id: match-queries
-        - title: "Match Queries"
-        - href: /queries-with-golang.html#match-queries
-        - forceInternal: true
-        - id: match-phrase-queries
-        - title: "Match Phrase Queries"
-        - href: /queries-with-golang.html#match-phrase-queries
-        - forceInternal: true
-        - id: match-phrase-prefix-queries
-        - title: "Match Phrase Prefix Queries"
-        - href: /queries-with-golang.html#match-phrase-prefix-queries
-        - forceInternal: true
+          title: "Compound Query"
+          href: /go-queries.html#compound-query
+          forceInternal: true
+        - id: sorting-query-results
+          title: "Sorting Query Results"
+          href: /go-queries.html#sorting-query-results
+          forceInternal: true
+        - id: match-query
+          title: "Match Query"
+          href: /go-queries.html#match-query
+          forceInternal: true
+        - id: match-phrase-query
+          title: "Match Phrase Query"
+          href: /go-queries.html#match-phrase-query
+          forceInternal: true
+        - id: match-phrase-prefix-query
+          title: "Match Phrase Prefix Query"
+          href: /go-queries.html#match-phrase-prefix-query
+          forceInternal: true
