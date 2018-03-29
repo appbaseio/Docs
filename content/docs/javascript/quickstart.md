@@ -38,7 +38,7 @@ For this tutorial, we will use an app called `newstreamingapp`. The credentials 
 
 ## Install appbase-js
 
-We will fetch and install the **appbase-js** lib using npm. ``v2.2.4`` is the most current version.
+We will fetch and install the **appbase-js** lib using npm. ``v2.3.0`` is the most current version.
 
 ```js
 npm install appbase-js
@@ -53,7 +53,7 @@ Adding it in the browser should be a one line script addition.
 Alternatively, a UMD build of the library can be used directly from either  [CDN.js](https://cdnjs.com/libraries/appbase-js) or [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/2.2.4/appbase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/2.3.0/appbase.js"></script>
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
