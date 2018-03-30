@@ -17,3 +17,6 @@ bower_components
 
 # Ignore public dir - auto-generated on build
 public/*
+
+# search index
+src/data/search.index.json
