@@ -160,8 +160,9 @@ Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-r
 
 ## Full-text Search
 
-Let's now do a [full-text search query](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html) on the `name` field.
-Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-reference.html#search) method to fire a [match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) with our field `name` and query value.
+Full-text search queries analyses all the combinations of a given value and assigns scores to results based on their match relevance. It uses ngram tokenizer which creates and matches all combinations of the query string. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html).
+
+We'll do a [full-text search query](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html) on the `name` field by using appbase-js [`search()`](https://docs.appbase.io/javascript/api-reference.html#search) method to fire a [match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) with our field `name` and query value.
 
 <br/>
 
