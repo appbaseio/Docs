@@ -134,7 +134,7 @@ We'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-referen
 
 ## Search Stream
 
-Let's now subscribe to some streaming data based on a query For this, we'll use [`searchStream()`](http://localhost:8000/javascript/api-reference.html#searchstream) method which continuously stream new results of the subscribed query on a give `type`. Here, we're querying with `match_all` to get streaming updates about all data.
+Let's now subscribe to some streaming data based on a query. For this, we'll use [`searchStream()`](http://localhost:8000/javascript/api-reference.html#searchstream) method which continuously stream new results of the subscribed query on a give `type`. Here, we're querying with `match_all` to get streaming updates about all data.
 
 We'll also need to make a change on the `type` we've subscribed. For adding some data, we'll use [`index()`](http://localhost:8000/javascript/api-reference.html#index) method and pass a new data object.
 
@@ -147,13 +147,16 @@ We'll also need to make a change on the `type` we've subscribed. For adding some
 
 ## GeoDistance Query
 
-TODO: Desc
+Let's now get a list of all the rooms available within a certain distance from a specific (lat,lon) location.
 
-Get all the properties around a particular (lat,lon) co-ordinate.
+Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-reference.html#search) method to fire a [geodistance query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html) specifying `distance` and `location` co-ordinates.
 
 <br/>
 
-TODO: REPL
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Nodejs-GeoDistance?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<!-- [Here's](https://opensource.appbase.io/mirage/#?input_state=XQAAAAK0CAAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuCSUNYX32cshZ3d4lrzfi6fQXgJyuLD2vgQns3dUESCtKWJx7m6L3fxjViX04mcxbte-NrsTOVNx3X2YvOd2UG_O3P5pgvLecXNPgnsZACPDmsU8OKslnavslVZEjTn_TFj6xc7bgYqdvYkOK1-UKMgOKP0J3jYoVLUimxuXXxXxgHLnuSBlYv4MbQi1Hw9WjzpILKsFOhJNVGk3h88itDk2RILhqrJIU74eps4pG2P_9U-HhoWZ4vJXrsMx4sgFLKwuxL9JnpcoI8I9h3KCvxj2JVBPKrS2EACCLhtc-_1rz1FVJZZFtuHP4mvbmoYOWEpxOb6adSXi4Pf2DMuwPSBUTDVUc0JFmAgbj3uc87aSFzvbyhabjxPcjthDQCIsXfXwVAEr_-T-YQ1Q_VMvfGlPPq-k6ze89d9Y593K_HoB7G2WX35A-ha3oTTld7jcHFuKjX_042jNudf8e2uIjQgbhAD9icDO55t5cbJk3t0zBzAAI7W9Yk8ggDY889WnR4tLL1aO669LO3QpZGOZzzLVTDTSurgTi9FKtwI5397AOTlz00ZTc_FeeH4l5syXeqGQnXoBRvcoFWau0mfdJfQin__2WFBm) the same query executed on Mirage. -->
+
 
 ## Full-text Search
 
