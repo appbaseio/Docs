@@ -4,8 +4,10 @@ title: "Go"
 layout: docs
 sectionid: interactive-examples
 permalink: interactive/go.html
-prev: python.html
-prevTitle: "Interactive Examples with Python"
+prev: javascript.html
+prevTitle: "Examples with JavaScript"
+next: python.html
+nextTitle: "Examples with Python"
 ---
 
 Interactive examples with Go

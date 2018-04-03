@@ -5,7 +5,7 @@ layout: docs
 sectionid: interactive-examples
 permalink: interactive/php.html
 prev: python.html
-prevTitle: "Interactive Examples with Python"
+prevTitle: "Examples with Python"
 ---
 
 Interactive examples with PHP

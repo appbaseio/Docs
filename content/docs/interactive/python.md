@@ -5,9 +5,9 @@ layout: docs
 sectionid: interactive-examples
 permalink: interactive/python.html
 prev: go.html
-prevTitle: "Interactive Examples with Go"
+prevTitle: "Examples with Go"
 next: php.html
-nextTitle: "Interactive Examples with PHP"
+nextTitle: "Examples with PHP"
 ---
 
 Interactive examples with Python
