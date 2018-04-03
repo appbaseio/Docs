@@ -148,14 +148,14 @@ class Header extends Component {
                 to="/javascript/quickstart.html"
               />
               <HeaderLink
-                isActive={location.pathname.includes('/interactive/')}
-                title="Interactive"
-                to="/interactive/javascript.html"
+              isActive={location.pathname.includes('/rest/')}
+              title="REST API"
+              to="/rest-quickstart.html"
               />
               <HeaderLink
-                isActive={location.pathname.includes('/rest/')}
-                title="REST API"
-                to="/rest-quickstart.html"
+                isActive={location.pathname.includes('/interactive/')}
+                title="Interactive Examples"
+                to="/interactive/javascript.html"
               />
             </nav>
             {location.pathname !== '/' && !this.state.showSearch && (
