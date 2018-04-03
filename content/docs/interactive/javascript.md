@@ -12,9 +12,9 @@ Interactive examples with JavaScript
 
 ### Setting things up
 
-Before we start using appbase-js APIs, we’ll need a dataset in Elasticsearch to interact with. appbase-js works with any Elasticsearch index and you can easily use it with your own dataset.
+Before we start using the appbase-js lib, we’ll need to set up an appbase.io app.
 
-To focus on the API methods, we've set up a <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">dataset</a>. containing some dummy housing records. All the examples use this dataset and you can use the same directly by clicking <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">"Clone this app"</a> or make one for yourself.
+For this tutorial, we have used a <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">sample app</a> containing some dummy housing records. All the examples use this app. You can also clone this app (to create your own private app) directly by clicking "Clone this app" in the <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">data browser view of the app here</a>.
 
 <br/>
 
@@ -52,40 +52,36 @@ All the records are structured in the following format:
 }
 ```
 
-Let's look at how we can interact with this dataset via appbase-js APIs.
-
-This is the common code which exists in all examples. Here we simply import the appbase-js library and create an instance object specifying `url`, `credentials` and [`app`](/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan). This instance will provide all appbase-js data APIs to talk with the data.
+Before we can interact with this app via the appbase-js lib, we will import the lib and create a reference object for the app by specifying the `app` name and  `credentials` in the **Appbase()** constructor.
 
 ```js
- 
 const Appbase = require("appbase-js");
 
-// Create appbase instance to use methods
+// Create an appbase.io app's instance
 const appbaseRef = new Appbase({
-    url: "https://scalr.api.appbase.io",
-    credentials: "YnCgVwozV:e9ec5cb0-58d8-4bb0-badc-acaf726661f1",
-    app: "housing-demo"
+    app: "housing-demo",
+    credentials: "YnCgVwozV:e9ec5cb0-58d8-4bb0-badc-acaf726661f1"
 });
 ```
 
 > Note <span class="fa fa-info-circle"></span>
 >
-> Make sure to update `url`, `credentials` and `app` fields if you are using your own dataset.
+> Make sure to update `app` and `credentials` fields if you are using your own app instance.
 
 ## Fetch All
 
-Before with start with all the fancy queries, let's query the existing dataset to fetch all the records.
+Before with start with all the fancy queries, let's write a query to fetch all the records in the app.
 
-We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all query</a> for this.
+We'll use the [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all query</a> for doing this.
 
 > Note <span class="fa fa-info-circle"></span>
 >
-> Feel free to play around the query by making changes in the interactive demo. Make sure to hit the run button after every change.
+> Feel free to play around with the query by making changes in the interactive demo. Make sure to hit the run button after every change.
 
 
 <iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Nodejs-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-You can also use <a href="https://opensource.appbase.io/mirage" target="_blank">Mirage</a> - a GUI for Elasticsearch queries which provides a query explorer to interact with our data. <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAKxBgAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuSpDQ9kUuOUgEQayJrMjPDHPMTo8qfXwTqnVrh0i_m9y1THrKxTMAfWfwwcedk3CUDAtRXNAADtgrM-AaohtxKZzBXKYRVHTyXyN8U2PEG0TC5uCuzoWoVyTkFzDCLZfyS8mJZJi6QdiEljmtIaslKsXVKOVZq7BPE8P0_xjUwf2hab_384tlhzDPxsBXQcl_ZyL9z8nGByMgfVBfcAvN8jcKriHmOuSZHh7DoVhqXxspPjLExJuHw6BVhFIXXfujcpB1bg9kwQpr87uWrDXXXGwtomqn-zsQQLibaxdSGP4ySERan0TXumqxWGHLQvH6ZZCZ4NznC3TzgqJwoP2_LDBXippb1sz4nAIBur_E-tAUX7hSago0yzRrJn7wmI7" target="_blank">Here's</a> the same query executed on Mirage.
+You can also see this query in <a href="https://opensource.appbase.io/mirage" target="_blank">Mirage</a> - a GUI for Elasticsearch queries which provides a query explorer view to interact with an app's data. <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAKxBgAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuSpDQ9kUuOUgEQayJrMjPDHPMTo8qfXwTqnVrh0i_m9y1THrKxTMAfWfwwcedk3CUDAtRXNAADtgrM-AaohtxKZzBXKYRVHTyXyN8U2PEG0TC5uCuzoWoVyTkFzDCLZfyS8mJZJi6QdiEljmtIaslKsXVKOVZq7BPE8P0_xjUwf2hab_384tlhzDPxsBXQcl_ZyL9z8nGByMgfVBfcAvN8jcKriHmOuSZHh7DoVhqXxspPjLExJuHw6BVhFIXXfujcpB1bg9kwQpr87uWrDXXXGwtomqn-zsQQLibaxdSGP4ySERan0TXumqxWGHLQvH6ZZCZ4NznC3TzgqJwoP2_LDBXippb1sz4nAIBur_E-tAUX7hSago0yzRrJn7wmI7" target="_blank">Here's</a> the same query executed on Mirage.
 
 > Note <span class="fa fa-info-circle"></span>
 >
@@ -93,7 +89,7 @@ You can also use <a href="https://opensource.appbase.io/mirage" target="_blank">
 
 ## Index Data
 
-Let's add some data to our dataset. We'll make a simple JSON object with some housing data and pass it with the [`index()`](/javascript/api-reference.html#index) method which writes a data object at a given [`type`](/concepts/datamodel.html#type) and `id` location, or replaces if an object already exists.
+Next, let's add some data to our app. We'll make a simple JSON object with some housing data and pass it with the [`index()`](/javascript/api-reference.html#index) method which writes a data object at a given [`type`](/concepts/datamodel.html#type) and `id` location. In the event that data already exists at this `id` locaiton, it will overwrite the data with the  `body` provided in the **index()** method.
 
 <br/>
 
@@ -101,8 +97,8 @@ Let's add some data to our dataset. We'll make a simple JSON object with some ho
 
 ## Fetch Data
 
-Let's learn how to fetch or read the data at specific `id`.
-We'll use appbase-js [`get()`](/javascript/api-reference.html#get) method to get back the data (we just added above) by passing the same `id`.
+Let's learn how to fetch or read the data present at specific `id` location.
+We'll use the appbase-js [`get()`](/javascript/api-reference.html#get) method to get back the data (we just added above) by passing the same `id`.
 
 <br/>
 
@@ -110,9 +106,9 @@ We'll use appbase-js [`get()`](/javascript/api-reference.html#get) method to get
 
 ## Stream data
 
-Let's now subscribe to some streaming data based on an `id`. For this, we'll appbase-js [`getStream()`](/javascript/api-reference.html#getstream) method which continuously streams new updates to a specific JSON document based on the `id`.
+Let's now subscribe to some streaming data updates based on an `id` location. For this, we'll use the appbase-js [`getStream()`](/javascript/api-reference.html#getstream) method which continuously streams new updates to a specific JSON document based on the `id`.
 
-We'll also need to make a change on the same doc we've subscribed by it's `id`. To make a change in any existing data, we use [`update()`](/javascript/api-reference.html#update) method.
+We'll also make a change on the same doc we've subscribed to to show how streaming updates work. To make a change in any existing data, we can use the [`update()`](/javascript/api-reference.html#update) method.
 
 <br/>
 
@@ -125,7 +121,7 @@ We'll also need to make a change on the same doc we've subscribed by it's `id`. 
 ## Range Query
 
 Let's now query the dataset to get all rooms between prices 50 to 100.
-We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> passing the field `price` and mentioning <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
+We'll use the appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> by passing the field `price` and specifying the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
 
 <br/>
 
@@ -135,9 +131,9 @@ We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method 
 
 ## Search Stream
 
-Let's now subscribe to some streaming data based on a query. For this, we'll use [`searchStream()`](/javascript/api-reference.html#searchstream) method which continuously streams new results of the subscribed query on a give `type`. Here, we're querying with `match_all` to get streaming updates about all data.
+Let's now subscribe to streaming updates for a query. For this, we'll use the [`searchStream()`](/javascript/api-reference.html#searchstream) method which continuously streams new results of the subscribed query on a given `type`. Here, we're querying with `match_all` to get streaming updates about any data change.
 
-We'll also need to make a change in the `type` we've subscribed. For adding some data, we'll use [`index()`](/javascript/api-reference.html#index) method and pass a new data object.
+To see this in action, we'll also use the [`index()`](/javascript/api-reference.html#index) method to add a new data object, which **searchStream()** should stream back as an update.
 
 <br/>
 
@@ -148,9 +144,9 @@ We'll also need to make a change in the `type` we've subscribed. For adding some
 
 ## GeoDistance Query
 
-Let's now get a list of all the rooms available within a certain distance from a specific (lat,lon) location.
+Let's now get a list of all the rooms available within a certain distance from a specific geopoint (lat,lon) location.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html" target="_blank">geodistance query</a> specifying `distance` and `location` co-ordinates.
+Here, we'll use the appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html" target="_blank">geodistance query</a> specifying `distance` and `location` co-ordinates.
 
 <br/>
 
@@ -159,9 +155,9 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 ## Full-text Search
 
-Full-text search queries analyses all the combinations of a given value and assigns scores to results based on their match relevance. It uses ngram tokenizer which creates and matches all combinations of the query string. Read more about it <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html" target="_blank">here</a>.
+Here, we will apply a full-text search query on a field with a n-gram analyzer applied to it. Instead of indexing the exact field value, an n-gram indexes multiple grams that constitute the field value when indexing. This allows for a granular querying experience, where even partial field values can be matched back, really useful when building auto-suggestion based search. You can read more about <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html" target="_blank">n-grams here</a>.
 
-We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> with our field `name` and query value.
+We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> with our n-gram analyzed field `name` and query value.
 
 <br/>
 
@@ -171,9 +167,9 @@ We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curr
 
 ## Date Query
 
-Let's now do a date query to get houses that are available between certain dates. As per our data schema, we'll need to use `date_from` and `date_to` fields as our range.
+Let's now do a date query to get houses that are available between certain dates. As per our mapping (aka data schema), we'll need to use `date_from` and `date_to` fields for querying by the date range.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> with our field `name` and query values.
+Here, we'll use the appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> with our field `name` and query values.
 
 <br/>
 
@@ -183,9 +179,9 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 ## Compound Query
 
-Finally, let's do a compound query combining multiple conditions. We'll query rooms with a certain `room_type` within a certain price range.
+Finally, let's do a compound query that combines multiple queries together. We'll take an example of fetching a specific `room_type` of rooms that are within the specified price range.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to pass a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank">bool query</a> combining a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> for `room_type` and a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> for `price`.
+Here, we'll use the appbase-js [`search()`](/javascript/api-reference.html#search) method to pass a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank">bool query</a> that combines a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> for `room_type` and a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> for `price`.
 
 <br/>
 
@@ -198,4 +194,4 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 appbase-js API methods provide full <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" target="_blank">Query DSL</a> support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our <a href="https://opensource.appbase.io/mirage/" target="_blank">GUI query explorer</a> to construct complex queries easily.
 
-There are many more methods provided by the appbase-js API other than the ones we used. Do check out our full <a href="https://docs.appbase.io/javascript/api-reference.html" target="_blank">JavaScript API Reference</a> to dive deeper.
+There are many more methods provided by the appbase-js API other than the ones we used. You can check out the full <a href="https://docs.appbase.io/javascript/api-reference.html" target="_blank">JavaScript API Reference here</a>.
