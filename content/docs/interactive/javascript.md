@@ -14,7 +14,7 @@ Interactive examples with JavaScript
 
 Before we start using appbase-js APIs, we’ll need a dataset in Elasticsearch to interact with. appbase-js works with any Elasticsearch index and you can easily [use it with your own dataset](https://opensource.appbase.io/reactive-manual/getting-started/reactivebase.html).
 
-To focus on the API methods, We've setup a [dataset](https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false) containing some dummy housing records. All the examples use this dataset and you can use the same directly by clicking ["Clone this app"](https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false) or make one for yourself.
+To focus on the API methods, we've set up a [dataset](https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false) containing some dummy housing records. All the examples use this dataset and you can use the same directly by clicking ["Clone this app"](https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false) or make one for yourself.
 
 <br/>
 
@@ -54,7 +54,7 @@ All the records are structured in the following format:
 
 Let's look at how we can interact with this dataset via appbase-js APIs.
 
-This is the common code which exists in all examples. Here we simply import the appbase-js library and create an instance object specifing `url`, `credentials` and [`app`](https://docs.appbase.io/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan). This instance will provide all appbase-js data APIs to talk with the data.
+This is the common code which exists in all examples. Here we simply import the appbase-js library and create an instance object specifying `url`, `credentials` and [`app`](https://docs.appbase.io/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan). This instance will provide all appbase-js data APIs to talk with the data.
 
 ```js
  
@@ -92,7 +92,7 @@ You can also use [Mirage](https://opensource.appbase.io/mirage) - a GUI for Elas
 
 ## Index Data
 
-Let's add some data in our dataset. We'll make a simple JSON object with some housing data and pass it with the [`index()`](http://localhost:8000/javascript/api-reference.html#index) method which writes a data object at a given [`type`](https://docs.appbase.io/concepts/datamodel.html#type) and `id` location, or replaces if an object already exists.
+Let's add some data to our dataset. We'll make a simple JSON object with some housing data and pass it with the [`index()`](http://localhost:8000/javascript/api-reference.html#index) method which writes a data object at a given [`type`](https://docs.appbase.io/concepts/datamodel.html#type) and `id` location, or replaces if an object already exists.
 
 <br/>
 
@@ -109,9 +109,9 @@ We'll use appbase-js [`get()`](https://docs.appbase.io/javascript/api-reference.
 
 ## Stream data
 
-Let's now subscribe to some streaming data based on an `id`. For this, we'll appbase-js [`getStream()`](http://localhost:8000/javascript/api-reference.html#getstream) method which continuously stream new updates to a specific JSON document based on the `id`.
+Let's now subscribe to some streaming data based on an `id`. For this, we'll appbase-js [`getStream()`](http://localhost:8000/javascript/api-reference.html#getstream) method which continuously streams new updates to a specific JSON document based on the `id`.
 
-We'll also need to make a change on the same doc we've subscribed by it's `id`. To make change in any existing data, we use [`update()`](http://localhost:8000/javascript/api-reference.html#update) method.
+We'll also need to make a change on the same doc we've subscribed by it's `id`. To make a change in any existing data, we use [`update()`](http://localhost:8000/javascript/api-reference.html#update) method.
 
 <br/>
 
@@ -134,9 +134,9 @@ We'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-referen
 
 ## Search Stream
 
-Let's now subscribe to some streaming data based on a query. For this, we'll use [`searchStream()`](http://localhost:8000/javascript/api-reference.html#searchstream) method which continuously stream new results of the subscribed query on a give `type`. Here, we're querying with `match_all` to get streaming updates about all data.
+Let's now subscribe to some streaming data based on a query. For this, we'll use [`searchStream()`](http://localhost:8000/javascript/api-reference.html#searchstream) method which continuously streams new results of the subscribed query on a give `type`. Here, we're querying with `match_all` to get streaming updates about all data.
 
-We'll also need to make a change on the `type` we've subscribed. For adding some data, we'll use [`index()`](http://localhost:8000/javascript/api-reference.html#index) method and pass a new data object.
+We'll also need to make a change in the `type` we've subscribed. For adding some data, we'll use [`index()`](http://localhost:8000/javascript/api-reference.html#index) method and pass a new data object.
 
 <br/>
 
@@ -184,7 +184,7 @@ Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-r
 
 ## Compound Query
 
-Finally let's do a compound query combining multiple conditions. We'll query rooms with a certain `room_type` and between a certain price range.
+Finally, let's do a compound query combining multiple conditions. We'll query rooms with a certain `room_type` within a certain price range.
 
 Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-reference.html#search) method to pass a [bool query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) combining a [match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) for `room_type` and a [range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) for `price`.
 
@@ -196,6 +196,6 @@ Here, we'll use appbase-js [`search()`](https://docs.appbase.io/javascript/api-r
 
 ### Further Reading
 
-appbase-js API methods provides full [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our [GUI query explorer](https://opensource.appbase.io/mirage/) to contruct complex queries easily.
+appbase-js API methods provide full [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our [GUI query explorer](https://opensource.appbase.io/mirage/) to construct complex queries easily.
 
 There are many more methods provided by the appbase-js API other than the ones we used. Do check out our full [JavaScript API Reference](http://localhost:8000/javascript/api-reference.html) to dive deeper.
