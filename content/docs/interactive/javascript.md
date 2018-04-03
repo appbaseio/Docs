@@ -76,7 +76,7 @@ const appbaseRef = new Appbase({
 
 Before with start with all the fancy queries, let's query the existing dataset to fetch all the records.
 
-We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a [match_all query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html) for this. It’s a convenience method for ElasticSearch’s <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html" target="_blank">`/_search`</a> endpoint.
+We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all query</a> for this. It’s a convenience method for ElasticSearch’s <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html" target="_blank">`/_search`</a> endpoint.
 
 Feel free to play around the query by making changes in the interactive demo. Make sure to hit the run button after every change.
 
@@ -124,7 +124,7 @@ We'll also need to make a change on the same doc we've subscribed by it's `id`. 
 ## Range Query
 
 Let's now query the dataset to get all rooms between prices 50 to 100.
-We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a [range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) passing the field `price` and mentioning [range filter](https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html) values.
+We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> passing the field `price` and mentioning <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
 
 <br/>
 
@@ -149,7 +149,7 @@ We'll also need to make a change in the `type` we've subscribed. For adding some
 
 Let's now get a list of all the rooms available within a certain distance from a specific (lat,lon) location.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a [geodistance query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html) specifying `distance` and `location` co-ordinates.
+Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html" target="_blank">geodistance query</a> specifying `distance` and `location` co-ordinates.
 
 <br/>
 
@@ -160,7 +160,7 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 Full-text search queries analyses all the combinations of a given value and assigns scores to results based on their match relevance. It uses ngram tokenizer which creates and matches all combinations of the query string. Read more about it <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html" target="_blank">here</a>.
 
-We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a [match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) with our field `name` and query value.
+We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> with our field `name` and query value.
 
 <br/>
 
@@ -172,7 +172,7 @@ We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curr
 
 Let's now do a date query to get houses that are available between certain dates. As per our data schema, we'll need to use `date_from` and `date_to` fields as our range.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a [range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) with our field `name` and query values.
+Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> with our field `name` and query values.
 
 <br/>
 
@@ -184,7 +184,7 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 Finally, let's do a compound query combining multiple conditions. We'll query rooms with a certain `room_type` within a certain price range.
 
-Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to pass a [bool query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) combining a [match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) for `room_type` and a [range query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) for `price`.
+Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to pass a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank">bool query</a> combining a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> for `room_type` and a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> for `price`.
 
 <br/>
 
@@ -195,6 +195,6 @@ Here, we'll use appbase-js [`search()`](/javascript/api-reference.html#search) m
 
 ### Further Reading
 
-appbase-js API methods provide full [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our <a href="https://opensource.appbase.io/mirage/" target="_blank">GUI query explorer</a> to construct complex queries easily.
+appbase-js API methods provide full <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" target="_blank">Query DSL</a> support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our <a href="https://opensource.appbase.io/mirage/" target="_blank">GUI query explorer</a> to construct complex queries easily.
 
 There are many more methods provided by the appbase-js API other than the ones we used. Do check out our full <a href="https://docs.appbase.io/javascript/api-reference.html" target="_blank">JavaScript API Reference</a> to dive deeper.
