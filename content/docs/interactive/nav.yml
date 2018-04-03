@@ -62,17 +62,9 @@
           title: "Fetch Data"
           href: /interactive/php.html#fetch-data
           forceInternal: true
-        - id: stream-data
-          title: "Stream Data"
-          href: /interactive/php.html#stream-data
-          forceInternal: true
         - id: range-query
           title: "Range Query"
           href: /interactive/php.html#range-query
-          forceInternal: true
-        - id: search-stream
-          title: "Search Stream"
-          href: /interactive/php.html#search-stream
           forceInternal: true
         - id: geodistance-query
           title: "GeoDistance Query"
