@@ -76,11 +76,12 @@ const appbaseRef = new Appbase({
 
 Before with start with all the fancy queries, let's query the existing dataset to fetch all the records.
 
-We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all query</a> for this. It’s a convenience method for ElasticSearch’s <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html" target="_blank">`/_search`</a> endpoint.
+We'll use appbase-js [`search()`](/javascript/api-reference.html#search) method to fire a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all query</a> for this.
 
-Feel free to play around the query by making changes in the interactive demo. Make sure to hit the run button after every change.
+> Note <span class="fa fa-info-circle"></span>
+>
+> Feel free to play around the query by making changes in the interactive demo. Make sure to hit the run button after every change.
 
-<br/>
 
 <iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Nodejs-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
