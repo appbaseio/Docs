@@ -24,6 +24,8 @@ For this tutorial, we have used a <a href="https://opensource.appbase.io/dejavu/
 
 All the records are structured in the following format:
 
+<!-- TODO: remove fields that aren't used in any examples -->
+
 ```js
  
 {
@@ -92,11 +94,6 @@ Next, let's add some data to our app. We'll make a simple JSON object with some 
 <br/>
 
 <iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Nodejs-index?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
-> Note <i class="fa fa-info-circle"></i>
->
-> If you intended to autogenerate `id`, don't pass it with the [`index()`](/javascript/api-reference.html#index) call. We'll autogenerate it for you and if you pass an `id` then we'll replace the older data at that `id` if it exists or create a new if it didn't exist.
-
 
 ## Fetch Data
 

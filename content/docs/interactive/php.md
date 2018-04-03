@@ -6,6 +6,8 @@ sectionid: interactive-examples
 permalink: interactive/php.html
 prev: javascript.html
 prevTitle: "Interactive Examples with JavaScript"
+next: go.html
+nextTitle: "Interactive Examples with Go"
 ---
 
 Interactive examples with PHP
@@ -52,32 +54,34 @@ All the records are structured in the following format:
 
 To interact with this dataset, we'll use <a href="http://php.net/curl" target="_blank">`cURL`</a> library from PHP to make HTTP REST API requests. The semantics should remain the same for any other HTTP library as well.
 
-This is the common code which exists in all examples. Here, we simply create a `$curl` object and set request options with `url`, `credentials`, [`app`](/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan) and the query request.
+This is the common code which exists in all examples. Here, we simply create a `$curl` object and set request options with `url`, `credentials`, [`app`](/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan), [`type`](/concepts/datamodel.html#type) and the query request.
 
 ```php
  
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
+  // Request URL containing app, type and id or method
   CURLOPT_URL => "https://scalr.api.appbase.io/{{app}}/{{type}}/{{id/method}}",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
+  // Request HTTP method ( GET | POST | PUT | DELETE )
+  CURLOPT_CUSTOMREQUEST => "{{http_method}}",
+  // Request body/payload
   CURLOPT_POSTFIELDS => "{{query_request}}",
   CURLOPT_HTTPHEADER => array(
+    // App credentials base64 encoded
     "Authorization: Basic {{credentials_base64}}",
     "Content-Type: application/json"
   ),
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
 ```
+
 > Note <span class="fa fa-info-circle"></span>
 >
 > If you are using your own dataset, make sure to update `CURLOPT_URL` with your `app`, `type` and `CURLOPT_HTTPHEADER` with your `credentials`.

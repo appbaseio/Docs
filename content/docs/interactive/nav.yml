@@ -82,3 +82,40 @@
           title: "Compound Query"
           href: /interactive/php.html#compound-query
           forceInternal: true
+    - id: go
+      title: Go
+      href: /interactive/go.html
+      forceInternal: true
+      subitems:
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/go.html#fetch-all
+          forceInternal: true
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/go.html#index-data
+          forceInternal: true
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/go.html#fetch-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/go.html#range-query
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/go.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/go.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/go.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/go.html#compound-query
+          forceInternal: true
