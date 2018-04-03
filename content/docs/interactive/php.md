@@ -4,10 +4,8 @@ title: "PHP"
 layout: docs
 sectionid: interactive-examples
 permalink: interactive/php.html
-prev: javascript.html
-prevTitle: "Interactive Examples with JavaScript"
-next: go.html
-nextTitle: "Interactive Examples with Go"
+prev: python.html
+prevTitle: "Interactive Examples with Python"
 ---
 
 Interactive examples with PHP
@@ -200,5 +198,5 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 appbase-js API methods provide full <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" target="_blank">Query DSL</a> support and there are lots of use-cases that are unlocked by constructing various types of queries. Feel free to use our <a href="https://opensource.appbase.io/mirage/" target="_blank">GUI query explorer</a> to construct complex queries easily.
 
-There are many more methods provided by the appbase-js API other than the ones we used. Do check out our full <a href="https://docs.appbase.io/javascript/api-reference.html" target="_blank">JavaScript API Reference</a> to dive deeper.
+There are many more methods provided by the appbase-js API other than the ones we used. The full API reference with example snippets in cURL, Ruby, Python, Node, PHP, Go, jQuery can be browsed at <a href="https://rest.appbase.io/" target="_blank">rest.appbase.io</a>.
 

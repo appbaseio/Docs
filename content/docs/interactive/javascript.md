@@ -4,8 +4,8 @@ title: "JavaScript / Node.js"
 layout: docs
 sectionid: interactive-examples
 permalink: interactive/javascript.html
-next: php.html
-nextTitle: "Interactive Examples with PHP"
+next: go.html
+nextTitle: "Interactive Examples with Go"
 ---
 
 Interactive examples with JavaScript
