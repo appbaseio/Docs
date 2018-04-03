@@ -24,8 +24,6 @@ For this tutorial, we have used a <a href="https://opensource.appbase.io/dejavu/
 
 All the records are structured in the following format:
 
-<!-- TODO: remove fields that aren't used in any examples -->
-
 ```js
  
 {

@@ -50,15 +50,43 @@
       href: /interactive/php.html
       forceInternal: true
       subitems:
-        - id: section-1
-          title: "Section 1"
-          href: /interactive/php.html#section-1
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/php.html#fetch-all
           forceInternal: true
-        - id: section-2
-          title: "Section 2"
-          href: /interactive/php.html#section-2
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/php.html#index-data
           forceInternal: true
-        - id: section-3
-          title: "Section 3"
-          href: /interactive/php.html#section-3
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/php.html#fetch-data
+          forceInternal: true
+        - id: stream-data
+          title: "Stream Data"
+          href: /interactive/php.html#stream-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/php.html#range-query
+          forceInternal: true
+        - id: search-stream
+          title: "Search Stream"
+          href: /interactive/php.html#search-stream
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/php.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/php.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/php.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/php.html#compound-query
           forceInternal: true
