@@ -12,9 +12,9 @@ Interactive examples with Go
 
 ### Setting things up
 
-Before we start using appbase-js APIs, we’ll need a dataset in Elasticsearch to interact with. appbase-js works with any Elasticsearch index and you can easily use it with your own dataset.
+Before we start using the appbase-js lib, we’ll need to set up an appbase.io app.
 
-To focus on the API methods, we've set up a <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">dataset</a>. containing some dummy housing records. All the examples use this dataset and you can use the same directly by clicking <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">"Clone this app"</a> or make one for yourself.
+For this tutorial, we have used a <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">sample app</a> containing some dummy housing records. All the examples use this app. You can also clone this app (to create your own private app) directly by clicking "Clone this app" in the <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">data browser view of the app here</a>.
 
 <br/>
 
@@ -74,14 +74,14 @@ res, _ := http.DefaultClient.Do(req)
 
 > Note <span class="fa fa-info-circle"></span>
 >
-> If you are using your own dataset, make sure to update `url` with your `app`, `type` and `req.Header` with your `credentials`.
+> If you are using your own app instance, make sure to update `url` with your `app`, `type` and `req.Header` with your `credentials`.
 
 
 ## Fetch All
 
-Before with start with all the fancy queries, let's query the existing dataset to fetch all the records.
+Before with start with all the fancy queries, let's write a query to fetch all the records in the app.
 
-We'll use the<a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all</a> query.
+We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html" target="_blank">match_all</a> query.
 
 > Note <span class="fa fa-info-circle"></span>
 >
@@ -90,7 +90,7 @@ We'll use the<a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411
 
 <iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-You can also use <a href="https://opensource.appbase.io/mirage" target="_blank">Mirage</a> - a GUI for Elasticsearch queries which provides a query explorer to interact with our data. <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAKxBgAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuSpDQ9kUuOUgEQayJrMjPDHPMTo8qfXwTqnVrh0i_m9y1THrKxTMAfWfwwcedk3CUDAtRXNAADtgrM-AaohtxKZzBXKYRVHTyXyN8U2PEG0TC5uCuzoWoVyTkFzDCLZfyS8mJZJi6QdiEljmtIaslKsXVKOVZq7BPE8P0_xjUwf2hab_384tlhzDPxsBXQcl_ZyL9z8nGByMgfVBfcAvN8jcKriHmOuSZHh7DoVhqXxspPjLExJuHw6BVhFIXXfujcpB1bg9kwQpr87uWrDXXXGwtomqn-zsQQLibaxdSGP4ySERan0TXumqxWGHLQvH6ZZCZ4NznC3TzgqJwoP2_LDBXippb1sz4nAIBur_E-tAUX7hSago0yzRrJn7wmI7" target="_blank">Here's</a> the same query executed on Mirage.
+You can also see this query in <a href="https://opensource.appbase.io/mirage" target="_blank">Mirage</a> - a GUI for Elasticsearch queries which provides a query explorer view to interact with an app's data. <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAKxBgAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuSpDQ9kUuOUgEQayJrMjPDHPMTo8qfXwTqnVrh0i_m9y1THrKxTMAfWfwwcedk3CUDAtRXNAADtgrM-AaohtxKZzBXKYRVHTyXyN8U2PEG0TC5uCuzoWoVyTkFzDCLZfyS8mJZJi6QdiEljmtIaslKsXVKOVZq7BPE8P0_xjUwf2hab_384tlhzDPxsBXQcl_ZyL9z8nGByMgfVBfcAvN8jcKriHmOuSZHh7DoVhqXxspPjLExJuHw6BVhFIXXfujcpB1bg9kwQpr87uWrDXXXGwtomqn-zsQQLibaxdSGP4ySERan0TXumqxWGHLQvH6ZZCZ4NznC3TzgqJwoP2_LDBXippb1sz4nAIBur_E-tAUX7hSago0yzRrJn7wmI7" target="_blank">Here's</a> the same query executed on Mirage.
 
 > Note <span class="fa fa-info-circle"></span>
 >
@@ -99,9 +99,9 @@ You can also use <a href="https://opensource.appbase.io/mirage" target="_blank">
 
 ## Index Data
 
-Let's add some data to our dataset.
+Next, let's add some data to our app.
 
-We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf809565ef" target="_blank">`/id`</a> endpoint from appbase-js REST API mentioning the id `H1` and fire a `PUT` request with the body containing a simple JSON object with some housing data.
+We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf809565ef" target="_blank">`/id`</a> endpoint from appbase-js REST API specifying the id `H1` and fire a `PUT` request with the body containing a simple JSON object with some housing data.
 
 <br/>
 
@@ -114,9 +114,9 @@ We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf8095
 
 ## Fetch Data
 
-Let's learn how to fetch or read the data at specific `id`.
+Let's learn how to fetch or read the data present at specific `id` location.
 
-We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf809565ef" target="_blank">`/id`</a> endpoint from appbase-js REST API mentioning the id `H1` and fire a `GET` request.
+We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf809565ef" target="_blank">`/id`</a> endpoint from appbase-js REST API specifying the id `H1` and fire a `GET` request.
 
 <br/>
 
@@ -127,7 +127,7 @@ We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf8095
 
 Let's now query the dataset to get all rooms between prices 50 to 100.
 
-We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> passing the field `price` and mentioning <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
+We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> by passing the field `price` and specifying <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
 
 <br/>
 
@@ -138,7 +138,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 ## GeoDistance Query
 
-Let's now get a list of all the rooms available within a certain distance from a specific (lat,lon) location.
+Let's now get a list of all the rooms available within a certain distance from a specific geopoint (lat,lon) location.
 
 We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html" target="_blank">geodistance query</a> specifying `distance` and `location` co-ordinates.
 
@@ -149,9 +149,9 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 ## Full-text Search
 
-Full-text search queries analyses all the combinations of a given value and assigns scores to results based on their match relevance. It uses ngram tokenizer which creates and matches all combinations of the query string. Read more about it <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html" target="_blank">here</a>.
+Here, we will apply a full-text search query on a field with a n-gram analyzer applied to it. Instead of indexing the exact field value, an n-gram indexes multiple grams that constitute the field value when indexing. This allows for a granular querying experience, where even partial field values can be matched back, really useful when building auto-suggestion based search. You can read more about <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html" target="_blank">n-grams here</a>.
 
-We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> with our field `name` and query value.
+We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html" target="_blank">full-text search query</a> on the `name` field by using the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> with our n-gram analyzed field `name` and query value.
 
 <br/>
 
@@ -162,7 +162,7 @@ We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curr
 
 ## Date Query
 
-Let's now do a date query to get houses that are available between certain dates. As per our data schema, we'll need to use `date_from` and `date_to` fields as our range.
+Let's now do a date query to get houses that are available between certain dates. As per our mapping (aka data schema), we'll need to use `date_from` and `date_to` fields for querying by the date range.
 
 We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> with our field `name` and query values.
 
@@ -175,7 +175,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 ## Compound Query
 
-Finally, let's do a compound query combining multiple conditions. We'll query rooms with a certain `room_type` within a certain price range.
+Finally, let's do a compound query that combines multiple queries together. We'll take an example of fetching a specific `room_type` of rooms that are within the specified price range.
 
 We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase-js REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank">bool query</a> combining a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html" target="_blank">match query</a> for `room_type` and a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> for `price`.
 
