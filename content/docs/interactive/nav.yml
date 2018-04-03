@@ -41,9 +41,9 @@
           title: "Date Query"
           href: /interactive/javascript.html#date-query
           forceInternal: true
-        - id: multi-condition
-          title: "Multi Condition"
-          href: /interactive/javascript.html#multi-condition
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/javascript.html#compound-query
           forceInternal: true
     - id: php
       title: PHP
