@@ -1,14 +1,16 @@
 ---
 id: interactive-examples
-title: "PHP"
+title: "Go"
 layout: docs
 sectionid: interactive-examples
-permalink: interactive/php.html
-prev: python.html
-prevTitle: "Examples with Python"
+permalink: interactive/go.html
+prev: javascript.html
+prevTitle: "Examples with JavaScript"
+next: python.html
+nextTitle: "Examples with Python"
 ---
 
-Interactive examples with PHP
+Interactive examples with Go
 
 ### Setting things up
 
@@ -50,39 +52,31 @@ All the records are structured in the following format:
 }
 ```
 
-To interact with our app instance, we'll use <a href="http://php.net/curl" target="_blank">`cURL`</a> library from PHP to make HTTP REST API requests. The semantics should remain the same for any other HTTP library as well.
+To interact with our app instance, we'll make HTTP REST API requests. The semantics should remain the same for any 3rd party HTTP library as well.
 
-This is the common code which exists in all examples. Here, we simply create a `$curl` object and set request options with `url`, `credentials`, [`app`](/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan), [`type`](/concepts/datamodel.html#type) and the query request.
+This is the common code which exists in all examples. Here, we simply create `url` based on [`app`](/concepts/datamodel.html#app-span-stylefont-weight-200aka-indexspan), [`type`](/concepts/datamodel.html#type), a `payload` containing request body and set headers with `credentials`.
 
-```php
+```go
  
-$curl = curl_init();
+// Request URL containing app, type and id or method
+url := "https://scalr.api.appbase.io/{{app}}/{{type}}/{{id/method}}"
 
-curl_setopt_array($curl, array(
-  // Request URL containing app, type and id or method
-  CURLOPT_URL => "https://scalr.api.appbase.io/{{app}}/{{type}}/{{id/method}}",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  // Request HTTP method ( GET | POST | PUT | DELETE )
-  CURLOPT_CUSTOMREQUEST => "{{http_method}}",
-  // Request body/payload
-  CURLOPT_POSTFIELDS => "{{query_request}}",
-  CURLOPT_HTTPHEADER => array(
-    // App credentials base64 encoded
-    "Authorization: Basic {{credentials_base64}}",
-    "Content-Type: application/json"
-  ),
-));
+// Request body/payload
+payload := strings.NewReader("{{query_request}}")
 
-$response = curl_exec($curl);
+// Request HTTP method ( GET | POST | PUT | DELETE )
+req, _ := http.NewRequest("{{http_method}}", url, payload)
+
+// App credentials base64 encoded
+req.Header.Add("Authorization", "Basic {{credentials_base64}}")
+req.Header.Add("Content-Type", "application/json")
+
+res, _ := http.DefaultClient.Do(req)
 ```
 
 > Note <span class="fa fa-info-circle"></span>
 >
-> If you are using your own app instance, make sure to update `CURLOPT_URL` with your `app`, `type` and `CURLOPT_HTTPHEADER` with your `credentials`.
+> If you are using your own app instance, make sure to update `url` with your `app`, `type` and `req.Header` with your `credentials`.
 
 
 ## Fetch All
@@ -96,7 +90,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 > Feel free to play around the query by making changes in the interactive demo. Make sure to hit the run button after every change.
 
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 You can also see this query in <a href="https://opensource.appbase.io/mirage" target="_blank">Mirage</a> - a GUI for Elasticsearch queries which provides a query explorer view to interact with an app's data. <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAKxBgAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuSpDQ9kUuOUgEQayJrMjPDHPMTo8qfXwTqnVrh0i_m9y1THrKxTMAfWfwwcedk3CUDAtRXNAADtgrM-AaohtxKZzBXKYRVHTyXyN8U2PEG0TC5uCuzoWoVyTkFzDCLZfyS8mJZJi6QdiEljmtIaslKsXVKOVZq7BPE8P0_xjUwf2hab_384tlhzDPxsBXQcl_ZyL9z8nGByMgfVBfcAvN8jcKriHmOuSZHh7DoVhqXxspPjLExJuHw6BVhFIXXfujcpB1bg9kwQpr87uWrDXXXGwtomqn-zsQQLibaxdSGP4ySERan0TXumqxWGHLQvH6ZZCZ4NznC3TzgqJwoP2_LDBXippb1sz4nAIBur_E-tAUX7hSago0yzRrJn7wmI7" target="_blank">Here's</a> the same query executed on Mirage.
 
@@ -113,7 +107,7 @@ We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf8095
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-index?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-index?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 > Note <i class="fa fa-info-circle"></i>
 >
@@ -128,7 +122,7 @@ We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf8095
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-get?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-get?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 
 ## Range Query
@@ -139,7 +133,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-range?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-range?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAJfCAAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuCSUNYX32cshZ3d4lrzfi6fQXgJyuLDjbofRzIiFdNbnDTxOh7awm5G8KyWubtxOjtXV8bilwzwGRcwaa6Vwl0TchA1_BpzJh_fwAq12FFL4R-I5_ibh6CZnEvt4-KnlIuy77b7P8zLtJY5p9O0p5F9in_I1bpUcoSjIVyDVUw7CO3XhqV8GV08WBceOu8bcrsKmeZnI-Tz7wJnFBanEKKCvxmdgNX5iWOlyqb-KulI-V5b7Kd0MnlaLDE9KV4rJlTuHN38cafRSw9KFDmA369s6KHGfK4E8tjcHhkopCEWlojhNy-YDYrfkpB4hBkSRnaoc-Ehh6YMq5B_KZpn0W096kfKkWqUYOqjJkBPWLydygFC5kxq4739mGAfM8pTAFnMN5Qt7qFqbuST9fmTei6v0lp3RT2Uxd9LVAqm3Zwpe8RBtPFYbcd_j8RuCqd4O1HeEgZz60qAFmYL37FBNNLpbxT4mhagGqPSzB6jDCruEgDwj6598PSwxTs3SBIqdZtuv_ZTluhF7jvFMerbm7dw7E8yu-B3jNfPoGW9bTfiMthMn620XFd8bmenoEP8pWq4A" target="_blank">Here's</a> the same query executed on Mirage.
 
@@ -152,7 +146,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-GeoDistance?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-GeoDistance?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 
 ## Full-text Search
@@ -163,7 +157,7 @@ We'll do a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curr
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-search-full-text-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-search-full-text-search?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAJECAAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuCSUNYX32cshZ3d4lrzfi6fQXgJyuLD9FQ2b9UTowlML6Nz4Yks98Jl7CJT4M9dwoB120x3nAWa0b3eGo0atyqfsIkzvPRvAw8Ddhk3GgfPWO89QhrRGa7aEJfIBGZp4mr5z7Obgqy1kuYQRxt49gfXMU4i0_MaNukRWcuQ80KCArF8kEWtHU4AkBintV4KQfISdv_apJGxZs_AgHIcOY0rV6Go0ZYm2k5lZhz2NOhIg4JE5AAGRL38xEasregHkxqxMKt8LNtS5xI7TDhwVJjjPD6I3koSwVcSkfrS4RAsK07SkpDDRvGr5HW8Kkpz0jt8nieWpiyEHlH0PoWS3I_osL6NH7CIGJCZBGSoHBHIbj1oQeL0P3BQVw18O4fMfWH89P6KH1TWZhD2zvCwr48PmopeLcRCtJnXqMXSsCmUqKOTx6MtcmTn-ayiX-IAwpMHpVvyY9k7HDSjc5XKAm_EZTP0en62xzp0ZvL4HlRj_1FB8G8lBF6j6at6gwn51KBo4W8n8s5i1_N4jGSU5HRaTnO_5mtZY1tD6CxTRfcJM3ziGy1Qr4Zj_0jWmGg" target="_blank">Here's</a> the same query executed on Mirage.
 
@@ -176,7 +170,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-search-date?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-search-date?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAJpCQAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuCSUNYX32cshZ3d4lrzfi6fQXgJyuLD9FQ2b9UTowlML6Nz4Yks97ESi2tvouDUu23ZYMcOZS3IWRcMxVX5iL_A3K9p25ewhri1rZX4gJl5IUXCoc2inGiafMm0L4xjXz_xDspYFpw62yj3Rl_W6oQvuB08JBYuabPOZB-afI3ADbq6WygsK7w3IKWq3Un8UvwZDRrn3570Nh5QOvxtA5eODOovGVa5CQSvvlE2MdOaYPr2M9DNI7ggOMs-nAEIXUtYlPNX9XbcoNsWnc93gIebBu3MRTuwS4OZmXOBSAJRakqcUNV6IqSwDVb8gs-MhmK9SY74Zn-eRfO7Xaz9C6tZmLMgHyMBqjFZpBDvd2WsT8difxLdR3her8wvviKure25Gk4gS4uBYtmqosWikFwt5C9vJAWzWY0owIVRjx4i2jiY2qJQGGqDAuEE0fTAgqFMnroa7CC6bJpptSCXC-DX-yTUurzZw3TTVXK5o_sUT2BFr-ZDYWOR926oLnc8Zu6yk8VLevJSQLREo2CtMBGsubbdYkApTRBeriurgo1KXAtrnto2RQKIS26UxNv5ZnPvOHxidI_2oSsWiIwq51sd2-0sTEwcKlv09Zlgn0HmFSf-ZC_DQ" target="_blank">Here's</a> the same query executed on Mirage.
 
@@ -189,7 +183,7 @@ We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d5441
 
 <br/>
 
-<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-PHP-search-compound?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-search-compound?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 <a href="https://opensource.appbase.io/mirage/#?input_state=XQAAAAJpCQAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmI_q1W5J_v7Zsy4Ujaaw71A1BS9rYYbaidH1ngBtQ-I1sDSXRgrmGsCDzBYBoUXwDHQtefpH-PChYyyKqpnVdVrmIsxvIDhOBtThtu_W53GnLmSMoma1UPnh9E7LZRkgXxp3ltXA31wX1fcfowk1r2gVrCN8VgmuPFOWM3o65_HcKkYs4OQ0hAB7hnHy3CILQ5MgAbYZpuCAVHzQcRXBvN2fFZCuCSUNYX32cshZ3d4lrzfi6fQXgJyuLD9FQ2b9UTowlML6Nz4Yks97ESi2tvouDUu23ZYMcOZS3IWRcMxVX5iL_A3K9p25ewhri1rZX4gJl5IUXCoc2inGiafMm0L4xjXz_xDspYFpw62yj3Rl_W6oQvuB08JBYuabPOZB-afI3ADbq6WygsK7w3IKWq3Un8UvwZDRrn3570Nh5QOvxtA5eODOovGVa5CQSvvlE2MdOaYPr2M9DNI7ggOMs-nAEIXUtYlPNX9XbcoNsWnc93gIebBu3MRTuwS4OZmXOBSAJRakqcUNV6IqSwDVb8gs-MhmK9SY74Zn-eRfO7Xaz9C6tZmLMgHyMBqjFZpBDvd2WsT8difxLdR3her8wvviKure25Gk4gS4uBYtmqosWikFwt5C9vJAWzWY0owIVRjx4i2jiY2qJQGGqDAuEE0fTAgqFMnroa7CC6bJpptSCXC-DX-yTUurzZw3TTVXK5o_sUT2BFr-ZDYWOR926oLnc8Zu6yk8VLevJSQLREo2CtMBGsubbdYkApTRBeriurgo1KXAtrnto2RQKIS26UxNv5ZnPvOHxidI_2oSsWiIwq51sd2-0sTEwcKlv09Zlgn0HmFSf-ZC_DQ" target="_blank">Here's</a> the same query executed on Mirage.
 

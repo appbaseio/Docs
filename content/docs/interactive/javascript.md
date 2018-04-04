@@ -4,8 +4,8 @@ title: "JavaScript / Node.js"
 layout: docs
 sectionid: interactive-examples
 permalink: interactive/javascript.html
-next: php.html
-nextTitle: "Interactive Examples with PHP"
+next: go.html
+nextTitle: "Examples with Go"
 ---
 
 Interactive examples with JavaScript
@@ -29,26 +29,26 @@ All the records are structured in the following format:
 ```js
  
 {
-    name: 'The White House',
-    room_type: 'Private room',
-    property_type: 'Townhouse',
-    price: 124,
-    has_availability: true,
-    accommodates: 2,
-    bedrooms: 1,
-    bathrooms: 1.5,
-    beds: 1,
-    bed_type: 'Real Bed',
-    host_image: 'https://host_image.link',
-    host_name: 'Alyson',
-    image: 'https://image.link',
-    listing_url: 'https://www.airbnb.com/rooms/6644628',
-    location: {
-        lat: 47.53540733743967,
-        lon: -122.27983057017123
+    "name": "The White House",
+    "room_type": "Private room",
+    "property_type": "Townhouse",
+    "price": 124,
+    "has_availability": true,
+    "accommodates": 2,
+    "bedrooms": 1,
+    "bathrooms": 1.5,
+    "beds": 1,
+    "bed_type": "Real Bed",
+    "host_image": "https://host_image.link",
+    "host_name": "Alyson",
+    "image": "https://image.link",
+    "listing_url": "https://www.airbnb.com/rooms/6644628",
+    "location": {
+        "lat": 47.53540733743967,
+        "lon": -122.27983057017123
     },
-    date_from: 20170426,
-    date_to: 20170421,
+    "date_from": 20170426,
+    "date_to": 20170421,
 }
 ```
 
