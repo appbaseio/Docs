@@ -19,7 +19,7 @@
           forceInternal: true
         - id: geting-or-streaming-data
           title: "Getting or Streaming Data"
-          href: /go-quickstart.html#sgetings-vs-streaming-data
+          href: /go-quickstart.html#geting-or-streaming-data
           forceInternal: true
         - id: streaming-rich-queries
           title: "Streaming Rich Queries"
