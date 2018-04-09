@@ -1,0 +1,159 @@
+- title: Interactive Examples
+  items:
+    - id: javascript
+      title: JavaScript / Node.js
+      href: /interactive/javascript.html
+      forceInternal: true
+      subitems:
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/javascript.html#fetch-all
+          forceInternal: true
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/javascript.html#index-data
+          forceInternal: true
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/javascript.html#fetch-data
+          forceInternal: true
+        - id: stream-data
+          title: "Stream Data"
+          href: /interactive/javascript.html#stream-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/javascript.html#range-query
+          forceInternal: true
+        - id: search-stream
+          title: "Search Stream"
+          href: /interactive/javascript.html#search-stream
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/javascript.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/javascript.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/javascript.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/javascript.html#compound-query
+          forceInternal: true
+    - id: go
+      title: Go
+      href: /interactive/go.html
+      forceInternal: true
+      subitems:
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/go.html#fetch-all
+          forceInternal: true
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/go.html#index-data
+          forceInternal: true
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/go.html#fetch-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/go.html#range-query
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/go.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/go.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/go.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/go.html#compound-query
+          forceInternal: true
+    - id: python
+      title: Python
+      href: /interactive/python.html
+      forceInternal: true
+      subitems:
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/python.html#fetch-all
+          forceInternal: true
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/python.html#index-data
+          forceInternal: true
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/python.html#fetch-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/python.html#range-query
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/python.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/python.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/python.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/python.html#compound-query
+          forceInternal: true
+    - id: php
+      title: PHP
+      href: /interactive/php.html
+      forceInternal: true
+      subitems:
+        - id: fetch-all
+          title: "Fetch All"
+          href: /interactive/php.html#fetch-all
+          forceInternal: true
+        - id: index-data
+          title: "Index Data"
+          href: /interactive/php.html#index-data
+          forceInternal: true
+        - id: fetch-data
+          title: "Fetch Data"
+          href: /interactive/php.html#fetch-data
+          forceInternal: true
+        - id: range-query
+          title: "Range Query"
+          href: /interactive/php.html#range-query
+          forceInternal: true
+        - id: geodistance-query
+          title: "GeoDistance Query"
+          href: /interactive/php.html#geodistance-query
+          forceInternal: true
+        - id: full-text-search
+          title: "Full-text Search"
+          href: /interactive/php.html#full-text-search
+          forceInternal: true
+        - id: date-query
+          title: "Date Query"
+          href: /interactive/php.html#date-query
+          forceInternal: true
+        - id: compound-query
+          title: "Compound Query"
+          href: /interactive/php.html#compound-query
+          forceInternal: true
+ 
