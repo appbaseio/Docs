@@ -75,7 +75,7 @@ Once your data is imported, you can view the data via the [browser view](https:/
 
 #### Setting a Unique Document Id
 
-When importing a frequently changing dataset, we recommend setting a **Unique Id** field. This can be enabled by selecting the checkbox for "Does the data have unique id?" question followed by selecting an id column (a **Mark as Id column** should appear).
+When importing a frequently changing dataset, we recommend setting a **Unique Id** field. This can be enabled by selecting the checkbox for "Does the data have unique id?" question followed by selecting an id column (a **Mark as Id column** label should appear in the active column).
 
 ![](https://i.imgur.com/0aooxFY.png)
 
