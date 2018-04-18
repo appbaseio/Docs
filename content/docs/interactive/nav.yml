@@ -21,6 +21,10 @@
           title: "Stream Data"
           href: /interactive/javascript.html#stream-data
           forceInternal: true
+        - id: bulk-index-data
+          title: "Bulk Index Data"
+          href: /interactive/javascript.html#bulk-index-data
+          forceInternal: true
         - id: range-query
           title: "Range Query"
           href: /interactive/javascript.html#range-query
@@ -62,6 +66,9 @@
           title: "Fetch Data"
           href: /interactive/go.html#fetch-data
           forceInternal: true
+        - id: bulk-index-data
+          title: "Bulk Index Data"
+          href: /interactive/go.html#bulk-index-data
         - id: range-query
           title: "Range Query"
           href: /interactive/go.html#range-query
@@ -99,6 +106,9 @@
           title: "Fetch Data"
           href: /interactive/python.html#fetch-data
           forceInternal: true
+        - id: bulk-index-data
+          title: "Bulk Index Data"
+          href: /interactive/python.html#bulk-index-data
         - id: range-query
           title: "Range Query"
           href: /interactive/python.html#range-query
@@ -136,6 +146,9 @@
           title: "Fetch Data"
           href: /interactive/php.html#fetch-data
           forceInternal: true
+        - id: bulk-index-data
+          title: "Bulk Index Data"
+          href: /interactive/php.html#bulk-index-data
         - id: range-query
           title: "Range Query"
           href: /interactive/php.html#range-query
