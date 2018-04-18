@@ -124,6 +124,6 @@ You don't need to use this feature if your documents are never the same or if yo
 
 ## Doing more with data
 
-While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest-quickstart.html) or one of the [Javascript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
+While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest-quickstart.html) or one of the [JavaScript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
 
 The data browser is still a great place to import, visualize and debug the existing data records with its filters and continuous query functionalities.

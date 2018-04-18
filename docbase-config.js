@@ -39,7 +39,7 @@ var docbaseConfig = {
       ]
     },
     {
-      "label": "Javascript",
+      "label": "JavaScript",
       "name": "javascript",
       "files": [
         {

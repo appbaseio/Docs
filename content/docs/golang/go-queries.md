@@ -64,7 +64,7 @@ Play with `Date Range` query on [Mirage](https://appbaseio.github.io/mirage/#?in
 
 ## Compound Query
 
-Now we shall look into a compound query where we want to get those documents which are within the specified dates and have a particular term in one of the fields. The following example will return all the documents which have `Javascript` in their `language` field and which were `created` on or after `2015-10-29T14:37:16Z` till `2017-10-29T14:37:16Z`.
+Now we shall look into a compound query where we want to get those documents which are within the specified dates and have a particular term in one of the fields. The following example will return all the documents which have `JavaScript` in their `language` field and which were `created` on or after `2015-10-29T14:37:16Z` till `2017-10-29T14:37:16Z`.
 
 ```go
 client, _ := appbase.NewClient("https://scalr.api.appbase.io", "2FPZ2UJQW", "1c50c6df-4652-4d74-906b-7bc0a6a731b6", "gitxplore-live")
@@ -101,11 +101,11 @@ if err != nil {
 	log.Println(err)
 	return
 }
-fmt.Println("Total Hits for the range of dates with Javascript term is: ", dateTermQueryResponse.Hits.TotalHits)
+fmt.Println("Total Hits for the range of dates with JavaScript term is: ", dateTermQueryResponse.Hits.TotalHits)
 ```
 ```go
 dateTermQueryResponse: {
-	Total Hits for the range of dates with Javascript term is: 1022
+	Total Hits for the range of dates with JavaScript term is: 1022
 }
 ```
 Play with the `Compound Query` on [Mirage](https://appbaseio.github.io/mirage/#?input_state=XQAAAAKjDQAAAAAAAAA9iIhnNAWbsswtYjeQNZkpzQK4_mOzUeDpWmFX40My38I2h2kWQlEdacvCMz6CtrX2pl2yy1LFtI8PefTkjddNtb1d4yacMv2ni8qYGp6yBtb_-oP0y6NadalvEMEYzWi_LqQ9mRe7P0mnWEZnms4MVU1rDLGSaeM2Mz8PnBpHlB8ozXiqBjd1HlXOyeHMn5YveDpjt6BIMyLyGa2t8hZgMVZjYLCqQfjpLtkwgaEOmm2R1JmcWDyJyLna4GMxMs4r-IB62CWjJFpLSDvyu_mM_MRP6uJO6YtZ1uAe6otWHfaTGdC0cxa9cI8wzgGM5DGHwlCi6yWsTDaMALy_ouzQPdvMlfC0R33CUIu4Srx5Y_RTVjfq7sgdA1pmIhH1TlbmHWFbS7Y2cSdo73pq__lkqlolbbhPZkrg5VGkcVMRnSPlXnl0R0DVyRCtRNmIufdi0SCVGdQ7UTeFQu4Mu55hvYDBx9bQDnmn65slHhyYDYPONMMTj1Zv2fSSFBPLzyjMewBW_D80IYf62i3y40sVIyl4XT8tvYfju_xNyYIzxs_CP14Tyk9Z5Uzmo2oBOkX1G2mJf_2zq2vhSPiEg5QxXeuAlBIyh7xvA2vDEhdj5jKk-c7R8YzS2u-T5zcbMi-eprfIDSqrxH-8Ut8eOMW_ADsC-VpgzMwEYDuk46L4q7SrQOwI1gkHMGUpX1qTidBjy-AxynwKD-9hDVx770vjaB5A03AoAe1DLq6lpXYtc2gZsXIXRtQJ8Wof4hvioPtuU9513JCxA-i1vLkDU7X_3H9xWUxz-y-PgqXpVb9ojze1BVplnUzZhYZKEUbQOcRNPF4oU3zBJcoRJDaONGkAmsB86bNtMiUQ9mshgjI-0aHBCu4k1zLGlLaFr0NA1l8mAlIldUZsTQp6OoBfDb7VH2mIAfcDWCacI2LpvFQyiUjtxNb5o2ZtbtN__pg0Dn013s1_aCXnYT77vE16-00EyWKlAPYAt8lDmEjStGj0kTBB6XPlZfn7Wy3eL6qFcrEyKz8KFbqe4sW6_Gr-1XNTmFnMz_88lnAA).

@@ -1,7 +1,7 @@
-- title: Javascript
+- title: JavaScript
   items:
     - id: quickstart
-      title: Javascript Quickstart
+      title: JavaScript Quickstart
       href: /javascript/quickstart.html
       forceInternal: true
       subitems:
@@ -26,7 +26,7 @@
           href: /javascript/quickstart.html#streaming-rich-queries
           forceInternal: true
     - id: api-reference
-      title: Javascript API Reference
+      title: JavaScript API Reference
       href: /javascript/api-reference.html
       forceInternal: true
       subitems:

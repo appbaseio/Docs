@@ -8,8 +8,8 @@ id: home
 
   <div class="marketing-row">
     <div class="marketing-col">
-      <h3>Javascript Quick Start</h3>
-      <p><a href="/javascript/quickstart.html">Quick start with the Javascript APIs</a> for indexing, querying and streaming data.</p>
+      <h3>JavaScript Quick Start</h3>
+      <p><a href="/javascript/quickstart.html">Quick start with the JavaScript APIs</a> for indexing, querying and streaming data.</p>
     </div>
     <div class="marketing-col">
       <h3>REST API Quick Start</h3>
