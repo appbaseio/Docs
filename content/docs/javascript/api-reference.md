@@ -1,16 +1,16 @@
 ---
 id: api-reference
-title: "Javascript API Reference"
+title: "JavaScript API Reference"
 layout: docs
 sectionid: api-reference
 permalink: javascript/api-reference.html
 prev: quickstart.html
-prevTitle: "Javascript Quick Start"
+prevTitle: "JavaScript Quick Start"
 next: webhooks-guide.html
 nextTitle: "Webhooks Guide"
 ---
 
-[appbase-js](https://github.com/appbaseio/appbase-js) is a universal Javascript client library for working with the appbase.io database.
+[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the appbase.io database.
 
 ## INSTANTIATION
 
@@ -31,7 +31,7 @@ var appbaseRef = new Appbase({
 
 ``new Appbase(appData)``
 
-- **appData** ``Object`` <br>A Javascript object containing the following fields and values
+- **appData** ``Object`` <br>A JavaScript object containing the following fields and values
 
 	- **url** ``String`` <br>URL with the API version, always *https://scalr.api.appbase.io*
 	- **appname** ``String`` <br>name of the app as displayed in the [dashboard](https://appbase.io/scalr)
@@ -69,7 +69,7 @@ appbaseRef.index({
 
 ``appbaseRef.index(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the type, id and the JSON data to be indexed
+- **params** ``Object`` <br>A JavaScript object containing the type, id and the JSON data to be indexed
 
 	- **type** ``String`` <br>The type (aka collection) under which the data will be indexed
 	- **body** ``Object`` <br>Data to be indexed, a valid JSON object
@@ -101,7 +101,7 @@ appbaseRef.update({
 
 ``appbaseRef.update(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the type, id, and the partial JSON data to be updated
+- **params** ``Object`` <br>A JavaScript object containing the type, id, and the partial JSON data to be updated
 
 	- **type** ``String`` <br>The type (aka collection) under which the data will be indexed
 	- **body.doc** ``Object`` <br>Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
@@ -127,7 +127,7 @@ appbaseRef.delete({
 
 ``appbaseRef.delete(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the JSON object to be deleted
+- **params** ``Object`` <br>A JavaScript object containing the ``type`` and ``id`` of the JSON object to be deleted
 
 	- **type** ``String`` <br>The type (aka collection) of the object to be deleted
 	- **id** ``String`` <br>Unique ID for the JSON data
@@ -163,9 +163,9 @@ appbaseRef.bulk({
 
 ``appbaseRef.bulk(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the ``body`` and optionally a default ``type`` to be used for actions
+- **params** ``Object`` <br>A JavaScript object containing the ``body`` and optionally a default ``type`` to be used for actions
 
-	- **body** ``Array`` <br>A Javascript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
+	- **body** ``Array`` <br>A JavaScript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
 	- **type** ``String`` <br>Default document type for actions that don't provide one
 
 
@@ -190,7 +190,7 @@ appbaseRef.get({
 
 ``appbaseRef.get(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the document to retrieve.  
+- **params** ``Object`` <br>A JavaScript object containing the ``type`` and ``id`` of the document to retrieve.  
 	- **type** ``String`` <br>Document Type
 	- **id** ``String`` <br>Unique ID of the JSON document
 
@@ -256,7 +256,7 @@ appbaseRef.search({
 
 ``appbaseRef.search(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``.
+- **params** ``Object`` <br>A JavaScript object containing the query ``type`` and ``body``.
 
 	- **type** ``String`` <br>Document type
 	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
@@ -289,7 +289,7 @@ appbaseRef.getStream({
 
 ``appbaseRef.getStream(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the ``type`` and ``id`` of the document to be streamed.
+- **params** ``Object`` <br>A JavaScript object containing the ``type`` and ``id`` of the document to be streamed.
 
 	- **type** ``String`` <br>Document type
 	- **id** ``String`` <br>Document ID (The ID is always a ``String`` value)
@@ -348,7 +348,7 @@ appbaseRef.searchStream({
 
 ``appbaseRef.searchStream(params)``
 
-- **params** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
+- **params** ``Object`` <br>A JavaScript object containing the query ``type`` and ``body``
 
 	- **type** ``String`` <br>Document type
 	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
@@ -411,12 +411,12 @@ appbaseRef.searchStreamToURL(
 
 ``appbaseRef.searchStreamToURL(queryParams, urlParams)``
 
-- **queryParams** ``Object`` <br>A Javascript object containing the query ``type`` and ``body``
+- **queryParams** ``Object`` <br>A JavaScript object containing the query ``type`` and ``body``
 
 	- **type** ``String`` <br>Document type
 	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
-- **urlParams** ``Object`` - A Javascript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
+- **urlParams** ``Object`` - A JavaScript object containing the ``url`` to which data would be streamed on a query match. It supports optional fields to attach JSON (or string) payloads, control the frequency and number of updates.
 
 	- **url** ``String`` <br>A URL string
 	- **body** ``Object`` <br>A JSON object to be sent to the URL (used as an alternative to **string_body**)

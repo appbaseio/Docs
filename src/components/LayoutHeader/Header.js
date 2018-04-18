@@ -144,7 +144,7 @@ class Header extends Component {
               />
               <HeaderLink
                 isActive={location.pathname.includes('/javascript/')}
-                title="Javascript"
+                title="JavaScript"
                 to="/javascript/quickstart.html"
               />
               <HeaderLink

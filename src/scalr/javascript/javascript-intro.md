@@ -224,4 +224,4 @@ RESPONSE WHEN NEW DATA MATCHES
 
 In this tutorial, we have learnt how to index new data and stream both individual data and results of an expressive query. [Appbase.io](https://appbase.io) supports a wide range of queries.
 
-For next steps, check out our [Javascript API reference](https://docs.appbase.io/scalr/javascript/api-reference.html).
+For next steps, check out our [JavaScript API reference](https://docs.appbase.io/scalr/javascript/api-reference.html).

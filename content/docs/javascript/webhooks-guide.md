@@ -5,7 +5,7 @@ layout: docs
 sectionid: webhooks-guide
 permalink: javascript/webhooks-guide.html
 prev: api-reference.html
-prevTitle: "Javascript API Reference"
+prevTitle: "JavaScript API Reference"
 ---
 
 > Note <i class="fa fa-info-circle"></i>

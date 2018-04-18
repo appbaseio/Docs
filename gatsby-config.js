@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: 'https://github.com/appbaseio/Docs',
     rssFeedTitle: 'Appbase.io Docs',
     rssFeedDescription:
-      'Appbase.io Docs Reference - Javascript and REST APIs for indexing, querying and streaming data.',
+      'Appbase.io Docs Reference - JavaScript and REST APIs for indexing, querying and streaming data.',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',

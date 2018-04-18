@@ -1,14 +1,14 @@
 ---
 id: quickstart
-title: "Javascript Quickstart"
+title: "JavaScript Quickstart"
 layout: docs
 sectionid: quickstart
 permalink: javascript/quickstart.html
 next: api-reference.html
-nextTitle: "Javascript API Reference"
+nextTitle: "JavaScript API Reference"
 ---
 
-[appbase-js](https://github.com/appbaseio/appbase-js) is a universal Javascript client library for working with the appbase.io database.  
+[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the appbase.io database.  
 
 It can:
 
