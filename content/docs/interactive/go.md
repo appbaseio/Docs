@@ -124,6 +124,17 @@ We'll use the <a href="https://rest.appbase.io/#1a63955c-96e6-7a85-215b-98cf8095
 
 <iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-get?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
+## Bulk Index Data
+
+Let's now learn to index multiple documents in one request. For this, we'll use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html" target="_blank">Bulk API</a> to perform many index/delete operations in a single API call.
+
+<br/>
+
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-Bulk-Index-Data?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+> Note <i class="fa fa-info-circle"></i>
+>
+> It is recommended to index up to 1 MB of data (~500 documents) at a time (so if you have 50,000 documents, you can split them into chunks of 500 documents and index).
 
 ## Range Query
 

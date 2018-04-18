@@ -118,6 +118,18 @@ We'll also make a change on the same doc we've subscribed to to show how streami
 >
 > If you intended to replace the complete data object use [`index()`](/javascript/api-reference.html#index) method instead of [`update()`](/javascript/api-reference.html#update) which partially updates an existing doc.
 
+## Bulk Index Data
+
+Let's now learn to index multiple documents in one request. For this, we'll use the appbase-js [`bulk()`](/javascript/api-reference.html#bulk) method which is based on <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html" target="_blank">Bulk API</a> and applies many operations together.
+
+<br/>
+
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Nodejs-Bulk-Index-Data?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+> Note <i class="fa fa-info-circle"></i>
+>
+> It is recommended to index up to 1 MB of data (~500 documents) at a time (so if you have 50,000 documents, you can split them into chunks of 500 documents and index).
+
 ## Range Query
 
 Let's now query the dataset to get all rooms between prices 50 to 100.
