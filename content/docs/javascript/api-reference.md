@@ -267,6 +267,41 @@ appbaseRef.search({
 
 - ``'data'`` and ``'error'`` event handlers to return the results and any errors.
 
+### msearch()
+
+Multi Search to allow execution of several search requests with same API. It's a convenience method for ElasticSearch's ``/_msearch`` endpoint. 
+
+```js
+appbaseRef.msearch({
+	type: "tweet",
+	body: [
+		{},
+		{ "query" : { "match_all" : {} } },
+		{},
+		{ "query" : { "match": { "_id": 1 } } }
+	]
+}).on('data', function(res) {
+	console.log("query result: ", res)
+}).on('error', function(err) {
+	console.log("search error: ", err)
+})
+```
+
+**Usage**
+
+``appbaseRef.msearch(params)``
+
+- **params** ``Object`` <br>A JavaScript object containing the query ``type`` and ``body``.
+
+	- **type** ``String`` <br>Document type
+	- **body** ``Array`` <br>An array specifying search requests in header followed by body order for each request.
+
+**Returns**
+
+[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
+
+- ``'data'`` and ``'error'`` event handlers to return the results and any errors.
+
 
 ## STREAMING DATA
 

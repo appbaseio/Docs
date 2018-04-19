@@ -66,6 +66,10 @@
           title: "search()"
           href: /javascript/api-reference.html#search
           forceInternal: true
+        - id: msearch
+          title: "msearch()"
+          href: /javascript/api-reference.html#msearch
+          forceInternal: true
         - id: getstream
           title: "getStream()"
           href: /javascript/api-reference.html#getstream
