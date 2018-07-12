@@ -118,7 +118,7 @@ You don't need to use this feature if your documents are never the same or if yo
 - Spaces and/or special characters used in field names are automatically replaced with acceptable characters in the import view.
 - To set a null value in a specific cell, either leave the cell as empty or explicitly use the `null` keyword.
 - Column names ending with `lat` and `lon` are automatically detected to be of Geopoint datatype.
-- Setting an `Array` field from a CSV file requires the cell data to be wrapped in `[..]` brackets, e.g. `[key1, key2]`.
+- Setting an `Array` field from a CSV file requires the cell data to be wrapped in `"[..]"` brackets, e.g. `"[key1, key2]"`. (Note: If you are editing in Excel, the wrapping quotes (") aren't required)
 - Setting a nested field from a CSV file requires using a dot notation, e.g. `nested_field.a` and `nested_field.b` column names will be imported as sibling fields `a` and `b` within the `nested_field` field.
 
 
