@@ -12,3 +12,7 @@
       title: Data Browser
       href: /concepts/databrowser.html
       forceInternal: true
+    - id: api-credentials
+      title: API Credentials
+      href: /concepts/api-credentials.html
+      forceInternal: true
