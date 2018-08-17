@@ -4,8 +4,8 @@ title: "API Credentials"
 layout: docs
 sectionid: api-credentials
 permalink: concepts/api-credentials.html
-prev: databrowser.html
-prevTitle: "Data Browser"
+prev: analytics.html
+prevTitle: Analytics
 ---
 
 API credentials allow secure access to the appbase.io APIs. They offer a variety of rules to granularly control access to the APIs.

@@ -1,6 +1,6 @@
 ---
 id: datamodel
-title: "Appbase Data Model"
+title: "Data Model"
 layout: docs
 sectionid: intro
 permalink: concepts/datamodel.html
@@ -23,7 +23,7 @@ It enables you to:
 ![Appbase Architecture](https://i.imgur.com/iJpqtks.png?1)  
 **Image 1:** appbase.io architecture overview
 
-We have production users running e-Commerce stores, analytics dashboards, feeds, and realtime backends using appbase.io.
+We have production users running e-commerce stores, analytics dashboards, feeds, and realtime backends using appbase.io.
 
 There are some catches if you intend to:  
 
@@ -41,7 +41,7 @@ An app in [appbase.io](https://appbase.io) is stored as an index in ElasticSearc
 
 ## Type
 
-Types are similar to **tables** in SQL. JSON data (aka documents) in an app is logicaly partitioned using types, think of them as namespaces for arranging and querying similar kinds of data.
+JSON data (aka documents) in an app is logicaly partitioned using types, think of them as namespaces for arranging and querying similar kinds of data.
 
 ## Document
 

@@ -5,12 +5,24 @@
       href: /concepts/intro.html
       forceInternal: true
     - id: datamodel
-      title: Appbase Data Model
+      title: Data Model
       href: /concepts/datamodel.html
       forceInternal: true
     - id: databrowser
       title: Data Browser
       href: /concepts/databrowser.html
+      forceInternal: true
+    - id: mappings
+      title: Mappings
+      href: /concepts/mappings.html
+      forceInternal: true
+    - id: search-sandbox
+      title: Search Sandbox
+      href: /concepts/search-sandbox.html
+      forceInternal: true
+    - id: analytics
+      title: Analytics
+      href: /concepts/analytics.html
       forceInternal: true
     - id: api-credentials
       title: API Credentials

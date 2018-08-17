@@ -6,6 +6,8 @@ sectionid: databrowser
 permalink: concepts/databrowser.html
 prev: datamodel.html
 prevTitle: "Data Model"
+next: mappings.html
+nextTitle: Mappings
 ---
 
 Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
