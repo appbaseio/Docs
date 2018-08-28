@@ -14,29 +14,35 @@ nextTitle: "Webhooks Guide"
 
 ## INSTANTIATION
 
-### new Appbase()
+### Appbase()
 
-Returns a new Appbase object (refered to as ``appbaseRef`` in all the following examples) using the ``url``, ``appname`` and ``username``:``password`` credentials.
+Returns an Appbase object (refered to as ``appbaseRef`` in all the following examples) using the ``url``, ``app`` and ``username``:``password`` credentials.
 
 ```js
 var appbaseRef = new Appbase({
 	"url": "https://scalr.api.appbase.io",
-	"appname": <YOUR_APP_NAME>,
+	"app": <YOUR_APP_NAME>,
+	 // use a combination of username & password
 	"username": <APP_CREDENTIAL>,
-	"password": <APP_SECRET>
+	"password": <APP_SECRET>,
+	// OR can use direct credentials
+	"credentials": <APP_KEY>
 })
 ```
 
 **Usage**
 
-``new Appbase(appData)``
+``Appbase(appData)``
 
 - **appData** ``Object`` <br>A JavaScript object containing the following fields and values
 
 	- **url** ``String`` <br>URL with the API version, always *https://scalr.api.appbase.io*
-	- **appname** ``String`` <br>name of the app as displayed in the [dashboard](https://appbase.io/scalr)
+	- **app** ``String`` <br>name of the app as displayed in the [dashboard](https://appbase.io/scalr)
 	- **username** ``String`` <br>username as displayed in the app dashboard
 	- **password** ``String`` <br>password as displayed in the app dashboard
+	- **credentials** ``String`` <br>Api key as displayed in the app dashboard<br>
+
+**Note**: Either you can use a combination of ``username`` & ``password`` or use ``credentials``.
 
 **Returns**
 
@@ -58,9 +64,9 @@ appbaseRef.index({
 		"using": ["appbase.io", "javascript", "streams"],
 		"test": true
 	}
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("successfully indexed: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("indexing error: ", err)
 })
 ```
@@ -89,9 +95,9 @@ appbaseRef.update({
 			"by": "ev"
 		}
 	}
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("successfully updated: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("update document error: ", err)
 })
 ```
@@ -116,9 +122,9 @@ Delete a JSON data object by ``id``.
 appbaseRef.delete({
 	type: "tweet",
 	id: "aX12c5"
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("successfully deleted: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("deletion error: ", err)
 })
 ```
@@ -152,9 +158,9 @@ appbaseRef.bulk({
 		{ delete: { _id: 2 } },
 		// deletion doesn't any further input
 	]
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("successful bulk: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("bulk failed: ", err)
 })
 ```
@@ -179,9 +185,9 @@ Get the JSON document from a particular ``type`` and ``id``. For subscribing to 
 appbaseRef.get({
 	"type": "tweet",
  	"id": "aX12c5"
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("The document data: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("get() method failed with: ", err)
 })
 ```
@@ -202,9 +208,10 @@ Returns the document at the given ``type`` and ``id``.
 Get all the ``types`` of an app.
 
 ```js
-appbaseRef.getTypes().on('data', function(res) {
+appbaseRef.getTypes()
+.then(function(res) {
 	console.log("All app types: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("getTypes() failed: ", err)
 })
 ```
