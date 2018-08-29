@@ -59,7 +59,7 @@ Alternatively, a UMD build of the library can be used directly from either  [CDN
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
 
 ```js
-var appbaseRef = new Appbase({
+var appbaseRef = Appbase({
 	url: "https://scalr.api.appbase.io",
 	app: "newstreamingapp",
 	credentials: "meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
@@ -99,16 +99,16 @@ appbaseRef.index({
 	type: "books",
 	id: "X1",
 	body: jsonObject
-}).on('data', function(response) {
+}).then(function(response) {
 	console.log(response);
-}).on('error', function(error) {
+}).catch(function(error) {
 	console.log(error);
 })
 ```
 
 where ``type: 'books'`` indicate the collection (or table) inside which the data will be stored and the``id: '1'`` is an optional unique identifier.
 
-The ``index()`` method (and all the other ``appbase`` methods) return a [stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) object. A 'data' event handler can be used on the returned object (or in a chained fashion) for listening to all the data changes.
+The ``index()`` method (and all the other ``appbase`` methods except streaming methods) return a promise.
 
 > Note <span class="fa fa-info-circle"></span>
 >
@@ -126,9 +126,9 @@ Now that we are able to store data, let's try to get the data back from [appbase
 appbaseRef.get({
 	type: "books",
 	id: "X1"
-}).on('data', function(response) {
+}).then(function(response) {
 	console.log(response)
-}).on('error', function(error) {
+}).catch(function(error) {
 	console.log(error)
 })
 
@@ -159,9 +159,9 @@ Let's say that we are interested in subscribing to all the state changes that ha
 appbaseRef.getStream({
 	type: "books",
 	id: "X1"
-}).on('data', function(response) {
+}, function(response) {
 	console.log("new document update: ", response)
-}).on('error', function(error) {
+}, function(error) {
 	console.log("getStream() failed with: ", error)
 });
 ```
@@ -208,9 +208,9 @@ appbaseRef.searchStream({
 			match_all: {}
 		}
 	}
-}).on('data', function(response) {
+}, function(response) {
 	console.log("searchStream(), new match: ", response);
-}).on('error', function(error) {
+}, function(error) {
 	console.log("caught a searchStream() error: ", error)
 })
 
