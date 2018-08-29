@@ -227,9 +227,10 @@ Returns all the ``types`` as an array.
 Get the mapping scheme of an app. You can read more about mappings [over here](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/mapping.html#mapping).
 
 ```js
-appbaseRef.getMappings().on('data', function(res) {
+appbaseRef.getMappings()
+.then(function(res) {
 	console.log("Mapping scheme is: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("getMappings() failed: ", err)
 })
 ```
@@ -252,9 +253,9 @@ appbaseRef.search({
 			match_all: {}
 		}
 	}
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("query result: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("search error: ", err)
 })
 ```
@@ -269,10 +270,7 @@ appbaseRef.search({
 	- **body** ``Object`` <br>A JSON object specifying a valid query in the [ElasticSearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 **Returns**
-
-[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
-
-- ``'data'`` and ``'error'`` event handlers to return the results and any errors.
+Promise.
 
 ### msearch()
 
@@ -287,9 +285,9 @@ appbaseRef.msearch({
 		{},
 		{ "query" : { "match": { "_id": 1 } } }
 	]
-}).on('data', function(res) {
+}).then(function(res) {
 	console.log("query result: ", res)
-}).on('error', function(err) {
+}).catch(function(err) {
 	console.log("search error: ", err)
 })
 ```
@@ -304,10 +302,7 @@ appbaseRef.msearch({
 	- **body** ``Array`` <br>An array specifying search requests in header followed by body order for each request.
 
 **Returns**
-
-[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
-
-- ``'data'`` and ``'error'`` event handlers to return the results and any errors.
+Promise.
 
 
 ## STREAMING DATA
@@ -320,10 +315,15 @@ Continuously stream new updates to a specific JSON document. If you wish to only
 appbaseRef.getStream({
 	type: "tweet",
 	id: "aX12c5",
-}).on('data', function(res) {
+}, 
+function(data) {
 	console.log("data update: ", res)
-}).on('error', function(err) {
+}, 
+function(err) {
 	console.log("streaming error: ", err)
+}, 
+function(close) {
+	console.log("streaming closed")
 })
 ```
 
@@ -342,22 +342,17 @@ appbaseRef.getStream({
 
 **Returns**
 
-[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
-
-- ``'data'`` and ``'error'`` event handlers
+An ``Object`` with
 - a **stop()** method to stop the stream
+- a **reconnect()** method to reconnect the stream
 
 ```js
 var responseStream = appbaseRef.getStream({
 	type: "tweet",
 	id: 1,
-})
-
-responseStream.on('data', function(res) {
+}, function(res) {
 	console.log("data update: ", res)
-});
-
-responseStream.stop()
+})
 ```
 
 
@@ -379,9 +374,9 @@ appbaseRef.searchStream({
 			match_all: {}
 		}
 	}
-}).on('data', function(res) {
+}, function(res) {
 	console.log("query update: ", res)
-}).on('error', function(err) {
+}, function(err) {
 	console.log("streaming error: ", err)
 })
 ```
@@ -402,10 +397,9 @@ appbaseRef.searchStream({
 
 **Returns**
 
-[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
-
-- ``'data'`` and ``'error'`` event handlers
+An ``Object`` with
 - a **stop()** method to stop the stream
+- a **reconnect()** method to reconnect the stream
 
 ```js
 var responseStream = appbaseRef.searchStream({
@@ -415,11 +409,9 @@ var responseStream = appbaseRef.searchStream({
 			match_all: {}
 		}
 	}
-})
-
-responseStream.on('data', function(res) {
+}, function(res) {
 	console.log("data update: ", res)
-});
+})
 
 setTimeout(responseStream.stop, 5000) // stop stream after 5s
 ```
@@ -472,11 +464,9 @@ appbaseRef.searchStreamToURL(
 
 **Returns**
 
-[stream.Readable](https://nodejs.org/api/stream.html#stream_class_stream_readable) ``Object`` with
-
-- ``'data'`` and ``'error'`` event handlers
-- a **change()** method to replace the destination URL object
+An ``Object`` with
 - a **stop()** method to de-register the webhook
+- a **change()** method to replace the destination URL object
 
 > Note <span class="fa fa-info-circle"></span>
 >
@@ -493,12 +483,11 @@ var responseStream = appbaseRef.searchStreamToURL(
 	}
 }, {
 	url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84"
-})
-
-responseStream.on('data', function(res) {
+}, function(res) {
 	console.log("webhook registered: ", res)
-	responseStream.stop().on('data', function(res) {
+	responseStream.stop().then(function(res) {
 		console.log("webhook de-registered: ", res)
 	})
 })
+
 ```
