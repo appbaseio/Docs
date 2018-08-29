@@ -434,9 +434,9 @@ appbaseRef.searchStreamToURL(
 }, {
 	url: 'http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84',
 	string_body: {{{_source}}}
-}).on('data', function(res) {
+}, function(res) {
 	console.log("Webhook registered: ", res)
-}).on('error', function(err) {
+}, function(err) {
 	console.log("Error in registering webhook: ", err)
 })
 ```
