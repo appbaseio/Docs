@@ -27,7 +27,7 @@ Webhooks can be triggered when a new document is inserted, an existing document 
 Since registering a webhook is a method of the ``Appbase`` object, we will start with instantiating an Appbase object.
 
 ```js
-var appbaseRef = new Appbase({
+var appbaseRef = Appbase({
   url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
   appname: 'createnewtestapp01'
  })
@@ -47,7 +47,7 @@ Webhooks in appbase-js are supported by [``searchStreamToURL()``](javascript/api
  }, {
     url: "http://requestb.in/v0mz3hv0?inspect",
     interval: 60
- }).on('data', function(res) {
+ }, function(res) {
      console.log("webhook successfully registered: ", res);
  });
  ```
@@ -70,7 +70,7 @@ appbaseRef.searchStreamToURL(
  }, {
     url: "http://requestb.in/v0mz3hv0",
     interval: 60
- }).on('data', function(res) {
+ }, function(res) {
     console.log("webhook successfully registered: ", res);
     this.change({
       url: "http://mockbin.org/bin/0844bdda-24f6-4589-a45b-a2139d2ccc84",
@@ -97,7 +97,7 @@ appbaseRef.searchStreamToURL(
  }, {
     url: "http://requestb.in/v0mz3hv0",
     interval: 60
- }).on('data', function(res) {
+ }, function(res) {
     console.log("webhook successfully registered: ", res);
     this.stop().on('data', function(res) {
       console.log("webhook successfully stopped: ", res);
