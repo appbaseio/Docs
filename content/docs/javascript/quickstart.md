@@ -46,14 +46,10 @@ npm install appbase-js
 
 Adding it in the browser should be a one line script addition.
 
-```html
-<script src="node_modules/appbase-js/dist/appbase.js.gz"></script>
-```
-
-Alternatively, a UMD build of the library can be used directly from either  [CDN.js](https://cdnjs.com/libraries/appbase-js) or [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
+UMD build of the library can be used directly from either  [unpkg.com](https://unpkg.com/appbase-js/dist/appbase-js.umd.min.js)
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/appbase-js/2.3.0/appbase.js"></script>
+<script defer src="https://unpkg.com/appbase-js/dist/appbase-js.umd.min.js"></script>
 ```
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
