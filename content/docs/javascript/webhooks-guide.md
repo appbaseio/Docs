@@ -29,7 +29,7 @@ Since registering a webhook is a method of the ``Appbase`` object, we will start
 ```js
 var appbaseRef = Appbase({
   url: 'https://RIvfxo1u1:dee8ee52-8b75-4b5b-be4f-9df3c364f59f@scalr.api.appbase.io',
-  appname: 'createnewtestapp01'
+  app: 'createnewtestapp01'
  })
  ```
 
