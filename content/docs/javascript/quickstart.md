@@ -45,12 +45,10 @@ npm install appbase-js
 ```
 
 Adding it in the browser should be a one line script addition.
-
-UMD build of the library can be used directly from either  [unpkg.com](https://unpkg.com/appbase-js/dist/appbase-js.umd.min.js)
-
 ```html
 <script defer src="https://unpkg.com/appbase-js/dist/appbase-js.umd.min.js"></script>
 ```
+Alternatively, a UMD build of the library can be used directly from [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
 
 To write data or stream updates from [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the ``Appbase`` constructor:
 
