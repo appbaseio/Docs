@@ -19,7 +19,7 @@ nextTitle: "Webhooks Guide"
 Returns an Appbase object (refered to as ``appbaseRef`` in all the following examples) using the ``url``, ``app`` and ``username``:``password`` credentials.
 
 ```js
-var appbaseRef = new Appbase({
+var appbaseRef = Appbase({
 	"url": "https://scalr.api.appbase.io",
 	"app": <YOUR_APP_NAME>,
 	 // use a combination of username & password
