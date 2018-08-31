@@ -38,7 +38,7 @@ For this tutorial, we will use an app called `newstreamingapp`. The credentials 
 
 ## Install appbase-js
 
-We will fetch and install the **appbase-js** lib using npm. ``v2.3.0`` is the most current version.
+We will fetch and install the **appbase-js** lib using npm. ``4.0.0-beta`` is the most current version.
 
 ```js
 npm install appbase-js
@@ -64,7 +64,7 @@ var appbaseRef = Appbase({
 **OR**
 
 ```js
-var appbaseRef = new Appbase({
+var appbaseRef = Appbase({
 	url: "https://meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda@scalr.api.appbase.io",
 	app: "newstreamingapp"
 })
@@ -88,6 +88,7 @@ var jsonObject = {
 	"price": 5595
 }
 ```
+
 ```js
 appbaseRef.index({
 	type: "books",
