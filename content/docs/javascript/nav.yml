@@ -30,7 +30,7 @@
       href: /javascript/api-reference.html
       forceInternal: true
       subitems:
-        - id: new-appbase
+        - id: appbase
           title: "Appbase()"
           href: /javascript/api-reference.html#appbase
           forceInternal: true
