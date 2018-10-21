@@ -16,14 +16,23 @@
       title: Mappings
       href: /concepts/mappings.html
       forceInternal: true
-    - id: search-sandbox
-      title: Search Sandbox
-      href: /concepts/search-sandbox.html
+    - id: search-preview
+      title: Search Preview
+      href: /concepts/search-preview.html
       forceInternal: true
     - id: analytics
       title: Analytics
       href: /concepts/analytics.html
       forceInternal: true
+      subitems:
+        - id: getting-insights-from-analytics
+          title: "Getting Insights from Analytics"
+          href: /concepts/analytics.html#getting-insights-from-analytics
+          forceInternal: true
+        - id: how-to-implement-analytics
+          title: "How to Implement Analytics"
+          href: /concepts/analytics.html#how-to-implement-analytics
+          forceInternal: true
     - id: api-credentials
       title: API Credentials
       href: /concepts/api-credentials.html
