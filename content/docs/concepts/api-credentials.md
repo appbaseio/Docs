@@ -22,10 +22,17 @@ A `Read-only API key` offers access to read based endpoints of the [API](https:/
 
 An appbase.io credential consists of a `username:password` format and are authenticated using the [HTTP Basic Authentication method](https://en.wikipedia.org/wiki/Basic_access_authentication).
 
-When making the API request, the credentials are passed using the `Authorization` header with a base64 encoded value of the actual credentials.
+When making the API request, the credentials are passed using the `Authorization` header with a base64 encoded value of the actual credentials. Here's an example API credential translated to the Basic Authentication header format.
 
-If you are using the [`appbase-js`](https://docs.appbase.io/javascript/quickstart.html) or [`ReactiveSearch`](https://opensource.appbase.io/reactive-manual/getting-started/reactivesearch.html) libraries, you don't have to worry about the base64 conversion, these libraries do that for you. If you are using a server-side language, then you will have to add the `Authorization` header with the correct base64 encoded value of the API key. You can read more about it in the [REST API Reference](https://rest.appbase.io/#authentication).
+API Credential: `9ZPVCJMls:bc1b93fc-0599-42fc-bc27-5034a72db138`
 
+Its base64 equivalent is: `OVpQVkNKTWxzOmJjMWI5M2ZjLTA1OTktNDJmYy1iYzI3LTUwMzRhNzJkYjEzOA==` (`btoa(..)` is a built-in Javascript function which translates a string to its base64 equivalent value)
+
+This is the expected header to be passed when this credential is used directly as a part of the REST API: `Authorization: Basic OVpQVkNKTWxzOmJjMWI5M2ZjLTA1OTktNDJmYy1iYzI3LTUwMzRhNzJkYjEzOA==`.
+
+If you are using the [`appbase-js`](https://docs.appbase.io/javascript/quickstart.html) or [`ReactiveSearch`](https://opensource.appbase.io/reactive-manual/getting-started/reactivesearch.html) libraries, you don't have to worry about the base64 conversion, these libraries do that for you. If you are using a server-side language, then you will have to add the `Authorization` header with the correct base64 encoded value of the API key as shown above. You can read more about it in the [REST API Reference](https://rest.appbase.io/#authentication).
+
+If you are using [`abc cli`](https://github.com/appbaseio/abc) for importing data into appbase.io, you can use the credential value as https://${credential}@scalr.api.appbase.io/${appname}. In the above example, the URL would look like `https://9ZPVCJMls:bc1b93fc-0599-42fc-bc27-5034a72db138@scalr.api.appbase.io/1234ad`. Also ensure that you are using a credential that has write permissions, as you won't be able to insert data otherwise.
 
 
 ## Adding and Updating Credentials
