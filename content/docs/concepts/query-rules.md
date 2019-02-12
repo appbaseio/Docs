@@ -30,7 +30,7 @@ based on your search and merchandising needs.
 
 In order to create a Query Rule, select `Query Rules` under `Develop` on the dashboard's navigation bar.
 
-![]()
+![](https://i.imgur.com/uszkL7s.png)
 
 Creating a rule from dashboard is a two-step process. In the first step you configure the ***If*** condition of the rule.
 Query Rule currently supports four `operators`:
@@ -44,7 +44,7 @@ For example: After the configuring this step, what we achieve is something simil
 ***If*** **search query contains 'Google'**, where the `operator` is `contains` and `query` is `Google`.
 
 <!-- If condition image -->
-![](https://i.imgur.com/j4qodaD.png)
+![](https://i.imgur.com/rzOq63Q.png)
 
 The second step consists of configuring of actions that are triggered when the ***If*** condition of the query is 
 matched. Query Rule currently supports two `actions`:
