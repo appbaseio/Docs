@@ -144,32 +144,32 @@ Now that we have constructed the `rule` object, we can create the query rule by 
 ```sh
 curl --location --request POST "https://accapi.appbase.io/app/book-store/rule" \
   --header "Content-Type: application/json" \
-  --data "
+  --data '
 {
-    \"id\": \"contains_harry_potter\",
-    \"if\": {
-        \"query\": \"harry potter\",
-        \"operator": \"contains\"
+    "id": "contains_harry_potter",
+    "if": {
+        "query": "harry potter",
+        "operator": "contains"
     },
-    \"then\": {
-        \"promote\": [
+    "then": {
+        "promote": [
             {
-                \"id\": \"harry_potter_cheat_sheet\",
-                \"name\": \"Harry Potter\",
-                \"section_order\": [
-                    \"Books\",
-                    \"Movies\",
-                    \"Franchise\"
+                "id": "harry_potter_cheat_sheet",
+                "name": "Harry Potter",
+                "section_order": [
+                    "Books",
+                    "Movies",
+                    "Franchise"
                 ],
-                \"template_type\": \"reference\"
+                "template_type": "reference"
             }
         ],
-        \"hide\": [
-            { \"doc_id\": \"Jle44WgBnfYvZBcA0H66\" }
+        "hide": [
+            { "doc_id": "Jle44WgBnfYvZBcA0H66" }
         ]
     }
 }
-"
+'
 ```
 
 We can similarly add more rules and update or delete the existing query rules via API. Checkout the Query Rules REST 
