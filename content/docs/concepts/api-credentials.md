@@ -6,6 +6,8 @@ sectionid: api-credentials
 permalink: concepts/api-credentials.html
 prev: analytics.html
 prevTitle: Analytics
+next: query-rules.html
+nextTitle: "Query Rules"
 ---
 
 API credentials allow secure access to the appbase.io APIs. They offer a variety of rules to granularly control access to the APIs.
