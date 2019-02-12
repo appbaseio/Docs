@@ -33,11 +33,11 @@
           title: "How to Implement Analytics"
           href: /concepts/analytics.html#how-to-implement-analytics
           forceInternal: true
-    - id: query-rules
-      title: Query Rules
-      href: /concepts/query-rules.html
-      forceInternal: true
     - id: api-credentials
       title: API Credentials
       href: /concepts/api-credentials.html
+      forceInternal: true
+    - id: query-rules
+      title: Query Rules
+      href: /concepts/query-rules.html
       forceInternal: true
