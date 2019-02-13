@@ -37,3 +37,7 @@
       title: API Credentials
       href: /concepts/api-credentials.html
       forceInternal: true
+    - id: query-rules
+      title: Query Rules
+      href: /concepts/query-rules.html
+      forceInternal: true
