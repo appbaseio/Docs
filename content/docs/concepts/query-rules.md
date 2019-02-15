@@ -196,7 +196,7 @@ curl -XGET https://${credentials}@scalr.api.appbase.io/movie-store/_msearch \
 '
 ```
 
-The search query `harry potter` subsequently matches the rule we created in the previos section. What happens is the
+The search query `harry potter` subsequently matches the rule we created in the previous section. What happens is the
 **If** clause i.e. ***If*** **search query contains 'harry potter'** resolves to true, and so the **Then** clause is 
 subsequently triggered. Our rule specifies two actions in the **Then** clause: `promote` the given doc and `hide` a 
 search result with `{ "doc_id": "Jle44WgBnfYvZBcA0H66" }`.
