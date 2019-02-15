@@ -16,7 +16,7 @@ concerned. When building a commercial search product, customers more often than 
 based on certain search queries. 
 
 One of the most common approach to achieve this is to **promote** or **hide** certain search results based on a given 
-query. Query Rules automates this process by allowing users curate `If-This-Then-That` rules. For example, a user can 
+query. Query Rules automates this process by allowing users to curate `If-This-Then-That` rules. For example, a user can 
 create a rule to **promote** an external document or result when a particular search query is fired. The rule is then 
 triggered automatically whenever that search query is fired and appends the promoted document along with the search 
 results. Similarly, a rule can be created that prevents i.e. **hides** certain results from getting included in the 
@@ -175,3 +175,78 @@ curl --location --request POST "https://accapi.appbase.io/app/book-store/rule" \
 We can similarly add more rules and update or delete the existing query rules via API. Checkout the Query Rules REST 
 API [documentation](https://documenter.getpostman.com/view/2848488/RW81vt5x#723b2a22-e515-4950-adec-ab3b64ccfcd7) for 
 more information.
+
+## Part 4: Query Rules Responses
+
+In order to run the search queries against the query rules, we need to pass in the query value in the `X-Search-Query` 
+header. For example: 
+
+```sh
+curl -XGET https://${credentials}@scalr.api.appbase.io/movie-store/_msearch \
+  -H 'Content-Type: application/json' \
+  -H 'X-Search-Query: harry potter' \
+  -d '
+{
+    "query": {
+        "match": {
+            "original_title": "harry potter"
+        }
+    }
+}
+'
+```
+
+The search query `harry potter` subsequently matches the rule we created in the previous section. What happens is the
+**If** clause i.e. ***If*** **search query contains 'harry potter'** resolves to true, and so the **Then** clause is 
+subsequently triggered. Our rule specifies two actions in the **Then** clause: `promote` the given doc and `hide` a 
+search result with `{ "doc_id": "Jle44WgBnfYvZBcA0H66" }`.
+
+Therefore, both these actions get applied to the elasticsearch's response to our original query. The **promoted** 
+results will get appended under the `promoted` field and the **hidden** results will be removed from the original 
+results. An example `search` response would look similar to this:
+
+```js
+{
+    "took": 8,
+    "timed_out": false,
+    "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 3,
+        "total": 3
+    },
+    "hits": {
+        "max_score": 5.4339542,
+        "total": 3,
+        "hits": [
+            {
+                "_id": "AWjmCtx674JxTt-e5Gzs",
+                "_index": "movie-store",
+                "_score": 4.480236,
+                "_source": {
+                    "genres": "",
+                    "original_language": "English",
+                    "original_title": "Harry Potter and the Deathly Hallows: Part 1",
+                    "overview": "Harry, Ron and Hermione walk away from their last year at Hogwarts to find and destroy the remaining Horcruxes, putting an end to Voldemort's bid for immortality.",
+                    "poster_path": "https://image.tmdb.org/t/p/w185/maP4MTfPCeVD2FZbKTLUgriOW4R.jpg",
+                    "release_year": 2010,
+                    "tagline": "One Way… One Fate… One Hero."
+                },
+                "_type": "movies"
+            }
+        ]
+    },
+    "promoted": [
+        {
+            "id": "harry_potter_cheat_sheet",
+            "name": "Harry Potter",
+            "section_order": [
+                "Books",
+                "Movies",
+                "Franchise"
+            ],
+            "template_type": "reference"
+        }
+    ]
+}
+```
