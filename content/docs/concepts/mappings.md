@@ -67,3 +67,16 @@ You can do the following:
 3. **Delete a mapping type**: This will delete all the fields (and their values) that belong under the mapping type.
 
 4. **Add a new field**: This allows you to add new field types.
+
+
+## Manage Shards
+
+You can also now set the number of shards for your index from the GUI. This setting should be used carefully, although we provide a good set of defaults for you.
+
+### How It Works
+
+Once you configure the shards, the data in your index is re-indexed. We create a new index with the updated shard setting, move your data to that index and update the app name alias to point to this new index and delete the old index.
+
+### Use-Case
+
+When you have a dataset that has more than 1 Million documents, we recommend splitting the app data into more shards. This optimizes the performance of the app by allowing us to have these shards better divided across the clusters.
