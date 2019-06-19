@@ -41,3 +41,7 @@
       title: Query Rules
       href: /concepts/query-rules.html
       forceInternal: true
+    - id: role-based-access
+      title: Role Based Access
+      href: /concepts/role-based-access.html
+      forceInternal: true
