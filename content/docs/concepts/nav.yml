@@ -45,3 +45,7 @@
       title: Role Based Access
       href: /concepts/role-based-access.html
       forceInternal: true
+    - id: search-template
+      title: Search Template
+      href: /concepts/search-template.html
+      forceInternal: true
