@@ -6,7 +6,7 @@ sectionid: role-based-access
 permalink: concepts/role-based-access.html
 prev: query-rules.html
 prevTitle: "Query Rules"
-next: search-templare.html
+next: search-template.html
 nextTitle: "Search Template"
 ---
 
