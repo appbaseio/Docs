@@ -56,7 +56,7 @@ The UI supports adding all the primitive types. You can set your own mapping obj
 
 ## Editing Mappings
 
-If you are on a paid plan on appbase.io, you can edit the mappings via the [**Mappings UI**](https://dashboard.appbase.io/app?view=mappings). As mappings are immutable, we provide this functionality by reindexing an app.
+If you are on a paid plan on appbase.io, you can edit the mappings via the [**Mappings UI**](https://dashboard.appbase.io/app?view=settings). As mappings are immutable, we provide this functionality by reindexing an app.
 
 You can do the following:
 
