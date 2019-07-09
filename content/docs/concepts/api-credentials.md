@@ -28,7 +28,7 @@ When making the API request, the credentials are passed using the `Authorization
 
 API Credential: `9ZPVCJMls:bc1b93fc-0599-42fc-bc27-5034a72db138`
 
-Its base64 equivalent is: `OVpQVkNKTWxzOmJjMWI5M2ZjLTA1OTktNDJmYy1iYzI3LTUwMzRhNzJkYjEzOA==` (`btoa(..)` is a built-in Javascript function which translates a string to its base64 equivalent value)
+Its base64 equivalent is: `OVpQVkNKTWxzOmJjMWI5M2ZjLTA1OTktNDJmYy1iYzI3LTUwMzRhNzJkYjEzOA==`. `btoa(..)` is a built-in Javascript function which translates a string to its base64 equivalent value. You can also use an online tool like [base64encode.org](https://www.base64encode.org/) to encode / decode to base64.
 
 This is the expected header to be passed when this credential is used directly as a part of the REST API: `Authorization: Basic OVpQVkNKTWxzOmJjMWI5M2ZjLTA1OTktNDJmYy1iYzI3LTUwMzRhNzJkYjEzOA==`.
 
