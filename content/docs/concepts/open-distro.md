@@ -22,7 +22,7 @@ You can select **Open Distro** as Elasticsearch flavor while creating a cluster.
 
 * **Node-to-Node encryption** and **HTTP Basic authentication** is enabled using [security](https://opendistro.github.io/for-elasticsearch-docs/docs/security-configuration/) features of Open Distro.
 
-> NOTE: Currently we are using self-signed certificate for node-node encryption, you can change certificate by `exec` into the elasticsearch cluster.
+> NOTE: Currently we are using self-signed certificate for node-node encryption.
 
 * [Audit Logging](https://opendistro.github.io/for-elasticsearch-docs/docs/security-audit-logs/) is enabled to track access to your elasticsearch cluster and are useful for compliance purpose / aftermath of security breach.
 
