@@ -49,3 +49,27 @@
       title: Search Template
       href: /concepts/search-template.html
       forceInternal: true
+    - id: clusters
+      title: Clusters
+      href: '/concepts/clusters.html'
+      forceInternal: true
+      subitems:
+        - id: getting-started
+          title: "Getting Started"
+          href: /concepts/clusters.html#getting-started
+          forceInternal: true
+        - id: tracking-deployment-status 
+          title: 'Deployment Status'
+          href: /concepts/clusters.html#tracking-deployment-status
+        - id: accessing-kubernetes-dashboard
+          title: "Kubernetes Dashboard"
+          href: /concepts/clusters.html#accessing-kubernetes-dashboard
+          forceInternal: true
+        - id: scaling-cluster
+          title: "Scaling cluster"
+          href: /concepts/clusters.html#scaling-cluster
+          forceInternal: true
+    - id: open-distro
+      title: Open Distro for Elasticsearch
+      href: /concepts/open-distro.html
+      forceInternal: true
