@@ -1,6 +1,6 @@
 ---
 id: open-distro
-title: "Open Distro for Elasticsearch"
+title: "Open Distro for ElasticSearch"
 layout: docs
 sectionid: open-distro
 permalink: concepts/open-distro.html
@@ -8,13 +8,13 @@ prev: search-template.html
 prevTitle: "Search Template"
 ---
 
-[Open Distro for Elasticsearch](https://opendistro.github.io/for-elasticsearch/) is an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) licensed distribution of [Elasticsearch](https://www.elastic.co/) enhanced with enterprise [security](https://opendistro.github.io/for-elasticsearch/features/security.html), [alerting](https://opendistro.github.io/for-elasticsearch/features/alerting.html), [SQL](https://opendistro.github.io/for-elasticsearch/features/SQL%20Support.html) way of querying elasticsearch data and [performance analyzer](https://opendistro.github.io/for-elasticsearch/features/analyzer.html). Now with the [appbase.io clusters](https://appbase.io/clusters/) you can host an open distro flavour of elasticsearch.
+[Open Distro for ElasticSearch](https://opendistro.github.io/for-elasticsearch/) is an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) licensed distribution of [ElasticSearch](https://www.elastic.co/) enhanced with enterprise [security](https://opendistro.github.io/for-elasticsearch/features/security.html), [alerting](https://opendistro.github.io/for-elasticsearch/features/alerting.html), [SQL](https://opendistro.github.io/for-elasticsearch/features/SQL%20Support.html) way of querying elasticsearch data and [performance analyzer](https://opendistro.github.io/for-elasticsearch/features/analyzer.html). Now with the [appbase.io clusters](https://appbase.io/clusters/) you can host an open distro flavour of elasticsearch.
 
 ## How to run an Open Distro based cluster?
 
 ### Getting Started
 
-You can select **Open Distro** as Elasticsearch flavor while creating a cluster. For detailed information on how to create a cluster, you can check [Clusters docs](/concepts/clusters.html).
+You can select **Open Distro** as ElasticSearch flavor while creating a cluster. For detailed information on how to create a cluster, you can check [Clusters docs](/concepts/clusters.html).
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://www.dropbox.com/s/o2tsuvmia8zk63k/Screenshot%202019-08-08%2019.14.38.png?raw=1" alt="cluster creation gif" style="width:100%;" /></div>
 
@@ -28,7 +28,7 @@ You can select **Open Distro** as Elasticsearch flavor while creating a cluster.
 
 ## How to configure other Open Distro Features
 
-Once the deployment is completed, you can configure other Open Distro / Elasticsearch options by updating Elasticsearch configurations and `exec` into cluster via [kubernetes Dashboard](/concepts/clusters.html#accessing-kubernetes-dashboard)
+Once the deployment is completed, you can configure other Open Distro / ElasticSearch options by updating ElasticSearch configurations and `exec` into cluster via [kubernetes Dashboard](/concepts/clusters.html#accessing-kubernetes-dashboard)
 
 ### How to update elasticsearch configurations / security options?
 

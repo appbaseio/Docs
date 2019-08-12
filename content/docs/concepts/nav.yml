@@ -61,13 +61,9 @@
         - id: tracking-deployment-status 
           title: 'Deployment Status'
           href: /concepts/clusters.html#tracking-deployment-status
-        - id: accessing-kubernetes-dashboard
-          title: "Kubernetes Dashboard"
-          href: /concepts/clusters.html#accessing-kubernetes-dashboard
-          forceInternal: true
-        - id: scaling-cluster
-          title: "Scaling cluster"
-          href: /concepts/clusters.html#scaling-cluster
+        - id: managing-deployed-cluster 
+          title: "Managing Deployed Cluster"
+          href: /concepts/clusters.html#managing-a-deployed-elasticsearch-cluster
           forceInternal: true
     - id: open-distro
       title: Open Distro for Elasticsearch
