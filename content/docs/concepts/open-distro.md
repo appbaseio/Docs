@@ -4,8 +4,10 @@ title: "Open Distro for ElasticSearch"
 layout: docs
 sectionid: open-distro
 permalink: concepts/open-distro.html
-prev: search-template.html
-prevTitle: "Search Template"
+prev: clusters.html
+prevTitle: "Clusters"
+next: why-appbase-clusters.html
+nextTitle: "Why Appbase Clusters"
 ---
 
 [Open Distro for ElasticSearch](https://opendistro.github.io/for-elasticsearch/) is an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) licensed distribution of [ElasticSearch](https://www.elastic.co/) enhanced with enterprise [security](https://opendistro.github.io/for-elasticsearch/features/security.html), [alerting](https://opendistro.github.io/for-elasticsearch/features/alerting.html), [SQL](https://opendistro.github.io/for-elasticsearch/features/SQL%20Support.html) way of querying elasticsearch data and [performance analyzer](https://opendistro.github.io/for-elasticsearch/features/analyzer.html). Now with the [appbase.io clusters](https://appbase.io/clusters/) you can host an open distro flavour of elasticsearch.

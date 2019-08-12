@@ -69,3 +69,7 @@
       title: Open Distro for Elasticsearch
       href: /concepts/open-distro.html
       forceInternal: true
+    - id: why-appbase-clusters
+      title: Why Appbase.io Clusters
+      href: /concepts/why-appbase-clusters.html
+      forceInternal: true
