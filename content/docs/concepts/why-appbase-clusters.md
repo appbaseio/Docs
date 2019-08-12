@@ -44,4 +44,4 @@ Along with the full access to API, now you also have full access to elasticsearc
 
 ## Ability to choose your ElasticSearch
 
-With all the freedom, now you can deploy ElasticSearch flavour of your own choice. You can either install the Open Source distribution of [Elasticsearch](https://www.elastic.co/) or use [Open Distro for Elasticsearch](https://opendistro.github.io/for-elasticsearch/) which comes with more security enhancements.
+With all the freedom, now you can deploy ElasticSearch flavour of your own choice. You can either install the Open Source distribution of [Elasticsearch](https://www.elastic.co/) or use [`Open Distro for Elasticsearch](https://opendistro.github.io/for-elasticsearch/) which comes with more security enhancements.
