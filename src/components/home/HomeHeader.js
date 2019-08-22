@@ -36,7 +36,7 @@ const HomeHeader = () => (
 						href="https://dashboard.appbase.io/signup"
 						target="_blank"
 						style={{ background: '#00f68e' }}
-						className="f5 darkgrey fw6"
+						className="signup-btn"
 					>
 						SignUp for free
 					</Button>

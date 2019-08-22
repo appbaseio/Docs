@@ -1774,3 +1774,9 @@ to be custom HTML.
 	bottom: 0;
 	box-shadow: 0 -2px 4px 0 rgba(2, 19, 27, 0.15);
 }
+
+.signup-btn {
+	color: var(--darkgrey);
+	font-size: 1.6rem;
+	font-weight: 600;
+}
