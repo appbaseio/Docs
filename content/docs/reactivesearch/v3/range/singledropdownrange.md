@@ -60,6 +60,7 @@ Example uses:
 	showFilter={false}
 	filterLabel="Price"
 	URLParams={false}
+    includeNullValues
 />
 ```
 
@@ -98,6 +99,9 @@ Example uses:
       </div>
     ))}
     ```
+-   **includeNullValues** `Boolean` [optional]
+    If you have sparse data (i.e. some data item which does not have `dataField`), then this prop enables you to show that data. Defaults to `false`.
+
 
 ## Demo
 

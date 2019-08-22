@@ -60,6 +60,7 @@ Example uses:
 	showFilter={true}
 	filterLabel="Prices"
 	URLParams={false}
+    includeNullValues
 />
 ```
 
@@ -122,6 +123,9 @@ function Index(props) {
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected values of the ranges. This is useful for sharing URLs with the component state. Defaults to `false`.
+-   **includeNullValues** `Boolean` [optional]
+    If you have sparse data (i.e. some data item which does not have `dataField`), then this prop enables you to show that data. Defaults to `false`.
+
 
 ## Demo
 

@@ -53,6 +53,7 @@ Example uses:
 		end: 5,
 	}}
 	URLParams={false}
+    includeNullValues
 />
 ```
 
@@ -116,6 +117,9 @@ Let's say you want data for `ratings with 4 stars and up` and also include `unra
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html#controlled-components) behavior.
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected rating. This is useful for sharing URLs with the component state. Defaults to `false`.
+-   **includeNullValues** `Boolean` [optional]
+    If you have sparse data (i.e. some data item which does not have `dataField`), then this prop enables you to show that data. Defaults to `false`.
+
 
 ## Demo
 
