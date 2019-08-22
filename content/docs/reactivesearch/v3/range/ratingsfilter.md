@@ -74,6 +74,24 @@ Example uses:
 />
 ```
 
+### Usage with Custom Data
+Let's say you want data for `ratings with 4 stars and up` and also include `unrated results`
+```js
+<RatingsFilter
+    componentId="RatingsSensor"
+    dataField="average_rating_rounded"
+    title="RatingsFilter"
+    icon={<Star style={{ color: 'yellow' }} />}
+    dimmedIcon={<Star style={{ color: 'grey' }} />}
+    data={[
+        { start: 4, end: 5, label: '4 stars and up', includeUnrated: true },
+        { start: 3, end: 5, label: '3 stars and up' },
+        { start: 2, end: 5, label: '2 stars and up' },
+        { start: 1, end: 5, label: '> 1 stars' },
+    ]}
+/>
+```
+
 ## Props
 
 -   **componentId** `String`
