@@ -63,6 +63,39 @@ Example uses:
 />
 ```
 
+### Usage as a controlled component
+```js
+function Index(props) {
+	const [values, setValues] = useState([]);
+	return (
+		<MultiRange
+			title="MultiRange"
+			componentId="BookSensor"
+			dataField="average_rating"
+			data={[
+				{
+					start: 0,
+					end: 3,
+					label: 'Rating < 3',
+				},
+				{
+					start: 3,
+					end: 4,
+					label: 'Rating 3 to 4',
+				},
+				{
+					start: 4,
+					end: 5,
+					label: 'Rating > 4',
+				},
+			]}
+			value={values}
+			onChange={setValues}
+		/>
+	);
+}
+```
+
 ## Props
 
 -   **componentId** `String`
