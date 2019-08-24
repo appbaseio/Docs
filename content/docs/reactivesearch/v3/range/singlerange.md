@@ -91,7 +91,7 @@ Example uses:
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the range. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **includeNullValues** `Boolean` [optional]
-    If you have sparse data (i.e. some data item which does not have `dataField`), then this prop enables you to show that data. Defaults to `false`.
+    If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
 
 
 ## Demo
