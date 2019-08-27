@@ -17,6 +17,8 @@
               link: /docs/reactivesearch/v3/base/selectedfilters/
             - title: StateProvider
               link: /docs/reactivesearch/v3/base/stateprovider/
+            - title: ReactiveComponent
+              link: /docs/reactivesearch/v3/base/reactivecomponent/
       - group: List Components
         items:
             - title: SingleList
