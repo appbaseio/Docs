@@ -50,6 +50,7 @@ class Post extends React.Component {
 					<SidebarNav
 						location={location}
 						sidebar={sidebar}
+						style={{ overflow: 'scroll', height: '86vh' }}
 						nestedSidebar={nestedSidebar}
 					/>
 				</div>
@@ -79,6 +80,8 @@ class Post extends React.Component {
 			// Layout #3: no sidebar navigation
 			sideBarLayout.justification = `justify-center`;
 		}
+
+		const isRSDocs = location.pathname.startsWith('/docs/reactivesearch');
 
 		return (
 			<>
@@ -142,13 +145,15 @@ class Post extends React.Component {
 										}}
 									/>
 								</article>
-								<div className="mw-content pl5 pr5 pl15-ns pr15-ns bt b--whitegrey mt5">
-									<PrevNextSection
-										location={location}
-										sidebar={sidebar}
-										next={post.frontmatter.next}
-									/>
-								</div>
+								{isRSDocs ? null : (
+									<div className="mw-content pl5 pr5 pl15-ns pr15-ns bt b--whitegrey mt5">
+										<PrevNextSection
+											location={location}
+											sidebar={sidebar}
+											next={post.frontmatter.next}
+										/>
+									</div>
+								)}
 							</div>
 						</div>
 						{sideBarLayout.rightSidebar ? (
