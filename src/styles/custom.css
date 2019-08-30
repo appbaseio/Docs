@@ -1781,6 +1781,14 @@ to be custom HTML.
 	font-weight: 600 !important;
 }
 
+.video-btn {
+	color: var(--middarkgrey) !important;
+	font-size: 1.6rem !important;
+	background: transparent;
+	border: 0;
+	font-weight: 600 !important;
+}
+
 .cursor-pointer {
 	cursor: pointer;
 }

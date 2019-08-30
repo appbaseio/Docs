@@ -40,9 +40,15 @@ const HomeHeader = () => (
 					>
 						SignUp for free
 					</Button>
-					{/* <a className="link button-header pa2 f5 fw5 shadow-3 bg-white pl4 pr4 br2 blue">
-						Watch Video
-					</a> */}
+					<Button
+						ghost
+						uppercase
+						href="https://www.youtube.com/watch?v=EvsORhwWgdA"
+						target="_blank"
+						className="video-btn"
+					>
+						1 Min Overview
+					</Button>
 				</div>
 			</div>
 			<div className="home-header-graphics">
