@@ -1784,8 +1784,8 @@ to be custom HTML.
 .video-btn {
 	color: var(--middarkgrey) !important;
 	font-size: 1.6rem !important;
-	background: transparent;
-	border: 0;
+	background: transparent !important;
+	border: 0 !important;
 	font-weight: 600 !important;
 }
 
