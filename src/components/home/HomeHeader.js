@@ -24,9 +24,7 @@ class HomeHeader extends React.Component {
 					<NavBar theme="dark" />
 				</header>
 				<div
-					className={`${
-						Spirit.page.xl
-					} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
+					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
 				>
 					<div className="pr3">
 						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l darkgrey header-heading-shadow header-title">
@@ -52,17 +50,12 @@ class HomeHeader extends React.Component {
 							>
 								SignUp for free
 							</Button>
-							<Button
-								ghost
-								uppercase
-								onClick={this.handleModal}
-								className="video-btn"
-							>
+							<Button uppercase onClick={this.handleModal} className="video-btn">
 								1 Min Overview
 							</Button>
 							<Modal
 								open={open}
-								classNames={{modal: "home-modal", closeIcon: 'close-icon'}}
+								classNames={{ modal: 'home-modal', closeIcon: 'close-icon' }}
 								onClose={this.handleModal}
 								center
 							>
