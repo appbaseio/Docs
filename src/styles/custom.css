@@ -1782,7 +1782,7 @@ to be custom HTML.
 }
 
 .video-btn {
-	color: var(--middarkgrey) !important;
+	color: var(--darkgrey) !important;
 	font-size: 1.6rem !important;
 	background: transparent !important;
 	border: 0 !important;
@@ -1795,4 +1795,20 @@ to be custom HTML.
 
 .highlighted-suggestion {
 	background: var(--whitegrey);
+}
+
+.home-modal {
+	padding: 0;
+	width: 60%;
+	background: transparent;
+}
+
+.iframe {
+	width: 100%;
+	height: 400px;
+}
+
+.close-icon {
+	fill: white;
+	stroke: white;
 }
