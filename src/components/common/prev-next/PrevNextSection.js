@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { getSidebarFile } from '../sidebar';
 import PrevNext from './PrevNext';
 
-const PrevNextSection = ({ sidebar, location, next }) => {
+const PrevNextSection = ({ sidebar, location, next, nestedSidebar }) => {
 	// TODO: find a more generic way for the `/concepts/` case
 	// Cover two cases:
 	// 1. `/concepts/` page that walks through the associated sidebar file
@@ -20,13 +20,21 @@ const PrevNextSection = ({ sidebar, location, next }) => {
 
 		const { groups } = sidebarfile;
 		const flatSidebar = [];
-
+		const isRSDocs = location.pathname.startsWith('/docs/reactivesearch');
+		const nestedSidebarFile = getSidebarFile(nestedSidebar);
 		// Get all nested items and link and make a flat array
 		_.forEach(groups, section => {
-			_.forEach(section.items, items => {
+			_.forEach(isRSDocs ? nestedSidebarFile.groups : section.items, items => {
 				// Remember the group our items belong to
-				items.group = section.group;
-				flatSidebar.push(items);
+				if (isRSDocs) {
+					_.forEach(items.items, item => {
+						item.group = items.group;
+						flatSidebar.push(item);
+					});
+				} else {
+					items.group = section.group;
+					flatSidebar.push(items);
+				}
 			});
 		});
 
