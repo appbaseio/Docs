@@ -22,7 +22,6 @@ const PrevNextSection = ({ sidebar, location, next, nestedSidebar }) => {
 		const isRSDocs = location.pathname.startsWith('/docs/reactivesearch');
 		let nestedSidebarFile = {};
 		if (nestedSidebar) nestedSidebarFile = getSidebarFile(nestedSidebar);
-		console.log('hello', sidebarfile, nestedSidebarFile);
 		const { groups } = isRSDocs ? nestedSidebarFile : sidebarfile;
 		// Get all nested items and link and make a flat array
 		_.forEach(groups, section => {
