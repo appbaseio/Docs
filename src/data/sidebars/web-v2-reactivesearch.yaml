@@ -92,7 +92,7 @@
       - group: Advanced
         items:
             - title: SelectedFilters
-              link: /docs/reactivesearch/v2/base/SelectedFilters/
+              link: /docs/reactivesearch/v2/advanced/SelectedFilters/
             - title: Custom Suggestions
               link: /docs/reactivesearch/v2/advanced/CustomSuggestions/
             - title: Custom Queries
