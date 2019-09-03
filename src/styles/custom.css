@@ -694,6 +694,7 @@ kbd {
 @media only screen and (max-width: 600px) {
 	.prev-next-step-grid-column {
 		grid-column: span 12 !important;
+		padding: 15px 0;
 	}
 }
 
