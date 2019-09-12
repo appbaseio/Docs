@@ -30,7 +30,7 @@ const HomePage = ({ data, location }) => {
 						<p
 							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
-							All libraries and tools, integrated with Appbase.
+							Appbase.io features organized by guides and chapters
 						</p>
 						<div className="mt5 timeline-steps">
 							<TimelineOption
@@ -39,8 +39,7 @@ const HomePage = ({ data, location }) => {
 								items={{
 									'1': {
 										title: 'Getting Started',
-										subtitle:
-											'Build amazing search Ux with reactive UI components.',
+										subtitle: 'Overview and Quickstart with appbase.io',
 										icon: (
 											<Icon
 												name="gettingStarted"
