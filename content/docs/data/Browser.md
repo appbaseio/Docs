@@ -26,7 +26,7 @@ The data browser is available within appbase.io app dashboard. But it can also b
 
 You can go to the [appbase.io dashboard](https://dashboard.appbase.io) and create an app. In the below GIF, we create an app called `demostreamingapp`.
 
-![](https://www.dropbox.com/s/gifcoddblm35t5a/creating_app.gif?raw=1)
+![](https://www.dropbox.com/s/1fzns3bbkerjh6g/create_app_2.gif?raw=1)
 
 ## Adding Your First Data
 
