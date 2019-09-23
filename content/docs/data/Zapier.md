@@ -37,6 +37,13 @@ Login with your Google Account and once you select sample data, it should appear
 
 ![](https://i.imgur.com/tARRU02.png)
 
+## Configuring appbase
+Select `appbase` from the apps and click `Create Document` action
+
+![](https://i.imgur.com/NXSWV1Y.png)
+
+After this step, you need to add your API credentials and authenticate.
+
 ## Operations
 
 ### Adding New Record
