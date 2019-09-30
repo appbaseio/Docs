@@ -1,7 +1,7 @@
 ---
 title: 'API Reference'
-meta_title: 'API Reference to SearchBase'
-meta_description: 'SearchBase is a lightweight & platform agnostic search library with some common utilities.'
+meta_title: 'API Reference for SearchBase'
+meta_description: 'SearchBase is a lightweight and platform agnostic search library for ElasticSearch.'
 keywords:
     - apireference
     - searchbase
@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic search library with some common utilities.
+[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic search library for ElasticSearch.
 
 > Note:
 >
