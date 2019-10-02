@@ -10,12 +10,6 @@ keywords:
 sidebar: 'docs'
 ---
 
-Connect the apps you use everyday to automate your work and be more productive. 1500+ apps and easy integrations - get started in minutes.
-
-You can read more about the zapier [here](https://zapier.com).
-
-> Right now appbase.io app is not publically available on Zapier, you can use it through this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
-
 ## Overview
 
 You can import data into appbase.io using any of the following methods:
@@ -26,27 +20,31 @@ You can import data into appbase.io using any of the following methods:
 
 In this doc, we will walkthrough the process of importing using this Zapier integration using Google Sheets as an example input source.
 
+Zapier allows connecting apps you use everyday to automate your work and be more productive. You can read more about Zapier over [here](https://zapier.com).
+
+> Right now, the appbase.io app is not publicly available on Zapier. You can use it via this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
+
 ## Creating A Zap
 
-You can go to the [zapier editor](https://zapier.com/app/editor/) and create a zap. In the below image, we create a zap called `google sheet - appbase.io`.
+You can go to the [Zapier editor](https://zapier.com/app/editor/) and create a zap. In the below image, we create a zap for `Google Sheets <> appbase.io`.
 
 ![](https://i.imgur.com/GSavUdf.png)
 
 ## Adding Your Data In Google Sheets
 
-Add data in your Google Sheet. You can directly copy the data from [here](https://docs.google.com/spreadsheets/d/1nc3n-saZ8pVd7gE64iR6BrJoHzpVOrRPi8B3598UCLQ/edit?usp=sharing).
+Add data in your Google Sheets. You can directly copy the data from [here](https://docs.google.com/spreadsheets/d/1nc3n-saZ8pVd7gE64iR6BrJoHzpVOrRPi8B3598UCLQ/edit?usp=sharing).
 
 ![](https://i.imgur.com/eHoBAWB.png)
 
 ## Configuring Google Sheets
 
-Login with your Google Account and once you select sample data, it should appear like this.
+Login with your Google account and once you configure the Google Sheets integration, you should see something similar:
 
 ![](https://i.imgur.com/tARRU02.png)
 
 ## Configuring appbase.io
 
-Select `appbase.io` from the apps and click `Create Document` action.
+Next, select `appbase.io` from the apps and go to the `Create Document` action.
 
 ![](https://i.imgur.com/NXSWV1Y.png)
 
@@ -56,20 +54,22 @@ After this step, you need to add your API credentials and authenticate.
 
 ### Adding New Record
 
-Let's create an app named `business` and reference record in it from Google Sheets. It will look like this:
+I am going to call my appbase.io app `business` here. The Zapier integration will create the app if it doesn't exist. The next step is to map the columns from Google Sheets to the field names that will be used to store them in appbase.io. It should look something similar to the following:
 
 ![](https://i.imgur.com/wHpDMH7.png)
 
-After clicking Continue, on successfull insertion, an `_id` will be generated like this:
+After clicking on `Continue` and after a successful insertion, you will also see an `_id` being returned back. This is the unique ID for our record (aka document).
 
 ![](https://i.imgur.com/r2MSpTg.png)
 
-### Updating Existing Record
+### Updating An Existing Document
 
-Existing data records can be updated easily. Enter `_id` from the previous step and update the field data like this:
+Another helpful feature is the ability to edit existing documents. Whenever a value from an incoming integration is mapped to an `_id` field, the existing document gets updated instead of a new document getting created.
+
+TODO: Update the image to use the same `_id` as the one being used.
 
 ![](https://i.imgur.com/ZnlsL8R.png)
 
-##Conclusion
-On successful completion of each of these steps, you will have created a custom zap. Now whenever you insert a new
-record into Google Sheet, it will automatically insert into the corresponding app of appbase.io.
+## Conclusion
+
+While we focused here on a specific integration with Google Sheets, you can capture incoming data from a variety of sources, including but not limited to emails being received in your Sendgrid account or GMail, form data coming from Google Sheets, Typeform or Airtable, and even perform database sync from MySQL, Firestore and other supported database Zaps.
