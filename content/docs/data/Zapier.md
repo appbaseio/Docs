@@ -1,10 +1,10 @@
 ---
 title: 'Zapier'
-meta_title: 'Appbase - Zapier'
+meta_title: 'appbase.io - Zapier'
 meta_description: 'Automate your appbase.io database operations with Zapier.'
 keywords:
     - dataschema
-    - appbase
+    - appbase.io
     - zapier
     - elasticsearch
 sidebar: 'docs'
@@ -16,9 +16,13 @@ You can read more about the zapier [here](https://zapier.com).
 
 ## Overview
 
-I use a variety of tools to insert a record into appbase.io database such as https://importer.appbase.io. The issue is that these tools are fragmented and new records can come from a variety of sources such as Typeform, Google Sheets, etc.
-Managing the inputs and how you view these records after they've been captured is the tiresome part of this equation. Switching between tools, monitoring services for new additions or updates, and manually entering this data across them takes up time that could be better spent clearing your list.
-We will look at how can we automate database operations using Google Sheets and Zapier.
+You can import data into appbase.io using any of the following methods:
+
+-   Import via the dashboard GUI,
+-   Import via ABC CLI,
+-   Use the Zapier integration to import from over 1,500+ supported apps such as Typeform, Google Sheets, Mailchimp.
+
+In this doc, we will walkthrough the process of importing using this Zapier integration using Google Sheets as an example input source.
 
 ## Creating A Zap
 
@@ -28,17 +32,19 @@ You can go to the [zapier editor](https://zapier.com/app/editor/) and create a z
 
 ## Adding Your Data In Google Sheets
 
-Add data in your Google Sheet. I have created an example for you.
+Add data in your Google Sheet. You can directly copy the data from [here](https://docs.google.com/spreadsheets/d/1nc3n-saZ8pVd7gE64iR6BrJoHzpVOrRPi8B3598UCLQ/edit?usp=sharing)
 
 ![](https://i.imgur.com/eHoBAWB.png)
 
 ## Configuring Google Sheets
+
 Login with your Google Account and once you select sample data, it should appear like this.
 
 ![](https://i.imgur.com/tARRU02.png)
 
-## Configuring appbase
-Select `appbase` from the apps and click `Create Document` action
+## Configuring appbase.io
+
+Select `appbase.io` from the apps and click `Create Document` action
 
 ![](https://i.imgur.com/NXSWV1Y.png)
 
@@ -56,7 +62,6 @@ After clicking Continue, on successfull insertion, an `_id` will be generated li
 
 ![](https://i.imgur.com/r2MSpTg.png)
 
-
 ### Updating Existing Record
 
 Existing data records can be updated easily. Enter `_id` from the previous step and update the field data like this:
@@ -65,4 +70,4 @@ Existing data records can be updated easily. Enter `_id` from the previous step 
 
 ##Conclusion
 On successful completion of each of these steps, you will have created a custom zap. Now whenever you insert a new
-record into Google Sheet, it will automatically insert into the corresponding app of appbase.io. 
+record into Google Sheet, it will automatically insert into the corresponding app of appbase.io.
