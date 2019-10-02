@@ -14,6 +14,8 @@ Connect the apps you use everyday to automate your work and be more productive. 
 
 You can read more about the zapier [here](https://zapier.com).
 
+> Right now appbase.io app is not publically available on Zapier, you can use it through this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
+
 ## Overview
 
 You can import data into appbase.io using any of the following methods:
@@ -32,7 +34,7 @@ You can go to the [zapier editor](https://zapier.com/app/editor/) and create a z
 
 ## Adding Your Data In Google Sheets
 
-Add data in your Google Sheet. You can directly copy the data from [here](https://docs.google.com/spreadsheets/d/1nc3n-saZ8pVd7gE64iR6BrJoHzpVOrRPi8B3598UCLQ/edit?usp=sharing)
+Add data in your Google Sheet. You can directly copy the data from [here](https://docs.google.com/spreadsheets/d/1nc3n-saZ8pVd7gE64iR6BrJoHzpVOrRPi8B3598UCLQ/edit?usp=sharing).
 
 ![](https://i.imgur.com/eHoBAWB.png)
 
@@ -44,7 +46,7 @@ Login with your Google Account and once you select sample data, it should appear
 
 ## Configuring appbase.io
 
-Select `appbase.io` from the apps and click `Create Document` action
+Select `appbase.io` from the apps and click `Create Document` action.
 
 ![](https://i.imgur.com/NXSWV1Y.png)
 
