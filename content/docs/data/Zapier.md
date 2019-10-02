@@ -1,5 +1,5 @@
 ---
-title: 'Zapier'
+title: 'Zapier Integration'
 meta_title: 'appbase.io - Zapier'
 meta_description: 'Automate your appbase.io database operations with Zapier.'
 keywords:
