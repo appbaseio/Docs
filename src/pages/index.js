@@ -82,7 +82,7 @@ const HomePage = ({ data, location }) => {
 												duration: 4,
 											},
 											{
-												title: 'Zapier',
+												title: 'Zapier Integration',
 												description:
 													'Automate your appbase.io database operations with Zapier',
 												link: '/docs/data/Zapier/',
