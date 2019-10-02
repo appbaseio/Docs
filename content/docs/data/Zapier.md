@@ -18,7 +18,7 @@ You can import data into appbase.io using any of the following methods:
 -   Import via ABC CLI,
 -   Use the Zapier integration to import from over 1,500+ supported apps such as Typeform, Google Sheets, Mailchimp.
 
-In this doc, we will walkthrough the process of importing using this Zapier integration using Google Sheets as an example input source.
+In this doc, we will walk through the process of importing using this Zapier integration using Google Sheets as an example input source.
 
 Zapier allows connecting apps you use everyday to automate your work and be more productive. You can read more about Zapier over [here](https://zapier.com).
 
@@ -48,7 +48,11 @@ Next, select `appbase.io` from the apps and go to the `Create Document` action.
 
 ![](https://i.imgur.com/NXSWV1Y.png)
 
-After this step, you need to add your API credentials and authenticate.
+After this step, you need to add your API credentials and authenticate. Connect your `appbase.io` account on clicking `Add a New Account` under `Choose Account` section, where you have to
+enter your `appbase.io` credentials which you can find [here](https://dashboard.appbase.io/profile/credentials).
+You should see something similar:
+
+![](https://i.imgur.com/avTdYss.png)
 
 ## Operations
 
@@ -66,9 +70,7 @@ After clicking on `Continue` and after a successful insertion, you will also see
 
 Another helpful feature is the ability to edit existing documents. Whenever a value from an incoming integration is mapped to an `_id` field, the existing document gets updated instead of a new document getting created.
 
-TODO: Update the image to use the same `_id` as the one being used.
-
-![](https://i.imgur.com/ZnlsL8R.png)
+![](https://i.imgur.com/7zEAso9.png)
 
 ## Conclusion
 
