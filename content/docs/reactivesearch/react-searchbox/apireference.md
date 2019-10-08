@@ -234,7 +234,7 @@ Or you can also use render function as children
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html#controlled-components) behavior.
 
     ```js
-    <DataSearch
+    <SearchBox
     	value={this.state.value}
     	onChange={(value, triggerQuery, event) => {
     		this.setState(
@@ -264,7 +264,7 @@ Or you can also use render function as children
 
 ## Styles
 
-`DataSearch` component supports `innerClass` prop with the following keys:
+`SearchBox` component supports `innerClass` prop with the following keys:
 
 -   `title`
 -   `input`
@@ -274,7 +274,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
 ## Extending
 
-`DataSearch` component can be extended to
+`SearchBox` component can be extended to
 
 1. customize the look and feel with `className`, `style`,
 2. connect with external interfaces using `beforeValueChange`, `onValueChange` and `onQueryChange`,
@@ -293,7 +293,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
     > 2. There is a known [issue](https://github.com/appbaseio/reactivesearch/issues/1087) with `onKeyPress` when `autosuggest` is set to true, it is recommended to use `onKeyDown` for the consistency.
 
 ```js
-<DataSearch
+<SearchBox
   ...
   className="custom-class"
   style={{"paddingBottom": "10px"}}
