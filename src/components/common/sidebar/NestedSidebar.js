@@ -40,6 +40,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbase')) {
 			return 'SearchBase';
 		}
+		if (location.pathname.startsWith('/docs/reactivesearch/react-searchbox')) {
+			return 'React SearchBox';
+		}
 
 		return 'React - v3';
 	};
@@ -51,7 +54,11 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					{nestedSidebar.items.map((item, i) => (
 						<h4 key={i.toString()} className="f5 fw5 link pa0 ma0">
 							<SidebarLink
-								linkClasses="link sidebarlink-active blue fw6"
+								linkClasses={
+									location.pathname === item.link
+										? 'link sidebarlink-active blue fw6'
+										: 'midgrey hover-blue-l2 link'
+								}
 								title={item.title}
 								link={item.link}
 							/>
