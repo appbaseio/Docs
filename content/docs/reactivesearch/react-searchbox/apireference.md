@@ -92,7 +92,7 @@ Example uses of searchbox UI:
     ```js
     <SearchBox
     	render={({ data, triggerClickAnalytics }) => {
-    		return results.map(item => (
+    		return data.map(item => (
     			<div>
     				key={item._id}
     				onClick={() => triggerClickAnalytics(item._click_id)}
