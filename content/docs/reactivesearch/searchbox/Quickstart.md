@@ -1,19 +1,22 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to SearchBox'
-meta_description: 'SearchBox is a lightweight search library with some common utilities.'
+meta_description: 'Searchbox is a lightweight searchbox UI component to query your ElasticSearch app.'
 keywords:
     - quickstart
-    - react-searchbox
+    - searchbox
     - search library
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'searchbox'
 ---
 
-[searchbox](https://github.com/appbaseio/searchbox) - A lightweight search library with some common utilities.
+
+`SearchBox` offers a lightweight and performance focused searchbox UI component to query and display results from your ElasticSearch app (aka index).
 
 ## Installation
+
+`Searchbox` requires `Searchbase` as dependency so we will require to add `Searchbase` as dependency. You can read more about Searchbase [here](/docs/reactivesearch/searchbase/overview/QuickStart/).
 
 ```js
 npm install @appbaseio/searchbox @appbaseio/searchbase

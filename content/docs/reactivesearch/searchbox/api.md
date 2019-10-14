@@ -1,5 +1,5 @@
 ---
-title: 'Searchbox API'
+title: 'Searchbox'
 meta_title: 'API Reference to Searchbox'
 meta_description: 'Searchbox is a lightweight searchbox UI component to query your ElasticSearch app.'
 keywords:
