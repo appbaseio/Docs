@@ -12,7 +12,9 @@ search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer(
 
 search.addIndex('title');
 search.addIndex('heading');
-search.addIndex('tokens');
+search.addIndex('meta_description');
+search.addIndex('meta_title');
+
 search.addDocuments(data);
 
 const getSuggestions = value => {
@@ -111,8 +113,15 @@ const getValue = url => {
 	return 'buildingUI';
 };
 
-const HitTemplate = ({ hit }) => {
+const HitTemplate = ({ hit, currentValue }) => {
 	const sectionName = getSection(hit.url);
+
+	const highlightedTitle = hit.title.replace(new RegExp(currentValue, 'ig'), matched => {
+		return `<mark>${matched}</mark>`;
+	});
+	const highlightedDescription = hit.heading.replace(new RegExp(currentValue, 'ig'), matched => {
+		return `<mark>${matched}</mark>`;
+	});
 	return (
 		<Link
 			to={hit.url}
@@ -124,18 +133,19 @@ const HitTemplate = ({ hit }) => {
 				</div>
 
 				<div className="full-width">
-					<h4 className={`${Spirit.h5} dib`}>{hit.title}</h4>
+					<div
+						className={`${Spirit.h5} dib`}
+						dangerouslySetInnerHTML={{ __html: highlightedTitle }}
+					/>
 					{sectionName ? (
 						<div
-							className={`${
-								Spirit.small
-							} midgrey nudge-bottom--2 capitalize suggestion-section`}
+							className={`${Spirit.small} midgrey nudge-bottom--2 capitalize suggestion-section`}
 							dangerouslySetInnerHTML={{ __html: getSection(hit.url) }}
 						/>
 					) : null}
 					<p
 						className={`${Spirit.small} midgrey nudge-bottom--2`}
-						dangerouslySetInnerHTML={{ __html: hit.heading }}
+						dangerouslySetInnerHTML={{ __html: highlightedDescription }}
 					/>
 				</div>
 			</div>
@@ -180,17 +190,18 @@ class AutoComplete extends React.Component {
 
 	getSuggestionValue = hit => {
 		return hit.title;
-	}
+	};
 
 	suggestionSelected = (event, { suggestion }) => {
 		if (event.key === 'Enter') {
 			navigate(suggestion.url);
 		}
-	}
+	};
 
 	renderSuggestion = hit => {
-		return <HitTemplate hit={hit} />;
-	}
+		const { value } = this.state;
+		return <HitTemplate hit={hit} currentValue={value} />;
+	};
 
 	render() {
 		// Don't show sections with no results
