@@ -4,6 +4,8 @@
         items:
             - title: Overview
               link: /docs/gettingstarted/QuickStart/
+            - title: Why Appbase.io
+              link: /docs/gettingstarted/WhyAppbaseIo/
       - group: Managing Data
         icon: importData
         items:
