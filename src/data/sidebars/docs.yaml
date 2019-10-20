@@ -46,7 +46,7 @@
         items:
             - title: Clusters
               link: /docs/hosting/Cluster/
-            - title: Why Appbase Cluster
-              link: /docs/hosting/WhyAppbase/
+            - title: Bring Your Own Cluster
+              link: /docs/hosting/BringYourOwnCluster/
             - title: Open Distro
               link: /docs/hosting/OpenDistro/
