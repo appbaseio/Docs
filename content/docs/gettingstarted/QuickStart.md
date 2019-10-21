@@ -14,13 +14,12 @@ sidebar: 'docs'
 With appbase.io, you can:
 
 -   Import your data from any sources via dashboard or CLI or REST API,
--   Test search relevancy visually. [Read more over here](https://docs.appbase.io/docs/search/Preview)
+-   Test search relevancy visually. [Read more here](https://docs.appbase.io/docs/search/Preview)
 -   Build production-grade search UIs using one of:
-    - our UI component libraries,
-	- our SDKs,
-	- or the REST API.  
-
-    Learn more about building Search UIs [over here](https://docs.appbase.io/docs/reactivesearch/v3/overview/quickstart/).
+    -   our UI component libraries,
+    -   our SDKs,
+    -   or the REST API.
+        You should [start here to learn more](https://docs.appbase.io/docs/reactivesearch/v3/overview/quickstart/).
 -   Get out of the box actionable analytics on top searches, no result searches, slow queries. [Read more here](https://docs.appbase.io/docs/analytics/Overview/)
 -   Out of the box security with built-in Basic Auth or JWT based authentication, read/write access keys with granular ACLs, field level security, IP based Rate Limits, Time to Live. [Read more over here](https://docs.appbase.io/docs/security/Credentials/)
 
