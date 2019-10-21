@@ -215,10 +215,7 @@ const HomePage = ({ data, location }) => {
 									'7': {
 										title: 'Hosting',
 										icon: (
-											<Icon
-												name="rocket"
-												className="dropdown-content-icon"
-											/>
+											<Icon name="rocket" className="dropdown-content-icon" />
 										),
 										chapters: [
 											{
@@ -347,13 +344,13 @@ const HomePage = ({ data, location }) => {
 								Swift
 							</Box>
 							<Box
-								to="/api/examples/python/"
+								href="/integrations/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn"
 								elevation="2"
 								radius="4"
 							>
-								<Icon name="python" className="w10 h-auto nudge-top--6" />
-								Python
+								<Icon name="more" className="w8 nudge-top--6" />
+								See More
 							</Box>
 						</div>
 					</section>
