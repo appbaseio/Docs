@@ -14,6 +14,7 @@ search.addIndex('title');
 search.addIndex('heading');
 search.addIndex('meta_description');
 search.addIndex('meta_title');
+search.addIndex('tokens');
 
 search.addDocuments(data);
 
