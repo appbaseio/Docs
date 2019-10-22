@@ -5,7 +5,7 @@
             - title: Overview
               link: /docs/gettingstarted/QuickStart/
             - title: Why Appbase.io
-              link: /docs/gettingstarted/WhyAppbaseIo/
+              link: /docs/gettingstarted/WhyAppbase/
       - group: Managing Data
         icon: importData
         items:
@@ -49,6 +49,6 @@
             - title: Clusters
               link: /docs/hosting/Cluster/
             - title: Bring Your Own Cluster
-              link: /docs/hosting/BringYourOwnCluster/
+              link: /docs/hosting/BYOC/
             - title: Open Distro
               link: /docs/hosting/OpenDistro/

@@ -1,7 +1,7 @@
 ---
 title: 'Bring Your Own Cluster'
 meta_title: 'Bring Your Own Cluster'
-meta_description: 'It allows you to deploy Appbase.io services for your ElasticSearch hosted with other providers like aws, Elastic Cloud.'
+meta_description: 'Run Appbase.io with for your own ElasticSearch cluster hosted elsewhere.'
 keywords:
     - clusters
     - appbaseio
@@ -10,21 +10,23 @@ keywords:
 sidebar: 'docs'
 ---
 
-Already have ElasticSearch hosted with AWS, Elastic Cloud or any other provider?
-No worries, get access to all the [Appbase.io](https://arc-site.netlify.com) features like [data management](/docs/data/Model/), [enterprise grade security](/docs/security/Credentials/) and [analytics](/docs/analytics/Overview/) out of the box using [Arc](https://arc-site.netlify.com). Arc is a simple, modular API Gateway that sits between a client and an ElasticSearch cluster. It acts as a reverse proxy, routing requests from clients to services. Arc is extended through plugins, which provide extra functionality and services beyond the ElasticSearch's RESTful API
+Already have ElasticSearch hosted with AWS, Elastic Cloud or hosting it yourself?
+You can now access all of [Appbase.io](https://arc-site.netlify.com) features like [search preview](/docs/search/Preview), [actionable analytics](/docs/analytics/Overview/) and [granular security](/docs/security/Credentials/) with any ElasticSearch cluster hosted anywhere with our `Bring Your Own Cluster` deployment mode.
+
+> 🆕 We're making Appbase.io available as a cloud-native software under the codename [Arc](https://arc-site.netlify.com).
 
 ![](/images/byoc.png)
 
-> **Note:** _Arc Middleware needs to have full access to your ElasticSearch and cannot accept access with Dynamic Headers. For this reason we recommend you to have an ElasticSearch cluster with Basic Auth / IP based restriction, where ARC Cluster IP is white listed for your ElasticSearch Cluster._
+This diagram highlights how Arc works. It directly interacts with an underlying ElasticSearch cluster and acts as an API gateway for clients to interact with. Arc supercharges your ElasticSearch cluster with a streamlined development experience, out of the box search analytics and fine-grained security features.
 
-## Getting Started
+## Quickstart Recipes
 
-Let's Start by deploying [ARC](https://arc-site.netlify.com) middleware. You can pick from the options available below and follow the instructions for each of this recipes.
+You can install [Arc](https://arc-site.netlify.com) on any server environment. We have created quickstart recipes to make the installation process seamless for the following platforms:
 
 <div class="grid-integrations-index mt4 mt6-l f8">
 	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#using-arc-clusters-hosted-via-appbaseio">
 		<img class="w10 mb1" src="/images/arc.svg" />
-		Arc Cluster
+		using appbase.io
 	</a>
 		<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem;height: 120px;width:120px;" href="#using-amiamazon-machine-images">
 		<img class="w10 mb1" src="/images/awscart.jpg" />
@@ -36,82 +38,75 @@ Let's Start by deploying [ARC](https://arc-site.netlify.com) middleware. You can
 	</a>
 </div>
 
-### Using Arc Clusters hosted via Appbase.io
+### Using Appbase.io
 
-[Appbase.io](https://dashboard.appbase.io/clusters/new/my-cluster) dashboard comes with an recipe which allows you to Host only Arc middleware and [Arc Dashboard](https://arc-dashboard.appbase.io). Thus allowing to access all the Appbase.io features like [data management](/docs/data/Model/), [enterprise grade security](/docs/security/Credentials/), [analytics](/docs/analytics/Overview/) and much more.
+Appbase.io dashboard offers the most seamless experience for running your Arc with your own ElasticSearch cluster.
 
-Let's start deploying Arc Middleware and Dashboard,
-
-**Step 1 -** Login into **[Appbase.io Dashboard](https://dashboard.appbase.io)**
-
-**Step 2 -** Access the **[Clusters Page](https://dashboard.appbase.io/clusters)** from top navigation
-
-**Step 3 -** Click **[Create a New Cluster](https://dashboard.appbase.io/clusters/new)** action
-
-**Step 4 -** Since we already have ElasticSearch cluster and would just like to host Arc, click **[Already have a Cluster](https://dashboard.appbase.io/clusters/new/my-cluster)**
+**Step 1 -** Go to the **[Create Cluster Link](https://dashboard.appbase.io/clusters/new/my-cluster)**. You will be redirected to sign up or login if you aren't already logged in.
 
 ![](https://i.imgur.com/X6dTO8f.png)
 
-**Step 5 -** Select pricing plan based on number of Nodes that you have for ElasticSearch
+You should see the above screen.
 
-**Step 6 -** Select the region where your ElasticSearch is hosted / where you would like to host Arc
+**Step 2 -** Select the pricing plan. Read more about pricing plans over [here](https://arc-site.netlify.com/pricing/).
 
-**Step 7 -** Enter the name for your Arc Cluster
+**Step 3 -** Select the region to add Arc to. It is recommended that you pick a region closest to where your ElasticSearch cluster is running.
 
-**Step 8 -** Enter your ElasticSearch cluster URL
+**Step 4 -** Enter a name for your Arc instance. And enter the ElasticSearch URL. Use the `Verify Connection` button to ensure that this URL is accessible.
 
 ![](https://i.imgur.com/NO5lcvl.png)
 
-> **Note:** _Till time your Arc Middleware is deployed make sure you have either basic auth / open access for your cluster, so that we can pick right **Arc Version** and **Verify** if that is valid ElasticSearch cluster url._
+> **Note:** We recommend either having an open ElasticSearch access policy or one based on Basic Authentication till the Arc instance is deployed.
 
-**Step 9 -** Hit **Create Cluster** button and hang tight till your cluster is deployed
+**Step 5 -** Hit **Create Cluster** button and hang tight till your cluster is deployed.
 
-That's all, it will take around 5-10 min for your Arc middleware + Dashboard to get deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with `Bring your own cluster` tag.
+That's all! It take around 5-10 mins for your Arc instance to be deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with a `Bring your own cluster` tag.
 
-> **Note:** _If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster._
+> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster.
 
 #### **Accessing Arc Dashboard**
 
-Now that the Arc Cluster is deployed. Let's Access the **Arc Dashboard** using **Explore Cluster** Action on the **Clusters Details** Page.
+Now that the Arc Cluster is deployed, we can access the **Arc Dashboard** using the **Explore Cluster** Action on the **Clusters Details** page.
 
 ![](https://i.imgur.com/uIfTi2G.png)
 
-This will give you access to all the Appbase.io features like
-
--   Data management
--   Security with role based access / ACL
--   Analytics
+This will give you access to all the Appbase.io features such as:
+-   Better dev tools: The Dejavu data browser, search preview, query rules
+-   Actionable Search and Click Analytics
+-   Fine-grained Security Permissions.
 
 ![](https://i.imgur.com/OPQiXA8.png)
 
 #### **Accessing ElasticSearch Data using REST API**
 
-Now you can access all[ ElasticSearch REST](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html) API using Arc Cluster URL, with chosen security. You can copy the Arc Cluster URL from the dashboard.
+You can access the [ElasticSearch REST](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html) APIs via the Arc Instance URL. You can either use the master credentials or create additional API keys with fine-grained access permissions.
 ![](https://i.imgur.com/Q3onHwn.png)
 
 #### **Changing ElasticSearch URL**
 
-You can seamlessly change your ElasticSearch cluster URL, with Appbase.io dashboard. All you need to do is just enter new ElasticSearch URL from Cluster Details page on Appbase.io Dashboard.
+You can update your ElasticSearch cluster URL at any point using the Appbase.io dashboard. All you need to do is just enter new URL and hit `Update Cluster Settings`.
 
-> **Note:** _Make sure your new ElasticSearch cluster URL has open access till the deployment is completed._
+> **Note:** Make sure your new ElasticSearch cluster URL has open access till the deployment is completed.
 
 ![](https://i.imgur.com/Pb2midX.png)
 
 #### **Sharing Cluster**
 
-With Appbase.io Dashboard you can easily share cluster with other team members, so that they can also access the data. Sharing feature also comes with ACL, where you can specify weather user have only **Viewers** right or all the **Admin** rights.
+With Appbase.io Dashboard you can easily share cluster with your team members. Each user can have a **Viewer** or **Admin** role.
 
 ![](https://i.imgur.com/qmKcffi.png)
 
-### Using [AMI(Amazon Machine Images)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+---
 
-We have created Amazon Machine Image (AMI), which is available on AWS Marketplace. AMI comes with Arc as `systemctl` service which you can easily start / stop / restart. Also it uses [Nginx](https://www.nginx.com/) server for reverse proxy to serve http request. With help of this you can seamlessly deploy Arc Middleware on [AWS EC2](https://aws.amazon.com/ec2/) machine.
+### Using AMI
+
+Arc is also available via an Amazon Machine Image (AMI) on the AWS Marketplace. Arc works running a `systemd` service. With the AMI, you can seamlessly deploy Arc on an AWS EC2 instance.
 
 Before Creating an AWS EC2 Machine using AMI, let's create an [Arc instance](https://arc-dashboard.appbase.io/install) which will give us access to [Arc Dashboard](https://arc-dashboard.appbase.io).
 
 Here are the steps that you can follow to deploy Get Arc ID:
 
--   **Step 1 -** Go to [Arc Dashboard](https://arc-dashboard.appbase.io/login) and Select [Install A New Arc Instance](https://arc-dashboard.appbase.io/install)
+-   **Step 1 -** Go to [Arc Dashboard](https://arc-dashboard.appbase.io/install).
 
 ![](https://i.imgur.com/YZubabh.png)
 
