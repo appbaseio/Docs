@@ -88,6 +88,13 @@ const HomePage = ({ data, location }) => {
 												duration: 4,
 											},
 											{
+												title: 'Importing from the Dashboard',
+												description:
+													'Dashboard is a WYSIWYG GUI for adding, modifying and viewing your appbase.io apps data.',
+												link: '/docs/data/Dashboard/',
+												duration: 4,
+											},
+											{
 												title: 'Zapier Integration',
 												description:
 													'Automate your appbase.io database operations with Zapier',

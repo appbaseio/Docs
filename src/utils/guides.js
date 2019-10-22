@@ -26,6 +26,10 @@ const guides = [
 				link: '/docs/data/Browser/',
 			},
 			{
+				title: 'Importing from the Dashboard',
+				link: '/docs/data/Dashboard/',
+			},
+			{
 				title: 'Zapier Integration',
 				link: '/docs/data/Zapier/',
 			},
