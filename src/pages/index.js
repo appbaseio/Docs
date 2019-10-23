@@ -225,6 +225,13 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
+												title: 'Apps',
+												link: '/docs/hosting/Apps',
+												duration: 1,
+												description:
+													'Quickly get started with ElasticSearch by creating an Appbase.io App aka Index',
+											},
+											{
 												title: 'Clusters',
 												link: '/docs/hosting/Cluster/',
 												duration: 5,
