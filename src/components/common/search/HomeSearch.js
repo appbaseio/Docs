@@ -120,9 +120,19 @@ const HitTemplate = ({ hit, currentValue }) => {
 	const highlightedTitle = hit.title.replace(new RegExp(currentValue, 'ig'), matched => {
 		return `<mark>${matched}</mark>`;
 	});
-	const highlightedDescription = hit.heading.replace(new RegExp(currentValue, 'ig'), matched => {
-		return `<mark>${matched}</mark>`;
-	});
+	const tokens = hit.tokens.filter(item => item.includes(currentValue));
+	let highlightedToken =
+		tokens[0] &&
+		tokens[0].replace(new RegExp(currentValue, 'ig'), matched => {
+			return `<mark>${matched}</mark>`;
+		});
+	if (highlightedToken && highlightedToken.startsWith('#')) {
+		highlightedToken = highlightedToken
+			.split('&gt;')
+			.slice(1)
+			.join('&gt;');
+	}
+
 	return (
 		<Link
 			to={hit.url}
@@ -145,8 +155,8 @@ const HitTemplate = ({ hit, currentValue }) => {
 						/>
 					) : null}
 					<p
-						className={`${Spirit.small} midgrey nudge-bottom--2`}
-						dangerouslySetInnerHTML={{ __html: highlightedDescription }}
+						className={`${Spirit.small} midgrey nudge-bottom--2 truncate-3`}
+						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>
 			</div>
