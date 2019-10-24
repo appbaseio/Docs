@@ -65,10 +65,10 @@ const getSection = url => {
 		}
 
 		if (['components', 'advanced', 'overview'].indexOf(sectionName.toLowerCase()) !== -1) {
-			return `${techName} ${sectionName}`;
+			return `${techName} > ${sectionName}`;
 		}
 
-		return `${techName} ${sectionName} Components`;
+		return `${techName} > ${sectionName} Components`;
 	}
 	const foundItem = sidebar.find(item => item.link === link || link.startsWith(item.link));
 
@@ -144,16 +144,18 @@ const HitTemplate = ({ hit, currentValue }) => {
 				</div>
 
 				<div className="full-width">
-					<div
-						className={`${Spirit.h5} dib`}
-						dangerouslySetInnerHTML={{ __html: highlightedTitle }}
-					/>
-					{sectionName ? (
+					<div className="wrap-between mb-2">
 						<div
-							className={`${Spirit.small} midgrey nudge-bottom--2 capitalize suggestion-section`}
-							dangerouslySetInnerHTML={{ __html: getSection(hit.url) }}
+							className={`${Spirit.h5} dib`}
+							dangerouslySetInnerHTML={{ __html: highlightedTitle }}
 						/>
-					) : null}
+						{sectionName ? (
+							<div
+								className={`${Spirit.small} midgrey capitalize suggestion-section`}
+								dangerouslySetInnerHTML={{ __html: getSection(hit.url) }}
+							/>
+						) : null}
+					</div>
 					<p
 						className={`${Spirit.small} midgrey nudge-bottom--2 truncate-3`}
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
