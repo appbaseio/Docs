@@ -344,7 +344,7 @@ const HomePage = ({ data, location }) => {
 								Swift
 							</Box>
 							<Box
-								href="/integrations/"
+								to="/integrations/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn"
 								elevation="2"
 								radius="4"

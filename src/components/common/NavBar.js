@@ -8,6 +8,7 @@ import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
+import Button from '@appbaseio/designkit/lib/atoms/Button';
 
 const NavBar = ({ theme }) => {
 	// Theme definitions
@@ -196,11 +197,28 @@ const NavBar = ({ theme }) => {
 															Appbaseio's technology into popular
 															frameworks and platforms.
 														</p>
+														<Link style={{ textDecoration: 'none' }} to="/integrations">
+															<Button
+																className="btn"
+																style={{
+																	background: '#3eb0ef',
+																	color: 'white',
+																	fontSize: '16px',
+																	textDecoration: 'none',
+																}}
+															>
+																Explore More
+															</Button>
+														</Link>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
-															Reactivesearch
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns darkgrey mb2">
+															UI Libraries
 														</h2>
+
+														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+															ReactiveSearch UI Kit
+														</h3>
 														<Link
 															to="/docs/reactivesearch/v3/overview/quickstart/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
@@ -231,16 +249,10 @@ const NavBar = ({ theme }) => {
 															/>
 															Native
 														</Link>
-														<Link
-															to="/docs/reactivesearch/searchbase/overview/QuickStart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
-														>
-															<Icon
-																name="js-bw"
-																className="dropdown-content-icon mr2"
-															/>
-															SearchBase
-														</Link>
+
+														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+															Searchbox
+														</h3>
 														<Link
 															to="/docs/reactivesearch/searchbox/Quickstart/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
@@ -249,7 +261,7 @@ const NavBar = ({ theme }) => {
 																name="js-bw"
 																className="dropdown-content-icon mr2"
 															/>
-															SearchBox
+															JavaScript
 														</Link>
 														<Link
 															to="/docs/reactivesearch/react-searchbox/quickstart/"
@@ -259,7 +271,17 @@ const NavBar = ({ theme }) => {
 																name="react-bw"
 																className="dropdown-content-icon mr2"
 															/>
-															React SearchBox
+															React
+														</Link>
+														<Link
+															to="/docs/reactivesearch/searchbase/overview/QuickStart/"
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+														>
+															<Icon
+																name="js-bw"
+																className="dropdown-content-icon mr2"
+															/>
+															Headless
 														</Link>
 													</div>
 													<div>
@@ -326,7 +348,7 @@ const NavBar = ({ theme }) => {
 													</div>
 													<div>
 														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
-															Examples
+															Interactive Examples
 														</h2>
 														<Link
 															to="/api/examples/python/"
@@ -380,9 +402,10 @@ const NavBar = ({ theme }) => {
 							href="https://help.appbase.io"
 							target="_blank"
 							rel="noopener norefferer"
-							className={`${themeClasses[theme].menuItem} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer fw3`}
+							className={`${themeClasses[theme].menuItem} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer fw3 link-faq`}
 						>
 							FAQs
+							<Icon name="external-link" className="link-icon" />
 						</a>
 					</div>
 				</div>

@@ -29,24 +29,8 @@ const APIPage = () => {
 				<div className={`${Spirit.page.l} pb-vw4 pb-vw3-ns pt-vw4 pt-vw3-ns`}>
 					<div className="grid-12 mt-vw4 mt20-ns">
 						<div className={sectionStyles.headingContainer}>
-							<h2 id="rest-api" className={`${Spirit.h3} pt20 nt20`}>
-								REST API
-							</h2>
-							<p className={`${Spirit.small} midgrey-l2 mt2`}>
-								A full reference of API Endpoints
-							</p>
-						</div>
-						<div className={sectionStyles.cardContainer}>
-							<APICard to="/api/rest/quickstart/" icon="content-api-logo">
-								Quick Start
-							</APICard>
-						</div>
-					</div>
-
-					<div className="grid-12 mt-vw4 mt20-ns">
-						<div className={sectionStyles.headingContainer}>
 							<h2 id="client-libraries" className={`${Spirit.h3} pt20 nt18`}>
-								ReactiveSearch Libraries
+								ReactiveSearch
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
 								UI components library for ElasticSearch
@@ -77,7 +61,7 @@ const APIPage = () => {
 					<div className="grid-12 mt-vw4 mt20-ns">
 						<div className={sectionStyles.headingContainer}>
 							<h2 id="client-libraries" className={`${Spirit.h3} pt20 nt18`}>
-								Searchbox Libraries
+								Searchbox
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
 								Lightweight and performance focused searchbox UI component to query
@@ -103,23 +87,17 @@ const APIPage = () => {
 					<div className="grid-12 mt-vw4 mt20-ns">
 						<div className={sectionStyles.headingContainer}>
 							<h2 id="client-libraries" className={`${Spirit.h3} pt20 nt18`}>
-								Client Libraries
+								Clients
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
 								Specific libraries for interacting with the appbase.io API directly
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>
-							<APICard to="/api/javascript/quickstart" icon="javascript-logo">
+							<APICard to="/api/javascript/quickstart/" icon="javascript-logo">
 								JavaScript
 							</APICard>
-							<APICard to="/api/examples/php" icon="php-logo">
-								PHP
-							</APICard>
-							<APICard to="/api/examples/python" icon="python-logo">
-								Python
-							</APICard>
-							<APICard to="/api/go/quickstart" icon="ruby-logo">
+							<APICard to="/api/go/quickstart/" icon="ruby-logo">
 								Golang
 							</APICard>
 							<APICard
@@ -133,6 +111,31 @@ const APIPage = () => {
 								icon="android-logo"
 							>
 								Android
+							</APICard>
+							<APICard to="/api/rest/quickstart/" icon="content-api-logo">
+								REST API
+							</APICard>
+						</div>
+					</div>
+
+					<div className="grid-12 mt-vw4 mt20-ns">
+						<div className={sectionStyles.headingContainer}>
+							<h2 id="client-libraries" className={`${Spirit.h3} pt20 nt18`}>
+								Interactive Examples
+							</h2>
+						</div>
+						<div className={sectionStyles.cardContainer}>
+							<APICard to="/api/examples/js/" icon="javascript-logo">
+								JavaScript
+							</APICard>
+							<APICard to="/api/examples/go/" icon="ruby-logo">
+								Golang
+							</APICard>
+							<APICard to="/api/examples/php/" icon="php-logo">
+								PHP
+							</APICard>
+							<APICard to="/api/examples/python/" icon="python-logo">
+								Python
 							</APICard>
 						</div>
 					</div>
