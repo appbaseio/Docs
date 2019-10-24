@@ -95,6 +95,13 @@ const HomePage = ({ data, location }) => {
 												duration: 4,
 											},
 											{
+												title: 'Importing through ABC CLI',
+												description:
+													'abc import is part of abc — A tool that allows accessing appbase.io via a commandline.',
+												link: '/docs/data/abc-import/',
+												duration: 4,
+											},
+											{
 												title: 'Zapier Integration',
 												description:
 													'Automate your appbase.io database operations with Zapier',
@@ -228,10 +235,7 @@ const HomePage = ({ data, location }) => {
 									'7': {
 										title: 'Hosting',
 										icon: (
-											<Icon
-												name="rocket"
-												className="dropdown-content-icon"
-											/>
+											<Icon name="rocket" className="dropdown-content-icon" />
 										),
 										chapters: [
 											{

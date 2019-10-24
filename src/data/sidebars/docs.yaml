@@ -15,6 +15,8 @@
               link: /docs/data/Browser/
             - title: Importing from the Dashboard
               link: /docs/data/Dashboard/
+            - title: Importing through ABC CLI
+              link: /docs/data/abc-import/
             - title: Zapier
               link: /docs/data/Zapier/
       - group: Search Relevancy

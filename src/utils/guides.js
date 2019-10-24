@@ -30,6 +30,10 @@ const guides = [
 				link: '/docs/data/Dashboard/',
 			},
 			{
+				title: 'Importing through ABC CLI',
+				link: '/docs/data/abc-import/',
+			},
+			{
 				title: 'Zapier Integration',
 				link: '/docs/data/Zapier/',
 			},
