@@ -46,8 +46,10 @@ const getSuggestions = value => {
 const getSection = url => {
 	const isHavingHash = url.indexOf('#');
 	let link = url;
+	let subSection = '';
 	if (isHavingHash) {
 		link = url.split('#')[0];
+		subSection = url.split('#')[1];
 	}
 	if (link.startsWith('/docs/reactivesearch')) {
 		const linkTags = link.split('/');
@@ -65,15 +67,19 @@ const getSection = url => {
 		}
 
 		if (['components', 'advanced', 'overview'].indexOf(sectionName.toLowerCase()) !== -1) {
-			return `${techName} > ${sectionName}`;
+			return subSection
+				? `${techName} > ${subSection}`
+				: `${techName} > ${sectionName}`;
 		}
 
-		return `${techName} > ${sectionName} Components`;
+		return subSection
+			? `${techName} > ${subSection}`
+			: `${techName} > ${sectionName} Components`;
 	}
 	const foundItem = sidebar.find(item => item.link === link || link.startsWith(item.link));
 
 	if (foundItem) {
-		return foundItem.topic;
+		return subSection ? `${foundItem.topic} > ${subSection}` : foundItem.topic;
 	}
 
 	return '';
@@ -144,7 +150,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 				</div>
 
 				<div className="full-width">
-					<div className="wrap-between mb-2">
+					<div className="wrap-between mb2">
 						<div
 							className={`${Spirit.h5} dib`}
 							dangerouslySetInnerHTML={{ __html: highlightedTitle }}
@@ -157,7 +163,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 						) : null}
 					</div>
 					<p
-						className={`${Spirit.small} midgrey nudge-bottom--2 truncate-3`}
+						className={`${Spirit.small} midgrey mt1 truncate-3`}
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>
