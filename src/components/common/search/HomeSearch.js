@@ -68,12 +68,12 @@ const getSection = url => {
 
 		if (['components', 'advanced', 'overview'].indexOf(sectionName.toLowerCase()) !== -1) {
 			return subSection
-				? `${techName} > ${subSection}`
+				? `${techName} > ${sectionName} > ${subSection}`
 				: `${techName} > ${sectionName}`;
 		}
 
 		return subSection
-			? `${techName} > ${subSection}`
+			? `${techName} > ${sectionName} Components > ${subSection}`
 			: `${techName} > ${sectionName} Components`;
 	}
 	const foundItem = sidebar.find(item => item.link === link || link.startsWith(item.link));
@@ -142,7 +142,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 	return (
 		<Link
 			to={hit.url}
-			className="tdn db pt3 pb3 blue search-result pl5 pr5 br3 br--left suggestion"
+			className="tdn db pt3 pb3 blue search-result pl5 pr5 br3 br--left suggestion break-word"
 		>
 			<div className="suggestion-container">
 				<div className="suggestion-content-icon">

@@ -1840,3 +1840,7 @@ to be custom HTML.
 	justify-content: space-between;
 	align-items: center;
 }
+
+.break-word {
+	word-break: break-all;
+}
