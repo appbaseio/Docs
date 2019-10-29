@@ -12,6 +12,27 @@ sidebar: 'docs'
 
 You can bring your data from various sources into `appbase.io` database using one or many of these methods.
 
+<div class="grid-integrations-index mt4 mt6-l f8">
+    <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#importing-through-dashboard">
+		<img class="w10 mb1" src="https://i.imgur.com/qXDGYSX.png" />
+		Dashboard
+	</a>
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#importing-through-abc-cli">
+    		<img class="w10 mb1" src="https://user-images.githubusercontent.com/4047597/29240054-14e0e19a-7f7b-11e7-898b-ba6bad756b1d.png" />
+    		ABC CLI
+    </a>
+    <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#rest-api">
+        		<img class="w10 mb1" src="https://i.imgur.com/nKKQLXb.png" />
+        		Rest API
+     </a>
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#zapier">
+		<img class="w10 mb1" src="https://i.imgur.com/Z9ahZbM.png" />
+		Zapier
+	</a>
+</div>
+
+---
+
 ##Importing through Dashboard
 
 Dashboard is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
@@ -65,6 +86,8 @@ Now that the app has been created, we can import the data file as shown in the G
 
 ![](https://www.dropbox.com/s/05do1q1wvp7t13t/short_upload.gif?raw=1)
 
+---
+
 ##Importing through ABC CLI
 `abc import` is part of [abc](https://github.com/appbaseio/abc) — A tool that allows accessing appbase.io via a commandline.
 
@@ -80,8 +103,6 @@ Now that the app has been created, we can import the data file as shown in the G
 > Command Line: `docker pull appbaseio/abc`
 
 You can also download from [GitHub](https://github.com/appbaseio/abc/releases/latest) or get the [Docker image](https://hub.docker.com/r/appbaseio/abc/)
-
----
 
 It is possible to import data from various database sources. See the API below to import from the database that suits your need.
 
@@ -149,6 +170,89 @@ abc import --src_type=firestore --sac_path=<path_to_service_account_credentials>
 
 Read more about it [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b)
 
+---
+
+##Rest API
+This is just getting started with Rest API. You can read more about it over [here](https://rest.appbase.io/)
+
+### Setup
+
+Here's an example authenticated `GET` request. We will set the `app` name and `credentials` as bash variables and reuse them in the requests.
+
+```bash
+# SET BASH VARIABLES
+app="newstreamingapp"
+credentials="meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
+
+curl https://$credentials@scalr.api.appbase.io/$app
+
+RESPONSE
+{
+	status: 200,
+	message: "You have reached /newstreamingapp/ and are all set to make API requests"
+}
+```
+
+### Storing Data
+
+Let's insert a JSON object. We create a **type** `books` inside our app and add a JSON document `1` with a PUT request.
+
+```bash
+curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 -d '{
+	"department_name":"Books",
+	"department_name_analyzed":"Books",
+	"department_id":1,
+	"name":"A Fake Book on Network Routing",
+	"price":5595
+}'
+```
+
+> Note <i class="fa fa-info-circle"></i>
+>
+> appbase.io uses the same APIs as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a _collection in MongoDB_ or a _table in SQL_, and a document is similar to the document in MongoDB or a _row in SQL_.
+
+### GETing or Streaming Data
+
+Getting live updates to a document is as simple as suffixing `?stream=true` to a GET request. It's so awesome that we recommend using this as the default way to GET things.
+
+```bash
+curl -N https://$credentials@scalr.api.appbase.io/$app/books/1?stream=true
+
+# INITIAL RESPONSE
+{
+	"_index": "app`248",
+	"_type": "books",
+	"_id": "1",
+	"_version": 5,
+	"found": true,
+	"_source": {
+		"department_name": "Books",
+		"department_name_analyzed": "Books",
+		"department_id": 1,
+		"name": "A Fake Book on Network Routing",
+		"price": 5595
+	}
+}
+```
+
+appbase.io keeps an open connection so that every time there is an update in the `/$app/books/1` document, it is streamed via the connection.
+
+### Modify the Document
+
+Let's modify the book price to `6034`.
+
+```bash
+curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 --data-binary '{
+	"price": 6034,
+	"department_name": "Books",
+	"department_name_analyzed": "Books",
+	"department_id": 1,
+	"name": "A Fake Book on Network Routing"
+}'
+```
+
+---
+
 ##Zapier
 You can import data into appbase.io using any of the following methods:
 
@@ -191,8 +295,6 @@ enter your `appbase.io` credentials which you can find [here](https://dashboard.
 You should see something similar:
 
 ![](https://i.imgur.com/avTdYss.png)
-
----
 
 You can perform below operations through Zapier.
 
