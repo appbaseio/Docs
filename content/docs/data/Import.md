@@ -112,7 +112,7 @@ It is possible to import data from various database sources. See the API below t
 abc import --src_type=postgres --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-postgres-to-elasticsearch-6eebc5cc0f0f)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-postgres-to-elasticsearch-6eebc5cc0f0f)
 
 ###MongoDB
 
@@ -120,7 +120,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-p
 abc import --src_type=mongodb --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-mongodb-to-elasticsearch-ee5a74695945)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mongodb-to-elasticsearch-ee5a74695945)
 
 ###MySQL
 
@@ -128,7 +128,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-m
 abc import --src_type=mysql --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d)
 
 ###Microsoft SQL Server
 
@@ -136,7 +136,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-m
 abc import --src_type=mssql --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-mssql-to-elasticsearch-341963a054dd)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mssql-to-elasticsearch-341963a054dd)
 
 ###Elasticsearch
 
@@ -144,7 +144,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-m
 abc import --src_type=elasticsearch --src_uri=<elasticsearch_src_uri> <elasticsearch_dest_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-elasticsearch-to-elasticsearch-301c7a243c84)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-elasticsearch-to-elasticsearch-301c7a243c84)
 
 ###JSON
 
@@ -152,7 +152,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-e
 abc import --src_type=json --src_uri=<uri> --typename=<target_type_name> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-json-to-elasticsearch-92f582c53df4)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-json-to-elasticsearch-92f582c53df4)
 
 ###CSV
 
@@ -160,7 +160,7 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-j
 abc import --src_type=csv --src_uri=<uri> --typename=<target_type_name> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-csv-to-elasticsearch-17d290a5974f)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-csv-to-elasticsearch-17d290a5974f)
 
 ###Firestore
 
@@ -168,12 +168,12 @@ Read more about it [here](https://medium.appbase.io/cli-for-indexing-data-from-c
 abc import --src_type=firestore --sac_path=<path_to_service_account_credentials> <elasticsearch_uri>
 ```
 
-Read more about it [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b)
 
 ---
 
 ##Rest API
-This is just getting started with Rest API. You can read more about it over [here](https://rest.appbase.io/)
+This is just getting started with Rest API. You can read more about it over [here](https://rest.appbase.io/).
 
 ### Setup
 
