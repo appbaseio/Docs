@@ -88,25 +88,10 @@ const HomePage = ({ data, location }) => {
 												duration: 4,
 											},
 											{
-												title: 'Importing from the Dashboard',
+												title: 'Importing Data',
 												description:
-													'Dashboard is a WYSIWYG GUI for adding, modifying and viewing your appbase.io apps data.',
-												link: '/docs/data/Dashboard/',
-												duration: 4,
-											},
-											{
-												title: 'Importing through ABC CLI',
-												description:
-													'abc import is part of abc — A tool that allows accessing appbase.io via a commandline.',
-												link: '/docs/data/abc-import/',
-												duration: 4,
-											},
-											{
-												title: 'Zapier Integration',
-												description:
-													'Automate your appbase.io database operations with Zapier',
-												link: '/docs/data/Zapier/',
-												duration: 2,
+													'Import through GUI and command line sources such as Dashboard, ABC CLI, Rest APIs, and Zapier.',
+												link: '/docs/data/Import/',
 											},
 											// {
 											// 	title: 'Importing Data',

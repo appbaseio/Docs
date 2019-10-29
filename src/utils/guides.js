@@ -26,16 +26,8 @@ const guides = [
 				link: '/docs/data/Browser/',
 			},
 			{
-				title: 'Importing from the Dashboard',
-				link: '/docs/data/Dashboard/',
-			},
-			{
-				title: 'Importing through ABC CLI',
-				link: '/docs/data/abc-import/',
-			},
-			{
-				title: 'Zapier Integration',
-				link: '/docs/data/Zapier/',
+				title: 'Importing Data',
+				link: '/docs/data/Import/',
 			},
 		],
 	},
