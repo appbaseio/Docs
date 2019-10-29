@@ -92,6 +92,7 @@ const HomePage = ({ data, location }) => {
 												description:
 													'Import through GUI and command line sources such as Dashboard, ABC CLI, Rest APIs, and Zapier.',
 												link: '/docs/data/Import/',
+												duration: 9,
 											},
 											// {
 											// 	title: 'Importing Data',
