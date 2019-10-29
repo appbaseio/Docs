@@ -177,7 +177,7 @@ const NavBar = ({ theme }) => {
 												value.handleKey('api');
 											}}
 										>
-											API Reference
+											APIs and Integrations
 										</span>
 
 										{value.selectedKey === 'api' ? (
@@ -189,15 +189,17 @@ const NavBar = ({ theme }) => {
 													className={`${Spirit.page.xl} pt2 pb2 grid-dropdown grid-dropdown-4`}
 												>
 													<div>
-														<h2 className="f2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
-															API Reference
-														</h2>
+														<h3 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+															APIs and Integrations
+														</h3>
 														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
-															Discover how to integrate and adapt
-															Appbaseio's technology into popular
-															frameworks and platforms.
+															Clients, tools and libraries for working
+															with appbase.io
 														</p>
-														<Link style={{ textDecoration: 'none' }} to="/integrations">
+														<Link
+															style={{ textDecoration: 'none' }}
+															to="/integrations"
+														>
 															<Button
 																className="btn"
 																style={{
