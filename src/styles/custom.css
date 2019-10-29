@@ -1845,6 +1845,15 @@ to be custom HTML.
 	word-break: break-all;
 }
 
+.link-icon {
+	fill: #5d7079;
+	margin-left: 5px;
+}
+
+.link-faq:hover .link-icon,.link-faq:active .link-icon {
+	fill: #3eb0ef;
+}
+
 .overflow-sidebar-scroll {
 	height: 85vh;
 	overflow-y: scroll;
