@@ -163,7 +163,7 @@ or
 
 <br />
 
-<iframe src="https://codesandbox.io/embed/github/ShahAnuj2610/react-searchbox/tree/feat/storybook/example" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-searchbox/tree/master/example" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## Styles
 
@@ -171,6 +171,7 @@ or
 
 -   `title`
 -   `input`
+-   `mic`
 
 Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
