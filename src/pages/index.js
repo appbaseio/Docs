@@ -54,6 +54,12 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/gettingstarted/QuickStart/',
 												duration: 3,
 											},
+											{
+												title: 'Why Appbase.io',
+												description: 'Benefits of using appbase.io',
+												link: '/docs/gettingstarted/WhyAppbase/',
+												duration: 6,
+											},
 										],
 									},
 									'2': {
@@ -215,30 +221,29 @@ const HomePage = ({ data, location }) => {
 									'7': {
 										title: 'Hosting',
 										icon: (
-											<Icon
-												name="rocket"
-												className="dropdown-content-icon"
-											/>
+											<Icon name="rocket" className="dropdown-content-icon" />
 										),
 										chapters: [
 											{
-												title: 'Cluster',
+												title: 'Clusters',
 												link: '/docs/hosting/Cluster/',
 												duration: 5,
 												description:
 													'Now you can host your own dedicated ElasticSearch clusters to meet your business needs using appbase.io clusters. ',
 											},
 											{
-												title: 'Open Distro',
+												title: 'Bring your own Cluster',
+												link: '/docs/hosting/BYOC/',
+												duration: 10,
+												description:
+													'Install appbase.io as a cloud-native software for your own ElasticSearch cluster.',
+											},
+											{
+												title: 'Open Distro for ElasticSearch',
 												link: '/docs/hosting/OpenDistro/',
 												duration: 2,
 												description:
 													'Now with the appbase.io clusters you can host an open distro flavour of elasticsearch.',
-											},
-											{
-												title: 'Why Appbase Cluster',
-												link: '/docs/hosting/WhyAppbase/',
-												duration: 2,
 											},
 										],
 									},
@@ -347,13 +352,13 @@ const HomePage = ({ data, location }) => {
 								Swift
 							</Box>
 							<Box
-								to="/api/examples/python/"
+								to="/integrations/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn"
 								elevation="2"
 								radius="4"
 							>
-								<Icon name="python" className="w10 h-auto nudge-top--6" />
-								Python
+								<Icon name="more" className="w8 nudge-top--6" />
+								See More
 							</Box>
 						</div>
 					</section>
