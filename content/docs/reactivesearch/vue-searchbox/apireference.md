@@ -1,7 +1,7 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to Vue SearchBox'
-meta_description: 'React SearchBox is a lightweight react searchbox UI component to query your ElasticSearch app.'
+meta_description: 'Vue SearchBox is a lightweight react searchbox UI component to query your ElasticSearch app.'
 keywords:
     - quickstart
     - vue-searchbox
