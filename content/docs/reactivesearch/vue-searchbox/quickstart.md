@@ -1,6 +1,6 @@
 ---
 title: 'QuickStart'
-meta_title: 'QuickStart to React SearchBox'
+meta_title: 'QuickStart to Vue SearchBox'
 meta_description: 'React SearchBox is a lightweight react search library with some common utilities.'
 keywords:
     - quickstart
