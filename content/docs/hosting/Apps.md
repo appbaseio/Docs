@@ -1,7 +1,7 @@
 ---
 title: 'Apps'
 meta_title: 'Apps'
-meta_description: 'Easy to get started. No credit card required.'
+meta_description: 'Appbase.io Apps allow you to get the best of Elasticsearch without the cost of running a full cluster. Free for up to 10K records and 100K monthly API calls.'
 keywords:
     - clusters
     - appbaseio
@@ -10,37 +10,38 @@ keywords:
 sidebar: 'docs'
 ---
 
-An **App** in [Appbase.io](https://appbase.io/apps/) is stored as an index in ElasticSearch. App is the highest level of construct supported by [Appbase.io](https://appbase.io/apps/) and is equivalent to a database in SQL. You can quickly start working with ElasticSearch eco system.
+An **App** in appbase.io is equivalent to an index in ElasticSearch. Appbase.io Apps allow you to get the best of Elasticsearch without the cost of running a full cluster. You can read more about them over [here](https://appbase.io/apps/).
 
-With Appbase.io dashboard you can access all the features offered by Appbase.io around ElasticSearch eco system like
+In addition to being powered by ElasticSearch, apps come with the following features out of the box:
 
--   Data management
--   Enterprise Grade Security
--   IP Whitelisting
--   API limits
--   Analytics
--   ElasticSearch REST Api
+-   A dashboard UI for importing data,
+-   Build and test search relevancy with zero lines of code,
+-   Get Actionable Search Analytics: Top User Searches, 
+-   Enhanced security with ACLs, IP sources and HTTP Referers, Role Based Access Control, and IP based rate limits.
+
 
 ## Getting Started
 
 Here are the steps you can follow to create and manage Appbase.io apps.
 
--   **Step 1 -** Login into [Appbase.io Dashboard](https://dashboard.appbase.io)
+-   **Step 1 -** Log in to [Appbase.io Dashboard](https://dashboard.appbase.io)
 
 ![](https://www.dropbox.com/s/m8my8lq3keju99c/Screenshot%202019-08-08%2015.57.03.png?raw=1)
 
--   **Step 2 -** Click **Create a new app** action
+-   **Step 2 -** Select the **Create a new app** action.
 
 ![](https://i.imgur.com/dqfWrdH.png)
 
--   **Step 3 -** Enter details and click **Create App** button
-    > **Note:** Here you can select plan based on api calls and data requirement and also ElasticSearch version. It also allows you to import data from JSON/CSV. Data can also be imported after the app is created.
+-   **Step 3 -** Enter details and click **Create App** button.
+    > **Note:** Here you can select the plan based on API calls and storage requirements. It also allows you to import data from JSON/CSV. Data can also be imported after the app is created.
 
-That's all our ElasticSearch index is created 🚀. Now you can view this app on your Appbase.io dashboard and by clicking on the app you can seamlessly manage data, control the access and view analytics.
+That's all! Our appbase.io app is created 🚀. Now you can view this app on your dashboard by clicking on the app card.
 
 ![](https://i.imgur.com/S19dnoP.png)
 
-Out of the box features available for apps
+Out of the box features available for apps:
+
+// TODO - use the description from the Why appbase.io section which contains better details.
 
 -   [Data Management](/docs/data/Model/) - Allows you to import, browse, update and export data with seamless management for Data type (mappings).
 -   [Security](docs/security/Credentials/) - Allows you to provide Basic Auth Security with ACLs or Role based Access Control using JWT.
