@@ -35,12 +35,13 @@ Here, the `key` represents the suggestion name and `count` represents the number
 
 Query Suggestions is useful to curate search suggestions based on actual search queries that your users are making. This can be used by itself or alongside suggestions based on the product data to provide an augmented search experience.
 
-Because query suggestions roll up the search queries based on the unique occurences in a period relevant to you, the suggestions index created this way is very fast. In addition to the automated job of popularing the query suggestions index daily, you can also add external suggestions from other sources.
+Because query suggestions roll up the search queries based on the unique occurrences in a period relevant to you, the suggestions index created this way is very fast. In addition to the automated job of popularising the query suggestions index daily, you can also add external suggestions from other sources.
 
 
 ## Query Suggestions Preferences
 
-// TODO: Add screenshot of Suggestions UI
+<!-- TODO: Add screenshot of Suggestions UI -->
+![alt Query suggestions GUI](https://i.imgur.com/6EYqFtj.png)
 
 You can set the preferences for query suggestions from appbase.io dashboard's <strong>Query Suggestions GUI</strong> under `Develop` section. These help optimize the behavior of suggestions for your specific use-case.
 
@@ -69,13 +70,13 @@ By default, we calculate the suggestions for past `30` days which is <strong>con
 
 Since analytics is the only source to populate the `.suggestions` index. When you get started, you'll need some kind of starting data which can be helpful to display the suggestions.
 
-You can define the external suggestions in the JSON format, each suggestion must have the `query` and `count` keys. The value of the `count` key determines the popularity of a particular suggestion.
+You can define the external suggestions in the JSON format, each suggestion must have the `key` and `count` keys. The value of the `count` key determines the popularity of a particular suggestion.
 You can check the below example of external query suggestions:
 
 ```json
 [
 	{
-		"query": "iphoneX",
+		"key": "iphoneX",
 		"count": 10000, // scoring parameter
 		"meta": {
 			// define meta properties
@@ -83,7 +84,7 @@ You can check the below example of external query suggestions:
 		}
 	},
 	{
-		"query": "samsung",
+		"key": "samsung",
 		"count": 700
 	}
 ]
@@ -104,7 +105,16 @@ const instance = new Searchbase({
 	credentials: `CLUSTER_CREDENTIALS`,
 	url: 'CLUSTER_URL',
 	size: 5,
-	dataField: 'key',
+	dataField: [
+		{
+			field: "key",
+			weight: 3
+		},
+		{
+			field: "key.autosuggest",
+			weight: 1
+		}
+	],
 });
 searchbox('#git', {}, [
 	{
@@ -138,7 +148,7 @@ searchbox('#git', {}, [
 
 ### Usage Example With ReactiveSearch
 
-// TODO: The example is not complete
+<!-- TODO: The example is not complete -->
 
 ```js
 import React from 'react';
@@ -152,7 +162,8 @@ const Main = () => (
         <div className="col">
             <DataSearch
                 title="DataSearch"
-                dataField="key"
+                dataField={["key", "key.autosuggest"]}
+				fieldWeights={[3, 1]}
                 componentId="SearchComponent"
             />
         </div>
