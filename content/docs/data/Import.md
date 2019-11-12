@@ -428,17 +428,13 @@ Let's now learn to index multiple documents in one request with these interactiv
 
 ![](https://cdn-images-1.medium.com/max/2400/1*CpUXOCaeIZYSqzCTJEtVGg.png)
 
-You can import data into appbase.io using any of the following methods:
-
--   Import via the dashboard GUI,
--   Import via ABC CLI,
--   Use the Zapier integration to import from over 1,500+ supported apps such as Typeform, Google Sheets, Mailchimp.
-
-In this doc, we will walk through the process of importing using this Zapier integration using Google Sheets as an example input source.
+In this section, we will walk through the process of importing using this Zapier integration using Google Sheets as an example input source.
 
 Zapier allows connecting apps you use everyday to automate your work and be more productive. You can read more about Zapier over [here](https://zapier.com).
 
 > Right now, the appbase.io app is not publicly available on Zapier. You can use it via this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
+
+> You can read about importing data from TypeForm into appbase.io using Zapier over [here](https://medium.appbase.io/integrating-typeform-and-appbase-io-using-zapier-with-zero-lines-of-code-3d03c0e5ccd0).
 
 ### Creating A Zap
 
@@ -487,7 +483,3 @@ After clicking on `Continue` and after a successful insertion, you will also see
 Another helpful feature is the ability to edit existing documents. Whenever a value from an incoming integration is mapped to an `_id` field, the existing document gets updated instead of a new document getting created.
 
 ![](https://i.imgur.com/7zEAso9.png)
-
-### Conclusion
-
-While we focused here on a specific integration with Google Sheets, you can capture incoming data from a variety of sources, including but not limited to emails being received in your Sendgrid account or GMail, form data coming from Google Sheets, Typeform or Airtable, and even perform database sync from MySQL, Firestore and other supported database Zaps.
