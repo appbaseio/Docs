@@ -21,6 +21,10 @@ You can bring your data from various sources into `appbase.io` database using on
     		<img class="w10 mb1" src="https://user-images.githubusercontent.com/4047597/29240054-14e0e19a-7f7b-11e7-898b-ba6bad756b1d.png" />
     		ABC CLI
     </a>
+    <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#importing-through-abc-adaptors">
+        		<img class="w10 mb1" src="https://user-images.githubusercontent.com/4047597/29240054-14e0e19a-7f7b-11e7-898b-ba6bad756b1d.png" />
+        		ABC Adaptors
+        </a>
     <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#rest-api">
         		<img class="w10 mb1" src="https://i.imgur.com/nKKQLXb.png" />
         		Rest API
@@ -115,6 +119,7 @@ abc import --src_type=postgres --src_uri=<uri> <elasticsearch_uri>
 Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-postgres-to-elasticsearch-6eebc5cc0f0f)
 
 ###MongoDB
+###abc import
 
 ```bash
 abc import --src_type=mongodb --src_uri=<uri> <elasticsearch_uri>
@@ -169,6 +174,184 @@ abc import --src_type=firestore --sac_path=<path_to_service_account_credentials>
 ```
 
 Read more about it over [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b)
+
+---
+
+##Importing through ABC adaptors
+ABC allows the user to configure a number of data adaptors as sources or sinks. These can be databases, files or other resources. Data is read from the sources, converted into a message format, and then send down to the sink where the message is converted into a writable format for its destination. The user can also create data transformations in JavaScript which can sit between the source and sink and manipulate or filter the message flow.
+Adaptors may be able to track changes as they happen in source data. This "tail" capability allows a ABC to stay running and keep the sinks in sync. The command for importing through config file is:
+
+```shell script
+abc import --config=test.env
+```
+
+File extension doesn't matter. The file `test.env` should be an INI/ENV like file with key value pair containing the values of attributes required for importing.
+Examples of test.env file for different sources are as follows:
+
+###CSV
+
+```dotenv
+src_type=csv
+src_uri=/full/local/path/to/file.csv
+typename=type_name_to_use
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/csv.md)
+
+###Elasticsearch
+
+```dotenv
+src_type=elasticsearch
+src_uri=https://user:pass@es_cluster/index
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/elasticsearch.md)
+
+---
+
+###Cloud Firestore
+
+```dotenv
+src_type=firestore
+sac_path="/path/to/service_account_credentials_file.json"
+src_filter="<collection name/regex>"
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/firestore.md)
+
+###JSON
+
+```dotenv
+src_type=json
+src_uri=/full/path/to/file.json
+typename=typename
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/json.md)
+
+###JSONL
+
+```dotenv
+src_type=jsonl
+src_uri=/full/path/to/file.json
+typename=typename
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/jsonl.md)
+
+###Kafka
+
+```dotenv
+src_type=kafka
+src_uri=kafka://user:pass@SERVER:PORT/TOPIC1,TOPIC2
+tail=false
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/kafka.md)
+
+###Mongo DB
+
+```dotenv
+src_type=mongodb
+src_uri=mongodb://user:pass@SERVER:PORT/DBNAME
+tail=false
+
+dest_type=elasticsearch
+dest_uri=APP_NAME
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/mongodb.md)
+
+###MSSQL
+
+```dotenv
+src_type=mssql
+src_uri=sqlserver://USER:PASSWORD@SERVER:PORT?database=DBNAME
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/mssql.md)
+
+###MYSQL
+
+```dotenv
+src_type=mysql
+src_uri=USER:PASSWORD@tcp(HOST:PORT)/DBNAME
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/mysql.md)
+
+###Neo4J
+
+```dotenv
+src_type=neo4j
+src_uri=bolt://localhost:7687
+src_username=username
+src_password=password
+src_realm=realm
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/neo4j.md)
+
+###PostgreSQL
+
+```dotenv
+src_type=postgres
+src_uri=postgres://127.0.0.1:5432/test
+tail=false
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/postgres.md)
+
+###Redis
+
+```bash
+abc import --src_type=redis --src_uri="redis://localhost:6379/0" https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/redis.md)
+
+###SQLITE
+
+```dotenv
+src_type=sqlite
+src_uri=./data.db?_busy_timeout=5000
+
+dest_type=elasticsearch
+dest_uri=https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/sqlite.md)
 
 ---
 
