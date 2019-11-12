@@ -27,7 +27,7 @@ You can bring your data from various sources into `appbase.io` database using on
         </a>
     <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#rest-api">
         		<img class="w10 mb1" src="https://i.imgur.com/nKKQLXb.png" />
-        		Rest API
+        		REST API
      </a>
 	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#zapier">
 		<img class="w10 mb1" src="https://i.imgur.com/Z9ahZbM.png" />
@@ -38,6 +38,8 @@ You can bring your data from various sources into `appbase.io` database using on
 ---
 
 ##Importing through Dashboard
+
+![](https://i.imgur.com/ckEk5IL.png)
 
 Dashboard is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
 
@@ -355,88 +357,77 @@ Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/im
 
 ---
 
-##Rest API
-This is just getting started with Rest API. You can read more about it over [here](https://rest.appbase.io/).
+##REST API
+Let's now learn to index multiple documents in one request. For this, we'll use [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to perform many index/delete operations in a single API call.
 
-### Setup
+### Setting things up
 
-Here's an example authenticated `GET` request. We will set the `app` name and `credentials` as bash variables and reuse them in the requests.
+Before we start using the appbase-js lib, we’ll need to set up an appbase.io app.
 
-```bash
-# SET BASH VARIABLES
-app="newstreamingapp"
-credentials="meqRf8KJC:65cc161a-22ad-40c5-aaaf-5c082d5dcfda"
+For this tutorial, we have used a <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">sample app</a> containing some dummy housing records. All the examples use this app. You can also clone this app (to create your own private app) directly by clicking "Clone this app" in the <a href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false" target="_blank">data browser view of the app here</a>.
 
-curl https://$credentials@scalr.api.appbase.io/$app
+<br/>
 
-RESPONSE
+<a target="_blank" href="https://opensource.appbase.io/dejavu/live/#?input_state=XQAAAAKLAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsW71dAzA7YYc-SS2NBdZOu2iiqUDTwzb8SRY-P60qxz_ZFKoJgMwEJushaRl-FxMxQqDCBLVG-xBlA5HfOZXDzUuGnntd_Zw9u4C0YdVJQ8HvMJrVO8AfQy73d9wq7TjySsVRv-NAKU5ZUw4jxU0ynrQflgPkDLN6AGDv4jeOi8Ir9BBSZ-bdv4J2oq7eCzLoC-gl9qTZsTRLHsXPhHvClG5we6nqctwdPgHqEWqj25nG0qo1RkmJYY_ZTF4XEJcMQyIw-2Rck0OE-ZTR7g8d3ste2uR2u9JbeJj9fjtjVNDltaQGN8jaAdUVVriYpB2CzgXN__Rv9tA&editable=false">
+<img alt="Dataset" src="https://i.imgur.com/erNycvVg.png" />
+</a>
+
+All the records are structured in the following format:
+
+```js
+
 {
-	status: 200,
-	message: "You have reached /newstreamingapp/ and are all set to make API requests"
+    "name": "The White House",
+    "room_type": "Private room",
+    "property_type": "Townhouse",
+    "price": 124,
+    "has_availability": true,
+    "accommodates": 2,
+    "bedrooms": 1,
+    "bathrooms": 1.5,
+    "beds": 1,
+    "bed_type": "Real Bed",
+    "host_image": "https://host_image.link",
+    "host_name": "Alyson",
+    "image": "https://image.link",
+    "listing_url": "https://www.airbnb.com/rooms/6644628",
+    "location": {
+        "lat": 47.53540733743967,
+        "lon": -122.27983057017123
+    },
+    "date_from": 20170426,
+    "date_to": 20170421,
 }
 ```
 
-### Storing Data
+Let's now learn to index multiple documents in one request with these interactive examples in different languages.
 
-Let's insert a JSON object. We create a **type** `books` inside our app and add a JSON document `1` with a PUT request.
+###Javascript
 
-```bash
-curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 -d '{
-	"department_name":"Books",
-	"department_name_analyzed":"Books",
-	"department_id":1,
-	"name":"A Fake Book on Network Routing",
-	"price":5595
-}'
-```
+<iframe height="600px" width="100%" src="https://repl.it/@YashJoshi/Appbase-js-BulkIndex?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 > Note <i class="fa fa-info-circle"></i>
 >
-> appbase.io uses the same APIs as [ElasticSearch](https://www.elastic.co/products/elasticsearch). A **type** is equivalent to a _collection in MongoDB_ or a _table in SQL_, and a document is similar to the document in MongoDB or a _row in SQL_.
+> It is recommended to index up to 1 MB of data (~500 documents) at a time (so if you have 50,000 documents, you can split them into chunks of 500 documents and index).
 
-### GETing or Streaming Data
+###Go
 
-Getting live updates to a document is as simple as suffixing `?stream=true` to a GET request. It's so awesome that we recommend using this as the default way to GET things.
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-Bulk-Index-Data?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-```bash
-curl -N https://$credentials@scalr.api.appbase.io/$app/books/1?stream=true
+###Python
 
-# INITIAL RESPONSE
-{
-	"_index": "app`248",
-	"_type": "books",
-	"_id": "1",
-	"_version": 5,
-	"found": true,
-	"_source": {
-		"department_name": "Books",
-		"department_name_analyzed": "Books",
-		"department_id": 1,
-		"name": "A Fake Book on Network Routing",
-		"price": 5595
-	}
-}
-```
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Python-Bulk-Index-Data?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-appbase.io keeps an open connection so that every time there is an update in the `/$app/books/1` document, it is streamed via the connection.
+###PHP
 
-### Modify the Document
-
-Let's modify the book price to `6034`.
-
-```bash
-curl -XPUT https://$credentials@scalr.api.appbase.io/$app/books/1 --data-binary '{
-	"price": 6034,
-	"department_name": "Books",
-	"department_name_analyzed": "Books",
-	"department_id": 1,
-	"name": "A Fake Book on Network Routing"
-}'
-```
+<iframe height="600px" width="100%" src="https://repl.it/@dhruvdutt/Appbaseio-Go-Bulk-Index-Data?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ---
 
 ##Zapier
+
+![](https://cdn-images-1.medium.com/max/2400/1*CpUXOCaeIZYSqzCTJEtVGg.png)
+
 You can import data into appbase.io using any of the following methods:
 
 -   Import via the dashboard GUI,
