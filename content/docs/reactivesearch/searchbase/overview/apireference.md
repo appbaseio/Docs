@@ -78,7 +78,7 @@ const searchbase = new SearchBase(props);
     );
     ```
     <!-- TODO: merge aggs branch of react and vue before merging this -->
-    > See impact of aggregationField with these examples for [React](/docs/reactivesearch/v3/advanced/groupingresults#how) and [Vue](/docs/reactivesearch/vue/advanced/groupingresults#how)
+    > See impact of aggregationField with these examples for [React](/docs/reactivesearch/v3/advanced/groupingresults#how) and [Vue](/docs/reactivesearch/vue/advanced/groupingresults#how).
     
 -   **credentials** `string`
     Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io app, you will find credentials under your [API credentials page](https://dashboard.appbase.io/app?view=credentials). If you are not using an appbase.io app, credentials may not be necessary - although having an open access to your Elasticsearch cluster is not recommended.
