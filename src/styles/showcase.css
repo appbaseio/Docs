@@ -76,6 +76,26 @@
 	box-shadow: none;
 }
 
+.showcase a.active {
+	color: white;
+}
+
+.showcase-search > div > div >div {
+	top: calc(50% - 13px);
+}
+
+.showcase-list label {
+	align-items: center !important;
+}
+
+.dropdown-list button > span::before {
+	top: 0.2rem;
+}
+
+.dropdown-list button > div {
+	padding: 5px 0px;
+}
+
 @media(max-width: 768px) {
 	.grid-2 {
 		grid-template-columns: auto;

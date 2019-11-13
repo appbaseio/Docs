@@ -35,6 +35,7 @@ const dataSearchProps = {
 		'original_title.keyword',
 		'original_title.search',
 	],
+	className: 'showcase-search',
 	componentId: 'search',
 };
 
@@ -42,6 +43,7 @@ const multilistProps = {
 	dataField: 'genres_data.keyword',
 	componentId: 'multilist',
 	react: { and: ['search'] },
+	className: 'showcase-list',
 	showSearch: false,
 };
 
@@ -49,12 +51,14 @@ const singleListProps = {
 	dataField: 'original_language.keyword',
 	componentId: 'singlelist',
 	react: { and: ['search'] },
+	className: 'showcase-list',
 	showSearch: false,
 };
 
 const singleDropdownProps = {
 	dataField: 'genres_data.keyword',
 	componentId: 'singledropdownlist',
+	className: 'dropdown-list',
 	react: { and: ['search'] },
 	showSearch: false,
 };
