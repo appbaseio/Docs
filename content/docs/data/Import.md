@@ -428,11 +428,11 @@ Let's now learn to index multiple documents in one request with these interactiv
 
 ![](https://cdn-images-1.medium.com/max/2400/1*CpUXOCaeIZYSqzCTJEtVGg.png)
 
-In this section, we will walk through the process of importing using this Zapier integration using Google Sheets as an example input source.
+In this section, we will walk through the process of importing using this Zapier integration. It uses Google Sheets as the input source.
 
 Zapier allows connecting apps you use everyday to automate your work and be more productive. You can read more about Zapier over [here](https://zapier.com).
 
-> Right now, the appbase.io app is not publicly available on Zapier. You can use it via this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
+> Right now, the appbase.io's Zapier integration is not publicly available on Zapier which you can use with this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
 
 > You can read about importing data from TypeForm into appbase.io using Zapier over [here](https://medium.appbase.io/integrating-typeform-and-appbase-io-using-zapier-with-zero-lines-of-code-3d03c0e5ccd0).
 
@@ -483,3 +483,14 @@ After clicking on `Continue` and after a successful insertion, you will also see
 Another helpful feature is the ability to edit existing documents. Whenever a value from an incoming integration is mapped to an `_id` field, the existing document gets updated instead of a new document getting created.
 
 ![](https://i.imgur.com/7zEAso9.png)
+
+##Conclusion
+
+With the below comparision table, you can determine which method suits best for importing data according to your use-case.
+
+|               | **CLI** | **GUI** | **Importing Large Dataset** | **Example Scenario**                                                                           |
+| ------------- | ------- | ------- | --------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Dashboard** | ✔️      | ✔️      | ✔️                          | CSV, JSON, ElasticSearch, SQL                                                                  |
+| **ABC**       | ✔️      | ✖️      | ✔️                          | CSV, JSON, ElasticSearch, Postgres, MongoDB, MySQL, Firestore, etc...                          |
+| **REST API**  | ✔️      | ✖️      | ✔️                          | Object or Array<Object> through various languages such as `Javascript`, `Python`, `Go`, etc... |
+| **Zapier**    | ✖️      | ✔️      | ✖️                          | Typeform, Google Sheets, Gmail, Google Forms, etc...                                           |
