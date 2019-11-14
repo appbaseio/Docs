@@ -488,9 +488,9 @@ Another helpful feature is the ability to edit existing documents. Whenever a va
 
 With the below comparision table, you can determine which method suits best for importing data according to your use-case.
 
-|               | **CLI** | **GUI** | **Importing Large Dataset** | **Example Scenario**                                                                           |
-| ------------- | ------- | ------- | --------------------------- | ---------------------------------------------------------------------------------------------- |
-| **Dashboard** | ✔️      | ✔️      | ✔️                          | CSV, JSON, ElasticSearch, SQL                                                                  |
-| **ABC**       | ✔️      | ✖️      | ✔️                          | CSV, JSON, ElasticSearch, Postgres, MongoDB, MySQL, Firestore, etc...                          |
-| **REST API**  | ✔️      | ✖️      | ✔️                          | Object or Array<Object> through various languages such as `Javascript`, `Python`, `Go`, etc... |
-| **Zapier**    | ✖️      | ✔️      | ✖️                          | Typeform, Google Sheets, Gmail, Google Forms, etc...                                           |
+|               | **CLI** | **GUI** | **Importing Large Dataset** | **Example Scenario**                                                                              |
+| ------------- | ------- | ------- | --------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Dashboard** | ✔️      | ✔️      | ✔️                          | CSV, JSON, ElasticSearch, SQL                                                                     |
+| **ABC**       | ✔️      | ✖️      | ✔️                          | CSV, JSON, ElasticSearch, Postgres, MongoDB, MySQL, Firestore, etc...                             |
+| **REST API**  | ✔️      | ✖️      | ✔️                          | Object or Array of Objects through various languages such as `Javascript`, `Python`, `Go`, etc... |
+| **Zapier**    | ✖️      | ✔️      | ✖️                          | Typeform, Google Sheets, Gmail, Google Forms, etc...                                              |
