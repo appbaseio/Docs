@@ -6,7 +6,7 @@ import {
 	RatingsFilter,
 	SingleDropdownList,
 	SingleList,
-	RangeSlider,
+	DynamicRangeSlider,
 	ToggleButton,
 	ReactiveList,
 } from '@appbaseio/reactivesearch';
@@ -15,8 +15,8 @@ import PostLayout from '../../../../../components/PostLayout';
 import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
 
 const settings = {
-	app: 'movies-store-app',
-	credentials: 'ctWRp9QBE:fece5752-b478-452b-8173-00b278e5e0b0',
+	app: 'airbnb-dev',
+	credentials: 'cd2sqkk0X:fb65de54-2eab-48cf-a9f0-7fead80647d7',
 	theme: {
 		colors: {
 			textColor: '#738a94',
@@ -29,34 +29,31 @@ const settings = {
 };
 
 const dataSearchProps = {
-	dataField: [
-		'original_title',
-		'original_title.autosuggest',
-		'original_title.keyword',
-		'original_title.search',
-	],
+	dataField: ['name', 'name.autosuggest', 'name.keyword', 'name.search'],
 	className: 'showcase-search',
 	componentId: 'search',
 };
 
 const multilistProps = {
-	dataField: 'genres_data.keyword',
+	dataField: 'city.keyword',
 	componentId: 'multilist',
 	react: { and: ['search'] },
 	className: 'showcase-list',
 	showSearch: false,
+	placeholder: 'Select City',
 };
 
 const singleListProps = {
-	dataField: 'original_language.keyword',
+	dataField: 'state.keyword',
 	componentId: 'singlelist',
 	react: { and: ['search'] },
 	className: 'showcase-list',
 	showSearch: false,
+	placeholder: 'Select State',
 };
 
 const singleDropdownProps = {
-	dataField: 'genres_data.keyword',
+	dataField: 'propertyType.keyword',
 	componentId: 'singledropdownlist',
 	className: 'dropdown-list',
 	react: { and: ['search'] },
@@ -64,20 +61,34 @@ const singleDropdownProps = {
 };
 
 const rangeSliderProps = {
-	dataField: 'vote_average',
+	dataField: 'accommodates',
 	componentId: 'rangeslider',
 	react: { and: ['search'] },
 	showHistogram: true,
 	tooltipTrigger: 'hover',
-	rangeLabels: {
-		start: '0 Votes',
-		end: '10 Votes',
-	},
+	rangeLabels: (min, max) => ({
+		start: min + ' Accommodates',
+		end: max + ' Accommodates',
+	}),
 };
 
 const ratingsFilterProps = {
 	componentId: 'ratingfilter',
-	dataField: 'vote_average',
+	dataField: 'beds',
+	dimmedIcon: (
+		<img
+			style={{ width: 22, height: 22, marginLeft: 5 }}
+			alt="Inactive Bed"
+			src="https://img.icons8.com/pastel-glyph/2x/bed--v2.png"
+		/>
+	),
+	icon: (
+		<img
+			style={{ width: 22, height: 22, marginLeft: 5 }}
+			alt="Active Bed"
+			src="https://img.icons8.com/cotton/2x/bed--v2.png"
+		/>
+	),
 	data: [
 		{ start: 4, end: 5, label: '4 & up' },
 		{ start: 3, end: 5, label: '3 & up' },
@@ -88,11 +99,11 @@ const ratingsFilterProps = {
 
 const toggleButtonProps = {
 	componentId: 'togglebutton',
-	dataField: 'genres_data.keyword',
+	dataField: 'bedType.keyword',
 	data: [
-		{ label: 'Drama', value: 'Drama' },
-		{ label: 'Comedy', value: 'Comedy' },
-		{ label: 'Thriller', value: 'Thriller' },
+		{ label: 'Real Bed', value: 'Real Bed' },
+		{ label: 'Single', value: 'Single' },
+		{ label: 'Futon', value: 'Futon' },
 	],
 };
 
@@ -112,7 +123,7 @@ const reactiveListProps = {
 	size: 5,
 	pagination: true,
 	dataField: '_score',
-	renderItem: res => <pre key={res._id}>{res.original_title}</pre>,
+	renderItem: res => <pre key={res._id}>{res.name}</pre>,
 	scrollOnChange: false,
 };
 
@@ -150,14 +161,14 @@ class Showcase extends React.Component {
 							</div>
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
-									title="MultiList"
+									title="MultiList - Cities"
 									link="/docs/reactivesearch/v3/list/multilist/"
 								>
 									<MultiList {...multilistProps} />
 								</ShowcaseComponent>
 
 								<ShowcaseComponent
-									title="SingleList"
+									title="SingleList - State"
 									link="/docs/reactivesearch/v3/list/singlelist/"
 								>
 									<SingleList {...singleListProps} />
@@ -166,14 +177,14 @@ class Showcase extends React.Component {
 
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
-									title="RangeSlider"
+									title="RangeSlider - Accommodates"
 									link="/docs/reactivesearch/v3/range/rangeslider/"
 								>
-									<RangeSlider {...rangeSliderProps} />
+									<DynamicRangeSlider {...rangeSliderProps} />
 								</ShowcaseComponent>
 
 								<ShowcaseComponent
-									title="RatingsFilter"
+									title="RatingsFilter - Beds"
 									link="/docs/reactivesearch/v3/range/ratingsfilter/"
 								>
 									<RatingsFilter {...ratingsFilterProps} />
@@ -181,13 +192,13 @@ class Showcase extends React.Component {
 							</div>
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
-									title="SingleDropdownList"
+									title="SingleDropdownList - Property Type"
 									link="/docs/reactivesearch/v3/list/singledropdownlist/"
 								>
 									<SingleDropdownList {...singleDropdownProps} />
 								</ShowcaseComponent>
 								<ShowcaseComponent
-									title="ToggleButton"
+									title="ToggleButton - Bed Type"
 									link="/docs/reactivesearch/v3/list/togglebutton/"
 								>
 									<ToggleButton {...toggleButtonProps} />
