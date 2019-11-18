@@ -79,6 +79,17 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 										: 'midgrey hover-blue-l2'
 								}`}
 							/>
+							{location.pathname.startsWith('/docs/reactivesearch/') ? (
+								<SidebarLink
+									link="/docs/reactivesearch/gettingstarted"
+									title="Choose your Flavor"
+									linkClasses={` link ${
+										location.pathname === '/docs/reactivesearch/gettingstarted'
+											? 'sidebarlink-active blue fw6'
+											: 'midgrey hover-blue-l2'
+									}`}
+								/>
+							) : null}
 							<NestedSidebar nestedSidebar={nestedSidebarFile} location={location} />
 						</Fragment>
 					)}
