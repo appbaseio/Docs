@@ -10,6 +10,8 @@ import {
 	ToggleButton,
 	ReactiveList,
 } from '@appbaseio/reactivesearch';
+import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
+import Helmet from 'react-helmet';
 
 import PostLayout from '../../../../../components/PostLayout';
 import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
@@ -127,6 +129,23 @@ const reactiveListProps = {
 	scrollOnChange: false,
 };
 
+const reactiveMapProps = {
+	componentId: 'map',
+	react: {
+		and: [
+			'togglebutton',
+			'ratingfilter',
+			'rangeslider',
+			'search',
+			'singledropdownlist',
+			'singlelist',
+			'multilist',
+		],
+	},
+	dataField: 'location',
+	deafultMapStyles: 'Midnight Commander',
+};
+
 class Showcase extends React.Component {
 	state = {
 		mounted: false,
@@ -148,6 +167,12 @@ class Showcase extends React.Component {
 				location={location}
 				post={{ title: 'Showcase' }}
 			>
+				<Helmet>
+					<script
+						type="text/javascript"
+						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q"
+					></script>
+				</Helmet>
 				{mounted ? (
 					<ReactiveBase {...settings}>
 						<div className="showcase">
@@ -210,6 +235,15 @@ class Showcase extends React.Component {
 									link="/docs/reactivesearch/v3/result/reactivelist/"
 								>
 									<ReactiveList {...reactiveListProps} />
+								</ShowcaseComponent>
+							</div>
+
+							<div className="showcase-grid">
+								<ShowcaseComponent
+									title="ReactiveMaps"
+									link="/docs/reactivesearch/v3/map/reactivegooglemap/"
+								>
+									<ReactiveGoogleMap {...reactiveMapProps} />
 								</ShowcaseComponent>
 							</div>
 						</div>
