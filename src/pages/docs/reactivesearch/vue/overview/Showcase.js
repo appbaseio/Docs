@@ -3,15 +3,12 @@ import {
 	ReactiveBase,
 	DataSearch,
 	MultiList,
-	RatingsFilter,
 	SingleDropdownList,
 	SingleList,
 	DynamicRangeSlider,
 	ToggleButton,
 	ReactiveList,
-	DateRange,
 } from '@appbaseio/reactivesearch';
-import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 import Helmet from 'react-helmet';
 
 import PostLayout from '../../../../../components/PostLayout';
@@ -67,44 +64,12 @@ const rangeSliderProps = {
 	dataField: 'price',
 	componentId: 'rangeslider',
 	react: { and: ['search'] },
-	showHistogram: true,
+	showHistogram: false,
 	tooltipTrigger: 'hover',
 	rangeLabels: (min, max) => ({
 		start: `$${min}`,
 		end: `$${max}`,
 	}),
-};
-
-const dateRangeProps = {
-	componentId: 'date',
-	dataField: 'date_from',
-	numberOfMonths: 2,
-	initialMonth: new Date('04/01/2017'),
-};
-
-const ratingsFilterProps = {
-	componentId: 'ratingfilter',
-	dataField: 'beds',
-	dimmedIcon: (
-		<img
-			style={{ width: 22, height: 22, marginLeft: 5 }}
-			alt="Inactive Bed"
-			src="https://img.icons8.com/pastel-glyph/2x/bed--v2.png"
-		/>
-	),
-	icon: (
-		<img
-			style={{ width: 22, height: 22, marginLeft: 5 }}
-			alt="Active Bed"
-			src="https://img.icons8.com/cotton/2x/bed--v2.png"
-		/>
-	),
-	data: [
-		{ start: 4, end: 5, label: '4 & up' },
-		{ start: 3, end: 5, label: '3 & up' },
-		{ start: 2, end: 5, label: '2 & up' },
-		{ start: 1, end: 5, label: '> 1 vote' },
-	],
 };
 
 const toggleButtonProps = {
@@ -137,23 +102,6 @@ const reactiveListProps = {
 	scrollOnChange: false,
 };
 
-const reactiveMapProps = {
-	componentId: 'map',
-	react: {
-		and: [
-			'togglebutton',
-			'ratingfilter',
-			'rangeslider',
-			'search',
-			'singledropdownlist',
-			'singlelist',
-			'multilist',
-		],
-	},
-	dataField: 'location',
-	deafultMapStyles: 'Midnight Commander',
-};
-
 class Showcase extends React.Component {
 	state = {
 		mounted: false,
@@ -171,23 +119,17 @@ class Showcase extends React.Component {
 		return (
 			<PostLayout
 				sidebar="docs"
-				nestedSidebar="web-reactivesearch"
+				nestedSidebar="vue-reactivesearch"
 				location={location}
 				post={{ title: 'Showcase' }}
 			>
-				<Helmet>
-					<script
-						type="text/javascript"
-						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q"
-					></script>
-				</Helmet>
 				{mounted ? (
 					<ReactiveBase {...settings}>
 						<div className="showcase">
 							<div className="w-100">
 								<ShowcaseComponent
 									title="DataSearch"
-									link="/docs/reactivesearch/v3/search/datasearch/"
+									link="/docs/reactivesearch/vue/search/DataSearch/"
 								>
 									<DataSearch {...dataSearchProps} />
 								</ShowcaseComponent>
@@ -195,54 +137,38 @@ class Showcase extends React.Component {
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
 									title="MultiList - Accommodates"
-									link="/docs/reactivesearch/v3/list/multilist/"
+									link="/docs/reactivesearch/vue/list/MultiList/"
 								>
 									<MultiList {...multilistProps} />
 								</ShowcaseComponent>
 
 								<ShowcaseComponent
 									title="SingleList - Property Type"
-									link="/docs/reactivesearch/v3/list/singlelist/"
+									link="/docs/reactivesearch/vue/list/SingleList/"
 								>
 									<SingleList {...singleListProps} />
 								</ShowcaseComponent>
 							</div>
 
-							<div className="showcase-grid grid-2">
-								<ShowcaseComponent
-									title="DynamicRangeSlider - Price"
-									link="/docs/reactivesearch/v3/range/dynamicrangeslider/"
-								>
-									<DynamicRangeSlider {...rangeSliderProps} />
-								</ShowcaseComponent>
-
-								<ShowcaseComponent
-									title="RatingsFilter - Beds"
-									link="/docs/reactivesearch/v3/range/ratingsfilter/"
-								>
-									<RatingsFilter {...ratingsFilterProps} />
-								</ShowcaseComponent>
-							</div>
-
 							<div className="showcase-grid">
 								<ShowcaseComponent
-									title="DateRange - Date From"
-									link="/docs/reactivesearch/v3/range/daterange/"
+									title="DynamicRangeSlider - Price"
+									link="/docs/reactivesearch/vue/range/DynamicRangeSlider/"
 								>
-									<DateRange {...dateRangeProps} />
+									<DynamicRangeSlider {...rangeSliderProps} />
 								</ShowcaseComponent>
 							</div>
 
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
 									title="SingleDropdownList - Property Type"
-									link="/docs/reactivesearch/v3/list/singledropdownlist/"
+									link="/docs/reactivesearch/vue/list/SingleDropdownList/"
 								>
 									<SingleDropdownList {...singleDropdownProps} />
 								</ShowcaseComponent>
 								<ShowcaseComponent
 									title="ToggleButton - Room Type"
-									link="/docs/reactivesearch/v3/list/togglebutton/"
+									link="/docs/reactivesearch/vue/list/ToggleButton/"
 								>
 									<ToggleButton {...toggleButtonProps} />
 								</ShowcaseComponent>
@@ -250,18 +176,9 @@ class Showcase extends React.Component {
 							<div className="showcase-grid">
 								<ShowcaseComponent
 									title="ReactiveList"
-									link="/docs/reactivesearch/v3/result/reactivelist/"
+									link="/docs/reactivesearch/vue/result/ReactiveList/"
 								>
 									<ReactiveList {...reactiveListProps} />
-								</ShowcaseComponent>
-							</div>
-
-							<div className="showcase-grid">
-								<ShowcaseComponent
-									title="ReactiveMaps"
-									link="/docs/reactivesearch/v3/map/reactivegooglemap/"
-								>
-									<ReactiveGoogleMap {...reactiveMapProps} />
 								</ShowcaseComponent>
 							</div>
 						</div>
