@@ -13,6 +13,8 @@ import {
 } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 import Helmet from 'react-helmet';
+import moment from 'moment';
+
 
 import PostLayout from '../../../../../components/PostLayout';
 import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
@@ -79,6 +81,28 @@ const dateRangeProps = {
 	componentId: 'date',
 	dataField: 'date_from',
 	numberOfMonths: 2,
+	customQuery: value => {
+		let query = null;
+		if (value) {
+			query = [
+				{
+					range: {
+						date_from: {
+							gte: moment(value.start).format('YYYYMMDD'),
+						},
+					},
+				},
+				{
+					range: {
+						date_to: {
+							lte: moment(value.end).format('YYYYMMDD'),
+						},
+					},
+				},
+			];
+		}
+		return query ? { query: { bool: { must: query } } } : null;
+	},
 	initialMonth: new Date('04/01/2017'),
 };
 
