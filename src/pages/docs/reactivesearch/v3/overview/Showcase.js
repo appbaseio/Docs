@@ -15,7 +15,6 @@ import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 import Helmet from 'react-helmet';
 import moment from 'moment';
 
-
 import PostLayout from '../../../../../components/PostLayout';
 import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
 
@@ -202,7 +201,7 @@ class Showcase extends React.Component {
 				<Helmet>
 					<script
 						type="text/javascript"
-						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q"
+						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyAKz3UhgSuP872fb-Aw27oPRI7M0eXkA9U&libraries=places"
 					></script>
 				</Helmet>
 				{mounted ? (
