@@ -174,7 +174,15 @@ Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/im
 abc import --src_type=neo4j src_uri=bolt://localhost:7687
 ```
 
-Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/neo4j.md)
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/neo4j.md).
+
+### Redis
+
+```bash
+abc import --src_type=redis --src_uri="redis://localhost:6379/0" https://USERID:PASS@scalr.api.appbase.io/APPNAME
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/redis.md).
 
 ---
 
