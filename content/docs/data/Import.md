@@ -33,15 +33,16 @@ You can bring your data from various sources into an `appbase.io` app or cluster
 
 This table below can help you choose the right method for your use-case:
 
-<!-- TODO: Table column width needs to be adjusted -->
+<div class="table-less-width">
 
-|               | **Ease of Use** | **Supports Automation** | **Importing Large Dataset** | **Data Sources Supported**                                                                              |
-| ------------- | -------  | ------- | --------------------------- | ------------------------------------------------------------------------------------------------- |
-| **Dashboard GUI** | ✔️      | ✖️️️      | ✔️                          | CSV, JSON, ElasticSearch and SQL.                                                             |
-| **ABC CLI**       | ✔️*      |✔️*     | ✔️                          | Everything above plus MongoDB, Firestore, Kafka, Redis, Neo4J.                         |
-| **REST API**  | ✖️️️     | ✔️*      | ✔️                          | No restrictions. |
-| **Zapier**    | ✔️    | ✔️      | ✖️                          | Typeform, Google Sheets, Twilio, and over 1500+ other apps.   |
+|                   | **Ease of Use** | **Supports Automation** | **Importing Large Dataset** | **Data Sources Supported**                                     |
+| ----------------- | --------------- | ----------------------- | --------------------------- | -------------------------------------------------------------- |
+| **Dashboard GUI** | ✔️              | ✖️️️                    | ✔️                          | CSV, JSON, ElasticSearch and SQL.                              |
+| **ABC CLI**       | ✔️\*            | ✔️\*                    | ✔️                          | Everything above plus MongoDB, Firestore, Kafka, Redis, Neo4J. |
+| **REST API**      | ✖️️️            | ✔️\*                    | ✔️                          | No restrictions.                                               |
+| **Zapier**        | ✔️              | ✔️                      | ✖️                          | Typeform, Google Sheets, Twilio, and over 1500+ other apps.    |
 
+</div>
 
 ---
 
@@ -54,17 +55,15 @@ Dashboard offers a GUI for importing data visually. It supports the following fo
 1. **JSON / JSONL** - You can bring in any JSON or newline limited JSON files (or hosted URLs) to be imported using the Importer view of the dashboard.
 2. **CSV** - You can also bring in a CSV file (or hosted URL) to be imported.
 3. **ElasticSearch** - You can import an index from an ElasticSearch cluster hosted anywhere into your appbase.io app or cluster.
-![](https://i.imgur.com/id7clAb.png)
+   ![](https://i.imgur.com/id7clAb.png)
 4. **SQL** - You can import a SQL database from Postgres, MySQL or Microsoft SQL Server into your appbase.io app or cluster.
    ![](https://i.imgur.com/itWUcXM.png)
 
 You can try the Importer UI live over [here](https://dashboard.appbase.io/app/?view=import).
 
-
 Below is a GIF showing the import process for a JSON file.
 
-<!-- TODO: Update the GIF -->
-![](https://www.dropbox.com/s/05do1q1wvp7t13t/short_upload.gif?raw=1)
+![](http://g.recordit.co/3pUmi0KC3n.gif)
 
 ---
 
@@ -87,7 +86,6 @@ You can also install this via docker using:
 
 > : `docker pull appbaseio/abc`
 
-
 It is possible to import data from various database sources. See the snippets below that show the import command for each of the supported database.
 
 ### Postgres
@@ -106,61 +104,84 @@ abc import --src_type=mongodb --src_uri=<uri> <elasticsearch_uri>
 
 Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mongodb-to-elasticsearch-ee5a74695945).
 
-<!-- Fix the formatting plus add the missing sources over here. -->
-
-###MySQL
+### MySQL
 
 ```bash
 abc import --src_type=mysql --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mysql-to-elasticsearch-b59289e5025d).
 
-###Microsoft SQL Server
+### Microsoft SQL Server
 
 ```bash
 abc import --src_type=mssql --src_uri=<uri> <elasticsearch_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mssql-to-elasticsearch-341963a054dd)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-mssql-to-elasticsearch-341963a054dd).
 
-###Elasticsearch
+### Elasticsearch
 
 ```bash
 abc import --src_type=elasticsearch --src_uri=<elasticsearch_src_uri> <elasticsearch_dest_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-elasticsearch-to-elasticsearch-301c7a243c84)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-elasticsearch-to-elasticsearch-301c7a243c84).
 
-###JSON
+### JSON
 
 ```bash
 abc import --src_type=json --src_uri=<uri> --typename=<target_type_name> <elasticsearch_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-json-to-elasticsearch-92f582c53df4)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-json-to-elasticsearch-92f582c53df4).
 
-###CSV
+### CSV
 
 ```bash
 abc import --src_type=csv --src_uri=<uri> --typename=<target_type_name> <elasticsearch_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-csv-to-elasticsearch-17d290a5974f)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-data-from-csv-to-elasticsearch-17d290a5974f).
 
-###Firestore
+### Firestore
 
 ```bash
 abc import --src_type=firestore --sac_path=<path_to_service_account_credentials> <elasticsearch_uri>
 ```
 
-Read more about it over [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b)
+Read more about it over [here](https://medium.appbase.io/cli-for-indexing-from-firestore-to-elasticsearch-80286fc8e58b).
+
+### SQLITE
+
+```bash
+abc import --src_type=sqlite src_uri=./data.db?_busy_timeout=5000
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/sqlite.md).
+
+### Kafka
+
+```bash
+abc import --src_type=kafka src_uri=kafka://user:pass@SERVER:PORT/TOPIC1,TOPIC2
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/kafka.md).
+
+### Neo4J
+
+```bash
+abc import --src_type=neo4j src_uri=bolt://localhost:7687
+```
+
+Read more about it over [here](https://github.com/appbaseio/abc/blob/dev/docs/importer/adaptors/neo4j.md)
 
 ---
 
 ## REST API
 
 Appbase.io, by extension of ElasticSearch's REST API offers two ways to index data:
+
 1. Document Index / Document Update endpoint - Read more about this in the doc and see an example code snippet [here](https://rest.appbase.io/?version=latest#81149466-4ba5-8214-56f6-6a0d2f3bebcc).
 2. Bulk Index endpoint - Read more in the doc and see an example code snippet [here](https://rest.appbase.io/?version=latest#1162c8a2-733f-aee0-1c57-63fc3979feeb).
 
@@ -186,7 +207,6 @@ You can also see the examples below that show an interactive example of using th
 >
 > It is recommended to index up to 1 MB of data (~500 documents) at a time (so if you have 50,000 documents, you can split them into chunks of 500 documents and index).
 
-
 ---
 
 ## Zapier
@@ -197,11 +217,9 @@ Appbase.io's Zapier integration allows you to import data from over 1500+ apps s
 
 > You can start using the integration using this invite link: https://zapier.com/developer/public-invite/33102/02001b9598c3849a50cf1c94ff0cf572/
 
-
 If you are new to Zapier, it allows connecting apps you use everyday to automate your work and be more productive. You can read more about Zapier over [here](https://zapier.com).
 
 In this section, we will walk through the process of importing data using this Zapier integration. We will use Google Sheets as the input source.
-
 
 > You can also read about importing data from TypeForm into appbase.io using this Zapier integration over [here](https://medium.appbase.io/integrating-typeform-and-appbase-io-using-zapier-with-zero-lines-of-code-3d03c0e5ccd0).
 
@@ -252,4 +270,3 @@ After clicking on `Continue` and after a successful insertion, you will also see
 Another helpful feature is the ability to edit existing documents. Whenever a value from an incoming integration is mapped to an `_id` field, the existing document gets updated instead of a new document getting created.
 
 ![](https://i.imgur.com/7zEAso9.png)
-
