@@ -212,7 +212,7 @@ class Showcase extends React.Component {
 				<Helmet>
 					<script
 						type="text/javascript"
-						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q&libraries=places"
+						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyAKz3UhgSuP872fb-Aw27oPRI7M0eXkA9U&libraries=places"
 					></script>
 				</Helmet>
 				{mounted ? (
