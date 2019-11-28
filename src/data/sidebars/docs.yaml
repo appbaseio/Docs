@@ -13,8 +13,8 @@
               link: /docs/data/Model/
             - title: Data Browser
               link: /docs/data/Browser/
-            - title: Zapier
-              link: /docs/data/Zapier/
+            - title: Importing Data
+              link: /docs/data/Import/
       - group: Search Relevancy
         icon: search
         items:
@@ -46,6 +46,8 @@
       - group: Hosting
         icon: rocket
         items:
+            - title: Apps
+              link: /docs/hosting/Apps/
             - title: Clusters
               link: /docs/hosting/Cluster/
             - title: Bring Your Own Cluster

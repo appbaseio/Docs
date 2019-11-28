@@ -13,25 +13,30 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 
 	const switchDocs = value => {
 		if (value.value === 'Native') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/native/overview/QuickStart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/native/overview/QuickStart/`;
 		} else if (value.value === 'Vue') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
 		} else if (value.value === 'React - v3') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/v2/overview/QuickStart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/v2/overview/QuickStart/`;
 		} else if (value.value === 'SearchBase') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/searchbase/overview/QuickStart`;
-		} else if (value.value === 'React SearchBox') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/react-searchbox/quickstart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/searchbase/overview/QuickStart/`;
+		} else if (value.value === 'React Searchbox') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/react-searchbox/quickstart/`;
 		} else if (value.value === 'Searchbox') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/searchbox/Quickstart`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/searchbox/Quickstart/`;
+		} else if (value.value === 'Vue Searchbox') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/vue-searchbox/quickstart/`;
 		}
 	};
 
 	const getValue = () => {
 		if (location.pathname.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/vue-searchbox')) {
+			return 'Vue Searchbox';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/vue')) {
 			return 'Vue';
@@ -40,10 +45,10 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			return 'React Native';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbase')) {
-			return 'SearchBase';
+			return 'Searchbase';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/react-searchbox')) {
-			return 'React SearchBox';
+			return 'React Searchbox';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbox')) {
 			return 'Searchbox';
@@ -121,8 +126,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Vue',
 					'React Native',
 					'Searchbox',
-					'React SearchBox',
-					'SearchBase',
+					'React Searchbox',
+					'Vue Searchbox',
+					'Searchbase',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

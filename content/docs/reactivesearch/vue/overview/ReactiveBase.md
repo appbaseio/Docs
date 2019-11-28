@@ -19,7 +19,10 @@ This is the first component you will need to add when using `ReactiveSearch`.
 
 ```html
 <template>
-	<reactive-base app="appname" credentials="abcdef123:abcdef12-ab12-ab12-ab12-abcdef123456">
+	<reactive-base 
+        app="appname" 
+        credentials="abcdef123:abcdef12-ab12-ab12-ab12-abcdef123456"
+    >
 		<component1 .. />
 		<component2 .. />
 	</reactive-base>
@@ -39,7 +42,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 -   **headers** `Object` [optional]
     set custom headers to be sent with each server request as key/value pairs. For example:
 
-```html{4-6}
+```html
 <template>
 	<reactive-base
 		app="appname"
@@ -53,6 +56,8 @@ This is the first component you will need to add when using `ReactiveSearch`.
 ```
 -   **analytics** `Boolean` [optional]
     allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`. Check the [analytics recipe](/advanced/analytics.html) for click analytics implementation.
+-	**as** `String` [optional]
+	allows to use a custom html element tag, defaults to `div`.
 
 ### Connect to Elasticsearch
 
@@ -64,7 +69,10 @@ ReactiveSearch works out of the box with an Elasticsearch index hosted anywhere.
 
 ```html
 <template>
-	<reactive-base app="appname" url="http://your-elasticsearch-cluster">
+	<reactive-base 
+        app="appname" 
+        url="http://your-elasticsearch-cluster"
+    >
 		<component1 .. />
 		<component2 .. />
 	</reactive-base>
