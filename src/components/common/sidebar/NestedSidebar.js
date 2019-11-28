@@ -37,7 +37,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			return 'Vue';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/native')) {
-			return 'Native';
+			return 'React Native';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbase')) {
 			return 'SearchBase';
@@ -118,12 +118,11 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			<Dropdown
 				options={[
 					'React - v3',
-					'React - v2',
-					'Native',
 					'Vue',
-					'SearchBase',
+					'React Native',
 					'Searchbox',
 					'React SearchBox',
+					'SearchBase',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"
