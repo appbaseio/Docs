@@ -63,6 +63,21 @@ Example uses:
     unique identifier of the component, can be referenced in other components' `react` prop.
 -   **dataField** `String or Array`
     database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields.
+-   **aggregationField** `String` [optional]
+    One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
+    You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using render prop as shown:
+
+    ```javascript
+    <DataSearch
+        aggregationField="original_title.keyword"
+        render={({aggregationData}) => {...}}
+    />
+    ```
+
+    > If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** prop.
+
+    > It is possible to override this query by providing `defaultQuery` or `customQuery`.
+
 -   **nestedField** `String` [optional]
     Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
 -   **title** `String or JSX` [optional]
@@ -143,14 +158,14 @@ Example uses:
 -   **render** `Function` [optional]
     You can render suggestions in a custom layout by using the `render` prop.
     <br/>
-    It accepts an object with these properties: It accepts an object with these properties:
-    -   **`loading`**: `boolean` - **`loading`**: `boolean`
-        indicates that the query is still in progress indicates that the query is still in progress.
-    -   **`error`**: `object` - **`error`**: `object`
-        An object containing the error info An object containing the error info.
-    -   **`data`**: `array` - **`data`**: `array`
-        An array of parsed suggestions obtained from the applied query. An array of parsed suggestions obtained from the applied query.
-    -   **`rawData`**: `array` - **`rawData`**: `array`
+    It accepts an object with these properties:
+    -   **`loading`**: `boolean`
+        indicates that the query is still in progress.
+    -   **`error`**: `object`
+        An object containing the error info.
+    -   **`data`**: `array`
+        An array of parsed suggestions obtained from the applied query.
+    -   **`rawData`**: `array`
         An array of original suggestions obtained from the applied query.
     -   **`value`**: `string`
         current search input value i.e the search query being used to obtain suggestions.

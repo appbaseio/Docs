@@ -53,7 +53,7 @@ While `RangeSlider` only requires the above props to be used, it comes with many
         start: 3000,
         end: 50000
       }"
-		:defaultSelected="{
+		:defaultValue="{
         start: 1,
         end: 5
       }"
@@ -75,7 +75,7 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
 -   **title** `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultSelected** `Object` [optional]
+-   **defaultValue** `Object` [optional]
     an object with `start` and `end` keys and corresponding numeric values denoting the pre-selected range values.
 -   **showFilter** `Boolean` [optional]
     show the selected item as a filter in the selected filters view. Defaults to `true`.
@@ -105,44 +105,60 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 2. update the underlying DB query with `customQuery`,
 3. connect with external interfaces using `beforeValueChange`, `valueChange` and `queryChange`.
 
-```js
-<range-slider
-  ...
-  className="custom-class"
-  :customQuery=`
-    function(value, props) {
-      return {
-        query: {
-          match: {
-            data_field: "this is a test"
-          }
-        }
-      }
-    }
-  `
-  :beforeValueChange=`
-    function(value) {
-      // called before the value is set
-      // returns a promise
-      return new Promise((resolve, reject) => {
-        // update state or component props
-        resolve()
-        // or reject()
-      })
-    }`
-  @valueChange=`
-    function(value) {
-      console.log("current value: ", value)
-      // set the state
-      // use the value with other js code
-    }`
-  @queryChange=`
-    function(prevQuery, nextQuery) {
-      // use the query with other js code
-      console.log('prevQuery', prevQuery);
-      console.log('nextQuery', nextQuery);
-    }`
-/>
+```html
+<template>
+	<range-slider
+		className="custom-class"
+		:customQuery="getCustomQuery"
+		:react="react"
+		:beforeValueChange="handleBeforeValueChange"
+		@valueChange="handleValueChange"
+		@queryChange="handleQueryChange"
+	/>
+</template>
+<script>
+	export default {
+		name: 'app',
+		methods: {
+			getCustomQuery: (value, props) => {
+				return {
+					query: {
+						match: {
+							data_field: 'this is a test',
+						},
+					},
+				};
+			},
+			handleBeforeValueChange: value => {
+				// called before the value is set
+				// returns a promise
+				return new Promise((resolve, reject) => {
+					// update state or component props
+					resolve();
+					// or reject()
+				});
+			},
+			handleValueChange: value => {
+				console.log('current value: ', value);
+				// set the state
+				// use the value with other js code
+			},
+			handleQueryChange: (prevQuery, nextQuery) => {
+				// use the query with other js code
+				console.log('prevQuery', prevQuery);
+				console.log('nextQuery', nextQuery);
+			},
+		},
+		computed: {
+			react() {
+				return {
+					and: ['pricingFilter', 'dateFilter'],
+					or: ['searchFilter'],
+				};
+			},
+		},
+	};
+</script>
 ```
 
 -   **className** `String`

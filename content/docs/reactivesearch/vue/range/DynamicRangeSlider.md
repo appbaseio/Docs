@@ -44,7 +44,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 		dataField="books_count"
 		componentId="BookSensor"
 		title="DynamicRangeSlider: Ratings"
-		:defaultSelected="function(min, max){
+		:defaultValue="function(min, max){
           return {
               start: min + 1000,
               end: max - 1000,
@@ -72,7 +72,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 -   **title** `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultSelected** `Function` [optional]
+-   **defaultValue** `Function` [optional]
     a function that accepts `min` and `max` range values as parameters and returns an object representing current selection from the range with `start` and `end` keys.
 -   **rangeLabels** `Function` [optional]
     a function that accepts `min` and `max` range values as parameters and returns an object representing labels with `start` and `end` keys.
@@ -102,44 +102,60 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 2. update the underlying DB query with `customQuery`,
 3. connect with external interfaces using `beforeValueChange`, `valueChange` and `queryChange`.
 
-```js
-<dynamic-range-slider
-  ...
-  className="custom-class"
-  :customQuery=`
-    function(value, props) {
-      return {
-        query: {
-            match: {
-                data_field: "this is a test"
-            }
-        }
-      }
-    }
-  `
-  :beforeValueChange=`
-    function(value) {
-      // called before the value is set
-      // returns a promise
-      return new Promise((resolve, reject) => {
-        // update state or component props
-        resolve()
-        // or reject()
-      })
-    }`
-  @valueChange=`
-    function(value) {
-      console.log("current value: ", value)
-      // set the state
-      // use the value with other js code
-    }`
-  @queryChange=`
-    function(prevQuery, nextQuery) {
-      // use the query with other js code
-      console.log('prevQuery', prevQuery);
-      console.log('nextQuery', nextQuery);
-    }`
-/>
+```html
+<template>
+	<dynamic-range-slider
+		className="custom-class"
+		:customQuery="getCustomQuery"
+		:react="react"
+		:beforeValueChange="handleBeforeValueChange"
+		@valueChange="handleValueChange"
+		@queryChange="handleQueryChange"
+	/>
+</template>
+<script>
+	export default {
+		name: 'app',
+		methods: {
+			getCustomQuery: (value, props) => {
+				return {
+					query: {
+						match: {
+							data_field: 'this is a test',
+						},
+					},
+				};
+			},
+			handleBeforeValueChange: value => {
+				// called before the value is set
+				// returns a promise
+				return new Promise((resolve, reject) => {
+					// update state or component props
+					resolve();
+					// or reject()
+				});
+			},
+			handleValueChange: value => {
+				console.log('current value: ', value);
+				// set the state
+				// use the value with other js code
+			},
+			handleQueryChange: (prevQuery, nextQuery) => {
+				// use the query with other js code
+				console.log('prevQuery', prevQuery);
+				console.log('nextQuery', nextQuery);
+			},
+		},
+		computed: {
+			react() {
+				return {
+					and: ['pricingFilter', 'dateFilter'],
+					or: ['searchFilter'],
+				};
+			},
+		},
+	};
+</script>
 ```
 
 -   **className** `String`

@@ -6,6 +6,8 @@ import { SidebarNav } from './common/sidebar';
 import { PrevNextSection } from './common/prev-next';
 import { Icon, TOC } from './common';
 
+import '../styles/showcase.css';
+
 class PostLayout extends React.Component {
 	constructor(props) {
 		super(props);

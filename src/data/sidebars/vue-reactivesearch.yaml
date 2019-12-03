@@ -9,6 +9,8 @@
               link: /docs/reactivesearch/vue/overview/ReactiveBase/
             - title: Components Overview
               link: /docs/reactivesearch/vue/overview/Components/
+            - title: Showcase
+              link: /docs/reactivesearch/vue/overview/Showcase/
       - group: List Components
         items:
             - title: SingleList
@@ -53,8 +55,12 @@
         items:
             - title: SelectedFilters
               link: /docs/reactivesearch/vue/advanced/SelectedFilters/
+            - title: StateProvider
+              link: /docs/reactivesearch/vue/advanced/StateProvider/
             - title: Custom Queries
               link: /docs/reactivesearch/vue/advanced/CustomQueries/
+            - title: Grouping Results
+              link: /docs/reactivesearch/vue/advanced/groupingresults/
             - title: React Prop
               link: /docs/reactivesearch/vue/advanced/ReactProp/
             - title: Reactive Component

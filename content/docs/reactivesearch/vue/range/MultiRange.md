@@ -52,7 +52,7 @@ Example uses:
 		componentId="PriceSensor"
 		dataField="price"
 		title="Prices"
-		defaultSelected="Cheap"
+		defaultValue="Cheap"
 		filterLabel="Price"
 		:data="
             [{'start': 0, 'end': 10, 'label': 'Cheap'},
@@ -79,7 +79,7 @@ Example uses:
     collection of UI `labels` with associated `start` and `end` range values.
 -   **title** `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultSelected** `String` [optional]
+-   **defaultValue** `String` [optional]
     pre-select a label from the `data` array.
 -   **showCheckbox** `Boolean` [optional]
     show checkbox icon for each range item. Defaults to `true`.
@@ -113,44 +113,60 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 2. update the underlying DB query with `customQuery`,
 3. connect with external interfaces using `beforeValueChange`, `valueChange` and `queryChange`.
 
-```js
-<multi-range
-  ...
-  className="custom-class"
-  :customQuery=`
-    function(value, props) {
-      return {
-        query: {
-            match: {
-                data_field: "this is a test"
-            }
-        }
-      }
-    }
-  `
-  :beforeValueChange=`
-    function(value) {
-      // called before the value is set
-      // returns a promise
-      return new Promise((resolve, reject) => {
-        // update state or component props
-        resolve()
-        // or reject()
-      })
-    }`
-  @valueChange=`
-    function(value) {
-      console.log("current value: ", value)
-      // set the state
-      // use the value with other js code
-    }`
-  @queryChange=`
-    function(prevQuery, nextQuery) {
-      // use the query with other js code
-      console.log('prevQuery', prevQuery);
-      console.log('nextQuery', nextQuery);
-    }`
-/>
+```html
+<template>
+	<multi-range
+		className="custom-class"
+		:customQuery="getCustomQuery"
+		:react="react"
+		:beforeValueChange="handleBeforeValueChange"
+		@valueChange="handleValueChange"
+		@queryChange="handleQueryChange"
+	/>
+</template>
+<script>
+	export default {
+		name: 'app',
+		methods: {
+			getCustomQuery: (value, props) => {
+				return {
+					query: {
+						match: {
+							data_field: 'this is a test',
+						},
+					},
+				};
+			},
+			handleBeforeValueChange: value => {
+				// called before the value is set
+				// returns a promise
+				return new Promise((resolve, reject) => {
+					// update state or component props
+					resolve();
+					// or reject()
+				});
+			},
+			handleValueChange: value => {
+				console.log('current value: ', value);
+				// set the state
+				// use the value with other js code
+			},
+			handleQueryChange: (prevQuery, nextQuery) => {
+				// use the query with other js code
+				console.log('prevQuery', prevQuery);
+				console.log('nextQuery', nextQuery);
+			},
+		},
+		computed: {
+			react() {
+				return {
+					and: ['pricingFilter', 'dateFilter'],
+					or: ['searchFilter'],
+				};
+			},
+		},
+	};
+</script>
 ```
 
 -   **className** `String`

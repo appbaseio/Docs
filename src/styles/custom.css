@@ -1826,12 +1826,12 @@ to be custom HTML.
 }
 
 .truncate-3 {
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	line-height: 1.4;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .wrap-between {
@@ -1850,6 +1850,21 @@ to be custom HTML.
 	margin-left: 5px;
 }
 
-.link-faq:hover .link-icon,.link-faq:active .link-icon {
+.link-faq:hover .link-icon,
+.link-faq:active .link-icon {
 	fill: #3eb0ef;
+}
+
+.overflow-sidebar-scroll {
+	height: 85vh;
+	overflow-y: scroll;
+}
+
+/*(-n+3) selects first three columns*/
+.table-less-width table thead tr th:nth-child(-n + 3),
+tbody tr td:nth-child(-n + 3) {
+	width: 8em;
+	min-width: 8em;
+	max-width: 8em;
+	word-break: break-all;
 }
