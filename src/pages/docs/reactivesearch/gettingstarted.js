@@ -11,7 +11,8 @@ const GettingStarted = props => {
 			location={props.location}
 			post={{ title: '' }}
 		>
-			<h2>Getting Started</h2>
+			<h2>Choose your UI Library</h2>
+			<p>You can choose from these UI components libraries for building your search UI.</p>
 			<div className="container getting-started">
 				<div className="card">
 					<img
