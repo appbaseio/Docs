@@ -77,7 +77,7 @@ Example uses:
     />
     ```
 
-    > If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** slot.
+    > If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** prop.
 
     > It is possible to override this query by providing `defaultQuery`.
 
