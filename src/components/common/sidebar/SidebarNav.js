@@ -83,11 +83,11 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 								<ul className="relative sidebar-list ma0 pa0 list pl5 mt1">
 									<li>
 										<SidebarLink
-											link="/docs/reactivesearch/gettingstarted"
+											link="/docs/reactivesearch/gettingstarted/"
 											title="Choose your UI Library"
 											linkClasses={` link ${
 												location.pathname ===
-												'/docs/reactivesearch/gettingstarted'
+												'/docs/reactivesearch/gettingstarted/'
 													? 'sidebarlink-active blue fw6'
 													: 'midgrey hover-blue-l2'
 											}`}
