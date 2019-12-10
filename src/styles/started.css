@@ -1,6 +1,6 @@
-@import "colors.css";
+@import 'colors.css';
 
-.container.getting-started{
+.container.getting-started {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 20px;
@@ -9,11 +9,15 @@
 .getting-started .card {
 	padding: 10px;
 	border: 1px solid var(--lightgrey-l2);
-	transition: all ease .2s;
+	transition: all ease 0.2s;
+}
+
+.getting-started .card img{
+	width: 100%;
 }
 
 .getting-started .card:hover {
-	box-shadow: 0 5px 4px rgba(0,0,0,.1);
+	box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
 }
 
 .getting-started h2 {
@@ -42,4 +46,16 @@
 
 .getting-started .content {
 	padding: 5px;
+}
+
+@media (max-width: 1240px) {
+	.container.getting-started {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 960px) {
+	.container.getting-started {
+		grid-template-columns: auto;
+	}
 }
