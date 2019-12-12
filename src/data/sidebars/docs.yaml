@@ -41,6 +41,8 @@
         items:
             - title: API Credentials
               link: /docs/security/Credentials/
+            - title: User Management
+              link: /docs/security/UserManagement/
             - title: Search Template
               link: /docs/security/Template/
             - title: Role Based Access Control
