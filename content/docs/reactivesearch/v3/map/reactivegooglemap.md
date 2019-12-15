@@ -151,7 +151,7 @@ renderData={result => ({
         // loadMore is used to load more results.
         // renderMap is the function which is used to render Map.
 		// renderPagination is the function which is used to render Pagination like in ReactiveList.
-		// triggerAnalytics is the function which can be called to register a click analytics.
+		// triggerAnalytics is the function which can be called to register click analytics.
         return(
             <>
                 {hits.map(hit => <pre onClick={() => triggerAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
