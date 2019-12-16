@@ -44,6 +44,12 @@
 	cursor: pointer;
 }
 
+.getting-started .btn:hover {
+	text-decoration: none;
+	border: 0;
+	box-shadow: none;
+}
+
 .getting-started .content {
 	padding: 5px;
 }
