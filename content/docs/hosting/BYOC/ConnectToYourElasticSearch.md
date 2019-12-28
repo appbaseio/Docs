@@ -92,7 +92,7 @@ Open Cluster Details page, by clicking on **View Details** button and copy Clust
 
 ![](https://i.imgur.com/SS63gRQ.png)
 
-Thats all 🎉 now your ElasticSearch Cluster URL is only accessible via Appbase.io. You can use Appbase.io URL to perform various ElasticSearch operations securely.
+That's all 🎉 now your ElasticSearch Cluster URL is only accessible via Appbase.io. You can use Appbase.io URL to perform various ElasticSearch operations securely.
 
 ![](https://i.imgur.com/rlpOIj0.png)
 
