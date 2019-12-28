@@ -62,7 +62,7 @@ You should see the above screen.
 
 That's all! It take around 5-10 mins for your Arc instance to be deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with a `Bring your own cluster` tag.
 
-> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster.
+> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/BYOC/ConnectToYourElasticSearch)
 
 #### **Accessing Arc Dashboard**
 
@@ -131,18 +131,18 @@ Now, let's add TLS certificate to EC2 public DNS / custom domain
 
 ![EC2 Connect Screenshot](https://i.imgur.com/NRW1P6c.png)
 
-**Step 3-** Copy `.pem` file content to `/etc/pki/nginx/server.crt` using `vim`/`nano` editor
+**Step 3-** Copy `.pem` file content to `/etc/nginx/server.crt` using `vim`/`nano` editor
 
 ```bash
 # Open the file
-sudo vim /etc/pki/nginx/server.crt
+sudo vim /etc/nginx/server.crt
 # Paste the code
 cmd/ctrl + v
 # Save the file
 :wq
 ```
 
-**Step 4-** Copy `.key` file content to`/etc/pki/nginx/private/server.key` using similar approach mentioned above.
+**Step 4-** Copy `.key` file content to`/etc/nginx/server.key` using similar approach mentioned above.
 
 **Step 5-** Open `sudo vim /etc/nginx/nginx.conf`.
 

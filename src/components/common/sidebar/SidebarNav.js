@@ -33,7 +33,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 			{sidebarfile.groups.map((group, i) => (
 				<div key={i} className="mt1">
 					{group.items ? (
-						group.items.some(item => item.link === location.pathname) ? (
+						group.items.some(item => item.link === location.pathname || location.pathname.startsWith(item.link)) ? (
 							// Render a sidebar list with children, if any of the nested elements
 							// matches our current location, so the group needs to
 							<>
@@ -79,6 +79,22 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 										: 'midgrey hover-blue-l2'
 								}`}
 							/>
+							{location.pathname.startsWith('/docs/reactivesearch/') ? (
+								<ul className="relative sidebar-list ma0 pa0 list pl5 mt1">
+									<li>
+										<SidebarLink
+											link="/docs/reactivesearch/gettingstarted/"
+											title="Choose your UI Library"
+											linkClasses={` link ${
+												location.pathname ===
+												'/docs/reactivesearch/gettingstarted/'
+													? 'sidebarlink-active blue fw6'
+													: 'midgrey hover-blue-l2'
+											}`}
+										/>
+									</li>
+								</ul>
+							) : null}
 							<NestedSidebar nestedSidebar={nestedSidebarFile} location={location} />
 						</Fragment>
 					)}
