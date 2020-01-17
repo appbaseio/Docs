@@ -18,9 +18,34 @@ We can think of the search experience is proportional to business growth, the ri
 
 ![Appbase.io dashboard](https://i.imgur.com/We4qekB.png)
 
+
+## What can analytics help you with?
+
+### Use-cases
+- It helps with identifying content gaps (thing people search for but don't exist)
+- Identify ranking strategy gaps (if avg. click position is high, it means top results aren't relevant)
+- Identify Opportunities (popular searches with low CTR or low conversions)
+- Identify how your users are using your filtering options.
+- To know the geographical origin of the searches.
+
+### Setting baseline for setting further improvements
+- Eventually, setup A/B tests for doing further improvements.
+
+
+## What are we measuring?
+- Search counts
+- Popular searches
+- No result searches
+- Popular Filters
+- Popular Results
+- Distinct count of IP address/users
+- Popular countries
+
+
 ## Getting insights from Analytics
 
 We describe here some of the top features available to our customers.
+
 
 ### Understand the funnel of conversions
 Get insights on what users are clicking on, what position those results appear in your results, the average click position of specific search queries, and how those queries are translating to conversions. You can check the [docs](/docs/analytics/Implement/#click-analytics) to learn how to register a click event.
@@ -79,5 +104,3 @@ For example, a movie store app owner wants to filter out the analytics for the f
 ### Record Analytics
 We have created some open-source libraries that make recording most of the analytics possible out-of-the-box. And we also have the REST APIs that allow users to use them to power their own end-user analytics or internal analytics.
 Please check the [docs](/docs/analytics/Implement/) to learn how to record the appbase.io analytics.
-
-We are actively working on to get the best out of the elasticsearch, personalization and NLP based search is in our roadmap & soon will be available for the customers. We hope you like it and we'll be happy to hear the feedback from you. You can reach out to us on twitter or email us at info@appbase.io.
