@@ -41,6 +41,7 @@ Query Rule currently supports four `operators`:
 -   `starts_with`: resembles the docs that **starts with** the given query
 -   `ends_with`: resembles the docs that **ends with** the given query
 -   `contains`: resembles the docs that **contains** the given query
+-   `match_all`: can be used for setting promoted values when no query is defined, i.e. an <b><empty_query></b> condition. This is often the case when an end user is opening the search UI for the very first time. This rule can be used for promoting a default set of results.
 
 For example: After the configuring this step, what we achieve is something similar to:
 **_If_** **search query contains 'Google'**, where the `operator` is `contains` and `query` is `Google`.
