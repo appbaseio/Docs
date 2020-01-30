@@ -56,6 +56,7 @@ Example uses:
 	react={{
 		and: ['CategoryFilter', 'SearchFilter'],
 	}}
+	size={10}
 	showFilter={true}
 	filterLabel="Venue filter"
 	URLParams={false}
@@ -68,6 +69,8 @@ Example uses:
     unique identifier of the component, can be referenced in other components' `react` prop.
 -   **dataField** `String or Array`
     database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields.
+-   **size** `Number` [optional]
+    number of suggestions to show. Defaults to `10`.
 -   **aggregationField** `String` [optional]
     One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using render prop as shown:
@@ -471,7 +474,8 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
     is called with the value and the category selected via user interaction. If the search was performed by selecting the 'in all categories' suggestion, category is received as `*`. If it was performed for one of the categorized suggestion, the `category` is received. In other cases (either searching without selecting a suggestion or picking an uncategorized suggestion), `category` is received as `null`. It works only with `autosuggest` and is called whenever a suggestion is selected or a search is performed by pressing **enter** key. It also passes the `cause` of action and the `source` object if the cause of action was `'SUGGESTION_SELECT'`. The source would be `null` if a category based suggestion was selected. The possible causes are:
     -   `'SUGGESTION_SELECT'`
     -   `'ENTER_PRESS'`
-    -   `'CLEAR_VALUE'
+    -   `'CLEAR_VALUE'`
+    -   `'SEARCH_ICON_CLICK'`
 -   **onQueryChange** `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 -   **react** `Object`
