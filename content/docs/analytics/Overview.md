@@ -14,22 +14,35 @@ Search analytics allows you to keep track of the users' search activities which 
 
 In this competitive world of e-solutions where almost every e-solution has some alternatives to choose, it's important to understand the users' needs & act accordingly. Search experience plays an important role to convert new users to recurring paid customers, nobody wants to lose customers because of the less interactive search. Here we play our role, we at Appbase.io are determined to provide access to the fast and meaningful content based on the users' search queries. Appbase.io analytics offers actionable insights into how your search is performing.
 
-We can think of the search experience is proportional to business growth, the right search with the right content is the key to success. For our customers, it is important to understand their users' needs - what they want and when they want, what they like and what they dislike. To fulfill our customer needs we just launched a new analytics section in the Appbase.io dashboard which gives you access to the out of the box analytics features.
-
-![Appbase.io dashboard](https://i.imgur.com/We4qekB.png)
-
 
 ## What can analytics help you with?
 
-### Use-cases
-- It helps with identifying content gaps (thing people search for but don't exist)
-- Identify ranking strategy gaps (if avg. click position is high, it means top results aren't relevant)
-- Identify Opportunities (popular searches with low CTR or low conversions)
-- Identify how your users are using your filtering options.
-- To know the geographical origin of the searches.
+We can think of the search experience is proportional to business growth, the right search with the right content is the key to success. For our customers, it is important to understand their users' needs - what they want and when they want, what they like and what they dislike.
 
-### Setting baseline for setting further improvements
-- Eventually, setup A/B tests for doing further improvements.
+There are some most common use-cases of analytics which can help you to grow your business. 
+
+<!-- ### Use-cases -->
+
+### Identifying content gaps
+It's important to find out what your users are searching for most, whether they are able to find it easily or not. For an example, consumers of an e-commerce website are actively searching for `iPhone X` but they don't have enough stock for that product in their inventory, popular searches with low CTR or low conversions help you to identify to content gaps between your inventory/catalog and users' demands.
+
+### Identify ranking strategy 
+Higher values for average click position indicate that the top results aren't relevant i.e users are unable to find the correct results quickly. These kinds of problems can be easily solved by upgrading the search configuration.
+
+### Identify Opportunities
+By looking at click rates and conversions, you can discover and avoid lost opportunities. An example of a lost opportunity is a product that is browsed but not bought i.e searched, clicked but not converted.
+
+### Identify how your users are using your filtering options
+See which of your filters are consistently used. You can use these analytics to configure your filters better. For example, if your users are using your `size` and `color` filters but not your `price` one, then you can remove your `price` filter or display it lower on your page.
+
+Filter values also play an important role, for example, users are searching most for `red` color and `yellow` is the least searched color then you can simply improve your business by stocking less `yellow` items. 
+
+
+### Geographical origin of the searches.
+Geo metric helps you learn about who your users are and where they come from. It can help you assess the search and business needs for each country.
+
+<!-- ### Setting baseline for setting further improvements
+- Eventually, set up A/B tests for doing further improvements. -->
 
 
 ## What are we measuring?
@@ -40,6 +53,10 @@ We can think of the search experience is proportional to business growth, the ri
 - Popular Results
 - Distinct count of IP address/users
 - Popular countries
+
+Here is a glimpse of what you can expect to measure with Appbase Analytics.
+<!-- ![Appbase.io dashboard](https://i.imgur.com/We4qekB.png) -->
+![Appbase.io analytics insights](https://i.imgur.com/4ZGfj5S.png)
 
 
 ## Getting insights from Analytics
