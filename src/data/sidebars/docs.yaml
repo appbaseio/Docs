@@ -16,6 +16,15 @@
               title: "Data Browser"
             - link: /docs/data/Import/
               title: "Importing Data"
+      - group: "ReactiveSearch API"
+        icon: search
+        items:
+            - link: /docs/rsapi/Overview/
+              title: "Overview"
+            - link: /docs/rsapi/Implement/
+              title: "Implementation"
+            - link: /docs/rsapi/APIReference/
+              title: "API Reference"
       - group: "Search Relevancy"
         icon: search
         items:
