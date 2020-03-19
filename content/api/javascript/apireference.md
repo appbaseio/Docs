@@ -329,7 +329,7 @@ appbaseRef
 Promise.
 
 ### reactiveSearchv3()
-ReactiveSearch method allows you to execute the search requests securely with the help of newly launched `ReactiveSearch` API.
+ReactiveSearch method allows you to execute the search requests securely with the help of newly launched `ReactiveSearch` API. You can read about `ReactiveSearch` API [here](/docs/rsapi/Overview/).
 ```js
 appbaseRef
 	.reactiveSearchv3([{
