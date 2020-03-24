@@ -93,6 +93,7 @@ Similarily, in `OpenStreetMap`:
 
 ## Configure the analytics experience
 You can define the `appbaseConfig` prop in `Reactivebase` to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+- **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`
 - **searchStateHeader** `Boolean` If `true` then appbase.io will record the search state with every search request made from `ReactiveSearch`. Defaults to `false`.
 - **emptyQuery** `Boolean` If `false` then appbase.io will not record the analytics for the empty queries i.e `match_all` queries. Defaults to `true`.
 - **enableQueryRules** `Boolean` If `false` then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
@@ -105,9 +106,9 @@ For example in the following code, we're setting up two custom events that will 
     <Reactivebase
         appbaseConfig={{
                 customEvents: {
-                platform: "ios",
-                device: "iphoneX"
-            }
+                    platform: "ios",
+                    device: "iphoneX"
+                }
         }}
     >
     </Reactivebase>

@@ -56,6 +56,8 @@ This is the first component you will need to add when using `ReactiveSearch`.
 -   **analytics** `Boolean` [optional]
     allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.<br/>
     Check the [analytics recipe](/docs/reactivesearch/v3/advanced/analytics/) for click analytics implementation.
+    > Note:
+    > This prop has been marked as deprecated. Please use the `recordAnalytics` property in the `appbaseConfig` prop instead.
 -   **appbaseConfig** `Object` [optional]
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
@@ -63,11 +65,11 @@ This is the first component you will need to add when using `ReactiveSearch`.
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
     > Note:
-    > 1. This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
+    > This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
 - **searchStateHeader**
     Defaults to `false`. Allows recording some **advanced** search analytics (and click analytics) when setting to `true` and appbase.io is used as a backend.
     > Note:
-    > 1. This prop has been marked as deprecated. Please use the `analyticsConfig` prop instead.
+    > 1. This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
     > 2. You must use the react version >= 16.6 to make it work with click analytics.
 -   **as** `String` [optional]
     allows to use the custom html element tag, defaults to `div`.
