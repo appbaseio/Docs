@@ -354,6 +354,13 @@ For example, consider a scenario where we want to filter the search query by som
 | ------ | --------------------------- | -------- |
 | `bool` | `all`                       | false    |
 
+## enableSynonyms
+
+This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
+
+| Type   | Applicable on query of type | Required |
+| ------ | --------------------------- | -------- |
+| `bool` | `search`                    | false    |
 
 ## Settings Properties
 
