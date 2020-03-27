@@ -37,6 +37,12 @@ This is the first component you will need to add when using `ReactiveSearch`.
     app credentials as they appear on the dashboard. It should be a string of the format "username:password" and is used for authenticating the app. If you are not using an appbase.io app, credentials may not be necessary - although having an open-access Elasticsearch cluster is not recommended.
 -   **url** `String` [optional]
     URL where the Elasticsearch cluster is hosted, only needed if your app uses a non-appbase.io URL.
+-   **enableAppbase** `boolean` [optional]
+    Defaults to `false`. You can set this to `true` when you're using appbase.io alongside `ElasticSearch`. It enables the following features:
+    -   Recording of analytics events - search and clicks. [Read more](/docs/reactivesearch/v3/advanced/analytics/).
+    -   Query generation happens on server side - protecting against security concerns around query injection.
+    -   Apply query rules and functions for search queries. [Read more](/docs/search/Rules/).
+    -   Apply additional security controls to requests: authenticate via RBAC (via JWTs) or Basic Auth, ACL based access control, IP based rate limits, IP/HTTP Referers whitelisting, fields filtering. [Read more](/docs/security/Role/).
 -   **headers** `Object` [optional]
     set custom headers to be sent with each server request as key/value pairs. For example:
 
