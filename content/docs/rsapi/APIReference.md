@@ -1,7 +1,7 @@
 ---
 title: 'API Reference'
-meta_title: 'ReactiveSearch API - API Reference'
-meta_description: 'ReactiveSearch API allows you to search securely.'
+meta_title: 'ReactiveSearch API Reference'
+meta_description: 'ReactiveSearch API Reference. Learn about all the props and how to use them.'
 keywords:
     - concepts
     - appbase
