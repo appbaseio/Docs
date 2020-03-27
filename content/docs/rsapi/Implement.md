@@ -1,7 +1,7 @@
 ---
 title: 'Implement ReactiveSearch API'
 meta_title: 'ReactiveSearch API - Implementation guide'
-meta_description: 'ReactiveSearch API - Implementation guide. A offers a declarative interface to querying ElasticSearch, prevents query injections and lets you extend the API via Query Rules and Functions. '
+meta_description: 'ReactiveSearch API - Implementation guide. Learn more about the API concepts and see examples of each type of API.'
 keywords:
     - concepts
     - appbase
