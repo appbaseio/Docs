@@ -1,7 +1,7 @@
 ---
 title: 'Implement ReactiveSearch API'
 meta_title: 'ReactiveSearch API - Implementation guide'
-meta_description: 'ReactiveSearch API allows you to search securely.'
+meta_description: 'ReactiveSearch API - Implementation guide. A offers a declarative interface to querying ElasticSearch, prevents query injections and lets you extend the API via Query Rules and Functions. '
 keywords:
     - concepts
     - appbase
@@ -11,25 +11,30 @@ sidebar: 'docs'
 ---
 
 ## Concepts
-The `ReactiveSearch` API has been derived from the `ReactiveSearch` library so if you're using `ReactiveSearch` in your projects then you will feel right at home because all APIs naming conventions are same. If you haven't used `ReactiveSearch` before then don't worry we'll cover all aspects of `RS API` in this document.
+
+The `ReactiveSearch` API is derived from the `ReactiveSearch` library. If you're already using `ReactiveSearch` in your projects, then you will feel right at home because API maintains a 100% prop parity with the library. Even if you haven't worked with `ReactiveSearch` before, you should be able to follow along as we'll cover all aspects of `ReactiveSearch API` in this document.
 
 ### Query Identifier(ID)
-Every query in the `RS API` must have the `id` property defined, `id` is a unique identifier of each query which can be referenced in the `react` property of other queries to get a combined effect of multiple queries. We'll talk about the usage of `react` property later and will explain how to reference `id` in `react` property to combine multiple queries. The `id` property is also useful to access the response for a particular query if multiple queries are defined.
+
+Every query made via the `RS API` must have an `id` property defined. `id` is a unique identifier for each query. The `id` property is also useful to access the response for a particular query if multiple queries are defined within a single ReactiveSearch API call. The id can be referenced in the `react` property of any other queries that wish to also apply this query. We'll talk more about the usage of `react` property later and will explain how to reference an `id` in `react` property to combine multiple queries.
 
 ### Type of Queries
-`RS API` has four kind of built-in queries for different use-cases, you can decide that which query has to be used by defining the `type` property in the query object.
+
+`ReactiveSearch API` has four types of queries, each serving a different use-case. You can decide that which query has to be used by defining the `type` property in the query object.
 
 #### Search (default)
-Search queries allow you to find documents for which the `value` matches any field defined in the `dataField` property.
+
+Search queries allow you to find documents for which the `value` matches in any of the fields specified in its `dataField` property. Search queries can take into account the text analysis process, partial words, as-you-type queries, can handle typo tolerance, offer response highlighting and search on synonyms. All of these are configurable by the search query's properties.
 
 Example uses:
 
-- Searching for a rental listing by its name or description field.
+- Searching for a rental listing by name or description field.
 - Creating an e-commerce search box for finding products by their listing properties.
 
 
 #### Term
-A `term` query can be used to execute the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) query of Elasticsearch. Aggregations are useful to get the aggregated results for a particular `dataField`.
+
+A `term` query is used for executing the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) query of Elasticsearch. Aggregations are useful to get the aggregated results for a particular `dataField`.
 It can also be used to filter the `documents` for other queries if referenced in `react` prop and the `value` property is defined. 
 
 Example uses:
@@ -67,6 +72,7 @@ Example uses:
     }]
 }
 ```
+
 In the above example, you can observe that instead of defining the query DSL we just need to define some properties and rest of things will be handled by Appbase. The above query will return `10` documents for which the `title` fields match with the search term `iphone`. The response will have the following structure:
 
 ```js
@@ -223,9 +229,9 @@ curl --location --request POST 'http://{{user}}:{{password}}@{{host}}/{{index}}/
     ]
 }'
 ```
-### Front-end libraries
+### Frontend libraries
 
-We have a set of front-end libraries for different platforms that can be used directly to consume the `ReactiveSearch API`. Most of the libraries have a property called `enableAppbase` which can be set to `true` to use the `RS API` instead of `Elasticsearch API`.
+We have a set of frontend libraries for different platforms that can be used directly to consume the `ReactiveSearch API`. Most of the libraries have a property called `enableAppbase` which can be set to `true` to use the `RS API` instead of `Elasticsearch API`.
 
 Here is a list of all front-end libraries available for different platforms:
 
