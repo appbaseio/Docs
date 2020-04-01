@@ -173,7 +173,7 @@ The above endpoints accept the following values as headers:
 ## Advanced Settings
 
 
-### How to enable / disable Empty Query
+### How To Enable / Disable Empty Query
 By default, a library like ReactiveSearch shows you a set of results. even if the search hasn't been performed. Technically it calls the `match_all` query which can be considered as an empty query. By default, we record the analytics for empty queries too. You can find out about it in the Appbase.io dashboard with the `<empty_query>` key.
 
 You can disable this behavior in `ReactiveSearch` by defining the `appbaseConfig` prop in the `ReactiveBase` and set the `emptyQuery` as `false`.
@@ -188,3 +188,44 @@ Don't worry! `ReactiveSearch` handles this for you. You just need to set the `an
 
 - When a user types something in sequence, for example: `b→bo→boo→book`, we understand the context and instead of creating different search sessions, we count it as a search session with search key stored as `book`.
 - By default, the search context is valid for up to `30s`. For example, `b→bo→boo...30 seconds...->book` will be recorded as two different searches with keys as `boo` & `book`.
+
+## How Do We Record A User Session?
+- A user session starts when someone hits the Appbase.io search request from any platform.
+- A user session automatically ends after `30` minutes but if someone is continuously interacting with the search then we change the end duration to the next `30` minutes from the last interaction. 
+
+For example:
+
+=> Bob made the first request at `10:00` then the session will end at `10:30`,
+
+=> If Bob has made some click or searched for a new term at `10:05` then the session will be extended till `10:35`.
+
+- We keep track of user sessions with the help of `IP` address. However, if you're using the `User ID` in the `search` request then it'll be used instead of `IP`. So, a change in the `User ID` in the search request will start a new session.
+- A user session defaults to `30` minutes but if you want to track users accurately then we recommend ending it wisely based on your use-cases. If you're using any of the appbase.io front-end libraries for your search UI then you don't need to worry about the session handling, they cover the most common use-cases. A session will automatically get canceled when the following conditions met:
+1. On tab close
+2. On window close
+3. On redirect
+
+You can use the [API](https://arc-api.appbase.io/?version=latest#ae6de2db-1e01-4b0d-a7d2-f8c0d1bc45fd) to end the user session for some custom scenarios, for example:
+1. End the user session if a user logs out.
+2. End the current session if a user logs in, so logged in user can be tracked in a new session.
+
+```bash
+curl --location --request POST 'http://{{user}}:{{password}}@{{host}}/{{index}}/_analytics/end_user_session'
+```
+
+## What Is A Bounce For Appbase.io Search Users?
+
+> Bounce represents the percentage of visitors who enter the site and then leave ("bounce") rather than continuing to view other pages within the same site.
+
+That's what [wikipedia](https://en.wikipedia.org/wiki/Bounce_rate) says about `Bounce Rate` but if we talk about it in the context of appbase.io which is all about `search` then a `Bounce` user can be defined as the `user` who visited your search page (the page which makes at least one search request to the appbase.io) and then leave without doing any further interactions with **search**.
+
+A search interaction can be defined as:
+- A new search request with a different search term, for example, user visited the search page and then searched for `books`.
+- A click has been made on the search `suggestions` or search `results`.
+- A new filter has been selected by a user.
+
+So, basically a user will be considered as the `bounce` user if they don't perform any of the above tasks.
+
+The bounce rate represents the percentage of users who have visited your search page and left without performing any search action.
+
+> Bounce Rate = Number of `bounce` user sessions / Total user sessions * 100 

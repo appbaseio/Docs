@@ -37,6 +37,9 @@ With appbase.io analytics, you can now understand your search’s ROI impact thr
 - Popular Results
 - Distinct count of IP address/users
 - Popular countries
+- User sessions
+- User sessions' length
+- Bounce rate
 
 Here is a glimpse of what you can expect to measure with Appbase.io Analytics.
 ![Appbase.io analytics insights](https://i.imgur.com/4ZGfj5S.png)
@@ -98,6 +101,27 @@ Search Latency view lets you visualize your query distribution and show you slow
 
 ![Search Latency](https://miro.medium.com/max/2062/1*Tq_4WZAQFeqTNTHArmmS0g.png)
 
+#### User Metrics
+
+![alt User Metrics](https://i.imgur.com/PIJUb9U.png)
+
+**Total Users**
+helps you to find the total number of distinct users who have performed at least one search in your application.
+
+**Total Sessions**
+represents the total number of user sessions, a user session can be defined as a group of `search` interactions one user takes in the given time frame on your application.
+
+**Session Duration(Avg.)**
+ helps you to identify how much time a user is spending on your application. A user session has the default duration of `30` minutes but we recommend changing your session timeout handling to track users accurately. You can read more about it [here](http://localhost:8000/docs/analytics/Implement/#how-do-we-record-a-user-session).
+
+**Bounce Rate (%)**
+represents the percentage of users who visited your search page (the page which makes at least one search request to appbase.io) and then leave without interacting with the search. Read more about the bounce rate at [here](http://localhost:8000/docs/analytics/Implement/#what-is-a-bounce-for-appbaseio-search-users).
+For examples,
+- No clicks have been made
+- No filters have been changed
+- No query has been searched
+
+> Bounce rate helps you to understand the content gaps between what your users want and what you serve, a higher value represents the less interaction with search which means you should refine your search relevancy.
 
 #### Tracking Custom Events With Analytics
 Custom Analytics allows you to go one step further by recording additional events when recording analytics. These events can now be filtered from within all the above search views giving you an extra layer of context about your users.
