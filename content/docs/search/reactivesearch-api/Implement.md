@@ -20,7 +20,7 @@ Every query made via the `RS API` must have an `id` property defined. `id` is a 
 
 ### Type of Queries
 
-`ReactiveSearch API` has four types of queries, each serving a different use-case. You can decide that which query has to be used by defining the `type` property in the query object.
+`ReactiveSearch API` has four types of queries, each serving a different use-case. You can decide which query has to be used by defining the `type` property in the query object.
 
 #### Search (default)
 
@@ -31,33 +31,101 @@ Example uses:
 - Searching for a rental listing by name or description field.
 - Creating an e-commerce search box for finding products by their listing properties.
 
+**Example**
+
+The below query returns all the books for which `original_title` & `original_description` fields match with the value as `harry`.
+
+```js
+{
+    id: "book_search",
+    dataField: ["original_title.keyword", "original_description.keyword"],
+    value: "harry"
+}
+```
+
 
 #### Term
 
-A `term` query is used for executing the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) query of Elasticsearch. Aggregations are useful to get the aggregated results for a particular `dataField`.
-It can also be used to filter the `documents` for other queries if referenced in `react` prop and the `value` property is defined. 
+Term queries can be used to get the documents that contain an `exact` term in a provided `dataField`. You can use the term query to find documents based on a precise value such as a price, a product ID, or a username. Term queries can be used to `filter` the search results with the help of [react](/docs/search/reactivesearch-api/APIReference#react) property. For example, display the books by particular `authors` in a book search app. 
+
+Term queries can also be used to get the `aggregated data` for a particular `dataField`. For example, to display the list of `authors` for a book store app.
 
 Example uses:
 
 - Select category items from a list of categories on an e-commerce website.
 - Selecting airlines to fly by in a flight booking experience.
-- Filter the books by authors in the book search app.
+
+**Example**
+
+The below query returns all the books for which `authors` field value is `J.K. Rowling`. Please note that the `term` query has been used as a filter to the `search` query so we set `execute` as `false` i.e apply the filter without executing the query.
+
+```js
+[
+    {
+        id: "book_search",
+        dataField: ["authors.keyword"],
+        react: [{
+            and: "author_search"
+        }]
+    },
+    {
+        id: "author_search",
+        type: "term",
+        dataField: ["authors.keyword"],
+        value: "J.K. Rowling",
+        execute: false
+    }
+]
+```
 
 #### Range
-A `range` query can be used to execute the `range` query of `Elasticsearch` or apply the `range` filters on other queries with the help of `react` property.
+Range queries are useful when you want to get the documents that contain terms within a provided range.
 
 Example uses:
 
 - Filtering products from a price range in an e-commerce shopping experience.
 - Filtering flights from a range of departure and arrival times.
 
+**Example**
+
+The below query returns all the books for which the `price` field has a value between `200` to `4200`.
+
+```js
+    {
+        id: "book_search",
+        type: "range",
+        dataField: ["price"],
+        value: {
+            start: 200,
+            end: 4200
+        },
+    }
+```
+
 #### Geo
-A `geo` query can be used to execute the `geo` query of `Elasticsearch` or apply the `geo` filters on other queries with the help of `react` property.
+Geo queries allow you to filter the documents that include only hits that exist within a specific distance from a geo point.
 
 Example uses:
 
 - Finding restaurants within walking distance from your location.
 - Discovering things to do near a landmark.
+
+**Example**
+
+The below query returns all the restaurants within the `50` miles to the selected location by comparing the `location` field.
+
+```js
+    {
+        id: "restaurant_search",
+        type: "geo",
+        dataField: ["location"],
+        value: {
+            "distance": 50,
+            "unit": "mi",
+            "location": "22.3184816, 73.17065699999999"
+        }
+    }
+```
 
 ### How to define a query?
  Let's have a look at the simple search query with `ReactiveSearch` API to retrieve all the results for which the `title` field matches with `iphone`.
