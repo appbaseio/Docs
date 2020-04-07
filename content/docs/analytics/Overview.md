@@ -112,16 +112,17 @@ helps you to find the total number of distinct users who have performed at least
 represents the total number of user sessions, a user session can be defined as a group of `search` interactions one user takes in the given time frame on your application.
 
 **Session Duration(Avg.)**
- helps you to identify how much time a user is spending on your application. A user session has the default duration of `30` minutes but we recommend changing your session timeout handling to track users accurately. You can read more about it [here](http://localhost:8000/docs/analytics/Implement/#how-do-we-record-a-user-session).
+helps you to identify how much time a user is spending on your application. Recording user's session duration helps us to provide the search engagement metrics: How engaging is the search?
+You can read more about the user session at [here](/docs/analytics/Implement/#how-do-we-record-a-user-session).
 
 **Bounce Rate (%)**
-represents the percentage of users who visited your search page (the page which makes at least one search request to appbase.io) and then leave without interacting with the search. Read more about the bounce rate at [here](http://localhost:8000/docs/analytics/Implement/#what-is-a-bounce-for-appbaseio-search-users).
+represents the percentage of users who visited your search page (the page which makes at least one search request to appbase.io) and then leave without interacting with the search. Read more about the bounce rate at [here](/docs/analytics/Implement/#what-is-a-bounce-for-appbaseio-search-users).
 For examples,
 - No clicks have been made
 - No filters have been changed
 - No query has been searched
 
-> Bounce rate helps you to understand the content gaps between what your users want and what you serve, a higher value represents the less interaction with search which means you should refine your search relevancy.
+> Bounce rate helps you to understand the content gaps between what your users want and what you serve, a higher value represents the less interaction with search which means you should refine your [search relevancy](/docs/search/Mappings/).
 
 #### Tracking Custom Events With Analytics
 Custom Analytics allows you to go one step further by recording additional events when recording analytics. These events can now be filtered from within all the above search views giving you an extra layer of context about your users.

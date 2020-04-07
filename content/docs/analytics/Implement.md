@@ -200,18 +200,7 @@ For example:
 => If Bob has made some click or searched for a new term at `10:05` then the session will be extended till `10:35`.
 
 - We keep track of user sessions with the help of `IP` address. However, if you're using the `User ID` in the `search` request then it'll be used instead of `IP`. So, a change in the `User ID` in the search request will start a new session.
-- A user session defaults to `30` minutes but if you want to track users accurately then we recommend ending it wisely based on your use-cases. If you're using any of the appbase.io front-end libraries for your search UI then you don't need to worry about the session handling, they cover the most common use-cases. A session will automatically get canceled when the following conditions met:
-1. On tab close
-2. On window close
-3. On redirect
 
-You can use the [API](https://arc-api.appbase.io/?version=latest#ae6de2db-1e01-4b0d-a7d2-f8c0d1bc45fd) to end the user session for some custom scenarios, for example:
-1. End the user session if a user logs out.
-2. End the current session if a user logs in, so logged in user can be tracked in a new session.
-
-```bash
-curl --location --request POST 'http://{{user}}:{{password}}@{{host}}/{{index}}/_analytics/end_user_session'
-```
 
 ## What Is A Bounce For Appbase.io Search Users?
 
