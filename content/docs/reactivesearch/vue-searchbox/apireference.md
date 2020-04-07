@@ -42,7 +42,13 @@ Example uses of searchbox UI:
 <vue-searchBox
 	app="good-books-ds"
 	:appbaseConfig="{
-        recordAnalytics: true
+        recordAnalytics: true,
+        enableQueryRules: true,
+        userId: '192.168.0.102',
+        customEvents: {
+           platform: "ios",
+           device: "iphoneX"
+        }
      }"
 	credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
 	:dataField="[
@@ -140,8 +146,12 @@ Example uses of searchbox UI:
     > See impact of aggregationField with these example for [Vue](/docs/reactivesearch/vue/advanced/groupingresults#how).
 
 -   **appbaseConfig** `Object` [optional]
-    allows you to customize the analytics experience when appbase.io is used as a backend.
-    Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
+    allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+
+    - **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+    - **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    - **userId** `String` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+    - **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 
 *   **nestedField** `String` [optional]
     Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
