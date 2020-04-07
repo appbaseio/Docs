@@ -88,8 +88,9 @@ const searchbase = new SearchBase(props);
 
 -   **credentials** `string`
     Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io app, you will find credentials under your [API credentials page](https://dashboard.appbase.io/app?view=credentials). If you are not using an appbase.io app, credentials may not be necessary - although having an open access to your Elasticsearch cluster is not recommended.
--   **analytics** `boolean`
-    allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`. Check the [analytics recipe](/docs/reactivesearch/v3/advanced/analytics/) for click analytics implementation.
+-   **appbaseConfig** `Object` [optional]
+    allows you to customize the analytics experience when appbase.io is used as a backend.
+    Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
 -   **headers** `Object`
     set custom headers to be sent with each server request as key/value pairs. For example:
 
@@ -307,7 +308,9 @@ const searchbase = new Searchbase({
     index: "appname",
     url: "https://scalr.api.appbase.io",
     credentials: "abcdef123:abcdef12-ab12-ab12-ab12-abcdef123456",
-    analytics: true,
+    appbaseConfig: {
+        recordAnalytics: true,
+    },
     headers: {
         secret: "searchbase-is-awesome",
     },
@@ -407,20 +410,6 @@ These properties are automatically calculated or managed by the `Searchbase` cla
     -   **`raw`**: `Object` Response returned by ES `composite aggs` query in the raw form.
     -   **`rawData`**: `object`  An object of raw response as-is from elasticsearch query.
     -   **`afterKey`**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the `afterKey` parameter to retrieve the next results.
--   **analyticsInstance** `Object`
-    An instance of the [Appbase.io analytics library](https://github.com/appbaseio/analytics) which can be used to record click events, custom events & conversions for the appbase.io applications. For example, check how it can be used to record a click event.
-    ```js
-    const searchbase = new Searchbase(config);
-
-    // Record a result click at first position
-    searchbase.analyticsInstance.registerClick(1);
-
-    // Record a suggestion click at first position
-    searchbase.analyticsInstance.registerClick(1, true);
-
-    // Record conversion
-    searchbase.analyticsInstance.registerConversion();
-    ```
 -   **query** `Object`
     The ElasticSearch query that is to be executed
 -   **suggestionsQuery** `Object`
