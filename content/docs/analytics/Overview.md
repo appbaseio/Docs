@@ -14,7 +14,7 @@ sidebar: 'docs'
 
 Appbase.io’s Search Analytics enables businesses to analyze their search volume, conversion opportunities (popular searches), content gaps— in effect helping them understand the ROI impact of search and highlighting areas where it can be improved.
 
-![](/images/analytics.png)
+![Overview](https://i.imgur.com/RS8FhgN.png)
 
 In this competitive world of e-solutions where almost every e-solution has alternatives to choose, it's important to understand the users' needs and act accordingly. A faster and relevant search experience directly contributes to sales. A relevant search experience increases user engagement. The first step in understanding how well your search is engaging and converting is to start measuring the underlying key metrics.
 
@@ -42,7 +42,7 @@ With appbase.io analytics, you can now understand your search’s ROI impact thr
 - Bounce rate
 
 Here is a glimpse of what you can expect to measure with Appbase.io Analytics.
-![Appbase.io analytics insights](https://i.imgur.com/4ZGfj5S.png)
+![Appbase.io analytics insights](https://i.imgur.com/0upWpoG.png)
 
 
 ## Getting Insights From Analytics
@@ -103,7 +103,7 @@ Search Latency view lets you visualize your query distribution and show you slow
 
 #### User Metrics
 
-![alt User Metrics](https://i.imgur.com/PIJUb9U.png)
+![alt User Metrics](https://i.imgur.com/d1dEl1S.png)
 
 **Total Users**
 helps you to find the total number of distinct users who have performed at least one search in your application.
