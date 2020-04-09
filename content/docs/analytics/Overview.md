@@ -111,13 +111,13 @@ helps you to find the total number of distinct users who have performed at least
 **Total Sessions**
 represents the total number of user sessions, a user session can be defined as a group of `search` interactions one user takes in the given time frame on your application.
 
-**Session Duration(Avg.)**
-helps you to identify how much time a user is spending on your application. Recording user's session duration helps us to provide the search engagement metrics: How engaging is the search?
+**Avg Session Duration**
+helps you to identify how much time a user is spending on your application. Recording the user's session duration helps us to provide the search engagement metrics: How engaging is the search?
 You can read more about the user session at [here](/docs/analytics/Implement/#how-do-we-record-a-user-session).
 
-**Bounce Rate (%)**
+**Bounce Rate**
 represents the percentage of users who visited your search page (the page which makes at least one search request to appbase.io) and then leave without interacting with the search. Read more about the bounce rate at [here](/docs/analytics/Implement/#what-is-a-bounce-for-appbaseio-search-users).
-For examples,
+For example,
 - No clicks have been made
 - No filters have been changed
 - No query has been searched

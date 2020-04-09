@@ -191,26 +191,24 @@ Don't worry! `ReactiveSearch` handles this for you. You just need to set the `an
 
 ## How Do We Record A User Session?
 - A user session starts when someone hits the Appbase.io search request from any platform.
-- A user session automatically ends after `30` minutes but if someone is continuously interacting with the search then we change the end duration to the next `30` minutes from the last interaction. 
+- A session is kept active for up to 30 minutes after the last interaction, i.e. if a user closes a tab and comes back within 30 minutes - the old session is refreshed for another 30 minutes instead of a new session getting created. However, when accounting for the session end time, appbase.io uses the last user interaction time by the end-user. 
 
 For example:
 
-=> Bob made the first request at `10:00` then the session will end at `10:30`,
+=> Bob made the first request at `10:00` then the session will be active till `10:30`,
 
-=> If Bob has made some click or searched for a new term at `10:05` then the session will be extended till `10:35`.
+=> If Bob has made some click or searched for a new term at `10:05` then the active session will be extended to `10:35` and the session duration will be recorded as `5 mins` (last interaction time **10:05** - session start time **10:00**)).
 
 - We keep track of user sessions with the help of `IP` address. However, if you're using the `User ID` in the `search` request then it'll be used instead of `IP`. So, a change in the `User ID` in the search request will start a new session.
 
 
 ## What Is A Bounce For Appbase.io Search Users?
 
-> Bounce represents the percentage of visitors who enter the site and then leave ("bounce") rather than continuing to view other pages within the same site.
-
-That's what [wikipedia](https://en.wikipedia.org/wiki/Bounce_rate) says about `Bounce Rate` but if we talk about it in the context of appbase.io which is all about `search` then a `Bounce` user can be defined as the `user` who visited your search page (the page which makes at least one search request to the appbase.io) and then leave without doing any further interactions with **search**.
+In the context of appbase.io which is all about search, a `Bounce` user can be defined as the `user` who visited your search page (the page which makes at least one search request to the appbase.io) and then leave without doing any further interactions with **search**.
 
 A search interaction can be defined as:
-- A new search request with a different search term, for example, user visited the search page and then searched for `books`.
-- A click has been made on the search `suggestions` or search `results`.
+- A new search request with a different search term, for example, a user visited the search page and then searched for `books`.
+- A click has been made on the `suggestions` or searched `results`.
 - A new filter has been selected by a user.
 
 So, basically a user will be considered as the `bounce` user if they don't perform any of the above tasks.
