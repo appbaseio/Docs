@@ -30,16 +30,14 @@ With appbase.io analytics, you can now understand your search’s ROI impact thr
 5. Tailor search for your business needs - You can create custom segments (paid users, mobile users, user on a 3G network) that are meaningful for your business and additionally filter all of the above analytics to glean more specific insights.
 
 ## What are we measuring?
-- Search counts
+- User sessions summary - Total Users, Total Sessions, Bounce Rate and Avg Session Duration
+- Search summary - A Searches > Clicks > Conversions funnel
 - Popular searches
 - No result searches
 - Popular Filters
 - Popular Results
 - Distinct count of IP address/users
 - Popular countries
-- User sessions
-- User sessions' length
-- Bounce rate
 
 Here is a glimpse of what you can expect to measure with Appbase.io Analytics.
 ![Appbase.io analytics insights](https://i.imgur.com/0upWpoG.png)
@@ -49,7 +47,29 @@ Here is a glimpse of what you can expect to measure with Appbase.io Analytics.
 
 With appbase.io’s analytics views, you can now understand your search’s ROI impact through the funnel of conversions. Drill down into the search analytics, discover content gaps and unlock new monetization opportunities.
 
+#### User Metrics
+
+![alt User Metrics](https://i.imgur.com/d1dEl1S.png)
+
+**Total Users**
+
+Total Users represent the total distinct users who have performed at least one search.
+
+**Total Sessions**
+
+Total Sessions represent the total number of user sessions.
+
+**Bounce Rate**
+
+The bounce rate represents the percentage of user sessions that have bounced relative to the total user sessions. Read more about the bounce rate over [here](/docs/analytics/Implement/#how-is-the-bounce-rate-calculated).
+
+**Avg Session Duration**
+
+Avg Session Duration represents the average time a user is spending on your search. Read more about it over [here](/docs/analytics/Implement/#how-do-we-record-a-user-session).
+
+
 #### Popular Searches
+
 appbase.io shows the most popular search terms in a given time interval. This lets you understand:
 1. Merchandising opportunities — Feature products and monetize your search.
 2. Lost opportunities — Popular searches with low click rates. Perhaps, the results aren’t relevant or some key results are missing.
@@ -101,28 +121,6 @@ Search Latency view lets you visualize your query distribution and show you slow
 
 ![Search Latency](https://miro.medium.com/max/2062/1*Tq_4WZAQFeqTNTHArmmS0g.png)
 
-#### User Metrics
-
-![alt User Metrics](https://i.imgur.com/d1dEl1S.png)
-
-**Total Users**
-helps you to find the total number of distinct users who have performed at least one search in your application.
-
-**Total Sessions**
-represents the total number of user sessions, a user session can be defined as a group of `search` interactions one user takes in the given time frame on your application.
-
-**Avg Session Duration**
-helps you to identify how much time a user is spending on your application. Recording the user's session duration helps us to provide the search engagement metrics: How engaging is the search?
-You can read more about the user session at [here](/docs/analytics/Implement/#how-do-we-record-a-user-session).
-
-**Bounce Rate**
-represents the percentage of users who visited your search page (the page which makes at least one search request to appbase.io) and then leave without interacting with the search. Read more about the bounce rate at [here](/docs/analytics/Implement/#what-is-a-bounce-for-appbaseio-search-users).
-For example,
-- No clicks have been made
-- No filters have been changed
-- No query has been searched
-
-> Bounce rate helps you to understand the content gaps between what your users want and what you serve, a higher value represents the less interaction with search which means you should refine your [search relevancy](/docs/search/Mappings/).
 
 #### Tracking Custom Events With Analytics
 Custom Analytics allows you to go one step further by recording additional events when recording analytics. These events can now be filtered from within all the above search views giving you an extra layer of context about your users.
