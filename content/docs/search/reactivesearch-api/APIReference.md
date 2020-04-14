@@ -132,22 +132,32 @@ The value should be an `Object` in the following shape:
 ```
 > Note: The `geoBoundingBox` property can not be used with `location` property, if both are defined than `geoBoundingBox` value will be ignored.
 
-The below example represents the `geo` value format for a geo distance query:
+The below example represents a **geo distance** query:
 
 ```js
     {
-        "distance":10,
-        "location":"22.3184816, 73.17065699999999",
-        "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        "id": "distance_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "distance":10,
+            "location":"22.3184816, 73.17065699999999",
+            "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        }
     }
 ```
 
-The below example represents the `geo` value format for a geo bounding box query:
+The below example represents a **geo bounding box** query:
 ```js
     {
-        "geoBoundingBox": {
-            "topLeft": "40.73, -74.1",
-            "bottomRight": "40.01, -71.12",
+        "id": "bounding_box_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "geoBoundingBox": {
+                "topLeft": "40.73, -74.1",
+                "bottomRight": "40.01, -71.12",
+            }
         }
     }
 ```
