@@ -55,7 +55,7 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 		<img class="w10 mb1" src="/images/apps.png" />
 		Apps
 	</a>
-	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem;height: 120px;width:120px;" href="/docs/hosting/Cluster">
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem;height: 120px;width:120px;" href="/docs/hosting/clusters">
 		<img class="w10 mb1" src="/images/clusters.png" />
 		Clusters
 	</a>
@@ -67,6 +67,6 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 
 | Hosting                                     | Description                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Apps](/docs/hosting/Apps)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
-| [Clusters](/docs/hosting/Clusters)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
+| [Apps](/docs/hosting/apps)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
+| [Clusters](/docs/hosting/clusters)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
 | [Bring Your Own Cluster](docs/hosting/BYOC) | Already have an ElasticSearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |

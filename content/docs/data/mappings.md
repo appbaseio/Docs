@@ -10,13 +10,11 @@ keywords:
 sidebar: 'docs'
 ---
 
-Mapping is the process of defining how a JSON document, and the fields it contains, are stored and indexed in an ElasticSearch / Appbase.io. Each index has one mapping type which determines how the document will be indexed. There are various [field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) offered by ElasticSearch which you can assign to the fields that will be stored in ElasticSearch.
+Mapping is the process of defining how a JSON document and the fields it contains are stored and indexed in ElasticSearch. There are various [field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) offered by ElasticSearch which you can assign to the fields that will be stored in ElasticSearch.
 
-Mappings are immutable in ElasticSearch. Once a mapping is generated for a field, it can be only modified by creating new indexing and migrating the data to the new index with newly defined mapping. This is the biggest pain while using ElasticSearch.
+Mappings are immutable in ElasticSearch. Once a mapping type is assigned to a field, it can be only modified by re-indexing the data with the new mapping type.
 
-_For example if I want to change `long` field to a `string` field then you will have to create new index. Add mapping for that field + add setting which will convert existing `long` data into `string`. And now you will have to migrate existing data to new index 😞_
-
-This is no longer going to be pain, if you are using Appbase.io. We have **App Settings** which now allows you to change your data type for fields which are already indexed + add new fields with correct mappings.
+Appbase.io's App Settings UI lets you edit mappings and it manages the process of re-indexing data in the background.
 
 ![](https://i.imgur.com/ajFgt2r.gif)
 
