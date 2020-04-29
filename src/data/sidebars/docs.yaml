@@ -23,8 +23,6 @@
         items:
             - link: /docs/search/relevancy/
               title: "Search Relevancy"
-            - link: /docs/search/tester/
-              title: "Search Relevancy Tester"
             - link: /docs/search/reactivesearch-api/
               title: "ReactiveSearch API"
               items:

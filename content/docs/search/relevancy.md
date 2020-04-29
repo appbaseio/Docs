@@ -14,10 +14,6 @@ A relevant search meets an end user's expectations every single time. However, b
 
 Appbase.io now offers **Search Relevancy** - a control plane containing a suite of GUIs that enable user to improve their search relevancy settings without requiring any guesswork. Combined with Actionable Analytics, Search Relevancy enables you to optimize your search's relevance in a data-driven manner.
 
-The **Search Preview UI** is at the core of Search Relevancy views. It lets you test your configured search, aggregation, results settings and review them prior to setting them live.
-
-![](https://i.imgur.com/088vv3q.png)
-
 > **Note:** Search Relevancy control plane and APIs are available for all Production and Enterprise plan users.
 
 ## Language Settings
@@ -188,3 +184,19 @@ Learn more about query rules over [here](/docs/search/rules).
 Functions allow you to run user-defined functions to extend the search engine. Read more about them over [here](/docs/search/functions).
 
 ![](https://imgur.com/4LPHTlw.png)
+
+## Test Search Relevancy
+
+The **Search Preview UI** is at the core of Search Relevancy views. It lets you test your configured search, aggregation, results settings and review them prior to setting them live.
+
+![](https://i.imgur.com/088vv3q.png)
+
+You can see it present on all the views with a `Test Search Relevancy` button.
+
+**Raw view:** The Raw view lets you see the underlying search API call as well as modify it and see the response as a raw JSON. Under the hood, appbase.io uses the [ReactiveSearch API](/docs/search/reactivesearch-api/) to make the search requests.
+
+![](https://i.imgur.com/j2K7nYB.png)
+
+You can export the Search Preview UI using the `Open in Codesandbox` button. This produces a React boilerplate codebase built using [ReactiveSearch](https://github.com/appbaseio/reactivesearch).
+
+![](https://i.imgur.com/DuVJ07V.png)

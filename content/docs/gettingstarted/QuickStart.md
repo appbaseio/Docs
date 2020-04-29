@@ -14,7 +14,7 @@ sidebar: 'docs'
 With appbase.io, you can:
 
 -   Import your data from any sources via dashboard or CLI or REST API,
--   Test search relevancy visually. [Read more here](https://docs.appbase.io/docs/search/Preview)
+-   Test search relevancy visually. [Read more here](/docs/search/relevancy)
 -   Build production-grade search UIs using one of:
     -   our UI component libraries,
     -   our SDKs,
