@@ -12,7 +12,7 @@ sidebar: 'docs'
 
 This guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.
 
-`ReactiveSearch API` request body can be divided in to two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.
+`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.
 
 ```js
 {
@@ -46,6 +46,9 @@ database field(s) to be queried against. Accepts an `Array`, useful for applying
 | Type            | Applicable on query of type | Required |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | true     |
+
+> Note:
+> Multiple `dataFields` are not applicable for `term` and `geo` queries.
 
 ### fieldWeights
 
@@ -98,7 +101,7 @@ The value can be a `string` or `Array<string>`.
 
 The value should be an `Object` in the following shape:
 
-```ts
+```js
 {
    "start": int|string, // optional
    "end": int|string, // optional
@@ -114,20 +117,48 @@ The value should be an `Object` in the following shape:
 
 The value should be an `Object` in the following shape:
 
-```ts
+```js
 {
-   "distance": int, // required
-   "unit": string, // required
-   "location": string // required
+   // The following properties can be used to get the results within a particular distance and location.
+   "distance": int,
+   "location": string, // must be in `{lat}, {lon}` format
+   "unit": string,
+   // The following properties can be used to get the results for a particular geo bounding box.
+   "geoBoundingBox": {
+       topLeft: string, // required, must be in `{lat}, {lon}` format
+       bottomRight: string, // required, must be in `{lat}, {lon}` format
+   }
 }
 ```
-For example:
+> Note: The `geoBoundingBox` property can not be used with `location` property, if both are defined than `geoBoundingBox` value will be ignored.
+
+The below example represents a **geo distance** query:
 
 ```js
     {
-        "distance":10,
-        "location":"22.3184816, 73.17065699999999",
-        "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        "id": "distance_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "distance":10,
+            "location":"22.3184816, 73.17065699999999",
+            "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        }
+    }
+```
+
+The below example represents a **geo bounding box** query:
+```js
+    {
+        "id": "bounding_box_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "geoBoundingBox": {
+                "topLeft": "40.73, -74.1",
+                "bottomRight": "40.01, -71.12",
+            }
+        }
     }
 ```
 ### size
@@ -144,7 +175,18 @@ Starting document offset. Defaults to `0`.
 
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
-| `int` | `search`|`geo`|`range`      | false    |
+| `int` | `search`,`geo`,`range`      | false    |
+
+### pagination
+This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
+
+| Type  | Applicable on query of type | Required |
+| ----- | --------------------------- | -------- |
+| `bool` | `term`                     | false    |
+
+> Note: 
+> 1. Sort by as `count` doesn't work with composite aggregations i.e when `pagination` is set to `true`.
+> 2. The [missingLabel](/docs/search/reactivesearch-api/APIReference#missinglabel) property also won't work when composite aggregations have been used.
 
 ### queryFormat
 
@@ -201,7 +243,7 @@ This property can be used to sort the results in a particular format. The valid 
 
 > Note:
 >
-> Please note that the `count` value is only applicable to the `term` type of queries.
+> Please note that the `count` value is only applicable to the `term` type of queries when [pagination](/docs/search/reactivesearch-api/APIReference#pagination) is set to `true` or [aggregationField](/docs/search/reactivesearch-api/APIReference#aggregationfield) is defined..
 
 ### react
 
@@ -230,7 +272,7 @@ When highlighting is `enabled`, this property allows specifying the fields which
 
 ### customHighlight
 
-Can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
+It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -269,6 +311,14 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 | ------ | --------------------------- | -------- |
 | `bool` | `term`                      | false    |
 
+### missingLabel
+Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/APIReference#showmissing) is set to `true`.
+
+| Type     | Applicable on query of type | Required |
+| -------- | --------------------------- | -------- |
+| `string` | `term`                      | false    |
+
+> Note: This property doesn't work when [pagination](/docs/search/reactivesearch-api/APIReference#pagination) is set to `true`.
 
 ### selectAllLabel
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
@@ -376,7 +426,7 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 `bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
 
 ### enableQueryRules
-`bool` defaults to `true`. It allows you to configure that whether to apply the query rules for a particular query or not.
+`bool` defaults to `true`. It allows you to configure whether to apply the query rules for a particular query or not.
 
 ### customEvents
 `Object` It allows you to set the custom events which can be used to build your own analytics on top of the Appbase.io analytics. Further, these events can be used to filter the analytics stats from the Appbase.io dashboard. In the below example, we're setting up two custom events that will be recorded with each search request.
