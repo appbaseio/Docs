@@ -49,7 +49,7 @@ Here are some use cases where functions can help you improve search relevance or
 
 Appbase.io Functions run right where your search service is, thus minimizing the overall latency that your end-users experience.
 
--   **Appbase.io Functions v/s your server**  
+-   **Appbase.io Functions v/s your server**
 
     When you write custom security logic or search extensions on your server, you require a flow that looks like this:
 
@@ -69,22 +69,22 @@ Appbase.io Functions run right where your search service is, thus minimizing the
 
 To deploy and run functions, Appbase.io leverages [OpenFaas](https://docs.openfaas.com), the most popular open-source project for running and deploying serverless functions. There are two ways to get started with Functions and Appbase.io
 
--   [Appbase.io Clusters](https://docs.appbase.io/docs/hosting/Cluster/):
+-   [Appbase.io Clusters](https://docs.appbase.io/docs/hosting/clusters/):
 
-    Supports functions out of the box for [Production II, III, IV plans](https://appbase.io/clusters/#pricing). All you need to do is [Create Function](/docs/search/Functions/create), [Deploy Function](/docs/search/Functions/deploy) and [Set Triggers](/docs/search/Functions/trigger).
+    Supports functions out of the box for [Production II, III, IV plans](https://appbase.io/clusters/#pricing). All you need to do is [Create Function](/docs/search/functions/create), [Deploy Function](/docs/search/functions/deploy) and [Set Triggers](/docs/search/functions/trigger).
 
 -   [Self Hosted Appbase.io](https://github.com/appbaseio/arc-k8s):
 
-    With [Self Hosted Appbase.io](https://github.com/appbaseio/arc-k8s) and [Kubernetes](https://kubernetes.io/) orchestration, you can deploy functions in the same infrastructure as your search. For more information on how to self-host appbase.io with functions, please checkout our docs [here](/docs/search/Functions/hosting).
+    With [Self Hosted Appbase.io](https://github.com/appbaseio/arc-k8s) and [Kubernetes](https://kubernetes.io/) orchestration, you can deploy functions in the same infrastructure as your search. For more information on how to self-host appbase.io with functions, please checkout our docs [here](/docs/search/functions/hosting).
 
 ## Create
 
-Creating a function is the first step. You can start by getting a boilerplate template and your business logic to the handler function. For more information on how to create a function, please refer docs [here](/docs/search/Functions/create)
+Creating a function is the first step. You can start by getting a boilerplate template and your business logic to the handler function. For more information on how to create a function, please refer docs [here](/docs/search/functions/create)
 
 ## Deploy
 
-A function once created can be deployed alongside your search infrastructure as a HTTP service with dedicated compute and memory resources allocated to it. For more information on how to deploy a function you can read docs [here](/docs/search/Functions/deploy).
+A function once created can be deployed alongside your search infrastructure as a HTTP service with dedicated compute and memory resources allocated to it. For more information on how to deploy a function you can read docs [here](/docs/search/functions/deploy).
 
 ## Set Trigger
 
-Setting a trigger lets you define the conditions which when met would invoke your function. You can read more about the trigger syntax over [here](/docs/search/Functions/trigger).
+Setting a trigger lets you define the conditions which when met would invoke your function. You can read more about the trigger syntax over [here](/docs/search/functions/trigger).

@@ -21,13 +21,13 @@ Appbase.io uses [OpenFaas](https://docs.openfaas.com) under the hood to create a
 
 There are two ways to get started with Functions and Appbase.io
 
--   [Appbase.io Clusters](https://docs.appbase.io/docs/hosting/Cluster/)
+-   [Appbase.io Clusters](https://docs.appbase.io/docs/hosting/clusters/)
 
 -   [Self Hosted Appbase.io](https://github.com/appbaseio/arc-k8s)
 
 ## Appbase.io Clusters
 
-Supports functions out of the box for [Production II, III, IV plans](https://appbase.io/clusters/#pricing). All you need to do is [Create Function](/docs/search/Functions/create), [Deploy Function](/docs/search/Functions/deploy) and [Set Triggers](/docs/search/Functions/trigger).
+Supports functions out of the box for [Production II, III, IV plans](https://appbase.io/clusters/#pricing). All you need to do is [Create Function](/docs/search/functions/create), [Deploy Function](/docs/search/functions/deploy) and [Set Triggers](/docs/search/functions/trigger).
 
 ## Self Hosted Appbase.io
 
@@ -83,4 +83,4 @@ If you are exposing your OpenFaas service via LoadBalancer with Basic Authentica
 
 <iframe title="Hosting demo" style="width:100%" height="315" src="https://www.youtube.com/embed/YR0jSSgfxwI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-That's all, we have successfully deployed and integrated OpenFaas with Appbase.io. Now lets us see how we can [Create Functions](/docs/search/Functions/create).
+That's all, we have successfully deployed and integrated OpenFaas with Appbase.io. Now lets us see how we can [Create Functions](/docs/search/functions/create).

@@ -12,10 +12,10 @@
         items:
             - link: /docs/data/model/
               title: "Data Model"
-            - link: /docs/data/browser/
-              title: "Data Browser"
             - link: /docs/data/import/
               title: "Importing Data"
+            - link: /docs/data/browser/
+              title: "Data Browser"
             - link: /docs/data/mappings/
               title: "Mappings"
       - group: "Search Relevancy"

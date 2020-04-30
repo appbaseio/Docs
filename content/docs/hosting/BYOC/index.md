@@ -11,7 +11,7 @@ sidebar: 'docs'
 ---
 
 Already have ElasticSearch hosted with AWS, Elastic Cloud or planning to hosting it yourself?
-You can now access all of Appbase.io features such as [search preview](/docs/search/Preview), [actionable analytics](/docs/analytics/Overview/) and [granular security](/docs/security/Credentials/) with an ElasticSearch cluster hosted anywhere with the `Bring Your Own Cluster` deployment mode.
+You can now access all of Appbase.io features such as [search preview](/docs/search/relevancy/#test-search-relevancy), [actionable analytics](/docs/analytics/overview/) and [granular security](/docs/security/credentials/) with an ElasticSearch cluster hosted anywhere with the `Bring Your Own Cluster` deployment mode.
 
 > 🆕 We're making Appbase.io available as a cloud-native software under the codename [Arc](https://arc-dashboard.appbase.io).
 
@@ -62,7 +62,7 @@ You should see the above screen.
 
 That's all! It take around 5-10 mins for your Arc instance to be deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with a `Bring your own cluster` tag.
 
-> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/BYOC/ConnectToYourElasticSearch)
+> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Arc Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/byoc/connect-to-your-elasticsearch/)
 
 #### **Accessing Arc Dashboard**
 
@@ -103,7 +103,7 @@ Now you can deploy Arc using Amazon Machine Image (AMI) on the AWS Marketplace. 
 
 Here are the steps that you can follow to install Arc using AMI
 
-**Step 1 -** Create an [Arc instance](/docs/hosting/BYOC/#how-to-create-arc-instance).
+**Step 1 -** Create an [Arc instance](/docs/hosting/byoc/#how-to-create-arc-instance).
 
 **Step 2 -** Select Arc AMI from [AWS Marketplace](https://aws.amazon.com/marketplace/pp/B081K85XFZ?qid=1574427631010)
 
@@ -171,7 +171,7 @@ You can start configuring Arc by clicking on _configure page_ link OR opening `h
 
 ![](https://i.imgur.com/OkyeFJS.png)
 
-**Step 2:** Once you login, you can reset your username and password. Enter the your ElasticSearch URL, ARC_ID obtained while setting [Arc instance](/docs/hosting/BYOC/#how-to-create-arc-instance) and save the details.
+**Step 2:** Once you login, you can reset your username and password. Enter the your ElasticSearch URL, ARC_ID obtained while setting [Arc instance](/docs/hosting/byoc/#how-to-create-arc-instance) and save the details.
 
 ![](https://i.imgur.com/iVmzscW.png)
 
@@ -207,7 +207,7 @@ Dockerize setup for Arc comes with 3 different services
 
 #### Arc
 
-Allows you to access all [Appbase.io](https://docs.appbase.io/docs/gettingstarted/WhyAppbase/) features like search preview, actionable analytics and granular security with any ElasticSearch cluster hosted anywhere.
+Allows you to access all appbase.io features like search preview, actionable analytics and granular security with any ElasticSearch cluster hosted anywhere.
 
 > **Note:** Make sure your arc container have complete access to ElasticSearch. You can use ElasticSearch URL with Basic Auth in configuring dashboard or IP restricted ElasticSearch URL where IP of your ARC cluster hosted using docker setup is white listed.
 
@@ -223,7 +223,7 @@ This service helps in setting up reverse proxy for Arc Service and serving Confi
 
 The steps described here assumes a that you have [docker](https://docs.docker.com/install/) installed.
 
--   **Step 1:** Get Arc ID following the steps mentioned [here](https://docs.appbase.io/docs/hosting/BYOC/#using-ami)
+-   **Step 1:** Get Arc ID following the steps mentioned [here](/docs/hosting/byoc/#using-ami)
 
 -   **Step 2:** Clone the repository
 

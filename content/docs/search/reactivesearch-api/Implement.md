@@ -53,7 +53,8 @@ When you use appbase.io, it indexes all the search use-case fields using a varie
 | `${field}.keyword` | Non-analyzed field. | Useful for finding exact matches. |
 | `${field}.search` | Analyzed field using a {2, 9} n-gram analyzer. | This is useful for partial word matches. |
 | `${field}.autosuggest` | Analyzed field using a {2, 20} edge n-gram analyzer. | This is useful for longer partial word matches, typically suited for an autosuggest search. |
-| `${field}.lang` | Analyzed field using the user provided language. | This is useful when searching on text in a specific language, e.g. Spanish. It also supports matching of synonyms. |
+| `${field}.lang` | Analyzed field using the user provided language. | This is useful when searching on text in a specific language, e.g. Spanish. |
+| `${field}.synonyms` | Analyzed field for handling synonyms at search time. | This is useful when synonyms are enabled. |
 
 
 #### Term
@@ -65,7 +66,7 @@ You use this query type when:
 - you want to provide an exact match filter,
 - you want to show a list of unique terms with their counts, e.g. as a facet filter.
 
-**Note:** Term queries can further `filter` on a subset of the search results based on other queries that are applied alongside the term query using the [react](/docs/search/reactivesearch-api/APIReference#react) property.
+**Note:** Term queries can further `filter` on a subset of the search results based on other queries that are applied alongside the term query using the [react](/docs/search/reactivesearch-api/reference#react) property.
 
 **Example**
 
@@ -279,7 +280,7 @@ In the above example, we showed an example that defines multiple queries using t
 
 ### Custom and Default Queries
 
-Although `ReactiveSearch API` covers most of the common use-cases for search, sometimes you may require a complete control over the query that is being generated. Query customization is possible with the help of `customQuery` and `defaultQuery` properties. You can read more about it in the ReactiveSearch [API Reference](/docs/search/reactivesearch-api/APIReference).
+Although `ReactiveSearch API` covers most of the common use-cases for search, sometimes you may require a complete control over the query that is being generated. Query customization is possible with the help of `customQuery` and `defaultQuery` properties. You can read more about it in the ReactiveSearch [API Reference](/docs/search/reactivesearch-api/reference).
 
 
 ## How to implement?

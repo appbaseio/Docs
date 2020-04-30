@@ -41,8 +41,8 @@ We use [expr](https://github.com/antonmedv/expr/blob/master/docs/Language-Defini
 
 ## Example
 
-Now let us how we can set trigger for our _Promote Result_ function [created](/docs/search/Functions/create) and [deployed](/docs/search/Functions/deploy) in previously
+Now let us how we can set trigger for our _Promote Result_ function [created](/docs/search/functions/create) and [deployed](/docs/search/functions/deploy) in previously
 
-In our [Create Function](/docs/search/Functions/create) example we added logic to promote result `after` the query is executed on `phones` index. For that we will be executing our function after search and only for the `phones` index.
+In our [Create Function](/docs/search/functions/create) example we added logic to promote result `after` the query is executed on `phones` index. For that we will be executing our function after search and only for the `phones` index.
 
 ![](https://www.dropbox.com/s/ckziwma2lr2tpr7/Screenshot%202020-01-31%2009.19.09.png?raw=1)

@@ -49,7 +49,7 @@ database field(s) to be queried against. Accepts an `Array`, useful for applying
 
 ### fieldWeights
 
-To set the search weight for the database fields, useful when you are using more than one [dataField](/docs/search/reactivesearch-api/APIReference/#datafield). This prop accepts an array of integers. A higher number implies a higher relevance weight for the corresponding field in the search results.
+To set the search weight for the database fields, useful when you are using more than one [dataField](/docs/search/reactivesearch-api/reference#datafield). This prop accepts an array of integers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 
 For example, the below query has two data fields defined and each field has a different field weight.
 
@@ -70,7 +70,7 @@ For example, the below query has two data fields defined and each field has a di
 
 ### type
 
-This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/Implement/#type-of-queries).
+This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement#type-of-queries).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -78,7 +78,7 @@ This property represents the type of the query which is defaults to `search`, va
 
 ### value
 
-Represents the value for a particular query [type](/docs/search/reactivesearch-api/APIReference/#type), each kind of query has the different type of value format.
+Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference#type), each kind of query has the different type of value format.
 
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
@@ -148,9 +148,9 @@ Starting document offset. Defaults to `0`.
 
 ### queryFormat
 
-Sets the query format, can be `or` or `and`. Defaults to `or`. 
+Sets the query format, can be `or` or `and`. Defaults to `or`.
 
-- `or` returns all the results matching any of the search query text's parameters. For example, searching for "bat man" with or will return all the results matching either "bat" or "man". 
+- `or` returns all the results matching any of the search query text's parameters. For example, searching for "bat man" with or will return all the results matching either "bat" or "man".
 
 - On the other hand with `and`, only results matching both "bat" and "man" will be returned. It returns the results matching all of the search query text's parameters."
 
@@ -169,7 +169,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 > Note:
 >
-> This property doesn't work when the value of [queryFormat](/docs/search/reactivesearch-api/APIReference/#queryFormat) property is set to `and`."
+> This property doesn't work when the value of [queryFormat](/docs/search/reactivesearch-api/reference#queryformat) property is set to `and`."
 
 ### categoryField
 
@@ -214,7 +214,7 @@ To specify dependent queries to update that particular query for which the react
 
 ### highlight
 
-This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/APIReference/#highlightField) and [customHighlight](/docs/search/reactivesearch-api/APIReference/#customHighlight) values will be ignored.
+This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference#highlightfield) and [customHighlight](/docs/search/reactivesearch-api/reference#customhighlight) values will be ignored.
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
@@ -287,7 +287,7 @@ If you have sparse data or documents or items not having the value in the specif
 
 ### interval
 
-To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/APIReference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
+To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
@@ -314,7 +314,7 @@ You need to define the `after` property in the next request to retrieve the next
 ### aggregations
 
 It helps you to utilize the built-in aggregations for `range` type of queries directly, valid values are:
-- `max`: to retrieve the maximum value for a `dataField`, 
+- `max`: to retrieve the maximum value for a `dataField`,
 - `min`: to retrieve the minimum value for a `dataField`,
 - `histogram`: to retrieve the histogram aggregations for a particular `interval`
 
@@ -332,9 +332,9 @@ Set the path of the nested type under which the `dataField` is present. Only app
 
 ### defaultQuery
 
-This property is useful to customize the source query, as defined in Elasticsearch Query DSL. It is different from the [customQuery](/docs/search/reactivesearch-api/APIReference/#customQuery) in a way that it doesn't get leaked to other queries(dependent queries by `react` prop) and only modifies the query for which it has been applied.
+This property is useful to customize the source query, as defined in Elasticsearch Query DSL. It is different from the [customQuery](/docs/search/reactivesearch-api/reference#customquery) in a way that it doesn't get leaked to other queries(dependent queries by `react` prop) and only modifies the query for which it has been applied.
 
-You can read more about the `defaultQuery` usage at [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+You can read more about the `defaultQuery` usage over [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -342,11 +342,11 @@ You can read more about the `defaultQuery` usage at [here](/docs/reactivesearch/
 
 ### customQuery
 
-Custom query property will be applied to the dependent queries by `react` property, as defined in Elasticsearch Query DSL. You can read more about the `customQuery` usage at [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-custom-query).
+Custom query property will be applied to the dependent queries by `react` property, as defined in Elasticsearch Query DSL. You can read more about the `customQuery` usage over [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-custom-query).
 
 > Note:
 >
-> It'll not affect that particular query for which it has been defined, it'll only affect the query for dependent queries. If you want to customize the source query then use the [defaultQuery](/docs/search/reactivesearch-api/APIReference/#defaultQuery) property instead.
+> It'll not affect that particular query for which it has been defined, it'll only affect the query for dependent queries. If you want to customize the source query then use the [defaultQuery](/docs/search/reactivesearch-api/reference#defaultquery) property instead.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |

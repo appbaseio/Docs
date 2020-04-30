@@ -12,11 +12,11 @@ sidebar: 'docs'
 
 You can run dedicated ElasticSearch clusters to meet your business needs using [Appbase.io](https://appbase.io/clusters/) clusters. Clusters offer fully managed ElasticSearch hosting that's powered via Kubernetes and available in over 16+ global geographic regions. You can visualize your ElasticSearch data with either Kibana or Grafana and choose from any of the plugins available as part of the ElasticSearch ecosystem. You also get the following Appbase.io features out of the box:
   - [Realtime Search](https://appbase.io/usecases/realtime-search/),
-  - [Data browser](/docs/data/Browser),
-  - [Search Preview](/docs/search/Preview),
-  - [Actionable Analytics](/docs/analytics/Overview/),
-  - [Editable Mappings](/docs/search/Mappings),
-  - [Enhanced Security](/docs/security/Credentials).
+  - [Data Browser](/docs/data/browser),
+  - [Search Relevancy](/docs/search/relevancy),
+  - [Actionable Analytics](/docs/analytics/overview/),
+  - [Editable Mappings](/docs/search/relevancy/#schema),
+  - [Enhanced Security](/docs/security/credentials).
 
 ## Getting started
 
@@ -78,11 +78,11 @@ In order to access and manage cluster data, you can click on **Explore Cluster**
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/d2GCCWH.png" alt="explore" /></div>
 
-Using this Dashboard you can create/delete indexes or you can explore and manage their individual data. Appbase.io GUI Dashboard also allows you to manage [API credentials](/docs/security/Credentials) and [Role Based Access](/docs/security/Role), hence adding more layers of security to your application.
+Using this Dashboard you can create/delete indexes or you can explore and manage their individual data. Appbase.io GUI Dashboard also allows you to manage [API credentials](/docs/security/credentials) and [Role Based Access](/docs/security/role), hence adding more layers of security to your application.
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/4LJxa6U.png" /></div>
 
-> Note: For more details on how [analytics](/docs/analytics/Overview) and [security](/docs/security/Credentials) works please check their individual documentation.
+> Note: For more details on how [analytics](/docs/analytics/overview) and [security](/docs/security/credentials) works please check their individual documentation.
 
 ### Scaling Cluster
 

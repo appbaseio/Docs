@@ -105,6 +105,6 @@ Helps in doing more customization with search or handling edge cases around sear
 
 ![function](https://www.dropbox.com/s/tsrj68q3yixcp2n/Screenshot%202020-02-20%2010.59.35.png?raw=1)
 
-For more information you can read functions [docs](/docs/search/Functions).
+For more information you can read functions [docs](/docs/search/functions).
 
 > Note: a function linked with Query Rule cannot have its own triggering condition.

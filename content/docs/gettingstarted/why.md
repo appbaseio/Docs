@@ -23,19 +23,16 @@ Appbaseio.io's dashboard provides a powerful interface for developing search app
 
 #### Development Experience 🕵️‍♂️
 
--   **Import Data** allows importing data into ElasticSearch from sources such as `JSON`, `CSV`, `SQL` or another ElasticSearch index. [The CLI tool](https://github.com/appbaseio/abc) supports more sources such as `MongoDB`, `Firestore`, `Kafka`, `Redis` to name a few.
--   **[Browse Data](/docs/data/Browser/)** allows Viewing, Filtering, Adding, Editing and Exporting the search data of your search app.
--   **[App Settings](/docs/search/Mappings)** allows changing mappings of your data on the fly.
--   **[Search Preview](/docs/search/Preview)** allows visually testing search relevancy with zero lines of code.
--   **Query Explorer** provides a UI to create search queries effectively.
--   **[Query Rules](/docs/search/Rules)** allows setting "If This, Then That" style rules for search queries.
--   **Search Templates** allow creating API endpoints that abstract the Query DSL logic with templates to prevent script injections.
+-   **[Import Data](/docs/data/import/)** allows importing data into ElasticSearch from sources such as `JSON`, `CSV`, `SQL` or another ElasticSearch index. [The CLI tool](https://github.com/appbaseio/abc) supports more sources such as `MongoDB`, `Firestore`, `Kafka`, `Redis` to name a few.
+-   **[Search Relevancy](/docs/search/relevancy)** allows configuring and testing search relevancy settings through a set of GUIs.
+-   **[Query Rules](/docs/search/rules)** allows setting "If This, Then That" style rules to extend the search engine.
+-   **[ReactiveSearch](/docs/reactivesearch/v3/overview/quickstart/)** allows creating search UIs for React, Vue, Vanilla JS, React Native using industry-leading search UI components.
 
 <iframe width="100%" style="border-radius: 3px;" height="315" src="https://www.youtube.com/embed/Lk3TUcnrKpQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Actionable Analytics 📈
 
-[Actionable Analytics](/docs/analytics/Overview/) provide insights into search queries, as well as allow measuring clicks and conversion activities.
+[Actionable Analytics](/docs/analytics/overview/) provide insights into search queries, as well as allow measuring clicks and conversion activities.
 
 -   **Request Logs** track the request and response logs.
 -   **Popular Searches** track the popular search queries.
@@ -50,8 +47,8 @@ Appbaseio.io's dashboard provides a powerful interface for developing search app
 
 #### Enterprise Grade Security 🔐
 
--   [**API Credentials**](/docs/security/Credentials/) provides Basic Authentication based security keys with fine-grained security rules to control access. It also allows you to set IP restriction and API access limit for your ElasticSearch data.
--   [**Role Based Access Control**](/docs/security/Role/) allows securing search apps with Javascript Web Tokens created via an identity provider of your choice.
+-   [**API Credentials**](/docs/security/credentials/) provides Basic Authentication based security keys with fine-grained security rules to control access. It also allows you to set IP restriction and API access limit for your ElasticSearch data.
+-   [**Role Based Access Control**](/docs/security/role/) allows securing search apps with Javascript Web Tokens created via an identity provider of your choice.
 
 ![](https://i.imgur.com/UlF6rv8.png)
 
@@ -70,7 +67,7 @@ Hosted APIs often come with a huge lock-in cost. appbase.io is offered as [a hos
 
 ### Reliability
 
-[Appbase.io Clusters](/docs/hosting/Cluster/) use a Kubernetes based orchestration and multi-node clusters are deployed across multiple zones. This ensures a higher cluster availability and comes with a built-in mechanism to restart services on failures, as well as allows inspecting and safe editing of underlying resources.
+[Appbase.io Clusters](/docs/hosting/clusters/) use a Kubernetes based orchestration and multi-node clusters are deployed across multiple zones. This ensures a higher cluster availability and comes with a built-in mechanism to restart services on failures, as well as allows inspecting and safe editing of underlying resources.
 
 ### Available Across The Globe
 
@@ -90,7 +87,7 @@ You can get more details about Appbase.io Cluster pricing over [here](https://ap
 
 ### Monitoring and Logs Access
 
-Since appbase.io clusters are deployed and managed using a Kubernetes based orchestration, you can easily view the usage of various resources like CPU, memory, and storage. For more information, you can read the docs for [clusters over here](/docs/hosting/Cluster).
+Since appbase.io clusters are deployed and managed using a Kubernetes based orchestration, you can easily view the usage of various resources like CPU, memory, and storage. For more information, you can read the docs for [clusters over here](/docs/hosting/clusters/).
 
 ### Managed ElasticSearch
 
@@ -116,4 +113,4 @@ Deploy your own dedicated Elasticsearch clusters to meet your business needs. It
 
 ### Bring Your Own Cluster
 
-Already using an ElasticSearch cluster with AWS, Elastic Cloud or hosting it yourself? You can deploy appbase.io as a cloud-native software. Read more about Bring Your Own Cluster over [here](/docs/hosting/BYOC/).
+Already using an ElasticSearch cluster with AWS, Elastic Cloud or hosting it yourself? You can deploy appbase.io as a cloud-native software. Read more about Bring Your Own Cluster over [here](/docs/hosting/byoc/).

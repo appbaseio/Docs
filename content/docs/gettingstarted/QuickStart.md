@@ -19,11 +19,11 @@ With appbase.io, you can:
     -   our UI component libraries,
     -   our SDKs,
     -   or the REST API.
-        You should [start here to learn more](https://docs.appbase.io/docs/reactivesearch/v3/overview/quickstart/).
--   Get out of the box actionable analytics on top searches, no result searches, slow queries. [Read more here](https://docs.appbase.io/docs/analytics/Overview/)
--   Out of the box security with built-in Basic Auth or JWT based authentication, read/write access keys with granular ACLs, field level security, IP based Rate Limits, Time to Live. [Read more over here](https://docs.appbase.io/docs/security/Credentials/)
+        You should [start here to learn more](/docs/reactivesearch/v3/overview/quickstart/).
+-   Get out of the box actionable analytics on top searches, no result searches, slow queries. [Read more here](/docs/analytics/overview/)
+-   Out of the box security with built-in Basic Auth or JWT based authentication, read/write access keys with granular ACLs, field level security, IP based Rate Limits, Time to Live. [Read more over here](/docs/security/credentials/)
 
-`New:` Introducing [role-based access control](https://docs.appbase.io/docs/security/Role/) and [search templates](https://docs.appbase.io/docs/security/Template/).
+`New:` Introducing [role-based access control](/docs/security/role/) and [search templates](/docs/security/template/).
 
 ![Appbase.io Architecture](https://i.imgur.com/lM8NNC8.png)
 **Image:** appbase.io overview diagram
@@ -51,15 +51,15 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 ## Choose your hosting
 
 <div class="grid-integrations-index mt4 mt6-l f8">
-	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc tooltip-wrapper" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/Apps">
-		<img class="w10 mb1" src="/images/apps.png" />
-		Apps
-	</a>
 	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem;height: 120px;width:120px;" href="/docs/hosting/clusters">
 		<img class="w10 mb1" src="/images/clusters.png" />
 		Clusters
 	</a>
-	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/BYOC">
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc tooltip-wrapper" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/apps">
+		<img class="w10 mb1" src="/images/apps.png" />
+		Apps
+	</a>
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/byoc">
 		<img class="w10 mb1" src="/images/arc.svg" />
 		Bring Your Own Cluster
 	</a>
@@ -67,6 +67,6 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 
 | Hosting                                     | Description                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Apps](/docs/hosting/apps)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
 | [Clusters](/docs/hosting/clusters)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
-| [Bring Your Own Cluster](docs/hosting/BYOC) | Already have an ElasticSearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |
+| [Apps](/docs/hosting/apps)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
+| [Bring Your Own Cluster](/docs/hosting/byoc) | Already have an ElasticSearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |

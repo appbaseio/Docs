@@ -1,7 +1,7 @@
 ---
 title: 'Data Browser'
-meta_title: 'Appbase - Data Browser'
-meta_description: 'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app data.'
+meta_title: 'Appbase.io - Data Browser'
+meta_description: 'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io data.'
 keywords:
     - dataschema
     - appbase
@@ -12,15 +12,14 @@ sidebar: 'docs'
 
 Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
 
-Data is stored as JSON documents. You can read more about the data schema [here](/docs/data/Model).
+Data is stored as JSON documents. You can read more about how to model your data over [here](/docs/data/model).
 
 ## Installation
 
 The data browser is available within appbase.io app dashboard. But it can also be:
 
--   downloaded as a [chrome extension](https://chrome.google.com/webstore/detail/dejavu/jopjeaiilkcibeohjdmejhoifenbnmlh),
 -   run as a [docker container](https://hub.docker.com/r/appbaseio/dejavu) or
--   used as a hosted app [here](https://opensource.appbase.io/dejavu/live).
+-   used as a hosted app [here](https://dejavu.appbase.io).
 
 ## Creating An App
 
@@ -126,6 +125,4 @@ You don't need to use this feature if your documents are never the same or if yo
 
 ## Doing more with data
 
-While data browser is great to get started with appbase.io and for visualizing data, the recommended way to add data programmatically is via the [REST API](/rest-quickstart.html) or one of the [JavaScript](/javascript/quickstart.html) or [Golang](https://godoc.org/github.com/appbaseio/go-appbase) libraries.
-
-The data browser is still a great place to import, visualize and debug the existing data records with its filters and continuous query functionalities.
+The dashboard offers a great way to get started with appbase.io with importing data and applying search relevancy settings. From here on, you can create a Test UI and start progressively working with analytics, query rules and security features.

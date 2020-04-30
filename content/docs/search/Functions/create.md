@@ -57,7 +57,7 @@ faas new --lang node10-express promote-result
 
 Functions business logic can be developed based on when you would like to trigger them and some other environment variables. Example if you would like to trigger function before it hits ElasticSearch and modify `request` body or if you would like to trigger a function after ElasticSearch request is completed and modify `response` body before it is sent to the end user.
 
-To simplify the development process we have created a body structure which you can access while adding business logic to the function. Please refer the docs [here](/docs/search/Functions/create#event-body-structure) for more information on function data.
+To simplify the development process we have created a body structure which you can access while adding business logic to the function. Please refer the docs [here](/docs/search/functions/create#event-body-structure) for more information on function data.
 
 In the example below we are trying to update `response` of ElasticSearch and add a promoted result in the response.
 
@@ -242,4 +242,4 @@ Here is the list of parameters that you can get access in your functions `event.
 }
 ```
 
-Now let us see how we can [deploy](/docs/search/Functions/deploy) this function using Appbase.io Dashboard.
+Now let us see how we can [deploy](/docs/search/functions/deploy) this function using Appbase.io Dashboard.

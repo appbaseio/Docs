@@ -16,7 +16,7 @@ sidebar: 'docs'
 
 ### Getting Started
 
-You can select **Open Distro** as an ElasticSearch flavour while creating a cluster. For detailed information on how to create a cluster, you can check the [Clusters docs](/docs/gettingstarted/Cluster).
+You can select **Open Distro** as an ElasticSearch flavour while creating a cluster. For detailed information on how to create a cluster, you can check the [Clusters docs](/docs/hosting/clusters/).
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://www.dropbox.com/s/o2tsuvmia8zk63k/Screenshot%202019-08-08%2019.14.38.png?raw=1" alt="cluster creation gif" style="width:100%;" /></div>
 
@@ -32,7 +32,7 @@ Once the cluster deployment is completed, you can configure other Open Distro / 
 
 ### How to update ElasticSearch configurations / security options?
 
-For Open Distro clusters, the ElasticSearch configuration (think elasticsearch.yml) is implemented via [Config Maps](https://cloud.google.com/kubernetes-engine/docs/concepts/configmap). To access the ElasticSearch configuration, go to the [kubernetes Dashboard](/docs/gettingstarted/Cluster#accessing-elasticsearch-logs-metrics-and-advanced-editing) and open the Config Maps section.
+For Open Distro clusters, the ElasticSearch configuration (think elasticsearch.yml) is implemented via [Config Maps](https://cloud.google.com/kubernetes-engine/docs/concepts/configmap). To access the ElasticSearch configuration, go to the [kubernetes Dashboard](/docs/hosting/clusters/#accessing-elasticsearch-logs-metrics-and-advanced-editing) and open the Config Maps section.
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/H5jmYxw.png" alt="cluster creation gif" style="width:100%;" /></div>
 
@@ -40,7 +40,7 @@ You can then open the **elasticsearch-config** Config Map and add or edit any El
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/Q4RiVHM.png" alt="cluster creation gif" style="width:100%;" /></div>
 
-Once the configurations are updated successfully, you will have to manually restart the ElasticSearch [pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/) from [Kubernetes Dashboard](/concepts/clusters#accessing-kubernetes-dashboard). All the ElasticSearch pods have a `elasticsearch-` prefix followed by the node number, e.g. `elasticsearch-0`, `elasticsearch-1`. You can delete these pods in sequence (i.e. delete a pod, wait for it to be spinned up with the new configuration, then delete the next one and so on..). Deleting a pod triggers re-deployment with the updated configurations.
+Once the configurations are updated successfully, you will have to manually restart the ElasticSearch [pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/) from [Kubernetes Dashboard](/docs/hosting/clusters/#benefits-of-using-kubernetes). All the ElasticSearch pods have a `elasticsearch-` prefix followed by the node number, e.g. `elasticsearch-0`, `elasticsearch-1`. You can delete these pods in sequence (i.e. delete a pod, wait for it to be spinned up with the new configuration, then delete the next one and so on..). Deleting a pod triggers re-deployment with the updated configurations.
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/rSkRn9T.png" alt="cluster creation gif" style="width:100%;" /></div>
 
