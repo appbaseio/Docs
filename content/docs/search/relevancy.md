@@ -175,13 +175,13 @@ Query Rules allows you to set rules based on the incoming search query, filters 
 5. Return custom data (useful for advertising/merchandizing),
 6. Run a user-defined function - providing endless possibilities to extend search.
 
-Learn more about query rules over [here](/docs/search/rules).
+Learn more about query rules over [here](/docs/search/rules/).
 
 ![](https://i.imgur.com/hbJWhZM.png)
 
 ## Functions
 
-Functions allow you to run user-defined functions to extend the search engine. Read more about them over [here](/docs/search/functions).
+Functions allow you to run user-defined functions to extend the search engine. Read more about them over [here](/docs/search/functions/).
 
 ![](https://imgur.com/4LPHTlw.png)
 

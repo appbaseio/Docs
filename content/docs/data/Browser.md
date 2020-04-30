@@ -12,7 +12,7 @@ sidebar: 'docs'
 
 Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
 
-Data is stored as JSON documents. You can read more about how to model your data over [here](/docs/data/model).
+Data is stored as JSON documents. You can read more about how to model your data over [here](/docs/data/model/).
 
 ## Installation
 

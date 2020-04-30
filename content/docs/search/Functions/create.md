@@ -57,7 +57,7 @@ faas new --lang node10-express promote-result
 
 Functions business logic can be developed based on when you would like to trigger them and some other environment variables. Example if you would like to trigger function before it hits ElasticSearch and modify `request` body or if you would like to trigger a function after ElasticSearch request is completed and modify `response` body before it is sent to the end user.
 
-To simplify the development process we have created a body structure which you can access while adding business logic to the function. Please refer the docs [here](/docs/search/functions/create#event-body-structure) for more information on function data.
+To simplify the development process we have created a body structure which you can access while adding business logic to the function. Please refer the docs [here](/docs/search/functions/create/#event-body-structure) for more information on function data.
 
 In the example below we are trying to update `response` of ElasticSearch and add a promoted result in the response.
 
@@ -159,7 +159,7 @@ Here is the list of parameters that you can get access in your functions `event.
 | `env.category`        | String value to classify type of incoming request. It can be one of `docs`, `search`, `indices`, `cat`, `clusters`, `misc`.                                                                                          |
 | `env.query`           | String value to know the keyword being queried.                                                                                                                                                                      |
 | `env.index`           | Array of strings to know the indexes on which the function will be executed                                                                                                                                          |
-| `env.filter`          | String value to set filter data based on trigger logic. Accepts the string expression based on [expr](https://github.com/antonmedv/expr/blob/master/docs/Language-Definition.md#string-operators) library of Golang. |
+| `env.filter`          | String value to set filter data based on trigger logic. Accepts the string expression based on [expr](https://github.com/antonmedv/expr/blob/master/docs/Language-Definition.md/#string-operators) library of Golang. |
 | `request`             | [Optional] parameter available when trigger is set to before search. It is a JSON object which contains meta information about the request.                                                                          |
 | `request.url`         | String value to know the exact URL using which ElasticSearch cluster is accessed.                                                                                                                                    |
 | `request.method`      | String value to know HTTP method of request                                                                                                                                                                          |
@@ -242,4 +242,4 @@ Here is the list of parameters that you can get access in your functions `event.
 }
 ```
 
-Now let us see how we can [deploy](/docs/search/functions/deploy) this function using Appbase.io Dashboard.
+Now let us see how we can [deploy](/docs/search/functions/deploy/) this function using Appbase.io Dashboard.

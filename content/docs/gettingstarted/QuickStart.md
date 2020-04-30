@@ -14,7 +14,7 @@ sidebar: 'docs'
 With appbase.io, you can:
 
 -   Import your data from any sources via dashboard or CLI or REST API,
--   Test search relevancy visually. [Read more here](/docs/search/relevancy)
+-   Test search relevancy visually. [Read more here](/docs/search/relevancy/)
 -   Build production-grade search UIs using one of:
     -   our UI component libraries,
     -   our SDKs,
@@ -67,6 +67,6 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 
 | Hosting                                     | Description                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Clusters](/docs/hosting/clusters)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
-| [Apps](/docs/hosting/apps)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
-| [Bring Your Own Cluster](/docs/hosting/byoc) | Already have an ElasticSearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |
+| [Clusters](/docs/hosting/clusters/)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
+| [Apps](/docs/hosting/apps/)                  | Easy to get started. No credit card required. Multi-tenant setup                                                                                                                                                 |
+| [Bring Your Own Cluster](/docs/hosting/byoc/) | Already have an ElasticSearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |

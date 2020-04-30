@@ -67,9 +67,9 @@ in asserting the role information. This can be configured in _Role Claim_ input.
 
 ![](https://www.dropbox.com/s/1adzl857lcqcfkg/Screenshot%202020-02-10%2012.46.43.png?raw=1)
 
-#### 2. Mapping roles to [API Credentials](/docs/security/credentials)
+#### 2. Mapping roles to [API Credentials](/docs/security/credentials/)
 
-Once the _Public Key_ and _Role Claim_ is configured, you can set up the actual roles that a user can have in your application in **Map Roles to API Credential** section. Each credentials created in [API Credentials](/docs/security/credentials) section can have a unique role name, which would be the value encoded in our JWT.
+Once the _Public Key_ and _Role Claim_ is configured, you can set up the actual roles that a user can have in your application in **Map Roles to API Credential** section. Each credentials created in [API Credentials](/docs/security/credentials/) section can have a unique role name, which would be the value encoded in our JWT.
 
 ![](https://www.dropbox.com/s/2g4c923eqdqx90w/Screenshot%202020-02-10%2012.50.35.png?raw=1)
 

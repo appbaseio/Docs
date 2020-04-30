@@ -10,7 +10,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-You can use Appbase.io to supercharge your ElasticSearch cluster that is deployed on a 3rd party service such as AWS ElasticSearch service. There are 2 major ways to securely connect to your ElasticSearch cluster when using Appbase.io [Bring Your Own Cluster (BYOC) option](/docs/hosting/BYOC).
+You can use Appbase.io to supercharge your ElasticSearch cluster that is deployed on a 3rd party service such as AWS ElasticSearch service. There are 2 major ways to securely connect to your ElasticSearch cluster when using Appbase.io [Bring Your Own Cluster (BYOC) option](/docs/hosting/byoc/).
 
 ## 1. Basic Authentication
 
@@ -91,4 +91,4 @@ That's all! 🎉 Now your ElasticSearch Cluster URL is only accessible to the Ap
 
 ![](https://i.imgur.com/rlpOIj0.png)
 
-Appbase.io provides fine-grained access control based security credentials which can now be used instead of your ElasticSearch Cluster URL for performing search requests from a web / mobile client application. You can read more about Appbase.io security controls over [here](/docs/security/Credentials/).
+Appbase.io provides fine-grained access control based security credentials which can now be used instead of your ElasticSearch Cluster URL for performing search requests from a web / mobile client application. You can read more about Appbase.io security controls over [here](/docs/security/credentials/).

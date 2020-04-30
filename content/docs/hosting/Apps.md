@@ -43,8 +43,8 @@ Out of the box features available for apps:
 #### Development Experience 🕵️‍♂️
 
 -   **[Import Data](/docs/data/import/)** allows importing data into ElasticSearch from sources such as `JSON`, `CSV`, `SQL` or another ElasticSearch index. [The CLI tool](https://github.com/appbaseio/abc) supports more sources such as `MongoDB`, `Firestore`, `Kafka`, `Redis` to name a few.
--   **[Search Relevancy](/docs/search/relevancy)** allows configuring and testing search relevancy settings through a set of GUIs.
--   **[Query Rules](/docs/search/rules)** allows setting "If This, Then That" style rules to extend the search engine.
+-   **[Search Relevancy](/docs/search/relevancy/)** allows configuring and testing search relevancy settings through a set of GUIs.
+-   **[Query Rules](/docs/search/rules/)** allows setting "If This, Then That" style rules to extend the search engine.
 -   **[ReactiveSearch](/docs/reactivesearch/v3/overview/quickstart/)** allows creating search UIs for React, Vue, Vanilla JS, React Native using industry-leading search UI components.
 
 <iframe width="100%" style="border-radius: 3px;" height="315" src="https://www.youtube.com/embed/Lk3TUcnrKpQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

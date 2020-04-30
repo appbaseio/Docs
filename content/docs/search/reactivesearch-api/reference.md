@@ -52,7 +52,7 @@ database field(s) to be queried against. Accepts an `Array`, useful for applying
 
 ### fieldWeights
 
-To set the search weight for the database fields, useful when you are using more than one [dataField](/docs/search/reactivesearch-api/reference#datafield). This prop accepts an array of integers. A higher number implies a higher relevance weight for the corresponding field in the search results.
+To set the search weight for the database fields, useful when you are using more than one [dataField](/docs/search/reactivesearch-api/reference/#datafield). This prop accepts an array of integers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 
 For example, the below query has two data fields defined and each field has a different field weight.
 
@@ -73,7 +73,7 @@ For example, the below query has two data fields defined and each field has a di
 
 ### type
 
-This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement#type-of-queries).
+This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -81,7 +81,7 @@ This property represents the type of the query which is defaults to `search`, va
 
 ### value
 
-Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference#type), each kind of query has the different type of value format.
+Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type), each kind of query has the different type of value format.
 
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
@@ -184,9 +184,9 @@ This property allows you to implement the `pagination` for `term` type of querie
 | ----- | --------------------------- | -------- |
 | `bool` | `term`                     | false    |
 
-> Note: 
+> Note:
 > 1. Sort by as `count` doesn't work with composite aggregations i.e when `pagination` is set to `true`.
-> 2. The [missingLabel](/docs/search/reactivesearch-api/APIReference#missinglabel) property also won't work when composite aggregations have been used.
+> 2. The [missingLabel](/docs/search/reactivesearch-api/reference/#missinglabel) property also won't work when composite aggregations have been used.
 
 ### queryFormat
 
@@ -211,7 +211,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 > Note:
 >
-> This property doesn't work when the value of [queryFormat](/docs/search/reactivesearch-api/reference#queryformat) property is set to `and`."
+> This property doesn't work when the value of [queryFormat](/docs/search/reactivesearch-api/reference/#queryformat) property is set to `and`."
 
 ### categoryField
 
@@ -243,7 +243,7 @@ This property can be used to sort the results in a particular format. The valid 
 
 > Note:
 >
-> Please note that the `count` value is only applicable to the `term` type of queries when [pagination](/docs/search/reactivesearch-api/APIReference#pagination) is set to `true` or [aggregationField](/docs/search/reactivesearch-api/APIReference#aggregationfield) is defined..
+> Please note that the `count` value is only applicable to the `term` type of queries when [pagination](/docs/search/reactivesearch-api/reference/#pagination) is set to `true` or [aggregationField](/docs/search/reactivesearch-api/reference/#aggregationfield) is defined..
 
 ### react
 
@@ -256,7 +256,7 @@ To specify dependent queries to update that particular query for which the react
 
 ### highlight
 
-This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference#highlightfield) and [customHighlight](/docs/search/reactivesearch-api/reference#customhighlight) values will be ignored.
+This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [customHighlight](/docs/search/reactivesearch-api/reference/#customhighlight) values will be ignored.
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
@@ -312,13 +312,13 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 | `bool` | `term`                      | false    |
 
 ### missingLabel
-Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/APIReference#showmissing) is set to `true`.
+Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `string` | `term`                      | false    |
 
-> Note: This property doesn't work when [pagination](/docs/search/reactivesearch-api/APIReference#pagination) is set to `true`.
+> Note: This property doesn't work when [pagination](/docs/search/reactivesearch-api/reference/#pagination) is set to `true`.
 
 ### selectAllLabel
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
@@ -337,7 +337,7 @@ If you have sparse data or documents or items not having the value in the specif
 
 ### interval
 
-To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
+To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
@@ -382,7 +382,7 @@ Set the path of the nested type under which the `dataField` is present. Only app
 
 ### defaultQuery
 
-This property is useful to customize the source query, as defined in Elasticsearch Query DSL. It is different from the [customQuery](/docs/search/reactivesearch-api/reference#customquery) in a way that it doesn't get leaked to other queries(dependent queries by `react` prop) and only modifies the query for which it has been applied.
+This property is useful to customize the source query, as defined in Elasticsearch Query DSL. It is different from the [customQuery](/docs/search/reactivesearch-api/reference/#customquery) in a way that it doesn't get leaked to other queries(dependent queries by `react` prop) and only modifies the query for which it has been applied.
 
 You can read more about the `defaultQuery` usage over [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 
@@ -396,7 +396,7 @@ Custom query property will be applied to the dependent queries by `react` proper
 
 > Note:
 >
-> It'll not affect that particular query for which it has been defined, it'll only affect the query for dependent queries. If you want to customize the source query then use the [defaultQuery](/docs/search/reactivesearch-api/reference#defaultquery) property instead.
+> It'll not affect that particular query for which it has been defined, it'll only affect the query for dependent queries. If you want to customize the source query then use the [defaultQuery](/docs/search/reactivesearch-api/reference/#defaultquery) property instead.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |

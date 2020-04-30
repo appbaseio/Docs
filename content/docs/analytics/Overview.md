@@ -61,11 +61,11 @@ Total Sessions represent the total number of user sessions.
 
 **Bounce Rate**
 
-The bounce rate represents the percentage of user sessions that have bounced relative to the total user sessions. Read more about the bounce rate over [here](/docs/analytics/Implement/#how-is-the-bounce-rate-calculated).
+The bounce rate represents the percentage of user sessions that have bounced relative to the total user sessions. Read more about the bounce rate over [here](/docs/analytics/implement/#how-is-the-bounce-rate-calculated).
 
 **Avg Session Duration**
 
-Avg Session Duration represents the average time a user is spending on your search. Read more about it over [here](/docs/analytics/Implement/#how-do-we-record-a-user-session).
+Avg Session Duration represents the average time a user is spending on your search. Read more about it over [here](/docs/analytics/implement/#how-do-we-record-a-user-session).
 
 
 #### Popular Searches

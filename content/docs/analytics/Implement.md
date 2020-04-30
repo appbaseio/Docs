@@ -16,8 +16,8 @@ In this page, you will learn about how to implement Appbase.io analytics for you
 
 Appbase.io Analytics requires a deployment of appbase.io alongside your ElasticSearch cluster. You can deploy appbase.io as:
 1. A hosted offering: (Recommended) for a complete end-to-end managed experience. [Learn More](https://appbase.io/clusters/)
-2. Deploy as a Docker image: Run anywhere, including with your Kubernetes ElasticSearch cluster. [Learn More](https://docs.appbase.io/docs/hosting/BYOC/#using-docker)
-3. Amazon Machine Image (AMI): Deploy within your VPC alongside AWS ElasticSearch. [Learn More](https://docs.appbase.io/docs/hosting/BYOC/#using-ami)
+2. Deploy as a Docker image: Run anywhere, including with your Kubernetes ElasticSearch cluster. [Learn More](https://docs.appbase.io/docs/hosting/byoc/#using-docker)
+3. Amazon Machine Image (AMI): Deploy within your VPC alongside AWS ElasticSearch. [Learn More](https://docs.appbase.io/docs/hosting/byoc/#using-ami)
 
 ![Diagram showing how appbase.io works with ElasticSearch](/images/byoc.png)
 
@@ -33,7 +33,7 @@ Appbase.io offers turnkey search analytics for ElasticSearch. No matter how your
 
 | Library                |  Variant    | Docs                                               |
 | -------------------- | ----------  | -----------------------------------------------------------|
-| **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/v3/advanced/analytics)    |
+| **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/v3/advanced/analytics/)    |
 | **`ReactiveSearch`** | `Vue`       | [Learn More](/docs/reactivesearch/vue/advanced/analytics/)  |
 | **`SearchBox`**      | `VanillaJS` | [Learn More](/docs/reactivesearch/searchbox/api/)  |
 | **`SearchBox`**      | `React`     | [Learn More](/docs/reactivesearch/react-searchbox/apireference/)  |
@@ -182,7 +182,7 @@ You can disable this behavior in `ReactiveSearch` by defining the `appbaseConfig
 
 An analytics session is driven by the `X-Search-Query` header or `query` field if you're using the REST API. It is the user's responsibility to define the search query to trigger an analytics session. One analytics session can be considered as one search count.
 
-Don't worry! `ReactiveSearch` handles this for you. You just need to set the `analytics` prop as `true` in the `ReactiveBase` component. [Read more about how to configure analytics in ReactiveSearch](/docs/reactivesearch/v3/advanced/analytics).
+Don't worry! `ReactiveSearch` handles this for you. You just need to set the `analytics` prop as `true` in the `ReactiveBase` component. [Read more about how to configure analytics in ReactiveSearch](/docs/reactivesearch/v3/advanced/analytics/).
 
 ### How Are Searches Counted
 
@@ -218,4 +218,4 @@ If any one of these interactions happen, then the session is not considered as a
 
 > Bounce Rate = ( Total `bounced` user sessions / Total user sessions ) * 100
 
-Bounce rate helps you to understand how engaging your search experience is. If you are seeing a higher bounce rate, it's time to tweak your [search relevancy](/docs/search/Mappings/) settings.
+Bounce rate helps you to understand how engaging your search experience is. If you are seeing a higher bounce rate, it's time to tweak your [search relevancy](/docs/search/relevancy/) settings.

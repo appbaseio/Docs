@@ -66,7 +66,7 @@ You use this query type when:
 - you want to provide an exact match filter,
 - you want to show a list of unique terms with their counts, e.g. as a facet filter.
 
-**Note:** Term queries can further `filter` on a subset of the search results based on other queries that are applied alongside the term query using the [react](/docs/search/reactivesearch-api/reference#react) property.
+**Note:** Term queries can further `filter` on a subset of the search results based on other queries that are applied alongside the term query using the [react](/docs/search/reactivesearch-api/reference/#react) property.
 
 **Example**
 
@@ -280,7 +280,7 @@ In the above example, we showed an example that defines multiple queries using t
 
 ### Custom and Default Queries
 
-Although `ReactiveSearch API` covers most of the common use-cases for search, sometimes you may require a complete control over the query that is being generated. Query customization is possible with the help of `customQuery` and `defaultQuery` properties. You can read more about it in the ReactiveSearch [API Reference](/docs/search/reactivesearch-api/reference).
+Although `ReactiveSearch API` covers most of the common use-cases for search, sometimes you may require a complete control over the query that is being generated. Query customization is possible with the help of `customQuery` and `defaultQuery` properties. You can read more about it in the ReactiveSearch [API Reference](/docs/search/reactivesearch-api/reference/).
 
 
 ## How to implement?

@@ -41,4 +41,4 @@ After logging into dashboard, you can Navigate to `Develop > Functions` tab from
 
 > **Note:** If you are using Self Hosted version of Appbase.io and want to deploy private image of function, you will have to add `OPENFAAS_KUBE_CONFIG` env with the value where your kubernetes config file exists.
 
-Once the function is deployed we can [Set Trigger](/docs/search/functions/trigger) for that function so that we can conditionally invoke a function.
+Once the function is deployed we can [Set Trigger](/docs/search/functions/trigger/) for that function so that we can conditionally invoke a function.
