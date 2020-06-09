@@ -12,7 +12,7 @@ sidebar: 'docs'
 
 ## Overview
 
-Query Rules let you make precise, predetermined changes to your search results or search queries, thus allowing you to enhance search experience. For example, you can reposition items in a user’s search results or activate filters based on query terms. Rules can also be enabled for a fixed period of time: this makes Rules a great way of implementing sales or promotions. Query Rules are essentially `If-This-Then-That` construct - **_If_** **search query contains 'Google',** **_then_**
+Query Rules let you make precise, predetermined changes to your search results or search queries, thus allowing you to enhance the search experience. For example, you can reposition items in a user’s search results or activate filters based on query terms. Rules can also be enabled for a fixed period of time: this makes Rules a great way of implementing sales or promotions. Query Rules are essentially `If-This-Then-That` construct - **_If_** **search query contains 'Google',** **_then_**
 **promote 'Chromebook'.** Query Rules serve a very specific purpose as far as search results and merchandising is concerned. When building a commercial search product, customers more often than not require commercializing the product based on certain search queries.
 
 ![query rule dashboard](https://www.dropbox.com/s/1n4uznradc78lch/Screenshot%202020-02-20%2011.06.00.png?raw=1)
@@ -35,7 +35,7 @@ Here are some use cases where Query Rules can help you improve search relevance
 
 1.  **Always:**
 
-    This is helpful when you want to execute an action with all the search requests. For example you want to always **hide** a product that is no longer available in store.
+    This is helpful when you want to execute an action with all the search requests. For example, you want to always **hide** a product that is no longer available in store.
 
 2.  **Condition**
 
@@ -47,7 +47,7 @@ Here are some use cases where Query Rules can help you improve search relevance
     -   `Query ends with`: applied when a search query ends with the specified query
 
     <br />
-    Here, you can also configure filter conditions, which can help you set trigger based on filtering field and value. For example, `brand` is `apple`.
+    Here, you can also configure filter conditions, which can help you set triggers based on filtering field and value. For example, `brand` is `apple`.
 
 You can also configure rules for specific `indexes` in your ElasticSearch cluster and for a specific `time period` (example you only want to promote result for a seasonal sale on your e-commerce store ). By default, it is applicable on all the indexes and all the time.
 
@@ -107,7 +107,7 @@ It helps in hiding certain results from getting included in the actual search re
 
 ### Custom Data
 
-Helps in sending the custom `JSON` data in search response. This will be helpful when you want to send some extra information to the frontend, which can help in rendering more specific information.
+Helps in sending the custom `JSON` data in the search response. This will be helpful when you want to send some extra information to the frontend, which can help in rendering more specific information.
 
 ![custom data](https://www.dropbox.com/s/nhwr6vglqouxkh5/Screenshot%202020-02-20%2010.44.18.png?raw=1)
 
@@ -117,6 +117,35 @@ It helps in replacing the user’s entire search query with another query. Helps
 
 ![replace search term](https://www.dropbox.com/s/p0he4889pkbl1u8/Screenshot%202020-02-20%2010.50.10.png?raw=1)
 
+### Replace Search Query
+This action gives you more control over the search query in a way that you can modify the whole query by using the [ElasticSearch's Query String](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html) syntax.
+
+For example, the following query returns all the documents for which  `height` and `width` matches `10` and `20` respectively.
+
+```bash
+height:10 + width:20
+```
+The above is just an example of ElasticSearch query string syntax where values are fixed. You can also use the variable values captured from the `query` value as per the regular expression defined in the trigger expression.
+
+For example, let's define the trigger expression with the help of the `advanced editor`.
+
+![trigger expression](https://i.imgur.com/mgNERHg.png)
+
+The above rule will only get applied when the query value is of the following pattern.
+
+```bash
+{number_x} x {number_y}
+```
+
+Now define the `query` value which will replace the original query.
+
+```bash
+height:$1 + width:$2
+```
+
+Here `$1` and `$2` are variables that will get extracted from the regex capture groups defined in the trigger expression. Now if some user makes a search with value as `10 x 20` then the final query will be `height:10 + width:20`.
+
+
 ### Remove Words
 
 Removing words is the progressive loosening of query constraints to include more results when none are initially found.
@@ -125,7 +154,7 @@ For example, imagine an online smartphone shop that sold a limited inventory of 
 
 You can remove multiple words by space-separated values. E.g. `iphone samsung`.
 
-![remove words](https://i.imgur.com/ArDcJRn.png)
+![remove words](https://i.imgur.com/bVM7oFg.png)
 
 ### Replace Words
 
@@ -135,18 +164,20 @@ Rules offers an alternative. You can now replace words instead of adding new one
 
 ### Add Filter
 
-Add Filter rule allows you to define the `term` filters that will get applied on the `search` type of queries. For example, if somebody searches for `iphone` then you may want to apply a `brand` filter with value as `apple`.
+Add Filter action allows you to define the `term` filters that will get applied on the `search` type of queries. For example, if somebody searches for `iphone` then you may want to apply a `brand` filter with value as `apple`.
+
+![add-filter](https://i.imgur.com/fAvEjVe.png)
 
 
-### Add Search Settings
+### Search Settings
 
-This rule helps you to define the `dataField` and `fieldWeights` for your `search` type of queries. For example, if you want to always set `product_name` as `dataField` irrespective of what user defines in the search request.
+This action helps you to define the `dataField` and `fieldWeights` for your `search` type of queries. For example, if you want to always set `product_name` as `dataField` irrespective of what user defines in the search request.
 
 > Note: The `dataField` and `fieldWeights` values set by this rule will override the `dataField` and `fieldWeights` values set in the search request.
 
 ### Functions
 
-Helps in doing more customization with search or handling edge cases around search relevancy. Functions lets you implement any custom action. Example you want to perform natural language processing on the search query.
+Helps in doing more customization with search or handling edge cases around search relevancy. Functions let you implement any custom action. For example you want to perform natural language processing on the search query.
 
 ![function](https://www.dropbox.com/s/tsrj68q3yixcp2n/Screenshot%202020-02-20%2010.59.35.png?raw=1)
 
