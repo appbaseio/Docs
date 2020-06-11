@@ -145,6 +145,8 @@ height:$1 + width:$2
 
 Here `$1` and `$2` are variables that will get extracted from the regex capture groups defined in the trigger expression. Now if some user makes a search with value as `10 x 20` then the final query will be `height:10 + width:20`.
 
+![replace search query](https://i.imgur.com/6kjzXz6.png)
+
 
 ### Remove Words
 
@@ -174,6 +176,8 @@ Add Filter action allows you to define the `term` filters that will get applied 
 This action helps you to define the `dataField` and `fieldWeights` for your `search` type of queries. For example, if you want to always set `product_name` as `dataField` irrespective of what user defines in the search request.
 
 > Note: The `dataField` and `fieldWeights` values set by this rule will override the `dataField` and `fieldWeights` values set in the search request.
+
+![search settings](https://i.imgur.com/cE2jXvS.png)
 
 ### Functions
 
