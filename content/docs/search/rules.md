@@ -181,7 +181,7 @@ This action helps you to define the `dataField` and `fieldWeights` for your `sea
 
 ### Functions
 
-Helps in doing more customization with search or handling edge cases around search relevancy. Functions let you implement any custom action. For example you want to perform natural language processing on the search query.
+Helps in doing more customization with search or handling edge cases around search relevancy. Functions let you implement any custom action. For example, you want to perform natural language processing on the search query.
 
 ![function](https://www.dropbox.com/s/tsrj68q3yixcp2n/Screenshot%202020-02-20%2010.59.35.png?raw=1)
 
