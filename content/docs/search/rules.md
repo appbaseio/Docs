@@ -154,7 +154,7 @@ Removing words is the progressive loosening of query constraints to include more
 
 For example, imagine an online smartphone shop that sold a limited inventory of iPhones in only 16GB and 32GB varieties. Users searching for “iphone 5 64gb” would see no results. This is not ideal behavior - it would be far better to show users some iPhone 5 results instead of a blank page.
 
-You can remove multiple words by space-separated values. E.g. `iphone samsung`.
+You can remove multiple words by using the tag based UI.
 
 ![remove words](https://i.imgur.com/bVM7oFg.png)
 
