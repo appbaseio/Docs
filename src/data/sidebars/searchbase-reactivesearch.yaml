@@ -5,6 +5,8 @@
               link: /docs/reactivesearch/searchbase/overview/QuickStart/
             - title: API Reference
               link: /docs/reactivesearch/searchbase/overview/apireference/
+            - title: Component
+              link: /docs/reactivesearch/searchbase/overview/component/
       - group: Integrations
         items:
             - title: React JS
