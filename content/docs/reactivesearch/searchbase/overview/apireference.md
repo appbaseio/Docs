@@ -85,7 +85,7 @@ The following properties can be used to configure the appbase environments globa
     -   **userId** `String` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 
-#### To configure the query execution
+#### To customize the query execution
 
 The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [Component](docs/reactivesearch/searchbase/overview/component/) too.
 
