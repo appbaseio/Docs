@@ -11,13 +11,21 @@ sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
 
-[react-searchbox](https://github.com/appbaseio/react-searchbox) - It offers a lightweight (~30KB: Minified + Gzipped) and performance focused searchbox UI component to query and display results from your Elasticsearch app (aka index) using declarative props. It is an alternative to using the [DataSearch component](/docs/reactivesearch/v3/search/datasearch/) from ReactiveSearch.
+[react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight search library which allows you to add custom UI components and allow seamless search systems.
 
 ##Installation
 
+`React Searchbox` uses `Searchbase` as an internal dependency to connect with an Elastic Search system to perform search queries. To explore about Searchbase [click here](). To install React Searchbox you can use `npm` or `yarn` to get set as follows:
+
+##Using npm
+
 ```js
 npm install @appbaseio/react-searchbox
-// or
+```
+
+##Using yarn
+
+```js
 yarn add @appbaseio/react-searchbox
 ```
 
@@ -26,17 +34,36 @@ yarn add @appbaseio/react-searchbox
 ```js
 import React, { Component } from 'react';
 
-import SearchBox from '@appbaseio/react-searchbox';
+import { SearchBase, SearchBox } from '@appbaseio/react-searchbox';
 
 export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<SearchBox
-					app="good-books-ds"
-					credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
-					dataField={['original_title', 'original_title.search']}
-				/>
+				<SearchBase
+					// Your ES index name
+					index="good-books-ds"
+					// Credentials to access details from the server
+					credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
+					// URL of the system
+					url="https://arc-cluster-appbase-demo-6pjy6z.searchbase.io"
+				>
+					<SearchBox
+						id="search-component"
+						dataField={[
+							{
+								field: 'original_title',
+								weight: 1,
+							},
+							{
+								field: 'original_title.search',
+								weight: 3,
+							},
+						]}
+						title="Search"
+						placeholder="Search for Books"
+					/>
+				</SearchBase>
 			</div>
 		);
 	}
