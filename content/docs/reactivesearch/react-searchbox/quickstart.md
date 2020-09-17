@@ -13,23 +13,23 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 
 [react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight search library which allows you to add custom UI components and allow seamless search systems.
 
-##Installation
+## Installation
 
 `React Searchbox` uses `Searchbase` as an internal dependency to connect with an Elastic Search system to perform search queries. To explore about Searchbase [click here](). To install React Searchbox you can use `npm` or `yarn` to get set as follows:
 
-##Using npm
+### Using npm
 
 ```js
 npm install @appbaseio/react-searchbox
 ```
 
-##Using yarn
+### Using yarn
 
 ```js
 yarn add @appbaseio/react-searchbox
 ```
 
-##Basic Usage
+## Basic Usage
 
 ```js
 import React, { Component } from 'react';
@@ -60,6 +60,16 @@ export default class App extends Component {
 								weight: 3,
 							},
 						]}
+						defaultSuggestions={[
+							{
+								label: 'Songwriting',
+								value: 'Songwriting',
+							},
+							{
+								label: 'Musicians',
+								value: 'Musicians',
+							},
+						]}
 						title="Search"
 						placeholder="Search for Books"
 					/>
@@ -70,7 +80,11 @@ export default class App extends Component {
 }
 ```
 
-##Demo
+## Result
+
+![React Searchbox Sample app](https://i.imgur.com/9BZVnj9.png)
+
+## Demo
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/demo" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
