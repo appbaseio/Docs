@@ -492,8 +492,8 @@ The essential headless component for implement and integrating custom UI blocks 
 
 -   **triggerQueryOnInit** `Boolean` Triggers the query when the component loads
 
--   **onValueChange** `Function` is a callback function which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you want to
-    generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.
+-   **onValueChange** `Function` is a callback function which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you  
+    want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.
 
 -   **onResults** `Function` can be used to listen for the `results` property changes
 
