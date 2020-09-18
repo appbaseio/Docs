@@ -236,7 +236,80 @@ nestedSidebar: 'react-searchbox-reactivesearch'
     searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
 -   **render** `Function` A function returning the UI you want to render based on your results. This function receives a list of parameters and expects to
-    return a `JSX`.
+    return a `JSX`. Properties available as render props
+
+    -   **id**
+    -   **type**
+    -   **react**
+    -   **queryFormat**
+    -   **dataField**
+    -   **categoryField**
+    -   **categoryValue**
+    -   **nestedField**
+    -   **from**
+    -   **size**
+    -   **sortBy**
+    -   **value**
+    -   **aggregationField**
+    -   **after**
+    -   **includeNullValues**
+    -   **includeFields**
+    -   **excludeFields**
+    -   **fuzziness**
+    -   **searchOperators**
+    -   **highlight**
+    -   **highlightField**
+    -   **customHighlight**
+    -   **interval**
+    -   **aggregations**
+    -   **missingLabel**
+    -   **showMissing**
+    -   **enableSynonyms**
+    -   **selectAllLabel**
+    -   **pagination**
+    -   **queryString**
+    -   **enableQuerySuggestions**
+    -   **showDistinctSuggestions**
+    -   **error**
+    -   **defaultQuery**
+    -   **customQuery**
+    -   **requestStatus**
+    -   **results**
+    -   **aggregationData**
+    -   **micStatus**
+    -   **micInstance**
+    -   **micActive**
+    -   **micInactive**
+    -   **micDenied**
+    -   **query**
+    -   **loading**
+    -   **appbaseConfig**
+    -   **suggestions**
+    -   **queryId**
+
+    #### Getter methods
+
+    -   **handleMicClick**
+    -   **triggerDefaultQuery**
+    -   **triggerCustomQuery**
+    -   **recordClick**
+    -   **recordConversions**
+    -   **subscribeToStateChanges**
+    -   **unsubscribeToStateChanges**
+
+    #### Setter methods
+
+    -   **setDataField**
+    -   **setValue**
+    -   **setSize**
+    -   **setFrom**
+    -   **setFuzziness**
+    -   **setIncludeFields**
+    -   **setExcludeFields**
+    -   **setSortBy**
+    -   **setReact**
+    -   **setDefaultQuery**
+    -   **setCustomQuery**
 
 -   **subscribeTo** `PropTypes.arrayOf(string)`
 
