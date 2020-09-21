@@ -74,7 +74,7 @@ const searchComponent = new Component(properties);
     ```
 
 -   **value** `any`
-    Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type), each kind of query has the different type of value format.
+    Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type). Depending on the query type, the value format would differ. You can refer to the different value formats over [here](/docs/search/reactivesearch-api/reference/#value).
 
 -   **queryFormat** `string`
     Sets the query format, can be **or** or **and**. Defaults to **or**.
