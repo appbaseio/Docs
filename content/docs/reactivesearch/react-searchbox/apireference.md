@@ -11,11 +11,11 @@ sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
  
-[react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight(~30KB: Minified + Gzipped) search library that allows you to add custom UI components and allow seamless search systems.
+[react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight(~30KB: Minified + Gzipped) search library that provides scaffolding to create search experiences powered by Elasticsearch.
 
 ## How does it work?
 
-[react-searchbox](https://github.com/appbaseio/react-searchbox) uses the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) library under the hood and make the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) APIs configurable by declarative props to ease out the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) integration for react developers. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component to render a search bar to perform search with Elasticsearch. Additionally, it provides the [SearchComponent](docs/reactivesearch/react-searchbox/searchcomponent/) to build UI components with different kind of Elasticsearch queries (`term`, `geo`, `range` etc).
+[react-searchbox](https://github.com/appbaseio/react-searchbox) provides declarative props to query Elasticsearch and bind the search state with the UI components. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component called SearchBox to render a search bar to perform search powered by Elasticsearch. It also provides a general purpose [SearchComponent](/docs/reactivesearch/react-searchbox/searchcomponent/) to bind to UI components for creating Facets and Results.
 
 
 Example use-cases are:
@@ -26,7 +26,7 @@ Example use-cases are:
 -   To build a location filter.
 -   To render the search results etc.
 
-This library has 3 essentials parts
+This library is divided into three components:
 
 [SearchBase](docs/reactivesearch/react-searchbox/searchbase/) is a provider component that provides the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
