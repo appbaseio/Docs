@@ -1,7 +1,7 @@
 ---
-title: 'Component class'
-meta_title: 'API Reference for Component class'
-meta_description: 'Component class represents the properties/methods for a search component.'
+title: 'SearchComponent class'
+meta_title: 'API Reference for SearchComponent class'
+meta_description: 'SearchComponent class represents the properties/methods for a search component.'
 keywords:
     - apireference
     - searchbase
@@ -11,9 +11,9 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-## When to use?
+## How does it work?
 
-The `Component` class represents a search component that can be used to build a different kind of search components for examples,
+The `SearchComponent` class represents a search component that can be used to build a different kind of search components for examples,
 
 -   a category filter component,
 -   a search bar component,
@@ -23,15 +23,15 @@ The `Component` class represents a search component that can be used to build a 
 
 ## Constructor
 
-The constructor of the `Component` class is called with the following properties:
+The constructor of the `SearchComponent` class is called with the following properties:
 
 ```js
-const searchComponent = new Component(properties);
+const searchComponent = new SearchComponent(properties);
 ```
 
 ### Properties
 
-#### To configure the Appbase environments
+#### Configure appbase.io environment
 
 -   **index** `string` [Required]
     Refers to an index of the Elasticsearch cluster.
@@ -97,7 +97,7 @@ const searchComponent = new Component(properties);
 An example of a `react` clause where all three clauses are used and values are `Object`, `Array` and `string`.
 
 ```js
-const resultComponent = new Component({
+const resultComponent = new SearchComponent({
 	react: {
 		and: {
 			or: ['CityComp', 'TopicComp'],
@@ -131,7 +131,7 @@ Here, we are specifying that the result component should update whenever one of 
     You can use `aggregationData` using `onAggregationData` callback or `subscriber`.
 
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'good-book-ds-latest',
     	url: 'https://scalr.api.appbase.io',
     	credentials: 'IPM14ICqp:8e573e86-8802-4a27-a7a1-4c7d0c62c186',
@@ -226,7 +226,7 @@ Here, we are specifying that the result component should update whenever one of 
     	"name": "Warn",
     	"address": "Washington"
     }
-    // Component:
+    // SearchComponent:
     dataField=['name', 'address']
     // Search Query:
     "wa"
@@ -247,7 +247,7 @@ Here, we are specifying that the result component should update whenever one of 
     set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```ts
-const component = new Component({
+const component = new SearchComponent({
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -261,7 +261,7 @@ const component = new Component({
     Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br/>
     For example, we will add the `credentials` property in the request using `transformRequest`.
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'gitxplore-app',
     	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -277,7 +277,7 @@ const component = new Component({
     For example:
 
 ```js
-const component = new Component({
+const component = new SearchComponent({
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -324,8 +324,8 @@ const component = new Component({
     }
 ```
 
--   **defaultQuery**: `(component: Component) => Object`
-    is a callback function that takes the `Component` instance as parameter and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` is used with data-driven components to impact their own data. It is meant to modify the default query which is used by a component to render the UI.
+-   **defaultQuery**: `(component: SearchComponent) => Object`
+    is a callback function that takes the `SearchComponent` instance as parameter and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` is used with data-driven components to impact their own data. It is meant to modify the default query which is used by a component to render the UI.
 
     Some of the valid use-cases are:
 
@@ -335,7 +335,7 @@ const component = new Component({
     For example, in a `term` type of component showing a list of cities, you may only want to render cities belonging to India.
 
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'gitxplore-app',
     	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -349,8 +349,8 @@ const component = new Component({
     });
     ```
 
--   **customQuery**: `(component: Component) => Object`
-    takes `Component` instance as parameter and **returns** the query to be applied to the dependent components by `react` prop, as defined in Elasticsearch Query DSL.
+-   **customQuery**: `(component: SearchComponent) => Object`
+    takes `SearchComponent` instance as parameter and **returns** the query to be applied to the dependent components by `react` prop, as defined in Elasticsearch Query DSL.
 
     For example, the following example has two components `search-component`(to render the suggestions) and `result-component`(to render the results). The `result-component` depends on the `search-component` to update the results based on the selected suggestion. The `search-component` has the `customQuery` prop defined that will not affect the query for suggestions(that is how `customQuery` is different from `defaultQuery`) but it'll affect the query for `result-component` because of the `react` dependency on `search-component`.
 
@@ -388,7 +388,7 @@ const component = new Component({
     is a callback function which accepts the component's future **value** as a parameter and **returns** a promise. It is called every time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution since it only executes the query after the provided promise has been resolved.<br/>
     For example:
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'gitxplore-app',
     	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -408,7 +408,7 @@ const component = new Component({
 ### An example with all properties
 
 ```js
-const component = new Component({
+const component = new SearchComponent({
     index: 'gitxplore-app',
     url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
     credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -545,7 +545,7 @@ These properties are automatically calculated or managed by the `SearchBase` cla
 -   **stateChanges**
     `true` invokes the subscribed functions to `subscribeToStateChanges` method, i.e trigger the re-render after making changes
 
-The following methods of `Component` class can be used to set or update the search properties:
+The following methods of `SearchComponent` class can be used to set or update the search properties:
 
 -   **setHeaders** `(headers: Object, options?: Options) => void`
     can be used to set the `headers` property
@@ -553,6 +553,8 @@ The following methods of `Component` class can be used to set or update the sear
     can be used to set the `size` property
 -   **setFrom** `(from: number, options?: Options) => void`
     can be used to set the `from` property, which is useful while implementing pagination
+-   **setAfter** `(after: object, options?: Options) => void`
+    can be used to set the `after` property, which is useful while implementing pagination when the `type` of the component is `term`
 -   **setFuzziness** `(fuzziness: number | string, options?: Options) => void`
     can be used to set the `fuzziness` property
 -   **setIncludeFields** `(includeFields: Array<string>, options?: Options) => void`
@@ -575,10 +577,10 @@ The following methods of `Component` class can be used to set or update the sear
 -   **setReact** `(react: Object, options?: types.Options): void`
     can be used to set the `react` property
 
--   **setDefaultQuery** `( defaultQuery: (component: Component) => void, options?: types.Options ): void`
+-   **setDefaultQuery** `( defaultQuery: (component: SearchComponent) => void, options?: types.Options ): void`
     can be used to set the default query
 
--   **setCustomQuery** `( defaultQuery: (component: Component) => void, options?: types.Options ): void`
+-   **setCustomQuery** `( defaultQuery: (component: SearchComponent) => void, options?: types.Options ): void`
     can be used to set the custom query
 
 ## Callback of change events
@@ -586,13 +588,13 @@ The following methods of `Component` class can be used to set or update the sear
 You can define the callback of the following event to listen for the search state changes. The callback function accepts the updated value as the first param and the previous value as the second param. These callback functions may be used in the following scenarios:
 
 1. Perform side-effects e.g. make a network request,
-2. Update the UI. However, it is recommended to use the `subscribeToStateChanges` to update the UI which uses `Component` properties.
+2. Update the UI. However, it is recommended to use the `subscribeToStateChanges` to update the UI which uses `SearchComponent` properties.
 
 -   **onValueChange** `(next: string, prev: string) => void`
     can be used to listen for the `value` property changes. <br/>
 
 ```js
-const component = new Component({
+const component = new SearchComponent({
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -609,7 +611,7 @@ component.onValueChange = (nextValue, prevValue) => {
     can be used to listen for the `aggregationData` property changes
 
 ```javascript
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'gitxplore-app',
         url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
         credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -638,21 +640,21 @@ The following methods can be used to trigger the queries for components.
 
 -   **triggerDefaultQuery** `(options?: types.Option): Promise<any>`
     This method can be used to execute the default query for a particular component.
-
-        For examples,
-        - to display the `suggestions` or `results` for a `search` type of component,
-        - to display the filter options(`aggregations`) for a `term` type of component
+    For examples,
+    
+    - to display the `suggestions` or `results` for a `search` type of component,
+    - to display the filter options(`aggregations`) for a `term` type of component
 
 -   **triggerCustomQuery** `(options?: types.Option): Promise<any>`
     This method can be used to execute queries for the dependent components.
 
 ## Subscribe to the properties changes
 
-Although we have event's callback that can be used to update the UI based on particular property changes, the `subscribeToStateChanges` method gives you more control over the UI rendering logic and is more efficient.
+Although we have callbacks for change events that can be used to update the UI based on particular property changes, the `subscribeToStateChanges` method gives you more control over the UI rendering logic and is more efficient.
 
 ### How does it work?
 
-1. This method is controlled by the `stateChanges` property which can be defined in the [setters](#setters) while updating a particular property. If `stateChanges` is set to `true`, then only the subscribed functions will be called unlike events callback which gets called every time when a property changes it's value.<br/>
+1. This method is controlled by the `stateChanges` property which can be defined in the [setters](#setters) while updating a particular property. If `stateChanges` is set to `true`, then only the subscribed functions will be called, unlike events callback which gets called every time when a property changes its value.<br/>
    So basically, `subscribeToStateChanges` provides more control over the event's callback in a way that you can define whether to update the UI or not while setting a particular property's value.<br/>
 2. You can define the properties for which you want to update the UI.
 3. It allows you to register multiple callback functions for search state updates.
@@ -666,7 +668,7 @@ subscribeToStateChanges(
 ): void
 ```
 
-You can use the `subscribeToStateChanges` method of `Component` class to subscribe to the state changes of the properties. <br/>
+You can use the `subscribeToStateChanges` method of `SearchComponent` class to subscribe to the state changes of the properties. <br/>
 A common use-case is to subscribe to a component or DOM element to a particular property or a set of properties & update the UI according to the changes. <br/>
 The callback function accepts an object in the following shape:
 
@@ -710,7 +712,7 @@ class Results extends React.Component {
         this.state = {
             results: []
         }
-        this.component = new Component(config);
+        this.component = new SearchComponent(config);
         this.component.subscribeToStateChanges(this.stateChangeHandler, 'results');
     }
     stateChangeHandler = ({ results }) => {
@@ -745,13 +747,13 @@ componentWillUnmount() {
 
 ## Record Analytics
 
-The `Component` class provides the methods to record clicks and conversions for search results.
+The `SearchComponent` class provides the methods to record clicks and conversions for search results.
 
 -   **recordClick** `(clickObjects: Object, isSuggestionClick: boolean = false) => void`
     Enables recording click analytics of a search request. Pass `isSuggestionClick=true`, if you want to record a suggestion click.
 
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'good-book-ds',
     	url: 'https://arc-cluster-appbase-demo-ps1pgt.component.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -770,7 +772,7 @@ The `Component` class provides the methods to record clicks and conversions for 
 -   **recordConversions** `(conversionObjects: Array<string>) => void`
     Enables recording a search conversion.
     ```js
-    const component = new Component({
+    const component = new SearchComponent({
     	index: 'good-book-ds',
     	url: 'https://arc-cluster-appbase-demo-ps1pgt.searchbase.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',

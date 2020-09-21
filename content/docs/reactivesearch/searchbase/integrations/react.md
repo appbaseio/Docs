@@ -27,6 +27,11 @@ constructor(props) {
     this.searchBase = new SearchBase({
       index,
       url,
+      credentials
+    });
+
+    // Register search component
+    const searchComponent = this.searchBase.register('search-component', {
       dataField: [
         'name',
         'description',
@@ -35,15 +40,17 @@ constructor(props) {
         'owner',
         'topics'
       ],
-      credentials
     });
 
     // Pre-load results
-    this.searchBase.triggerQuery();
+    this.searchComponent.triggerDefaultQuery();
 
-    this.searchBase.subscribeToStateChanges(() => {
-      this.forceUpdate();
-    });
+    // Subscribe to results update
+    this.searchComponent.subscribeToStateChanges((change) => {
+      this.setState({
+        results: change.results.next,
+      })
+    }, ['results']);
 }
 ```
 
@@ -51,23 +58,26 @@ constructor(props) {
 
 ```js
 handleSelect = value => {
-	this.searchBase.setValue(value, {
-		triggerQuery: true,
-	});
+  // Fetch results on selection
+	this.searchComponent.setValue(value, {
+    triggerDefaultQuery: true,
+  });
 };
 
 handleChange = e => {
-	this.searchBase.setValue(e.target.value, {
-		triggerSuggestionsQuery: true,
+  // Just update value on change
+	this.searchComponent.setValue(e.target.value, {
+    triggerDefaultQuery: false,
 	});
 };
 ```
 
 ## Renderers
+
 ### Input Render
 
 ```js
-<input type="text" value={this.searchBase.value} onChange={this.handleChange} />
+<input type="text" value={this.searchComponent.value} onChange={this.handleChange} />
 ```
 
 ### Suggestions Render
@@ -75,8 +85,8 @@ handleChange = e => {
 ```js
 <section style={{ margin: 20 }}>
 	<b>Suggestions</b>
-	{this.searchBase.suggestionsRequestPending && <div>Loading suggestions...</div>}
-	{this.searchBase.suggestions.data.map(i => {
+	{this.searchComponent.requestPending && <div>Loading suggestions...</div>}
+	{this.searchComponent.results.data.map(i => {
 		return (
 			<div onClick={() => this.handleSelect(i.value)} key={i.label}>
 				{i.label}
@@ -91,7 +101,6 @@ handleChange = e => {
 ```js
 <section style={{ margin: 20 }}>
 	<b>Results</b>
-	{this.searchBase.requestPending && <div>Loading results...</div>}
 	{this.searchBase.results.data.map(i => {
 		return <div key={i._id}>{i.name}</div>;
 	})}

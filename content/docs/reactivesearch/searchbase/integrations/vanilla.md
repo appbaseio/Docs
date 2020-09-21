@@ -20,9 +20,12 @@ nestedSidebar: 'searchbase-reactivesearch'
 const searchBase = new SearchBase({
 	index,
 	url,
-	dataField: ['name', 'description', 'name.raw', 'fullname', 'owner', 'topics'],
 	credentials,
 });
+
+const searchComponent = searchBase.register('search-component', {
+  dataField: ['name', 'description', 'name.raw', 'fullname', 'owner', 'topics'],
+})
 ```
 
 ## HTML
@@ -40,7 +43,7 @@ document.body.innerHTML = `
 ## Subscribe to state changes
 
 ```js
-searchBase.subscribeToStateChanges(() => {
+searchComponent.subscribeToStateChanges(() => {
 	// If we press enter key than autocomplete box is closed.
 	// Handling a edge case.
 
@@ -55,7 +58,7 @@ searchBase.subscribeToStateChanges(() => {
 
 ```js
 const input = document.getElementById('input');
-input.addEventListener('change', searchBase.onChange);
+input.addEventListener('change', searchComponent.onChange);
 ```
 
 ## Using with `autocomplete-js` library
@@ -63,7 +66,7 @@ input.addEventListener('change', searchBase.onChange);
 ```js
 new Autocomplete('#autocomplete', {
 	search: () => {
-		return searchBase.results.data;
+		return searchComponent.results.data;
 	},
 	getResultValue: result => result.name,
 	renderResult: (result, props) => `
