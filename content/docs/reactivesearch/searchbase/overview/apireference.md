@@ -26,7 +26,7 @@ The working of `Searchbase` can be better explained by the following chart.
 
 The `Searchbase` library is a headless implementation of the core architecture in Vanilla JS, which can be used with your own UI or alongside any framework. It provides all the necessary utilities to build a powerful search UI and can be easily integrated with any UI framework. Searchbase lib maintains the search `state` and provides some `actions` which can be used to manipulate the state from the UI. It also provides events which can be used to listen for the state changes & update the UI accordingly.
 
-Although we don't ship any UI component with `Searchbase` directly, we provide easy to integrate libraries for different platforms. Please check `@appbaseio/react-searchbox` and `@appbaseio/vue-searchbox` for the React and Vue. The UI solution for `angular` is work in progress.
+Although we don't ship any UI component with `Searchbase` directly, we provide easy to integrate libraries for different platforms. You can check `@appbaseio/react-searchbox` and `@appbaseio/vue-searchbox` for React and Vue. A UI solution for `angular` is on our roadmap as well.
 
 ## How to use?
 
