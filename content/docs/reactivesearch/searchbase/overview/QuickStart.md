@@ -1,7 +1,7 @@
 ---
 title: 'Quickstart'
 meta_title: 'Quickstart to SearchBase'
-meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'Searchbase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - quickstart
     - searchbase
@@ -11,10 +11,11 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[SearchBase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
+[Searchbase](https://github.com/appbaseio/searchbase) - A lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.
 
 ## Installation
-Run the below command to install `SearchBase` in your project.
+
+Run the below command to install `Searchbase` in your project.
 
 ```js
 yarn add @appbaseio/searchbase
@@ -237,7 +238,7 @@ Add this in your HTML
 
 ## Demo
 
-The following demo explains the `SearchBase` integration to build a basic search experience with a facet.
+The following demo explains the `Searchbase` integration to build a basic search experience with a facet.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/next/packages/searchbase/examples/with-facet?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
