@@ -1,7 +1,7 @@
 ---
 title: 'Integrations'
 meta_title: 'Integration with React JS'
-meta_description: 'SearchBase is a lightweight & platform agnostic search library with some common utilities.'
+meta_description: 'SearchBase is a lightweight & platform agnostic library to build the search UIs with Elasticsearch.'
 keywords:
     - integrations
     - searchbase
@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic search library with some common utilities.
+[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
 ##Initialization
 You can initialize `SearchBase` in the `constructor` or `componentDidMount`

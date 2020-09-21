@@ -11,9 +11,9 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs.
+[searchbase](http://localhost:8000/docs/reactivesearch/searchbase/overview/QuickStart) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
-##Installation
+## Installation
 Run the below command to install `Searchbase` in your project.
 
 ```js
