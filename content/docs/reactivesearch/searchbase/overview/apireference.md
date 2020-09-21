@@ -30,7 +30,7 @@ Although we don't ship any UI component with `SearchBase` directly, we provide e
 
 ## How to use?
 
-The searchbase library exports two classes named `SearchComponent` and `SearchBase`.
+The `SearchBase` library exports two classes named `SearchComponent` and `SearchBase`.
 
 The `SearchComponent` class represents a search component that can be used to build a different kind of search experiences. For examples,
 
@@ -54,7 +54,7 @@ The `SearchBase` class holds the state for all the active components and can be 
 
 ## Constructor
 
-The constructor of searchbase is called with the following properties:
+The constructor of `SearchBase` is called with the following properties:
 
 ```js
 const searchbase = new SearchBase(properties);
