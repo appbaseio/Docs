@@ -119,7 +119,7 @@ const searchbase = new Searchbase({
     });
     ```
 -   **transformResponse** `(response: any) => Promise<any>`
-    Enables transformation of search network response before rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
+    Enables transformation of search network response before rendering it. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
     For example:
 
 ```js
