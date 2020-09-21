@@ -99,7 +99,7 @@ The following example creates three components:
 -   a filter component to filter the GitHub repo by languages,
 -   a result component to render the results based on the select language filters and search query
 
-The result component has a dependency on the search and language filter components (see the `react` property) i.e reactive to the changes for search and filter component in a way that whenever the search/filter value will change the result component will trigger an `Elasticsearch` query to update results based on the search/filter value.
+The result component watches for changes to the search and language filter components (see the `react` property). It reacts to the inputs and filter selection changesby triggering an `Elasticsearch` query to update results.
 
 The language filter component also depends on the search component which means that it will update the language options based on the search query. For example, if somebody searches for `angular` then the language filter will show `javascript` as an option.
 
