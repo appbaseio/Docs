@@ -1,7 +1,7 @@
 ---
 title: 'Integrations'
 meta_title: 'Integration with React JS'
-meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'searchbase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - integrations
     - searchbase
@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchbase](https://github.com/appbaseio/searchbox/tree/master/packages/searchbase) - SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.
+[searchbase](https://github.com/appbaseio/searchbox/tree/master/packages/searchbase) is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.
 
 ## Initialization
 

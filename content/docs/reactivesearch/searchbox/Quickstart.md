@@ -12,11 +12,11 @@ nestedSidebar: 'searchbox'
 ---
 
 
-`SearchBox` offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch app (aka index).
+`searchBox` offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch app (aka index).
 
 ## Installation
 
-`Searchbox` requires `SearchBase` as dependency. It's a framework agnostic JS library containing common utilities for performing search queries that Searchbox builds upon. You can read more about SearchBase over [here](/docs/reactivesearch/searchbase/overview/QuickStart/).
+`searchbox` requires `searchbase` as dependency. It's a framework agnostic JS library containing common utilities for performing search queries that Searchbox builds upon. You can read more about SearchBase over [here](/docs/reactivesearch/searchbase/overview/QuickStart/).
 
 ```js
 npm install @appbaseio/searchbox @appbaseio/searchbase

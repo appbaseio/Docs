@@ -1,7 +1,7 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to React SearchBox'
-meta_description: 'React SearchBox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'React SearchBox is a lightweight UI library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - quickstart
     - react-searchbox
@@ -10,12 +10,12 @@ keywords:
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
-  
-[react-searchbox](https://github.com/appbaseio/react-searchbox) provides declarative props to query Elasticsearch and bind the search state with the UI components. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component called SearchBox to render a search bar to perform search powered by Elasticsearch. It also provides a general purpose [SearchComponent](/docs/reactivesearch/react-searchbox/searchcomponent/) to bind to UI components for creating Facets and Results.
- 
+
+[react-searchbox](https://github.com/appbaseio/searchbox/tree/master/packages/react-searchbox) provides declarative props to query Elasticsearch, and bind UI components with different types of search queries. As the name suggests, it provides a default UI component for searchbox.
+
 ## Installation
 
-To install React Searchbox you can use `npm` or `yarn` to get set as follows:
+To install `react-searchbox`, you can use `npm` or `yarn` to get set as follows:
 
 ### Using npm
 
