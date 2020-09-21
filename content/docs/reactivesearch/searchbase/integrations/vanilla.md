@@ -17,7 +17,7 @@ nestedSidebar: 'searchbase-reactivesearch'
 ## Initialization
 
 ```js
-const searchBase = new Searchbase({
+const searchBase = new SearchBase({
 	index,
 	url,
 	dataField: ['name', 'description', 'name.raw', 'fullname', 'owner', 'topics'],

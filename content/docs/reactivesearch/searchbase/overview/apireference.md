@@ -15,24 +15,24 @@ nestedSidebar: 'searchbase-reactivesearch'
 
 > Note:
 >
-> This API reference is meant for the headless usage of the `Searchbase` library.
+> This API reference is meant for the headless usage of the `SearchBase` library.
 
 ## How does it work?
 
-The working of `Searchbase` can be better explained by the following chart.
+The working of `SearchBase` can be better explained by the following chart.
 <br/><br/>
 
 <img alt="Dataset" src="/images/searchbase.png" />
 
-The `Searchbase` library is a headless implementation of the core architecture in Vanilla JS, which can be used with your own UI or alongside any framework. It provides all the necessary utilities to build a powerful search UI and can be easily integrated with any UI framework. Searchbase lib maintains the search `state` and provides some `actions` which can be used to manipulate the state from the UI. It also provides events which can be used to listen for the state changes & update the UI accordingly.
+The `SearchBase` library is a headless implementation of the core architecture in Vanilla JS, which can be used with your own UI or alongside any framework. It provides all the necessary utilities to build a powerful search UI and can be easily integrated with any UI framework. SearchBase lib maintains the search `state` and provides some `actions` which can be used to manipulate the state from the UI. It also provides events which can be used to listen for the state changes & update the UI accordingly.
 
-Although we don't ship any UI component with `Searchbase` directly, we provide easy to integrate libraries for different platforms. You can check `@appbaseio/react-searchbox` and `@appbaseio/vue-searchbox` for React and Vue. A UI solution for `angular` is on our roadmap as well.
+Although we don't ship any UI component with `SearchBase` directly, we provide easy to integrate libraries for different platforms. You can check `@appbaseio/react-searchbox` and `@appbaseio/vue-searchbox` for React and Vue. A UI solution for `angular` is on our roadmap as well.
 
 ## How to use?
 
-The searchbase library exports two classes named `Component` and `SearchBase`.
+The searchbase library exports two classes named `SearchComponent` and `SearchBase`.
 
-The `Component` class represents a search component that can be used to build a different kind of search experiences. For examples,
+The `SearchComponent` class represents a search component that can be used to build a different kind of search experiences. For examples,
 
 -   a search bar component,
 -   a category filter component,
@@ -44,13 +44,13 @@ The `SearchBase` class holds the state for all the active components and can be 
 
 -   To `register` a component by unique `id`
 -   To `unregister` a component by `id`
--   To retrieve the instance of the `Component` class by `id`
+-   To retrieve the instance of the `SearchComponent` class by `id`
 
 > Note:
 >
 > 1. The `id` property is a unique identifier to each search component.
 > 2. The `SearchBase` class is useful when you're using multiple components that depend on each other. For example, a filter component (to display the category options) depends on the search query (search component).
->    If you're only using a single component then [Component](docs/reactivesearch/searchbase/overview/component/) class should work well.
+>    If you're only using a single component then [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class should work well.
 
 ## Constructor
 
@@ -64,7 +64,7 @@ const searchbase = new SearchBase(properties);
 
 #### Configure appbase.io environment
 
-The following properties can be used to configure the appbase environments globally i.e for all registered components. You can also configure those properties for each [Component](docs/reactivesearch/searchbase/overview/component/) too.
+The following properties can be used to configure the appbase environments globally i.e for all registered components. You can also configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
 -   **index** `string` [Required]
     Refers to an index of Elasticsearch cluster.
@@ -87,13 +87,13 @@ The following properties can be used to configure the appbase environments globa
 
 #### To customize the query execution
 
-The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [Component](docs/reactivesearch/searchbase/overview/component/) too.
+The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
 -   **headers** `Object`
     set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```ts
-const searchbase = new Searchbase({
+const searchbase = new SearchBase({
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -107,7 +107,7 @@ const searchbase = new Searchbase({
     Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br/>
     For example, we will add the `credentials` property in the request using `transformRequest`.
     ```js
-    const searchbase = new Searchbase({
+    const searchbase = new SearchBase({
     	index: 'gitxplore-app',
     	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
     	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -123,7 +123,7 @@ const searchbase = new Searchbase({
     For example:
 
 ```js
-const searchbase = new Searchbase({
+const searchbase = new SearchBase({
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
@@ -173,7 +173,7 @@ const searchbase = new Searchbase({
 ### An example with all properties
 
 ```js
-const searchbase = new Searchbase({
+const searchbase = new SearchBase({
     index: "gitxplore-app",
     url: "https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io",
     credentials: "a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61",
@@ -216,10 +216,10 @@ const searchbase = new Searchbase({
 #### register
 
 ```ts
-register(id: string, component: Component | Object): Component
+register(id: string, component: SearchComponent | Object): SearchComponent
 ```
 
-This method can be used to register a search component with a unique `id`. It returns the instance of the [Component](docs/reactivesearch/searchbase/overview/component/) class for that particular search component. The second param can be an instance of the [Component](docs/reactivesearch/searchbase/overview/component/) class or an object to configure the properties of the [Component](docs/reactivesearch/searchbase/overview/component/) class.
+This method can be used to register a search component with a unique `id`. It returns the instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class for that particular search component. The second param can be an instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class or an object to configure the properties of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class.
 
 The following example registers a component with the second param as an object
 
@@ -236,7 +236,7 @@ searchBase.register('search-component', {
 });
 ```
 
-The following example registers a component with second param as an instance of [Component](docs/reactivesearch/searchbase/overview/component/) class.
+The following example registers a component with second param as an instance of [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class.
 
 ```ts
 const searchBase = new SearchBase({
@@ -245,7 +245,7 @@ const searchBase = new SearchBase({
 	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
 });
 
-const searchComponent = new Component({
+const searchComponent = new SearchComponent({
 	id: 'search-component',
 	index: 'gitxplore-app',
 	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
@@ -284,15 +284,15 @@ This method is useful to unregister a component by `id`. It is a good practice t
 #### getComponent
 
 ```ts
-getComponent(id: string): Component
+getComponent(id: string): SearchComponent
 ```
 
-This method can be used to retrieve the instance of the [Component](docs/reactivesearch/searchbase/overview/component/) class for a particular component by `id`.
+This method can be used to retrieve the instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class for a particular component by `id`.
 
 #### getComponents
 
 ```ts
-getComponents(): { [key: string]: Component }
+getComponents(): { [key: string]: SearchComponent }
 ```
 
 This method returns all the active components registered on the `SearchBase` instance. The components state can be used for various purposes, for example, to display the selected filters in the UI.

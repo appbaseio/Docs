@@ -24,7 +24,7 @@ constructor(props) {
     const url = URL;
     const credentials = CRED;
 
-    this.searchBase = new Searchbase({
+    this.searchBase = new SearchBase({
       index,
       url,
       dataField: [

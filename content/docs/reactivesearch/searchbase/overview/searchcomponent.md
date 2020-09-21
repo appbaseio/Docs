@@ -470,7 +470,7 @@ const component = new Component({
 
 ## Getter properties
 
-These properties are automatically calculated or managed by the `Searchbase` class. The library user is not expected to modify these properties.
+These properties are automatically calculated or managed by the `SearchBase` class. The library user is not expected to modify these properties.
 
 -   **results** `Results`
     It is an object which contains the following details of `results` query response.

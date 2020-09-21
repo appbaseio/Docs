@@ -14,7 +14,7 @@ nestedSidebar: 'searchbase-reactivesearch'
 [searchbase](http://localhost:8000/docs/reactivesearch/searchbase/overview/QuickStart) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
 ## Installation
-Run the below command to install `Searchbase` in your project.
+Run the below command to install `SearchBase` in your project.
 
 ```js
 yarn add @appbaseio/searchbase
@@ -34,10 +34,10 @@ To use the umd build, add the following script in your `index.html` file.
 The following example creates a single component of type `search` to render the results based on the input value.
 
 ```js
-import { Component } from '@appbaseio/searchbase';
+import { SearchComponent } from '@appbaseio/searchbase';
 
-// Instantiate the `Component`
-const searchComponent = new Component({
+// Instantiate the `SearchComponent`
+const searchComponent = new SearchComponent({
 	// Elasticsearch index name
 	index: 'gitxplore-app',
 	// Appbase credentials
@@ -103,7 +103,7 @@ The result component watches for changes to the search and language filter compo
 
 The language filter component also depends on the search component which means that it will update the language options based on the search query. For example, if somebody searches for `angular` then the language filter will show `javascript` as an option.
 
-> Note: This example is using the `SearchBase` class instead of the `Component`(that we used in the previous example) class because here we're using multiple components that can have dependencies on each other.
+> Note: This example is using the `SearchBase` class instead of the `SearchComponent`(that we used in the previous example) class because here we're using multiple components that can have dependencies on each other.
 
 ```js
 import { SearchBase } from '@appbaseio/searchbase';
