@@ -1,7 +1,7 @@
 ---
 title: 'Integrations'
 meta_title: 'Integration with Vanilla JS'
-meta_description: 'SearchBase is a lightweight & platform agnostic library to build the search UIs with Elasticsearch.'
+meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.''
 keywords:
     - integrations
     - searchbase
@@ -14,7 +14,7 @@ nestedSidebar: 'searchbase-reactivesearch'
 
 [searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
-##Initialization
+## Initialization
 
 ```js
 const searchBase = new Searchbase({
@@ -25,7 +25,7 @@ const searchBase = new Searchbase({
 });
 ```
 
-##HTML
+## HTML
 
 ```html
 document.body.innerHTML = `
@@ -37,7 +37,7 @@ document.body.innerHTML = `
 `;
 ```
 
-##Subscribe to state changes
+## Subscribe to state changes
 
 ```js
 searchBase.subscribeToStateChanges(() => {
@@ -51,14 +51,14 @@ searchBase.subscribeToStateChanges(() => {
 });
 ```
 
-##Event listener
+## Event listener
 
 ```js
 const input = document.getElementById('input');
 input.addEventListener('change', searchBase.onChange);
 ```
 
-##Using with `autocomplete-js` library
+## Using with `autocomplete-js` library
 
 ```js
 new Autocomplete('#autocomplete', {
@@ -95,7 +95,7 @@ new Autocomplete('#autocomplete', {
 });
 ```
 
-##Demo
+## Demo
 <br />
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbase/tree/master/packages/searchbase/examples/with-vanilla" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>

@@ -1,7 +1,7 @@
 ---
 title: 'Integrations'
 meta_title: 'Integration with React JS'
-meta_description: 'SearchBase is a lightweight & platform agnostic library to build the search UIs with Elasticsearch.'
+meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - integrations
     - searchbase
@@ -14,7 +14,7 @@ nestedSidebar: 'searchbase-reactivesearch'
 
 [searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
-##Initialization
+## Initialization
 You can initialize `SearchBase` in the `constructor` or `componentDidMount`
 
 ```js
@@ -47,7 +47,7 @@ constructor(props) {
 }
 ```
 
-##Change Events
+## Change Events
 
 ```js
 handleSelect = value => {
@@ -63,14 +63,14 @@ handleChange = e => {
 };
 ```
 
-##Renderers
-###Input Render
+## Renderers
+### Input Render
 
 ```js
 <input type="text" value={this.searchBase.value} onChange={this.handleChange} />
 ```
 
-###Suggestions Render
+### Suggestions Render
 
 ```js
 <section style={{ margin: 20 }}>
@@ -86,7 +86,7 @@ handleChange = e => {
 </section>
 ```
 
-###Results Render
+### Results Render
 
 ```js
 <section style={{ margin: 20 }}>
@@ -98,7 +98,7 @@ handleChange = e => {
 </section>
 ```
 
-##Demo
+## Demo
 <br />
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbase/tree/master/packages/searchbase/examples/with-react" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
