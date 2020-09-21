@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
   
-[react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight search library that allows you to add custom UI components and allow seamless search systems.
+[react-searchbox](https://github.com/appbaseio/react-searchbox) provides declarative props to query Elasticsearch and bind the search state with the UI components. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component called SearchBox to render a search bar to perform search powered by Elasticsearch. It also provides a general purpose [SearchComponent](/docs/reactivesearch/react-searchbox/searchcomponent/) to bind to UI components for creating Facets and Results.
  
 ## Installation
 
@@ -126,7 +126,7 @@ export default () => (
 );
 ```
 
-You can play with this example at [here](https://codesandbox.io/s/happy-thunder-pppzi?file=/src/App.js).
+You can play with this example over [here](https://codesandbox.io/s/happy-thunder-pppzi?file=/src/App.js).
 
 ### An example with a facet
 
@@ -273,4 +273,4 @@ The following demo explains the `react-searchbox` integration to build a basic s
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/demo" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-Check the docs for API Reference [here](/docs/reactivesearch/react-searchbox/apireference/)
+You can check out the docs for API Reference over [here](/docs/reactivesearch/react-searchbox/apireference/).
