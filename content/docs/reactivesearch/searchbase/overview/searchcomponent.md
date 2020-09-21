@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-## How does it work??
+## When to use?
 
 The `Component` class represents a search component that can be used to build a different kind of search components for examples,
 
