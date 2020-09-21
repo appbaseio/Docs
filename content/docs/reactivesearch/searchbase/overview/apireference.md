@@ -62,7 +62,7 @@ const searchbase = new SearchBase(properties);
 
 ### Properties
 
-#### To configure the Appbase environments
+#### Configure appbase.io environment
 
 The following properties can be used to configure the appbase environments globally i.e for all registered components. You can also configure those properties for each [Component](docs/reactivesearch/searchbase/overview/component/) too.
 
