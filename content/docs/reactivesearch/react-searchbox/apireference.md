@@ -1,7 +1,7 @@
 ---
-title: 'QuickStart'
-meta_title: 'QuickStart to React SearchBox'
-meta_description: 'React SearchBox is a lightweight react searchbox UI component to query your Elasticsearch app.'
+title: 'API Reference'
+meta_title: 'API Reference to React SearchBox'
+meta_description: 'React SearchBox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - quickstart
     - react-searchbox
@@ -10,23 +10,32 @@ keywords:
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
+ 
+[react-searchbox](https://github.com/appbaseio/react-searchbox) - React SearchBox is a standalone, lightweight(~30KB: Minified + Gzipped) search library that allows you to add custom UI components and allow seamless search systems.
 
-`React SearchBox` offers a lightweight (~30KB: Minified + Gzipped) and performance focused searchbox UI component to query and display results from your Elasticsearch app (aka index) using declarative props. It is an alternative to using the [DataSearch component](/docs/reactivesearch/v3/search/datasearch/) from ReactiveSearch.
+## How does it work?
 
-### When to Use React SearchBox
+[react-searchbox](https://github.com/appbaseio/react-searchbox) uses the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) library under the hood and make the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) APIs configurable by declarative props to ease out the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) integration for react developers. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component to render a search bar to perform search with Elasticsearch. Additionally, it provides the [SearchComponent](docs/reactivesearch/react-searchbox/searchcomponent/) to build UI components with different kind of Elasticsearch queries (`term`, `geo`, `range` etc).
 
-We recommend using React Searchbox over DataSearch or CategorySearch when you only need to integrate a searchbox UI component into your app. If you are planning to user other UI filters or result components, it is ideal to use the [ReactiveSearch library](/docs/reactivesearch/v3/overview/quickstart/) instead of this standalone component.
 
-Example uses of searchbox UI:
+Example use-cases are:
 
--   Searching a rental listing by its `name` or `description` fields.
--   Searching across e-commerce products.
+-   To perform a search across e-commerce products by its `name` or `description` fields.
+-   To create a category filter component.
+-   To create a price range search filter.
+-   To build a location filter.
+-   To render the search results etc.
 
 This library has 3 essentials parts
 
--   **SearchBase** is a container component that wraps all the ReactiveSearch components together. It binds the backend app (data source) with the UI view components
-    (elements wrapped within ReactiveBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
+[SearchBase](docs/reactivesearch/react-searchbox/searchbase/) is a provider component that provides the [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
-*   **SearchBox** SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.
+[SearchBox](docs/reactivesearch/react-searchbox/searchbox/) offers a ready to use, lightweight, and performance-focused searchbox UI component to query and display results from your Elasticsearch cluster.
 
-*   **SearchComponent**
+[SearchComponent](docs/reactivesearch/react-searchbox/searchcomponent/) can be used to build different kinds of search experiences. For examples,
+
+-   a search bar component,
+-   a category filter component,
+-   a price range component,
+-   a location filter component,
+-   a component to render the search results etc.

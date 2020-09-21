@@ -1,7 +1,7 @@
 ---
 title: 'SearchComponent API Reference'
 meta_title: 'Documentation for SearchComponent'
-meta_description: 'React SearchBox is a lightweight react search library with some common utilities.'
+meta_description: 'React SearchBox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - react-searchbox
     - search library
@@ -9,28 +9,38 @@ keywords:
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
+  
+## How does it work?
 
-## SearchComponent
+The `SearchComponent` component represents a search component that can be used to build different kinds of search components. It uses the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) to integrate the UI components with Elasticsearch. For examples,
+
+-   a category filter component,
+-   a search bar component,
+-   a price range component,
+-   a location filter component,
+-   a component to render the search results etc.
 
 ### Props
 
-#### To configure the Appbase environments
+#### Configure appbase.io environment
 
--   **index** `string` [required]
-    refers to an `index` if you’re using your own Elasticsearch cluster. If you're using an appbase.io hosted cluster, then the cluster name can be used.
+-   **index** `string` [Required]
+    Refers to an index of the Elasticsearch cluster.
 
--   **url** `string`
-    URL for the Elasticsearch cluster. Defaults to `https://scalr.api.appbase.io`
+    `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
--   **credentials** `string`
-    Basic auth credentials for authentication purposes. It should be a string of the format `username:password`.
-    If you are using an appbase.io app, you will find credentials under your [API credentials page](https://dashboard.appbase.io/app?view=credentials). If you are not using an appbase.io app, credentials may not be necessary - although having an open access to your Elasticsearch cluster is not recommended.
+-   **url** `string` [Required]
+    URL for the Elasticsearch cluster
 
--   **appbaseConfig** `Object` [optional] allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+-   **credentials** `string` [Required]
+    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
 
-    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
-    -   **userId** `String` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+-   **appbaseConfig** `Object`
+    allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+
+    -   **recordAnalytics** `boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+    -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 
 #### To customize the query execution

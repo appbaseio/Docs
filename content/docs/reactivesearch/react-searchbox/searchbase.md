@@ -1,7 +1,7 @@
 ---
 title: 'SearchBase API Reference'
 meta_title: 'API Reference for SearchBase'
-meta_description: 'SearchBase is a lightweight and platform agnostic search library for Elasticsearch.'
+meta_description: 'React SearchBox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - apireference
     - searchbase

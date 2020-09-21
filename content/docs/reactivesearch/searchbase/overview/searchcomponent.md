@@ -13,7 +13,7 @@ nestedSidebar: 'searchbase-reactivesearch'
 
 ## How does it work?
 
-The `SearchComponent` class represents a search component that can be used to build a different kind of search components for examples,
+The `SearchComponent` class represents a search component that can be used to build different kinds of search components for examples,
 
 -   a category filter component,
 -   a search bar component,
