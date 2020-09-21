@@ -1,7 +1,7 @@
 ---
 title: 'Integrations'
 meta_title: 'Integration with Vanilla JS'
-meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.''
+meta_description: 'SearchBase is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
     - integrations
     - searchbase
