@@ -70,7 +70,7 @@ searchComponent.subscribeToStateChanges(
 		const resultsElement = document.getElementById('results');
 		resultsElement.innerHTML = '';
 		results.data.forEach(element => {
-			var node = document.createElement('LI'); // Create a <li> node
+			var node = document.createElement('li'); // Create a <li> node
 			var resultNode = document.createTextNode(element.name); // Create a text node
 			node.appendChild(resultNode); // Append the text to <li>
 			resultsElement.appendChild(node);
@@ -90,6 +90,8 @@ Add this in your HTML
 
 <div id="results"></div>
 ```
+
+You can play around with this very basic example at [here](https://codesandbox.io/s/hopeful-waterfall-cdy6k?file=/src/index.js).
 
 ### An example with a facet
 
