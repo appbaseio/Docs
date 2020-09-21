@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchbase](https://github.com/appbaseio/searchbase) - A lightweight & platform agnostic library to build the search UIs with Elasticsearch.
+[searchbase](https://github.com/appbaseio/searchbox/tree/master/packages/searchbase) is a lightweight and platform agnostic library that provides scaffolding to create search experiences powered by Elasticsearch.
 
 ## Initialization
 
