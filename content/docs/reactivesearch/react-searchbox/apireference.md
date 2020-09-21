@@ -15,15 +15,15 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 
 ## How does it work?
 
-[react-searchbox](https://github.com/appbaseio/react-searchbox) provides declarative props to query Elasticsearch and bind the search state with the UI components. The [react-searchbox](https://github.com/appbaseio/react-searchbox) library provides a built-in component called SearchBox to render a search bar to perform search powered by Elasticsearch. It also provides a general purpose [SearchComponent](/docs/reactivesearch/react-searchbox/searchcomponent/) to bind to UI components for creating Facets and Results.
+[react-searchbox](https://github.com/appbaseio/searchbox/tree/master/packages/react-searchbox) provides declarative props to query Elasticsearch and bind the search state with the UI components. The `react-searchbox` library provides a built-in component called SearchBox to render a search bar to perform search powered by Elasticsearch. It also provides a general purpose [SearchComponent](/docs/reactivesearch/react-searchbox/searchcomponent/) to bind to UI components for creating Facets and Results.
 
 
 Example use-cases are:
 
--   To perform a search across e-commerce products by its `name` or `description` fields.
--   To create a category filter component.
--   To create a price range search filter.
--   To build a location filter.
+-   To perform a search across e-commerce products by its `name` or `description` fields
+-   To create a category filter component
+-   To create a price range search filter
+-   To build a location filter
 -   To render the search results etc.
 
 This library is divided into three components:
