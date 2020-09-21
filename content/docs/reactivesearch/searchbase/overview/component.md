@@ -63,7 +63,7 @@ const searchComponent = new Component(properties);
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
-    You can define the `dataField` as an array of objects of the `DataField` type to set the field weights.<br/>
+    You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
     The `DataField` type has the following shape:
 
     ```ts
