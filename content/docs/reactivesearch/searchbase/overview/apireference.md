@@ -64,7 +64,7 @@ const searchbase = new SearchBase(properties);
 
 #### Configure appbase.io environment
 
-The following properties can be used to configure the appbase environments globally i.e for all registered components. You can also configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
+The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
 
 -   **index** `string` [Required]
     Refers to an index of Elasticsearch cluster.
