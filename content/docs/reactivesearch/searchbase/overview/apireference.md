@@ -279,7 +279,7 @@ searchBase.register('search-component', {
 unregister(id: string): void
 ```
 
-This method is useful to un-register a component by `id`. It is a good practice to un-register(remove) an un-mounted/un-used component to avoid the side-effects.
+This method is useful to unregister a component by `id`. It is a good practice to unregister (remove) an unmounted/unused component to avoid any side-effects.
 
 #### getComponent
 
