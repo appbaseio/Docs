@@ -116,7 +116,7 @@ The following example renders an autosuggestion search bar(`search-component`) w
           :src="item.image"
           alt="Book Cover"
         />
-        <p>{item.original_title}</p>
+        <p>{{item.original_title}}</p>
       </div>
     </div>
     </search-component>
