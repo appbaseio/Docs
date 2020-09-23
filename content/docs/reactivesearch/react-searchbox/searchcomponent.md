@@ -233,7 +233,7 @@ Here, we are specifying that the results should update whenever one of the black
 
 -  **onError** `Function` gets triggered in case of an error while fetching results
 
--  **onResults** `Function` can be used to listen for the suggestions changes
+-  **onResults** `Function` can be used to listen for the `results` changes
 
 -  **onQueryChange** `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
@@ -257,6 +257,9 @@ Here, we are specifying that the results should update whenever one of the black
 <SearchComponent
     id="search-component"
     dataField={["original_title", "original_title.search"]}
+    headers={{
+		secret: 'searchbase-is-awesome',
+	}}
 />
 ```
 
@@ -417,3 +420,152 @@ Here, we are specifying that the results should update whenever one of the black
 ```
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query value. This is useful for sharing URLs with the component state. Defaults to `false`.
+
+## Render UI
+You can use the `render` prop (or child) as function  to render your custom UI. The following properties are available in the `render` function.
+
+### Getters
+-   **loading**: `boolean`
+    indicates that the query is still in progress.
+-   **error**: `Object`
+    An object containing the error info.
+-   **results** `Results`
+It is an object which contains the following details of `suggestions` query response.
+
+    -   **`data`**: `Array<Object>` contains the (promoted data + parsed hits)
+    -   **`raw`**: `Object` Response returned by ES query in the raw form.
+    -   **`numberOfResults`**: `number` Total number of results found
+    -   **`time`**: `number` Total time taken by request (in ms)
+    -   **`hidden`**: `number` Total number of hidden results found
+    -   **`promoted`**: `number` Total number of promoted results found
+    -   **`promotedData`**: `Array<Object>` An array of promoted results obtained from the applied query.
+    -   **`customData`**: `Object` An object of custom data obtained from the ReactiveSearch API.
+    -   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
+-   **suggestions** `() => Array<Object>`
+    This method can be used to get the parsed suggestions from the `results`. If `enableQuerySuggestions` property is set to `true` then the query suggestions will get appended at the top with a top-level property named `_query_suggestion` as `true`. The `suggestion` object will have the following shape:
+
+```ts
+{
+    label: string;
+    value: string;
+    source: Object;
+} 
+```
+-   **aggregationData** `Aggregations`
+It is an object which contains the following details of `aggregations` query response.
+
+    -   **`data`**: `Array<Object>` contains the parsed aggregations
+    -   **`raw`**: `Object` Response returned by ES `composite aggs` query in the raw form.
+    -   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
+    -   **`afterKey`**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the `afterKey` parameter to retrieve the next results. This property will only be present for `composite` aggregations.
+
+-   **value** `any`
+Represents the current value of the component
+
+-   **query** `Object`
+The last query that has been executed by the component
+
+-   **micStatus** `MicStatusField`
+Returns the current status of the mic. Can be `INACTIVE`, `ACTIVE` or `DENIED`
+
+-   **micActive** `boolean`
+Returns `true` if mic is active
+
+-   **micInactive** `boolean`
+Returns `true` if mic is inactive
+
+-   **micDenied** `boolean`
+Returns `true` if it doesn't have access to the mic
+
+-   **micInstance** `Object`
+Returns the current mic instance. Can be used to set mic language and other properties of mic
+
+-   **id** `string` as defined in props
+-   **react** `Object` `react` as defined in props
+-   **queryFormat** `string` as defined in props
+-   **dataField** `string | Array<string | DataField>` as defined in props
+-   **categoryField** `string` as defined in props
+-   **categoryValue** `string` represents the current value of the selected category
+-   **nestedField** `string` as defined in props
+-   **from** `number` represents the current state of the `from` value. This property is useful to implement pagination.
+-   **size** `number` represents the current state of the `size` of results to be returned by query
+-   **sortBy** `string` current state of the `sortBy` value
+-   **aggregationField** `string` as defined in props
+-   **includeFields** `Array<string>` represents the current value of `includeFields` property
+-   **excludeFields** represents the current value of `excludeFields` property
+-   **fuzziness** `string|number` represents the current value of `fuzziness` property
+-   **searchOperators** `boolean` as defined in props
+-   **highlight** `boolean` as defined in props
+-   **highlightField** `string|Array<string>` as defined in props
+-   **customHighlight** `Object` as defined in props
+-   **enableSynonyms** `boolean` as defined in props
+-   **queryString** `string` as defined in props
+-   **enableQuerySuggestions** `boolean` as defined in props
+-   **showDistinctSuggestions** `boolean` as defined in props
+-   **defaultQuery** represents the current value of `defaultQuery` property
+-   **customQuery**  represents the current value of `customQuery` property
+-   **requestStatus** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
+-   **appbaseConfig** `Object` as defined in props
+-   **queryId** `string` to get the query id returned by appbase.io search to track the analytics
+
+### Setters
+
+> Note:
+> All of the methods accept `options` as the second parameter which has the following shape:
+
+```ts
+{
+    triggerDefaultQuery?: boolean, // defaults to `true`
+    triggerCustomQuery?: boolean, // defaults to `false`
+    stateChanges?: boolean // defaults to `true`
+};
+```
+
+-   **triggerDefaultQuery**
+`true` executes the query for a particular component
+-   **triggerCustomQuery**
+`true` executes the query for the dependent components (dependencies defined in the `react` property)
+-   **stateChanges**
+`true` invokes the subscribed functions to `subscribeToStateChanges` method, i.e trigger the re-render after making changes
+
+The following methods can be used to set or update the properties in the search state:
+
+-   **setValue** `( value: any, options?: Options ) => void`  can be used to set the `value` property
+-   **setSize** `( size: number, options?: Options ) => void`  can be used to set the `size` property
+-   **setFrom** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
+-   **setFuzziness** `( fuzziness: string|number, options?: Options ) => void` can be used to set the `fuzziness` property.
+-   **setIncludeFields** `( includeFields: Array<string>, options?: Options ) => void` can be used to set the `includeFields` property.
+-   **setExcludeFields** `( excludeFields: Array<string>, options?: Options ) => void` can be used to set the `excludeFields` property.
+-   **setSortBy** `( sortBy: string, options?: Options ) => void` can be used to set the sortBy` property.
+-   **setReact** `( react: Object, options?: Options ) => void` can be used to set the `react` property.
+-   **setDefaultQuery** `( defaultQuery: function, options?: Options ) => void` can be used to set the `defaultQuery` property.
+-   **setCustomQuery** `( customQuery: function, options?: Options ) => void` can be used to set the `customQuery` property.
+-   **handleMicClick** `(micOptions: Object, options: Options): Promise<any>` can be used to handle the custom voice search implementation
+
+-   **setDataField** `( dataField: string | Array<string | DataField>, options?: Options ) => void`
+
+### Methods to trigger queries programmatically
+
+> Note:
+> All of the methods accept `options` as the second parameter which has the following shape:
+
+```ts
+{
+    stateChanges?: boolean // defaults to `true`
+};
+```
+-   **stateChanges**
+`true` invokes the subscribed functions to `subscribeToStateChanges` method, i.e trigger the re-render after making changes
+
+The following methods can be used to execute the component's queries programmatically.
+
+-   **triggerDefaultQuery** `(options): Promise<any>` can be used to trigger the `customQuery` programmatically
+-   **triggerCustomQuery** `(options): Promise<any>` can be used to trigger the `defaultQuery` programmatically
+
+### Methods to subscribe to state changes
+-   **subscribeToStateChanges** `function` can be used to subscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+-   **unsubscribeToStateChanges** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+
+### Record Analytics
+-   **recordClick** `function` enables recording click analytics of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
+-   **recordConversions** `function` enables recording conversions of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).

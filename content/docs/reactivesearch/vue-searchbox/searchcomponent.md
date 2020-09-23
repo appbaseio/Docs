@@ -526,10 +526,10 @@ It is an object which contains the following details of `aggregations` query res
     -   **`afterKey`**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the `afterKey` parameter to retrieve the next results. This property will only be present for `composite` aggregations.
 
 -   **value**
-current search input value i.e the search query being used to obtain suggestions.
+Represents the current value of the component
 
 -   **query** `Object`
-The last query that has been executed to fetch the suggestions
+The last query that has been executed by the component
 
 -   **micStatus** `MicStatusField`
 Returns the current status of the mic. Can be `INACTIVE`, `ACTIVE` or `DENIED`
