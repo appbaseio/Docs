@@ -364,7 +364,7 @@ export default {
         type="term"
         :dataField="['city']"
         :defaultQuery="defaultQuery"  
-/>
+    />
 </template>
 <script>
     export default App {

@@ -47,7 +47,7 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
     unique identifier of the component, can be referenced in other components' `react` prop.
 
 -   **dataField** `string | Array<string | DataField>`
-    index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
+    index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
     You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
     The `DataField` type has the following shape:
@@ -402,7 +402,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     CSS class to be injected on the component container.
 
 -   **style** `Object`
-    CSS styles to be applied to the **DataSearch** component.
+    CSS styles to be applied to the **SearchBox** component.
 
 ### Controlled behavior
 
