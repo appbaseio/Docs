@@ -20,15 +20,15 @@ SearchBox offers a lightweight and performance focused searchbox UI component to
 
 The below props are only needed if you're not using the `SearchBox` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
--   **index** `string` [Required]
+-   **index** `string` [required]
     Refers to an index of the Elasticsearch cluster.
 
     `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
--   **url** `string` [Required]
+-   **url** `string` [required]
     URL for the Elasticsearch cluster
 
--   **credentials** `string` [Required]
+-   **credentials** `string` [required]
     Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
 
 -   **appbaseConfig** `Object`
@@ -43,7 +43,7 @@ The below props are only needed if you're not using the `SearchBox` component un
 
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
--   **id** `string` [Required]
+-   **id** `string` [required]
     unique identifier of the component, can be referenced in other components' `react` prop.
 
 -   **dataField** `string | Array<string | DataField>`
@@ -318,8 +318,8 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`requestStatus`** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
     -   **`appbaseConfig`** `Object` as defined in props
     -   **`queryId`** `string` to get the query id returned by appbase.io search to track the analytics
-    -   **`subscribeToStateChanges`** `function` can be used to subscribe to the changes for the properties. Read more at [here](http://localhost:8000/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
-    -   **`unsubscribeToStateChanges`** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](http://localhost:8000/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+    -   **`subscribeToStateChanges`** `function` can be used to subscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+    -   **`unsubscribeToStateChanges`** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
     -   **`recordClick`** `function` enables recording click analytics of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
     -   **`recordConversions`** `function` enables recording conversions of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
     > Note:

@@ -318,8 +318,8 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`requestStatus`** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
     -   **`appbaseConfig`** `Object` as defined in props
     -   **`queryId`** `string` to get the query id returned by appbase.io search to track the analytics
-    -   **`subscribeToStateChanges`** `function` can be used to subscribe to the changes for the properties. Read more at [here](http://localhost:8000/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
-    -   **`unsubscribeToStateChanges`** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](http://localhost:8000/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+    -   **`subscribeToStateChanges`** `function` can be used to subscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
+    -   **`unsubscribeToStateChanges`** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
     -   **`recordClick`** `function` enables recording click analytics of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
     -   **`recordConversions`** `function` enables recording conversions of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
     > Note:

@@ -19,15 +19,15 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 ### To configure the Appbase environments
 
--   **index** `string` [Required]
+-   **index** `string` [required]
     Refers to an index of the Elasticsearch cluster.
 
     `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
--   **url** `string` [Required]
+-   **url** `string` [required]
     URL for the Elasticsearch cluster
 
--   **credentials** `string` [Required]
+-   **credentials** `string` [required]
     Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
 
 -   **appbaseConfig** `Object`
