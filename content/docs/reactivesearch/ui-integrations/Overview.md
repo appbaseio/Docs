@@ -1,11 +1,11 @@
 ---
 title: 'Overview'
 meta_title: 'UI Integrations: Overview'
-meta_description: 'UI Integrations lets you build a search UI visually with no-code. The resulting code can be exported to your favorite E-Commerce Platform or your site.'
+meta_description: 'UI Integrations lets you visually build a search UI with no-code. The resulting code can be exported to your favorite E-Commerce Platform or your site.'
 keywords:
-    - reactivesearch
-    - quickstart
-    - appbase
+	- ui-integrations
+    - overview
+    - storefront search builder
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'ui-integrations-reactivesearch'
