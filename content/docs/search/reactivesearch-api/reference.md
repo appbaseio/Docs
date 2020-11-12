@@ -439,7 +439,25 @@ This property allows you to define the [Elasticsearch rank feature query](https:
 | ------ | --------------------------- | -------- |
 | `object` | `search`                  | false    |
 
-For example,
+The `rankFeature` object must be in the following shape:
+```ts
+{
+    "field_name": {
+        "function_name": "function_object"
+    }
+}
+```
+- `field_name` It represents the `dataField` that has the `rank_feature` or `rank_features` mapping.
+- `function_name` To calculate relevance scores based on rank feature fields, the rank_feature query supports the following mathematical functions:
+    - [saturation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-saturation)
+    - [log](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-logarithm)
+    - [sigmoid](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-sigmoid)
+- `function_object` The function object can be used to override the default values for functions.
+    - `saturation` function supports the `pivot` property that must be greater than zero.
+    - `log` function supports the `scaling_factor` property
+    - `sigmoid` function supports `pivot` and `exponent`[must be positive] properties
+
+The following example uses a rank feature field named `pagerank` with `saturation` function.
 
 ```js
     {
@@ -454,6 +472,39 @@ For example,
             }
         }
     }
+```
+
+The following example uses all three functions(`saturation`, `log` and `sigmoid`) to boost the scores.
+```js
+    {
+    "query": [
+        {
+            "id": "search",
+            "dataField": [
+                "content"
+            ],
+            "value": "2016",
+            "rankFeature": {
+                "pagerank": {
+                    "saturation": {
+                        "pivot": 2
+                    }
+                },
+                "url_length": {
+                    "log": {
+                        "scaling_factor": 1
+                    }
+                },
+                "topics.sports": {
+                    "sigmoid": {
+                        "pivot": 2,
+                        "exponent": 1
+                    }
+                }
+            }
+        }
+    ]
+}
 ```
 
 ## Settings Properties
