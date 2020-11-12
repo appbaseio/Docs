@@ -432,6 +432,30 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 | ------ | --------------------------- | -------- |
 | `bool` | `search`                    | false    |
 
+### rankFeature
+This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields.
+
+| Type   | Applicable on query of type | Required |
+| ------ | --------------------------- | -------- |
+| `object` | `search`                  | false    |
+
+For example,
+
+```js
+    {
+        "id": "search",
+        "dataField": ["content"],
+        "value": "2016",
+        "rankFeature": {
+            "pagerank": {
+                "saturation": {
+                    "pivot": 2
+                }
+            }
+        }
+    }
+```
+
 ## Settings Properties
 
 ### recordAnalytics
