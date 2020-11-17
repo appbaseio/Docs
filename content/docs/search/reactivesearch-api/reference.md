@@ -443,13 +443,13 @@ The `rankFeature` object must be in the following shape:
 ```ts
 {
     "field_name": {
-		"boost": 1.0,
+        "boost": 1.0,
         "function_name": "function_object"
     }
 }
 ```
 - `field_name` It represents the `dataField` that has the `rank_feature` or `rank_features` mapping.
-- `boost` [optional] floating point number (shouldn't be negative) that is used to decrease (if the value is between 0 and 1) or increase relevance scores (if the value is greater than 1). Defaults to 1.
+- `boost` [optional] A floating point number (shouldn't be negative) that is used to decrease (if the value is between 0 and 1) or increase relevance scores (if the value is greater than 1). Defaults to 1.
 - `function_name` To calculate relevance scores based on rank feature fields, the rank_feature query supports the following mathematical functions:
     - [saturation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-saturation)
     - [log](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-logarithm)
