@@ -452,6 +452,7 @@ The `rankFeature` object must be in the following shape:
     - [saturation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-saturation)
     - [log](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-logarithm)
     - [sigmoid](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-sigmoid)
+    - `boost` floating point number used to decrease or increase relevance scores. Defaults to 1.0.
 - `function_object` The function object can be used to override the default values for functions.
     - `saturation` function supports the `pivot` property that must be greater than zero.
     - `log` function supports the `scaling_factor` property
@@ -469,6 +470,21 @@ The following example uses a rank feature field named `pagerank` with `saturatio
                 "saturation": {
                     "pivot": 2
                 }
+            }
+        }
+    }
+```
+
+The following example uses the `boost` property to increase the relevancy scores.
+
+```js
+    {
+        "id": "search",
+        "dataField": ["content"],
+        "value": "2016",
+        "rankFeature": {
+            "pagerank": {
+                "boost": 2.0
             }
         }
     }
