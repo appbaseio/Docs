@@ -32,7 +32,7 @@ This library is divided into three components:
 
 [SearchBox](/docs/reactivesearch/react-native-searchbox/searchbox/) offers a ready to use, lightweight, and performance-focused searchbox UI component to query and display results from your Elasticsearch cluster.
 
-[SearchComponent](/docs/reactivesearch/react-native-searchbox/searchcomponent/) can be used to build different kinds of search experiences. For examples,
+[SearchComponent](/docs/reactivesearch/react-native-searchbox/searchcomponent/) offers a controller component to build different kinds of search UI components. For example:
 
 -   a search bar component,
 -   a category filter component,
