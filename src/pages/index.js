@@ -176,6 +176,13 @@ const HomePage = ({ data, location }) => {
 													'/docs/reactivesearch/react-native-searchbox/quickstart/',
 												duration: 6,
 											},
+											{
+												title: 'Flutter Searchbox QuickStart',
+												description: '',
+												link:
+													'/docs/reactivesearch/flutter-searchbox/quickstart/',
+												duration: 6,
+											},
 										],
 									},
 									'5': {
