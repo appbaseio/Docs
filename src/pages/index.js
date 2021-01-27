@@ -336,7 +336,7 @@ const HomePage = ({ data, location }) => {
 								Vue
 							</Box>
 							<Box
-								to="/docs/reactivesearch/native/overview/QuickStart/"
+								to="/docs/reactivesearch/react-native-searchbox/quickstart/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc"
 								elevation="2"
 								radius="4"
@@ -389,11 +389,7 @@ const HomePage = ({ data, location }) => {
 								elevation="2"
 								radius="4"
 							>
-								<img
-									className="w10 mb1"
-									src="/images/swift-logo.png"
-									alt="Swift"
-								/>
+								<img className="w10 mb1" src="/images/swift-logo.png" alt="Swift" />
 								Swift
 							</Box>
 							<Box

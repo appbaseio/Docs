@@ -147,12 +147,11 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'UI Builder',
 					'Searchbox',
 					'React Searchbox',
-					'React Native Searchbox',
 					'Vue Searchbox',
+					'React Native Searchbox',
+					'Flutter Searchbox',
 					'Searchbase',
-					'React Native',
 					'Searchbase Dart',
-					'Flutter Searchbox'
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"
