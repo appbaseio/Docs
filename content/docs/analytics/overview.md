@@ -107,13 +107,13 @@ Popular Results give insights into the total search impressions, clicks and conv
 
 Recent Searches give insights into the total queries made for the recent search terms.
 
-![Appbase.io Dashboard: Recent Searches](../../../static/images/RecentSearches.png)
+![Appbase.io Dashboard: Recent Searches](https://www.dropbox.com/s/3qobm3ae91ujua4/RecentSearches.png?raw=1)
 
 #### Recent Results
 
 Recent Results give insights into the total search impressions and source info for the recent result items.
 
-![Appbase.io Dashboard: Recent Results](../../../static/images/RecentResults.png)
+![Appbase.io Dashboard: Recent Results](https://www.dropbox.com/s/1glxjkqpe4wcnpk/RecentResults.png?raw=1)
 
 #### Geography Visualization
 
