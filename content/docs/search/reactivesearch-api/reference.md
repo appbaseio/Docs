@@ -198,7 +198,7 @@ To set the number of buckets to be returned by aggregations.
 
 > Note:
 > 1. This property can also be used for `search` type of queries when `aggregationField` is set.
-> 2. This is a new feature and only available for appbase versions >= 7.40.2.
+> 2. This is a new feature and only available for appbase versions >= 7.41.0.
 
 ### queryFormat
 
