@@ -904,5 +904,441 @@ https://github.com/appbaseio/flutter-searchbox-typeahead-example
 
 
 
+### Integrating with a third-party STT service
+
+The following example integrates the `flutter_searchbox` with a third party STT service like Google [speech-to-text](https://cloud.google.com/speech-to-text) to enable voice search. It also uses the [flutter_audio_recorder](https://pub.dev/packages/flutter_audio_recorder) for the audio input and [google_speech](https://pub.dev/packages/google_speech) for interacting with the speech-to-text API.
+https://github.com/appbaseio/flutter-searchbox/example_cloudSTT
+
+![Third Party STT Example](https://raw.githubusercontent.com/appbaseio/flutter-assets/master/google-stt.gif)
+
+```dart
+
+// audio_recorder.dart
+
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:file/local.dart';
+import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:searchbase/searchbase.dart';
+import 'audio_converter.dart';
+import 'package:flutter_searchbox/flutter_searchbox.dart';
+
+typedef void SetOverlay(bool status, String value);
+
+class Recorder extends StatefulWidget {
+  final LocalFileSystem localFileSystem;
+  final SetOverlay setOverlay;
+
+  Recorder({@required this.setOverlay, localFileSystem})
+      : this.localFileSystem = localFileSystem ?? LocalFileSystem();
+
+  @override
+  State<StatefulWidget> createState() => new RecorderState();
+}
+
+class RecorderState extends State<Recorder> {
+  FlutterAudioRecorder _recorder;
+  Recording _current;
+  RecordingStatus _currentStatus = RecordingStatus.Unset;
+
+  SearchController searchInstance;
+
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    // to retrieve the instance of SearchController for 'search-widget' component
+    searchInstance =
+        SearchBaseProvider.of(context).getSearchWidget('search-widget');
+    return new IconButton(
+      icon: Icon(Icons.mic),
+
+      // to call specific functions according to the current recording status
+      onPressed: () async {
+        switch (_currentStatus) {
+          case RecordingStatus.Initialized:
+            {
+              _start();
+              break;
+            }
+          case RecordingStatus.Stopped:
+            {
+              await _init();
+              _start();
+              break;
+            }
+          case RecordingStatus.Recording:
+            {
+              _stop();
+              break;
+            }
+          case RecordingStatus.Paused:
+            {
+              _stop();
+              break;
+            }
+          default:
+            {
+              _init();
+              break;
+            }
+        }
+      },
+    );
+  }
+
+  // called when the widget is created
+  _init() async {
+    try {
+      if (await FlutterAudioRecorder.hasPermissions) {
+        String customPath = '/flutter_audio_recorder_';
+        var appDocDirectory;
+
+        // to check the platform for setting up the directory path
+        bool isAndroid = Theme.of(context).platform == TargetPlatform.android;
+        if (!isAndroid) {
+          appDocDirectory = await getApplicationDocumentsDirectory();
+        } else {
+          appDocDirectory = await getExternalStorageDirectory();
+        }
+        // setting up unique path
+        customPath = appDocDirectory.path +
+            customPath +
+            DateTime.now().millisecondsSinceEpoch.toString();
+
+        // creating an instance of the FlutterAudioRecorder and  setting up the channel
+        _recorder =
+            FlutterAudioRecorder(customPath, audioFormat: AudioFormat.WAV);
+
+        await _recorder.initialized;
+        var current = await _recorder.current(channel: 0);
+        setState(() {
+          _current = current;
+          _currentStatus = current.status;
+        });
+      } else {
+        // message to display in case permissions not found
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("You must accept permissions")));
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // called to start the recording
+  _start() async {
+    try {
+      widget.setOverlay(false, '');
+      widget.setOverlay(true, 'Listening...');
+      await _recorder.start();
+      var recording = await _recorder.current(channel: 0);
+      setState(() {
+        _current = recording;
+      });
+
+      // defining the time interval
+      const tick = const Duration(milliseconds: 50);
+      var count = 0;
+      var pauseDuration = 0;
+      bool speaking = false;
+      bool trigger = false;
+
+      // setting the max time of recording to 5 secs
+      new Timer.periodic(tick, (Timer t) async {
+        count += 1;
+
+        if (count >= 100) {
+          _stop();
+          t.cancel();
+        }
+
+        var current = await _recorder.current(channel: 0);
+
+        // to check the user is speaking or not
+        if (current.metering.isMeteringEnabled) {
+          if (current.metering.peakPower > -7) {
+            speaking = true;
+            pauseDuration = 0;
+            trigger = false;
+          } else {
+            if (speaking) {
+              trigger = true;
+            }
+            if (pauseDuration > 8 && trigger) {
+              _stop();
+              t.cancel();
+              trigger = false;
+            }
+            speaking = false;
+            pauseDuration += 1;
+          }
+        }
+
+        if (mounted) {
+          setState(() {
+            _current = current;
+            _currentStatus = _current.status;
+          });
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // called to stop the recording
+  _stop() async {
+    var result = await _recorder.stop();
+    if (mounted) {
+      widget.setOverlay(false, '');
+      widget.setOverlay(true, 'Processing...');
+      await setState(() {
+        _current = result;
+        _currentStatus = _current.status;
+      });
+
+      // creating an instance of AudioConverter and transforming the audio file to text and getting the result back
+      var audioConverter = new AudioConverter(path: result.path);
+      var response = await audioConverter.convertSTT();
+      var responseString = response.results
+          .map((e) => e.alternatives.first.transcript)
+          .join('\n');
+      widget.setOverlay(false, '');
+
+      // displaying the transformed text
+      widget.setOverlay(
+          true,
+          responseString.length > 0
+              ? responseString
+              : "Didn't hear anything, try again!");
+      await Future.delayed(Duration(seconds: 2));
+
+      // setting the value of the search instance and triggering the custom query
+      if (responseString.length > 0) {
+        searchInstance.setValue(response.results
+            .map((e) => e.alternatives.first.transcript)
+            .join('\n'));
+        searchInstance.triggerCustomQuery();
+        Navigator.pop(context);
+      }
+
+      widget.setOverlay(false, '');
+      audioConverter.deleteFile();
+    }
+  }
+}
+
+
+```
+
+
+```dart
+
+// audio_converter.dart
+
+import 'dart:io';
+import 'package:google_speech/google_speech.dart';
+import 'package:google_speech/speech_client_authenticator.dart';
+
+class AudioConverter {
+  final String path;
+  AudioConverter({this.path}) : assert(path != null);
+
+  // enter your private key from Google STT API
+  final serviceAccount = ServiceAccount.fromString(r'''{in here}''');
+
+  // set config according to usecase
+  final config = RecognitionConfig(
+      encoding: AudioEncoding.LINEAR16,
+      model: RecognitionModel.basic,
+      enableAutomaticPunctuation: true,
+      sampleRateHertz: 16000,
+      languageCode: 'en-IN');
+
+  // reading the audio content from the path
+  Future<List<int>> _getAudioContent(String path) async {
+    return File(path).readAsBytesSync().toList();
+  }
+
+  // connecting to Google Speech API to transform the audio file to text and getting the response  back
+  convertSTT() async {
+    final speechToText = SpeechToText.viaServiceAccount(serviceAccount);
+    final audio = await _getAudioContent(path);
+    final response = await speechToText.recognize(config, audio);
+    return response;
+  }
+
+  // deleting the audio file once the response is received
+  deleteFile() async {
+    try {
+      await File(path).delete();
+    } catch (e) {
+      return 0;
+    }
+  }
+}
+
+```
+
+```dart
+
+// mic_overlay.dart
+
+import 'package:flutter/material.dart';
+
+class MicOverlay extends StatefulWidget {
+  final String value;
+  const MicOverlay({Key key, this.value = ''})
+      : assert(value != null),
+        super(key: key);
+
+  @override
+  _MicOverlayState createState() => _MicOverlayState();
+}
+
+class _MicOverlayState extends State<MicOverlay>
+    with SingleTickerProviderStateMixin {
+  var _width, _height;
+
+  AnimationController _animationController;
+  Animation _animation;
+
+  // initialising the _animationController and setting up the animation for the recording icon 
+  @override
+  void initState() {
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _animationController.repeat(reverse: true);
+    _animation = Tween(begin: 2.0, end: 15.0).animate(_animationController)
+      ..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // chceking the size of the current media to set the ovelay size accordingly
+    _width = MediaQuery.of(context).size.width;
+    _height = MediaQuery.of(context).size.height;
+    return Container(
+      alignment: Alignment.topCenter,
+      padding: new EdgeInsets.only(top: _height * .35, right: 20.0, left: 20.0),
+      child: Container(
+        height: _width * .65,
+        width: _width * .65,
+        child: Card(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.white70, width: 1),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          color: Colors.white,
+          elevation: 4.0,
+          child: Column(
+            children: [
+              // to display the icon
+              Expanded(
+                flex: 4,
+                child: Container(
+                  height: 75,
+                  width: 75,
+                  child: Icon(
+                    Icons.mic,
+                    color: Colors.white,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.lightBlue,
+                          blurRadius: _animation.value,
+                          spreadRadius: _animation.value),
+                    ],
+                  ),
+                ),
+              ),
+              // to display the text
+              Expanded(
+                flex: 3,
+                child: Container(
+                  height: 50,
+                  width: _width * .5,
+                  child: Center(
+                    child: RichText(
+                      text: TextSpan(
+                        text: widget.value,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+```
+
+```dart
+
+// main.dart
+
+  // for setting the visibilty of the overlay
+
+  OverlayState overlayState;
+  OverlayEntry overlayEntry;
+
+  setOverlay(bool status, String value, BuildContext context) async {
+    if (status) {
+      overlayState = Overlay.of(context);
+      overlayEntry =
+          OverlayEntry(builder: (context) => MicOverlay(value: value));
+      overlayState.insert(overlayEntry);
+    } else {
+      if (overlayEntry != null) {
+        overlayEntry.remove();
+        overlayEntry = null;
+      }
+    }
+  }
+
+  // for rendering the Recorder pass it in the customActions of the SearchBox widget
+
+    customActions: [
+        Recorder(
+          setOverlay: (bool status, String value) {
+            setOverlay(status, value, context);
+          },
+        ),
+      ]),
+
+  
+
+
+```
+
 ## API Reference
 You can check out the docs for API Reference over [here](https://pub.dev/documentation/flutter_searchbox/latest/).
