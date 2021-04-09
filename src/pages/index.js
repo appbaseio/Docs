@@ -257,6 +257,21 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'7': {
+										title: 'Speed',
+										icon: (
+											<Icon name="clock" className="dropdown-content-icon" />
+										),
+										chapters: [
+											{
+												title: 'Cache Management',
+												link: '/docs/speed/cache-management/',
+												duration: 3,
+												description:
+													'Cache search requests to boost the speed.',
+											},
+										],
+									},
+									'8': {
 										title: 'Hosting',
 										icon: (
 											<Icon name="rocket" className="dropdown-content-icon" />
