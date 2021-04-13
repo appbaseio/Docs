@@ -564,4 +564,4 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 `String` It allows you to define the user id which will be used to record the Appbase.io analytics.
 
 ### useCache
-This property allows you to cache the search requests. The `useCache` property has the higher precedence over the cache preferences. If it is defined in the request body then no matter what are your cache preferences are set, caching would be driven by the `useCache` value.
+`Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard.
