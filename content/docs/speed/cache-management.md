@@ -32,7 +32,7 @@ The memory limit for the cached requests in MB(s). The default value is 128MB. I
 ### Whitelist indices
 It allows you to define which index/indices should be considered to cache the search queries.
 
-## Clear Cache
+## Evict Cache
 The `Evict Cache` action allows you to free up the memory by deleting cached requests instantly.
 
 ## How to identify cached responses?
