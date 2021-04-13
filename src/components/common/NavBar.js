@@ -148,16 +148,6 @@ const NavBar = ({ theme }) => {
 															Actionable Analytics
 														</Link>
 														<Link
-															to="/docs/security/credentials/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
-														>
-															<Icon
-																name="security"
-																className="dropdown-content-icon mr2"
-															/>
-															Security Credentials
-														</Link>
-														<Link
 															to="/docs/speed/cache-management/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
 														>
@@ -166,6 +156,16 @@ const NavBar = ({ theme }) => {
 																className="dropdown-content-icon mr2"
 															/>
 															Speed
+														</Link>
+														<Link
+															to="/docs/security/credentials/"
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+														>
+															<Icon
+																name="security"
+																className="dropdown-content-icon mr2"
+															/>
+															Security Credentials
 														</Link>
 													</div>
 												</div>

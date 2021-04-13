@@ -224,6 +224,21 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'6': {
+										title: 'Speed',
+										icon: (
+											<Icon name="clock" className="dropdown-content-icon" />
+										),
+										chapters: [
+											{
+												title: 'Cache Management',
+												link: '/docs/speed/cache-management/',
+												duration: 1,
+												description:
+													'Cache search requests to boost the speed.',
+											},
+										],
+									},
+									'7': {
 										title: 'Security',
 										subtitle:
 											'Securely access and query the index using Appbase.',
@@ -253,21 +268,6 @@ const HomePage = ({ data, location }) => {
 												title: 'Role Based Access',
 												link: '/docs/security/role/',
 												duration: 4,
-											},
-										],
-									},
-									'7': {
-										title: 'Speed',
-										icon: (
-											<Icon name="clock" className="dropdown-content-icon" />
-										),
-										chapters: [
-											{
-												title: 'Cache Management',
-												link: '/docs/speed/cache-management/',
-												duration: 3,
-												description:
-													'Cache search requests to boost the speed.',
 											},
 										],
 									},
