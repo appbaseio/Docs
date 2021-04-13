@@ -36,4 +36,4 @@ It allows you to define which index/indices should be considered to cache the se
 The `Evict Cache` action allows you to free up the memory by deleting cached requests instantly.
 
 ## How to identify cached responses?
-Appbase.io sets the `x-request-cache` header as `true` for cached responses. To identify the cached responses you just need to check the presence of `x-request-cache` in the response headers of the request.
+Appbase.io sets the `X-Request-Cache` header as `true` for cached responses, i.e. when caching is enabled and the request was found within the cache.
