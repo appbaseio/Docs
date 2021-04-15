@@ -537,6 +537,62 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 }
 ```
 
+### distinctField
+You can use the `distinctField` parameter to collapse search results based on field values. The collapsing is done by selecting only the top sorted document per collapse key. You can read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `string` | `all`                  | false    |
+
+The following query would return the products for distinct brands.
+```js
+{
+    "query": [
+        {
+            "id": "test",
+            "dataField": [
+                "product_name"
+            ],
+            "distinctField": "brand.keyword",
+        }
+    ]
+}
+```
+
+### distinctFieldConfig
+This property allows expanding each collapsed top hits with the inner_hits option.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `string` | `all`                       | false    |
+
+The following query would return the products for distinct brands. Additionally, it would return the top five products for each brand.
+```js
+{
+    "query": [
+        {
+            "id": "test",
+            "dataField": [
+                "product_name"
+            ],
+            "distinctField": "brand.keyword",
+            "distinctFieldConfig": {
+                "inner_hits": {
+                    "name": "most_recent",
+                    "size": 5,
+                    "sort": [
+                        {
+                            "crawl_timestamp.keyword": "asc"
+                        }
+                    ]
+                },
+                "max_concurrent_group_searches": 4
+            }
+        }
+    ]
+}
+```
+
 ## Settings Properties
 
 ### recordAnalytics
