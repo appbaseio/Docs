@@ -39,3 +39,5 @@ The cost of a search request is proportional to its response size. When we're ab
 
 ## How to identify cached responses?
 Appbase.io sets the `X-Request-Cache` header as `true` for cached responses, i.e. when caching is enabled and the request was found within the cache.
+
+![cache header](https://i.imgur.com/CRi0KIs.png)
