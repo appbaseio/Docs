@@ -238,9 +238,9 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'7': {
-										title: 'Security',
+										title: 'Access Control',
 										subtitle:
-											'Securely access and query the index using Appbase.',
+											'Out-of-the-box access control for search',
 										icon: (
 											<Icon
 												name="security"
