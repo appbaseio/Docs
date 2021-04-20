@@ -564,7 +564,7 @@ This property allows specifying additional options to the `distinctField` proper
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
-| `string` | `all`                       | false    |
+| `object` | `all`                       | false    |
 
 The following query would return the products for distinct brands. Additionally, it would return the top five products for each brand.
 ```js
