@@ -234,7 +234,7 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/speed/cache-management/',
 												duration: 1,
 												description:
-													'Blazing ⚡️ Elasticsearch search performance with appbase.io cache,
+													'Blazing ⚡️  search performance with appbase.io cache,
 											},
 										],
 									},
