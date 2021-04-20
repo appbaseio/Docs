@@ -538,7 +538,7 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 ```
 
 ### distinctField
-You can use the `distinctField` parameter to collapse search results based on field values. The collapsing is done by selecting only the top sorted document per collapse key. You can read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+This property returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
