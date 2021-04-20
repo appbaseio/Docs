@@ -234,7 +234,7 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/speed/cache-management/',
 												duration: 1,
 												description:
-													'Cache search requests to boost the speed.',
+													'Blazing ⚡️ Elasticsearch search performance with appbase.io cache,
 											},
 										],
 									},
