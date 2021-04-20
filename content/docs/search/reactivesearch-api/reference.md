@@ -560,7 +560,7 @@ The following query would return the products for distinct brands.
 ```
 
 ### distinctFieldConfig
-This property allows expanding each collapsed top hits with the inner_hits option.
+This property allows specifying additional options to the `distinctField` property. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
