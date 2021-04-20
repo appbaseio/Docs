@@ -78,7 +78,7 @@
             - link: /docs/security/role/
               title: "Role Based Access Control"
       - group: Speed
-        icon: clock
+        icon: zap
         items:
             - link: /docs/speed/cache-management/
               title: Cache Management
