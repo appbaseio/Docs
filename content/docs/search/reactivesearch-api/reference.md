@@ -164,31 +164,37 @@ The below example represents a **geo bounding box** query:
 
 ### index
 
-The `index` property can be used to specify the `index` for a particular query. It is suitable for use cases where you want to fetch documents from multiple indices in a single request. The default value would be similar to the `index` property defined in the URL.
+The `index` property can be used to explicitly specify an `index` for a particular query. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `index` path variable defined in the URL.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
 
-For example, the following request has two queries. The first query has no `index` property defined so it would use the `my-index` index to retrieve the documents rather but the second query would use the `optimized-facet-index` index to get documents.
+Let's take this example to see how this works:
+
 ```
 URL: /my-index/_reactivesearch.v3
 
 Body:
-[
-  {
-     "id": "search",
-     "type": "search",
-     ...
-  },
-  {
-     "id": "facet",
-     "type": "term",
-     "index": "optimized-facet-index"
-  }
-]
+{
+	"query": [
+	  {
+		 "id": "search",
+		 "type": "search",
+		 ...
+	  },
+	  {
+		 "id": "facet",
+		 "type": "term",
+		 "index": "optimized-facet-index"
+	  }
+	]
+}
 ```
+
+Here, the first query uses the `my-index` index to query against, as specified in the request URL. However, the second query will use the `optimized-facet-index` index as specified by the `index` key in it.
+
 ### size
 
 To set the number of results to be returned by a query.
