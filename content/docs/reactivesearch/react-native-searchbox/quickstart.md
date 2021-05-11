@@ -33,21 +33,27 @@ yarn add @appbaseio/react-native-searchbox
 
 If your project is a standard React Native project created using react-native init (it should have an ios/android directory), then you have to install the [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) along with `react-native-searchbox`.
 
-
-## Basic usage
+## Simple usage
 
 ### A simple example
 
 The following example renders an autosuggestion search bar(`search-component`) with one custom component(`result-component`) to render the results. The `result-component` watches the `search-component` for input changes and updates its UI when the user selects a suggestion.
 
-<div data-snack-id="@bietkul/searchbox-basic-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<div data-snack-id="@anik_ghosh/searchbox-simple-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
 <script async src="https://snack.expo.io/embed.js"></script>
 
+## Basic Usage
 
-### An example with a facet
+This example demonstrates the usage of some of the props available with `react-native-searchbox`. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
 
-<div data-snack-id="@bietkul/searchbox-facet-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
-<script async src="https://snack.expo.io/embed.js"></script>
+## Controlled Usage
 
+In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
 
-You can check out the docs for API Reference over [here](/docs/reactivesearch/react-native-searchbox/apireference/).
+## Advanced Usage
+
+In this an example with a facet. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
+
+## DistinctField Prop Usage
+
+In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
