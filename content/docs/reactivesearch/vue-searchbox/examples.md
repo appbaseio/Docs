@@ -12,7 +12,7 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 The following are some examples to demonstrate the usge of various props available with `vue-searchbox`.
 
-In examples below there are three components present `search-base`, `seach-box` & `search-component`.
+In examples below there are three components present `search-base`, `search-box` & `search-component`.
 
 #### SearchBase
 
@@ -58,20 +58,10 @@ In this example we can see the usage of `vue-table` to display the search result
 
 In this example we can see the usage of `distinctField` & `distinctFieldConfig` props. The `distinctField` prop is used to get distinct value documents for the specified field for this use case its `authors.keyword`, the `distinctFieldConfig` prop is used to get the inner_hits object `other_books` that contains other two other books by the same author(s). You can read more about the these props over [here](/docs/reactivesearch/vue-searchbox/searchbox/).
 
-<iframe src="https://codesandbox.io/embed/vue-searchbox-with-distinct-field-prop-yi8gl?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="vue-searchbox-with-distinct-field-prop"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-distinct-field-prop" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ### EnablePredictiveSuggestions Prop Usage
 
 In this example we can see the usage of the `enablePredictiveSuggestions` which when set to true predicts the next relevant words from a field's value based on the search query. You can read more about it over [here](/docs/reactivesearch/vue-searchbox/searchbox/).
 
-<iframe src="https://codesandbox.io/embed/friendly-rhodes-ibbl0?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="vue-searchbox-example-with-predictive-suggestions"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-predictive-suggestions" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
