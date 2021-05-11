@@ -28,7 +28,7 @@ This search component can be used to bind to different types of search UI widget
 
 ### Basic Usage
 
-In this example we can see the usage of some of the props that are available with vue `search-box` like `autoSuggest`, `enablePopularSuggestions`, `enableRecentSearches`, `showVoiceSearch`, usage of `QueryRules` to get the promoted results, etc.
+In this example we can see the usage of some of the props that are available with react `search-box` like `autoSuggest`, `enablePopularSuggestions`, `enableRecentSearches`, `showVoiceSearch`, usage of `QueryRules` to get the promoted results, etc.
 
 <iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@anikghosh/ReactSearchBoxBasicExample?lite=true"></iframe>
 
