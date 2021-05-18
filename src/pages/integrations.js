@@ -21,7 +21,7 @@ const APIPage = () => {
 							APIs and Integrations
 						</h1>
 						<p className={Spirit.sectionSubHeading}>
-							Clients, tools and libraries for working with appbase.io
+							UI Libraries, clients and interactive examples for working with appbase.io
 						</p>
 					</div>
 				</section>
@@ -141,6 +141,9 @@ const APIPage = () => {
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>
+							<APICard to="/api/examples/REST/" icon="content-api-logo">
+								REST
+							</APICard>
 							<APICard to="/api/examples/js/" icon="javascript-logo">
 								JavaScript
 							</APICard>

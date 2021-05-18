@@ -203,7 +203,7 @@ const NavBar = ({ theme }) => {
 															APIs and Integrations
 														</h3>
 														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
-															Clients, tools and libraries for working
+															UI Libraries, clients and interactive examples for working
 															with appbase.io
 														</p>
 														<Link
@@ -372,6 +372,16 @@ const NavBar = ({ theme }) => {
 														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
 															Interactive Examples
 														</h2>
+														<Link
+															to="/api/examples/REST/"
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+														>
+															<Icon
+																name="rest"
+																className="dropdown-content-icon mr2"
+															/>
+															REST
+														</Link>
 														<Link
 															to="/api/examples/python/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
