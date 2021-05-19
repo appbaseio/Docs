@@ -107,6 +107,9 @@ const APIPage = () => {
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>
+							<APICard to="/api/rest/overview/" icon="content-api-logo">
+								REST APIs
+							</APICard>
 							<APICard to="/api/javascript/quickstart/" icon="javascript-logo">
 								JavaScript
 							</APICard>
@@ -125,9 +128,6 @@ const APIPage = () => {
 							>
 								Android
 							</APICard>
-							<APICard to="/api/rest/quickstart/" icon="content-api-logo">
-								REST API
-							</APICard>
 						</div>
 					</div>
 
@@ -141,7 +141,7 @@ const APIPage = () => {
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>
-							<APICard to="/api/examples/REST/" icon="content-api-logo">
+							<APICard to="/api/examples/rest/" icon="content-api-logo">
 								REST
 							</APICard>
 							<APICard to="/api/examples/js/" icon="javascript-logo">
