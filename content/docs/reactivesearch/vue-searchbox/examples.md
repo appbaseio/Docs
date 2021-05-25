@@ -65,3 +65,9 @@ In this example we can see the usage of `distinctField` & `distinctFieldConfig` 
 In this example we can see the usage of the `enablePredictiveSuggestions` which when set to true predicts the next relevant words from a field's value based on the search query. You can read more about it over [here](/docs/reactivesearch/vue-searchbox/searchbox/).
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-predictive-suggestions" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+### Index Prop Usage
+
+In this example we can see the usage of the `index` prop in the `author-search-component` to explicitly specify an index to query against for the component. You can read more about it over [here](/docs/reactivesearch/vue-searchbox/searchbox/).
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-index-prop" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
