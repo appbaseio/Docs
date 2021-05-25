@@ -46,6 +46,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 -   **id** `string` [Required]
     unique identifier of the component, can be referenced in other components' `react` prop.
 
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/react-searchbox/examples/).
+
+    ```jsx
+    <SearchBox
+    	...
+    	index="good-books-clone"
+    />
+    ```
+
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -114,7 +124,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
     You can use `aggregationData` using `onAggregationData` callback or `subscriber`.
-	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
+    > Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
 
 ```jsx
 <SearchBox
@@ -124,6 +134,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 	onAggregationData={(next, prev) => {}}
 />
 ```
+
 -   **aggregationSize**
     To set the number of buckets to be returned by aggregations.
 
@@ -162,10 +173,10 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
 -   **distinctField** `String` [optional]
-	This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+    This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 -   **distinctFieldConfig** `Object` [optional]
-	This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+    This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```jsx
 <SearchBox
@@ -188,7 +199,8 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
 
 -   **enableRecentSearches** `Boolean` Defaults to `false`. If set to `true` then users will see the top recent searches as the default suggestions. Appbase.io recommends defining a unique id(`userId` property) in `appbaseConfig` prop for each user to personalize the recent searches.
-> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+
+    > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
 
 -   **enablePredictiveSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
@@ -273,20 +285,22 @@ Here, we are specifying that the suggestions should update whenever one of the b
 -   **render** `Function` You can render suggestions in a custom layout by using the `render` prop.
     <br/>
     It accepts an object with these properties:
-    - **`loading`**: `boolean`
-    indicates that the query is still in progress.
-    - **`error`**: `Object`
-    An object containing the error info.
-    - **`suggestions`** `() => Array<Object>`
-    This method can be used to get the parsed suggestions from the `results`. If `enablePopularSuggestions` property is set to `true` then the popular suggestions will get appended at the top with a top-level property named `_popular_suggestion` as `true`. The `suggestion` object will have the following shape:
+
+    -   **`loading`**: `boolean`
+        indicates that the query is still in progress.
+    -   **`error`**: `Object`
+        An object containing the error info.
+    -   **`suggestions`** `() => Array<Object>`
+        This method can be used to get the parsed suggestions from the `results`. If `enablePopularSuggestions` property is set to `true` then the popular suggestions will get appended at the top with a top-level property named `_popular_suggestion` as `true`. The `suggestion` object will have the following shape:
 
     ```ts
     {
-        label: string;
-        value: string;
-        source: Object;
+    	label: string;
+    	value: string;
+    	source: Object;
     }
     ```
+
     -   **`results`** `Results`
         It is an object which contains the following details of `suggestions` query response.
 
@@ -298,6 +312,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
         -   **`promoted`**: `number` Total number of promoted results found
         -   **`promotedData`**: `Array<Object>` An array of promoted results obtained from the applied query.
         -   **`customData`**: `Object` An object of custom data obtained from the ReactiveSearch API.
+
     -   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
 
     -   **`aggregationData`** `Aggregations`
@@ -354,7 +369,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`enablePopularSuggestions`** `boolean` as defined in props
     -   **`showDistinctSuggestions`** `boolean` as defined in props
     -   **`defaultQuery`** represents the current value of `defaultQuery` property
-    -   **`customQuery`**  represents the current value of `customQuery` property
+    -   **`customQuery`** represents the current value of `customQuery` property
     -   **`requestStatus`** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
     -   **`appbaseConfig`** `Object` as defined in props
     -   **`queryId`** `string` to get the query id returned by appbase.io search to track the analytics
@@ -362,7 +377,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`unsubscribeToStateChanges`** `function` can be used to unsubscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
     -   **`recordClick`** `function` enables recording click analytics of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
     -   **`recordConversions`** `function` enables recording conversions of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
-    > Note:
+        > Note:
 
     > All of the methods accept `options` as the second parameter which has the following shape:
 
@@ -389,7 +404,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`setSize`** `( size: number, options?: Options ) => void` can be used to set the `size` property
     -   **`setFrom`** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
     -   **setAfter** `(after: object, options?: Options) => void`
-    can be used to set the `after` property, which is useful while implementing pagination when the `type` of the component is `term`. The `after` key is a a property of `aggregationData`.
+        can be used to set the `after` property, which is useful while implementing pagination when the `type` of the component is `term`. The `after` key is a a property of `aggregationData`.
     -   **`setFuzziness`** `( fuzziness: string|number, options?: Options ) => void` can be used to set the `fuzziness` property.
     -   **`setIncludeFields`** `( includeFields: Array<string>, options?: Options ) => void` can be used to set the `includeFields` property.
     -   **`setExcludeFields`** `( excludeFields: Array<string>, options?: Options ) => void` can be used to set the `excludeFields` property.
@@ -437,32 +452,32 @@ Here, we are specifying that the suggestions should update whenever one of the b
 -   **renderMic** `Function`can be used to render the custom mic option
 
 -   **recentSearchesIcon** `JSX` [optional]
-You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-icon` key in the `innerClass` prop.
+    You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-icon` key in the `innerClass` prop.
 
-    ```jsx
-        <SearchBox
-            ...
-            enableRecentSearches
-            innerClass={{
-                'recent-search-icon': '...',
-            }}
-            recentSearchesIcon={<RecentIcon />}
-        />
-    ```
+        ```jsx
+            <SearchBox
+                ...
+                enableRecentSearches
+                innerClass={{
+                    'recent-search-icon': '...',
+                }}
+                recentSearchesIcon={<RecentIcon />}
+            />
+        ```
 
 -   **popularSearchesIcon** `JSX` [optional]
-You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-icon` key in the `innerClass` prop.
+    You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-icon` key in the `innerClass` prop.
 
-    ```jsx
-        <SearchBox
-            ...
-            enablePopularSuggestions
-            innerClass={{
-                'popular-search-icon': '...'
-            }}
-            popularSearchesIcon={<PopularIcon />}
-        />
-    ```
+        ```jsx
+            <SearchBox
+                ...
+                enablePopularSuggestions
+                innerClass={{
+                    'popular-search-icon': '...'
+                }}
+                popularSearchesIcon={<PopularIcon />}
+            />
+        ```
 
 ### Customize style
 
