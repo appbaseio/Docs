@@ -131,6 +131,8 @@ class HomePage extends StatelessWidget {
                           },
                           'max_concurrent_group_searches': 4,
                         },
+						// This prop is used to explicitly specify the index to query against for this component
+						index: 'good-books-clone',
                       ));
                 }),
           ],
