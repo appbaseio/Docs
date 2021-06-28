@@ -27,7 +27,7 @@ yarn global add @vue/cli
 vue create my-awesome-search && cd my-awesome-search
 ```
 
-OR
+or
 
 If you're using codesandbox.io, choose a Vue template codesandbox.
 
@@ -45,7 +45,10 @@ or
 npm install @appbaseio/reactivesearch-vue
 ```
 
-If you're following this on Codesandbox.io, you should see something like this: https://codesandbox.io/s/lively-cdn-bxkom?file=/src/main.js
+or
+
+If you're following this on Codesandbox.io, add dependency `@appbaseio/reactivesearch-vue` .
+
 
 ### Step 2: Register Components
 
@@ -138,6 +141,8 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 This is how the app should look after running the `yarn run serve` command.
 
 ![Image](https://i.imgur.com/6gKpAEI.png)
+
+If you're following this on Codesandbox.io, you should see something like [this](https://codesandbox.io/s/summer-currying-l0mf0?file=/src/App.vue)
 
 ---
 
@@ -318,6 +323,8 @@ If you have followed along so far, you should a screen similar to:
 
 ![Image](https://i.imgur.com/pFCAq8d.jpg)
 
+If you're following this on Codesandbox.io, you should see something like [this](https://codesandbox.io/s/cool-microservice-g8bcx?file=/src/App.vue)
+
 We have built our entire search UI in just 80 lines!
 
 The only thing missing at this point is the styling, ReactiveSearch doesn't use a layout system internally. For example, if you are using a grid from Bootstrap or Materialize, you can use that to style the layout. Or if you prefer to use Flex, you can use that. We can now import CSS to make the app look cleaner.
@@ -353,6 +360,8 @@ If you have followed along, this is how our app should look now.
 ![](https://i.imgur.com/gAuWhsN.jpg)
 
 For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/demos/good-books.
+
+You can even check the final code [here](https://codesandbox.io/s/distracted-bose-risqh) on Codesandbox.io.
 
 ### Step 6: ReactiveSearch as UMD
 
