@@ -27,6 +27,10 @@ yarn global add @vue/cli
 vue create my-awesome-search && cd my-awesome-search
 ```
 
+OR
+
+If you're using codesandbox.io, choose a Vue template codesandbox.
+
 ### Step 1: Install ReactiveSearch
 
 We will fetch and install [`reactivesearch-vue`](https://www.npmjs.com/package/@appbaseio/reactivesearch-vue) module using yarn or npm.
@@ -40,6 +44,8 @@ or
 ```bash
 npm install @appbaseio/reactivesearch-vue
 ```
+
+If you're following this on Codesandbox.io, you should see something like this: https://codesandbox.io/s/lively-cdn-bxkom?file=/src/main.js
 
 ### Step 2: Register Components
 
