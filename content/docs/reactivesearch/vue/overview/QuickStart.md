@@ -102,7 +102,7 @@ We will be using `kebab-case` here. You can read more about component naming con
 
 We will demonstrate creating an index using [appbase.io](https://appbase.io) service, although you can use any Elasticsearch backend within ReactiveBase.
 
-![create an appbase.io app](https://i.imgur.com/r6hWKAG.gif)
+![create an appbase.io app](https://www.dropbox.com/s/qa5nazj2ajaskr6/wky0vrsPPB.gif?raw=1)
 
 **Caption:** For the example that we will build, the app is called **awesome-book-store** and the associated read-only credentials are **Qw9ksHtrv:16bc5344-d5c2-4b0a-8f67-1ba01c522015**. You can browse and clone the data-set into your own app from [here](https://opensource.appbase.io/dejavu/#?input_state=XQAAAAKJAQAAAAAAAAA9iIqnY-B2BnTZGEQz6wkFsvRMTQJ5ZqWKZTLY3aEkMgq8JpWAf6hdaFvES_EOh3Q67hkj9KexzVueOZtE9Yjzg5dWJ-8Co_BW4I0eJMMtcp-5tCsJFBZNEjgqrRMtI9N3OoxR241W75d89FYYHDzKqqAKi_BCSdnByUfb528IbiGgi-j92TSCbITs9uTy9_yjInAoiKbggwlnVy_AIXjEo0lKFzSTYxxluneRw0SMjWPvUX3wjbvnfFoP_pPSSgunirljth1UqBDKNxI6ijC5k_pdjV4G2JO5X-x4MzPpGy0oFDosAKi5GMAntlMoaJhi4vOi-TuCb4T4SODO-5WmBc8GoNbXsv_siHjA&editable=false).
 
@@ -112,8 +112,10 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 <template>
 	<div id="app">
 		<reactive-base
-			app="awesome-book-store"
-			credentials="Qw9ksHtrv:16bc5344-d5c2-4b0a-8f67-1ba01c522015"
+			url="https://appbase-demo-ansible-abxiydt-arc.searchbase.io"
+			app="good-books-ds"
+			credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
+			enableAppbase
 		>
 			<h1>Hello from ReactiveBase 👋</h1>
 		</reactive-base>
@@ -140,13 +142,16 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 
 This is how the app should look after running the `yarn run serve` command.
 
-![Image](https://i.imgur.com/6gKpAEI.png)
-
-If you're following this on Codesandbox.io, you should see something like [this](https://codesandbox.io/s/summer-currying-l0mf0?file=/src/App.vue)
+<iframe src="https://codesandbox.io/embed/summer-currying-l0mf0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+	title="summer-currying-l0mf0"
+	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 ---
 
-### Step 4: Adding Filters and Result Components
+### Step 4: Adding Filters Component
 
 For this app, we will be using [multi-list](/docs/reactivesearch/vue/list/MultiList/) and [single-range](/docs/reactivesearch/vue/range/SingleRange/) components for filtering the data-set. And [reactive-list](/docs/reactivesearch/vue/result/ReactiveList/) component for showing the search results.
 
@@ -186,6 +191,24 @@ Next, we will look at the [**single-range**](/docs/reactivesearch/vue/range/Sing
 
 **single-range** filters the DB by `rating` field based on the UI choice the user makes. We also set the _Rating > 4_ option to be default selected when the UI loads up first.
 
+### Step 5: Adding Search and Result Components
+
+For this we will be using [data-search](/docs/reactivesearch/vue/search/DataSearch/) component that creates a search box UI component that is connected to one or more database fields. In this scenario, search can be implemeted on title of the book or on the author of the book.
+
+```html
+<data-search
+	componentId="SearchBox"
+	className="search-container"
+	:dataField="[
+		'authors',
+		'authors.autosuggest',
+		'original_title',
+		'original_title.autosuggest',
+	]"
+	:fieldWeights="[3, 1, 5, 1]"
+/>
+```
+
 Finally, we need a component to show the matching results. [**reactive-list**](/docs/reactivesearch/vue/result/ReactiveList/) does exactly this.
 
 ```html
@@ -197,7 +220,7 @@ Finally, we need a component to show the matching results. [**reactive-list**](/
 	:pagination="true"
 	:from="0"
 	:size="5"
-	:react="{and: ['Ratings','Authors']}"
+	:react="{ and: ['Ratings', 'Authors', 'SearchBox'] }"
 >
 	<div slot="renderItem" slot-scope="{ item }">
 		<div class="flex book-content" key="item._id">
@@ -236,94 +259,130 @@ Now, we will put all three components together to create the UI view.
 
 ```html
 <template>
-	<div id="app">
-		<reactive-base
-			app="good-books-yj"
-			credentials="gBgUqs2tV:3456f3bf-ea9e-4ebc-9c93-08eb13e5c87c"
-		>
-			<div class="filters-container">
-				<multi-list
-					componentId="Authors"
-					dataField="authors.keyword"
-					class="filter"
-					title="Select Authors"
-					selectAllLabel="All Authors"
-				/>
-				<single-range
-					componentId="Ratings"
-					dataField="average_rating"
-					:data="[
-            { 'start': 0, 'end': 3, 'label': 'Rating < 3' },
-            { 'start': 3, 'end': 4, 'label': 'Rating 3 to 4' },
-            { 'start': 4, 'end': 5, 'label': 'Rating > 4' }
+  <div id="app">
+    <reactive-base
+      url="https://appbase-demo-ansible-abxiydt-arc.searchbase.io"
+      app="good-books-ds"
+      credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
+      enableAppbase
+    >
+      <div class="filters-container">
+        <multi-list
+          componentId="Authors"
+          dataField="authors.keyword"
+          class="filter"
+          title="Select Authors"
+          selectAllLabel="All Authors"
+          :size="5"
+        />
+        <single-range
+          componentId="Ratings"
+          dataField="average_rating"
+          :data="[
+            { start: 0, end: 3, label: 'Rating < 3' },
+            { start: 3, end: 4, label: 'Rating 3 to 4' },
+            { start: 4, end: 5, label: 'Rating > 4' },
           ]"
-					title="Book Ratings"
-					class="filter"
-				/>
-			</div>
-			<reactive-list
-				componentId="SearchResult"
-				dataField="original_title.keyword"
-				className="result-list-container"
-				:pagination="true"
-				:from="0"
-				:size="5"
-				:react="{and: ['Ratings','Authors']}"
-			>
-				<div slot="renderItem" slot-scope="{ item }">
-					<div class="flex book-content" key="item._id">
-						<img :src="item.image" alt="Book Cover" class="book-image" />
-						<div class="flex column justify-center ml20">
-							<div class="book-header">{{ item.original_title }}</div>
-							<div class="flex column justify-space-between">
-								<div>
-									<div>
-										by <span class="authors-list">{{ item.authors }}</span>
-									</div>
-									<div class="ratings-list flex align-center">
-										<span class="stars">
-											<i
-												v-for="(item, index) in Array(item.average_rating_rounded).fill('x')"
-												class="fas fa-star"
-												:key="index"
-											/>
-										</span>
-										<span class="avg-rating"
-											>({{item.average_rating}} avg)</span
-										>
-									</div>
-								</div>
-								<span class="pub-year">Pub {{item.original_publication_year}}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</reactive-list>
-		</reactive-base>
-	</div>
+          title="Book Ratings"
+          class="filter"
+        />
+      </div>
+      <data-search
+        componentId="SearchBox"
+        className="search-container"
+        :dataField="[
+          'authors',
+          'authors.autosuggest',
+          'original_title',
+          'original_title.autosuggest',
+        ]"
+        :fieldWeights="[3, 1, 5, 1]"
+      />
+      <reactive-list
+        componentId="SearchResult"
+        dataField="original_title.keyword"
+        className="result-list-container"
+        :class="{ full: showBooks }"
+        :pagination="true"
+        :from="0"
+        :size="5"
+        :react="{ and: ['Ratings', 'Authors', 'SearchBox'] }"
+      >
+        <div slot="renderItem" slot-scope="{ item }">
+          <div class="flex book-content" key="item._id">
+            <img :src="item.image" alt="Book Cover" class="book-image" />
+            <div class="flex column justify-center ml20">
+              <div class="book-header">{{ item.original_title }}</div>
+              <div class="flex column justify-space-between">
+                <div>
+                  <div>
+                    by <span class="authors-list">{{ item.authors }}</span>
+                  </div>
+                  <div class="ratings-list flex align-center">
+                    <span class="stars">
+                      <i
+                        v-for="(item, index) in Array(
+                          item.average_rating_rounded
+                        ).fill('x')"
+                        class="fas fa-star"
+                        :key="index"
+                      />
+                    </span>
+                    <span class="avg-rating"
+                      >({{ item.average_rating }} avg)</span
+                    >
+                  </div>
+                </div>
+                <span class="pub-year"
+                  >Pub {{ item.original_publication_year }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </reactive-list>
+    </reactive-base>
+  </div>
 </template>
 
 <script>
+	import "./styles.css";
+
 	export default {
-		name: 'app',
+  		name: "app",
+  		data: function () {
+    		return {
+      			showBooks: window.innerWidth <= 768 ? true : false,
+    		};
+  		},
+  		methods: {
+    		switchContainer: function () {
+      			return (this.showBooks = !this.showBooks);
+    		},	
+  		},
 	};
 </script>
 
 <style>
 	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		font-family: "Avenir", Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
 		color: #2c3e50;
+		margin-top: 60px;
 	}
 </style>
 ```
 
-If you have followed along so far, you should a screen similar to:
+If you have followed along so far, you should see a screen similar to:
 
-![Image](https://i.imgur.com/pFCAq8d.jpg)
-
-If you're following this on Codesandbox.io, you should see something like [this](https://codesandbox.io/s/cool-microservice-g8bcx?file=/src/App.vue)
+<iframe src="https://codesandbox.io/embed/suspicious-bouman-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+	title="suspicious-bouman-0ooui"
+	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 We have built our entire search UI in just 80 lines!
 
@@ -331,7 +390,7 @@ The only thing missing at this point is the styling, ReactiveSearch doesn't use 
 
 ---
 
-### Step 5: Adding CSS
+### Step 6: Adding CSS
 
 By importing [styles.css](https://github.com/appbaseio/reactivesearch/blob/next/packages/vue/demos/good-books/src/styles.css) file, here is our final app layout and responsive methods to switch between container.
 
@@ -357,21 +416,15 @@ By importing [styles.css](https://github.com/appbaseio/reactivesearch/blob/next/
 
 If you have followed along, this is how our app should look now.
 
-![](https://i.imgur.com/gAuWhsN.jpg)
+<iframe src="https://codesandbox.io/embed/quiet-sun-zr2bu?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+	title="quiet-sun-zr2bu"
+	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/demos/good-books.
 
-You can even check the final code [here](https://codesandbox.io/s/distracted-bose-risqh) on Codesandbox.io.
+You can even check the final code [here](https://codesandbox.io/s/quiet-sun-zr2bu) on Codesandbox.io.
 
-### Step 6: ReactiveSearch as UMD
 
-It is also possible to run ReactiveSearch without relying on a Node.JS environment tooling for the build setup. Here, I am using `v1.0.0`, this can be replaced with the version you are using.
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@appbaseio/reactivesearch-vue@1.0.0/dist/@appbaseio/reactivesearch-vue.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-slider-component@2.8.2/dist/index.js"></script>
-```
-
-> Note:
->
-> You can remove `vue-slider-component` script if not using any slider component from ReactiveSearch.
