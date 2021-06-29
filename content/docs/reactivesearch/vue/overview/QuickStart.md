@@ -29,7 +29,9 @@ vue create my-awesome-search && cd my-awesome-search
 
 or
 
-If you're using codesandbox.io, choose a Vue template codesandbox.
+Alternatively, you can go to Codesandbox.io and choose the React Template
+
+![React Template, Codesandbox](https://i.imgur.com/Vl4BVZ0.png).
 
 ### Step 1: Install ReactiveSearch
 
