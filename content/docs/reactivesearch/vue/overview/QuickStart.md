@@ -245,7 +245,6 @@ Finally, we need a component to show the matching results. [**reactive-list**](/
  <reactive-list
 	componentId="SearchResult"
 	dataField="original_title.keyword"
-	:class="{ full: showBooks }"
 	:pagination="true"
 	:from="0"
 	:size="5"
@@ -313,7 +312,6 @@ Now, we will put all three components together to create the UI view.
       <reactive-list
         componentId="SearchResult"
         dataField="original_title.keyword"
-        :class="{ full: showBooks }"
         :pagination="true"
         :from="0"
         :size="5"
