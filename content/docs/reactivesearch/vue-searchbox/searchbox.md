@@ -46,6 +46,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 -   **id** `string` [required]
     unique identifier of the component, can be referenced in other components' `react` prop.
 
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/vue-searchbox/examples/).
+
+	```html
+	<search-box
+		...
+		index="good-books-clone"
+	/>
+	```
+
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -192,6 +202,24 @@ Here, we are specifying that the suggestions should update whenever one of the b
 	}"
 />
 ```
+-   **value** `string` [optional]
+    sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
+
+-   **onChange** `function` [optional]
+    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
+
+    ```html
+    <search-box
+    	:value="this.$data.text"
+    	@change="(value, searchComponent, e) => {
+    		this.$data.text = value;
+			// To fetch suggestions
+			searchComponent.triggerDefaultQuery();
+			// To update results
+			searchComponent.triggerCustomQuery();
+    	}"
+    />
+    ```
 
 ### To customize the AutoSuggestions
 
