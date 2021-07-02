@@ -138,13 +138,6 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 		</reactive-base>
 	</div>
 </template>
-
-<script>
-	export default {
-		name: 'App',
-	};
-</script>
-
 ```
 
 **Note:** You can set `enableAppbase={false}` if you are directly connecting to an Elasticsearch service without using the appbase.io API gateway. However, we **now offer an open-source and free version** of appbase.io service and highly recommend using it over querying your Elasticsearch cluster directly. appbase.io as an API gateway provides access control for search and prevents script injection attacks that are possible if you query Elasticsearch directly from frontend.
@@ -340,16 +333,6 @@ Now, we will put all three components together to create the UI view.
   </div>
 </template>
 
-<script>
-export default {
-  name: "app",
-  data: function () {
-    return {
-      showBooks: window.innerWidth <= 768 ? true : false,
-    };
-  },
-};
-</script>
 ```
 
 At this point, you should be seeing our entire app functionally (minus the layouting and styles):
