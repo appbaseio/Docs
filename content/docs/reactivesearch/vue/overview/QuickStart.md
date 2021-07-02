@@ -1,7 +1,7 @@
 ---
-title: 'ReactiveSearch Quickstart'
-meta_title: 'ReactiveSearch Quickstart'
-meta_description: 'Get started with ReactiveSearch.'
+title: 'ReactiveSearch Vue: Quickstart'
+meta_title: 'ReactiveSearch Vue: Quickstart'
+meta_description: 'Getting started with ReactiveSearch Vue, a search UI components library for Elasticsearch'
 keywords:
     - reactivesearch
     - quickstart
@@ -17,12 +17,12 @@ In this quickstart guide, we will create a books based search engine based on a 
 
 This is how your final app will look like at the end of following this tutorial, in just 10 minutes 🚀.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<iframe src="https://codesandbox.io/embed/reactivesearch-vue-final-app-2ru69?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="reactivesearch-vue-final-app"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 We can either add ReactiveSearch to an existing app or create a boilerplate app with [Vue Cli](https://cli.vuejs.org/guide/installation.html). For this quick start guide, we will use the Vue CLI.
 
@@ -44,7 +44,7 @@ or
 
 Alternatively, you can go to Codesandbox.io and choose the Vue Template
 
-![React Template, Codesandbox](https://i.imgur.com/Vl4BVZ0.png).
+![Vue Template, Codesandbox](https://i.imgur.com/Vl4BVZ0.png).
 
 ### Step 1: Install ReactiveSearch
 
@@ -195,9 +195,7 @@ Next, we will add the [multi-list](/docs/reactivesearch/vue/list/MultiList/) com
 <multi-list
 	componentId="Authors"
 	dataField="authors.keyword"
-	title="Select Authors"
-	selectAllLabel="All Authors"
-	placeholder="Search for authors"
+	title="Popular Authors"
 	:aggregationSize="5"
 />
 ```
@@ -226,7 +224,7 @@ Next, we will add the [single-range](/docs/reactivesearch/vue/range/SingleRange/
 />
 ```
 
-The SingleRange operates on a numeric datatype field and fires a range query. The `data` prop of SingleRange allows specifying a [start, end] range and a label associated with it. Using `defaultValue`, we can preselect a particular option. In this case, we're preselecting all the books that have a rating of `4 stars and up`.
+The SingleRange operates on a numeric datatype field and fires a range query. The `data` prop of SingleRange allows specifying a [start, end] range and a label associated with it. Using `defaultValue`, we can preselect a particular option. In this case, we're preselecting all the books that have a rating of `All Books`.
 
 At this point, this is how our app should be looking:
 
@@ -442,11 +440,11 @@ To make the cards look aligned, add styles to the wrapper `div` within the react
 
 If you have followed along, this is how our app should look now.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<iframe src="https://codesandbox.io/embed/reactivesearch-vue-final-app-2ru69?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="reactivesearch-vue-final-app"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/demos/good-books.
