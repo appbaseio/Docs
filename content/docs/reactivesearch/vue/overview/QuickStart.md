@@ -17,9 +17,9 @@ In this quickstart guide, we will create a books based search engine based on a 
 
 This is how your final app will look like at the end of following this tutorial, in just 10 minutes 🚀.
 
-<iframe src="https://codesandbox.io/embed/determined-hellman-ikqv4?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="determined-hellman-ikqv4"
+	title="reactiveSearch-quickStart"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -153,9 +153,9 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 
 This is how the app should look after running the `yarn run serve` command.
 
-<iframe src="https://codesandbox.io/embed/summer-currying-l0mf0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-helloapp-l0mf0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="summer-currying-l0mf0"
+	title="reactiveSearch-quickStart-helloApp"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -187,9 +187,9 @@ The [data-search](/docs/reactivesearch/vue/search/DataSearch/) component creates
 
 At this point, you should see the following:
 
-<iframe src="https://codesandbox.io/embed/bold-feather-g1kqq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-g1kqq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="bold-feather-g1kqq"
+	title="reactiveSearch-quickStart-dataSearch"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -221,15 +221,15 @@ Next, we will add the [single-range](/docs/reactivesearch/vue/range/SingleRange/
 
 ```html
 <single-range
-	componentId="Ratings"
+    componentId="Ratings"
 	dataField="average_rating"
-	defaultValue="4 stars and up"
+	defaultValue="All Books"
 	:data="[
+		{ start: 0, end: 5, label: 'All Books' },
 		{ start: 4, end: 5, label: '4 stars and up' },
 		{ start: 3, end: 5, label: '3 stars and up' },
 	]"
 	title="Book Ratings"
-	/>class="filter"
 />
 ```
 
@@ -237,9 +237,9 @@ The SingleRange operates on a numeric datatype field and fires a range query. Th
 
 At this point, this is how our app should be looking:
 
-<iframe src="https://codesandbox.io/embed/ecstatic-aryabhata-tl12t?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-aggregatedcomponents-tl12t?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="ecstatic-aryabhata-tl12t"
+	title="reactiveSearch-quickStart-aggregatedComponents"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -306,15 +306,16 @@ Now, we will put all three components together to create the UI view.
         :aggregationSize="5"
       />
       <single-range
-        componentId="Ratings"
-        dataField="average_rating"
-        defaultValue="4 stars and up"
-        :data="[
-          { start: 4, end: 5, label: '4 stars and up' },
-          { start: 3, end: 5, label: '3 stars and up' },
-        ]"
-        title="Book Ratings"
-      />
+		componentId="Ratings"
+		dataField="average_rating"
+		defaultValue="All Books"
+		:data="[
+			{ start: 0, end: 5, label: 'All Books' },
+			{ start: 4, end: 5, label: '4 stars and up' },
+			{ start: 3, end: 5, label: '3 stars and up' },
+		]"
+		title="Book Ratings"
+	  />
 
       <reactive-list
         componentId="SearchResult"
@@ -353,9 +354,9 @@ export default {
 
 At this point, you should be seeing our entire app functionally (minus the layouting and styles):
 
-<iframe src="https://codesandbox.io/embed/nifty-knuth-t2mip?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-results-t2mip?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="nifty-knuth-t2mip"
+	title="reactiveSearch-quickStart-results"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -380,6 +381,7 @@ ReactiveSearch doesn't use a layout system internally. For example, if you are u
             'flex-direction': 'column',
             'text-align': 'left',
             'padding': '10px',
+			'font-size': '14px',
           }"
         >
             <multi-list/>
@@ -459,15 +461,11 @@ To make the cards look aligned, add styles to the wrapper `div` within the react
 
 If you have followed along, this is how our app should look now.
 
-<iframe src="https://codesandbox.io/embed/suspicious-bouman-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-0ooui?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="suspicious-bouman-0ooui"
+	title="reactiveSearch-quickStart"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
 For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/demos/good-books.
-
-You can even check the final code [here](https://codesandbox.io/s/suspicious-bouman-0ooui?from-embed=&file=/src/App.vue:2014-2161) on Codesandbox.io.
-
-
