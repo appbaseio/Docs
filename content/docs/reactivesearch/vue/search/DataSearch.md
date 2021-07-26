@@ -743,7 +743,9 @@ The `suggestions` parameter receives all the unparsed suggestions from elasticse
           handleChange(value, triggerQuery, event) {
               this.value = value;
               // Trigger the search query to update the dependent components
-              triggerQuery()
+              triggerQuery({
+                isOpen: false // To close the suggestions dropdown; optional
+              })
           }
       }
   };
@@ -752,7 +754,7 @@ The `suggestions` parameter receives all the unparsed suggestions from elasticse
 
 > Note:
 >
-> If you're using the controlled behavior than it's your responsibility to call the `triggerQuery` method to update the query i.e execute the search query and update the query results in connected components by `react` prop. It is not mandatory to call the `triggerQuery` in `onChange` you can also call it in other input handlers like `onBlur` or `onKeyPress`.
+> If you're using the controlled behavior than it's your responsibility to call the `triggerQuery` method to update the query i.e execute the search query and update the query results in connected components by `react` prop. It is not mandatory to call the `triggerQuery` in `onChange` you can also call it in other input handlers like `onBlur` or `onKeyPress`. The `triggerQuery` method accepts an object with `isOpen` property (default to `false`) that can be used to control the opening state of the suggestion dropdown.
 
 - **queryChange**
   is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
