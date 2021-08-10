@@ -134,7 +134,7 @@ Let's now learn to index multiple documents in one request. For this, we'll use 
 
 ## Range Query
 
-Let's now query the dataset to get all rooms between prices 50 to 100.
+Let's now query the dataset to get all rooms between prices 100 to 150.
 
 We'll use the <a href="https://rest.appbase.io/#8ba42b07-46a6-0c0b-5ebc-cf4d54411fc7" target="_blank">`/_search`</a> endpoint from appbase.io REST API to fire a `POST` request with the body containing a <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html" target="_blank">range query</a> by passing the field `price` and specifying <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.6/query-dsl-range-filter.html" target="_blank">range filter</a> values.
 
