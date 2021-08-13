@@ -260,12 +260,12 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
     -   **`error`**: `object`
         An object containing the error info
     -   **`data`**: `array`
-        An array of results obtained from combining `stream` and `promoted` results along with the `hits` .
+        An array of results obtained from combining `promoted` results along with the `hits` .
     -   **`promotedData`**: `array`
         An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
         > Note:
         >
-        > `data`, `streamData` and `promotedData` results has a property called `_click_id` which can be used with triggerClickAnalytics to register the click analytics info.
+        > `data` and `promotedData` results has a property called `_click_id` which can be used with triggerClickAnalytics to register the click analytics info.
     -   **`customData`** `object`
         Custom data set in the query rule when appbase.io is used as backend. [Read More](/docs/search/rules/#custom-data)
     -   **`rawData`** `object`
@@ -354,13 +354,13 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
     gets called when map is in idle position
 
 -   **open-marker-popover**
-    gets called when marker popover gets opened or marker is clicked
+    gets called when marker popover gets opened or marker is clicked, the current marker object is also emitted along.
 
 -   **close-marker-popover**
-    gets called when marker popover is closed
+    gets called when marker popover is closed, the current marker object is also emitted along.
 
 -   **open-cluster-popover**
-    gets called when cluster popover gets opened or cluster is clicked
+    gets called when cluster popover gets opened or cluster is clicked, an array of associated marker objects is also emitted along.
 
 -   **close-cluster-popover**
     gets called when cluster popover is closed
