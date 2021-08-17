@@ -159,7 +159,10 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
 -   **queryString** `boolean` [optional]
-    Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
+    Defaults to `false`. If set to `true` then it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
+
+-  **clearOnQueryChange** `boolean` [optional]
+    Defaults to `true`, i.e. clear the component's input selection when the query of its dependent component changes (which is set via react prop). When set to `false`, the component's input selection isn't cleared.
 
 -   **distinctField** `String` [optional]
 	This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
@@ -181,6 +184,32 @@ Here, we are specifying that the suggestions should update whenever one of the b
 	}}
 />
 ```
+
+-   **value** `string` [optional]
+    sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
+
+-   **onChange** `Function` [optional]
+    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
+
+    ```js
+    <SearchBox
+    	value={this.state.text}
+    	onChange={(value, searchComponent, e) => {
+    		// Perform actions after updating the value
+    		this.setState(
+    			{
+    				text: value,
+    			},
+    			() => {
+    				// To fetch suggestions
+    				searchComponent.triggerDefaultQuery();
+    				// To update results
+    				searchComponent.triggerCustomQuery();
+    			},
+    		);
+    	}}
+    />
+    ```
 
 ### To customize the AutoSuggestions
 
@@ -464,6 +493,65 @@ You can use a custom icon in place of the default icon for the popular searches 
         />
     ```
 
+-   **focusShortcuts** `Array<string | number>` [optional]
+A list of keyboard shortcuts that focus the search box. Accepts key names and key codes. Compatible with key combinations separated using '+'. Defaults to `['/']`.
+> Note
+>1. By default, pressing `'/'` would focus the search box.
+>2. The `hotkeys-js` library needs to be installed manually when using combinations in `focusShortcuts` prop, eg: 'cmd+b', 'ctrl+q', etc, without which only single key shortcuts would work if passed in the prop, eg: From among ['/', 'b', '#', 'ctrl+r'], only '/', 'b', '#' would work without hotkey-js installation.
+
+
+-   **autoFocus** `boolean` [optional] When set to true, search box is auto-focused on page load. Defaults to `false`.
+
+
+-   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+<img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
+```jsx
+<SearchBox
+    showIcon={false}
+    addonBefore={
+        <img
+            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+            height="30px"
+        />
+    }
+    id="search-component"
+    ...
+/>
+```
+
+
+-   **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+
+<img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
+```jsx
+<SearchBox
+    showIcon={false}
+    addonAfter={
+        <img
+            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+            height="30px"
+        />
+    }
+    id="search-component"
+    ...
+/>
+```
+
+-   **expandSuggestionsContainer** `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
+<img src="https://i.imgur.com/x3jF23m.png"/>
+```jsx
+<SearchBox
+    expandSuggestionsContainer={false}
+    addonBefore={
+          <img ... />
+        }
+    addonAfter={
+          <img ... />
+        }
+    id="search-component"
+    ...
+/>
+```
 ### Customize style
 
 -   **innerClass** `Object` `SearchBox` component supports an `innerClass` prop to provide styles to the sub-components of `SearchBox`. These are the supported keys:
@@ -604,9 +692,9 @@ You can use a custom icon in place of the default icon for the popular searches 
 <SearchBox
     id="search-component"
     dataField={["original_title", "original_title.search"]}
-    defaultQuery={() => {
+    defaultQuery={() => ({
         "timeout": "1s"
-    }}
+    })}
 />
 ```
 
