@@ -69,7 +69,16 @@ Example uses:
 -   **title** `String or JSX` [optional]
     title of the component to be shown in the UI.
 -   **size** `Number` [optional]
-    control how many items to display in the List. Defaults to 100.
+    number of list items to be displayed.
+
+    > Note: 
+    > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
+    > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
+
+-   **aggregationSize**
+    To set the number of buckets to be returned by aggregations.
+
+    > Note: This prop is only applicable when `enableAppbase` is set to `true`.
 -   **sortBy** `String` [optional]
     property that decides on how to sort the list items, accepts one of `count`, `asc` or `desc` as valid values. `count` sorts the list based on the count occurences, with highest value at the top. `asc` sorts the list in the ascending order of the list item (Alphabetical). `desc` sorts the list in the descending order of the term. Defaulted to `count`.
 -   **defaultValue** `string` [optional]
@@ -221,7 +230,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 1. customize the look and feel with `className`,
 2. update the underlying DB query with `customQuery`,
-3. connect with external interfaces using `beforeValueChange`, `valueChange` and `queryChange`,
+3. connect with external interfaces using `beforeValueChange`, `value-change` and `query-change`,
 4. specify how options should be filtered or updated using `react` prop.
 
 ```html
@@ -231,8 +240,8 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 		:customQuery="getCustomQuery"
 		:react="react"
 		:beforeValueChange="handleBeforeValueChange"
-		@valueChange="handleValueChange"
-		@queryChange="handleQueryChange"
+		@value-change="handleValueChange"
+		@query-change="handleQueryChange"
 	/>
 </template>
 <script>
@@ -347,12 +356,16 @@ export default {
         -   `String` is used for specifying a single component by its `componentId`.
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
+-   **index** `String` [optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+
+    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Events
 
--   **queryChange**
+-   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **valueChange**
+-   **value-change**
     is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a list item is selected in a "Discounted Price" SingleList.
 
 -   **error**
