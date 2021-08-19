@@ -35,17 +35,17 @@ In this example we can see the usage of some of the props that are available wit
 
 ### Controlled Usage
 
-In this example we can the usage of the transformRequest prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `value` prop. The `onChange` is the callback function that accepts the component's current value as a parameter and is then used to set the state varaible to been passed to the `value` prop.
+In this example we can the usage of the transformRequest prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `search-box` component to trigger a `customQuery` using context api.
 
-<div data-snack-id="@anik_ghosh/searchbox-transform-request-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
-<script async src="https://snack.expo.io/embed.js"></script>
+<div data-snack-id="@mohdashraf010897/searchbox-transform-request-example" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
 
 ### Advanced Usage
 
 In this example we can see the usage of a facet.
 
-<div data-snack-id="@anik_ghosh/searchbox-facet-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
-<script async src="https://snack.expo.io/embed.js"></script>
+<div data-snack-id="@mohdashraf010897/searchbox-facet-example" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
 
 ### DistinctField Prop Usage
 
