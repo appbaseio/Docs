@@ -80,6 +80,10 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
     show the selected item as a filter in the selected filters view. Defaults to `true`.
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
+-   **index** `String` [optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+
+    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Demo
 
@@ -100,7 +104,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 1. customize the look and feel with `className`, `style`,
 2. update the underlying DB query with `customQuery`,
-3. connect with external interfaces using `beforeValueChange`, `valueChange` and `queryChange`.
+3. connect with external interfaces using `beforeValueChange`, `value-change` and `query-change`.
 
 ```html
 <template>
@@ -109,8 +113,8 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 		:customQuery="getCustomQuery"
 		:react="react"
 		:beforeValueChange="handleBeforeValueChange"
-		@valueChange="handleValueChange"
-		@queryChange="handleQueryChange"
+		@value-change="handleValueChange"
+		@query-change="handleQueryChange"
 	/>
 </template>
 <script>
@@ -172,7 +176,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
     ```js
     beforeValueChange = value => {
-        // The update is accepted by default
+    	// The update is accepted by default
     	if (value.start > 3000) {
     		// To reject the update, throw an error
     		throw Error('Start value must be less than or equal to 3000.');
@@ -182,7 +186,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 ## Events
 
--   **queryChange**
+-   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **valueChange**
+-   **value-change**
     is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection.For example: You want to show a pop-up modal with the valid discount coupon code when some range is selected in a “Discounted Price” DynamicRangeSlider.
