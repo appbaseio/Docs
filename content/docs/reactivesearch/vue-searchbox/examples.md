@@ -39,7 +39,7 @@ In this example we can see the usage of some of the props that are available wit
 
 ### Controlled Usage
 
-In this example we can the usage of the transformRequest prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `value` prop. The `onChange` is the callback function that accepts the component's current value as a parameter and is then used to set the state varaible to been passed to the `value` prop.
+In this example we used the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `value` prop. The `onChange` is the callback function that accepts the component's current value as a parameter and is then used to set the state varaible to been passed to the `value` prop.
 
 <iframe src="https://codesandbox.io/embed/vue-searchbox-controlled-example-forked-7x9gw?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
