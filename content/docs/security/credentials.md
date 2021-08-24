@@ -40,11 +40,13 @@ If you are using [`abc cli`](https://github.com/appbaseio/abc) for importing dat
 
 You can also create a new credentials or modify the existing defaults. When doing so, you can set one or more of the following restrictions.
 
-![](https://i.imgur.com/UlF6rv8.png)
+![](https://i.imgur.com/Gnt1fL7.png)
 
 Let's go over each kind of authorization constraint you can apply to a key:
 
-1. **Key Type** determines the main type of operations this key will be responsible for. There are three key types:
+1. **Description** : An optional description for your credential key.
+
+1. **Access Type** Depending on the selection, the key can perform read-only, write-only or both read and write operations. There are three key types:
 
     ![](https://i.imgur.com/9IVZjIJ.png)
 
@@ -52,9 +54,9 @@ Let's go over each kind of authorization constraint you can apply to a key:
     - Write-only key,
     - Admin key (aka read + write).
 
-2. **ACLs** determine granularly what type of actions are allowed for the API key in addition to the broad Key Type.
+2. **Categories** determine granularly what type of actions are allowed for the API key in addition to the broad Key Type.
 
-    ![](https://i.imgur.com/FyLWp3e.png)
+    ![](https://i.imgur.com/GadZaQZ.png)
 
     - **Index** (index) allows indexing and update actions.
     - **Get** (get) allows retrieving documents and data mappings.
@@ -64,7 +66,7 @@ Let's go over each kind of authorization constraint you can apply to a key:
     - **Delete** (delete) allows access to all the deletion related endpoints.
     - **Analytics** (analytics) allows access to the Analytics APIs programmatically. [only available for `growth` plan users]
 
-3)  **Security** constraints allow authorizing API access based on the selected HTTP Referers and IP Source values.
+3.  **Security** constraints allow authorizing API access based on the selected HTTP Referers and IP Source values.
 
     -   **HTTP Referers** allow adding one or more URIs that are whitelisted for accessing the API endpoints. By default, all referers are allowed access to the APIs.
 
@@ -84,13 +86,26 @@ Let's go over each kind of authorization constraint you can apply to a key:
     >
     > We don't support specifying a blacklist of IP ranges. You can specify a maximum of `100` HTTP Referers and a maximum of `100` IP Sources.
 
+5. **Indices** Allows selection of indices. Only selected indices are authorized to call the API with this credential.
+
+6. **ReactiveSearch API Restrictions** 
+
+    - **Max Query Size** This restricts the max query hits to return per request. If an API requests more hits than the limit set here, a `400` status code will be returned.` Value range: [0, 10000]`
+    
+    - **Max Aggregations Size** This restricts the max term aggregation size to return per request. If an API requests more hits than the limit set here, a `400` status code will be returned.` Value range: [0, 100000]`
+
+    - **Allow Direct DSL Queries** Allowing direct DSL queries (default) is a security risk. Consider disabling this and using `Stored Queries` to whitelist the allowed queries instead. Defaults to `true`.  
+  <br>
+    > Note <i class="fa fa-info-circle"></i>
+    >
+    > **ReactiveSearch API Restrictions** appear and are editable only when `reactivesearch` category from the caterogies' list is selected.
 4.  **Fields filtering** allows setting restrictions on fields that are returned when performing a search action.
 
     -   **Include** fields offers a dropdown view to select one or more fields that should be included in the response.
 
     -   **Exclude** fields offers a dropdown view to remove one or more fields that should be excluded from the response.
 
-5.  **Rate Limit by IP** allows setting a per hour rate-limit for every unique IP that is used for making an API call with this API credential. By default, no rate limits are set. Setting a rate-limit prevents abuse of data for scraping or denial of service purposes.
+5.  **Max API calls/IP/hour** allows setting a per hour rate-limit for every unique IP that is used for making an API call with this API credential. By default, no rate limits are set. Setting a rate-limit prevents abuse of data for scraping or denial of service purposes.
 
 ![](https://i.imgur.com/vt8NUmx.png)
 
