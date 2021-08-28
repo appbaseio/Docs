@@ -30,14 +30,16 @@ This search component can be used to bind to different types of search UI widget
 
 In this example we can see the usage of some of the props that are available with react-native `search-box` like `autoSuggest`, `enablePopularSuggestions`, `enableRecentSearches`, `showVoiceSearch`, usage of `QueryRules` to get the promoted results, etc.
 
-<div data-snack-id="@anik_ghosh/example-with-different-props" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<div data-snack-id="@mohdashraf010897/github.com-appbaseio-searchbox:packages-native-examples-demo" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
 <script async src="https://snack.expo.io/embed.js"></script>
 
 ### Controlled Usage
 
-In this example we can the usage of the transformRequest prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `search-box` component to trigger a `customQuery` using context api.
+In this example we have certain props like `value` & `onChange`, which are used in conjunction, The mentioned props are used to control the behavior of the searchbox.
 
-<div data-snack-id="@mohdashraf010897/searchbox-transform-request-example" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<div data-snack-id="@mohdashraf010897/github.com-appbaseio-searchbox:packages-native-examples-with-controlled-props" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
 <script async src="https://snack.expo.dev/embed.js"></script>
 
 ### Advanced Usage
@@ -53,3 +55,10 @@ In this example we can see the usage of `distinctField` & `distinctFieldConfig` 
 
 <div data-snack-id="@anik_ghosh/searchbox-example-with-distinct-field-prop" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
 <script async src="https://snack.expo.io/embed.js"></script>
+
+### TransformRequest Prop Usage
+
+In this example we used the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the correct suggested text is then used to replace the misspelled query value in the request and then fire the query. Thus, fetching relevant results even for misspelled queries.
+
+<div data-snack-id="kzCAQr8Ok" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
