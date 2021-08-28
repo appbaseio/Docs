@@ -30,7 +30,7 @@ This search component can be used to bind to different types of search UI widget
 
 In this example we can see the usage of some of the props that are available with vue `search-box` like `autoSuggest`, `enablePopularSuggestions`, `enableRecentSearches`, `showVoiceSearch`, usage of `QueryRules` to get the promoted results, etc.
 
-<iframe src="https://codesandbox.io/embed/vue-searchbox-basic-example-forked-0jg7i?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/demo"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="vue-searchbox-basic-example"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -39,9 +39,9 @@ In this example we can see the usage of some of the props that are available wit
 
 ### Controlled Usage
 
-In this example we used the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the suggested texts are shown to the user based upon their matching score. The user can then select a text which will be set to a state variable that's been passed to the `value` prop. The `onChange` is the callback function that accepts the component's current value as a parameter and is then used to set the state varaible to been passed to the `value` prop.
+In this example we have certain props like `value`, and events like `@change`, `@blur`, `key-press`, `focus`, `key-down` and  `key-up`. The mentioned props are used to control the behavior of the searchbox.
 
-<iframe src="https://codesandbox.io/embed/vue-searchbox-controlled-example-forked-7x9gw?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-controlled-props"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="vue-searchbox-controlled-example"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -71,3 +71,14 @@ In this example we can see the usage of the `enablePredictiveSuggestions` which 
 In this example we can see the usage of the `index` prop in the `author-search-component` to explicitly specify an index to query against for the component. You can read more about it over [here](/docs/reactivesearch/vue-searchbox/searchbox/).
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-index-prop" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+### TransformRequest Prop Usage
+
+In this example we used the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the `search-box` component, we have then used this request object to extract the search query text and then make a call to an external API (Datamuse) to get correct matching texts in case the search query was misspelled, the correct suggested text is then used to replace the misspelled query value in the request and then fire the query. Thus, fetching relevant results even for misspelled queries.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/with-transform-request-prop"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="vue-searchbox-controlled-example"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
