@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                         maxPopularSuggestions: 3,
                         size: 10,
                         dataField: [
-                          {'field': 'original_title', 'weight': 1 },
+                          {'field': 'original_title', 'weight': 1},
                           {'field': 'original_title.search', 'weight': 3 }
                         ],
                         // This prop is used to return only the distinct value documents for the specified field
