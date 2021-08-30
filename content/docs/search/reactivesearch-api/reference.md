@@ -122,7 +122,7 @@ For example, the below query has two data fields defined and each field has a di
 | ------------ | --------------------------- | -------- |
 | `Array<int>` | `search`                    | false    |
 
-> Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of Appbase. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
+> Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of appbase.io. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
 ### type
 
 This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
