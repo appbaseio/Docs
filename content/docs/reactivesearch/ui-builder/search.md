@@ -65,7 +65,7 @@ In the `Search Settings` tab, you will be able to define the behavior for search
 
 ![Search Tab](https://imgur.com/yJPp5sj.png)
 
-In the `Search` tab, you can configure the search settings such as fields to search on, field weights to apply, typo tolerance and synonyms settings. You can read more about the available options over [here](/docs/search/relevancy/#search-settings).
+In the `Search` tab, you can configure the preferences and search settings. Here the preferences are related to suggestions and enabling of voice search and the search settings are regarding the fields to search on, field weights to apply, typo tolerance and synonyms settings. You can read more about the available options over [here](/docs/search/relevancy/#search-settings).
 
 ![Filters](https://imgur.com/5AxRfYG.png)
 
