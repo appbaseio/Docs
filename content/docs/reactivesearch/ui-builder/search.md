@@ -82,7 +82,7 @@ The `Results` tab gives you control over the search UI for your store. It suppor
 - Enable or Disable **Popular Suggestions** along with the search dropdown,
 - Show **Active Filters** on top of the search results page,
 - **Show Results as** allows choosing whether to show the results in grid or list view,
-- Toggle **Results View Switcher** to see different views in the search interface,
+- Enable **Results View Switcher** to allow end users to pick between grid and list view in the search UI,
 - Toggle **Infinite Scroll** or **Pagination** on your search result pages,
 - Select what fields appear on the Product Cards in the search results. You will be able to set data for **Product Title**, **Product Description**, **Product Price**, **Product Image**, and **Redirect URL**.
 
