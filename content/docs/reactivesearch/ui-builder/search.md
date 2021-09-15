@@ -106,7 +106,7 @@ While some of these messages are on-screen for a brief period of time, it is con
 
 ### Exporting Code to Shopify
 
-![Export code](https://i.imgur.com/kfNSBky.png)
+![Export code](https://imgur.com/v3Pv4gz.png)
 
 Once you are satisfied with the changes you've made, you can export the code to your Shopify store. Click on the bottom-left button to begin.
 
@@ -120,7 +120,7 @@ You can follow the **Installation Instructions** for the exact steps to install 
 
 Once installed, you can head to the store and see the appbase.io generated search interface as your default search.
 
-![Final Result](https://i.imgur.com/rG6VNpv.png)
+![Final Result](https://imgur.com/4YprinA.png)
 
 
 ### Exporting Code to other Platforms
