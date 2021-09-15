@@ -223,11 +223,67 @@ There are two types of synonyms supported:
 > **Fun Fact:** Synonyms set are case insensitive and they can also span multiple words.
 
 
-## Popular Suggestions
+## Suggestions
 
-Popular Suggestions is a daily populated index by appbase.io based on search analytics. The Popular Suggestions UI lets you set preferences for how this index should get populated. You can read more about it over [here](/docs/analytics/popular-suggestions/).
+Suggestions is a daily populated index by appbase.io based on search analytics. This UI would allow users to set the preferences for recent, popular and index suggestions.
 
-![](http://imgur.com/jL40KPa.png)
+![](https://imgur.com/4z9VU9L.png)
+
+### Popular Suggestions:
+
+Popular Suggestions is useful to curate search suggestions based on actual search queries that your users are making. This can be used by itself or alongside suggestions based on the product data to provide an augmented search experience.
+
+![](https://i.imgur.com/HXRgRsC.png)
+
+You can set the preferences for popular suggestions from appbase.io dashboard's Popular Suggestions. These help optimize the behavior of suggestions for your specific use-case.
+
+| Label                | Description                                                                                     |
+|----------------------|-------------------------------------------------------------------------------------------------|
+| Indices              | Only selected indices will be considered to calculate the suggestions.                          |
+| Number of days       | Define the number of days after which you want to re-calculate the suggestions.                 |
+| Min Count            | Min value of count for the suggestions.                                                         |
+| Min Hits             | Define the minimum number of results that must present for a suggestion.                        |
+| Min Characters       | Define the minimum number of characters that must be present for a suggestion.                  |
+| Transform Diacritics | If enabled then Appbase will transform(strip) the diacritics before populating the suggestions. |
+| Size                 | Maximum number of popular suggestions to be displayed.                                          |
+| Blacklist            | A list of queries which can be marked as blacklist.                                             |
+| External Suggestions | Define your custom suggestions.                                                                 |
+
+### Recent Suggestions:
+
+Recent Suggestions is useful to see the top recent searches as the default suggestions. 
+
+![](https://imgur.com/40ZmTBa.png)
+
+You can set the preferences for recent suggestions from appbase.io dashboard's Recent Suggestions under Suggestions.
+
+| Label    | Description                                                              |
+|----------|--------------------------------------------------------------------------|
+| Min Hits | Define the minimum number of results that must present for a suggestion. |
+| Size     | Maximum number of recent suggestions to be displayed.                   |
+| Indices  | Only selected indices will be considered to calculate the suggestions.   |
+
+
+### Index Suggestions:
+
+Index Suggestions is useful to set the suggestion preferences based on index.
+                                                                                               |
+![](https://i.imgur.com/bnJfjAF.png)
+
+| Label                         | Description                                                                                                                                                                                     |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Indices                       | Only selected indices will be considered to calculate the suggestions.                                                                                                                          |
+| Show Distinct Suggestions     | Show only up to 1 suggestion per document (i.e. record). If set to false, multiple suggestions can be shown when relevant (based on different matching fields) from the same document.          |
+| Enable Predictive Suggestions | When set to true, it predicts the next relevant words from a fields value based on the search query typed by the user. When set to false (default), the entire fields value would be displayed. |
+| Max Predicted Words           | Maximum number of predicted words.                                                                                                                                                              |
+| Apply Default Stopwords       | Enable or disable application of default stopwords. Enabled by default.                                                                                                                         |
+| Set Custom Stopwords          | Set comma separated stopwords to be ignored during the language specifc analysis process.                                                                                                       |
+| Enable Synonym                | Allow synonyms.                                                                                                                                                                                 |
+| Size                          | Maximum number of index suggestions to be displayed.                                                                                                                                          |
+| Include Fields                | Fields to include in the search results.                                                                                                                                                        |
+| Exclude Fields                | Fields to exclude from the search results                                                                                                                                                       |
+| Category Fields               | When specified, suggestions will show category specific suggestions based on the most frequent values based on this field.                                                                      |
+| Custom Query                  | Specify a custom stored query to execute instead of the default suggestions query. This is an advanced setting.                                                                                 |
 
 ## Query Rules
 
