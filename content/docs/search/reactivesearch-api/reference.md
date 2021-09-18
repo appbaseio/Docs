@@ -554,6 +554,8 @@ Set the path of the nested type under which the `dataField` is present. Only app
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/d3ADrjDKGVuRYQ6cxKRa"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 ### defaultQuery
 
 This property is useful to customize the source query, as defined in Elasticsearch Query DSL. It is different from the [customQuery](/docs/search/reactivesearch-api/reference/#customquery) in a way that it doesn't get leaked to other queries(dependent queries by `react` prop) and only modifies the query for which it has been applied.
