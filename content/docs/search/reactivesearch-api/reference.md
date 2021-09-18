@@ -348,6 +348,8 @@ This is the selected category value. It is used for informing the search result.
 | -------- | --------------------------- | -------- |
 | `string` | `search`                    | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/9MswTJYI7pne7Awi5vWT"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 ### sortBy
 
 This property can be used to sort the results in a particular format. The valid values are:
