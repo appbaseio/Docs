@@ -553,6 +553,27 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **defaultValue** `string` set the initial search query text on mount.
 
+-   **subscribeTo** `Array<string>` lets you to subscribe to various properties that can be used to render/ update the UI based on particular property changes.
+A common use-case is to subscribe a component or DOM element to a particular property or a set of properties & update the UI according to the changes.<br/>
+These are the properties that can be subscribed for:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
 ## Events
 
 -   **valueChange** is an event which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.

@@ -449,6 +449,27 @@ Here, we are specifying that the results should update whenever one of the black
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query value. This is useful for sharing URLs with the component state. Defaults to `false`.
 
+-   **subscribeTo** `Array<string>` lets you to subscribe to various properties that can be used to render/ update the UI based on particular property changes.
+A common use-case is to subscribe a component or DOM element to a particular property or a set of properties & update the UI according to the changes.<br/>
+These are the properties that can be subscribed for:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
 ## Render UI
 You can use the `render` prop (or child) as function  to render your custom UI. The following properties are available in the `render` function.
 
