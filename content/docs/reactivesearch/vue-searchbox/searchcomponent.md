@@ -493,6 +493,27 @@ export default {
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query value. This is useful for sharing URLs with the component state. Defaults to `false`.
 
+-   **subscribeTo** `Array<string>` lets you subscribe to various SearchComponent properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
 ## Events
 
 -   **valueChange** is an event which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.

@@ -760,3 +760,25 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 ```
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
+
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
