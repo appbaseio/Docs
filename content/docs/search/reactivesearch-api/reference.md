@@ -401,7 +401,10 @@ When highlighting is `enabled`, this property allows specifying the fields which
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<<<<<<< HEAD
 
+=======
+>>>>>>> v2
 ### customHighlight
 
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
@@ -456,7 +459,10 @@ Data fields to be excluded in search results.
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/MXpPbR2OGdAQPbN2ox2H"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<<<<<<< HEAD
 
+=======
+>>>>>>> v2
 ### showMissing
 
 Defaults to `false`. When set to `true` then it also retrieves the aggregations for missing fields.
