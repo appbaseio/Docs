@@ -553,9 +553,9 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **defaultValue** `string` set the initial search query text on mount.
 
--   **subscribeTo** `Array<string>` lets you to subscribe to various properties that can be used to render/ update the UI based on particular property changes.
-A common use-case is to subscribe a component or DOM element to a particular property or a set of properties & update the UI according to the changes.<br/>
-These are the properties that can be subscribed for:
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
 
     -   `results`   
     -   `aggregationData`

@@ -761,9 +761,9 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
 
--   **subscribeTo** `Array<string>` lets you to subscribe to various properties that can be used to render/ update the UI based on particular property changes.
-A common use-case is to subscribe a component or DOM element to a particular property or a set of properties & update the UI according to the changes.<br/>
-These are the properties that can be subscribed for:
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
 
     -   `results`   
     -   `aggregationData`
