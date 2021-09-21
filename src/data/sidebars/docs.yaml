@@ -17,8 +17,10 @@
                   title: "Import From Shopify"
             - link: /docs/data/browser/
               title: "Data Browser"
-            - link: /docs/data/mappings/
-              title: "Mappings"
+            - link: /docs/data/search-preview/
+              title: "Search Preview"  
+            - link: /docs/data/stored-queries/
+              title: "Stored Queries"
       - group: "Search Relevancy"
         icon: search
         items:
