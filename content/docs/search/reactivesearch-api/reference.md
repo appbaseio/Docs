@@ -101,7 +101,7 @@ For examples,
 > Multiple `dataFields` are not applicable for `term` and `geo` queries.
 
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;"  title="rs-playground-Nbpi1vkkywun82Z8aqFP" ></iframe>
+<iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"  title="rs-playground-Nbpi1vkkywun82Z8aqFP" ></iframe>
 
 ### fieldWeights [deprecated]
 
