@@ -88,12 +88,18 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/data/import/',
 												duration: 9,
 											},
-											// {
-											// 	title: 'Importing Data',
-											// 	description: 'Learn how to import data.',
-											// 	link: '/docs/data/Import/',
-											// 	duration: 4,
-											// },
+											{
+												title: 'Search Preview',
+												description: 'Visually create, update and manage results for your Search.',
+												link: '/docs/data/search-preview/',
+												duration: 3,
+										   },
+											{
+											 	title: 'Stored Queries',
+											 	description: 'Create and execute stored queries',
+											 	link: '/docs/data/stored-queries/',
+											 	duration: 4,
+											},
 										],
 									},
 									'3': {

@@ -6,6 +6,8 @@ keywords:
     - dataschema
     - appbase
     - databrowser
+    - data-ui
+    - mappings
     - elasticsearch
 sidebar: 'docs'
 ---
@@ -16,20 +18,20 @@ Data is stored as JSON documents. You can read more about how to model your data
 
 ## Installation
 
-The data browser is available within appbase.io app dashboard. But it can also be:
+The data browser is available within appbase.io dashboard. But it can also be:
 
 -   run as a [docker container](https://hub.docker.com/r/appbaseio/dejavu) or
 -   used as a hosted app [here](https://dejavu.appbase.io).
 
 ## Creating An App
 
-You can go to the [appbase.io dashboard](https://dashboard.appbase.io) and create an app. In the below GIF, we create an app called `demostreamingapp`.
+You can go to the [appbase.io dashboard](https://dashboard.appbase.io) view of your cluster and create an index.
 
 ![](https://www.dropbox.com/s/vr01bg1mlyrej87/create_app_new.gif?raw=1)
 
 ## Adding Your First Data
 
-You can access the databrowser [from the dashboard](https://dashboard.appbase.io/app?view=browse) or independently via [dejavu app](https://dejavu.appbase.io).
+You can access the databrowser from the dashboard view of your cluster or independently via the [Dejavu app](https://dejavu.appbase.io).
 
 ![](https://www.dropbox.com/s/yiztpv6uz11v0kl/add_data.gif?raw=1)
 
@@ -44,6 +46,41 @@ You have to first be in the **Editing** mode. And then select the `+` button nea
 ![](https://www.dropbox.com/s/m1mg8l4qp8j2zd2/adding_field.gif?raw=1)
 
 You can pick from the one of the available data types or set your own mapping.
+
+### Field Data Types
+
+Field data types are present in one of three shapes:
+
+1. **Primitive**: Text, Keyword, Integer, Float, Double, Date, Geo Point, Boolean are some examples.
+
+2. **Array**: An array shape in appbase.io is just a container that can hold one or more values of the primitive data type. There is no special data type associated with it.
+
+3. **Object**: An object shape in appbase.io acts as a container that can hold a nested JSON object, each keys of which representing a primitive data type or another object / array container.
+
+Beyond the primitive data types, there are also specialized data types that are specific to a search engine, like `completion`, `ip`, `percolator`. You can read all about the supported data types over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html).
+
+### How to Set Mappings
+
+You can use:
+
+1. **Data Browser**: The data browser UI can be used to set mappings via the `Add New Field` UI button.
+
+![](https://i.imgur.com/51KlukI.png)
+
+The UI supports adding all the primitive types. You can set your own mapping object for creating a specialized type or if you want to set any non-default options within a type.
+
+OR
+
+2. **Schema UI**: The Schema view gives you an overall view of your index's fields. You can set a specific use-case, data type, add a new field to the index or remove a field from the index. Read more for the Schema UI docs over [here](/docs/search/relevancy/#schema).
+
+OR
+
+3. **REST API**: You can use the REST API to set the mappings using the [PUT /_mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) endpoint.
+
+> Note <i class="fa fa-info-circle"></i>
+>
+> Mappings are immutable in Elasticsearch. Once set, they can't be changed.
+
 
 ## Operations
 
