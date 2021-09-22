@@ -130,7 +130,7 @@ The above example will change the default `_msearch` request to `_search` reques
 -   **graphQLUrl** `String` [optional]
     Allows user to query from GraphqQL server instead of `Elasticsearch` REST api. [graphql-compose-elasticsearch](https://github.com/graphql-compose/graphql-compose-elasticsearch) helps in transforming `GraphQL` queries into `Elasticsearch` rest api. Here is an example of `GraphQL` server which acts as proxy for `Elasticsearch`.
     -   [GraphQL Server for books application](https://github.com/appbaseio-apps/graphql-elasticsearch-server)
--   **tranformResponse** `Function` [optional]
+-   **transformResponse** `Function` [optional]
     Enables transformation of search network response before rendering them. This asynchronous function will give you elasticsearch response object and componentId as params and expects an updated response in return in the similar structure of elasticsearch. You can use `componentId` to conditionally transform response for a particular reactivesearch component only.
 
 ```js{7-34}
