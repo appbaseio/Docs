@@ -12,7 +12,7 @@ sidebar: 'docs'
 
 Stored Queries prevent script injections by only passing the parameters to your search query rather than passing the query itself over a network request.
 
-![](https://i.imgur.com/hD3eyNa.png)
+![](https://imgur.com/0MeCEyb.png)
 
 Since Elasticsearch's query DSL is quite powerful, exposing it over the network can lead to:
 - **Denial of Service attacks:** where anyone can run an expensive query or aggregation against your cluster
