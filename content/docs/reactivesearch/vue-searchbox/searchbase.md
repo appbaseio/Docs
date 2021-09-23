@@ -37,7 +37,7 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
-     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To customize the query execution
 
