@@ -206,7 +206,7 @@ This will prevent all forms of script injections to your search API.
 
 Here is an example of how you can use stored query with ReactiveSearch API. You can pass it as part of the `defaultQuery` (or `customQuery`) property.
 
-<iframe src=https://play.reactivesearch.io/embed/zv7NAz7Y472KCBvfKcYy     style="width:100%; height:100%; border:0;  overflow:hidden;min-height: 400px;"     title=rs-playground-zv7NAz7Y472KCBvfKcYy   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/IdZBCNUJv328zU6tW8ML     style="width:100%; height:100%; border:0;  overflow:hidden;min-height: 400px;"     title=rs-playground-zv7NAz7Y472KCBvfKcYy   ></iframe>
 
 
 ### Using Stored Queries with ReactiveSearch
