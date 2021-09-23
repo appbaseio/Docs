@@ -111,6 +111,12 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 ## Advanced Usage
  Although, `react-searchbox` API should be enough to build the powerful search UIs but if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases then you can access it with the help of the react `context` API.
 
+
+**Use Case**
+Ability to use the state (context) of the search components, e.g. to create a filter-view of active user inputs for each component, to create a side-effect such as a saved query feature where you want to persist the state of all the active components.
+
+
+**Basic Usage:**
  ```jsx
  import { SearchContext } from '@appbaseio/react-searchbox';
 
@@ -122,3 +128,18 @@ nestedSidebar: 'react-searchbox-reactivesearch'
      }
  }
  ```
+
+ **Properties:**
+Apart from the props exposed by the SearchBase API, the following methods can be utilised to gain more control over the app.
+ - **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
+
+  - **getComponents** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the passed `id` as argument.
+
+
+**Example:**
+<iframe src="https://codesandbox.io/embed/appbaseio-react-searchbox-advanced-usage-kwu49?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="@appbaseio/react-searchbox : advanced usage"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
