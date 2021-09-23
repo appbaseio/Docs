@@ -3,7 +3,7 @@ title: 'Search UI Builder'
 meta_title: 'NoCode UI Builder For Search'
 meta_description: 'Visually build a search UI with NoCode. Export to your favorite E-Commerce Platform or your own site.'
 keywords:
-	- ui-builder
+    - ui-builder
     - ui-integrations
     - overview
     - storefront search builder
@@ -63,7 +63,7 @@ In `Custom CSS`, you will be able to set your CSS to control the look and feel o
 
 In the `Search Settings` tab, you will be able to define the behavior for search, filters, and results.
 
-![Search Tab](https://imgur.com/yJPp5sj.png)
+![Search Tab](https://i.imgur.com/bNi4EYS.png)
 
 In the `Search` tab, you can configure the preferences and search settings. Here the preferences are related to suggestions and enabling of voice search and the search settings are regarding the fields to search on, field weights to apply, typo tolerance and synonyms settings. You can read more about the available options over [here](/docs/search/relevancy/#search-settings).
 
@@ -120,7 +120,11 @@ You can follow the **Installation Instructions** for the exact steps to install 
 
 Once installed, you can head to the store and see the appbase.io generated search interface as your default search.
 
-![Final Result](https://i.imgur.com/rG6VNpv.png)
+![Final Result - Grid View](https://i.imgur.com/BL268nd.png)
+**Image:** Search interface in grid view
+
+![Final Result](https://i.imgur.com/v8kQhVi.png)
+**Image:** Search interface in list view
 
 
 ### Exporting Code to other Platforms
