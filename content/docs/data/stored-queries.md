@@ -175,20 +175,22 @@ You can use `Copy as CURL` option to copy the request in your clipboard.<br/>
 ```bash
 curl -X POST https://your-cluster.searchbase.io/_storedquery/search-by-brand-query/execute -H 'Content-Type: application/json' -H 'Authorization: Basic ********************' -d'
 {
-  "params": {
-    "brands": [
-      "ADIDAS",
-      "Nike"
-    ],
-    "fieldsToReturn": [
-      "title",
-      "vendor",
-      "price"
-    ]
-  }
+	"params": {
+		"brands": [
+			"ADIDAS",
+			"Nike"
+		],
+		"fieldsToReturn": [
+			"title",
+			"vendor",
+			"price"
+		]
+	}
 }
 '
 ```
+
+[Here is the REST API reference](https://arc-api.appbase.io/#55a3e150-34d4-4a43-bdd3-01fb6d424654) for the same.
 
 ### Access Control For Stored Queries
 
@@ -199,3 +201,46 @@ You can only allow `Stored Queries` category to allow all Stored query endpoints
 ![](https://i.imgur.com/U7XPrpT.png)
 
 This will prevent all forms of script injections to your search API.
+
+### Using Stored Queries with ReactiveSearch API
+
+Here is an example of how you can use stored query with ReactiveSearch API. You can pass it as part of the `defaultQuery` (or `customQuery`) property.
+
+<iframe src=https://play.reactivesearch.io/embed/zv7NAz7Y472KCBvfKcYy     style="width:100%; height:100%; border:0;  overflow:hidden;min-height: 400px;"     title=rs-playground-zv7NAz7Y472KCBvfKcYy   ></iframe>
+
+
+### Using Stored Queries with ReactiveSearch
+
+ReactiveSearch and Searchbox FE libraries support passing `defaultQuery` and `customQuery` properties as part of each component. You can pass a stored query instead of passing a query DSL.
+
+```js
+defaultQuery={() => ({
+	query: {
+		term: {
+			"author.keyword": "J. K. Rowling"
+		}
+	}
+})}
+```
+
+Once you've created a stored query for the above in the appbase.io dashboard or via REST API, you can replace the usage of the above query as:
+
+```js
+defaultQuery={() => ({
+	id: "good-books-ds",
+	params: {
+		author: "J. K. Rowling"
+	}
+})}
+```
+
+`customQuery` also accepts the same usage pattern.
+
+Here's a codesandbox demo showing the same:
+
+<iframe src="https://codesandbox.io/embed/condescending-jasper-q0mlz?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="condescending-jasper-q0mlz"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
