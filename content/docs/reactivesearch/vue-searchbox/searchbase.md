@@ -130,7 +130,7 @@ export default {
 ```
 
 ## Advanced Usage
- Although, `vue-searchbox` API should be enough to build the powerful search UIs but if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases then you can access it with the help of vue JS' `inject` API.
+Although, `vue-searchbox` API should be enough to build the powerful search UIs but if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases then you can access it with the help of vue JS' `inject` API.
 
 **Use Case**
 Ability to use the state (context) of the search components, e.g. to create a filter-view of active user inputs for each component, to create a side-effect such as a saved query feature where you want to persist the state of all the active components.
@@ -149,14 +149,15 @@ Ability to use the state (context) of the search components, e.g. to create a fi
  </script>
  ```
 
- **Properties:**
+**Properties:**
 Apart from the props exposed by the SearchBase API, the following methods can be utilised to gain more control over the app.
- - **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
+- **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
 
-  - **getComponents** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the passed `id` as argument.
+- **getComponents** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the passed `id` as argument.
 
 
 **Example:**
+The below example renders the active filters using a separate `<selected-filters />` component, which uses the `searchbase` context injected in the component.
 <iframe src="https://codesandbox.io/embed/appbaseio-vue-searchbox-advanced-example-vymk4?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="@appbaseio/vue-searchbox: advanced example"
