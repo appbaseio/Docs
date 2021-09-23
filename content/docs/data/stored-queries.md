@@ -234,8 +234,6 @@ defaultQuery={() => ({
 })}
 ```
 
-`customQuery` also accepts the same usage pattern.
-
 Here's a codesandbox demo showing the same:
 
 <iframe src="https://codesandbox.io/embed/condescending-jasper-q0mlz?fontsize=14&hidenavigation=1&theme=dark"
