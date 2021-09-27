@@ -140,7 +140,7 @@ The above example will change the default `_msearch` request to `_search` reques
         headers={{
             secret: 'reactivesearch-is-awesome'
         }}
-        transformResponse={async (elasticsearchResponse, componentId) => (
+        transformResponse={async (elasticsearchResponse, componentId) => {
             const ids = elasticsearchResponse.responses[0].hits.hits.map(
                 item => item._id
             );
@@ -168,7 +168,7 @@ The above example will change the default `_msearch` request to `_search` reques
                     }
                 ]
             };
-        )}
+        }}
     >
         <Component1 .. />
         <Component2 .. />
