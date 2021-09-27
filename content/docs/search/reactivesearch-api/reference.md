@@ -170,8 +170,10 @@ The value should be an `Object` in the following shape:
 > Note:
 >
 > Either `start` or `end` property must present in the value.
+
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+</iframe>
 
 #### format for `geo` type
 
