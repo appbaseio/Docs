@@ -272,23 +272,26 @@ export default () => (
 ```
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/demo" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-## Basic Usage
+
+## More Examples
+
+### Basic Usage
 
 This example demonstrates the usage of some of the props available with `react-searchbox`. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
 
-## Controlled Usage
+### Controlled Usage
 
 In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
 
-## Advanced Usage
+### Advanced Usage
 
 In this example, we have shown usage of the `react-table` library to display the search results in a tabular format. You can similarly integrate any kind of UI component - be it grid, charts, lists, sliders with the help of [`SearchComponent`](/docs/reactivesearch/react-searchbox/searchcomponent/). Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
 
-## DistinctField Prop Usage
+### DistinctField Prop Usage
 
 In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
 
-## EnablePredictiveSuggestions Prop Usage
+### EnablePredictiveSuggestions Prop Usage
 
 In this example, we can see the usage of `enablePredictiveSuggestions` prop to prdict next relevant word in a serach query. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
 
