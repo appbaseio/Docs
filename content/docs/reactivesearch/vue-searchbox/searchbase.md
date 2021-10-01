@@ -130,12 +130,17 @@ export default {
 ```
 
 ## Advanced Usage
-Although, `vue-searchbox` API should be enough to build the powerful search UIs but if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases then you can access it with the help of vue JS' `inject` API.
 
-**Use Case**
-Ability to use the state (context) of the search components, e.g. to create a filter-view of active user inputs for each component, to create a side-effect such as a saved query feature where you want to persist the state of all the active components.
+While the `vue-searchbox` library should be enough to build the powerful search UIs out of the box, there can be times where you need access to the state (context) of the components.
 
-**Basic Usage:**
+**Example Use Cases**
+
+One would need to use the state (context) of the search components, e.g. to show a list of all active user query inputs including the ability to unselect an input to affect the particular search component's input as well.
+
+Another use can be to create a saved query feature where it's important persist the state of all the search and filter components.
+
+
+**Basic Usage**
  ```html
  <script>
   export default {
@@ -149,14 +154,14 @@ Ability to use the state (context) of the search components, e.g. to create a fi
  </script>
  ```
 
-**Properties:**
-Apart from the props exposed by the SearchBase API, the following methods can be utilised to gain more control over the app.
+**Properties**
+
 - **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
 
-- **getComponents** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the passed `id` as argument.
+- **getComponent** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the provided component `id`.
 
 
-**Example:**
+**Example**
 The below example renders the active filters using a separate `<selected-filters />` component, which uses the `searchbase` context injected in the component.
 <iframe src="https://codesandbox.io/embed/appbaseio-vue-searchbox-advanced-example-vymk4?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
