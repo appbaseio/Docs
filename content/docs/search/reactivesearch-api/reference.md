@@ -161,8 +161,8 @@ The value should be an `Object` in the following shape:
 
 ```js
 {
-   "start": int|string, // optional
-   "end": int|string, // optional
+   "start": int | double | date, // optional
+   "end": int | double | date, // optional
    "boost": int
 }
 ```
