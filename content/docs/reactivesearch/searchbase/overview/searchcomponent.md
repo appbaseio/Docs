@@ -51,6 +51,7 @@ const searchComponent = new SearchComponent(properties);
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 #### To configure the ReactiveSearch API
 
@@ -63,7 +64,7 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
     This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
 
 -   **dataField** `string | Array<string | DataField>`
-    index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
+    index field(s) to be connected to the component’s UI view. SearchComponent accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
     You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
     The `DataField` type has the following shape:

@@ -180,14 +180,17 @@ You can define the `appbaseConfig` prop in the `ReactiveBase` component to custo
 - **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 <br/>
 For example in the following code, we're setting up two custom events that will be recorded with each search request.
+
 ```js
-    <Reactivebase
-        appbaseConfig={{
-                customEvents: {
-                    platform: "ios",
-                    device: "iphoneX"
-                }
-        }}
-    >
-    </Reactivebase>
+<Reactivebase
+    appbaseConfig={{
+            customEvents: {
+                platform: "ios",
+                device: "iphoneX"
+            }
+    }}
+>
+</Reactivebase>
 ```
+
+- **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.

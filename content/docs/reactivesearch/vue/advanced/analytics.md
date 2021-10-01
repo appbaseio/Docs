@@ -127,3 +127,5 @@ For example in the following code, we're setting up two custom events that will 
 	};
 </script>
 ```
+
+- **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.

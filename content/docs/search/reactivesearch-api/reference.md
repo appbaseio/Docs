@@ -18,7 +18,7 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
 {
     query: [{
         id: "phone-search",
-        dataField: ["title"],
+        dataField: "title",
         size: 10,
         value: "iphone"
     }],
@@ -41,16 +41,69 @@ The unique identifier for the query can be referenced in the `react` property of
 
 ### dataField
 
-database field(s) to be queried against. Accepts an `Array`, useful for applying search across multiple fields.
+database field(s) to be queried against, useful for applying search across multiple fields.
+It accepts the following formats:
+- `string`
+- `DataField`
+- `Array<string|DataField>`
 
-| Type            | Applicable on query of type | Required |
-| --------------- | --------------------------- | -------- |
-| `Array<string>` | `all`                       | true     |
+The `DataField` type has the following shape:
+
+```ts
+type DataField = {
+    field: string;
+    weight: float;
+};
+```
+For examples,
+
+1. `dataField` without field weights
+```js
+    dataField: ['title', 'title.search']
+```
+
+2. `dataField` with field weights
+
+```js
+    dataField: [
+        {
+            "field": "title",
+            "weight": 1
+        },
+        {
+            "field": "title.search",
+            "weight": 3
+        }
+    ]
+```
+
+3. `dataField` with and without field weights
+
+```js
+    dataField: [
+        {
+            "field": "title",
+            "weight": 1
+        },
+        {
+            "field": "title.search",
+            "weight": 3
+        },
+        "description"
+    ]
+```
+
+| Type                                       | Applicable on query of type | Required |
+| ------------------------------------------ | --------------------------- | -------- |
+| `string | DataField | Array` | `all`                       | true     |
 
 > Note:
 > Multiple `dataFields` are not applicable for `term` and `geo` queries.
 
-### fieldWeights
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"  title="rs-playground-Nbpi1vkkywun82Z8aqFP" ></iframe>
+
+### fieldWeights [deprecated]
 
 To set the search weight for the database fields, useful when you are using more than one [dataField](/docs/search/reactivesearch-api/reference/#datafield). This prop accepts an array of `floats`. A higher number implies a higher relevance weight for the corresponding field in the search results.
 
@@ -71,6 +124,7 @@ For example, the below query has two data fields defined and each field has a di
 | ------------ | --------------------------- | -------- |
 | `Array<int>` | `search`                    | false    |
 
+> Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of appbase.io. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
 ### type
 
 This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
@@ -92,10 +146,14 @@ You can check the `value` format for different `type` of queries:
 #### format for `search` type
 
 The value can be a `string` or `int`.
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 #### format for `term` type
 
 The value can be a `string` or `Array<string>`.
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 #### format for `range` type
 
@@ -103,8 +161,8 @@ The value should be an `Object` in the following shape:
 
 ```js
 {
-   "start": int|string, // optional
-   "end": int|string, // optional
+   "start": int | double | date, // optional
+   "end": int | double | date, // optional
    "boost": int
 }
 ```
@@ -112,6 +170,10 @@ The value should be an `Object` in the following shape:
 > Note:
 >
 > Either `start` or `end` property must present in the value.
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+</iframe>
 
 #### format for `geo` type
 
@@ -161,6 +223,8 @@ The below example represents a **geo bounding box** query:
         }
     }
 ```
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### index
 
@@ -194,6 +258,8 @@ Body:
 ```
 
 Here, the first query uses the `my-index` index to query against, as specified in the request URL. However, the second query will use the `optimized-facet-index` index as specified by the `index` key in it.
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/GsFi6AyoFYD0iiGhNgQi"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### size
 
@@ -202,6 +268,8 @@ To set the number of results to be returned by a query.
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
 | `int` | `all`                       | false    |
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
 
 ### from
 
@@ -210,6 +278,8 @@ Starting document offset. Defaults to `0`.
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
 | `int` | `search`,`geo`,`range`      | false    |
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/Sj5qtmxqQ75HHh6wCEsE"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### pagination
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
@@ -221,6 +291,9 @@ This property allows you to implement the `pagination` for `term` type of querie
 > Note:
 > 1. Sort by as `count` doesn't work with composite aggregations i.e when `pagination` is set to `true`.
 > 2. The [missingLabel](/docs/search/reactivesearch-api/reference/#missinglabel) property also won't work when composite aggregations have been used.
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/isUvzMDdjLFxTErHUw2i"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### aggregationSize
 
@@ -234,6 +307,9 @@ To set the number of buckets to be returned by aggregations.
 > 1. This property can also be used for `search` type of queries when `aggregationField` is set.
 > 2. This is a new feature and only available for appbase versions >= 7.41.0.
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/apAMBqEVwmgUJv2j7Y6C"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### queryFormat
 
 Sets the query format, can be `or` or `and`. Defaults to `or`.
@@ -246,6 +322,8 @@ Sets the query format, can be `or` or `and`. Defaults to `or`.
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/9NwNk4QRJxdbX0zQviNE"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### fuzziness
 
@@ -259,6 +337,9 @@ Useful for showing the correct results for an incorrect search parameter by taki
 >
 > This property doesn't work when the value of [queryFormat](/docs/search/reactivesearch-api/reference/#queryformat) property is set to `and`."
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/FfBZDt4981lxD2At3KuK"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### categoryField
 
 Data field which has the category values mapped.
@@ -267,6 +348,9 @@ Data field which has the category values mapped.
 | -------- | --------------------------- | -------- |
 | `string` | `search`                    | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/adZAj2AcCVpDlHmNljl0"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### categoryValue
 
 This is the selected category value. It is used for informing the search result.
@@ -274,6 +358,9 @@ This is the selected category value. It is used for informing the search result.
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `string` | `search`                    | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/9MswTJYI7pne7Awi5vWT"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### sortBy
 
@@ -291,6 +378,9 @@ This property can be used to sort the results in a particular format. The valid 
 >
 > Please note that the `count` value can only be applied when the query type is of `term`. In addition, the [pagination](/docs/search/reactivesearch-api/reference/#pagination) property for the query needs to be set to `false` (default behavior). When pagination is `true`, a composite aggregation is used under the hood, which doesn't support ordering by count.
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### react
 
 To specify dependent queries to update that particular query for which the react prop is defined. You can read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
@@ -299,6 +389,8 @@ To specify dependent queries to update that particular query for which the react
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/fnTtSJmMehxSn3AAJWwi"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### highlight
 
@@ -308,6 +400,9 @@ This property can be used to enable the highlighting in the returned results. If
 | ------ | --------------------------- | -------- |
 | `bool` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/AjkyDj8zGt32xV2QcOcu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### highlightField
 
 When highlighting is `enabled`, this property allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to apply highlights on the field(s) specified in the `dataField` prop.
@@ -316,6 +411,9 @@ When highlighting is `enabled`, this property allows specifying the fields which
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### customHighlight
 
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
@@ -323,6 +421,9 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/BGEvla6560wL4HYyaPe4"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### searchOperators
 
@@ -334,6 +435,9 @@ Defaults to `false`. If set to `true` then you can use special characters in the
 
 > Note: If both properties `searchOperators` and `queryString` are set to `true` then `queryString` will have the priority over `searchOperators`.
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/yb5IhaBzF9qUXtTam5j7"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### queryString
 
 Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
@@ -344,6 +448,9 @@ Defaults to `false`. If set to `true` than it allows you to create a complex sea
 
 > Note: If both properties `searchOperators` and `queryString` are set to `true` then `queryString` will have the priority over `searchOperators`.
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/HEJtHdiyKC4LwE0cC1ZA"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### includeFields
 
 Data fields to be included in search results. Defaults to `[*]` which means all fields are included.
@@ -351,6 +458,9 @@ Data fields to be included in search results. Defaults to `[*]` which means all 
 | Type            | Applicable on query of type | Required |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/i0wVmWCvfJJLJAWAEn0F"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### excludeFields
 
@@ -360,6 +470,8 @@ Data fields to be excluded in search results.
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/MXpPbR2OGdAQPbN2ox2H"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### showMissing
 
@@ -368,6 +480,9 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
 | `bool` | `term`                      | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/Ht0aHbUljvjjFVny2X2Y"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### missingLabel
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
@@ -378,12 +493,18 @@ Defaults to `N/A`. It allows you to specify a custom label to show when [showMis
 
 > Note: This property doesn't work when [pagination](/docs/search/reactivesearch-api/reference/#pagination) is set to `true`.
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/QoFtxI5RCI5c4BWnCfRH"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### selectAllLabel
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `string` | `term`                      | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/N1lkEUFb3W2SEKgJ1D2L"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### includeNullValues
 
@@ -393,6 +514,9 @@ If you have sparse data or documents or items not having the value in the specif
 | ------ | --------------------------- | -------- |
 | `bool` | `range`                     | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/WN0V4iEgY80vRe9UQSvm"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### interval
 
 To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
@@ -401,6 +525,8 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 | ----- | --------------------------- | -------- |
 | `int` | `range`                     | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/k5MeCmPeELaWvTYeqoGl"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### aggregationField
 
@@ -410,6 +536,9 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/9Q46nHI7Re5vHal9M8he"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### after
 This property can be used to implement the pagination for `aggregations`. We use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of `Elasticsearch` to execute the aggregations' query, the response of composite aggregations includes a key named `after_key` which can be used to fetch the next set of aggregations for the same query. You can read more about the pagination for composite aggregations at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#_pagination).
 
@@ -418,6 +547,10 @@ You need to define the `after` property in the next request to retrieve the next
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
+
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/isUvzMDdjLFxTErHUw2i"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### aggregations
 
@@ -430,6 +563,9 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `range`                     | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/cnHhcTQ4nSiMzyaNtA4y"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### nestedField
 
 Set the path of the nested type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a nested type mapping.
@@ -437,6 +573,9 @@ Set the path of the nested type under which the `dataField` is present. Only app
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/d3ADrjDKGVuRYQ6cxKRa"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### defaultQuery
 
@@ -447,6 +586,9 @@ You can read more about the `defaultQuery` usage over [here](/docs/reactivesearc
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/DxQUolzQZnhas6Hma15A"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### customQuery
 
@@ -460,6 +602,9 @@ Custom query property will be applied to the dependent queries by `react` proper
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/IIPiPFpXbPbhKtL3IoPt"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 
 ### execute
 
@@ -470,6 +615,9 @@ For example, consider a scenario where we want to filter the search query by som
 | ------ | --------------------------- | -------- |
 | `bool` | `all`                       | false    |
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/NSUbJjAEdAERswHFV6lv"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### enableSynonyms
 
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
@@ -477,6 +625,9 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
 | `bool` | `search`                    | false    |
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/FLwTmwBpcLZezTW3Wg5D"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### rankFeature
 This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields.
@@ -571,6 +722,9 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 }
 ```
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/moCjhTRZK14FNsA9mvNo"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### distinctField
 This property returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
@@ -592,6 +746,9 @@ The following query would return the products for distinct brands.
     ]
 }
 ```
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/AwwZ3kuEF2QhQ9M38yPA"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### distinctFieldConfig
 This property allows specifying additional options to the `distinctField` property. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
@@ -627,6 +784,9 @@ The following query would return the products for distinct brands. Additionally,
 }
 ```
 
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/RrD7aB3vstYvPZxfaHNo"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ## Settings Properties
 
 ### recordAnalytics
@@ -655,3 +815,6 @@ The following query would return the products for distinct brands. Additionally,
 
 ### useCache
 `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard.
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/LfmsZDWgTw5Zf2Z3WTR9"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
