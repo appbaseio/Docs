@@ -140,7 +140,7 @@ class AdvancedComponent extends React.Component {
 - **getComponent** `Function: (String) => Object` returns the `SearchComponent` instance object contained within the `SearchBase` context for the provided component `id`.
 
 
-**Example:** 
+**Example** 
 The below example renders the active filters using a separate `<SelectedFilters />` component, which uses the `SearchContext` to access various `SearchComponent` instances.
 <iframe src="https://codesandbox.io/embed/appbaseio-react-searchbox-advanced-usage-kwu49?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
