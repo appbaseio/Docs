@@ -47,6 +47,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 -   **id** `string` [Required]
     unique identifier of the component, can be referenced in other components' `react` prop.
 
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/react-searchbox/examples/).
+
+    ```jsx
+    <SearchBox
+    	...
+    	index="good-books-clone"
+    />
+    ```
+    
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -115,7 +125,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
     You can use `aggregationData` using `onAggregationData` callback or `subscriber`.
-	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
+	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
 
 ```jsx
 <SearchBox
