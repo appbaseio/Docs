@@ -110,7 +110,7 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 
 ## Advanced Usage
 
-While the `react-searchbox` library should be enough to build the powerful search UIs out of the box, there can be times where you need access to the state (context) of the components.
+While the `react-searchbox` library should give you good controls out of the box to build the powerful search UIs, there can be times when you need access to the state (context) of the components.
 
 **Example Use Cases**
 
