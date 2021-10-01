@@ -1,11 +1,11 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to React SearchBox'
-meta_description: 'react-searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'This is a quickstart guide to the React searchbox library - learn how to get started with building your search UIs in under 10 mins.'
 keywords:
     - quickstart
     - react-searchbox
-    - search library
+    - search-ui
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
@@ -277,22 +277,31 @@ export default () => (
 
 ### Basic Usage
 
-This example demonstrates the usage of some of the props available with `react-searchbox`. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
+This example demonstrates the usage of some of the props available with `react-searchbox`. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#basic-usage) to check it out.
 
 ### Controlled Usage
 
-In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
+In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#controlled-usage) to check it out.
 
 ### Advanced Usage
 
-In this example, we have shown usage of the `react-table` library to display the search results in a tabular format. You can similarly integrate any kind of UI component - be it grid, charts, lists, sliders with the help of [`SearchComponent`](/docs/reactivesearch/react-searchbox/searchcomponent/). Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
+In this example, we have shown usage of the `react-table` library to display the search results in a tabular format. You can similarly integrate any kind of UI component - be it grid, charts, lists, sliders with the help of [`SearchComponent`](/docs/reactivesearch/react-searchbox/searchcomponent/). Please go over [here](/docs/reactivesearch/react-searchbox/examples/#advanced-usage) to check it out.
 
 ### DistinctField Prop Usage
 
-In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
+In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#distinctfield-prop-usage) to check it out.
 
 ### EnablePredictiveSuggestions Prop Usage
 
-In this example, we can see the usage of `enablePredictiveSuggestions` prop to prdict next relevant word in a serach query. Please go over [here](/docs/reactivesearch/react-searchbox/examples/) to check it out.
+In this example, we can see the usage of `enablePredictiveSuggestions` prop to prdict next relevant word in a serach query. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#enablepredictivesuggestions-prop-usage) to check it out.
+
+### Index Prop Usage
+
+In this example, we can see the usage of the `index` prop in the author-search-component to explicitly specify an index to query against for the component. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#index-prop-usage) to check it out.
+
+
+### TransformRequest Prop Usage
+
+In this example, we show the usage of the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the search-box component. It allows us to either modify the request being sent or create a side-effect based on this request. Please go over [here](/docs/reactivesearch/react-searchbox/examples/#transformrequest-prop-usage) to check it out.
 
 You can check out the docs for API Reference over [here](/docs/reactivesearch/react-searchbox/apireference/).

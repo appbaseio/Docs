@@ -4,7 +4,8 @@ meta_title: 'Documentation for React SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - react-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
