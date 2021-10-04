@@ -14,7 +14,7 @@ The following are some examples to demonstrate the usge of various props availab
 
 In the examples below, we have made use of `search-base`, `search-box` & `search-component` components.
 
-#### SearchBase
+#### search-base
 
 This component binds the backend app(data source) with the UI components. You can read more about it [here](/docs/reactivesearch/vue-searchbox/searchbase/).
 
