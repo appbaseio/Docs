@@ -3,9 +3,9 @@ title: 'API Reference'
 meta_title: 'API Reference for React Native SearchBox'
 meta_description: 'react-native-searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
-    - quickstart
+    - api-reference
     - react-native-searchbox
-    - search library
+    - search-ui
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-native-searchbox-reactivesearch'

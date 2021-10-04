@@ -1,11 +1,11 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to React Native SearchBox'
-meta_description: 'react-native-searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'This is a quickstart guide to the React Native searchbox library - learn how to get started with building your search UIs in under 10 mins.'
 keywords:
     - quickstart
     - react-native-searchbox
-    - search library
+    - search-ui
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-native-searchbox-reactivesearch'
@@ -44,16 +44,16 @@ The following example renders an autosuggestion search bar(`search-component`) w
 
 ## Basic Usage
 
-This example demonstrates the usage of some of the props available with `react-native-searchbox`. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
+This example demonstrates the usage of some of the props available with `react-native-searchbox`. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#basic-usage) to check it out.
 
 ## Controlled Usage
 
-In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
+In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#controlled-usage) to check it out.
 
 ## Advanced Usage
 
-In this an example with a facet. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
+In this example, we show the usage of an additional facet to display the search results with increased relevancy.  Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#advanced-usage) to check it out.
 
 ## DistinctField Prop Usage
 
-In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/) to check it out.
+In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#distinctfield-prop-usage) to check it out.

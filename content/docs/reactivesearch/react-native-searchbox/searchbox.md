@@ -4,7 +4,8 @@ meta_title: 'Documentation for React Native SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - react-native-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-native-searchbox-reactivesearch'
@@ -411,7 +412,7 @@ For example,
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
 
     ```js
-	import { SearchContext } from '@appbaseio/react-searchbox';
+	import { SearchContext } from '@appbaseio/react-native-searchbox';
 	const Search = () => {
 		// To retrieve the searchbase context
 		const searchbase = useContext(SearchContext);
