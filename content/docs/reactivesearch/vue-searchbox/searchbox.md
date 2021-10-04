@@ -4,7 +4,8 @@ meta_title: 'Documentation for Vue SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - vue-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'vue-searchbox-reactivesearch'

@@ -3,10 +3,10 @@ title: 'SearchBase API Reference'
 meta_title: 'API Reference for SearchBase'
 meta_description: 'SearchBase is a provider component that provides the search context to the child components.'
 keywords:
-    - apireference
+    - api-reference
     - searchbase
     - elasticsearch
-    - search library
+    - search-ui
 sidebar: 'docs'
 nestedSidebar: 'vue-searchbox-reactivesearch'
 ---
