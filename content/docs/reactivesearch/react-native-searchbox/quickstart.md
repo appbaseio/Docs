@@ -42,18 +42,29 @@ The following example renders an autosuggestion search bar(`search-component`) w
 <div data-snack-id="@anik_ghosh/searchbox-simple-example" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
 <script async src="https://snack.expo.io/embed.js"></script>
 
-## Basic Usage
+### Basic Usage
 
 This example demonstrates the usage of some of the props available with `react-native-searchbox`. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#basic-usage) to check it out.
 
-## Controlled Usage
+### Controlled Usage
 
 In this example we can see the usage of `search-box` component in a controlled way using the `value` and `onChange` props and also how to use the `transformRequest` prop to get in more context from an extrenal API. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#controlled-usage) to check it out.
 
-## Advanced Usage
+### Advanced Usage
 
 In this example, we show the usage of an additional facet to display the search results with increased relevancy.  Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#advanced-usage) to check it out.
 
-## DistinctField Prop Usage
+### DistinctField Prop Usage
 
 In this example, we have shown how to usage `distinctField` and `distinctFieldConfig` props to display distinct value documents based on the specified field. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#distinctfield-prop-usage) to check it out.
+
+
+### Index Prop Usage
+
+In this example, we can see the usage of the `index` prop in the author-search-component to explicitly specify an index to query against for the component. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#index-prop-usage) to check it out.
+
+### TransformRequest Prop Usage
+
+In this example, we show the usage of the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the search-box component. It allows us to either modify the request being sent or create a side-effect based on this request. Please go over [here](/docs/reactivesearch/react-native-searchbox/examples/#transformrequest-prop-usage) to check it out.
+
+You can check out the docs for API Reference over [here](/docs/reactivesearch/react-native-searchbox/apireference/).

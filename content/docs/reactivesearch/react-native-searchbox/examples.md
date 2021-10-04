@@ -56,6 +56,13 @@ In this example, we show the usage of `distinctField` and `distinctFieldConfig` 
 <div data-snack-id="@anik_ghosh/searchbox-example-with-distinct-field-prop" data-snack-platform="ios" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
 <script async src="https://snack.expo.io/embed.js"></script>
 
+### Index Prop Usage
+
+In this example, we show the usage of the `index` prop in the `author-search-component` to explicitly specify an index to query against for the component.
+
+<div data-snack-id="@mohdashraf010897/index-prop-usage" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async src="https://snack.expo.dev/embed.js"></script>
+
 ### TransformRequest Prop Usage
 
 In this example, we show the usage of the `transformRequest` prop, which gives us the request object whenever a query gets triggered. We then use this request object to extract the search query text and then make a call to an external API (datamuse) to get correct matching texts in case the search query was misspelled. The correct suggested text is then used to replace the misspelled query value in the request and then fire the query again, fetching relevant results even for misspelled queries.
