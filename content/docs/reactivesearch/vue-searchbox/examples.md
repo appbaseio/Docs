@@ -18,7 +18,7 @@ In the examples below, we have made use of `search-base`, `search-box` & `search
 
 This component binds the backend app(data source) with the UI components. You can read more about it [here](/docs/reactivesearch/vue-searchbox/searchbase/).
 
-#### SearchBox
+#### search-box
 
 This component provides a lightweight, performance focused & customizable searchbox UI. You can read more about it [here](/docs/reactivesearch/vue-searchbox/searchbox/).
 
