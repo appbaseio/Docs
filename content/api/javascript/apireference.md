@@ -304,13 +304,13 @@ appbaseRef
 **Returns**
 Promise.
 
-### reactiveSearchv3()
+### reactiveSearch()
 
 ReactiveSearch method allows you to execute the search requests securely with the help of newly launched `ReactiveSearch` API. You can read about `ReactiveSearch` API [here](/docs/search/reactivesearch-api/).
 
 ```js
 appbaseRef
-	.reactiveSearchv3(
+	.reactiveSearch(
 		[
 			{
 				id: 'book_search',
@@ -333,7 +333,7 @@ appbaseRef
 
 **Usage**
 
-`appbaseRef.reactiveSearchv3(params)`
+`appbaseRef.reactiveSearch(params)`
 
 -   **params** It accepts two params:
     -   `query`, an array of objects where each object represents a ReactiveSearch query. Read more at [here](/docs/search/reactivesearch-api/reference/#query-properties)
