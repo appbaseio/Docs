@@ -342,3 +342,40 @@ appbaseRef
 **Returns**
 Promise.
 
+**Usage to fetch suggestions** 
+```js
+appbaseRef
+  .reactiveSearch(
+    [
+      {
+        id: "suggestions-demo",
+        type: "suggestion",
+        enableRecentSuggestions: true,
+        enablePopularSuggestions: true,
+        recentSuggestionsConfig: {
+          size: 5,
+          min_hits: 2,
+          min_char: 4,
+        },
+        popularSuggestionsConfig: {
+          size: 5,
+          showGlobal: true,
+        },
+        size: 5,
+        value: "cable",
+      },
+    ],
+    {
+      userId: "jon@appbase.io",
+      recordAnalytics: true,
+    }
+  )
+  .then(function (res) {
+    console.log("res", res);
+  })
+  .catch(function (err) {
+    console.log("suggestions error: ", err);
+  });
+```
+> Note
+> Recent suggestions work when `value` is empty.
