@@ -3,9 +3,9 @@ title: 'API Reference'
 meta_title: 'API Reference for Vue SearchBox'
 meta_description: 'vue-searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
 keywords:
-    - quickstart
+    - api-reference
     - vue-searchbox
-    - search library
+    - search-ui
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'vue-searchbox-reactivesearch'
