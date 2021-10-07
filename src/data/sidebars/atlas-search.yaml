@@ -3,7 +3,9 @@
         link: /docs/reactivesearch/atlas-search/overview/
       - title: Deploy To Realm
         link: /docs/reactivesearch/atlas-search/deploy/
-      - title: Test With UI
+      - title: Test with UI
         link: /docs/reactivesearch/atlas-search/test-with-ui/
-      - title: Search Examples
+      - title: Search Examples (REST)
         link: /docs/reactivesearch/atlas-search/search-examples/
+      - title: Search Examples with UI
+        link: /docs/reactivesearch/atlas-search/search-examples-with-ui/
