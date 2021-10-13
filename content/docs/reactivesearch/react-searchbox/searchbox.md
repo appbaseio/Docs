@@ -35,8 +35,8 @@ The below props are only needed if you're not using the `SearchBox` component un
 -   **appbaseConfig** `Object`
     allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
-    -   **recordAnalytics** `boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
@@ -141,7 +141,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 
     > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
--   **highlight** `boolean` [optional]
+-   **highlight** `Boolean` [optional]
     whether highlighting should be enabled in the returned results.
 
 -   **highlightField** `string or Array` [optional]
@@ -151,7 +151,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
 -   **categoryField** `string` [optional]
-    Data field which has the category values mapped.
+    Data field whose values are used to provide category specific suggestions.
 
 -   **categoryValue** `string` [optional]
     This is the selected category value. It is used for informing the search result.
@@ -163,17 +163,31 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
     Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
--   **enableSynonyms**: boolean
+-   **enableSynonyms** `Boolean`
     This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
--   **searchOperators** `boolean`
+-   **rankFeature** `Object`
+    This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields. Read more about it [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference/#rankfeature).
+
+    The `rankFeature` object must be in the following shape:
+    <br/>
+    ```ts
+        {
+         "field_name": {
+               "boost": 1.0,
+              "function_name": "function_object"
+            }
+        }
+    ```
+
+-   **searchOperators** `Boolean`
     Defaults to `false`. If set to `true`, then you can use special characters in the search query to enable the advanced search.<br/>
     Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
--   **queryString** `boolean` [optional]
+-   **queryString** `Boolean` [optional]
     Defaults to `false`. If set to `true` then it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
--  **clearOnQueryChange** `boolean` [optional]
+-  **clearOnQueryChange** `Boolean` [optional]
     Defaults to `true`, i.e. clear the component's input selection when the query of its dependent component changes (which is set via react prop). When set to `false`, the component's input selection isn't cleared.
 
 -   **distinctField** `String` [optional]
@@ -226,22 +240,65 @@ Here, we are specifying that the suggestions should update whenever one of the b
 ### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `Boolean`
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
+    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-suggestions/).
 
--   **enableRecentSearches** `Boolean` Defaults to `false`. If set to `true` then users will see the top recent searches as the default suggestions. Appbase.io recommends defining a unique id(`userId` property) in `appbaseConfig` prop for each user to personalize the recent searches.
+- **popularSuggestionsConfig** `Object` Specify additional options for fetching popular suggestions.
+
+    It can accept the following keys:
+    - **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.
+    - **minCount**: `number` Return only popular suggestions that have been searched at least `minCount` times. There is no default minimum count-based restriction.
+    - **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+    - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
+    - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+    <br/>
+    ```jsx
+        <SearchBox
+            enablePopularSuggestions={true}
+            popularSuggestionsConfig={{
+                size: 5,
+                minCount: 5,
+                minChars: 3,
+                showGlobal: false,
+                index: "good-books-ds",  // further restrict the index to search on
+            }}
+        />
+    ```
+-   **enableRecentSuggestions** `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane)
 > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
 
--   **enablePredictiveSuggestions** `bool` [optional]
-    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
+- **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
+
+    It can accept the following keys:
+    - **size**: `number` Maximum number of recent suggestions to return. Defaults to 5.
+    - **minHits**: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
+    - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+    - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+    <br/>
+    ```jsx
+        <SearchBox
+            enableRecentSuggestions={true}
+            recentSuggestionsConfig={{
+                size: 5,
+                minHits: 5,
+                minChars: 3,
+                index: "good-books-ds",  // further restrict the index to search on
+            }}
+        />
+    ```
+
+-   **enablePredictiveSuggestions** `Boolean` [optional]
+    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
     ```ts
     // pass this prop as true in searchComponent to enable predictive suggestions
     enablePredictiveSuggestions: true,
     ```
+-   **maxPredictedWords** `number` Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between **[1, 5]**.
+<br/>
 
 -   **showDistinctSuggestions** `Boolean` Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as
     searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
-    <br/> <br/>
+    <br/> 
     **Example** if you have `showDistinctSuggestions` is set to `false` and have following configurations
 
         ```js
@@ -264,6 +321,8 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Warn
     Washington
     ```
+
+- **urlField** `string` It is the `dataField` whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
 
 ### To customize the SearchBox UI
 
@@ -314,7 +373,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 -   **render** `Function` You can render suggestions in a custom layout by using the `render` prop.
     <br/>
     It accepts an object with these properties:
-    - **`loading`**: `boolean`
+    - **`loading`**: `Boolean`
     indicates that the query is still in progress.
     - **`error`**: `Object`
     An object containing the error info.
@@ -361,13 +420,13 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`micStatus`** `MicStatusField`
         Returns the current status of the mic. Can be `INACTIVE`, `ACTIVE` or `DENIED`
 
-    -   **`micActive`** `boolean`
+    -   **`micActive`** `Boolean`
         Returns `true` if mic is active
 
-    -   **`micInactive`** `boolean`
+    -   **`micInactive`** `Boolean`
         Returns `true` if mic is inactive
 
-    -   **`micDenied`** `boolean`
+    -   **`micDenied`** `Boolean`
         Returns `true` if it doesn't have access to the mic
 
     -   **`micInstance`** `Object`
@@ -386,14 +445,14 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`includeFields`** `Array<string>` represents the current value of `includeFields` property
     -   **`excludeFields`** represents the current value of `excludeFields` property
     -   **`fuzziness`** `string|number` represents the current value of `fuzziness` property
-    -   **`searchOperators`** `boolean` as defined in props
-    -   **`highlight`** `boolean` as defined in props
+    -   **`searchOperators`** `Boolean` as defined in props
+    -   **`highlight`** `Boolean` as defined in props
     -   **`highlightField`** `string|Array<string>` as defined in props
     -   **`customHighlight`** `Object` as defined in props
-    -   **`enableSynonyms`** `boolean` as defined in props
+    -   **`enableSynonyms`** `Boolean` as defined in props
     -   **`queryString`** `string` as defined in props
-    -   **`enablePopularSuggestions`** `boolean` as defined in props
-    -   **`showDistinctSuggestions`** `boolean` as defined in props
+    -   **`enablePopularSuggestions`** `Boolean` as defined in props
+    -   **`showDistinctSuggestions`** `Boolean` as defined in props
     -   **`defaultQuery`** represents the current value of `defaultQuery` property
     -   **`customQuery`**  represents the current value of `customQuery` property
     -   **`requestStatus`** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
@@ -438,23 +497,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`setReact`** `( react: Object, options?: Options ) => void` can be used to set the `react` property.
     -   **`setDefaultQuery`** `( defaultQuery: function, options?: Options ) => void` can be used to set the `defaultQuery` property.
     -   **`setCustomQuery`** `( customQuery: function, options?: Options ) => void` can be used to set the `customQuery` property.
-
--   **renderPopularSuggestions** `Function` You can render popular suggestions in a custom layout by using the `renderPopularSuggestions` prop.
-    <br/>
-    It accepts an object with these properties:
-
-    -   **`loading`**: `boolean`
-        indicates that the query is still in progress.
-    -   **`error`**: `Object`
-        An object containing the error info.
-    -   **`data`**: `array`
-        An array of popular suggestions obtained based on search value.
-    -   **`value`**: `string`
-        current search input value i.e the search query being used to obtain suggestions.
-    -   **`downshiftProps`**: `Object`
-        provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
-        Read more about it [here](https://github.com/downshift-js/downshift#children-function).
-
+<br/>
 -   **renderError** `Function`
     can be used to render an error message in case of any error.
 
@@ -512,7 +555,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 >2. The `hotkeys-js` library needs to be installed manually when using combinations in `focusShortcuts` prop, eg: 'cmd+b', 'ctrl+q', etc, without which only single key shortcuts would work if passed in the prop, eg: From among ['/', 'b', '#', 'ctrl+r'], only '/', 'b', '#' would work without hotkey-js installation.
 
 
--   **autoFocus** `boolean` [optional] When set to true, search box is auto-focused on page load. Defaults to `false`.
+-   **autoFocus** `Boolean` [optional] When set to true, search box is auto-focused on page load. Defaults to `false`.
 
 
 -   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
@@ -549,7 +592,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 />
 ```
 
--   **expandSuggestionsContainer** `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
+-   **expandSuggestionsContainer** `Boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
 <img src="https://i.imgur.com/x3jF23m.png"/>
 ```jsx
 <SearchBox
