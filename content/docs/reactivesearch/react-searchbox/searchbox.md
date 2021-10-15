@@ -372,6 +372,10 @@ Here, we are specifying that the suggestions should update whenever one of the b
 -   **maxPredictedWords** `number` Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between **[1, 5]**.
 <br/>
 
+-   **applyStopwords** `Boolean` When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
+
+-   **stopwords** `Array[String]` It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
+
 -   **showDistinctSuggestions** `Boolean` Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as
     searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
     <br/> 
