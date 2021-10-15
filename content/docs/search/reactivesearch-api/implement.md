@@ -20,7 +20,7 @@ Every query made via the `ReactiveSearch API` must have an `id` property defined
 
 ### Type of Queries
 
-`ReactiveSearch API` has four types of queries, each serving a different use-case. You can decide which query has to be used by defining the `type` property in the query object.
+`ReactiveSearch API` has five types of queries, each serving a different use-case. You can decide which query has to be used by defining the `type` property in the query object.
 
 #### Search Query (default)
 
@@ -56,6 +56,51 @@ When you use appbase.io, it indexes all the search use-case fields using a varie
 | `${field}.lang` | Analyzed field using the user provided language. | This is useful when searching on text in a specific language, e.g. Spanish. |
 | `${field}.synonyms` | Analyzed field for handling synonyms at search time. | This is useful when synonyms are enabled. |
 
+#### Suggestion
+
+Suggestion query is an extension of the `search` type of queries designed to retrieve a list of curated suggestions.
+
+The ideal use-cases are:
+
+- To build an auto-complete search input
+
+Suggestion type of queries supports a variety of suggestions in the following order:
+
+- **Promoted** suggestions represents the documents promoted by the Query Rules UI of Appbase.io dashboard.  
+
+- **Recent** suggestions are the past searches made by the user in last 30 days.
+
+- **Popular** suggestions are the most searched queries for a particular index.
+
+- **Index** suggestions are the suggestions derived from the index, can take into account the text analysis process, partial words, as-you-type queries, can handle typo tolerance, offer response highlighting and search on synonyms.
+
+**Example**
+
+The below query returns the matching suggestions for search query `harry`.
+
+```js
+{
+	id: "searchbox",
+	type: "suggestion",
+	dataField: ["title", "description"],
+	value: "harry",
+    enablePopularSuggestions: true,
+    popularSuggestionsConfig: {
+        minChars: 5,
+        size: 1
+    },
+    enableRecentSuggestions: true,
+    recentSuggestionsConfig: {
+        minChars: 5,
+        minHits: 1,
+        size: 1
+    },
+    enablePredictiveSuggestions: true,
+    applyStopwords: true,
+    showDistinctSuggestions: true,
+    size: 3, // size for index suggestions
+}
+```
 
 #### Term
 
