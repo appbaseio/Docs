@@ -227,13 +227,13 @@ There are two types of synonyms supported:
 
 Suggestions is a daily populated index by appbase.io based on search analytics. This UI would allow users to set the preferences for recent, popular and index suggestions.
 
-![](https://imgur.com/4z9VU9L.png)
+![](https://imgur.com/omGveTI.png)
 
 ### Popular Suggestions:
 
 Popular Suggestions is useful to curate search suggestions based on actual search queries that your users are making. This can be used by itself or alongside suggestions based on the product data to provide an augmented search experience.
 
-![](https://i.imgur.com/HXRgRsC.png)
+![](https://imgur.com/uqZB0K0.png)
 
 You can set the preferences for popular suggestions from appbase.io dashboard's Popular Suggestions. These help optimize the behavior of suggestions for your specific use-case.
 
@@ -253,22 +253,22 @@ You can set the preferences for popular suggestions from appbase.io dashboard's 
 
 Recent Suggestions is useful to see the top recent searches as the default suggestions. 
 
-![](https://imgur.com/40ZmTBa.png)
+![](https://imgur.com/kOrxta3.png)
 
 You can set the preferences for recent suggestions from appbase.io dashboard's Recent Suggestions under Suggestions.
 
-| Label    | Description                                                              |
-|----------|--------------------------------------------------------------------------|
-| Min Hits | Define the minimum number of results that must present for a suggestion. |
-| Size     | Maximum number of recent suggestions to be displayed.                   |
-| Indices  | Only selected indices will be considered to calculate the suggestions.   |
-
+| Label          | Description                                                                    |
+|----------------|--------------------------------------------------------------------------------|
+| Min Hits       | Define the minimum number of results that must present for a suggestion.       |
+| Size           | Maximum number of popular suggestions to be displayed.                         |
+| Min Characters | Define the minimum number of characters that must be present for a suggestion. |
+| Indices        | Only selected indices will be considered to calculate the suggestions.         |
 
 ### Index Suggestions:
 
 Index Suggestions is useful to set the suggestion preferences based on index.
                                                                                                |
-![](https://i.imgur.com/bnJfjAF.png)
+![](https://imgur.com/JzNzHnI.png)
 
 | Label                         | Description                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -283,6 +283,7 @@ Index Suggestions is useful to set the suggestion preferences based on index.
 | Include Fields                | Fields to include in the search results.                                                                                                                                                        |
 | Exclude Fields                | Fields to exclude from the search results                                                                                                                                                       |
 | Category Fields               | When specified, suggestions will show category specific suggestions based on the most frequent values based on this field.                                                                      |
+| URL                           | When specified, suggestions will redirect to the URL value based on this field.                                                                      |
 | Custom Query                  | Specify a custom stored query to execute instead of the default suggestions query. This is an advanced setting.                                                                                 |
 
 ## Query Rules
