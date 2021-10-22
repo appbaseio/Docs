@@ -12,6 +12,9 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
+        if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
+			return 'Atlas Search';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue SearchBox';
 		}

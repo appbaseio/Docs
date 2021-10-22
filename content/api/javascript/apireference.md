@@ -304,13 +304,13 @@ appbaseRef
 **Returns**
 Promise.
 
-### reactiveSearchv3()
+### reactiveSearch()
 
 ReactiveSearch method allows you to execute the search requests securely with the help of newly launched `ReactiveSearch` API. You can read about `ReactiveSearch` API [here](/docs/search/reactivesearch-api/).
 
 ```js
 appbaseRef
-	.reactiveSearchv3(
+	.reactiveSearch(
 		[
 			{
 				id: 'book_search',
@@ -333,7 +333,7 @@ appbaseRef
 
 **Usage**
 
-`appbaseRef.reactiveSearchv3(params)`
+`appbaseRef.reactiveSearch(params)`
 
 -   **params** It accepts two params:
     -   `query`, an array of objects where each object represents a ReactiveSearch query. Read more at [here](/docs/search/reactivesearch-api/reference/#query-properties)
@@ -342,41 +342,40 @@ appbaseRef
 **Returns**
 Promise.
 
-### getQuerySuggestions()
-
-This method allows you to execute search on `.suggestions` index. It is useful to curate search suggestions based on actual search queries that you are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
-Example:
-
-```javascript
+**Usage to fetch suggestions** 
+```js
 appbaseRef
-	.getQuerySuggestions(
-		[
-			{
-				id: 'book_search',
-				dataField: ['key', 'key.autosuggest', 'key.search'],
-				size: 5,
-				value: 'harry',
-			},
-		],
-		{
-			userId: 'jon@appbase.io',
-		},
-	)
-	.then(function(res) {
-		console.log('suggestions result: ', res);
-	})
-	.catch(function(err) {
-		console.log('suggestions error: ', err);
-	});
+  .reactiveSearch(
+    [
+      {
+        id: "suggestions-demo",
+        type: "suggestion",
+        enableRecentSuggestions: true,
+        enablePopularSuggestions: true,
+        recentSuggestionsConfig: {
+          size: 5,
+          min_hits: 2,
+          min_char: 4,
+        },
+        popularSuggestionsConfig: {
+          size: 5,
+          showGlobal: true,
+        },
+        size: 5,
+        value: "cable",
+      },
+    ],
+    {
+      userId: "jon@appbase.io",
+      recordAnalytics: true,
+    }
+  )
+  .then(function (res) {
+    console.log("res", res);
+  })
+  .catch(function (err) {
+    console.log("suggestions error: ", err);
+  });
 ```
-
-**Usage**
-
-`appbaseRef.getQuerySuggestions(params)`
-
--   **params** It accepts two params:
-    -   `query`, an array of objects where each object represents a ReactiveSearch query. Read more at [here](/docs/search/reactivesearch-api/reference/#query-properties)
-    -   `settings`, an object consisting of the properties to control your search experience. Read more at [here](/docs/search/reactivesearch-api/reference/#settings-properties)
-
-**Returns**
-Promise.
+> Note
+> Recent suggestions work when `value` is empty.

@@ -4,7 +4,8 @@ meta_title: 'Documentation for React Native SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - react-native-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-native-searchbox-reactivesearch'
@@ -38,6 +39,7 @@ The below props are only needed if you're not using the `SearchBox` component un
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To configure the ReactiveSearch API
 
@@ -45,6 +47,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 
 -   **id** `string` [Required]
     unique identifier of the component, can be referenced in other components' `react` prop.
+
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/react-native-searchbox/examples/).
+
+    ```jsx
+    <SearchBox
+        ...
+        index="good-books-clone"
+    />
+    ```
 
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
@@ -81,9 +93,9 @@ An example of a `react` clause where all three clauses are used and values are `
 
 ```jsx
 <SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-    react={{
+	id="search-component"
+	dataField={['original_title', 'original_title.search']}
+	react={{
 		and: {
 			or: ['CityComp', 'TopicComp'],
 			not: 'BlacklistComp',
@@ -114,17 +126,16 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
     You can use `aggregationData` using `onAggregationData` callback or `subscriber`.
-	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
+    > Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
 
 ```jsx
 <SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-    aggregationField="original_title.keyword"
-    onAggregationData={(next, prev) => {}}
+	id="search-component"
+	dataField={['original_title', 'original_title.search']}
+	aggregationField="original_title.keyword"
+	onAggregationData={(next, prev) => {}}
 />
 ```
-
 
 -   **aggregationSize**
     To set the number of buckets to be returned by aggregations.
@@ -164,11 +175,10 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
 -   **distinctField** `String` [optional]
-	This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
-
+    This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 -   **distinctFieldConfig** `Object` [optional]
-	This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+    This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```jsx
 <SearchBox
@@ -185,41 +195,52 @@ Here, we are specifying that the suggestions should update whenever one of the b
 />
 ```
 
+-   **enablePredictiveSuggestions** `bool` [optional]
+    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
+
+```jsx
+<SearchBox
+	....
+	enablePredictiveSuggestions
+/>
+```
+
 ### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `Boolean`
     Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
 -   **maxPopularSuggestions** `Number` can be used to configure the size of popular suggestions. The default value is `5`.
 -   **enableRecentSearches** `Boolean` Defaults to `false`. If set to `true` then users will see the top recent searches as the default suggestions. Appbase.io recommends defining a unique id for each user to personalize the recent searches.
-> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+    > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
 
 For example,
+
 ```js
-    <SearchBase
-        index="good-books-ds"
-        credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
-        url="https://arc-cluster-appbase-demo-6pjy6z.searchbase.io"
-        appbaseConfig={{
-            recordAnalytics: true,
-            // Unique user id or use device id
-            userId: 'jon@appbase.io',
-        }}
-    >
-        <SearchBox
-            id="search-component"
-            dataField={[
-                {
-                    field: 'original_title',
-                    weight: 1
-                },
-                {
-                    field: 'original_title.search',
-                    weight: 3
-                }
-            ]}
-            enableRecentSearches
-        />
-    </SearchBase>
+<SearchBase
+	index="good-books-ds"
+	credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
+	url="https://arc-cluster-appbase-demo-6pjy6z.searchbase.io"
+	appbaseConfig={{
+		recordAnalytics: true,
+		// Unique user id or use device id
+		userId: 'jon@appbase.io',
+	}}
+>
+	<SearchBox
+		id="search-component"
+		dataField={[
+			{
+				field: 'original_title',
+				weight: 1,
+			},
+			{
+				field: 'original_title.search',
+				weight: 3,
+			},
+		]}
+		enableRecentSearches
+	/>
+</SearchBase>
 ```
 -   **enablePredictiveSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
@@ -281,26 +302,27 @@ For example,
     ]}
 >
 ```
+
 -   **debounce** `wholeNumber` delays executing the query by the specified time in **ms** while the user is typing. Defaults to `0`, i.e. no debounce. Useful if you want to save on the number of requests sent.
 
 -   **renderItem** `Function` is useful to customize the suggestion list item. This function accepts two params:
     -   **suggestion** `object` represents the suggestion item that has `label`, `value` and `source` properties. In the case of a popular suggestion, the `source` object will have a property named `_popular_suggestion` as `true`.
     -   **isRecentSearch** `boolean` if `true` then it means that the suggestion is a recent search.
-    For example,
+        For example,
+
 ```jsx
-    <SearchBox
-        renderItem={(item, isRecentSearch) => (
-                <Text style={{ color: isRecentSearch ? 'blue' : 'red' }}>
-                    {item.label}
-                </Text>
-            )
-        }
+<SearchBox
+	renderItem={(item, isRecentSearch) => (
+		<Text style={{ color: isRecentSearch ? 'blue' : 'red' }}>{item.label}</Text>
+	)}
 />
 ```
+
 -   **render** `Function`
     You can render suggestions in a custom layout by using the `render` prop.
     <br/>
     It accepts an object with these properties:
+
     -   **`loading`**: `boolean`
         indicates that the query is still in progress.
     -   **`error`**: `object`
@@ -337,12 +359,15 @@ For example,
 
 ```jsx
 <SearchBox
-    renderError={(error) => (
-            <Text>
-                Something went wrong!<br/>Error details<br/>{JSON.stringify(error)}
-            </Text>
-        )
-    }
+	renderError={error => (
+		<Text>
+			Something went wrong!
+			<br />
+			Error details
+			<br />
+			{JSON.stringify(error)}
+		</Text>
+	)}
 />
 ```
 
@@ -388,7 +413,7 @@ For example,
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
 
     ```js
-	import { SearchContext } from '@appbaseio/react-searchbox';
+	import { SearchContext } from '@appbaseio/react-native-searchbox';
 	const Search = () => {
 		// To retrieve the searchbase context
 		const searchbase = useContext(SearchContext);
@@ -420,18 +445,24 @@ For example,
 
 -   **onValueSelected** `Function` A function callback which executes on selecting a value from result set
 
--  **onError** `Function` gets triggered in case of an error while fetching results
+-   **onError** `Function` gets triggered in case of an error while fetching results
 
--  **onResults** `Function` can be used to listen for the suggestions changes
+-   **onResults** `Function` can be used to listen for the suggestions changes
 
 -   **onQueryChange** `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 
 -   **onAggregationData** `Function` can be used to listen for the `aggregationData` property changes
-    - **data**: `Array<Object>` contains the parsed aggregations
-    - **raw**: `Object` Response returned by ES composite aggs query in the raw form.
-    - **rawData**: `Object` An object of raw response as-is from elasticsearch query.
-    - **afterKey**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the afterKey parameter to retrieve the next
+    -   **data**: `Array<Object>` contains the parsed aggregations
+    -   **raw**: `Object` Response returned by ES composite aggs query in the raw form.
+    -   **rawData**: `Object` An object of raw response as-is from elasticsearch query.
+    -   **afterKey**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the afterKey parameter to retrieve the next
+
+-   **onBlur** `Function` is a callback handler for input blur event
+
+-   **onKeyPress** `Function` is a callback handler for keypress event
+
+-   **onFocus** `Function` is a callback handler for input focus event
 
 -   **onBlur** `Function` is a callback handler for input blur event
 
@@ -445,10 +476,7 @@ For example,
     set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```jsx
-<SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-/>
+<SearchBox id="search-component" dataField={['original_title', 'original_title.search']} />
 ```
 
 -   **transformRequest** `(requestOptions: Object) => Promise<Object>`
@@ -457,14 +485,14 @@ For example,
 
 ```jsx
 <SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-    transformRequest= {request =>
-        Promise.resolve({
-            ...request,
-            credentials: include,
-        })
-    }
+	id="search-component"
+	dataField={['original_title', 'original_title.search']}
+	transformRequest={request =>
+		Promise.resolve({
+			...request,
+			credentials: include,
+		})
+	}
 />
 ```
 
@@ -474,9 +502,9 @@ For example,
 
 ```jsx
 <SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-    transformResponse={async elasticsearchResponse => {
+	id="search-component"
+	dataField={['original_title', 'original_title.search']}
+	transformResponse={async elasticsearchResponse => {
 		const ids = elasticsearchResponse.hits.hits.map(item => item._id);
 		const extraInformation = await getExtraInformation(ids);
 		const hits = elasticsearchResponse.hits.hits.map(item => {
@@ -573,24 +601,43 @@ For example,
 
 ### Miscellaneous
 
--  **beforeValueChange** `Function`
+-   **beforeValueChange** `Function`
     is a callback function that accepts the component's future **value** as a parameter and **returns** a promise. It is called every-time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution since it only executes the query after the provided promise has been resolved.
     For example:
 
 ```jsx
 <SearchBox
-    id="search-component"
-    dataField={["original_title", "original_title.search"]}
-    beforeValueChange={
-        function(value) {
-            // called before the value is set
-            // returns a promise
-            return new Promise((resolve, reject) => {
-                // update state or component props
-                resolve();
-                // or reject()
-            });
-        }
-    }
+	id="search-component"
+	dataField={['original_title', 'original_title.search']}
+	beforeValueChange={function(value) {
+		// called before the value is set
+		// returns a promise
+		return new Promise((resolve, reject) => {
+			// update state or component props
+			resolve();
+			// or reject()
+		});
+	}}
 />
 ```
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`

@@ -4,7 +4,8 @@ meta_title: 'Documentation for Vue SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - vue-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'vue-searchbox-reactivesearch'
@@ -38,6 +39,7 @@ The below props are only needed if you're not using the `SearchBox` component un
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To configure the ReactiveSearch API
 
@@ -45,6 +47,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 
 -   **id** `string` [required]
     unique identifier of the component, can be referenced in other components' `react` prop.
+
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/vue-searchbox/examples/).
+
+	```html
+	<search-box
+		...
+		index="good-books-clone"
+	/>
+	```
 
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
@@ -194,25 +206,9 @@ Here, we are specifying that the suggestions should update whenever one of the b
 	}"
 />
 ```
-
 -   **value** `string` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop to take the control of search input value.
 
--   **onChange** `function` [optional]
-    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes.
-
-```html
-<search-box
-	:value="text"
-	@change="(value, searchComponent, e) => {
-		this.text = value;
-		// To fetch suggestions
-		searchComponent.triggerDefaultQuery();
-		// To update results
-		searchComponent.triggerCustomQuery();
-	}"
-/>
-```
 
 ### To customize the AutoSuggestions
 
@@ -553,7 +549,44 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **defaultValue** `string` set the initial search query text on mount.
 
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
 ## Events
+
+
+-   **change** is an event emitted when value of the component changes, which accepts component's current **value**, **searchComponent** ref and the **e** event object as parameters. It is called when you are using the `value` prop and the component's value changes.
+
+```html
+<search-box
+	:value="text"
+	@change="(value, searchComponent, e) => {
+		this.text = value;
+		// To fetch suggestions
+		searchComponent.triggerDefaultQuery();
+		// To update results
+		searchComponent.triggerCustomQuery();
+	}"
+/>
+```
 
 -   **valueChange** is an event which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.
 

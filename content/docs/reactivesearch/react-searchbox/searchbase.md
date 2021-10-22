@@ -3,10 +3,10 @@ title: 'SearchBase API Reference'
 meta_title: 'API Reference for SearchBase'
 meta_description: 'SearchBase is a provider component that provides the search context to the child components.'
 keywords:
-    - apireference
+    - api-reference
     - searchbase
     - elasticsearch
-    - search library
+    - search-ui
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
 ---
@@ -37,6 +37,7 @@ nestedSidebar: 'react-searchbox-reactivesearch'
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To customize the query execution
 
@@ -108,16 +109,42 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 ```
 
 ## Advanced Usage
- Although, `react-searchbox` API should be enough to build the powerful search UIs but if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases then you can access it with the help of the react `context` API.
 
- ```jsx
- import { SearchContext } from '@appbaseio/react-searchbox';
+While the `react-searchbox` library should give you good controls out of the box to build the powerful search UIs, there can be times when you need access to the state (context) of the components.
 
- class AdvancedComponent extends React.Component {
-     static contextType = SearchContext;
-     render() {
-         console.log(this.context.searchbase.getComponent('component-id'));
-         return null;
-     }
- }
- ```
+**Example Use Cases**
+
+One would need to use the state (context) of the search components, e.g. to show a list of all active user query inputs including the ability to unselect an input to affect the particular search component's input as well.
+
+Another use can be to create a saved query feature where it's important persist the state of all the search and filter components.
+
+
+**Basic Usage**
+
+```jsx
+import { SearchContext } from '@appbaseio/react-searchbox';
+
+class AdvancedComponent extends React.Component {
+    static contextType = SearchContext;
+    render() {
+        console.log(this.context.searchbase.getComponent('component-id'));
+        return null;
+    }
+}
+```
+
+**Properties**
+
+- **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` context as key value pairs with component ids as the `key` names.
+
+- **getComponent** `Function: (String) => Object` returns the `SearchComponent` instance object contained within the `SearchBase` context for the provided component `id`.
+
+
+**Example** 
+The below example renders the active filters using a separate `<SelectedFilters />` component, which uses the `SearchContext` to access various `SearchComponent` instances.
+<iframe src="https://codesandbox.io/embed/appbaseio-react-searchbox-advanced-usage-kwu49?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="@appbaseio/react-searchbox : advanced usage"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>

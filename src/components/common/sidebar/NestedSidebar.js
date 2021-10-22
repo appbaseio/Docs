@@ -16,6 +16,8 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/native/overview/QuickStart/`;
 		} else if (value.value === 'Vue') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
+		} else if (value.value === 'Atlas Search') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
 		} else if (value.value === 'React - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
@@ -42,6 +44,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 	const getValue = () => {
 		if (location.pathname.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/atlas-search')) {
+			return 'Atlas Search';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue Searchbox';
@@ -145,13 +150,13 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'React - v3',
 					'Vue',
 					'UI Builder',
-					'Searchbox',
 					'React Searchbox',
 					'Vue Searchbox',
 					'React Native Searchbox',
 					'Flutter Searchbox',
 					'Searchbase',
 					'Searchbase Dart',
+                    'Atlas Search',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

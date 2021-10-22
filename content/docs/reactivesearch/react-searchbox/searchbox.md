@@ -4,7 +4,8 @@ meta_title: 'Documentation for React SearchBox'
 meta_description: 'SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.'
 keywords:
     - react-searchbox
-    - search library
+    - search-ui
+    - api-reference
     - elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'react-searchbox-reactivesearch'
@@ -38,6 +39,7 @@ The below props are only needed if you're not using the `SearchBox` component un
     -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To configure the ReactiveSearch API
 
@@ -46,6 +48,16 @@ The following properties can be used to configure the appbase.io [ReactiveSearch
 -   **id** `string` [Required]
     unique identifier of the component, can be referenced in other components' `react` prop.
 
+-   **index** `string` [Optional]
+    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/react-searchbox/examples/).
+
+    ```jsx
+    <SearchBox
+    	...
+    	index="good-books-clone"
+    />
+    ```
+    
 -   **dataField** `string | Array<string | DataField>`
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -114,7 +126,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
     You can use `aggregationData` using `onAggregationData` callback or `subscriber`.
-	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
+	> Note: This prop has been marked as deprecated starting v1.2.0. Please use the `distinctField` prop instead.
 
 ```jsx
 <SearchBox
@@ -760,3 +772,25 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 ```
 
 -   **URLParams** `Boolean` enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
+
+-   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
+<br/>
+These are the properties that can be subscribed to:
+
+    -   `results`   
+    -   `aggregationData`
+    -   `requestStatus`
+    -   `error`
+    -   `value`
+    -   `query`
+    -   `micStatus`
+    -   `dataField`
+    -   `size`
+    -   `from`
+    -   `fuzziness`
+    -   `includeFields`
+    -   `excludeFields`
+    -   `sortBy`
+    -   `react`
+    -   `defaultQuery`
+    -   `customQuery`
