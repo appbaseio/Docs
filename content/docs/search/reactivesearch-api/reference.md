@@ -788,6 +788,10 @@ The following query would return the products for distinct brands. Additionally,
 }
 ```
 
+**Example Playground**: 
+
+<iframe src="https://play.reactivesearch.io/embed/RrD7aB3vstYvPZxfaHNo"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
 ### enablePredictiveSuggestions
 When set to `true`, it predicts the next relevant words from the value of a field based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
@@ -809,25 +813,23 @@ When set to `true`, it would not predict a suggestion which starts or ends with 
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
-### applyStopwords
-When set to `true`, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/master/plugins/querytranslate/stopwords.go).
-
-| Type     | Applicable on query of type | Required |
-| ------   | --------------------------- | -------- |
-| `bool`   | `suggestion`                | false    |
-
-### stopwords
+### customStopwords
 It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
 | `array`   | `suggestion`               | false    |
+
 ### urlField
 Data field whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
 | `string` | `suggestion`                | false    |
+
+**Example Playground**: 
+
+<iframe src=https://play.reactivesearch.io/embed/2YaNeEx4AEF4PHeJrSdw     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2YaNeEx4AEF4PHeJrSdw   ></iframe>
 
 ### enableRecentSuggestions
 When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through [recentSuggestionsConfig](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig) or via Recent Suggestions settings in the control plane).
@@ -854,9 +856,12 @@ Specify additional options for fetching recent suggestions. It can accept the fo
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 
+**Example Playground**: 
+
+<iframe frameborder="1px"      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/hqrRunRhWsc7oJWWE1qx"></iframe>
 
 ### enablePopularSuggestions
-When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through [popularSuggestionsConfig](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig) or via Popular Suggestions settings in the control plane)
+When set to `true`, popular searches based on aggregate end-user data are returned as suggestions as per the popular suggestions config (either defaults, or as set through [popularSuggestionsConfig](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig) or via Popular Suggestions settings in the control plane)
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
@@ -876,7 +881,7 @@ Specify additional options for fetching popular suggestions. It can accept the f
 
 - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to searching the entire cluster.
 
-> Note: It is possible to define multiple indices using comma separated pattern, for e.g `products,categories`.
+> Note: It is possible to define multiple indices using a comma separated pattern, for e.g `products,categories`.
 
 
 | Type     | Applicable on query of type | Required |
@@ -884,9 +889,10 @@ Specify additional options for fetching popular suggestions. It can accept the f
 | `Object` | `suggestion`                | false    |
 
 
-
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/RrD7aB3vstYvPZxfaHNo"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+<iframe src=https://play.reactivesearch.io/embed/pVsIGW32K1SRLhixRgGv     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-pVsIGW32K1SRLhixRgGv   ></iframe>
+
 
 ## Settings Properties
 
