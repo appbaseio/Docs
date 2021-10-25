@@ -32,7 +32,7 @@ Read more about enabling hosting in the official MongoDB Realm docs over [here](
 
 ## Uploading Search UI Files
 
-For demonstration purposes, we will use the below Search UI hosted with Codesandbox.io. Direct Github link is over [here](https://github.com/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/by-usecases/fuzzy-search).
+For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github.com/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/by-usecases/fuzzy-search).
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/by-usecases/fuzzy-search?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -41,7 +41,7 @@ For demonstration purposes, we will use the below Search UI hosted with Codesand
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-First, build the search UI app by running `yarn build` (or `npm run build`). Now upload the files under the `build/` directory to the Realm Hosting UI.
+First, download the search UI project's directory locally. Next, build the search UI app by running `yarn build` (or `npm run build`). Now upload the files under the `build/` directory to the Realm Hosting UI.
 
 ![](https://i.imgur.com/4dz4dh1.png)
 
