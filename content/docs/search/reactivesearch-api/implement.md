@@ -58,13 +58,14 @@ When you use appbase.io, it indexes all the search use-case fields using a varie
 
 #### Suggestion
 
-Suggestion query is an extension of the `search` type of queries designed to retrieve a list of curated suggestions.
+A suggestion type query is an extension of the `search` type of query designed to retrieve typeahead or autocomplete suggestions.
 
 The ideal use-cases are:
 
-- To build an auto-complete search input
+- To build an auto-suggestions or autocompletion based searchbox,
+- To programmatically display search suggestions via an API
 
-Suggestion type of queries supports a variety of suggestions in the following order:
+Suggestion type of queries support the following types of suggestions:
 
 - **Promoted** suggestions represents the documents promoted by the Query Rules UI of Appbase.io dashboard.  
 
@@ -74,33 +75,14 @@ Suggestion type of queries supports a variety of suggestions in the following or
 
 - **Index** suggestions are the suggestions derived from the index, can take into account the text analysis process, partial words, as-you-type queries, can handle typo tolerance, offer response highlighting and search on synonyms.
 
+Depending on the user request, it combines and returns the requested suggestion types in a single API request.
+
 **Example**
 
-The below query returns the matching suggestions for search query `harry`.
+The below suggestions API request returns matching popular, recent, and index suggestions for search query `harry`.
 
-```js
-{
-	id: "searchbox",
-	type: "suggestion",
-	dataField: ["title", "description"],
-	value: "harry",
-    enablePopularSuggestions: true,
-    popularSuggestionsConfig: {
-        minChars: 5,
-        size: 1
-    },
-    enableRecentSuggestions: true,
-    recentSuggestionsConfig: {
-        minChars: 5,
-        minHits: 1,
-        size: 1
-    },
-    enablePredictiveSuggestions: true,
-    applyStopwords: true,
-    showDistinctSuggestions: true,
-    size: 3, // size for index suggestions
-}
-```
+<iframe src=https://play.reactivesearch.io/embed/2M6Y338xUIwadQf3pJZM     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2M6Y338xUIwadQf3pJZM   ></iframe>
+
 
 #### Term
 
