@@ -25,6 +25,8 @@ url=https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/public-
 
 > **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples, but if you're replacing the Realm function endpoint, these data types need to be set prior to running the queries.
 
+All of these examples can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).
+
 ## Use Cases
 
 
