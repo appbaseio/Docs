@@ -20,7 +20,7 @@ Every query made via the `ReactiveSearch API` must have an `id` property defined
 
 ### Type of Queries
 
-`ReactiveSearch API` has four types of queries, each serving a different use-case. You can decide which query has to be used by defining the `type` property in the query object.
+`ReactiveSearch API` has five types of queries, each serving a different use-case. You can decide which query has to be used by defining the `type` property in the query object.
 
 #### Search Query (default)
 
@@ -55,6 +55,33 @@ When you use appbase.io, it indexes all the search use-case fields using a varie
 | `${field}.autosuggest` | Analyzed field using a {2, 20} edge n-gram analyzer. | This is useful for longer partial word matches, typically suited for an autosuggest search. |
 | `${field}.lang` | Analyzed field using the user provided language. | This is useful when searching on text in a specific language, e.g. Spanish. |
 | `${field}.synonyms` | Analyzed field for handling synonyms at search time. | This is useful when synonyms are enabled. |
+
+#### Suggestion
+
+A suggestion type query is an extension of the `search` type of query designed to retrieve typeahead or autocomplete suggestions.
+
+The ideal use-cases are:
+
+- To build an auto-suggestions or autocompletion based searchbox,
+- To programmatically display search suggestions via an API
+
+Suggestion type of queries support the following types of suggestions:
+
+- **Promoted** suggestions represents the documents promoted by the Query Rules UI of Appbase.io dashboard.  
+
+- **Recent** suggestions are the past searches made by the user in last 30 days.
+
+- **Popular** suggestions are the most searched queries for a particular index.
+
+- **Index** suggestions are the suggestions derived from the index, can take into account the text analysis process, partial words, as-you-type queries, can handle typo tolerance, offer response highlighting and search on synonyms.
+
+Depending on the user request, it combines and returns the requested suggestion types in a single API request.
+
+**Example**
+
+The below suggestions API request returns matching popular, recent, and index suggestions for search query `harry`.
+
+<iframe src=https://play.reactivesearch.io/embed/2M6Y338xUIwadQf3pJZM     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2M6Y338xUIwadQf3pJZM   ></iframe>
 
 
 #### Term
