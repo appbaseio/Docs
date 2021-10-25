@@ -18,7 +18,10 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
 		} else if (value.value === 'Atlas Search') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
-		} else if (value.value === 'React - v3') {
+		}
+		else if (value.value === 'Autocomplete Plugin') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/autocomplete-plugin/quickstart/`;
+		}else if (value.value === 'React - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v2/overview/QuickStart/`;
@@ -47,6 +50,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/autocomplete-plugin')) {
+			return 'Autocomplete Plugin';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue Searchbox';
@@ -156,7 +162,8 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Flutter Searchbox',
 					'Searchbase',
 					'Searchbase Dart',
-                    'Atlas Search',
+					'Atlas Search',
+					'Autocomplete Plugin'
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"
