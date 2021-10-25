@@ -15,11 +15,11 @@ sidebar: 'docs'
 nestedSidebar: 'atlas-search'
 ---
 
-You can host the search UIs with MongoDB Realm.
+You can host the search UIs with MongoDB Realm's hosting.
 
 ## Introduction
 
-MongoDB Realm Hosting allows you to host, manage, and serve your application's static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application.
+> MongoDB Realm Hosting allows you to host, manage, and serve your application's static media and document files. You can use Hosting to store individual pieces of content or to upload and serve your entire client application.
 
 
 ## Enabling Hosting
