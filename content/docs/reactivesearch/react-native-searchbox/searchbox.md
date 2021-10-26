@@ -35,8 +35,8 @@ The below props are only needed if you're not using the `SearchBox` component un
 -   **appbaseConfig** `Object`
     allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
-    -   **recordAnalytics** `boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
@@ -142,7 +142,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 
     > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
--   **highlight** `boolean` [optional]
+-   **highlight** `Boolean` [optional]
     whether highlighting should be enabled in the returned results.
 
 -   **highlightField** `string or Array` [optional]
@@ -152,7 +152,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
 -   **categoryField** `string` [optional]
-    Data field which has the category values mapped.
+    Data field whose values are used to provide category specific suggestions.
 
 -   **categoryValue** `string` [optional]
     This is the selected category value. It is used for informing the search result.
@@ -164,14 +164,104 @@ Here, we are specifying that the suggestions should update whenever one of the b
     Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
     Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
--   **enableSynonyms**: boolean
+-   **enableSynonyms**: Boolean
     This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
--   **searchOperators** `boolean`
+-   **rankFeature** `Object`
+    This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields. Read more about it [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference/#rankfeature).
+
+    The `rankFeature` object must be in the following shape:
+    <br/>
+    ```ts
+        {
+         "field_name": {
+               "boost": 1.0,
+              "function_name": "function_object"
+            }
+        }
+    ```
+    - `field_name` It represents the `dataField` that has the `rank_feature` or `rank_features` mapping.
+    - `boost` [optional] A floating point number (shouldn't be negative) that is used to decrease (if the value is between 0 and 1) or increase relevance scores (if the value is greater than 1). Defaults to 1.
+    - `function_name` To calculate relevance scores based on rank feature fields, the rank_feature query supports the following mathematical functions:
+        - [saturation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-saturation)
+        - [log](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-logarithm)
+        - [sigmoid](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#rank-feature-query-sigmoid)
+    - `function_object` The function object can be used to override the default values for functions.
+        - `saturation` function supports the `pivot` property that must be greater than zero.
+        - `log` function supports the `scaling_factor` property
+        - `sigmoid` function supports `pivot` and `exponent`[must be positive] properties
+
+    The following example uses a rank feature field named `pagerank` with `saturation` function.
+
+    ```js
+        {
+            "id": "search",
+            "dataField": ["content"],
+            "value": "2016",
+            "rankFeature": {
+                "pagerank": {
+                    "saturation": {
+                        "pivot": 2
+                    }
+                }
+            }
+        }
+    ```
+
+    The following example uses the `boost` property to boost the relevance score based on the `pagerank` field.
+
+    ```js
+        {
+            "id": "search",
+            "dataField": ["content"],
+            "value": "2016",
+            "rankFeature": {
+                "pagerank": {
+                    "boost": 2.0
+                }
+            }
+        }
+    ```
+
+    The following example uses all three functions (`saturation`, `log` and `sigmoid`) to boost the relevance scores.
+
+    ```js
+        {
+        "query": [
+            {
+                "id": "search",
+                "dataField": [
+                    "content"
+                ],
+                "value": "2016",
+                "rankFeature": {
+                    "pagerank": {
+                        "saturation": {
+                            "pivot": 2
+                        }
+                    },
+                    "url_length": {
+                        "log": {
+                            "scaling_factor": 1
+                        }
+                    },
+                    "topics.sports": {
+                        "sigmoid": {
+                            "pivot": 2,
+                            "exponent": 1
+                        }
+                    }
+                }
+            }
+        ]
+    }
+    ```
+
+-   **searchOperators** `Boolean`
     Defaults to `false`. If set to `true`, then you can use special characters in the search query to enable the advanced search.<br/>
     Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
--   **queryString** `boolean` [optional]
+-   **queryString** `Boolean` [optional]
     Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
 -   **distinctField** `String` [optional]
@@ -195,55 +285,58 @@ Here, we are specifying that the suggestions should update whenever one of the b
 />
 ```
 
--   **enablePredictiveSuggestions** `bool` [optional]
-    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
-
-```jsx
-<SearchBox
-	....
-	enablePredictiveSuggestions
-/>
-```
 
 ### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `Boolean`
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
--   **maxPopularSuggestions** `Number` can be used to configure the size of popular suggestions. The default value is `5`.
--   **enableRecentSearches** `Boolean` Defaults to `false`. If set to `true` then users will see the top recent searches as the default suggestions. Appbase.io recommends defining a unique id for each user to personalize the recent searches.
-    > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-suggestions/).
 
-For example,
+-   **popularSuggestionsConfig** `Object` Specify additional options for fetching popular suggestions.
 
-```js
-<SearchBase
-	index="good-books-ds"
-	credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
-	url="https://arc-cluster-appbase-demo-6pjy6z.searchbase.io"
-	appbaseConfig={{
-		recordAnalytics: true,
-		// Unique user id or use device id
-		userId: 'jon@appbase.io',
-	}}
->
-	<SearchBox
-		id="search-component"
-		dataField={[
-			{
-				field: 'original_title',
-				weight: 1,
-			},
-			{
-				field: 'original_title.search',
-				weight: 3,
-			},
-		]}
-		enableRecentSearches
-	/>
-</SearchBase>
-```
--   **enablePredictiveSuggestions** `bool` [optional]
-    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
+    It can accept the following keys:
+    - **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.
+    - **minCount**: `number` Return only popular suggestions that have been searched at least `minCount` times. There is no default minimum count-based restriction.
+    - **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+    - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
+    - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+    <br/>
+    ```jsx
+        <SearchBox
+            enablePopularSuggestions={true}
+            popularSuggestionsConfig={{
+                size: 5,
+                minCount: 5,
+                minChars: 3,
+                showGlobal: false,
+                index: "good-books-ds",  // further restrict the index to search on
+            }}
+        />
+    ```
+-   **enableRecentSuggestions** `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane)
+> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+
+- **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
+
+    It can accept the following keys:
+    - **size**: `number` Maximum number of recent suggestions to return. Defaults to 5.
+    - **minHits**: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
+    - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+    - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+    <br/>
+    ```jsx
+        <SearchBox
+            enableRecentSuggestions={true}
+            recentSuggestionsConfig={{
+                size: 5,
+                minHits: 5,
+                minChars: 3,
+                index: "good-books-ds",  // further restrict the index to search on
+            }}
+        />
+    ```
+
+-   **enablePredictiveSuggestions** `Boolean` [optional]
+    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
 ```jsx
 <SearchBox
@@ -251,7 +344,9 @@ For example,
 	enablePredictiveSuggestions
 />
 ```
+
 -   **showAutoFill** `Boolean` Defaults to `true`. This property allows you to enable the auto-fill behavior for suggestions. It helps users to select a suggestion without applying the search which further refines the auto-suggestions i.e minimizes the number of taps or scrolls that the user has to perform before finding the result.
+
 -   **showDistinctSuggestions** `Boolean` Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as the searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
     <br/> <br/>
     **Example** if you have `showDistinctSuggestions` is set to `false` and have the following configurations
@@ -276,6 +371,15 @@ For example,
     Warn
     Washington
     ```
+
+-   **urlField** `string` It is the `dataField` whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
+
+-   **maxPredictedWords** `number` Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between **[1, 5]**.
+<br/>
+
+-   **applyStopwords** `Boolean` When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
+
+-   **stopwords** `Array[String]` It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
 ### To customize the SearchBox UI
 
@@ -306,14 +410,12 @@ For example,
 -   **debounce** `wholeNumber` delays executing the query by the specified time in **ms** while the user is typing. Defaults to `0`, i.e. no debounce. Useful if you want to save on the number of requests sent.
 
 -   **renderItem** `Function` is useful to customize the suggestion list item. This function accepts two params:
-    -   **suggestion** `object` represents the suggestion item that has `label`, `value` and `source` properties. In the case of a popular suggestion, the `source` object will have a property named `_popular_suggestion` as `true`.
-    -   **isRecentSearch** `boolean` if `true` then it means that the suggestion is a recent search.
-        For example,
+    -   **suggestion** `object` represents the suggestion item that has `label`, `value`, `_suggestion_type`, `source`, etc, properties. In the case of a popular suggestion, the `_suggestion_type` property can have value as `index`, `popular`, `recent` and `promoted`.
 
 ```jsx
 <SearchBox
-	renderItem={(item, isRecentSearch) => (
-		<Text style={{ color: isRecentSearch ? 'blue' : 'red' }}>{item.label}</Text>
+	renderItem={(item) => (
+		<Text style={{ color: item._suggestion_type === "popular" ? 'blue' : 'red' }}>{item.label}</Text>
 	)}
 />
 ```
@@ -323,16 +425,12 @@ For example,
     <br/>
     It accepts an object with these properties:
 
-    -   **`loading`**: `boolean`
+    -   **`loading`**: `Boolean`
         indicates that the query is still in progress.
     -   **`error`**: `object`
         An object containing the error info.
     -   **`data`**: `array`
         An array of suggestions obtained from combining `promoted` suggestions along with the `hits` .
-    -   **`popularSuggestions`**: `array`
-        An array of popular suggestions obtained based on search value.
-    -   **`recentSearches`**: `array`
-        represents the recent searches made by user if `enableRecentSearches` is set to `true`
     -   **`rawData`** `object`
         An object of raw response as-is from elasticsearch query.
     -   **`promotedData`**: `array`
