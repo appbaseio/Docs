@@ -1,6 +1,6 @@
 ---
 title: 'Guides'
-meta_title: 'Guides for using Autocomplete Plugin'
+meta_title: 'Guides for using Algolia Autocomplete'
 meta_description: '`@appbaseio/autocomplete-suggestions-plugin` is a Suggestions plugin that adds **Query Suggestions** powered by [appbase-js](https://www.npmjs.com/package/appbase-js) client, to your autocomplete. It also provides rich customisations of UI supported by [autocomplete-js](https://www.algolia.com/doc/ui-libraries/autocomplete/api-reference/autocomplete-js/)'
 keywords:
     - guides
@@ -74,15 +74,26 @@ const appbaseClientConfig = {
 
 // reactivesearch api configuration
 const rsApiConfig = {
+  highlight: true,
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: 1,
+    },
+    {
+      field: "name",
+      weight: 3,
+    },
+  ],
   enableRecentSuggestions: true,
   enablePopularSuggestions: true,
   recentSuggestionsConfig: {
     size: 5,
-    minChars: 5
+    minChars: 5,
   },
   popularSuggestionsConfig: {
     size: 5,
-    showGlobal: true
+    showGlobal: true,
   },
   size: 5,
 };
@@ -111,15 +122,15 @@ const initAutocomplete = () => {
 
 ```
 
-<iframe src="https://codesandbox.io/embed/wandering-cache-9pu21?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/use-with-react?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="use with react: @appbaseio/autocomplete-suggestions-plugin "
+     title="use-with-react"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
 
-<!-- ### Use with Vue
+### Use with Vue
 
 This guide shows how to integrate an Autocomplete instance into a Vue application. It uses the [`Vue’s Composition API`](https://v3.vuejs.org/guide/composition-api-introduction.html#why-composition-api), specifically you can instantiate an Autocomplete instance in the onMounted lifecycle hook in the setup function.. We pass our `@appbaseio/autocomplete-suggestions-plugin` to act as a suggestion  source.
 
@@ -127,8 +138,116 @@ This guide shows how to integrate an Autocomplete instance into a Vue applicatio
 **Mounting the autocomplete**
 You can instantiate and mount your Autocomplete instance in the onMounted lifecycle hook in the setup function. Doing so requires passing the renderer and render parameters.
 
-This is because the default Autocomplete implementation uses Preact’s version of createElement, Fragment and render. Without providing Vue’s version of these, the Autocomplete instance won’t render the views properly. -->
+This is because the default Autocomplete implementation uses Preact’s version of createElement, Fragment and render. Without providing Vue’s version of these, the Autocomplete instance won’t render the views properly.
 
+```jsx
+import { onMounted } from "vue";
+import { autocomplete } from "@algolia/autocomplete-js";
+
+import "@algolia/autocomplete-theme-classic";
+
+import { createElement } from "./adapter";
+import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+
+// appbase client config object
+const appbaseClientConfig = {
+  url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
+  app: "best-buy-dataset",
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947"
+};
+
+// reactivesearch api configuration
+const rsApiConfig = {
+  highlight: true,
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: 1
+    },
+    {
+      field: "name",
+      weight: 3
+    }
+  ],
+  enableRecentSuggestions: true,
+  enablePopularSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 5,
+    minChars: 5
+  },
+  popularSuggestionsConfig: {
+    size: 5,
+    showGlobal: true
+  },
+  size: 5
+};
+
+// default usage: plugin to fetch suggestions
+const defaultUsagePlugin = createSuggestionsPlugin(appbaseClientConfig, {
+  ...rsApiConfig
+});
+
+export default {
+  name: "App",
+  setup() {
+    onMounted(() => {
+      autocomplete({
+        container: "#autocomplete",
+        placeholder: "Search",
+        openOnFocus: true,
+        plugins: [defaultUsagePlugin],
+        detachedMediaQuery: "none"
+      });
+    });
+  },
+  render() {
+    const style = {
+      margin: "0 auto",
+      "max-width": "640px",
+      width: "100%"
+    };
+
+    return createElement(
+      "div",
+      { style },
+      createElement("div", { id: "autocomplete" })
+    );
+  }
+};
+
+```
+
+Let's have a look at the `adapter.js`. We are using this adapter to custom render our elements and transforming the props so that they are compatible with **Vue3**.
+
+```js
+import { h } from "vue";
+
+export function createElement(type, props, ...children) {
+  const adaptedProps = Object.entries(props || {}).reduce(
+    (acc, [key, value]) => {
+      // Vue 3 accepts lower-case event names so we need to transform props like
+      // `onMouseMove` to `onMousemove`.
+      const property =
+        key[0] === "o" && key[1] === "n"
+          ? key.slice(0, 3) + key.slice(3).toLowerCase()
+          : key;
+
+      acc[property] = value;
+      return acc;
+    },
+    {}
+  );
+
+  return h(type, adaptedProps, ...children);
+}
+```
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/use-with-vue?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="vue-3"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 
 ### Adding Popular Searches
@@ -154,11 +273,22 @@ const appbaseClientConfig = {
 
 // reactivesearch api configuration
 const rsApiConfig = {
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: 1,
+    },
+    {
+      field: "name",
+      weight: 3,
+    },
+  ],
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
     size: 5,
-    showGlobal: true,
+    showGlobal: true
   },
+  size: 5,
 };
 
 // instantiatin the plugin
@@ -173,13 +303,12 @@ autocomplete({
 });
 ```
 
-<iframe src="https://codesandbox.io/embed/enabling-popular-searches-appbaseio-autocomplete-suggestions-plugin-qd9x8?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/with-popular-searches?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Enabling popular Searches: @appbaseio/autocomplete-suggestions-plugin  "
+     title="popular-searches-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-
 
 
 ### Adding Recent Searches
@@ -205,12 +334,21 @@ const appbaseClientConfig = {
 
 // reactivesearch api configuration
 const rsApiConfig = {
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: 1,
+    },
+    {
+      field: "name",
+      weight: 3,
+    },
+  ],
   enableRecentSuggestions: true,
   recentSuggestionsConfig: {
     size: 5,
-    minChars: 5
   },
-  size: 5
+  size: 2,
 };
 
 // instantiatin the plugin
@@ -225,14 +363,12 @@ autocomplete({
 });
 ```
 
-<iframe src="https://codesandbox.io/embed/enabling-recent-searches-appbaseio-autocomplete-suggestions-plugin-5jl5g?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/with-recent-searches?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Enabling recent Searches: @appbaseio/autocomplete-suggestions-plugin   "
+     title="recent-searches-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-
-
 
 ### Adding Multiple result types
 
@@ -406,20 +542,21 @@ autocomplete({
 
 ```
 
-<iframe src="https://codesandbox.io/embed/including-multiple-types-of-searches-appbaseio-autocomplete-suggestions-plugin-forked-wlhz6?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/advanced-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="including multiple types of Searches: @appbaseio/autocomplete-suggestions-plugin    (forked)"
+     title="advanced-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-
+   
 ### Sending Appbase Analytics Insights
 
 Analytics Insights provides tips and tricks for your business based on the recent activities of your business. Apbbase.io tracks the search activity of your users and discovers the important changes in your analytics data and from that, we prepare a list of insights with the recommendations so you can take meaningful action to improve your search experience.
 
+Refer to our comprehensive guide to implement analytics [here](https://docs.appbase.io/docs/analytics/implement/).
+
 Since our plugin is using Appbase indices as sources for suggestions, Appbase provides Search Analytics out-of-the-box. Search Analytics includes metrics like top searches, No Results Searches, Low Clicks, Low Suggestions Clicks, Higher Click Position, etc.
 
-To get started, refer to the [basic example](https://docs.appbase.io/docs/reactivesearch/autocomplete-plugin/quickstart/#basic-example) and then follow along.
 
 To enable analytics, we enable the `recordAnalytics` by setting it to `true`, passed in the `settings` object in the `appbaseClientConfig`.
 
@@ -450,14 +587,37 @@ const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
 });
 
 autocomplete({
-  container: '#autocomplete',
+  container: '#autocomplete', // remeber to have a div element as <div id ="autocomplete"></div>
   plugins: [suggestionsPlugin],
   openOnFocus: true,
 });
 ```
 
-### Creating a custom renderer
+### Creating A Custom Renderer
 
 The autocomplete-js package includes everything you need to render a JavaScript autocomplete experience that you can bind to your own framework. If you want to build a custom UI that differs from the autocomplete-js output, for example in [React](https://reactjs.org/docs/getting-started.html) or another front-end framework, the [autocomplete-core](https://www.algolia.com/doc/ui-libraries/autocomplete/api-reference/autocomplete-core/) package provides all the primitives to build it.
 
 The guide [here](https://www.algolia.com/doc/ui-libraries/autocomplete/guides/creating-a-renderer/) shows how to leverage all the autocomplete capacities to build an accessible autocomplete, both for desktop and mobile, with React. You can find the final result in this [sandbox](https://codesandbox.io/s/github/algolia/autocomplete/tree/next/examples/react-renderer?file=/src/Autocomplete.tsx).
+
+### Changing Behavior Based on the Query
+
+You may want to change which sources you use depending on the query. A typical pattern is to display a different source when the query is empty and switch once the user starts typing.
+
+This tutorial explains how to show static predefined items when the query is empty, and results from an Algolia index when it isn’t.
+
+Checkout the guide [here](https://www.algolia.com/doc/ui-libraries/autocomplete/guides/changing-behavior-based-on-query/).
+
+### Reshaping Sources
+
+When you’re browsing a website that fetches content from a database, the UI isn’t fully representative of how that data is structured on the back-end. This allows more human-friendly experiences and interactions. A search UI doesn’t have to be a one-to-one mapping with your search engine either.
+
+The Autocomplete Reshape API lets you transform static, dynamic and asynchronous sources into friendlier search UIs.
+
+Here are some examples of what you can do with the Reshape API:
+
+- Apply a limit of items for a group of sources
+- Remove duplicates in a group of sources
+- Group sources by an attribute
+- Sort sources
+
+Checkout the guide [here](https://www.algolia.com/doc/ui-libraries/autocomplete/guides/reshaping-sources/).

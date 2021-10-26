@@ -1,7 +1,7 @@
 ---
 title: 'QuickStart'
-meta_title: 'QuickStart to Appbase Autocomplete Plugin'
-meta_description: 'This is a quickstart guide to the Appbase autocomplete plugin library - learn how to get started with powering your search UIs with powerful suggestions under 10 mins.'
+meta_title: 'QuickStart to Appbase Algolia Autocomplete'
+meta_description: 'This is a quickstart guide to the Appbase Algolia Autocomplete library - learn how to get started with powering your search UIs with powerful suggestions under 10 mins.'
 keywords:
     - quickstart
     - autocomplete-suggestions-plugin
@@ -22,9 +22,9 @@ The `@appbaseio/autocomplete-suggestions-plugin` is a Suggestions plugin that ad
 ### Installation
 
 ```sh
-yarn add @appbaseio/autocomplete-suggestions-plugin
+yarn add @algolia/autocomplete-js && @algolia/autocomplete-theme-classic && @appbaseio/autocomplete-suggestions-plugin
 # or
-npm install @appbaseio/autocomplete-suggestions-plugin
+npm install @algolia/autocomplete-js && @algolia/autocomplete-theme-classic && @appbaseio/autocomplete-suggestions-plugin
 ```
 
 ### Basic Example
@@ -58,10 +58,22 @@ const appbaseClientConfig = {
 
 // reactivesearch api configuration
 const rsApiConfig = {
-  size: 5, // no. of suggestions to display
+  size: 5,
+  enableRecentSuggestions: true,
+  highlight: true,
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: "1"
+    },
+    {
+      field: "name",
+      weight: "3"
+    }
+  ]
 };
 
-// instantiatin the plugin
+// instantiating the plugin
 const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
   ...rsApiConfig,
 });
@@ -73,16 +85,16 @@ autocomplete({
 });
 ```
 
-<iframe src="https://codesandbox.io/embed/basic-example-appbaseio-autocomplete-suggestions-plugin-forked-h1xxm?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/basic-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Basic Example: @appbaseio/autocomplete-suggestions-plugin "
+     title="basic-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
 ## More examples
 
-### Advanced example
+### Advanced Example
 
 The advanced example uses two instances of the `@appbaseio/autocomplete-suggestions-plugin`, the first instance is configured to render the default UI that comes along, and the second instance shows the advanced usage which renders the suggestions as products listings, which when clicked, opens a new tab and takes you to the url associated with that product.
 
@@ -99,7 +111,7 @@ We leverage [preact](https://preactjs.com/guide/v10/getting-started) to render j
    ></iframe>
 
 
-### Promoted results example
+### Promoted Results Example
 
 The promoted-results example demonstrate how `@appbaseio/autocomplete-suggestions-plugin` by-default, handles the display of promoted suggestions. 
 
@@ -122,19 +134,20 @@ First step is to **enable** query rules in the frontend, i.e, in the `appbaseCli
   };
 ```
 
-Next is to configure the Query Rule from the backend, i.e., on our Appbase Dashboard.
-<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/fbef23535560413a9fb4bb02af0b75d3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+Next step is to configure the Query Rules from the backend, i.e., on our Appbase Dashboard.
+Refer to [this](https://docs.appbase.io/docs/search/rules/#overview) guide for configuring query rules.
+<!-- <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/fbef23535560413a9fb4bb02af0b75d3" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
 <br/>
-<iframe src="https://codesandbox.io/embed/promoted-result-example-appbaseio-autocomplete-suggestions-plugin-wssds?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/promoted-results-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Promoted Result Example: @appbaseio/autocomplete-suggestions-plugin "
+     title="promoted-results-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
 
-### Category results example
+### Category Results Example
 
 The category-results example demonstrate how `@appbaseio/autocomplete-suggestions-plugin` by-default, handles the display of categorised suggestions. 
 
@@ -153,9 +166,9 @@ First step is to pass the `categoryField` key with a relevant category field to 
    categoryField: "department.keyword"
   };
 ```
-<iframe src="https://codesandbox.io/embed/categoryfield-example-appbaseio-autocomplete-suggestions-plugin-6591d?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/category-field-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="CategoryField Example: @appbaseio/autocomplete-suggestions-plugin  "
+     title="categoryfield-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>

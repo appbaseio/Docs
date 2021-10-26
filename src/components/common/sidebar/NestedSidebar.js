@@ -19,7 +19,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		} else if (value.value === 'Atlas Search') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
 		}
-		else if (value.value === 'Autocomplete Plugin') {
+		else if (value.value === 'Algolia Autocomplete') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/autocomplete-plugin/quickstart/`;
 		}else if (value.value === 'React - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
@@ -52,7 +52,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			return 'Atlas Search';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/autocomplete-plugin')) {
-			return 'Autocomplete Plugin';
+			return 'Algolia Autocomplete';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue Searchbox';
@@ -163,7 +163,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Searchbase',
 					'Searchbase Dart',
 					'Atlas Search',
-					'Autocomplete Plugin'
+					'Algolia Autocomplete'
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

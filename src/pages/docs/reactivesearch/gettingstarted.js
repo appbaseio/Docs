@@ -175,6 +175,22 @@ const GettingStarted = props => {
 						</a>
 					</div>
 				</div>
+				<div className="card">
+					<img src="https://i.imgur.com/XTilJ6k.png" alt="algolia-autocomplete" />
+					<div className="content">
+						<h2>Algolia Autocomplete</h2>
+						<p>
+							A Suggestions plugin that adds Query Suggestions powered by
+							appbase-js client, to your autocomplete.
+						</p>
+						<a
+							className="btn"
+							href="/docs/reactivesearch/autocomplete-plugin/quickstart/"
+						>
+							Start with Algolia Autocomplete
+						</a>
+					</div>
+				</div>
 			</div>
 		</PostLayout>
 	);
