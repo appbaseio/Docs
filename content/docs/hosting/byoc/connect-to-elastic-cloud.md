@@ -102,7 +102,7 @@ In case you've pasted a credential with access that's not equivalent to `superus
 
 **Why is a `superuser` role needed?**
 
-appbase.io creates and manageds system indices within your Elastic Cloud cluster for recording analytics, storing query rules, search relevance preferences, logs and more. Other roles don't allow access to these indices.
+appbase.io creates and manages system indices within your Elastic Cloud cluster for recording analytics, storing query rules, search relevance preferences, logs and more. Other roles don't allow access to these indices.
 
 > appbase.io connects to your Elastic Cloud cluster from a private environment and these credentials aren't exposed anywhere.
 
