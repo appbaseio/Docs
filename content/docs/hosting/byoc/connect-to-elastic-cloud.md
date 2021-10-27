@@ -90,11 +90,11 @@ Or choose your own username.
 
 Go to https://dashboard.appbase.io/clusters/new/my-cluster URL.
 
-**20. Copy your username, password and endpoint URL
+**20. Copy your username, password and endpoint URL**
 
 Now, construct the URL field as `https://${username}:${password}@${elasticsearch_endpoint}`.
 
-**21. Click "Verify Connection"
+**21. Click "Verify Connection"**
 
 ![](https://colony-recorder.s3.amazonaws.com/scribe_documents/f8cefa37-54c9-4d09-ab62-ea1a0d9409e6/actions/2503f960-a387-4def-82fd-5987b14d322c/cropped_screenshot_$1635348394.jpeg)
 
