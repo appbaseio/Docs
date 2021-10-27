@@ -90,7 +90,9 @@
             - link: /docs/hosting/byoc/
               title: "Bring Your Own Cluster"
               items:
-              - link: /docs/hosting/byoc/connect-to-your-elasticsearch/
-                title: "Connect to Your Elasticsearch"
+              - link: /docs/hosting/byoc/connect-to-elastic-cloud/
+                title: "Connect to Elastic Cloud"
+              - link: /docs/hosting/byoc/connect-to-aws-opensearch/
+                title: "Connect to AWS OpenSearch"
             - link: /docs/hosting/open-distro/
               title: "Open Distro"
