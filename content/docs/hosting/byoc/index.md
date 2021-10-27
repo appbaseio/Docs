@@ -65,7 +65,7 @@ You should see the above screen.
 
 That's all! It take around 5-10 mins for your Appbase.io instance to be deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with a `Bring your own cluster` tag.
 
-> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Appbase.io Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/byoc/connect-to-your-elasticsearch/)
+> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Appbase.io Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/byoc/connect-to-aws-opensearch/)
 
 #### **Accessing Appbase.io Dashboard**
 

@@ -1,12 +1,14 @@
 ---
-title: 'Securely Connect to Your Elasticsearch Cluster'
-meta_title: 'Securely connect Appbase.io BYOC with your Elasticsearch Cluster'
+title: 'Securely Connect to AWS OpenSearch Cluster'
+meta_title: 'Securely connect Appbase.io BYE with your AWS OpenSearch Cluster'
 meta_description: 'Securely connect Appbase.io BYOC with your Elasticsearch Cluster running on cloud providers like AWS Elasticsearch or self-hosted Elasticsearch running on Docker or Kubernetes.'
 keywords:
     - clusters
     - appbaseio
     - appbase
     - Elasticsearch
+    - OpenSearch
+    - AWS
 sidebar: 'docs'
 ---
 
@@ -54,7 +56,7 @@ Here is a quick example of how you can connect your AWS Elasticsearch cluster wi
 
 You should see the above screen.
 
-**Step 3 -** Select the pricing plan. Read more about pricing plans over [here](https://arc-site.netlify.com/pricing/).
+**Step 3 -** Select the pricing plan. Read more about pricing plans over [here](https://appbase.io/pricing/).
 
 **Step 4 -** Select the region. It is recommended that you pick a region closest to where your Elasticsearch cluster is running.
 
