@@ -458,12 +458,13 @@ Here, we are specifying that the suggestions should update whenever one of the b
     - **`error`**: `Object`
     An object containing the error info.
     - **`suggestions`** `() => Array<Object>`
-    This method can be used to get the parsed suggestions from the `results`. If `enablePopularSuggestions` property is set to `true` then the popular suggestions will get appended at the top with a top-level property named `_popular_suggestion` as `true`. The `suggestion` object will have the following shape:
+    This method can be used to get the parsed suggestions from the `results`. The `suggestion` object will have the following shape:
 
     ```ts
     {
         label: string;
         value: string;
+        _suggestion_type: String;
         source: Object;
     }
     ```
@@ -493,9 +494,6 @@ Here, we are specifying that the suggestions should update whenever one of the b
 
     -   **`query`** `Object`
         The last query that has been executed to fetch the suggestions
-
-    -   **`recentSearches`**
-        Returns the recent searches made by user.
 
     -   **`micStatus`** `MicStatusField`
         Returns the current status of the mic. Can be `INACTIVE`, `ACTIVE` or `DENIED`
@@ -640,6 +638,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
+
 ```jsx
 <SearchBox
     showIcon={false}
@@ -658,6 +657,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 -   **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 
 <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
+
 ```jsx
 <SearchBox
     showIcon={false}
@@ -674,6 +674,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **expandSuggestionsContainer** `Boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
 <img src="https://i.imgur.com/x3jF23m.png"/>
+
 ```jsx
 <SearchBox
     expandSuggestionsContainer={false}
