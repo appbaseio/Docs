@@ -398,7 +398,7 @@ To specify dependent queries to update that particular query for which the react
 
 ### highlight
 
-This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [customHighlight](/docs/search/reactivesearch-api/reference/#customhighlight) values will be ignored.
+This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [highlightConfig](/docs/search/reactivesearch-api/reference/#highlightconfig) values will be ignored.
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
@@ -418,7 +418,7 @@ When highlighting is `enabled`, this property allows specifying the fields which
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
-### customHighlight
+### highlightConfig
 
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
@@ -428,6 +428,8 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/BGEvla6560wL4HYyaPe4"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+	
+> **Note:** `highlightConfig` has been introduced starting v7.51.0 to replace the use of customHighlight (which is deprecated but still supported).
 
 ### searchOperators
 
