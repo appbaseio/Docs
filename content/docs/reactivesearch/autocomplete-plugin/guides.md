@@ -370,7 +370,7 @@ autocomplete({
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-### Adding Multiple result types
+### Adding Multiple Result Types
 
 While `@appbaseio/autocomplete-suggestions-plugin` with suggested index searches is a ubiquitous search experience, providing with index, recent, popular, and promoted types of suggestions, rich multi-category autocompletes are becoming more and more popular.
 
@@ -547,7 +547,8 @@ autocomplete({
      title="advanced-example-appbaseio-autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+></iframe>
+
    
 ### Sending Appbase Analytics Insights
 
