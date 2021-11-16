@@ -809,7 +809,7 @@ Defaults to `2`. This property allows configuring the maximum number of relevant
 | `int`    | `suggestion`                | false    |
 
 ### applyStopwords
-When set to `true`, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/master/plugins/querytranslate/stopwords.go)
+When set to `true`, it would not predict a suggestion which starts or ends with a stopword. You can use [searchLanguage](/docs/search/reactivesearch-api/reference/#searchlanguage) property to apply language specific stopwords.
 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
@@ -821,6 +821,41 @@ It allows you to define a list of custom stopwords. You can also set it through 
 | Type     | Applicable on query of type | Required |
 | ------   | --------------------------- | -------- |
 | `array`   | `suggestion`               | false    |
+
+### searchLanguage
+
+Search language is useful to apply language specific stopwords for predictive suggestions. Defaults to [english](https://github.com/bbalet/stopwords/blob/master/stopwords_en.go#L7) language.
+
+We support following languages:
+
+- [arabic](https://github.com/bbalet/stopwords/blob/master/stopwords_ar.go#L7)
+- [bulgarian](https://github.com/bbalet/stopwords/blob/master/stopwords_bg.go#L7)
+- [czech](https://github.com/bbalet/stopwords/blob/master/stopwords_cs.go#L7)
+- [danish](https://github.com/bbalet/stopwords/blob/master/stopwords_da.go#L7)
+- [english](https://github.com/bbalet/stopwords/blob/master/stopwords_en.go#L7)
+- [finnish](https://github.com/bbalet/stopwords/blob/master/stopwords_fi.go#L7)
+- [french"](https://github.com/bbalet/stopwords/blob/master/stopwords_fr.go#L7)
+- [german"](https://github.com/bbalet/stopwords/blob/master/stopwords_de.go#L7)
+- [hungarian](https://github.com/bbalet/stopwords/blob/master/stopwords_hu.go#L7)
+- [italian"](https://github.com/bbalet/stopwords/blob/master/stopwords_it.go#L7)
+- [japanese](https://github.com/bbalet/stopwords/blob/master/stopwords_ja.go#L7)
+- [latvian](https://github.com/bbalet/stopwords/blob/master/stopwords_lv.go#L7)
+- [norwegian](https://github.com/bbalet/stopwords/blob/master/stopwords_no.go#L7)
+- [persian](https://github.com/bbalet/stopwords/blob/master/stopwords_fa.go#L7)
+- [polish](https://github.com/bbalet/stopwords/blob/master/stopwords_pl.go#L7)
+- [portuguese](https://github.com/bbalet/stopwords/blob/master/stopwords_pt.go#L7)
+- [romanian](https://github.com/bbalet/stopwords/blob/master/stopwords_ro.go#L7)
+- [russian](https://github.com/bbalet/stopwords/blob/master/stopwords_ru.go#L7)
+- [slovak](https://github.com/bbalet/stopwords/blob/master/stopwords_sk.go#L7)
+- [spanish](https://github.com/bbalet/stopwords/blob/master/stopwords_es.go#L7)
+- [swedish](https://github.com/bbalet/stopwords/blob/master/stopwords_sv.go#L7)
+- [thai](https://github.com/bbalet/stopwords/blob/master/stopwords_th.go#L7)
+- [turkish ](https://github.com/bbalet/stopwords/blob/master/stopwords_tr.go#L7)
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `string` | `suggestion`                | false    |
+
 
 ### urlField
 Data field whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
