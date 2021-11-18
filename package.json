@@ -39,7 +39,9 @@
 			"pre-commit": "yarn test"
 		}
 	},
-	"engines" : { "node" : ">=14.17.1" },
+	"engines": {
+		"node": ">=14.17.1"
+	},
 	"devDependencies": {
 		"autoprefixer": "9.5.0",
 		"cssnano": "4.1.10",
@@ -60,6 +62,7 @@
 		"prettier": "^1.16.4"
 	},
 	"dependencies": {
+		"@ant-design/icons": "^4.7.0",
 		"@appbaseio/designkit": "^0.9.12",
 		"@appbaseio/reactivemaps": "^3.0.0-beta.10",
 		"@appbaseio/reactivesearch": "^3.12.2",
@@ -101,6 +104,8 @@
 		"react-helmet": "5.2.0",
 		"react-modal": "3.8.1",
 		"react-responsive-modal": "^4.0.1",
+		"react-router": "^6.0.1",
+		"react-router-dom": "4.3.1",
 		"tocbot": "4.5.0"
 	}
 }
