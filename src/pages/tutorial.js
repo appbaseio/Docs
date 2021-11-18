@@ -15,9 +15,13 @@ const Tutorial = () => {
             </div>                       
             <iframe
                 title="Interactive Tutorial"
-                className="tutorial-iframe"
                 src="https://dashboard-tutorial.netlify.app/"
                 frameBorder="0"
+                width="100%"
+                height="100vh"
+                style={{
+                    height: "100vh"
+                }}
             />
         </div>
     );

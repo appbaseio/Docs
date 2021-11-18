@@ -1814,11 +1814,6 @@ to be custom HTML.
 	height: 400px;
 }
 
-.tutorial-iframe {
-	width: 100%;
-	height: 100vh;
-}
-
 a:link {
 	text-decoration: none;
 }
