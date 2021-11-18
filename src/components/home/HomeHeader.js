@@ -16,11 +16,6 @@ class HomeHeader extends React.Component {
 		}));
 	};
 
-	handleTutorial = () => {
-		const { history } = this.props;
-		console.log(history);
-	}
-
 	render() {
 		const { open } = this.state;
 		return (
@@ -57,8 +52,7 @@ class HomeHeader extends React.Component {
 							<Link to="/tutorial">
 								<Button 								
 									uppercase 
-									shadow
-									onClick={this.handleModal} 
+									shadow									
 									className="video-btn"
 									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
 								>
