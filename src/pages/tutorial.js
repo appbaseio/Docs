@@ -6,7 +6,7 @@ import { LeftOutlined } from '@ant-design/icons'
 const Tutorial = () => {
     return (
         <div>
-            <div style={{ position: 'absolute', right: 30, top: 30,textDecoration: 'none' }}>
+            <div style={{ position: 'absolute', right: 30, top: 12,textDecoration: 'none' }}>
                 <Link to="/">                    
                     <Button style={{ backgroundColor: '#e4faff' }}> 
                         <LeftOutlined style={{ marginRight: 10 }} /> Back to docs
