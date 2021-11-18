@@ -19,14 +19,12 @@ class HomeHeader extends React.Component {
 	render() {
 		const { open } = this.state;
 		return (
-			<>
 			<div className="gh-bg-home bb b--whitegrey">
 				<header className="top-0 left-0 right-0 bg-white fixed z-999">
 					<NavBar theme="dark" />
 				</header>
 				<div
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
-					style={{padding: 0}}
 				>
 					<div className="pr3">
 						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l darkgrey header-heading-shadow header-title">
@@ -52,11 +50,22 @@ class HomeHeader extends React.Component {
 								SignUp for free
 							</Button>
 							<Button uppercase onClick={this.handleModal} className="video-btn">
-								Try Interactive Tutorial (5 mins)
-							</Button>
-							{/* <Button uppercase onClick={this.handleModal} className="video-btn">
 								1 Min Overview
-							</Button> */}							
+							</Button>
+							<Modal
+								open={open}
+								classNames={{ modal: 'home-modal', closeIcon: 'close-icon' }}
+								onClose={this.handleModal}
+								center
+							>
+								<iframe
+									title="1 Min Overview"
+									className="iframe"
+									src="https://www.youtube.com/embed/EvsORhwWgdA?autoplay=1"
+									frameBorder="0"
+									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+								/>
+							</Modal>
 						</div>
 					</div>
 					<div className="home-header-graphics">
@@ -83,33 +92,8 @@ class HomeHeader extends React.Component {
 							</p>
 						</div>
 					</div>
-					<Modal
-						open={open}
-						classNames={{ modal: 'home-modal', closeIcon: 'close-icon', overlay: 'home-overlay', }}
-						onClose={this.handleModal}
-						center
-						styles={{}}
-						animationDuration={0}
-					>
-						<iframe
-							title="Interactive Tutorial"
-							className="iframe"
-							src="https://dashboard-tutorial.netlify.app/"
-							frameBorder="0"
-							// allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-						/>
-						{/* <iframe
-							title="1 Min Overview"
-							className="iframe"
-							src="https://www.youtube.com/embed/EvsORhwWgdA?autoplay=1"
-							frameBorder="0"
-							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-						/> */}
-					</Modal>
 				</div>
 			</div>
-			
-			</>
 		);
 	}
 }
