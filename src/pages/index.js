@@ -258,11 +258,6 @@ const HomePage = ({ data, location }) => {
 												duration: 1,
 											},
 											{
-												title: 'Search Template',
-												link: '/docs/security/template/',
-												duration: 1,
-											},
-											{
 												title: 'Role Based Access',
 												link: '/docs/security/role/',
 												duration: 4,

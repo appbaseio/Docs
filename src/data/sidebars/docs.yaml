@@ -78,10 +78,10 @@
               title: "API Credentials"
             - link: /docs/security/user-management/
               title: User Management
-            - link: /docs/security/template/
-              title: "Search Template"
             - link: /docs/security/role/
               title: "Role Based Access Control"
+            - link: /docs/security/node-sync-preferences/
+              title: "Node Sync Preferences"
       - group: Hosting
         icon: rocket
         items:

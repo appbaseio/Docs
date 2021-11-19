@@ -41,7 +41,7 @@ When creating a new user, you can either provide admin privileges or set the spe
 - **Curated Insights** scope users can access the `Curated Insights` view in `dashboard` to subscribe to appbase.io curated insights. You can read more about it [here](/docs/analytics/curated-insights/).
 
 
-- **Access Control** users can access the [API Credentials](/docs/security/credentials/), [Role Based Access Control](/docs/security/role/) and [Search Template](/docs/security/template/) views.
+- **Access Control** users can access the [API Credentials](/docs/security/credentials/), [Role Based Access Control](/docs/security/role/) and [Node Sync Preferences](/docs/security/node-sync-preferences/) views.
 
 - **User Management** scope users can do the following actions:
     - Create new users,
