@@ -1,7 +1,7 @@
 ---
-title: 'Query Rules For Clusters'
-meta_title: 'Query Rules For Clusters'
-meta_description: 'Query Rules are essentially `If-This-Then-That`'
+title: 'Query Rules'
+meta_title: 'Query Rules'
+meta_description: 'Query Rules are If-This-Then-That kind of rules that can be tailored to your business use-case.'
 keywords:
     - concepts
     - appbaseio
@@ -179,12 +179,3 @@ This action helps you to define the `dataField` and `fieldWeights` for your `sea
 
 ![search settings](https://i.imgur.com/cE2jXvS.png)
 
-### Functions
-
-Helps in doing more customization with search or handling edge cases around search relevancy. Functions let you implement any custom action. For example, you want to perform natural language processing on the search query.
-
-![function](https://www.dropbox.com/s/tsrj68q3yixcp2n/Screenshot%202020-02-20%2010.59.35.png?raw=1)
-
-For more information you can read functions [docs](/docs/search/functions/).
-
-> Note: a function linked with Query Rule cannot have its own triggering condition.

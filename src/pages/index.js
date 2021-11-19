@@ -70,14 +70,14 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Data Model',
 												description:
-													'Take a look at the data model of Appbaseio',
+													'Take a look at the data model of appbase.io',
 												link: '/docs/data/model/',
 												duration: 2,
 											},
 											{
 												title: 'Data Browser',
 												description:
-													'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io apps data.',
+													'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your search data.',
 												link: '/docs/data/browser/',
 												duration: 4,
 											},
@@ -96,7 +96,7 @@ const HomePage = ({ data, location }) => {
 										   },
 											{
 											 	title: 'Stored Queries',
-											 	description: 'Create and execute stored queries',
+											 	description: 'Use stored queries to prevent script injections',
 											 	link: '/docs/data/stored-queries/',
 											 	duration: 4,
 											},
@@ -117,28 +117,21 @@ const HomePage = ({ data, location }) => {
 												title: 'Search Relevancy',
 												description: 'Controls for search relevancy.',
 												link: '/docs/search/relevancy/',
-												duration: 3,
+												duration: 16,
 											},
 											{
 												title: 'ReactiveSearch API',
 												description:
 													'A declarative API based on ReactiveSearch library to query Elasticsearch securely by protecting against security concerns around query injection.',
 												link: '/docs/search/reactivesearch-api/',
-												duration: 1,
+												duration: 10,
 											},
 											{
 												title: 'Query Rules',
 												description:
-													'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io apps data.',
+													'Query Rules are If-This-Then-That kind of rules that can be tailored to your business use-case.',
 												link: '/docs/search/rules/',
-												duration: 5,
-											},
-											{
-												title: 'Functions',
-												description:
-													'Extend Elasticsearch with your own functions.',
-												link: '/docs/search/functions/',
-												duration: 4,
+												duration: 7,
 											},
 										],
 									},
@@ -155,18 +148,21 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Choose your UI Library',
 												link: '/docs/reactivesearch/gettingstarted',
+                                                description: 'Choose from NoCode, React, Vue, React Native, Flutter, Vanilla JavaScript',
 												duration: 1,
 											},
 											{
 												title: 'ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/v3/overview/quickstart/',
+                                                    description: 'Get started with the React version of ReactiveSearch',
 												duration: 6,
 											},
 											{
 												title: 'Vue ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/vue/overview/QuickStart/',
+                                                    description: 'Get started with the Vue version of ReactiveSearch',
 												duration: 8,
 											},
 											{
@@ -174,6 +170,7 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/react-native-searchbox/quickstart/',
+                                                    description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
 											{
@@ -181,6 +178,7 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/flutter-searchbox/quickstart/',
+                                                    description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
 										],
@@ -199,27 +197,32 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Analytics',
 												link: '/docs/analytics/overview/',
-												duration: 1,
+												duration: 5,
+                                                description: 'Quick overview of appbase.io analytics'
 											},
 											{
 												title: 'Implement Analytics',
 												link: '/docs/analytics/implement/',
-												duration: 2,
+												duration: 9,
+                                                description: 'Learn how to implement appbase.io analytics for your stack'
 											},
 											{
 												title: 'Querying Analytics',
 												link: '/docs/analytics/querying-analytics/',
 												duration: 1,
+                                                description: 'Learn how to query appbase.io analytics via REST APIs'
 											},
 											{
-												title: 'Popular Suggestions',
+												title: 'Suggestions',
 												link: '/docs/analytics/popular-suggestions/',
 												duration: 4,
+                                                description: 'Leverage popular, recent suggestions via APIs and UI components'
 											},
 											{
-												title: 'Curated Insights',
-												link: '/docs/analytics/curated-insights/',
+												title: 'Analytics Insights',
+												link: '/docs/analytics/insights/',
 												duration: 2,
+                                                description: 'Get actionable insights to improve your search KPIs'
 											},
 										],
 									},
@@ -248,19 +251,22 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
-												title: 'Credentials',
+												title: 'API Credentials',
 												link: '/docs/security/credentials/',
-												duration: 5,
+												duration: 6,
+                                                description: 'Build access controled search experiences with API credentials'
 											},
 											{
 												title: 'User Management',
 												link: '/docs/security/user-management/',
-												duration: 1,
+												duration: 2,
+                                                description: 'Add teammates with scoped access to appbase.io dashboard'
 											},
 											{
 												title: 'Role Based Access',
 												link: '/docs/security/role/',
-												duration: 4,
+												duration: 6,
+                                                description: 'Build secure and access controled search experiences with RBAC using JWTs'
 											},
 										],
 									},
@@ -275,21 +281,21 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/hosting/clusters/',
 												duration: 3,
 												description:
-													'Get a fully hosted Elasticsearch + appbase.io experience in 16+ global regions.',
+													'Deploy Elasticsearch with appbase.io for all your app search needs',
 											},
 											{
 												title: 'Bring your own Cluster',
 												link: '/docs/hosting/byoc/',
-												duration: 10,
+												duration: 11,
 												description:
-													'Run appbase.io with your own Elasticsearch cluster hosted anywhere.',
+													'Deploy appbase.io with your own Elasticsearch cluster hosted anywhere',
 											},
 											{
-												title: 'Open Distro for Elasticsearch',
-												link: '/docs/hosting/open-distro/',
-												duration: 2,
+												title: 'Deploy OpenSearch',
+												link: '/docs/hosting/opensearch/',
+												duration: 1,
 												description:
-													'Run Open Distro for Elasticsearch with Appbase.io Clusters.',
+													'Deploy OpenSearch with appbase for all your app search needs',
 											},
 										],
 									},
