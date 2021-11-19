@@ -11,7 +11,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-Already have Elasticsearch hosted with AWS, Elastic Cloud or planning to hosting it yourself?
+Already have Elasticsearch hosted with AWS OpenSearch, Elastic Cloud or planning to hosting it yourself?
 You can now access all of Appbase.io features such as [search preview](/docs/search/relevancy/#test-search-relevancy), [actionable analytics](/docs/analytics/overview/) and [granular security](/docs/security/credentials/) with an Elasticsearch cluster hosted anywhere with the `Bring Your Own Cluster` deployment mode.
 
 ![](https://i.imgur.com/QjBkE7R.png)

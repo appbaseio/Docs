@@ -34,20 +34,7 @@
                 - link: /docs/search/reactivesearch-api/reference
                   title: "API Reference"
             - link: /docs/search/rules/
-              title: "Query Rules for Clusters"
-            - link: /docs/search/apprules/
-              title: "Query Rules for Apps"
-            - link: /docs/search/functions/
-              title: "Functions"
-              items:
-                - link: /docs/search/functions/hosting
-                  title: "Hosting"
-                - link: /docs/search/functions/create
-                  title: "Create"
-                - link: /docs/search/functions/deploy
-                  title: "Deploy"
-                - link: /docs/search/functions/trigger
-                  title: "Set Trigger"
+              title: "Query Rules"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
@@ -94,5 +81,5 @@
                 title: "Connect to Elastic Cloud"
               - link: /docs/hosting/byoc/connect-to-aws-opensearch/
                 title: "Connect to AWS OpenSearch"
-            - link: /docs/hosting/open-distro/
-              title: "Open Distro"
+            - link: /docs/hosting/opensearch/
+              title: "Deploy OpenSearch"

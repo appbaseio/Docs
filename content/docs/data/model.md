@@ -10,7 +10,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-Appbase.io offers two different ways to use Elasticsearch: [Clusters](https://appbase.io/clusters) and [Apps](https://appbase.io/apps). In this post, we will provide a primer on how to model data in Elasticsearch.
+In this post, we will provide a primer on how to model data in Elasticsearch.
 
 ![](https://i.imgur.com/aaxqnN2.png)
 
@@ -27,9 +27,9 @@ An [appbase.io cluster](/docs/hosting/clusters/) is equivalent to an Elasticsear
 Elasticsearch is a distributed search and analytics engine built on top of Apache Lucene.
 
 
-## App <span style="font-weight: 200;">aka Index</span>
+### App <span style="font-weight: 200;">aka Index</span>
 
-A cluster is composed of apps (aka indexes). [An app in appbase.io](https://appbase.io/apps) is equivalent to an index in Elasticsearch.
+A cluster is composed of apps (aka indexes). An app in appbase.io is equivalent to an index in Elasticsearch.
 
 An app (or index) is an optimized collection of documents that are related to each other.
 
