@@ -23,3 +23,8 @@ Sync preferences come into play with a multi-node setup. When a node receives a 
 #### Sync Interval
 
 Sync Interval defaults to 60s. It can configured to intervals between 10s to 3,600s (aka 1h). We don't allow these values to be below 10s to prevent any significant impact on Elasticsearch cluster resources.
+
+![Node Sync Preferences UI view in Dashboard](https://i.imgur.com/VkPVOse.png)
+**Image:** Set sync interval from the Access Control > Node Sync Preferences view.
+
+API reference for node sync preferences can be found over [here](https://arc-api.appbase.io/#891b748a-807b-4e3f-a70b-70ac466fd3b0).
