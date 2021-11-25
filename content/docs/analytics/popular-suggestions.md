@@ -1,5 +1,5 @@
 ---
-title: 'Popular Suggestions'
+title: 'Popular and Recent Suggestions'
 meta_title: 'Leverage Analytics Data - Popular Suggestions'
 meta_description: 'A short guide on how to setup popular suggestions.'
 keywords:
@@ -41,41 +41,25 @@ Because popular suggestions roll up the search queries based on the unique occur
 ## Popular Suggestions Preferences
 
 <!-- TODO: Add screenshot of Suggestions UI -->
-![alt popular suggestions GUI](https://i.imgur.com/c8xefH1.png)
+![alt popular suggestions GUI](https://imgur.com/TMT2Svs.png)
 
 You can set the preferences for popular suggestions from appbase.io dashboard's <strong>Popular Suggestions GUI</strong> under `Develop` section. These help optimize the behavior of suggestions for your specific use-case.
 
+### Index Time Properties
 
-### Filter by minimum count
+#### Blacklist queries
 
-It lets you define the minimum count value which means that only those suggestions which have the larger `count` value will get populated in the suggestions index. The default value is set to `1`.
+A list of suggestion terms to be ignored when populating the popular suggestions index.
 
-### Filter by minimum hits
+#### Number of days
 
-By default, the suggestions index only includes queries that return at least five results in the source index. You can configure this limit from the dashboard.
+Set the duration of days for which to populate the popular suggestions index. Value should be between [1, 90].
 
-### Filter by minimum characters
+#### Transform Diacritics
 
-By default, the suggestions index only includes queries that has at least three characters in the source index. This option allows you to customize the minimum number of characters allowed in search queries.
+When enabled, suggestion terms will be transformed to remove the diacritics from them. For an example, "Crème Brulée" becomes "Creme Brulee".
 
-### Blacklist queries
-
-You can define a set of unwanted queries which will be ignored to extract the suggestions.
-
-### Whitelist indices
-
-It allows you to define which index/indices should be considered to populate the suggestions.
-
-### Number of days
-
-By default, we calculate the suggestions for past `30` days which is <strong>configurable</strong>. We recommend to not use a value less than `30` so you have enough data in your index.
-
-### Transform Diacritics
-By default, Appbase doesn't transform(strip) suggestions' keys from their diacritics. However you can control this setting from dashboard, if it's enabled then we'll normalize the suggestions before populating the suggestions index. For an example, "Crème Brulée" becomes "Creme Brulee".
-
-### External Suggestions
-
-Since analytics is the only source to populate the `.suggestions` index. When you get started, you'll need some kind of starting data which can be helpful to display the suggestions.
+#### External Suggestions
 
 You can define the external suggestions in the JSON format, each suggestion must have the `key` and `count` keys. The value of the `count` key determines the popularity of a particular suggestion.
 You can check the below example of external popular suggestions:
@@ -83,23 +67,74 @@ You can check the below example of external popular suggestions:
 ```json
 [
 	{
-		"key": "iphoneX",
-		"count": 10000, // scoring parameter
-		"meta": {
-			// define meta properties
-			"image": "https://abc.com/cat.png"
-		}
-	},
-	{
-		"key": "samsung",
-		"count": 700
+		"count": 6,
+		"indices": [
+			"abc",
+			"def"
+		],
+		"key": "hello"
 	}
 ]
 ```
 
-## How to query popular suggestions
+### Query Time Properties
+#### Filter by minimum count
 
-We populate the suggestions in `.suggestions` index, to use the popular suggestions you just need to use the `.suggestions` index to get the hits.
+Set the minimum number of times a term must be searched by users before it is considered. Value should be ≥ 0.
+
+<iframe src=https://play.reactivesearch.io/embed/B3H7H7GckNJF6F64J08j     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-B3H7H7GckNJF6F64J08j   ></iframe>
+
+#### Filter by minimum hits
+
+Set the minimum number of hits that must be returned for a suggestion term to be considered. Value should be between [0, 1000].
+
+<iframe src=https://play.reactivesearch.io/embed/rQsvSyiAQiTnS4SP0yBj     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-rQsvSyiAQiTnS4SP0yBj   ></iframe>
+
+#### Filter by minimum characters
+
+Set the minimum number of characters that must be present for a suggestion term to be considered. Value should be between [0, 32].
+
+<iframe src=https://play.reactivesearch.io/embed/ilA5lHKkZmT7Pv2p5y8s     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-ilA5lHKkZmT7Pv2p5y8s   ></iframe>
+
+#### Whitelist indices
+
+Only selected indices will be considered to calculate the suggestions.
+
+<iframe src=https://play.reactivesearch.io/embed/W6PMIFSkY9GUdAEx0WVF     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-W6PMIFSkY9GUdAEx0WVF   ></iframe>
+
+#### Size
+
+Set the maximum number of popular suggestions to be displayed. Value should be between [0, 20].
+
+<iframe src=https://play.reactivesearch.io/embed/r3DRlIufevo1oqwNAVe5     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-r3DRlIufevo1oqwNAVe5   ></iframe>
+
+## Recent Suggestions Preferences
+
+#### Minimum Characters
+
+Set the minimum number of characters that must be present for a suggestion term to be considered. Value should be between [0, 32].
+
+<iframe src=https://play.reactivesearch.io/embed/d8kkYsrzppMfnoy89WqI     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-d8kkYsrzppMfnoy89WqI   ></iframe>
+
+#### Minimum Hits
+
+Set the minimum number of hits that must be returned for a suggestion term to be considered. Value should be between [0, 1000].
+
+<iframe src=https://play.reactivesearch.io/embed/MnIKiywURAoZuH3oN3ew     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-MnIKiywURAoZuH3oN3ew   ></iframe>
+
+#### Size
+
+Set the maximum number of recent suggestions to be displayed. Value should be between [0, 20].
+
+<iframe src=https://play.reactivesearch.io/embed/GvDKUUUdvlPiqZPB85NU     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-GvDKUUUdvlPiqZPB85NU   ></iframe>
+
+#### Indices
+
+Only selected indices will be considered to calculate the suggestions.
+
+<iframe src=https://play.reactivesearch.io/embed/yVmuLESyDRcwSXQD2tDi     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-yVmuLESyDRcwSXQD2tDi   ></iframe>
+
+## Frontend Examples
 
 ### Usage Example With Searchbox
 
