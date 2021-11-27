@@ -170,4 +170,11 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 ### Geo examples
 
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fmongo-support-reactivemaps/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="appbaseio/reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 TODO
