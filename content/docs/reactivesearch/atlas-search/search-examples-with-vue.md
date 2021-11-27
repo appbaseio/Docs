@@ -37,7 +37,7 @@ A single/multi select facet UI is typically represented with a term query. Here,
 
 #### Getting the top buckets
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -48,7 +48,7 @@ A single/multi select facet UI is typically represented with a term query. Here,
 
 By default, the facet buckets are sorted by count. This example uses the `sortBy="asc"` prop to order the buckets in ascending order.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/sort-facets?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/sort-facets?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -59,7 +59,7 @@ By default, the facet buckets are sorted by count. This example uses the `sortBy
 
 The `queryFormat` prop which accepts "or" or "and" as values allows setting whether the results get filtered by an any ("or") matching clause or by an all ("and") matching clause. The following example uses the "and" value to filter Airbnb listings by those that satisfy all the selected amenities. 
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/multi-select-facet-with-and-operator?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/multi-select-facet-with-and-operator?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -91,7 +91,7 @@ dataField={[
 ]}
 ```
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/search-with-field-weights?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/search-with-field-weights?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -119,7 +119,7 @@ defaultSuggestions={[
 ]}
 ```
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/show-default-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/show-default-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -130,7 +130,7 @@ defaultSuggestions={[
 
 The `fuzziness` prop of Searchbox component enables finding matches even when the user input contains a typo.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/fuzzy-search?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/fuzzy-search?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -141,7 +141,7 @@ The `fuzziness` prop of Searchbox component enables finding matches even when th
 
 The `autocompleteField` prop of Searchbox is similar to the `dataField` prop, but allows setting fields with autocomplete type to search on.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/search-on-autocomplete-fields?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/search-on-autocomplete-fields?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -152,7 +152,7 @@ The `autocompleteField` prop of Searchbox is similar to the `dataField` prop, bu
 
 The `autosuggest` prop controls whether the autosuggestions UI is used or not. By setting it to false in this example, search is made on each keystroke.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/show-result-on-each-search-keystroke?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/show-result-on-each-search-keystroke?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -161,7 +161,7 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 ### Range examples
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/range-slider?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/fix/issues-after-mongo-suggestion-merge/packages/vue-searchbox/examples/by-usecases/range-slider?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
