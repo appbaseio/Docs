@@ -1,7 +1,7 @@
 ---
-title: 'Search examples with Vue Searchbox'
-meta_title: 'Search examples using Vue Searchbox'
-meta_description: 'Examples showing how to achieve different search use-cases with Vue Searchbox and Atlas Search'
+title: 'Search examples with Vue'
+meta_title: 'Search examples using Vue Searchbox and Vue ReactiveSearch'
+meta_description: 'Examples showing how to achieve different search use-cases with Vue Searchbox / ReactiveSearch and Atlas Search'
 keywords:
     - overview
     - atlas-search
@@ -13,7 +13,7 @@ sidebar: 'docs'
 nestedSidebar: 'atlas-search'
 ---
 
-We will show how to build different kinds of search experiences with Atlas Search using the Vue Searchbox library.
+We will show how to build different kinds of search experiences with Atlas Search using the Vue Searchbox and Vue ReactiveSearch libraries.
 
 The ReactiveSearch Realm function endpoint exposes a REST API that all of ReactiveSearch and Searchbox UI libraries use to express the declarative search intent. The ReactiveSearch API is documented over [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference).
 
@@ -23,12 +23,13 @@ For this guide, we are making use of a publicly deployed Realm endpoint. You can
 url=https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/public-demo-skxjb/service/http_endpoint/incoming_webhook/reactivesearch
 ```
 
-> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples, but if you're replacing the Realm function endpoint, these data types need to be set prior to running the queries.
+> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples. However, if you're replacing the Realm function endpoint with your own, some data types need to be set prior to running the queries.
 
 All of these examples can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).
 
-# with Searchbox
-## Use Cases
+## With Searchbox
+
+Our first set of examples make use of the [Vue Searchbox](https://opensource.appbase.io/searchbox) library, a lightweight UI library focused on building search-as-you-type experiences. This library is lightweight primarily ships with a SearchBox component and provides a general purpose SearchComponent that can be used as a controller for any design component.
 
 
 ### Facet (list) examples
@@ -67,9 +68,6 @@ The `queryFormat` prop which accepts "or" or "and" as values allows setting whet
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-#### Passing MongoDB aggregation stages directly to override the default query of the term component
-
-TODO
 
 ### Search (typeahead) examples
 
@@ -169,7 +167,10 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-# with ReactiveSearch 
+## With ReactiveSearch 
+
+Our next set of examples use [Vue ReactiveSearch](https://opensource.appbase.io/reactivesearch/vue), the most popular Vue UI kit for building search experiences. ReactiveSearch comes with over 10+ pre-built UI components, allowing you to build faceted, numeric and full-text search use-cases with ease.
+
 
 ### DataSearch example
 
@@ -197,7 +198,3 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-
-### Geo example
-
-TODO
