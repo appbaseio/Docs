@@ -228,7 +228,7 @@ Here, we are specifying that the result component should update whenever one of 
 #### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `boolean` [optional]
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
+    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
 -   **showDistinctSuggestions** `boolean` [optional]
     Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as the searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
