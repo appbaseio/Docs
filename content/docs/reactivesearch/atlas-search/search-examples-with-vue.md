@@ -1,7 +1,7 @@
 ---
-title: 'Search examples with Vue Searchbox'
-meta_title: 'Search examples using Vue Searchbox'
-meta_description: 'Examples showing how to achieve different search use-cases with Vue Searchbox and Atlas Search'
+title: 'Search examples with Vue'
+meta_title: 'Search examples using Vue Searchbox and Vue ReactiveSearch'
+meta_description: 'Examples showing how to achieve different search use-cases with Vue Searchbox / ReactiveSearch and Atlas Search'
 keywords:
     - overview
     - atlas-search
@@ -13,7 +13,7 @@ sidebar: 'docs'
 nestedSidebar: 'atlas-search'
 ---
 
-We will show how to build different kinds of search experiences with Atlas Search using the Vue Searchbox library.
+We will show how to build different kinds of search experiences with Atlas Search using the Vue Searchbox and Vue ReactiveSearch libraries.
 
 The ReactiveSearch Realm function endpoint exposes a REST API that all of ReactiveSearch and Searchbox UI libraries use to express the declarative search intent. The ReactiveSearch API is documented over [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference).
 
@@ -23,12 +23,13 @@ For this guide, we are making use of a publicly deployed Realm endpoint. You can
 url=https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/public-demo-skxjb/service/http_endpoint/incoming_webhook/reactivesearch
 ```
 
-> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples, but if you're replacing the Realm function endpoint, these data types need to be set prior to running the queries.
+> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples. However, if you're replacing the Realm function endpoint with your own, some data types need to be set prior to running the queries.
 
 All of these examples can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).
 
-## Use Cases
+## With Searchbox
 
+Our first set of examples make use of the [Vue Searchbox](https://opensource.appbase.io/searchbox) library, a UI library focused on building search-as-you-type experiences. This library is performant and lightweight (~20KB min+gzip size), comes with a pre-built SearchBox component and provides a general purpose SearchComponent that can be used to bind with any UI component.
 
 ### Facet (list) examples
 
@@ -37,7 +38,7 @@ A single/multi select facet UI is typically represented with a term query. Here,
 
 #### Getting the top buckets
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -48,7 +49,7 @@ A single/multi select facet UI is typically represented with a term query. Here,
 
 By default, the facet buckets are sorted by count. This example uses the `sortBy="asc"` prop to order the buckets in ascending order.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/sort-facets?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/sort-facets?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -59,16 +60,13 @@ By default, the facet buckets are sorted by count. This example uses the `sortBy
 
 The `queryFormat` prop which accepts "or" or "and" as values allows setting whether the results get filtered by an any ("or") matching clause or by an all ("and") matching clause. The following example uses the "and" value to filter Airbnb listings by those that satisfy all the selected amenities. 
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/multi-select-facet-with-and-operator?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/multi-select-facet-with-and-operator?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-#### Passing MongoDB aggregation stages directly to override the default query of the term component
-
-TODO
 
 ### Search (typeahead) examples
 
@@ -91,7 +89,7 @@ dataField={[
 ]}
 ```
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/search-with-field-weights?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/search-with-field-weights?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -119,7 +117,7 @@ defaultSuggestions={[
 ]}
 ```
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/show-default-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/show-default-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -130,7 +128,7 @@ defaultSuggestions={[
 
 The `fuzziness` prop of Searchbox component enables finding matches even when the user input contains a typo.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/fuzzy-search?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/fuzzy-search?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -141,7 +139,7 @@ The `fuzziness` prop of Searchbox component enables finding matches even when th
 
 The `autocompleteField` prop of Searchbox is similar to the `dataField` prop, but allows setting fields with autocomplete type to search on.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/search-on-autocomplete-fields?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/search-on-autocomplete-fields?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -152,7 +150,7 @@ The `autocompleteField` prop of Searchbox is similar to the `dataField` prop, bu
 
 The `autosuggest` prop controls whether the autosuggestions UI is used or not. By setting it to false in this example, search is made on each keystroke.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/show-result-on-each-search-keystroke?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/show-result-on-each-search-keystroke?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -161,12 +159,41 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 ### Range examples
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/vue-searchbox/examples/by-usecases/range-slider?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/vue-searchbox/examples/by-usecases/range-slider?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="demo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-### Geo examples
 
-TODO
+## With ReactiveSearch 
+
+Our next set of examples use [Vue ReactiveSearch](https://opensource.appbase.io/reactivesearch/vue), the most popular Vue UI kit for building search experiences. ReactiveSearch comes with over 10+ pre-built UI components, allowing you to build faceted, numeric and full-text search use-cases with ease.
+
+
+### DataSearch example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/data-search?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="data-search-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### MultiList example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/multi-list?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="multi-list-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### RangeInput example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/range-input?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="range-input-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
