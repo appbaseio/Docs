@@ -29,8 +29,7 @@ All of these examples can be deployed using MongoDB Realm's static hosting featu
 
 ## With Searchbox
 
-Our first set of examples make use of the [Vue Searchbox](https://opensource.appbase.io/searchbox) library, a lightweight UI library focused on building search-as-you-type experiences. This library is lightweight primarily ships with a SearchBox component and provides a general purpose SearchComponent that can be used as a controller for any design component.
-
+Our first set of examples make use of the [Vue Searchbox](https://opensource.appbase.io/searchbox) library, a UI library focused on building search-as-you-type experiences. This library is performant and lightweight (~20KB min+gzip size), comes with a pre-built SearchBox component and provides a general purpose SearchComponent that can be used to bind with any UI component.
 
 ### Facet (list) examples
 
