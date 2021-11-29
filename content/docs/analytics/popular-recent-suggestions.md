@@ -1,7 +1,7 @@
 ---
 title: 'Popular and Recent Suggestions'
-meta_title: 'Leverage Analytics Data - Popular Suggestions'
-meta_description: 'A short guide on how to setup popular suggestions.'
+meta_title: 'Leverage Analytics Data to power popular and recent suggestions'
+meta_description: 'A short guide on how to setup popular and recent suggestions based on your end-user analytics.'
 keywords:
     - concepts
     - appbase
@@ -9,12 +9,14 @@ keywords:
     - implement
     - query
     - suggestions
+    - popular suggestions
+    - recent suggestions
 sidebar: 'docs'
 ---
 
 ## Overview
 
-Providing suggestions helps users type longer queries, a good suggestion ensures the best results. It is easy to build an auto-complete experience with appbase.io but <strong>popular suggestions</strong> allows you to display more specific and popular query suggestions.
+Providing suggestions helps users type longer queries, a good suggestion ensures the best results. It is easy to build an auto-complete experience with appbase.io but <strong>popular suggestions</strong> allows you to display more specific and popular query suggestions. Similarly, recent suggestions allows you to display user-specific recent suggestions based on configurable settings.
 
 We extract popular suggestions from the Appbase analytics and store them in a separate index named `.suggestions`. We populate this index on a daily basis so that your users will see fresh and relevant suggestions at all the times. Below is the representation of how a popular suggestion is stored.
 
@@ -40,7 +42,6 @@ Because popular suggestions roll up the search queries based on the unique occur
 
 ## Popular Suggestions Preferences
 
-<!-- TODO: Add screenshot of Suggestions UI -->
 ![alt popular suggestions GUI](https://imgur.com/TMT2Svs.png)
 
 You can set the preferences for popular suggestions from appbase.io dashboard's <strong>Popular Suggestions GUI</strong> under `Develop` section. These help optimize the behavior of suggestions for your specific use-case.
@@ -78,35 +79,36 @@ You can check the below example of external popular suggestions:
 ```
 
 ### Query Time Properties
+
 #### Filter by minimum count
 
 Set the minimum number of times a term must be searched by users before it is considered. Value should be ≥ 0.
 
-<iframe src=https://play.reactivesearch.io/embed/B3H7H7GckNJF6F64J08j     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-B3H7H7GckNJF6F64J08j   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/30HHMpVcvy9TRCAeNKbo     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-30HHMpVcvy9TRCAeNKbo   ></iframe>
 
 #### Filter by minimum hits
 
 Set the minimum number of hits that must be returned for a suggestion term to be considered. Value should be between [0, 1000].
 
-<iframe src=https://play.reactivesearch.io/embed/rQsvSyiAQiTnS4SP0yBj     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-rQsvSyiAQiTnS4SP0yBj   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/zIuutSeah8e7nG46IfOG     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-zIuutSeah8e7nG46IfOG   ></iframe>
 
 #### Filter by minimum characters
 
 Set the minimum number of characters that must be present for a suggestion term to be considered. Value should be between [0, 32].
 
-<iframe src=https://play.reactivesearch.io/embed/ilA5lHKkZmT7Pv2p5y8s     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-ilA5lHKkZmT7Pv2p5y8s   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/hFZqflPG7xxl9Jq45M2g     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-hFZqflPG7xxl9Jq45M2g   ></iframe>
 
 #### Whitelist indices
 
 Only selected indices will be considered to calculate the suggestions.
 
-<iframe src=https://play.reactivesearch.io/embed/W6PMIFSkY9GUdAEx0WVF     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-W6PMIFSkY9GUdAEx0WVF   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/q3lNlwvVL34ShQN0OoUQ     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-q3lNlwvVL34ShQN0OoUQ   ></iframe>
 
 #### Size
 
 Set the maximum number of popular suggestions to be displayed. Value should be between [0, 20].
 
-<iframe src=https://play.reactivesearch.io/embed/r3DRlIufevo1oqwNAVe5     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-r3DRlIufevo1oqwNAVe5   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/q3lNlwvVL34ShQN0OoUQ     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-q3lNlwvVL34ShQN0OoUQ   ></iframe>
 
 ## Recent Suggestions Preferences
 
@@ -114,25 +116,25 @@ Set the maximum number of popular suggestions to be displayed. Value should be b
 
 Set the minimum number of characters that must be present for a suggestion term to be considered. Value should be between [0, 32].
 
-<iframe src=https://play.reactivesearch.io/embed/d8kkYsrzppMfnoy89WqI     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-d8kkYsrzppMfnoy89WqI   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/9MZAlpIYMtD8vqjiKBUO     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-9MZAlpIYMtD8vqjiKBUO   ></iframe>
 
 #### Minimum Hits
 
 Set the minimum number of hits that must be returned for a suggestion term to be considered. Value should be between [0, 1000].
 
-<iframe src=https://play.reactivesearch.io/embed/MnIKiywURAoZuH3oN3ew     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-MnIKiywURAoZuH3oN3ew   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/3LvVv3J4ziCIyfE8UuW2     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-3LvVv3J4ziCIyfE8UuW2   ></iframe>
 
 #### Size
 
 Set the maximum number of recent suggestions to be displayed. Value should be between [0, 20].
 
-<iframe src=https://play.reactivesearch.io/embed/GvDKUUUdvlPiqZPB85NU     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-GvDKUUUdvlPiqZPB85NU   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/waqKkJKZSpsxHPiwbkI1     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-waqKkJKZSpsxHPiwbkI1   ></iframe>
 
 #### Indices
 
 Only selected indices will be considered to calculate the suggestions.
 
-<iframe src=https://play.reactivesearch.io/embed/yVmuLESyDRcwSXQD2tDi     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-yVmuLESyDRcwSXQD2tDi   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/Rkhsz8U3ose8g4KUQXwh     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-Rkhsz8U3ose8g4KUQXwh   ></iframe>
 
 ## Frontend Examples
 
