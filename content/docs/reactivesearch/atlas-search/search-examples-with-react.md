@@ -1,7 +1,7 @@
 ---
-title: 'Search examples with React Searchbox'
-meta_title: 'Search examples using React Searchbox'
-meta_description: 'Examples showing how to achieve different search use-cases with React Searchbox and Atlas Search'
+title: 'Search examples with React'
+meta_title: 'Search examples using React Searchbox and ReactiveSearch'
+meta_description: 'Examples showing how to achieve different search use-cases with React and Atlas Search'
 keywords:
     - overview
     - atlas-search
@@ -13,7 +13,7 @@ sidebar: 'docs'
 nestedSidebar: 'atlas-search'
 ---
 
-We will show how to build different kinds of search experiences with Atlas Search using the React Searchbox library.
+We will show how to build different kinds of search experiences with Atlas Search using the React Searchbox and ReactiveSearch libraries.
 
 The ReactiveSearch Realm function endpoint exposes a REST API that all of ReactiveSearch and Searchbox UI libraries use to express the declarative search intent. The ReactiveSearch API is documented over [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference).
 
@@ -29,7 +29,7 @@ All of these examples can be deployed using MongoDB Realm's static hosting featu
 
 ## With Searchbox
 
-Our first set of examples make use of the [React Searchbox](https://opensource.appbase.io/searchbox) library, a lightweight UI library focused on building search-as-you-type experiences. This library is lightweight primarily ships with a SearchBox component and provides a general purpose SearchComponent that can be used as a controller for any design component.
+Our first set of examples make use of the [React Searchbox](https://opensource.appbase.io/searchbox) library, a lightweight UI library focused on building search-as-you-type experiences. This library is performant and lightweight (~30KB min+gzip size), comes with a pre-built SearchBox component and provides a general purpose SearchComponent that can be used to bind with any UI component.
 
 
 ### Facet (list) examples
