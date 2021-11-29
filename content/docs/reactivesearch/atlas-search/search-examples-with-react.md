@@ -27,6 +27,7 @@ url=https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/public-
 
 All of these examples can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).
 
+# with Searchbox
 ## Use Cases
 
 
@@ -168,7 +169,11 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-### Geo examples
+
+
+# with ReactiveSearch 
+
+### Geo example
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fmongo-support-reactivemaps/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -176,4 +181,33 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+### DataSearch example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="datasearch-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### MultiList example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/MultiList?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="multilist-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### RangeInput example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/RangeInput?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="rangeinput-example-mongo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+
 
