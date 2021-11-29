@@ -24,10 +24,11 @@ The ReactiveSearch Realm project deploys the ReactiveSearch API as a transpiled 
 
 Start with deploying this project as a [Realm function](/docs/reactivesearch/atlas-search/deploy/) in your MongoDB environment.
 
-### Search Use Cases with examples
 
-Run different search use-cases with the deployed Realm function's API over [here](/docs/reactivesearch/atlas-search/search-examples/).
+### Test with Search UIs
 
-### Test with UI
+Test the deployed Realm function with a React UI over [here](/docs/reactivesearch/atlas-search/search-examples-with-react/) or with Vue UI over [here](/docs/reactivesearch/atlas-search/search-examples-with-vue/).
 
-Test the deployed Realm function with a React UI over [here](/docs/reactivesearch/atlas-search/test-with-ui/).
+### Search Use Cases with REST API examples
+
+Run different search use-cases with the deployed Realm function's REST API directly over [here](/docs/reactivesearch/atlas-search/search-examples/).
