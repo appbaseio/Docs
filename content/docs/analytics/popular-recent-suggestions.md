@@ -35,16 +35,15 @@ Here, the `key` represents the suggestion name and `count` represents the number
 
 ### When to use it?
 
-Popular Suggestions is useful to curate search suggestions based on actual search queries that your users are making. This can be used by itself or alongside suggestions based on the product data to provide an augmented search experience.
+Popular Suggestions enable offering search suggestions based on actual search queries that your end-users are making. These can be used by itself (popular trends, searches) or alongside other suggestions based on the product data to provide an augmented search-as-you-type experience.
 
-Because popular suggestions roll up the search queries based on the unique occurrences in a period relevant to you, the suggestions index created this way is very fast. In addition to the automated job of popularising the popular suggestions index daily, you can also add external suggestions from other sources.
-
+Because popular suggestions roll up the search queries based on the unique occurrences in a period relevant to you, the suggestions index created this way is very fast to query. In addition to the automated job of populating the popular suggestions index daily, you can also add external suggestions from other sources.
 
 ## Popular Suggestions Preferences
 
 ![alt popular suggestions GUI](https://imgur.com/TMT2Svs.png)
 
-You can set the preferences for popular suggestions from appbase.io dashboard's <strong>Popular Suggestions GUI</strong> under `Develop` section. These help optimize the behavior of suggestions for your specific use-case.
+You can set the preferences for popular suggestions from appbase.io dashboard's <strong>Recent Suggestions UI</strong> under `Search Relevancy` section. In addition to setting default preferences, you can use the REST APIs (examples below) and SearchBox UI components available for React, Vue, React Native to customize how popular suggestions appear for your end-users.
 
 ### Index Time Properties
 
@@ -111,6 +110,11 @@ Set the maximum number of popular suggestions to be displayed. Value should be b
 <iframe src=https://play.reactivesearch.io/embed/q3lNlwvVL34ShQN0OoUQ     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-q3lNlwvVL34ShQN0OoUQ   ></iframe>
 
 ## Recent Suggestions Preferences
+
+![alt recent suggestions GUI](https://i.imgur.com/qYQdEgs.png)
+
+You can set the preferences for recent suggestions from appbase.io dashboard's <strong>Recent Suggestions UI</strong> under `Search Relevancy` section. In addition to setting default preferences, you can use the REST APIs (examples below) and SearchBox UI components available for React, Vue, React Native to customize how recent suggestions appear for your end-users.
+
 
 #### Minimum Characters
 
