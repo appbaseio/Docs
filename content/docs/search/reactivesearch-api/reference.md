@@ -268,8 +268,9 @@ To set the number of results to be returned by a query.
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
 | `int` | `all`                       | false    |
+
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### from
 
@@ -278,8 +279,9 @@ Starting document offset. Defaults to `0`.
 | Type  | Applicable on query of type              | Required |
 | ----- | ---------------------------------------- | -------- |
 | `int` | `search`,`suggestion`,`geo`,`range`      | false    |
+
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/Sj5qtmxqQ75HHh6wCEsE"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<iframe src=https://play.reactivesearch.io/embed/vvurxeUDndDYLBfg0qNx     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"    title=rs-playground-vvurxeUDndDYLBfg0qNx   ></iframe>
 
 ### pagination
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
