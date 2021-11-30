@@ -173,16 +173,39 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 Our next set of examples use [ReactiveSearch](https://opensource.appbase.io/reactivesearch), the most popular React UI kit for building search experiences. ReactiveSearch comes with over 20+ pre-built UI components, allowing you to build faceted, full-text and geo search use-cases with ease.
 
-### Geo example
+### Geo example: ReactiveMap
 
 Use [ReactiveGoogleMap](/docs/reactivesearch/v3/map/reactivegooglemap/) or [ReactiveOpenStreetMap](/docs/reactivesearch/v3/map/reactiveopenstreetmap/) components to power geo use-cases.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fmongo-support-reactivemaps/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/reactivesearch"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+### Geo example: GeoDistanceDropdown
+
+Use [GeoDistanceDropdown](/docs/reactivesearch/v3/map/geodistancedropdown/) component to power geo use-cases.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/GeoDistanceDropdown?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="appbaseio/reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### Geo example: GeoDistanceSlider
+
+Use [GeoDistanceSlider](/docs/reactivesearch/v3/map/geodistanceslider/) component to power geo use-cases.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/GeoDistanceSlider?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="appbaseio/reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 
 ### DataSearch example
 
