@@ -214,7 +214,7 @@ const HomePage = ({ data, location }) => {
 											},
 											{
 												title: 'Suggestions',
-												link: '/docs/analytics/popular-suggestions/',
+												link: '/docs/analytics/popular-recent-suggestions/',
 												duration: 4,
                                                 description: 'Leverage popular, recent suggestions via APIs and UI components'
 											},

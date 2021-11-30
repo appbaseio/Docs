@@ -1,7 +1,7 @@
 ---
-title: 'Search examples with React Searchbox'
-meta_title: 'Search examples using React Searchbox'
-meta_description: 'Examples showing how to achieve different search use-cases with React Searchbox and Atlas Search'
+title: 'Search examples with React'
+meta_title: 'Search examples using React Searchbox and ReactiveSearch'
+meta_description: 'Examples showing how to achieve different search use-cases with React and Atlas Search'
 keywords:
     - overview
     - atlas-search
@@ -13,7 +13,7 @@ sidebar: 'docs'
 nestedSidebar: 'atlas-search'
 ---
 
-We will show how to build different kinds of search experiences with Atlas Search using the React Searchbox library.
+We will show how to build different kinds of search experiences with Atlas Search using the React Searchbox and ReactiveSearch libraries.
 
 The ReactiveSearch Realm function endpoint exposes a REST API that all of ReactiveSearch and Searchbox UI libraries use to express the declarative search intent. The ReactiveSearch API is documented over [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference).
 
@@ -23,12 +23,13 @@ For this guide, we are making use of a publicly deployed Realm endpoint. You can
 url=https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/public-demo-skxjb/service/http_endpoint/incoming_webhook/reactivesearch
 ```
 
-> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples, but if you're replacing the Realm function endpoint, these data types need to be set prior to running the queries.
+> **Note:** Some of the examples make use of specific data types such as geopoint or autocomplete. These are already preset in the indexes they're queried against in these examples. However, if you're replacing the Realm function endpoint with your own, some data types need to be set prior to running the queries.
 
 All of these examples can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).
 
-# with Searchbox
-## Use Cases
+## With Searchbox
+
+Our first set of examples make use of the [React Searchbox](https://opensource.appbase.io/searchbox) library, a lightweight UI library focused on building search-as-you-type experiences. This library is performant and lightweight (~30KB min+gzip size), comes with a pre-built SearchBox component and provides a general purpose SearchComponent that can be used to bind with any UI component.
 
 
 ### Facet (list) examples
@@ -67,9 +68,6 @@ The `queryFormat` prop which accepts "or" or "and" as values allows setting whet
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-#### Passing MongoDB aggregation stages directly to override the default query of the term component
-
-TODO
 
 ### Search (typeahead) examples
 
@@ -171,9 +169,13 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 
 
-# with ReactiveSearch 
+## with ReactiveSearch
+
+Our next set of examples use [ReactiveSearch](https://opensource.appbase.io/reactivesearch), the most popular React UI kit for building search experiences. ReactiveSearch comes with over 20+ pre-built UI components, allowing you to build faceted, full-text and geo search use-cases with ease.
 
 ### Geo example
+
+Use [ReactiveGoogleMap](/docs/reactivesearch/v3/map/reactivegooglemap/) or [ReactiveOpenStreetMap](/docs/reactivesearch/v3/map/reactiveopenstreetmap/) components to power geo use-cases.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fmongo-support-reactivemaps/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -184,6 +186,8 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 ### DataSearch example
 
+Use [DataSearch](/docs/reactivesearch/v3/search/datasearch/) component to power full-text search use-cases.
+
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="datasearch-example-mongo"
@@ -193,6 +197,8 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
 
 ### MultiList example
 
+Use [MultiList](/docs/reactivesearch/v3/list/multilist/) component to build faceted search experiences.
+
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/MultiList?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="multilist-example-mongo"
@@ -201,6 +207,8 @@ The `autosuggest` prop controls whether the autosuggestions UI is used or not. B
    ></iframe>
 
 ### RangeInput example
+
+Use [RangeInput](/docs/reactivesearch/v3/range/rangeinput/) component to add numeric facets to your search experience.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/RangeInput?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
