@@ -188,7 +188,7 @@ Use [ReactiveGoogleMap](/docs/reactivesearch/v3/map/reactivegooglemap/) or [Reac
 
 Use [DataSearch](/docs/reactivesearch/v3/search/datasearch/) component to power full-text search use-cases.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="datasearch-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -199,7 +199,7 @@ Use [DataSearch](/docs/reactivesearch/v3/search/datasearch/) component to power 
 
 Use [MultiList](/docs/reactivesearch/v3/list/multilist/) component to build faceted search experiences.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/MultiList?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/MultiList?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="multilist-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -210,7 +210,7 @@ Use [MultiList](/docs/reactivesearch/v3/list/multilist/) component to build face
 
 Use [RangeInput](/docs/reactivesearch/v3/range/rangeinput/) component to add numeric facets to your search experience.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/web/examples/mongo-examples/RangeInput?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/RangeInput?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="rangeinput-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
