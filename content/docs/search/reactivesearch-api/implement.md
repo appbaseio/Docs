@@ -314,7 +314,7 @@ Although `ReactiveSearch API` covers most of the common use-cases for search, so
 
 ### REST API
 
-[POST /:index/_reactivesearch.v3](https://arc-api.appbase.io/?version=latest#1aef5770-2211-4607-b1f1-176de3e129ef) endpoint allows you to execute the `ReactiveSearch` queries from any platform of your choice.
+[POST /:index/_reactivesearch.v3](https://api.reactivesearch.io/?version=latest#1aef5770-2211-4607-b1f1-176de3e129ef) endpoint allows you to execute the `ReactiveSearch` queries from any platform of your choice.
 
 For example:
 

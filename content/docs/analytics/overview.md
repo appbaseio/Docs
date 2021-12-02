@@ -141,6 +141,6 @@ Custom Analytics allows you to go one step further by recording additional event
 
 ![Appbase.io Analytics: Visualizing Custom Analytics](https://miro.medium.com/max/2536/1*_xne0F8qPCeWgfX3Jz_NGw.gif)
 
-All the appbase.io analytics views are also accessible via REST APIs, making it very easy to embed the analytics within your web and mobile apps. You can find the [API reference over here](https://arc-api.appbase.io/?version=latest#fa69cbac-143b-4ce1-881b-c8287ac48d37).
+All the appbase.io analytics views are also accessible via REST APIs, making it very easy to embed the analytics within your web and mobile apps. You can find the [API reference over here](https://api.reactivesearch.io/?version=latest#fa69cbac-143b-4ce1-881b-c8287ac48d37).
 
 ---
