@@ -144,87 +144,18 @@ Only selected indices will be considered to calculate the suggestions.
 
 ### Usage Example With Searchbox
 
-```js
-import SearchBase from '@appbaseio/searchbase';
-import searchbox from '@appbaseio/searchbox';
-
-const instance = new SearchBase({
-	index: '.suggestions',
-	credentials: `CLUSTER_CREDENTIALS`,
-	url: 'CLUSTER_URL',
-	size: 5,
-	dataField: [
-		{
-			field: "key",
-			weight: 3
-		},
-		{
-			field: "key.autosuggest",
-			weight: 1
-		}
-	],
-});
-searchbox('#git', {}, [
-	{
-		source: searchbox.sources.hits(instance),
-		templates: {
-			suggestion: function(suggestion) {
-				return `<p class="is-4">${suggestion.label}</p>`;
-			},
-			empty: function() {
-				return `<div>No Results</div>`;
-			},
-			loader: function() {
-				return `<div>Loader</div>`;
-			},
-			footer: function({ query, isEmpty }) {
-				return `
-                    <div style="background: #eaeaea; padding: 10px;">Footer</div>
-                `;
-			},
-			header: function({ query, isEmpty }) {
-				return `
-                    <div style="background: #efefef; padding: 10px;">
-                        Hello From Header
-                    </div>
-                `;
-			},
-		},
-	},
-]);
-```
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/react-searchbox/examples/with-popular-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="@appbaseio/react-searchbox-demo-example"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ### Usage Example With ReactiveSearch
 
-<!-- TODO: The example is not complete -->
-
-```js
-import React from 'react';
-import { ReactiveBase, DataSearch } from '@appbaseio/reactivesearch';
-
-const Main = () => (
-    <ReactiveBase
-        app=".suggestions"
-        credentials="CLUSTER_CREDENTIALS"
-    >
-        <div className="col">
-            <DataSearch
-                title="DataSearch"
-				dataField={[
-					{
-						"field": "key",
-						"weight": 3
-					},
-					{
-						"field": "key.autosuggest",
-						"weight": 1
-					},
-				]}
-                componentId="SearchComponent"
-            />
-        </div>
-    </ReactiveBase>
-);
-
-export default Main;
-```
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-searchbox/packages/web/examples/SearchBox?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="searchbox"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>

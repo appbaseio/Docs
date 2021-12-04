@@ -173,7 +173,7 @@ Our next set of examples use [Vue ReactiveSearch](https://opensource.appbase.io/
 
 ### DataSearch example
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/data-search?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/mongo-examples/data-search?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="data-search-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -182,7 +182,7 @@ Our next set of examples use [Vue ReactiveSearch](https://opensource.appbase.io/
 
 ### MultiList example
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/multi-list?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/mongo-examples/multi-list?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="multi-list-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -191,7 +191,7 @@ Our next set of examples use [Vue ReactiveSearch](https://opensource.appbase.io/
 
 ### RangeInput example
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-mongo-support/packages/vue/examples/mongo-examples/range-input?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/mongo-examples/range-input?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="range-input-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
