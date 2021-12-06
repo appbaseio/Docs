@@ -59,7 +59,7 @@ Internal server errors indicate an issue with the underlying Elasticsearch servi
 
 You can also get insights by using API.
 
-Check the API reference over [here](https://arc-api.appbase.io/?version=latest#4bb9a282-586d-4e1b-aa46-79359665769c).
+Check the API reference over [here](https://api.reactivesearch.io/?version=latest#4bb9a282-586d-4e1b-aa46-79359665769c).
 
 ```bash
 curl --location --request GET 'http://{{user}}:{{password}}@{{host}}/_analytics/insights'

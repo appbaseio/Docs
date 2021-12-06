@@ -34,20 +34,7 @@
                 - link: /docs/search/reactivesearch-api/reference
                   title: "API Reference"
             - link: /docs/search/rules/
-              title: "Query Rules for Clusters"
-            - link: /docs/search/apprules/
-              title: "Query Rules for Apps"
-            - link: /docs/search/functions/
-              title: "Functions"
-              items:
-                - link: /docs/search/functions/hosting
-                  title: "Hosting"
-                - link: /docs/search/functions/create
-                  title: "Create"
-                - link: /docs/search/functions/deploy
-                  title: "Deploy"
-                - link: /docs/search/functions/trigger
-                  title: "Set Trigger"
+              title: "Query Rules"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
@@ -62,7 +49,7 @@
               title: "Querying Analytics"
             - link: /docs/analytics/google-analytics/
               title: "Integrate Google Analytics"
-            - link: /docs/analytics/popular-suggestions/
+            - link: /docs/analytics/popular-recent-suggestions/
               title: "Popular Suggestions"
             - link: /docs/analytics/curated-insights/
               title: "Curated Insights"
@@ -78,10 +65,10 @@
               title: "API Credentials"
             - link: /docs/security/user-management/
               title: User Management
-            - link: /docs/security/template/
-              title: "Search Template"
             - link: /docs/security/role/
               title: "Role Based Access Control"
+            - link: /docs/security/node-sync-preferences/
+              title: "Node Sync Preferences"
       - group: Hosting
         icon: rocket
         items:
@@ -90,7 +77,9 @@
             - link: /docs/hosting/byoc/
               title: "Bring Your Own Cluster"
               items:
-              - link: /docs/hosting/byoc/connect-to-your-elasticsearch/
-                title: "Connect to Your Elasticsearch"
-            - link: /docs/hosting/open-distro/
-              title: "Open Distro"
+              - link: /docs/hosting/byoc/connect-to-elastic-cloud/
+                title: "Connect to Elastic Cloud"
+              - link: /docs/hosting/byoc/connect-to-aws-opensearch/
+                title: "Connect to AWS OpenSearch"
+            - link: /docs/hosting/opensearch/
+              title: "Deploy OpenSearch"

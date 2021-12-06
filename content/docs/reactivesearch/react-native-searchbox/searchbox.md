@@ -208,7 +208,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 ### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `Boolean`
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
+    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 -   **maxPopularSuggestions** `Number` can be used to configure the size of popular suggestions. The default value is `5`.
 -   **enableRecentSearches** `Boolean` Defaults to `false`. If set to `true` then users will see the top recent searches as the default suggestions. Appbase.io recommends defining a unique id for each user to personalize the recent searches.
     > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.

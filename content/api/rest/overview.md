@@ -22,7 +22,7 @@ Appbase.io maintains a 100% API compatibility with Elasticsearch. Any Elasticsea
 
 Besides this, Appbase.io takes an API-first approach for all of the value-added features and also makes this available with a separate gateway. These features include:
 1. [ReactiveSearch API](https://docs.appbase.io/docs/search/reactivesearch-api/reference) - A alternative API to query Elasticsearch declaratively. This is the recommended way to query via web and mobile apps as it prevents query injection attacks. It also composes well with Elasticsearch's query DSL and allows utilizing additional appbase.io features like query rules.
-2. [Appbase.io Features APIs](https://arc-api.appbase.io/) - All of the appbase.io value-add features like search relevance, caching, query rules, actionable analytics, access control, UI builder are available as APIs. Everything that one can do from appbase.io dashboard is achievable with these APIs.
+2. [Appbase.io Features APIs](https://api.reactivesearch.io/) - All of the appbase.io value-add features like search relevance, caching, query rules, actionable analytics, access control, UI builder are available as APIs. Everything that one can do from appbase.io dashboard is achievable with these APIs.
 
 
 ![Elasticsearch and Appbase.io API gateways](https://i.imgur.com/w15086V.png)

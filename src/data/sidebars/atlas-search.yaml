@@ -11,3 +11,5 @@
         link: /docs/reactivesearch/atlas-search/search-examples-with-react/
       - title: Search Examples with Vue
         link: /docs/reactivesearch/atlas-search/search-examples-with-vue/
+      - title: Static Hosting
+        link: /docs/reactivesearch/atlas-search/static-hosting/
