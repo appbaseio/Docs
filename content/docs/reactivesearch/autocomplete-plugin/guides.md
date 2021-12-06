@@ -574,6 +574,9 @@ const appbaseClientConfig = {
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
   settings:{
     recordAnalytics: true,
+    customEvents: {
+      platform: "web",
+    },
   }
 };
 
@@ -593,6 +596,13 @@ autocomplete({
   openOnFocus: true,
 });
 ```
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/analytics-insight-example?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="basic-example-appbaseio-autocomplete-suggestions-plugin"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ### Creating A Custom Renderer
 
