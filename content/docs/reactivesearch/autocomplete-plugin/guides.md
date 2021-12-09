@@ -69,10 +69,10 @@ Let's look at the `initAutocomplete()` function and other scaffolding for the pl
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
-  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947"
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: { userId: "s@s", recordAnalytics: true },
 };
 
-// reactivesearch api configuration
 const rsApiConfig = {
   highlight: true,
   dataField: [
@@ -86,15 +86,20 @@ const rsApiConfig = {
     },
   ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
-    minChars: 5,
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true,
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
   },
+  index: "best-buy-dataset",
   size: 5,
 };
 
@@ -153,7 +158,8 @@ import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin"
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
-  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947"
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: { userId: "s@s", recordAnalytics: true },
 };
 
 // reactivesearch api configuration
@@ -162,24 +168,29 @@ const rsApiConfig = {
   dataField: [
     {
       field: "name.autosuggest",
-      weight: 1
+      weight: 1,
     },
     {
       field: "name",
-      weight: 3
-    }
+      weight: 3,
+    },
   ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
-    minChars: 5
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
   },
-  size: 5
+  index: "best-buy-dataset",
+  size: 5,
 };
 
 // default usage: plugin to fetch suggestions
@@ -269,6 +280,10 @@ const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    userId: "s@s",
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
@@ -285,11 +300,15 @@ const rsApiConfig = {
   ],
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
   },
+  index: "best-buy-dataset",
   size: 5,
 };
+
 
 // instantiatin the plugin
 const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
@@ -330,6 +349,10 @@ const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    userId: "s@s",
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
@@ -346,9 +369,13 @@ const rsApiConfig = {
   ],
   enableRecentSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
   },
-  size: 2,
+  index: "best-buy-dataset",
+  size: 5,
 };
 
 // instantiatin the plugin
@@ -385,32 +412,56 @@ Let's start with enabling all types of suggestions, namely, `index`(enabled by-d
 ```js
 // reactivesearch api configuration
 const rsApiConfig = {
+  highlight: true,
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: "1",
+    },
+    {
+      field: "name",
+      weight: "3",
+    },
+  ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
-    minChars: 5
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
   },
-  size: 5
+  index: "best-buy-dataset",
+  size: 5,
 };
 
 ```
 
 ```js title="JavaScript"
+/** @jsx h */
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+import { h } from "preact";
+import { renderResults } from "./utils";
 
-
+var JSONTreeView = require("json-tree-view");
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    userId: "s@s",
+    enableQueryRules: true,
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
@@ -418,14 +469,41 @@ const rsApiConfig = {
   /// described above
 };
 
-// instantiatin the plugin
-const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+// instantiating the plugin
+// default usage: plugin to fetch suggestions
+const defaultUsagePlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
+);
 
 autocomplete({
   container: '#autocomplete',
-  plugins: [suggestionsPlugin],
+  plugins: [defaultUsagePlugin],
   openOnFocus: true,
 });
 ```
@@ -436,74 +514,77 @@ Now, let's create one more instance of `@appbaseio/autocomplete-suggestions-plug
 // advanced usage: plugin to fetch suggestions and
 // render custom ui for header, footer and suggestion items
 const advancedUsagePlugin = createSuggestionsPlugin(
-  appbaseClientConfig,
+  {
+    ...appbaseClientConfig,
+    settings: {
+      ...appbaseClientConfig.settings,
+      enableQueryRules: false,
+    },
+  },
   {
     ...rsApiConfig,
-    enableRecentSuggestions: false
+    enableRecentSuggestions: false,
+    enablePopularSuggestions: false,
   },
   {
     renderItem: (props) => {
-      const { item, setQuery, refresh } = props;
-      if (item.type === "index") {
-        return (
-          <a
-            className="aa-item product-item"
-            href={item._source.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="product-image">
-              <img src={item._source.image} alt={item.value} />
-            </div>
-            <div className="product-details">
-              <h4>{item.value}</h4>
-              <p>{item._source.shortDescription}</p>
-            </div>
-          </a>
-        );
-      }
+      const { item } = props;
       return (
-        <div className="item">
-          <div className="item__content-wrapper">
-            {getIcon(item.type)()}
-            <span
-              dangerouslySetInnerHTML={{
-                __html: item.value
-              }}
-            ></span>
+        <a
+          className="aa-item product-item"
+          href={
+            item._source
+              ? item._source.url
+              : `https://www.google.com/search?q=${item.value}`
+          }
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="product-image">
+            <img
+              src={
+                item._source
+                  ? item._source.image
+                  : "https://m.media-amazon.com/images/I/81c83vd4O+L._SY879_.jpg"
+              }
+              alt={item.value}
+            />
           </div>
-          <div className="item__actions-wrapper">
-            {" "}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-
-                setQuery(item.label);
-                refresh();
-              }}
-              type="button"
-              className="set-search-arrow"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 17v-7.586l8.293 8.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-8.293-8.293h7.586c0.552 0 1-0.448 1-1s-0.448-1-1-1h-10c-0.552 0-1 0.448-1 1v10c0 0.552 0.448 1 1 1s1-0.448 1-1z"></path>
-              </svg>
-            </button>
+          <div className="product-details">
+            <h4>{item.value} (Promoted)</h4>
+            <p>
+              {item._source
+                ? item._source.shortDescription
+                : "Samsung offers latest smartphones with advanced technology and design. Buy 3G, 4G, dual sim smartphone at best prices in India."}
+            </p>
           </div>
-        </div>
+        </a>
       );
     },
     onItemSelect: (props) => {
       const {
-        item: { url, label },
+        item: { url, label, type },
         setQuery,
-        refresh
+        refresh,
       } = props;
 
       if (url) {
-        setQuery(label);
         window.open(url);
-      } else {
-        setQuery(label);
+      } else if (type !== "index") {
+        setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+        renderResults(
+          {
+            value: label.replace(/(<([^>]+)>)/gi, ""),
+            url: appbaseClientConfig.url,
+            app: appbaseClientConfig.app,
+            credentials: appbaseClientConfig.credentials,
+            settings: appbaseClientConfig.settings,
+            query: {
+              dataField: rsApiConfig.dataField,
+            },
+          },
+          JSONTreeView
+        );
         refresh();
       }
     },
@@ -523,7 +604,7 @@ const advancedUsagePlugin = createSuggestionsPlugin(
       } else {
         return <p>No products found! Try searching for something else!</p>;
       }
-    }
+    },
   }
 );
 
@@ -536,8 +617,9 @@ autocomplete({
   container: "#autocomplete",
   placeholder: "Search for products",
   openOnFocus: true,
-  // debug: true, uncomment to keep the dropdown open
-  plugins: [defaultUsagePlugin, advancedUsagePlugin]
+  debug: true, //uncomment to keep the dropdown open
+  plugins: [defaultUsagePlugin, advancedUsagePlugin],
+  detachedMediaQuery: "none",
 });
 
 ```
@@ -565,35 +647,93 @@ To enable analytics, we enable the `recordAnalytics` by setting it to `true`, pa
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+import { renderResults } from "./utils";
 
-
+var JSONTreeView = require("json-tree-view");
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
-  settings:{
+  settings: {
+    userId: "s@s",
+    enableQueryRules: true,
     recordAnalytics: true,
     customEvents: {
       platform: "web",
     },
-  }
+  },
 };
 
 // reactivesearch api configuration
 const rsApiConfig = {
   size: 5,
+  highlight: true,
+  dataField: [
+    {
+      field: "name.autosuggest",
+      weight: "1",
+    },
+    {
+      field: "name",
+      weight: "3",
+    },
+  ],
+  enableRecentSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
+  },
+  enablePopularSuggestions: true,
+  popularSuggestionsConfig: {
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
+  },
+  index: "best-buy-dataset",
 };
 
-// instantiatin the plugin
-const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+// instantiating the plugin
+const suggestionsPlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
+);
 
 autocomplete({
-  container: '#autocomplete', // remeber to have a div element as <div id ="autocomplete"></div>
+  container: "#autocomplete",
   plugins: [suggestionsPlugin],
+  debug: false,
   openOnFocus: true,
+  detachedMediaQuery: "none",
+  // ...
 });
 ```
 

@@ -47,41 +47,91 @@ Make sure to provide a container (e.g., a `div`), not an `input`. Autocomplete g
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+import { renderResults } from "./utils";
 
+var JSONTreeView = require("json-tree-view");
 
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    userId: "s@s",
+    enableQueryRules: true,
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
 const rsApiConfig = {
   size: 5,
-  enableRecentSuggestions: true,
   highlight: true,
   dataField: [
     {
       field: "name.autosuggest",
-      weight: "1"
+      weight: "1",
     },
     {
       field: "name",
-      weight: "3"
-    }
-  ]
+      weight: "3",
+    },
+  ],
+  enableRecentSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 2,
+    minHits: 2,
+    minChars: 4,
+    index: "best-buy-dataset",
+  },
+  enablePopularSuggestions: true,
+  popularSuggestionsConfig: {
+    size: 2,
+    minChars: 3,
+    minCount: 3,
+    index: "best-buy-dataset",
+  },
+  index: "best-buy-dataset",
 };
 
 // instantiating the plugin
-const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+const suggestionsPlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
+);
 
 autocomplete({
-  container: '#autocomplete',
+  container: "#autocomplete",
   plugins: [suggestionsPlugin],
+  debug: false,
   openOnFocus: true,
+  detachedMediaQuery: "none",
+  // ...
 });
 ```
 
@@ -115,22 +165,23 @@ We leverage [preact](https://preactjs.com/guide/v10/getting-started) to render j
 
 The promoted-results example demonstrate how `@appbaseio/autocomplete-suggestions-plugin` by-default, handles the display of promoted suggestions. 
 
-We will be using the `recipes-demo` index for this example.
+We will be using the `best-buy-dataset` index for this example.
 
 Appbase.io dashboard lets you configure promoted result(s) using [Query Rules](https://docs.appbase.io/docs/search/apprules/). Query Rules are essentially `If-This-Then-That` construct - **If search query contains 'Google', then promote 'Chromebook'**. Query Rules serve a very specific purpose as far as search results and merchandising is concerned. When building a commercial search product, customers more often than not require commercializing the product based on certain search queries.
 
 First step is to **enable** query rules in the frontend, i.e, in the `appbaseClientConfig` object.
 
 ```js
-
-  // appbase client config object
-  const appbaseClientConfig = {
-      app: "recipes-demo",
-      credentials: "a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61",
-      url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
-      settings: {
-        enableQueryRules: true // this is important to enable applying query rules, set in the dashboard.
-      }
+// appbase client config object
+const appbaseClientConfig = {
+    url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
+    app: "best-buy-dataset",
+    credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+    settings: {
+      userId: "s@s",
+      enableQueryRules: true,
+      recordAnalytics: true,
+    },
   };
 ```
 
