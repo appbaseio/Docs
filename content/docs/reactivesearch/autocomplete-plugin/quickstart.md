@@ -153,7 +153,7 @@ We leverage [preact](https://preactjs.com/guide/v10/getting-started) to render j
 > The autocomplete function creates an autocomplete experience and attaches it to an element of the DOM. By default, it uses Preact 10 to render templates.
 
 
-<iframe src="https://codesandbox.io/embed/advanced-example-appbaseio-autocomplete-suggestions-plugin-lcmul?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/advanced-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="Advanced Example: @appbaseio/autocomplete-suggestions-plugin"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
