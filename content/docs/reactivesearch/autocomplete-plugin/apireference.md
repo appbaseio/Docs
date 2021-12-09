@@ -251,7 +251,7 @@ createSuggestionsPlugin(
 
 ### Example with all properties 
 
-Click [here](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark) to checkout the advanced example to see all properties in action.
+Click [here](https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/advanced-example?fontsize=14&hidenavigation=1&theme=dark) to checkout the advanced example to see all properties in action.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/demo?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
