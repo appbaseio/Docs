@@ -429,7 +429,7 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 | `Object` | `all`                       | false    |
 
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/BGEvla6560wL4HYyaPe4"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<iframe src=https://play.reactivesearch.io/embed/ycCvpsb6ZiWFrEIEPxMX     style="width:100%; height:400px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-ycCvpsb6ZiWFrEIEPxMX   ></iframe>
 	
 > **Note:** `highlightConfig` has been introduced starting v7.51.0 to replace the use of customHighlight (which is deprecated but still supported).
 
