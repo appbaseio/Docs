@@ -7,5 +7,9 @@
         link: /docs/reactivesearch/atlas-search/test-with-ui/
       - title: Search Examples (REST)
         link: /docs/reactivesearch/atlas-search/search-examples/
-      - title: Search Examples with UI
-        link: /docs/reactivesearch/atlas-search/search-examples-with-ui/
+      - title: Search Examples with React
+        link: /docs/reactivesearch/atlas-search/search-examples-with-react/
+      - title: Search Examples with Vue
+        link: /docs/reactivesearch/atlas-search/search-examples-with-vue/
+      - title: Static Hosting
+        link: /docs/reactivesearch/atlas-search/static-hosting/

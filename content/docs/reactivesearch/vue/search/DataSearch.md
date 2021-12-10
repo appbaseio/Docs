@@ -103,7 +103,7 @@ Example uses:
 -   **enableQuerySuggestions** `bool` [optional]
     This prop has been marked as deprecated starting `v1.7.8`. Please use the `enablePopularSuggestions` prop instead.
 -   **enablePopularSuggestions** `bool` [optional]
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
+    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
     > Note:
     >

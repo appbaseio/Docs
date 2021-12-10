@@ -15,6 +15,9 @@ const getValue = () => {
         if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
 		}
+		if (path && path.startsWith('/docs/reactivesearch/autocomplete-plugin')) {
+			return 'Algolia Autocomplete';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue SearchBox';
 		}
@@ -74,6 +77,8 @@ const getFileName = value => {
 			return 'searchbase-dart';
 		case 'UI Builder':
 			return 'ui-builder-reactivesearch';
+		case 'Algolia Autocomplete':
+			'autocomplete-plugin';
 		default:
 			return 'web-reactivesearch';
 	}
@@ -183,6 +188,7 @@ class MobileNav extends React.Component {
 								'Vue SearchBox',
 								'Searchbase Dart',
 								'Flutter Searchbox',
+								'Algolia Autocomplete'
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"

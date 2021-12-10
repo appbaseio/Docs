@@ -11,7 +11,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-Already have Elasticsearch hosted with AWS, Elastic Cloud or planning to hosting it yourself?
+Already have Elasticsearch hosted with AWS OpenSearch, Elastic Cloud or planning to hosting it yourself?
 You can now access all of Appbase.io features such as [search preview](/docs/search/relevancy/#test-search-relevancy), [actionable analytics](/docs/analytics/overview/) and [granular security](/docs/security/credentials/) with an Elasticsearch cluster hosted anywhere with the `Bring Your Own Cluster` deployment mode.
 
 ![](https://i.imgur.com/QjBkE7R.png)
@@ -65,7 +65,7 @@ You should see the above screen.
 
 That's all! It take around 5-10 mins for your Appbase.io instance to be deployed. Once the deployment is complete, you will be able to see it in your **Clusters List** with a `Bring your own cluster` tag.
 
-> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Appbase.io Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/byoc/connect-to-your-elasticsearch/)
+> **Note:** If you have IP based restriction for your cluster, now you can whitelist the Appbase.io Cluster IP and restrict direct access to your cluster. [Read More](/docs/hosting/byoc/connect-to-aws-opensearch/)
 
 #### **Accessing Appbase.io Dashboard**
 

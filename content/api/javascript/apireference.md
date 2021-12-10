@@ -54,7 +54,6 @@ Writes a JSON data object at a given `type` and `id` location, or replaces if an
 ```js
 appbaseRef
 	.index({
-		type: 'tweet',
 		id: 'aX12c5',
 		body: {
 			msg: 'writing my first tweet!',
@@ -77,7 +76,6 @@ appbaseRef
 
 -   **params** `Object` <br>A JavaScript object containing the type, id and the JSON data to be indexed
 
-    -   **type** `String` <br>The type (aka collection) under which the data will be indexed
     -   **body** `Object` <br>Data to be indexed, a valid JSON object
     -   **id** `String` <br>Unique ID for the JSON data. `id` is auto generated if not specified
 
@@ -88,7 +86,6 @@ Partially updates an existing document at a given `type` and `id` location. The 
 ```js
 appbaseRef
 	.update({
-		type: 'tweet',
 		id: 'aX12c5',
 		body: {
 			doc: {
@@ -111,7 +108,6 @@ appbaseRef
 
 -   **params** `Object` <br>A JavaScript object containing the type, id, and the partial JSON data to be updated
 
-    -   **type** `String` <br>The type (aka collection) under which the data will be indexed
     -   **body.doc** `Object` <br>Partial doc JSON to be updated (all the JSON data can only reside under the body.doc field)
     -   **id** `String` <br>Unique ID of the JSON document to be updated. `id` here is mandatory and should match an existing object.
 
@@ -122,7 +118,6 @@ Delete a JSON data object by `id`.
 ```js
 appbaseRef
 	.delete({
-		type: 'tweet',
 		id: 'aX12c5',
 	})
 	.then(function(res) {
@@ -139,7 +134,6 @@ appbaseRef
 
 -   **params** `Object` <br>A JavaScript object containing the `type` and `id` of the JSON object to be deleted
 
-    -   **type** `String` <br>The type (aka collection) of the object to be deleted
     -   **id** `String` <br>Unique ID for the JSON data
 
 ### bulk()
@@ -149,7 +143,6 @@ Apply many index / update / delete operations in bulk.
 ```js
 appbaseRef
 	.bulk({
-		type: 'tweet',
 		body: [
 			// action#1 description
 			{ index: { _id: 2 } },
@@ -188,7 +181,6 @@ appbaseRef
 -   **params** `Object` <br>A JavaScript object containing the `body` and optionally a default `type` to be used for actions
 
     -   **body** `Array` <br>A JavaScript array of actions to be performed written as a sequence of action#1, data#1, action#2, data#2, ... action#n, data#n
-    -   **type** `String` <br>Default document type for actions that don't provide one
 
 ## GETTING DATA
 
@@ -199,7 +191,6 @@ Get the JSON document from a particular `type` and `id`.
 ```js
 appbaseRef
 	.get({
-		type: 'tweet',
 		id: 'aX12c5',
 	})
 	.then(function(res) {
@@ -215,7 +206,6 @@ appbaseRef
 `appbaseRef.get(params)`
 
 -   **params** `Object` <br>A JavaScript object containing the `type` and `id` of the document to retrieve.
-    -   **type** `String` <br>Document Type - **id** `String` <br>Unique ID of the JSON document
 
 Returns the document at the given `type` and `id`.
 
@@ -247,7 +237,6 @@ Search for matching documents in a type. It's a convenience method for Elasticse
 ```js
 appbaseRef
 	.search({
-		type: 'tweet',
 		body: {
 			query: {
 				match_all: {},
@@ -268,7 +257,6 @@ appbaseRef
 
 -   **params** `Object` <br>A JavaScript object containing the query `type` and `body`.
 
-    -   **type** `String` <br>Document type
     -   **body** `Object` <br>A JSON object specifying a valid query in the [Elasticsearch Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) format
 
 **Returns**
@@ -281,7 +269,6 @@ Multi Search to allow execution of several search requests with same API. It's a
 ```js
 appbaseRef
 	.msearch({
-		type: 'tweet',
 		body: [{}, { query: { match_all: {} } }, {}, { query: { match: { _id: 1 } } }],
 	})
 	.then(function(res) {
@@ -298,19 +285,18 @@ appbaseRef
 
 -   **params** `Object` <br>A JavaScript object containing the query `type` and `body`.
 
-    -   **type** `String` <br>Document type
     -   **body** `Array` <br>An array specifying search requests in header followed by body order for each request.
 
 **Returns**
 Promise.
 
-### reactiveSearchv3()
+### reactiveSearch()
 
 ReactiveSearch method allows you to execute the search requests securely with the help of newly launched `ReactiveSearch` API. You can read about `ReactiveSearch` API [here](/docs/search/reactivesearch-api/).
 
 ```js
 appbaseRef
-	.reactiveSearchv3(
+	.reactiveSearch(
 		[
 			{
 				id: 'book_search',
@@ -333,7 +319,7 @@ appbaseRef
 
 **Usage**
 
-`appbaseRef.reactiveSearchv3(params)`
+`appbaseRef.reactiveSearch(params)`
 
 -   **params** It accepts two params:
     -   `query`, an array of objects where each object represents a ReactiveSearch query. Read more at [here](/docs/search/reactivesearch-api/reference/#query-properties)
@@ -342,41 +328,40 @@ appbaseRef
 **Returns**
 Promise.
 
-### getQuerySuggestions()
-
-This method allows you to execute search on `.suggestions` index. It is useful to curate search suggestions based on actual search queries that you are making. Read more about it over [here](/docs/analytics/popular-suggestions/).
-Example:
-
-```javascript
+**Usage to fetch suggestions** 
+```js
 appbaseRef
-	.getQuerySuggestions(
-		[
-			{
-				id: 'book_search',
-				dataField: ['key', 'key.autosuggest', 'key.search'],
-				size: 5,
-				value: 'harry',
-			},
-		],
-		{
-			userId: 'jon@appbase.io',
-		},
-	)
-	.then(function(res) {
-		console.log('suggestions result: ', res);
-	})
-	.catch(function(err) {
-		console.log('suggestions error: ', err);
-	});
+  .reactiveSearch(
+    [
+      {
+        id: "suggestions-demo",
+        type: "suggestion",
+        enableRecentSuggestions: true,
+        enablePopularSuggestions: true,
+        recentSuggestionsConfig: {
+          size: 5,
+          min_hits: 2,
+          min_char: 4,
+        },
+        popularSuggestionsConfig: {
+          size: 5,
+          showGlobal: true,
+        },
+        size: 5,
+        value: "cable",
+      },
+    ],
+    {
+      userId: "jon@appbase.io",
+      recordAnalytics: true,
+    }
+  )
+  .then(function (res) {
+    console.log("res", res);
+  })
+  .catch(function (err) {
+    console.log("suggestions error: ", err);
+  });
 ```
-
-**Usage**
-
-`appbaseRef.getQuerySuggestions(params)`
-
--   **params** It accepts two params:
-    -   `query`, an array of objects where each object represents a ReactiveSearch query. Read more at [here](/docs/search/reactivesearch-api/reference/#query-properties)
-    -   `settings`, an object consisting of the properties to control your search experience. Read more at [here](/docs/search/reactivesearch-api/reference/#settings-properties)
-
-**Returns**
-Promise.
+> Note
+> Recent suggestions work when `value` is empty.

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-
+import { Link } from 'gatsby';
 import { Button } from '@appbaseio/designkit';
 import { NavBar } from '../common';
 import { Spirit } from '../../styles/spirit-styles';
@@ -49,9 +49,16 @@ class HomeHeader extends React.Component {
 							>
 								SignUp for free
 							</Button>
-							<Button uppercase onClick={this.handleModal} className="video-btn">
-								1 Min Overview
-							</Button>
+							<Link to="/tutorial">
+								<Button 								
+									uppercase 
+									shadow									
+									className="video-btn"
+									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
+								>
+									Try Interactive Tutorial
+								</Button>
+							</Link>
 							<Modal
 								open={open}
 								classNames={{ modal: 'home-modal', closeIcon: 'close-icon' }}

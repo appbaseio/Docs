@@ -223,11 +223,88 @@ There are two types of synonyms supported:
 > **Fun Fact:** Synonyms set are case insensitive and they can also span multiple words.
 
 
-## Popular Suggestions
+## Suggestions
 
-Popular Suggestions is a daily populated index by appbase.io based on search analytics. The Popular Suggestions UI lets you set preferences for how this index should get populated. You can read more about it over [here](/docs/analytics/popular-suggestions/).
+Suggestions view allows configuring relevance settings for displaying autosuggestions. It allows configuring popular, recent and index suggestions.
 
-![](http://imgur.com/jL40KPa.png)
+
+![](https://imgur.com/omGveTI.png)
+
+### Popular Suggestions
+
+Popular suggestions panel allows configuring suggestions based on popularity of searches from other users.
+
+![](https://imgur.com/uqZB0K0.png)
+
+You can set the index and query time preferences for popular suggestions from appbase.io dashboard's Popular Suggestions.  Unlike other suggestion types, Popular suggestions are re-calculated and populated in a special index on a daily basis based on the aggregate end-user search analytics data and index time suggestion preferences. These help optimize the behavior of suggestions for your specific use-case.
+
+| Label                | Applicable At | Description                                                                                     |
+|----------------------|---------------|-------------------------------------------------------------------------------------------------|
+| Indices              | Index, Query  | Specified indices will be considered to calculate the suggestions.                              |
+| Number of days       | Index         | Set the last <X> days interval to use for populating the popular suggestions index.             |
+| Min Count            | Index, Query  | Define the minimum number of times a search term should've been used for it to be included.     |
+| Min Hits             | Index         | Define the minimum number of results (aka hits) that should've been returned for a search term to be included.  |
+| Min Characters       | Index, Query  | Define the minimum number of characters that must be present in a search term for it to be included.   |
+| Transform Diacritics | Index         | If enabled, then diacritics will be transformed (ascii folded) before populating the popular suggestions' index. |
+| Size                 | Query         | Maximum number of popular suggestions to be returned at query time.                                          |
+| Blacklist            | Index         | A list of queries which can be marked as blacklist.                                             |
+| External Suggestions | Index         | Define suggestions to be included from an external source (e.g. Google Analytics).              |
+
+#### Query Popular Suggestions via API
+
+While Popular suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) the applicable settings at query time using the Suggestions API. See the API reference for enabling and configuring popular suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig).
+
+<iframe src=https://play.reactivesearch.io/embed/pVsIGW32K1SRLhixRgGv     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-pVsIGW32K1SRLhixRgGv   ></iframe>
+
+### Recent Suggestions
+
+Recent suggestions panel allows configuring how an end-user sees their recent search suggestions. Recent suggestions require `settings.recordAnalytics` property to be set to `true`.
+
+![](https://imgur.com/kOrxta3.png)
+
+You can set the constaints for returning recent suggestions from appbase.io dashboard's Recent Suggestions settings menu. Only recent suggestions that meet these constraints will be returned back.
+
+| Label          | Description                                                                    |
+|----------------|--------------------------------------------------------------------------------|
+| Min Hits       | Define the minimum number of results (aka hits) that should've been returned for a search term to be included.       |
+| Size           | Maximum number of recent suggestions to be returned at query time.                         |
+| Min Characters | Define the minimum number of characters that must be present in a suggestion value for it to be returned.  |
+| Indices        | Specified indices will be considered to calculate the suggestions.         |
+
+#### Query Recent Suggestions via API
+
+While Recent suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring recent suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig).
+
+<iframe     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/hqrRunRhWsc7oJWWE1qx"></iframe>
+
+### Index Suggestions
+
+Index suggestions settings allow configuring how an end-user would see the search index's suggestions. You can configure the index(es) to query, apply a custom query, as well as how the suggestions get displayed/highlighted/categorized, what fields to return along with suggestions, whether to enable redirection to a URL.
+
+![](https://imgur.com/JzNzHnI.png)
+
+| Label                         | Description                                                                                                                                                                                     |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Indices                       | Specified indices will be considered to calculate the suggestions.                                                                                                                          |
+| Show Distinct Suggestions     | Show only up to 1 suggestion per document (i.e. record). If set to false, multiple suggestions can be shown when relevant (based on different matching fields) from the same document.          |
+| Enable Predictive Suggestions | When set to `true`, it predicts the next relevant words from a fields value based on the search query typed by the user. When set to `false` (default), the entire fields value would be displayed. |
+| Max Predicted Words           | Maximum number of predicted words, defaults to 1.                                                                                                                                                              |
+| Apply Default Stopwords       | Enable or disable application of default stopwords, enabled by default.                                                                                                                         |
+| Set Custom Stopwords          | Set comma separated stopwords to be ignored during the language specifc analysis process.                                                                                                       |
+| Enable Synonyms               | Enable searching on synonyms.                                                                                                                                                                                 |
+| Size                          | Maximum number of index suggestions to be displayed.                                                                                                                                          |
+| Include Fields                | Fields to include in the search results.                                                                                                                                                        |
+| Exclude Fields                | Fields to exclude from the search results                                                                                                                                                       |
+| Category Field               | When specified, suggestions will show category specific suggestions based on the most frequent values based on this field.                                                                      |
+| URL Field                          | When specified, suggestions will redirect to the URL value based on this field.                                                                      |
+| Custom Query                  | Specify a custom stored query to execute instead of the default suggestions query. This is an advanced setting.                                                                                 |
+
+
+#### Query Index Suggestions via API
+
+While Index suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring index suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#enablepredictivesuggestions).
+
+<iframe src=https://play.reactivesearch.io/embed/2YaNeEx4AEF4PHeJrSdw     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2YaNeEx4AEF4PHeJrSdw   ></iframe>
 
 ## Query Rules
 
@@ -236,18 +313,12 @@ Query Rules allows you to set rules based on the incoming search query, filters 
 2. Hide an irrelevant result,
 3. Apply an additional facet,
 4. Modify the incoming search term,
-5. Return custom data (useful for advertising/merchandizing),
-6. Run a user-defined function - providing endless possibilities to extend search.
+5. Return custom data (useful for advertising/merchandizing).
 
 Learn more about query rules over [here](/docs/search/rules/).
 
 ![](https://i.imgur.com/hbJWhZM.png)
 
-## Functions
-
-Functions allow you to run user-defined functions to extend the search engine. Read more about them over [here](/docs/search/functions/).
-
-![](https://imgur.com/4LPHTlw.png)
 
 ## Test Search Relevancy
 

@@ -316,9 +316,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 ### To customize the AutoSuggestions
 
 -   **enablePopularSuggestions** `Boolean`
-    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-suggestions/).
-
-- **popularSuggestionsConfig** `Object` Specify additional options for fetching popular suggestions.
+    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
     It can accept the following keys:
     - **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.

@@ -60,7 +60,7 @@ There are three types of analytics:
 
 <b>1. Search Analytics</b>
 
-Use [PUT /:index/_analytics/search](https://arc-api.appbase.io/?version=latest#63470390-374f-447f-b854-70b5ab0fe92f) endpoint to record a search event.
+Use [PUT /:index/_analytics/search](https://api.reactivesearch.io/?version=latest#63470390-374f-447f-b854-70b5ab0fe92f) endpoint to record a search event.
 
 ```bash
 curl --location --request PUT 'http://{{USERNAME}}:{{PASSWORD}}@{{CLUSTER_URL}}/{{INDEX}}/_analytics/search' \
@@ -84,11 +84,11 @@ curl --location --request PUT 'http://{{USERNAME}}:{{PASSWORD}}@{{CLUSTER_URL}}/
 }'
 ```
 
-API reference over [here](https://arc-api.appbase.io/?version=latest#63470390-374f-447f-b854-70b5ab0fe92f).
+API reference over [here](https://api.reactivesearch.io/?version=latest#63470390-374f-447f-b854-70b5ab0fe92f).
 
 <b>2. Click Analytics</b>
 
-Use [PUT /:index/_analytics/click](https://arc-api.appbase.io/?version=latest#df88a85a-c31d-4376-b22b-485a9d1021b8) endpoint to record a click event.
+Use [PUT /:index/_analytics/click](https://api.reactivesearch.io/?version=latest#df88a85a-c31d-4376-b22b-485a9d1021b8) endpoint to record a click event.
 
 ```bash
 curl --location --request PUT 'http://{{USERNAME}}:{{PASSWORD}}@{{CLUSTER_URL}}/{{INDEX}}/_analytics/click' \
@@ -106,11 +106,11 @@ curl --location --request PUT 'http://{{USERNAME}}:{{PASSWORD}}@{{CLUSTER_URL}}/
 }'
 ```
 
-API reference over [here](https://arc-api.appbase.io/?version=latest#df88a85a-c31d-4376-b22b-485a9d1021b8).
+API reference over [here](https://api.reactivesearch.io/?version=latest#df88a85a-c31d-4376-b22b-485a9d1021b8).
 
 <b>3. Conversion Analytics</b>
 
-Use [PUT /:index/_analytics/conversion](https://arc-api.appbase.io/?version=latest#f8ee22c6-ba15-4b9e-83d8-34cc2953f245) endpoint to record a conversion event.
+Use [PUT /:index/_analytics/conversion](https://api.reactivesearch.io/?version=latest#f8ee22c6-ba15-4b9e-83d8-34cc2953f245) endpoint to record a conversion event.
 
 
 ```bash
@@ -127,7 +127,7 @@ curl --location --request PUT 'http://{{USERNAME}}:{{PASSWORD}}@{{CLUSTER_URL}}/
 }'
 ```
 
-API reference over [here](https://arc-api.appbase.io/?version=latest#f8ee22c6-ba15-4b9e-83d8-34cc2953f245).
+API reference over [here](https://api.reactivesearch.io/?version=latest#f8ee22c6-ba15-4b9e-83d8-34cc2953f245).
 
 > Note:
 >

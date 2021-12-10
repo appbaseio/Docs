@@ -27,7 +27,7 @@ Stored queries allow parameterizing the query DSL with template variables `{{var
 
 Once a stored query is created, it creates a REST API endpoint that can be invoked by passing these parameters but not the DSL itself. In effect, stored queries prevent script injection by encapsulating the query logic from the environment it is invoked from (typically web and mobile apps).
 
-While stored queries come with a dashboard UI, one can also use them directly using the REST APIs over [here](https://arc-api.appbase.io/#e7885812-3137-46bc-ae0e-397d04e9d44d).
+While stored queries come with a dashboard UI, one can also use them directly using the REST APIs over [here](https://api.reactivesearch.io/#e7885812-3137-46bc-ae0e-397d04e9d44d).
 
 ![](https://i.imgur.com/xqBnHfM.png)
 
@@ -190,7 +190,7 @@ curl -X POST https://your-cluster.searchbase.io/_storedquery/search-by-brand-que
 '
 ```
 
-[Here is the REST API reference](https://arc-api.appbase.io/#55a3e150-34d4-4a43-bdd3-01fb6d424654) for the same.
+[Here is the REST API reference](https://api.reactivesearch.io/#55a3e150-34d4-4a43-bdd3-01fb6d424654) for the same.
 
 ### Access Control For Stored Queries
 

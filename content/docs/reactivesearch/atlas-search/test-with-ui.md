@@ -42,3 +42,9 @@ API reference for the components is present over here:
 - [SearchComponent](https://docs.appbase.io/docs/reactivesearch/react-searchbox/searchcomponent/)
 
 For more examples (currently in REST format), refer to the search examples guide over [here](/docs/reactivesearch/atlas-search/search-examples/).
+
+For more examples with React, refer to the Search examples with React guide over [here](/docs/reactivesearch/atlas-search/search-examples-with-react/).
+
+For more examples with Vue, refer to the Search examples with Vue guide over [here](/docs/reactivesearch/atlas-search/search-examples-with-vue/).
+
+This search UI can be deployed using MongoDB Realm's static hosting feature with one CLI command and a click. Read the Search UI hosting guide over [here](/docs/reactivesearch/atlas-search/static-hosting/).

@@ -23,7 +23,7 @@ You can access all the analytics data from the Analytics section of the Appbase.
 
 While analytics data is readily accessible from the dashboard, it's also possible to use our REST APIs to embed analytics into your own apps.
 
-You can see the API reference over [here](https://arc-api.appbase.io/?version=latest#fa69cbac-143b-4ce1-881b-c8287ac48d37).
+You can see the API reference over [here](https://api.reactivesearch.io/?version=latest#fa69cbac-143b-4ce1-881b-c8287ac48d37).
 
 > Note:
 >

@@ -9,7 +9,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-[Appbase.io](https://appbase.io) provides a supercharged [Elasticsearch](https://github.com/elastic/elasticsearch) experience for creating the most demanding app search experiences with a NoCode control plane, REST APIs or UI components.
+[Appbase.io](https://appbase.io) provides a supercharged [Elasticsearch](https://github.com/elastic/elasticsearch) experience for creating the most demanding app search experiences with a no-code search relevance control plane, UI builder, out-of-the-box search analytics and low-code UI components.
 
 ## Overview
 

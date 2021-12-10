@@ -122,12 +122,12 @@ For example, the below query has two data fields defined and each field has a di
 
 | Type         | Applicable on query of type | Required |
 | ------------ | --------------------------- | -------- |
-| `Array<int>` | `search`                    | false    |
+| `Array<int>` | `search`,`suggestion`       | false    |
 
 > Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of appbase.io. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
 ### type
 
-This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
+This property represents the type of the query which is defaults to `search`, valid values are `search`, `suggestion`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -143,7 +143,7 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for `search` type
+#### format for `search` and `suggestion` type
 
 The value can be a `string` or `int`.
 **Example Playground**: 
@@ -268,18 +268,20 @@ To set the number of results to be returned by a query.
 | Type  | Applicable on query of type | Required |
 | ----- | --------------------------- | -------- |
 | `int` | `all`                       | false    |
+
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### from
 
 Starting document offset. Defaults to `0`.
 
-| Type  | Applicable on query of type | Required |
-| ----- | --------------------------- | -------- |
-| `int` | `search`,`geo`,`range`      | false    |
+| Type  | Applicable on query of type              | Required |
+| ----- | ---------------------------------------- | -------- |
+| `int` | `search`,`suggestion`,`geo`,`range`      | false    |
+
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/Sj5qtmxqQ75HHh6wCEsE"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<iframe src=https://play.reactivesearch.io/embed/vvurxeUDndDYLBfg0qNx     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"    title=rs-playground-vvurxeUDndDYLBfg0qNx   ></iframe>
 
 ### pagination
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
@@ -304,7 +306,7 @@ To set the number of buckets to be returned by aggregations.
 | `int` | `term`                      | false    |
 
 > Note:
-> 1. This property can also be used for `search` type of queries when `aggregationField` is set.
+> 1. This property can also be used for `search` and `suggestion` type of queries when `aggregationField` or `categoryField` is set.
 > 2. This is a new feature and only available for appbase versions >= 7.41.0.
 
 **Example Playground**: 
@@ -331,7 +333,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 | Type           | Applicable on query of type | Required |
 | -------------- | --------------------------- | -------- |
-| `int | string` | `search`                    | false    |
+| `int | string` | `search`, `suggestion`      | false    |
 
 > Note:
 >
@@ -342,11 +344,15 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 ### categoryField
 
-Data field which has the category values mapped.
+Data field whose values are used to provide category specific suggestions.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
-| `string` | `search`                    | false    |
+| `string` | `search`,`suggestion`       | false    |
+
+> Note:
+>
+> The [aggregationSize](/docs/search/reactivesearch-api/reference/#aggregationsize) property can be used to control the size of category suggestions.
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/adZAj2AcCVpDlHmNljl0"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
@@ -357,7 +363,7 @@ This is the selected category value. It is used for informing the search result.
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
-| `string` | `search`                    | false    |
+| `string` | `search`,`suggestion`       | false    |
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/9MswTJYI7pne7Awi5vWT"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
@@ -394,7 +400,7 @@ To specify dependent queries to update that particular query for which the react
 
 ### highlight
 
-This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [customHighlight](/docs/search/reactivesearch-api/reference/#customhighlight) values will be ignored.
+This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [highlightConfig](/docs/search/reactivesearch-api/reference/#highlightconfig) values will be ignored.
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
@@ -414,7 +420,7 @@ When highlighting is `enabled`, this property allows specifying the fields which
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
-### customHighlight
+### highlightConfig
 
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
@@ -423,7 +429,9 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 | `Object` | `all`                       | false    |
 
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/BGEvla6560wL4HYyaPe4"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<iframe src=https://play.reactivesearch.io/embed/ycCvpsb6ZiWFrEIEPxMX     style="width:100%; height:400px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-ycCvpsb6ZiWFrEIEPxMX   ></iframe>
+	
+> **Note:** `highlightConfig` has been introduced starting v7.51.0 to replace the use of customHighlight (which is deprecated but still supported).
 
 ### searchOperators
 
@@ -431,7 +439,7 @@ Defaults to `false`. If set to `true` then you can use special characters in the
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
-| `bool` | `search`                    | false    |
+| `bool` | `search`,`suggestion`       | false    |
 
 > Note: If both properties `searchOperators` and `queryString` are set to `true` then `queryString` will have the priority over `searchOperators`.
 
@@ -444,7 +452,7 @@ Defaults to `false`. If set to `true` than it allows you to create a complex sea
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
-| `bool` | `search`                    | false    |
+| `bool` | `search`,`suggestion`       | false    |
 
 > Note: If both properties `searchOperators` and `queryString` are set to `true` then `queryString` will have the priority over `searchOperators`.
 
@@ -624,7 +632,7 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
-| `bool` | `search`                    | false    |
+| `bool` | `search`,`suggestion`       | false    |
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/FLwTmwBpcLZezTW3Wg5D"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
@@ -634,7 +642,7 @@ This property allows you to define the [Elasticsearch rank feature query](https:
 
 | Type   | Applicable on query of type | Required |
 | ------ | --------------------------- | -------- |
-| `object` | `search`                  | false    |
+| `object` | `search`,`suggestion`     | false    |
 
 The `rankFeature` object must be in the following shape:
 ```ts
@@ -785,7 +793,145 @@ The following query would return the products for distinct brands. Additionally,
 ```
 
 **Example Playground**: 
+
 <iframe src="https://play.reactivesearch.io/embed/RrD7aB3vstYvPZxfaHNo"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+### enablePredictiveSuggestions
+When set to `true`, it predicts the next relevant words from the value of a field based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### maxPredictedWords
+Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between `[1, 5]`.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `int`    | `suggestion`                | false    |
+
+### applyStopwords
+When set to `true`, it would not predict a suggestion which starts or ends with a stopword. You can use [searchLanguage](/docs/search/reactivesearch-api/reference/#searchlanguage) property to apply language specific stopwords.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### customStopwords
+It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `array`   | `suggestion`               | false    |
+
+### searchLanguage
+
+Search language is useful to apply language specific stopwords for predictive suggestions. Defaults to [english](https://github.com/bbalet/stopwords/blob/master/stopwords_en.go#L7) language.
+
+We support following languages:
+
+- [arabic](https://github.com/bbalet/stopwords/blob/master/stopwords_ar.go#L7)
+- [bulgarian](https://github.com/bbalet/stopwords/blob/master/stopwords_bg.go#L7)
+- [czech](https://github.com/bbalet/stopwords/blob/master/stopwords_cs.go#L7)
+- [danish](https://github.com/bbalet/stopwords/blob/master/stopwords_da.go#L7)
+- [english](https://github.com/bbalet/stopwords/blob/master/stopwords_en.go#L7)
+- [finnish](https://github.com/bbalet/stopwords/blob/master/stopwords_fi.go#L7)
+- [french"](https://github.com/bbalet/stopwords/blob/master/stopwords_fr.go#L7)
+- [german"](https://github.com/bbalet/stopwords/blob/master/stopwords_de.go#L7)
+- [hungarian](https://github.com/bbalet/stopwords/blob/master/stopwords_hu.go#L7)
+- [italian"](https://github.com/bbalet/stopwords/blob/master/stopwords_it.go#L7)
+- [japanese](https://github.com/bbalet/stopwords/blob/master/stopwords_ja.go#L7)
+- [latvian](https://github.com/bbalet/stopwords/blob/master/stopwords_lv.go#L7)
+- [norwegian](https://github.com/bbalet/stopwords/blob/master/stopwords_no.go#L7)
+- [persian](https://github.com/bbalet/stopwords/blob/master/stopwords_fa.go#L7)
+- [polish](https://github.com/bbalet/stopwords/blob/master/stopwords_pl.go#L7)
+- [portuguese](https://github.com/bbalet/stopwords/blob/master/stopwords_pt.go#L7)
+- [romanian](https://github.com/bbalet/stopwords/blob/master/stopwords_ro.go#L7)
+- [russian](https://github.com/bbalet/stopwords/blob/master/stopwords_ru.go#L7)
+- [slovak](https://github.com/bbalet/stopwords/blob/master/stopwords_sk.go#L7)
+- [spanish](https://github.com/bbalet/stopwords/blob/master/stopwords_es.go#L7)
+- [swedish](https://github.com/bbalet/stopwords/blob/master/stopwords_sv.go#L7)
+- [thai](https://github.com/bbalet/stopwords/blob/master/stopwords_th.go#L7)
+- [turkish ](https://github.com/bbalet/stopwords/blob/master/stopwords_tr.go#L7)
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `string` | `suggestion`                | false    |
+
+
+### urlField
+Data field whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `string` | `suggestion`                | false    |
+
+**Example Playground**: 
+
+<iframe src=https://play.reactivesearch.io/embed/2YaNeEx4AEF4PHeJrSdw     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2YaNeEx4AEF4PHeJrSdw   ></iframe>
+
+### enableRecentSuggestions
+When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through [recentSuggestionsConfig](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig) or via Recent Suggestions settings in the control plane).
+
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### recentSuggestionsConfig
+Specify additional options for fetching recent suggestions. It can accept the following keys:
+
+- **size**: `int` Maximum number of recent suggestions to return. Defaults to 5.
+
+- **minHits**: `int` Return only recent searches that returned at least minHits results. There is no default minimum hits-based restriction.
+
+- **minChars**: `int` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+
+- **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+
+> Note: It is possible to define multiple indices using comma separated pattern, for e.g `products,categories`.
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `Object` | `suggestion`                | false    |
+
+**Example Playground**: 
+
+<iframe frameborder="1px"      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/hqrRunRhWsc7oJWWE1qx"></iframe>
+
+### enablePopularSuggestions
+When set to `true`, popular searches based on aggregate end-user data are returned as suggestions as per the popular suggestions config (either defaults, or as set through [popularSuggestionsConfig](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig) or via Popular Suggestions settings in the control plane)
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### popularSuggestionsConfig
+
+Specify additional options for fetching popular suggestions. It can accept the following keys:
+
+- **size**: `int` Maximum number of popular suggestions to return. Defaults to `5`.
+
+- **minCount**: `int` Return only popular suggestions that have been searched at least minCount times. There is no default minimum count-based restriction.
+
+- **minChars**: `int` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+
+- **showGlobal**: `Boolean` Defaults to true. When set to `false`, return popular suggestions only based on the current user's past searches.
+
+- **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to searching the entire cluster.
+
+> Note: It is possible to define multiple indices using a comma separated pattern, for e.g `products,categories`.
+
+
+| Type     | Applicable on query of type | Required |
+| ------   | --------------------------- | -------- |
+| `Object` | `suggestion`                | false    |
+
+
+**Example Playground**: 
+
+<iframe src=https://play.reactivesearch.io/embed/pVsIGW32K1SRLhixRgGv     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-pVsIGW32K1SRLhixRgGv   ></iframe>
+
 
 ## Settings Properties
 
