@@ -33,66 +33,68 @@ Example uses:
 ### Usage With All Props
 
 ```js
-<SearchBox
-	componentId="SearchBoxSensor"
-    dataField={[
-		{
-			"field": "group_venue",
-			"weight": 1
-		},
-		{
-			"field": "group_city",
-			"weight": 3
-		}
-	]}
-	title="Search"
-	defaultValue="Songwriting"
-	placeholder="Search for cities or venues"
-	autosuggest={true}
-	defaultSuggestions={[
-		{ label: 'Songwriting', value: 'Songwriting' },
-		{ label: 'Musicians', value: 'Musicians' },
-	]}
-	highlight={true}
-	highlightField="group_city"
-	queryFormat="or"
-	fuzziness={0}
-	debounce={100}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	size={10}
-	showFilter={true}
-	filterLabel="Venue filter"
-	URLParams={false}
-    enableRecentSuggestions={true}
-    enablePopularSuggestions={true}
-    enablePredictiveSuggestions={true}
-    recentSuggestionsConfig={{
-        size: 3, 
-        minHits: 2, 
-        index: "" // optional index value to fetch recentsuggestions related to
-    }}
-    recentSuggestionsConfig={{
-        size: 3, 
-        minChars: 4, 
-        index: "" // optional index value to fetch recentsuggestions related to
-    }}
-    applyStopwords={true}
-    customStopwords={['be','or','hi']}
-    onData = {({
-        data,
-        rawData,
-        aggregationData,
-        loading,
-        error
-    }) =>{
-            // do something with the updated properties
-    }}
-    renderItem={(suggestion)=>{
-        return <span>{suggestion.label}</span> // custom render every suggestion item in dropdown
-    }}
-/>
+    <SearchBox
+        componentId="SearchBoxSensor"
+        dataField={[
+            {
+                "field": "group_venue",
+                "weight": 1
+            },
+            {
+                "field": "group_city",
+                "weight": 3
+            }
+        ]}
+        title="Search"
+        defaultValue="Songwriting"
+        placeholder="Search for cities or venues"
+        autosuggest={true}
+        defaultSuggestions={[
+            { label: 'Songwriting', value: 'Songwriting' },
+            { label: 'Musicians', value: 'Musicians' },
+        ]}
+        highlight={true}
+        highlightField="group_city"
+        queryFormat="or"
+        fuzziness={0}
+        debounce={100}
+        react={{
+            and: ['CategoryFilter', 'SearchFilter'],
+        }}
+        size={10}
+        showFilter={true}
+        filterLabel="Venue filter"
+        URLParams={false}
+        enableRecentSuggestions={true}
+        enablePopularSuggestions={true}
+        enablePredictiveSuggestions={true}
+        popularSuggestionsConfig={{
+            size: 3, 
+            minHits: 2, 
+            minChars: 4,
+            index: "" // optional index value to fetch recentsuggestions related to
+        }}
+        recentSuggestionsConfig={{
+            size: 3, 
+            minChars: 4, 
+            index: "" // optional index value to fetch recentsuggestions related to
+        }}
+        applyStopwords={true}
+        customStopwords={['be','or','hi']}
+        onData = {({
+            data,
+            rawData,
+            aggregationData,
+            loading,
+            error
+        }) =>{
+                // do something with the updated properties
+        }}
+        renderItem={(suggestion)=>{
+            return <span>{suggestion.label}</span> // custom render every suggestion item in dropdown
+        }}
+        renderNoSuggestion="No suggestions found"
+    />
 ```
 
 ## Props
@@ -100,7 +102,7 @@ Example uses:
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
 -   **dataField** `string | Array<string | DataField*>` [optional*]
-    index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
+    index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
     You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
     The `DataField` type has the following shape:
@@ -123,7 +125,7 @@ Example uses:
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using render prop as shown:
 
     ```javascript
-    <DataSearch
+    <SearchBox
         aggregationField="original_title.keyword"
         render={({aggregationData}) => {...}}
     />
@@ -169,18 +171,19 @@ Example uses:
     - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
     - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
     <br/>
-    ```jsx
-        <SearchBox
-            enablePopularSuggestions={true}
-            popularSuggestionsConfig={{
-                size: 5,
-                minCount: 5,
-                minChars: 3,
-                showGlobal: false,
-                index: "good-books-ds",  // further restrict the index to search on
-            }}
-        />
-    ```
+
+```jsx
+    <SearchBox
+        enablePopularSuggestions={true}
+        popularSuggestionsConfig={{
+            size: 5,
+            minCount: 5,
+            minChars: 3,
+            showGlobal: false,
+            index: "good-books-ds",  // further restrict the index to search on
+        }}
+    />
+```
 
 -   **enableRecentSuggestions** `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane).
 
@@ -193,17 +196,19 @@ Example uses:
     - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
     <br/>
-    ```jsx
-        <SearchBox
-            enableRecentSuggestions={true}
-            recentSuggestionsConfig={{
-                size: 5,
-                minHits: 5,
-                minChars: 3,
-                index: "good-books-ds",  // further restrict the index to search on
-            }}
-        />
-    ```
+
+```jsx
+    <SearchBox
+        enableRecentSuggestions={true}
+        recentSuggestionsConfig={{
+            size: 5,
+            minHits: 5,
+            minChars: 3,
+            index: "good-books-ds",  // further restrict the index to search on
+        }}
+    />
+```
+
 -   **enablePredictiveSuggestions** `Boolean` [optional]
     Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
@@ -239,26 +244,26 @@ Example uses:
 -   **highlightField** `String or Array` [optional]
     when highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
 -   **customHighlight** `Function` [optional]
-    a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). It receives the `props` and expects you to return an object with the `highlight` key. Check out the <a href="https://opensource.appbase.io/reactivesearch/demos/technews/" target="_blank">technews demo</a> where the `DataSearch` component uses a `customHighlight` as given below,
+    a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). It receives the `props` and expects you to return an object with the `highlight` key. Check out the <a href="https://opensource.appbase.io/reactivesearch/demos/technews/" target="_blank">technews demo</a> where the `SearchBox` component uses a `customHighlight` as given below,
 
-    ```js
+```js
     <SearchBox
-    	componentId="title"
-    	dataField={['title', 'text']}
-    	highlight
-    	customHighlight={props => ({
-    		highlight: {
-    			pre_tags: ['<mark>'],
-    			post_tags: ['</mark>'],
-    			fields: {
-    				text: {},
-    				title: {},
-    			},
-    			number_of_fragments: 0,
-    		},
-    	})}
+        componentId="BookSensor"
+        dataField={[{field: "name", weight:3 }, {field: "name.search", weight:1 }]}
+        highlight
+        customHighlight={props => ({
+        highlight: {
+                pre_tags: ['<mark>'],
+                post_tags: ['</mark>'],
+                fields: {
+                    text: {},
+                    title: {},
+                },
+                number_of_fragments: 0,
+            },
+        })}
     />
-    ```
+```
 
 -   **queryFormat** `String` [optional]
     Sets the query format, can be **or** or **and**. Defaults to **or**.
@@ -278,7 +283,7 @@ Example uses:
 	<br/> <br/>
     **Example** if you have `showDistinctSuggestions`  is set to `false` and have following configurations
 
-	```js
+```js
 	// Your document:
 	{
 		"name": "Warn",
@@ -286,20 +291,22 @@ Example uses:
 	}
 
 	// Component:
-	<SearchBox dataField=['name', 'address'] .../>
+	<SearchBox dataField={['name', 'address']} />
 
 	// Search Query:
 	"wa"
-	```
+```
 
-	Then there will be 2 suggestions from the same document
-	as we have the search term present in both the fields
-	specified in `dataField`.
 
-	```
+Then there will be 2 suggestions from the same document
+as we have the search term present in both the fields
+specified in `dataField`.
+
+
+```
 	Warn
 	Washington
-	```
+```
 
 `Note:` Check the above concept in action over [here](https://codesandbox.io/s/musing-allen-qc58z).
 
@@ -347,36 +354,42 @@ Example uses:
         Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
 ```js
-<SearchBox
-	render={({ loading, error, data, value, downshiftProps: { isOpen, getItemProps } }) => {
-		if (loading) {
-			return <div>Fetching Suggestions.</div>;
-		}
-		if (error) {
-			return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
-		}
-		return isOpen && Boolean(value.length) ? (
-			<div>
-				{data.map((suggestion, index) => (
-					<div key={suggestion.value} {...getItemProps({ item: suggestion })}>
-						{suggestion.value}
-					</div>
-				))}
-				{Boolean(value.length) && (
-					<div {...getItemProps({ item: { label: value, value: value } })}>
-						Show all results for "{value}"
-					</div>
-				)}
-			</div>
-		) : null;
-	}}
-/>
+    <SearchBox
+        render={({ 
+            loading, 
+            error, 
+            data, 
+            value, 
+            downshiftProps: { isOpen, getItemProps } 
+            }) => {
+                if (loading) {
+                    return <div>Fetching Suggestions.</div>;
+                }
+                if (error) {
+                    return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+                }
+                return isOpen && Boolean(value.length) ? (
+                    <div>
+                        {data.map((suggestion, index) => (
+                            <div key={suggestion.value} {...getItemProps({ item: suggestion })}>
+                                {suggestion.value}
+                            </div>
+                        ))}
+                        {Boolean(value.length) && (
+                            <div {...getItemProps({ item: { label: value, value: value } })}>
+                                Show all results for "{value}"
+                            </div>
+                        )}
+                    </div>
+                ) : null;
+        }}
+    />
 ```
 
 Or you can also use render function as children
 
 ```js
-<SearchBox>
+    <SearchBox>
         {
             ({
                 loading,
@@ -389,29 +402,33 @@ Or you can also use render function as children
                 // return UI to be rendered
             )
         }
-</SearchBox>
+    </SearchBox>
 ```
 
 -   **renderError** `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
+
     ```js
-    renderError={(error) => (
-            <div>
-                Something went wrong!<br/>Error details<br/>{error}
-            </div>
-        )
-    }
+        renderError={(error) => (
+                <div>
+                    Something went wrong!<br/>Error details<br/>{error}
+                </div>
+            )
+        }
     ```
+
 -   **renderNoSuggestion** `String or JSX or Function` [optional]
     can be used to render a message when there is no suggestions found.
+    
     ```js
-    renderNoSuggestion={() => (
-            <div>
-                No suggestions found
-            </div>
-        )
-    }
+        renderNoSuggestion={() => (
+                <div>
+                    No suggestions found
+                </div>
+            )
+        }
     ```
+
 -   **renderQuerySuggestions** `String or JSX or Function` [optional]
     This prop has been marked as deprecated starting `v3.12.6`. Please use the `renderPopularSuggestions` prop instead.
 
@@ -431,39 +448,41 @@ You can render popular suggestions in a custom layout by using the `renderQueryS
         provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
         Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
-    ```javascript
-    <SearchBox
-        dataField={['original_title', 'original_title.search']}
-        componentId="BookSensor"
-        enablePopularSuggestions
-        renderPopularSuggestions={({
-            value,
-            data: suggestions,
-            downshiftProps: { isOpen, getItemProps, highlightedIndex },
-        }) =>
-            isOpen &&
-            Boolean(value.length) && (
-                <div>
-                    {(suggestions || []).map((suggestion, index) => (
-                        <div
-                            style={{
-                                padding: 10,
-                                background:
-                                    index === highlightedIndex
-                                        ? '#eee'
-                                        : 'transparent',
-                                color: 'green',
-                            }}
-                            key={suggestion.value}
-                            {...getItemProps({ item: suggestion })}
-                        >
-                            {suggestion.value}
-                        </div>
-                    ))}
-                </div>
-            )
-        }
-    />
+    ```jsx
+        <SearchBox
+            dataField={['original_title', 'original_title.search']}
+            componentId="BookSensor"
+            enablePopularSuggestions
+            renderPopularSuggestions={({
+                value,
+                data: suggestions,
+                downshiftProps: { isOpen, getItemProps, highlightedIndex },
+            }) =>
+                isOpen &&
+                Boolean(value.length) && (
+                    <div>
+                        {(suggestions || []).map((suggestion, index) => (
+                            <div
+                                style={{
+                                    padding: 10,
+                                    background:
+                                        index === highlightedIndex
+                                            ? '#eee'
+                                            : 'transparent',
+                                    color: 'green',
+                                }}
+                                key={suggestion.value}
+                                {...getItemProps({ item: suggestion })}
+                            >
+                                {suggestion.value}
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
+        />
+```
+
 
 -   **getMicInstance** `Function` [optional]
     You can pass a callback function to get the instance of `SpeechRecognition` object, which can be used to override the default configurations.
@@ -477,35 +496,37 @@ You can render popular suggestions in a custom layout by using the `renderQueryS
         `INACTIVE` - mic is in inactive state i.e not listening<br/>
         `STOPPED` - mic has been stopped by the user<br/>
         `ACTIVE` - mic is listening<br/>
-        `DENIED` - permission is not allowed<br/>
+        `DENIED` - permission is not allowed<br/><br/>
+
     ```js
-    	renderMic = {({ handleClick, status }) => {
-    				switch(status) {
-    					case 'ACTIVE':
-    						return <img src="/active_mic.png" onClick={handleClick} />
-    					case 'DENIED':
-    					case 'STOPPED':
-    						return <img src="/mute_mic.png" onClick={handleClick} />
-    					default:
-    						return <img src="/inactive_mic.png" onClick={handleClick} />
-    				}
-    	}}
+        renderMic = {({ handleClick, status }) => {
+            switch(status) {
+                case 'ACTIVE':
+                    return <img src="/active_mic.png" onClick={handleClick} />
+                case 'DENIED':
+                case 'STOPPED':
+                    return <img src="/mute_mic.png" onClick={handleClick} />
+                default:
+                    return <img src="/inactive_mic.png" onClick={handleClick} />
+            }
+        }}
     ```
+
 -   **onChange** `function` [optional]
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
 
     ```js
-    <DataSearch
-    	value={this.state.value}
-    	onChange={(value, triggerQuery, event) => {
-    		this.setState(
-    			{
-    				value,
-    			},
-    			() => triggerQuery(),
-    		);
-    	}}
-    />
+        <SearchBox
+            value={this.state.value}
+            onChange={(value, triggerQuery, event) => {
+                this.setState(
+                    {
+                        value,
+                    },
+                    () => triggerQuery(),
+                );
+            }}
+        />
     ```
 
 > Note:
@@ -515,21 +536,21 @@ You can render popular suggestions in a custom layout by using the `renderQueryS
 -   **onData** `Function` [optional]
     You can pass a callback function to listen for the changes in suggestions. The function receives `data`, `rawData`, `aggregationData`, `loading` and `error` as a single parameter object.
 
-```js
-<SearchBox
-	componentId="SearchBoxSensor"
-    // ... other props ...
-    onData = {({
-        data,
-        rawData,
-        aggregationData,
-        loading,
-        error
-    }) =>{
-            // do something with the updated properties
-    }}
-/>
-```
+    ```jsx
+        <SearchBox
+            componentId="BookSensor"
+            // ... other props ...
+            onData = {({
+                data,
+                rawData,
+                aggregationData,
+                loading,
+                error
+            }) =>{
+                    // do something with the updated properties
+            }}
+        />
+    ```
 
 -   **onError** `Function` [optional]
     You can pass a callback function that gets triggered in case of an error and provides the `error` object which can be used for debugging or giving feedback to the user if needed.
@@ -538,10 +559,10 @@ You can render popular suggestions in a custom layout by using the `renderQueryS
 -   **recentSearchesIcon** `JSX` [optional]
 You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-search-icon` key in the `innerClass` prop.
 
-    ```html
+    ```jsx
         <SearchBox
-            ...
-            enableRecentSearches
+            // ... other props
+            enableRecentSuggestions
             innerClass={{
                 'recent-search-icon': '...',
             }}
@@ -552,9 +573,9 @@ You can use a custom icon in place of the default icon for the recent search ite
 -   **popularSearchesIcon** `JSX` [optional]
 You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-search-icon` key in the `innerClass` prop.
 
-    ```html
+    ```jsx
         <SearchBox
-            ...
+            // ... other props
             enablePopularSuggestions
             innerClass={{
                 'popular-search-icon': '...'
@@ -570,39 +591,39 @@ This prop returns only the distinct value documents for the specified field. It 
 -   **distinctFieldConfig** `Object` [optional]
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-```jsx
-<SearchBox
-	....
-	distinctField="authors.keyword"
-	distinctFieldConfig={{
-		inner_hits: {
-			name: 'most_recent',
-			size: 5,
-			sort: [{ timestamp: 'asc' }],
-		},
-		max_concurrent_group_searches: 4,
-	}}
-/>
-```
+    ```jsx
+        <SearchBox
+            //....
+            distinctField="authors.keyword"
+            distinctFieldConfig={{
+                inner_hits: {
+                    name: 'most_recent',
+                    size: 5,
+                    sort: [{ timestamp: 'asc' }],
+                },
+                max_concurrent_group_searches: 4,
+            }}
+        />
+    ```
 
 	> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
 -   **renderItem** `Function` [optional] 
      You can render each suggestion in a custom layout by using the `renderItem` prop.
     <br/>
-```js
-<SearchBox
-	componentId="SearchBoxSensor"
-    // ... other props ...
-    renderItem={(suggestion)=>{
-        return <span>{suggestion.label}</span> // custom render every suggestion item in dropdown
-    }}
-/>
-```
+    ```js
+        <SearchBox
+            componentId="BookSensor"
+            // ... other props ...
+            renderItem={(suggestion)=>{
+                return <span>{suggestion.label}</span> // custom render every suggestion item in dropdown
+            }}
+        />
+    ```
 
 -   **applyStopwords** `Boolean` When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
 
--   **stopwords** `Array[String]` It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
+-   **customStopwords** `Array[String]` It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
 -   **categoryField** `string` [optional]
     Data field whose values are used to provide category specific suggestions.
@@ -612,7 +633,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 <br />
 
 <!-- Example will be added once the implementation PR is merged -->
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/DataSearch" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/rs-searchbox/packages/web/examples/SearchBox" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## Styles
 
@@ -634,27 +655,9 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 2. update the underlying DB query with `customQuery`,
 3. connect with external interfaces using `beforeValueChange`, `onValueChange`, `onValueSelected` and `onQueryChange`,
 4. specify how search suggestions should be filtered using `react` prop,
-5. use your own function to render suggestions using `parseSuggestion` prop. It expects an object back for each `suggestion` having keys `label` and `value`. The query is run against the `value` key and `label` is used for rendering the suggestions. `label` can be either `String` or JSX. For example,
 
-```js
-<SearchBox
-  ...
-  parseSuggestion={(suggestion) => ({
-    label: (
-        <div>
-            {suggestion._source.original_title} by
-            <span style={{ color: 'dodgerblue', marginLeft: 5 }}>
-                {suggestion._source.authors}
-            </span>
-        </div>
-    ),
-    value: suggestion._source.original_title,
-    source: suggestion._source  // for onValueSelected to work with parseSuggestion
-  })}
-/>
-```
 
--   it's also possible to take control of rendering individual suggestions with `parseSuggestion` prop or the entire suggestions rendering using the `render` prop. Check the [custom suggestions](/docs/reactivesearch/v3/advanced/customsuggestions/) recipe for more info.
+-   it's also possible to take control of rendering individual suggestions with `renderItem` prop or the entire suggestions rendering using the `render` prop. Check the [custom suggestions](/docs/reactivesearch/v3/advanced/customsuggestions/) recipe for more info.
 
 6. add the following [synthetic events](https://reactjs.org/events.html) to the underlying `input` element:
 
@@ -670,59 +673,59 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
     > 1. All these events accepts the `triggerQuery` as a second parameter which can be used to trigger the `SearchBox` query with the current selected value (useful to customize the search query execution).
     > 2. There is a known [issue](https://github.com/appbaseio/reactivesearch/issues/1087) with `onKeyPress` when `autosuggest` is set to true. It is recommended to use `onKeyDown` for the consistency.
 
-```js
-<SearchBox
-  ...
-  className="custom-class"
-  style={{"paddingBottom": "10px"}}
-  customQuery={
-    function(value, props) {
-      return {
-        query: {
-            match: {
-                data_field: "this is a test"
+    ```js
+    <SearchBox
+    //...
+    className="custom-class"
+    style={{"paddingBottom": "10px"}}
+    customQuery={
+        function(value, props) {
+        return {
+            query: {
+                match: {
+                    data_field: "this is a test"
+                }
             }
         }
-      }
+        }
     }
-  }
-  beforeValueChange={
-    function(value) {
-      // called before the value is set
-      // returns a promise
-      return new Promise((resolve, reject) => {
-        // update state or component props
-        resolve()
-        // or reject()
-      })
+    beforeValueChange={
+        function(value) {
+        // called before the value is set
+        // returns a promise
+        return new Promise((resolve, reject) => {
+            // update state or component props
+            resolve()
+            // or reject()
+        })
+        }
     }
-  }
-  onValueChange={
-    function(value) {
-      console.log("current value: ", value)
-      // set the state
-      // use the value with other js code
+    onValueChange={
+        function(value) {
+        console.log("current value: ", value)
+        // set the state
+        // use the value with other js code
+        }
     }
-  }
-  onValueSelected={
-    function(value, cause, source) {
-      console.log("current value: ", value)
+    onValueSelected={
+        function(value, cause, source) {
+        console.log("current value: ", value)
+        }
     }
-  }
-  onQueryChange={
-    function(prevQuery, nextQuery) {
-      // use the query with other js code
-      console.log('prevQuery', prevQuery);
-      console.log('nextQuery', nextQuery);
+    onQueryChange={
+        function(prevQuery, nextQuery) {
+        // use the query with other js code
+        console.log('prevQuery', prevQuery);
+        console.log('nextQuery', nextQuery);
+        }
     }
-  }
-  // specify how and which suggestions are filtered using `react` prop.
-  react={
-    "and": ["pricingFilter", "dateFilter"],
-    "or": ["searchFilter"]
-  }
-/>
-```
+    // specify how and which suggestions are filtered using `react` prop.
+    react={
+        "and": ["pricingFilter", "dateFilter"],
+        "or": ["searchFilter"]
+    }
+    />
+    ```
 
 -   **className** `String`
     CSS class to be injected on the component container.
@@ -783,55 +786,57 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
-```jsx
- <SearchBox
-        showIcon={false}
-        addonBefore={
-          <img
-            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-            height="30px"
-          />
-        }
-        id="search-component"
-        ...
- />
-```
+
+    ```jsx
+        <SearchBox
+            showIcon={false}
+            addonBefore={
+            <img
+                src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+                height="30px"
+            />
+            }
+            id="search-component"
+            // ...other props
+        />
+    ```
 
 
 -   **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 
 <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
 
-```jsx
- <SearchBox
-        showIcon={false}
-        addonAfter={
-          <img
-            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-            height="30px"
-          />
-        }
-        id="search-component"
-        ...
- />
-```
+    ```jsx
+        <SearchBox
+            showIcon={false}
+            addonAfter={
+            <img
+                src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+                height="30px"
+            />
+            }
+            id="search-component"
+            // ... other props
+        />
+    ```
 
 -   **expandSuggestionsContainer** `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
 <img src="https://i.imgur.com/x3jF23m.png"/>
-```jsx
- <SearchBox
-        expandSuggestionsContainer={false}
-        addonBefore={
-          <img ... />
-        }
-        addonAfter={
-          <img ... />
-        }
-        id="search-component"
-        ...
- />
-```
+
+    ```jsx
+        <SearchBox
+            expandSuggestionsContainer={false}
+            addonBefore={
+                <img  />
+            }
+            addonAfter={
+                <img  />
+            }
+            id="search-component"
+            // ... other props
+        />
+    ```
 
 ## Examples
 
-<a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FDataSearch" target="_blank">DataSearch with default props</a>
+<a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
