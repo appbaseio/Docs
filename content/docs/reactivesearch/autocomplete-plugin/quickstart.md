@@ -43,97 +43,11 @@ As a final step, pass this plugin to the `plugins` property while calling [`auto
 
 Make sure to provide a container (e.g., a `div`), not an `input`. Autocomplete generates a fully accessible search box for you.
 
-```js title="JavaScript"
-import { autocomplete } from "@algolia/autocomplete-js";
-import "@algolia/autocomplete-theme-classic";
-import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
-import { renderResults } from "./utils";
-
-var JSONTreeView = require("json-tree-view");
-
-// appbase client config object
-const appbaseClientConfig = {
-  url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
-  app: "best-buy-dataset",
-  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
-  settings: {
-    userId: "s@s",
-    enableQueryRules: true,
-    recordAnalytics: true,
-  },
-};
-
-// reactivesearch api configuration
-const rsApiConfig = {
-  size: 5,
-  highlight: true,
-  dataField: [
-    {
-      field: "name.autosuggest",
-      weight: "1",
-    },
-    {
-      field: "name",
-      weight: "3",
-    },
-  ],
-  enableRecentSuggestions: true,
-  recentSuggestionsConfig: {
-    size: 2,
-    minHits: 2,
-    minChars: 4,
-    index: "best-buy-dataset",
-  },
-  enablePopularSuggestions: true,
-  popularSuggestionsConfig: {
-    size: 2,
-    minChars: 3,
-    minCount: 3,
-    index: "best-buy-dataset",
-  },
-  index: "best-buy-dataset",
-};
-
-// instantiating the plugin
-const suggestionsPlugin = createSuggestionsPlugin(
-  appbaseClientConfig,
-  {
-    ...rsApiConfig,
-  },
-  {
-    onItemSelect: (props) => {
-      const {
-        item: { label },
-        setQuery,
-      } = props;
-
-      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
-      renderResults(
-        {
-          value: label.replace(/(<([^>]+)>)/gi, ""),
-          url: appbaseClientConfig.url,
-          app: appbaseClientConfig.app,
-          credentials: appbaseClientConfig.credentials,
-          settings: appbaseClientConfig.settings,
-          query: {
-            dataField: rsApiConfig.dataField,
-          },
-        },
-        JSONTreeView
-      );
-    },
-  }
-);
-
-autocomplete({
-  container: "#autocomplete",
-  plugins: [suggestionsPlugin],
-  debug: false,
-  openOnFocus: true,
-  detachedMediaQuery: "none",
-  // ...
-});
-```
+<iframe
+  src="https://carbon.now.sh/embed/8KZOWek6JpN1XBRPkcix"
+  style="width: 955px; height: 1533px; border:0; transform: scale(1); overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/basic-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
