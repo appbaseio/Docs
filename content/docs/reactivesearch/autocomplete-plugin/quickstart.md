@@ -45,9 +45,10 @@ Make sure to provide a container (e.g., a `div`), not an `input`. Autocomplete g
 
 <iframe
   src="https://carbon.now.sh/embed/8KZOWek6JpN1XBRPkcix"
-  style="width: 955px; height: 1533px; border:0; transform: scale(1); overflow:hidden;"
+  style="width: 955px; max-width: 100%; height: 1533px; border:0; transform: scale(1); overflow:hidden;"
   sandbox="allow-scripts allow-same-origin">
 </iframe>
+
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/autocomplete-suggestions-plugin/tree/main/examples/basic-example?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
