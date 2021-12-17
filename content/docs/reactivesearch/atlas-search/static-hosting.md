@@ -34,14 +34,14 @@ Read more about enabling hosting in the official MongoDB Realm docs over [here](
 
 For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch).
 
-<iframe src="https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch?fontsize=14&moduleview=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="@appbaseio/react-searchbox-demo-example"
+     title="datasearch-example-mongo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-First, download the search UI project's directory locally. Next, build the search UI app by running `yarn build` (or `npm run build`). Now upload the files under the `build/` directory to the Realm Hosting UI.
+First, download the search UI project's directory locally. Next, build the search UI app by running `yarn && yarn build` (or `npm install && npm run build`). Now upload the files under the `build/` directory to the Realm Hosting UI.
 
 ![](https://i.imgur.com/4dz4dh1.png)
 
