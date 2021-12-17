@@ -314,11 +314,13 @@ To set the number of buckets to be returned by aggregations.
 
 ### queryFormat
 
-Sets the query format, can be `or` or `and`. Defaults to `or`.
+Sets the query format, can be `or`, `and` and [date format](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html). Defaults to `or`.
 
 - `or` returns all the results matching any of the search query text's parameters. For example, searching for "bat man" with or will return all the results matching either "bat" or "man".
 
 - On the other hand with `and`, only results matching both "bat" and "man" will be returned. It returns the results matching all of the search query text's parameters."
+
+- `queryFormat` can be set as Elasticsearch [date format](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) for `range` type of queries. It allows Elasticsearch to parse the range values (dates) to a specified format before querying the data. You can find the valid date formats at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats).
 
 | Type     | Applicable on query of type | Required |
 | -------- | --------------------------- | -------- |
@@ -533,8 +535,21 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 | ----- | --------------------------- | -------- |
 | `int` | `range`                     | false    |
 
+
+
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/k5MeCmPeELaWvTYeqoGl"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+### calendarInterval
+
+To set the histogram bar interval when range value is of type date, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. You can read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#calendar_intervals).
+
+| Type     | Applicable on query of type | Required |
+| -------- | --------------------------- | -------- |
+| `string` | `range`                     | false    |
+
+**Example Playground**: 
+<iframe src=https://play.reactivesearch.io/embed/k9XiDeleXCZ6cXHWTTr4     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-k9XiDeleXCZ6cXHWTTr4   ></iframe>
 
 ### aggregationField
 
@@ -895,9 +910,21 @@ Specify additional options for fetching recent suggestions. It can accept the fo
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 
+- **customEvents** `Object` Custom analytics events to filter the recent suggestions.
+For example,
+```js
+    "recentSuggestionsConfig": {
+        "customEvents": {
+            "browser": "Chrome",
+            "user_id": "john@appbase.io"
+        }
+    }
+```
+
 **Example Playground**: 
 
-<iframe frameborder="1px"      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/hqrRunRhWsc7oJWWE1qx"></iframe>
+<iframe frameborder="1px" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/VaJF1wffzE2guKfyEhBr"></iframe>
+
 
 ### enablePopularSuggestions
 When set to `true`, popular searches based on aggregate end-user data are returned as suggestions as per the popular suggestions config (either defaults, or as set through [popularSuggestionsConfig](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig) or via Popular Suggestions settings in the control plane)
@@ -927,10 +954,20 @@ Specify additional options for fetching popular suggestions. It can accept the f
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 
+- **customEvents** `Object` Custom analytics events to filter the popular suggestions.
+For example,
+```js
+    "popularSuggestionsConfig": {
+        "customEvents": {
+            "browser": "Chrome",
+            "user_id": "john@appbase.io"
+        }
+    }
+```
 
 **Example Playground**: 
 
-<iframe src=https://play.reactivesearch.io/embed/pVsIGW32K1SRLhixRgGv     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-pVsIGW32K1SRLhixRgGv   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-3H9Z2lOjp7nQjDqnHDZY   ></iframe>
 
 
 ## Settings Properties
@@ -940,6 +977,9 @@ Specify additional options for fetching popular suggestions. It can accept the f
 
 ### enableQueryRules
 `bool` defaults to `true`. It allows you to configure whether to apply the query rules for a particular query or not.
+
+### enableSearchRelevancy
+`bool` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.
 
 ### customEvents
 `Object` It allows you to set the custom events which can be used to build your own analytics on top of the Appbase.io analytics. Further, these events can be used to filter the analytics stats from the Appbase.io dashboard. In the below example, we're setting up two custom events that will be recorded with each search request.
