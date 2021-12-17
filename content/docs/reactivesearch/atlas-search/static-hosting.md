@@ -32,11 +32,11 @@ Read more about enabling hosting in the official MongoDB Realm docs over [here](
 
 ## Uploading Search UI Files
 
-For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch).
+For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github/appbaseio/searchbox/tree/feat%2Fupdate-examples-nov-2021/packages/react-searchbox/examples/by-usecases/facet-filters).
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch?fontsize=14&moduleview=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat%2Fupdate-examples-nov-2021/packages/react-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="datasearch-example-mongo"
+     title="@appbaseio/react-searchbox-mongo-facet-filters-example"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
@@ -44,6 +44,8 @@ For demonstration purposes, we will use the below Search UI on Codesandbox.io. D
 First, download the search UI project's directory locally. Next, build the search UI app by running `yarn && yarn build` (or `npm install && npm run build`). Now upload the files under the `build/` directory to the Realm Hosting UI.
 
 ![](https://i.imgur.com/4dz4dh1.png)
+
+**Note:** Ensure that the `static/` directory is also uploaded along with the other files.
 
 Once uploaded, select "Review Draft & Deploy" action. This will generate a public URL for your search UI app.
 
