@@ -32,7 +32,7 @@ Read more about enabling hosting in the official MongoDB Realm docs over [here](
 
 ## Uploading Search UI Files
 
-For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github/appbaseio/searchbox/tree/feat%2Fupdate-examples-nov-2021/packages/react-searchbox/examples/by-usecases/facet-filters).
+For demonstration purposes, we will use the below Search UI on Codesandbox.io. Direct Github link for the same is over [here](https://github.com/appbaseio/searchbox/tree/feat%2Fupdate-examples-nov-2021/packages/react-searchbox/examples/by-usecases/facet-filters).
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat%2Fupdate-examples-nov-2021/packages/react-searchbox/examples/by-usecases/facet-filters?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
