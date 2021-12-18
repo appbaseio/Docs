@@ -13,6 +13,11 @@ nestedSidebar: 'flutter-searchbox'
 
 ## How does it work?
 
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <img alt="Basic Example" src="https://raw.githubusercontent.com/appbaseio/flutter-assets/master/basic.gif" width="250" />
+  <img alt="Voice search" src="https://raw.githubusercontent.com/appbaseio/flutter-assets/master/voicesearch.gif" style="margin-left: 50px" width="250" /> 
+</div>
+
 Flutter [SearchBox](https://pub.dev/documentation/flutter_searchbox/latest/flutter_searchbox/SearchBox-class.html) offers a performance focused searchbox UI widget to query and display results from your Elasticsearch cluster.
 
 ## Usage
