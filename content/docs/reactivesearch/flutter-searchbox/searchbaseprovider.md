@@ -25,106 +25,54 @@ The [SearchBase Constructor](https://pub.dev/documentation/searchbase/1.0.1/sear
 
 ```dart
 
-SearchBase(
-    String index,
-    String url,
-    String credentials,
-    {
-        AppbaseSettings appbaseConfig,
-        TransformRequest transformRequest,
-        TransformResponse transformResponse,
-        Map<String, String> headers
-    }
-)
+final searchbaseInstance = 
+            SearchBase(
+                'good-books-ds',
+                'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+                'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
+            );
 
 ```
 
-**To configure the Appbase environments**
+### Usage with All Props
 
--   **index** `string` [Required]
-    Refers to an index of the Elasticsearch cluster.
+```dart
 
-    `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
+final searchbaseInstance = 
+            SearchBase(
+                'good-books-ds',
+                'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+                'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
+                appbaseConfig: AppbaseSettings(
+                    recordAnalytics: true,
+                    // Use unique user id to personalize the recent searches
+                    userId: 'jon@appbase.io',
+                ),
+                transformRequest: Future (Map request) => Future.value({ ...request, 'credentials': 'include'}),
+                transformResponse: Future (Map elasticsearchResponse) async {
+                    final ids = elasticsearchResponse['hits']['hits'].map(item => item._id);
+                    final extraInformation = await getExtraInformation(ids);
+                    final hits = elasticsearchResponse['hits']['hits'].map(item => {
+                        final extraInformationItem = extraInformation.find(
+                            otherItem => otherItem._id === item._id,
+                        );
+                        return Future.value({
+                            ...item,
+                            ...extraInformationItem,
+                        };
+                    }));
 
--   **url** `string` [Required]
-    URL for the Elasticsearch cluster
+                                    return Future.value({
+                        ...elasticsearchResponse,
+                        'hits': {
+                            ...elasticsearchResponse.hits,
+                            hits,
+                        },
+                    });
+                }                                                               
+            );
 
--   **credentials** `string` [Required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
-
--   **appbaseConfig** `Object`
-    allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
-
-    -   **recordAnalytics** `boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
-    -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
-    -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
-    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
-
-**To customize the query execution**
-
--   **headers** `Object` [optional] set custom headers to be sent with each server request as key/value pairs.
-
--   **[transformRequest](https://pub.dev/documentation/searchbase/1.0.1/searchbase/TransformRequest.html)** `Function` Enables transformation of network request before
-    execution. This function will give you the request object as the param and expect an updated request in return, for execution.
-
-    This function will give you the request object as the param and expect an updated request in return, for execution.
-    For example, we add the `credentials` property in the request using `transformRequest`.
-
-    ```dart
-    SearchBase(
-        // ...
-        {
-            transformRequest: Future (Map request) =>
-                Future.value({
-                    ...request,
-                    'credentials': 'include',
-                })
-            }
-        }
-    )
-    ```
-
--   **[transformResponse](https://pub.dev/documentation/searchbase/1.0.1/searchbase/TransformResponse.html)** `Function` Enables transformation of search network response before  
-    rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.
-
-    For example:
-    
-    ```dart
-    SearchBase(
-        // ...
-        {
-             transformResponse: Future (Map elasticsearchResponse) async {
-                final ids = elasticsearchResponse['hits']['hits'].map(item => item._id);
-                final extraInformation = await getExtraInformation(ids);
-                final hits = elasticsearchResponse['hits']['hits'].map(item => {
-                    final extraInformationItem = extraInformation.find(
-                        otherItem => otherItem._id === item._id,
-                    );
-                    return Future.value({
-                        ...item,
-                        ...extraInformationItem,
-                    };
-                }));
-
-                return Future.value({
-                    ...elasticsearchResponse,
-                    'hits': {
-                        ...elasticsearchResponse.hits,
-                        hits,
-                    },
-                });
-            }
-        }
-    )
-    ```
-
-
-
-
-
-
-<!-- // basic example here -->
+```
 
 ### Advanced Usage
 
@@ -132,12 +80,8 @@ While the `flutter-searchbox` library should give you good controls out of the b
 
 **Example Use Cases**
 
-One would need to use the state (context) of the search widgets, e.g. to show a list of all active user query inputs including the ability to unselect an input to affect the particular search component's input as well.
+One would need to use the state (context) of the search widgets, e.g. to show a list of all active user query inputs including the ability to unselect an input to affect the particular search widget's input as well.
 
-Another use can be to create a saved query feature where it's important persist the state of all the search and filter widgets.
-
-
-**Basic Usage**
 
 ```dart
 import 'package:flutter/material.dart';
@@ -160,9 +104,30 @@ class _AdvancedWidgetState extends State<AdvancedWidget> {
     initState() {
         super.initState();
     }
-
+    
+    // get the list of active widgets wrapped by the searchbase instance
     Map<String, SearchController> get activeWidgets {
         return SearchBaseProvider.of(context).getActiveWidgets();
+    }
+
+    // get the widgets' value
+    void getWidgetValue(String widgetId){
+        return SearchBaseProvider.of(context).getSearchWidget(widgetId)?.value;
+    }
+    
+
+    // reset the widgets' values
+    void resetWidgetValues(){
+        final activeWidgets = this.activeWidgets;
+        for (var id in activeWidgets.keys) {
+            var componentInstance = activeWidgets[id];
+            componentInstance?.setValue(null);
+        }
+    }
+
+    // trigger query for a widget
+    void triggerWidgetQuery(String widgetId){
+        SearchBaseProvider.of(context).getSearchWidget(widgetId)?.triggerCustomQuery();
     }
 }
 
@@ -176,7 +141,7 @@ class _AdvancedWidgetState extends State<AdvancedWidget> {
 
 
 **Example** 
-The below example renders the active filters using a separate `SelectedFilters()` widget, which uses the [SearchBase](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html) context to access various [SearchController](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchController-class.html) instances.
+The below example renders the active filters using a separate [SelectedFilters](https://pub.dev/documentation/flutter_searchbox_ui/latest/flutter_searchbox_ui/SelectedFilters-class.html/) widget, which uses the [SearchBase](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html) context to access various [SearchController](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchController-class.html) instances.
 
 
-TODO : attach selectedfilters example here
+TODO : attach selectedfilters example here, use same as flutter-search-ui--selectedfilters example
