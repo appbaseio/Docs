@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'searchbase-reactivesearch'
 ---
 
-[searchase](https://github.com/appbaseio/searchbox/tree/master/packages/searchbase) is a lightweight & platform agnostic library to build the search UIs with Elasticsearch.
+[Searchase](https://github.com/appbaseio/searchbox/tree/master/packages/searchbase) is a lightweight & platform agnostic library to build the search UIs with Elasticsearch.
 
 > Note:
 >
@@ -30,12 +30,12 @@ Although we don't ship any UI component with `searchbase` directly, we provide e
 
 ## How to use?
 
-The `searchbase` library exports two classes named [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) and [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/).
+The `searchbase` library exports two classes named [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) and [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/).
 
-The [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) class holds the state for all the active components and acts like a connector among those components to establish a communication.
+The [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) class holds the state for all the active components and acts like a connector among those components to establish a communication.
 
 
-The [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class represents a search component that can be used to build different kinds of search experiences. For examples,
+The [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class represents a search component that can be used to build different kinds of search experiences. For examples,
 
 -   a search bar component,
 -   a category filter component,
@@ -43,6 +43,6 @@ The [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) 
 -   a location filter component,
 -   a component to render the search results etc.
 
-The [SearchComponent](docs/reactivesearch/searchbase/overview/searchbase/) class is useful when you're using multiple components that depend on each other. For example, a filter component (to display the category options) depends on the search query (search component).
+The [SearchComponent](/docs/reactivesearch/searchbase/overview/searchbase/) class is useful when you're using multiple components that depend on each other. For example, a filter component (to display the category options) depends on the search query (search component).
 
->    If you're only using a single component then [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class should work well.
+>    If you're only using a single component then [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class should work well.
