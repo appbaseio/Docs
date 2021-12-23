@@ -19,7 +19,7 @@ nestedSidebar: 'flutter-searchbox'
 
 ### Basic Usage
 
-`SearchBaseProvider` accepts two parameters, a (SearchBase)[https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html] instance and a child widget around which the SearchBase context is wrapped.
+`SearchBaseProvider` accepts two parameters, a [SearchBase](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html)  instance and a child widget around which the SearchBase context is wrapped.
 
 The [SearchBase Constructor](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase/SearchBase.html) takes properties to configure the Appbase environments and customize the query execution.
 
@@ -140,8 +140,3 @@ class _AdvancedWidgetState extends State<AdvancedWidget> {
 - **getSearchWidget** `Function: (String widgetId) → SearchController` returns the [SearchController](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchController-class.html) instance object contained within the [SearchBase](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html) context for the provided component `id`.
 
 
-**Example** 
-The below example renders the active filters using a separate [SelectedFilters](https://pub.dev/documentation/flutter_searchbox_ui/latest/flutter_searchbox_ui/SelectedFilters-class.html/) widget, which uses the [SearchBase](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchBase-class.html) context to access various [SearchController](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchController-class.html) instances.
-
-
-TODO : attach selectedfilters example here, use same as flutter-search-ui--selectedfilters example
