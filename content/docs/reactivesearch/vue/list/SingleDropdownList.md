@@ -87,6 +87,8 @@ Example uses:
     show count of number of occurences besides an item. Defaults to `true`.
 -   **showSearch** `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to false.
+-   **showClear** `Boolean` [optional]
+    whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
 -   **renderItem** `Function|slot-scope` [optional]
     customize the rendered list via a function or slot-scope which receives the item label, count and isChecked & expects a JSX or String back. For example:
 
