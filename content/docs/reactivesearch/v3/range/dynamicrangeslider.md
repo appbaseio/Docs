@@ -111,8 +111,25 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected range of the slider. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **includeNullValues** `Boolean` [optional]
-    If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
+    If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.    
+-   **queryFormat** `String`
+    Pass the `queryFormat` prop when dealing with date-type fields. Defaults to `date`. It sets the date format to be used in the query, can accept one of the following:
+<br />
 
+|              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
+| ---------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| `epoch_millis` **(default)** |                                                                       `epoch_millis`                                                                       |
+|               `epoch_second` |                                                                       `epoch_second`                                                                       |
+|                 `basic_time` |                                                                       `HHmmss.SSSZ`                                                                        |
+|       `basic_time_no_millis` |                                                                         `HHmmssZ`                                                                          |
+|                       `date` |                                                                        `yyyy-MM-dd`                                                                        |
+|                 `basic_date` |                                                                         `yyyyMMdd`                                                                         |
+|            `basic_date_time` |                                                                  `yyyyMMdd'T'HHmmss.SSSZ`                                                                  |
+|  `basic_date_time_no_millis` |                                                                    `yyyyMMdd'T'HHmmssZ`                                                                    |
+|        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`      
+> Note: `queryFormat` is mandatory to pass when dealing with date types.
+-   **calendarInterval** `String` [optional]
+    It sets the interval for aggreation-data when dealing with date-types. Defaults to `month`. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
 ## Demo
 
 <br />
