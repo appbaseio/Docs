@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-![Image to be displayed](https://i.imgur.com/rthmjVh.png)
+![Searchbox image](https://i.imgur.com/8UPzgG4.png)
 
 `SearchBox` creates a search box UI component that is connected to one or more database fields. A `SearchBox` queries the appbase.io backend with query type `suggestion` to render different kind of suggestions, read more about the `suggestion` query type [here](https://docs.appbase.io/docs/search/reactivesearch-api/implement/#suggestion).
 
@@ -158,7 +158,7 @@ Example uses:
 -   **enableQuerySuggestions** `bool` [optional]
     This prop has been marked as deprecated starting `v3.12.6`. Please use the `enablePopularSuggestions` prop instead.
 -   **enablePopularSuggestions** `bool` [optional]
-    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-suggestions/).
+    Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
     > Note:
     >
