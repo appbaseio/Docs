@@ -217,6 +217,7 @@ Example uses:
 -   **fieldWeights** `Array` [optional] <mark color="yellow">[deprecated]</mark>
     set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 > Note: The `fieldWeights` property has been marked as deprecated in <b>v3.21.0</b> of ReactiveSearch and <b>v7.47.0</b> of Appbase and would be removed in the next major release. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
+
 -   **placeholder** `String` [optional]
     set placeholder text to be shown in the component's input field. Defaults to "Search".
 -   **type** `String` [optional]
