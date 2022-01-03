@@ -578,7 +578,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 <br />
 
 <!-- Example will be added once the implementation PR is merged -->
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/rs-searchbox/packages/web/examples/SearchBox" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBox" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## Styles
 
