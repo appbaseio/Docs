@@ -154,9 +154,7 @@ Example uses:
     > Note:
     >
     > This property only works with [ReactiveSearch API](/docs/search/reactivesearch-api/) i.e when `enableAppbase` is set to `true` in `ReactiveBase` component.
-   
--   **enableQuerySuggestions** `bool` [optional]
-    This prop has been marked as deprecated starting `v3.12.6`. Please use the `enablePopularSuggestions` prop instead.
+
 -   **enablePopularSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
@@ -430,61 +428,6 @@ Or you can also use render function as children
             )
         }
     ```
-
--   **renderQuerySuggestions** `String or JSX or Function` [optional]
-    This prop has been marked as deprecated starting `v3.12.6`. Please use the `renderPopularSuggestions` prop instead.
-
--   **renderPopularSuggestions** `String or JSX or Function` [optional]
-You can render popular suggestions in a custom layout by using the `renderQuerySuggestions` prop.
-    <br/>
-    It accepts an object with these properties:
-    -   **`loading`**: `boolean`
-        indicates that the query is still in progress.
-    -   **`error`**: `object`
-        An object containing the error info.
-    -   **`data`**: `array`
-        An array of popular suggestions obtained based on search value.
-    -   **`value`**: `string`
-        current search input value i.e the search query being used to obtain suggestions.
-    -   **`downshiftProps`**: `object`
-        provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
-        Read more about it [here](https://github.com/downshift-js/downshift#children-function).
-
-    ```jsx
-        <SearchBox
-            dataField={['original_title', 'original_title.search']}
-            componentId="BookSensor"
-            enablePopularSuggestions
-            renderPopularSuggestions={({
-                value,
-                data: suggestions,
-                downshiftProps: { isOpen, getItemProps, highlightedIndex },
-            }) =>
-                isOpen &&
-                Boolean(value.length) && (
-                    <div>
-                        {(suggestions || []).map((suggestion, index) => (
-                            <div
-                                style={{
-                                    padding: 10,
-                                    background:
-                                        index === highlightedIndex
-                                            ? '#eee'
-                                            : 'transparent',
-                                    color: 'green',
-                                }}
-                                key={suggestion.value}
-                                {...getItemProps({ item: suggestion })}
-                            >
-                                {suggestion.value}
-                            </div>
-                        ))}
-                    </div>
-                )
-            }
-        />
-```
-
 
 -   **getMicInstance** `Function` [optional]
     You can pass a callback function to get the instance of `SpeechRecognition` object, which can be used to override the default configurations.
