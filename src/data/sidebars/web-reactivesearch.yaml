@@ -59,6 +59,8 @@
               link: /docs/reactivesearch/v3/range/ratingsfilter/
       - group: Search Components
         items:
+            - title: SearchBox
+              link: /docs/reactivesearch/v3/search/searchbox/
             - title: DataSearch
               link: /docs/reactivesearch/v3/search/datasearch/
             - title: CategorySearch
