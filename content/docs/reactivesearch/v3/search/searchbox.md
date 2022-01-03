@@ -154,6 +154,7 @@ Example uses:
     > Note:
     >
     > This property only works with [ReactiveSearch API](/docs/search/reactivesearch-api/) i.e when `enableAppbase` is set to `true` in `ReactiveBase` component.
+   
 -   **enableQuerySuggestions** `bool` [optional]
     This prop has been marked as deprecated starting `v3.12.6`. Please use the `enablePopularSuggestions` prop instead.
 -   **enablePopularSuggestions** `bool` [optional]
