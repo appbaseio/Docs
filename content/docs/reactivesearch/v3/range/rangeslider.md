@@ -83,12 +83,13 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     ```js
         <RangeSlider
             componentId="RangeSliderSensor"
-            dataField="guests"
-            title="Guests"
+            dataField="timestamp"
+            title="Publication Year"
             range={{
                 start: new Date('1980-12-12'),
                 end: new Date('2000-12-12'),
             }}
+            queryFormat="date"            
         />
     ```
 -   **nestedField** `String` [optional]
@@ -151,7 +152,7 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 
 > Note: `queryFormat` is mandatory to pass when dealing with date types.
 -   **calendarInterval** `String` [optional]
-    It sets the interval for aggreation-data when dealing with date-types. Defaults to `month`. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
+    sets the histogram bar interval, applicable dealing with date-types. Defaults to `month`. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
 ## Demo
 
 <br />
