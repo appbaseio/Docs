@@ -114,6 +114,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.    
 -   **queryFormat** `String`
     Set the date format to be used for querying data, default value is set to `date`. It can accept one of the following values: 
+
 <br />
 
 |              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
@@ -126,10 +127,15 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 |                 `basic_date` |                                                                         `yyyyMMdd`                                                                         |
 |            `basic_date_time` |                                                                  `yyyyMMdd'T'HHmmss.SSSZ`                                                                  |
 |  `basic_date_time_no_millis` |                                                                    `yyyyMMdd'T'HHmmssZ`                                                                    |
-|        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`      
+|        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`                                                                  |
+
+
+
 > Note: `queryFormat` is mandatory to pass when dealing with date types.
+
 -   **calendarInterval** `String` [optional]
     It sets the interval for aggreation-data when dealing with date-types. Default value is calculated internally based on the range - `start` and `end` values. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
+
 ## Demo
 
 <br />
