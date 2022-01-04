@@ -78,7 +78,7 @@ Example uses:
 -   **range** `Object`
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
     
-    `range` prop accepts `Date` objects as values corresponding to `start` and `end` keys when date-types are dealt with.
+    `range` prop accepts (JavaScript) `Date` objects as values for the `start` and `end` keys when a date type field is used for the `dataField`.
 
     ```js
         <RangeInput
