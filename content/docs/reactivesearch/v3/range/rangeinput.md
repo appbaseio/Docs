@@ -147,7 +147,7 @@ Example uses:
 |        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`      
 > Note: `queryFormat` is mandatory to pass when dealing with date types.
 -   **calendarInterval** `String` [optional]
-    sets the histogram bar interval, applicable dealing with date-types. Defaults to `month`. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
+    It sets the interval for aggreation-data when dealing with date-types. Default value is calculated internally based on the range - `start` and `end` values. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
 ## Demo
 
 <br />

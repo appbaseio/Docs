@@ -129,7 +129,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 |        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`      
 > Note: `queryFormat` is mandatory to pass when dealing with date types.
 -   **calendarInterval** `String` [optional]
-    It sets the interval for aggreation-data when dealing with date-types. Defaults to `month`. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
+    It sets the interval for aggreation-data when dealing with date-types. Default value is calculated internally based on the range - `start` and `end` values. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
 ## Demo
 
 <br />
