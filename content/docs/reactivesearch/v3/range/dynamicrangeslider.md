@@ -113,7 +113,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 -   **includeNullValues** `Boolean` [optional]
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.    
 -   **queryFormat** `String`
-    Pass the `queryFormat` prop when dealing with date-type fields. Defaults to `date`. It sets the date format to be used in the query, can accept one of the following:
+    Set the date format to be used for querying data, default value is set to `date`. It can accept one of the following values: 
 <br />
 
 |              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
