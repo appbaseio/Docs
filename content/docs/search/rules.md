@@ -15,7 +15,7 @@ sidebar: 'docs'
 Query Rules enable you to cover the search relevance blind spots by creating "If this, then that" style rules tailored to your business use-case. For example, you can use query rules to promote an item, modify the search query, or show dynamic facets based on different kinds of search queries. Query Rules can also be enabled for a fixed period of time: this makes Query Rules a great way for implementing seasonal sales and promotions. Query Rules can be visualized as `If-This-Then-That`, e.g. **_If_** **search query contains 'Google',** **_then_**
 **promote 'Chromebook'.** When building an e-commerce search experience, customers more often than not require customizing their product search based on different criteria.
 
-![query rule dashboard](https://www.dropbox.com/s/1n4uznradc78lch/Screenshot%202020-02-20%2011.06.00.png?raw=1)
+![query rule dashboard](https://imgur.com/bqUGtZw.png)
 
 > Query rules are available with the **Production** and **Enterprise** plans.
 
@@ -33,11 +33,7 @@ Here are some use cases where Query Rules can help you improve search relevance
 
 **If** conditions help in deciding when to trigger a query rule based on which configured actions will be executed. There are 2 types of trigger
 
-1.  **Always:**
-
-    This is helpful when you want to execute an action with all the search requests. For example, you want to always **hide** a product that is no longer available in store.
-
-2.  **Condition**
+1.  **Query**
 
     This is helpful when you want to execute an action with a specific search/filter condition. Example if query `contains` a specific search term. There are 4 types of search condition which you can configure
 
@@ -48,10 +44,23 @@ Here are some use cases where Query Rules can help you improve search relevance
 
     <br />
     Here, you can also configure filter conditions, which can help you set triggers based on filtering field and value. For example, `brand` is `apple`.
+    
+    ![Trigger type Query](https://imgur.com/299HvCQ.png)
+
+2.  **Index:**
+
+    ====Sample Text=====
+    ![Trigger type Index](https://imgur.com/UnrSql9.png)
+
+3.  **Always:**
+
+    This is helpful when you want to execute an action with all the search requests. For example, you want to always **hide** a product that is no longer available in store.
+
+    ![Trigger type Always](https://imgur.com/IbUWssn.png)
 
 You can also configure rules for specific `indexes` in your Elasticsearch cluster and for a specific `time period` (example you only want to promote result for a seasonal sale on your e-commerce store ). By default, it is applicable on all the indexes and all the time.
 
-![configure if condition](https://www.dropbox.com/s/3zdnfuzm9bnqln3/Screenshot%202020-02-20%2010.20.25.png?raw=1)
+![configure if condition](https://imgur.com/UKR5uiz.png)
 
 ### Advanced Editor
 
@@ -92,6 +101,12 @@ Here are some example conditions:
 **Then** actions help you configure the actions that you want to invoke when triggering conditions are matched. Following are the actions that you can invoke
 
 > Note: Actions are executed in the order in which are listed in your dashboard. You can drag and drop to change the sequence of executing actions.
+
+### Script Action
+
+===Sample Text===
+![Script Action Rules](https://i.imgur.com/okANLd3.png)
+![Script Action](https://imgur.com/ydKsf7O.png)
 
 ### Promote Results
 
