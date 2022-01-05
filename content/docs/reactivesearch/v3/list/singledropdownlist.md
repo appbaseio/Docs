@@ -218,6 +218,8 @@ Or you can also use render function as children
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 -   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render.     Defaults to `false`.
+
+
 ## Demo
 
 <br />
