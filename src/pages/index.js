@@ -133,6 +133,13 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/search/rules/',
 												duration: 7,
 											},
+											{
+												title: 'Script',
+												description:
+													'Script is an event-driven server side function to perform side-effects.',
+												link: '/docs/search/script/',
+												duration: 10,
+											},
 										],
 									},
 									'4': {

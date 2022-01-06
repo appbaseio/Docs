@@ -35,6 +35,13 @@
                   title: "API Reference"
             - link: /docs/search/rules/
               title: "Query Rules"
+            - link: /docs/search/script/
+              title: "Script"
+              items:
+                - link: /docs/search/script/gettingstarted
+                  title: "Getting Started"
+                - link: /docs/search/script/examples
+                  title: "Examples"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
