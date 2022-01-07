@@ -18,7 +18,7 @@ Example to use [compromise](https://www.npmjs.com/package/compromise) package to
 
 <iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Request-modification-with-compromise?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-### Request modification with crypto-js
+### Authorization with crypto-js
 
 <iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Request-modification-with-crypto-js?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
