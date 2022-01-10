@@ -77,6 +77,21 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
 -   **range** `Object`
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
+    
+    `range` prop accepts `Date` objects as values corresponding to `start` and `end` keys when date-types are dealt with.
+
+    ```js
+        <RangeSlider
+            componentId="RangeSliderSensor"
+            dataField="timestamp"
+            title="Publication Year"
+            range={{
+                start: new Date('1980-12-12'),
+                end: new Date('2000-12-12'),
+            }}
+            queryFormat="date"            
+        />
+    ```
 -   **nestedField** `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 -   **title** `String or JSX` [optional]
@@ -119,7 +134,29 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **includeNullValues** `Boolean` [optional]
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
+-   **queryFormat** `String`
+    Pass the `queryFormat` prop when dealing with date-type fields. Defaults to `date`. It sets the date format to be used in the query, can accept one of the following:
 
+<br />
+
+|              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
+| ---------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| `epoch_millis` **(default)** |                                                                       `epoch_millis`                                                                       |
+|               `epoch_second` |                                                                       `epoch_second`                                                                       |
+|                 `basic_time` |                                                                       `HHmmss.SSSZ`                                                                        |
+|       `basic_time_no_millis` |                                                                         `HHmmssZ`                                                                          |
+|                       `date` |                                                                        `yyyy-MM-dd`                                                                        |
+|                 `basic_date` |                                                                         `yyyyMMdd`                                                                         |
+|            `basic_date_time` |                                                                  `yyyyMMdd'T'HHmmss.SSSZ`                                                                  |
+|  `basic_date_time_no_millis` |                                                                    `yyyyMMdd'T'HHmmssZ`                                                                    |
+|        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`                                                                  |
+
+
+> Note: `queryFormat` is mandatory to pass when dealing with date types.
+
+-   **calendarInterval** `String` [optional]
+    It sets the interval for aggreation-data when dealing with date-types. Default value is calculated internally based on the range - `start` and `end` values. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
+    
 ## Demo
 
 <br />
