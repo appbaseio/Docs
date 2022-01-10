@@ -782,6 +782,8 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
         />
     ```
 
+-   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
+
 ## Examples
 
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
