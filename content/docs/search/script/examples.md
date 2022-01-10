@@ -19,6 +19,7 @@ Example to use [compromise](https://www.npmjs.com/package/compromise) package to
 <iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Request-modification-with-compromise?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### Authorization with crypto-js
+The following example uses the [crypto-js](https://www.npmjs.com/package/crypto-js) package to authenticate a request using `HmacSHA264`.
 
 <iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Request-modification-with-crypto-js?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
