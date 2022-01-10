@@ -94,6 +94,8 @@ Example uses:
     show count of number of occurences besides an item. Defaults to `true`.
 -   **showSearch** `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to false.
+-   **showClear** `Boolean` [optional]
+    whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.     
 -   **render** `Function|slot-scope` [optional]
     an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
     <br/>
