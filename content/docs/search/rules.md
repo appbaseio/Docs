@@ -12,8 +12,7 @@ sidebar: 'docs'
 
 ## Overview
 
-Query Rules enable you to cover the search relevance blind spots by creating "If this, then that" style rules tailored to your business use-case. For example, you can use query rules to promote an item, modify the search query, or show dynamic facets based on different kinds of search queries. Query Rules can also be enabled for a fixed period of time: this makes Query Rules a great way for implementing seasonal sales and promotions. Query Rules can be visualized as `If-This-Then-That`, e.g. **_If_** **search query contains 'Google',** **_then_**
-**promote 'Chromebook'.** When building an e-commerce search experience, customers more often than not require customizing their product search based on different criteria.
+Query Rules enable you to cover the search relevance blind spots by creating "If this, then that" style rules tailored to your business use-case. For example, you can use query rules to promote an item, modify the search query, or show dynamic facets based on different kinds of search queries. Query Rules can also be enabled for a fixed period of time: this makes Query Rules a great way for implementing seasonal sales and promotions. Query Rules can be visualized as `If-This-Then-That`, e.g. **_If_** **search query contains 'Google',** **_then_** **promote 'Chromebook'.** When building an e-commerce search experience, customers more often than not require customizing their product search based on different criteria.
 
 ![query rule dashboard](https://imgur.com/bqUGtZw.png)
 
@@ -21,7 +20,7 @@ Query Rules enable you to cover the search relevance blind spots by creating "If
 
 ## Use Cases
 
-Here are some use cases where Query Rules can help you improve search relevance
+Here are some use cases where Query Rules can help you improve the search relevance.
 
 -   Dynamically update facets based on the query. Example if a user is searching for "laptops", show filters related laptops only
 -   Promote result during discounts/sale on your store
@@ -31,11 +30,11 @@ Here are some use cases where Query Rules can help you improve search relevance
 
 ## Configure **If** Condition
 
-**If** conditions help in deciding when to trigger a query rule based on which configured actions will be executed. There are 2 types of trigger
+**If** conditions help in deciding when to trigger a query rule based on which configured actions will be executed. There are 3 types of triggers:
 
 1.  **Query**
 
-    This is helpful when you want to execute an action with a specific search/filter condition. Example if query `contains` a specific search term. There are 4 types of search condition which you can configure
+    A query based trigger is useful when you want to execute an action with a specific search and/or filter condition. For example, if query `contains` a specific search term. There are 4 types of search conditions that you can configure:
 
     -   `Query is`: applied when there is an **exact** query match
     -   `Query contains`: applied when a search query contains the specified query
@@ -47,12 +46,12 @@ Here are some use cases where Query Rules can help you improve search relevance
     
     ![Trigger type Query](https://imgur.com/299HvCQ.png)
 
-2.  **Index:**
+2.  **Index**
 
-    ====Sample Text=====
+    An index based trigger is useful when you want to execute an action based on an indexing request. For example, add a custom field when indexing a document. There are four types of indexing requests: `Index`, `Update`, `Create` and `Bulk` that can be used here.
     ![Trigger type Index](https://imgur.com/UnrSql9.png)
 
-3.  **Always:**
+3.  **Always**
 
     This is helpful when you want to execute an action with all the search requests. For example, you want to always **hide** a product that is no longer available in store.
 
@@ -104,7 +103,10 @@ Here are some example conditions:
 
 ### Script Action
 
-===Sample Text===
+A script action allows a user to define a custom JavaScript function (executed in a V8 engine context) to modify either the search request or search response. It comes with support for the following global packages: `fetch` (both async and sync modes) to create side-effects or merge the request / response based on the response from an external API call, `nlp` (via compromise.js), cryptographic utilities (via crypto.js) and lodash.
+
+Script action can be use with all types of query rules, and is the only action that can be used with an `index` type of query rule.
+
 ![Script Action Rules](https://i.imgur.com/okANLd3.png)
 ![Script Action](https://imgur.com/ydKsf7O.png)
 
