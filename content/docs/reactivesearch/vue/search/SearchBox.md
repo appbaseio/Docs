@@ -792,8 +792,15 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 - **value-selected**
   is called when a search is performed either by pressing **enter** key or the input is blurred.
 
-- **suggestions**
-  You can use this event to listen for the changes in suggestions.The function receives `suggestions` list.
+- **on-data**
+  gets triggered when either of  data, rawData, aggregationData, loading and error changes. You can use a callback function to listen for the changes. The function receives `data`, `rawData`, `aggregationData`, `loading` and `error` as a single parameter object.
+```html
+    <search-box
+        componentId="BookSensor"
+        // ... other props ...
+        @on-data="(param) => { // do something }"
+    />
+```  
 
 - **error**
   gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
