@@ -37,7 +37,9 @@ The below props are only needed if you're not using the `SearchBox` component un
 
     -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
     -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+    -   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
