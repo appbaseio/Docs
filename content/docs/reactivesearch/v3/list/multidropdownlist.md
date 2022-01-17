@@ -111,6 +111,8 @@ function Index(props) {
     show count of number of occurences besides an item. Defaults to `true`.
 -   **showSearch** `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to `false`.
+-   **showClear** `Boolean` [optional]
+    whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
 -   **transformData** `Function` [optional]
     allows transforming the data to render inside the list. You can change the order, remove, or add items, tranform their values with this method. It provides the data as param which is an array of objects of shape `{ key: <string>, doc_count: <number> }` and expects you to return the array of objects of same shape.
 -   **showMissing** `Boolean` [optional]
@@ -241,6 +243,7 @@ Or you can also use render function as children
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+-   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 
 ## Demo
 

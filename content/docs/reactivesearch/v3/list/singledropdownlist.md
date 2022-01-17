@@ -88,6 +88,8 @@ Example uses:
     show count of number of occurences besides an item. Defaults to `true`.
 -   **showSearch** `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to `false`.
+-   **showClear** `Boolean` [optional]
+    whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
 -   **showMissing** `Boolean` [optional]
     defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
 -   **missingLabel** `String` [optional]
@@ -217,6 +219,8 @@ Or you can also use render function as children
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+-   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
+
 
 ## Demo
 
