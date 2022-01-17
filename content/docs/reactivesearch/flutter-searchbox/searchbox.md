@@ -1,5 +1,5 @@
 ---
-title: 'Flutter SearchBox API Reference'
+title: 'SearchBox'
 meta_title: 'API Reference for Flutter SearchBox'
 meta_description: 'Flutter SearchBox offers a performance focused searchbox UI widget to query and display results from your Elasticsearch cluster.'
 keywords:
