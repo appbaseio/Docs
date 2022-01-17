@@ -134,9 +134,9 @@ const HomePage = ({ data, location }) => {
 												duration: 7,
 											},
 											{
-												title: 'Script',
+												title: 'Scripts',
 												description:
-													'Script is an event-driven server side function to perform side-effects.',
+													'User defined JavaScript functions typically executed during the request or response cycle of a search query or when indexing data',
 												link: '/docs/search/script/',
 												duration: 10,
 											},
