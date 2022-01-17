@@ -66,3 +66,5 @@ A script function has access to the execution context(read-only) which has all t
 Query rules are useful to define the trigger conditions for a script, for example, a query rule to execute a script only for the search requests made to `products` index.
 
 Script affects the search latency so it is advisable to avoid time-consuming tasks. You can measure the script performance by looking at the `script_took` value in the response.
+
+> NOTE: For cron scripts the `context` will contain just the `envs` that the user passed while creating the rule.

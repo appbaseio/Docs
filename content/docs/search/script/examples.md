@@ -59,3 +59,8 @@ The following example adds a calculated field to the Elasticsearch indexing requ
 An example, to modify the Elasticsearch bulk request to add a new field to `index` requests. 
 
 <iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Modify-Bulk-Request?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+## Cron Examples
+### Add a new doc into index every minute
+
+An example, to add a new doc into an index `test-v2` every minute.

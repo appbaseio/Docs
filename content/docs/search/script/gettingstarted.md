@@ -33,16 +33,21 @@ We can categorize the scripts into two categories on the basis of execution cont
 
 - Request
 - Response
+- Cron
 
 <b>Response</b> scripts would have access to the `request` and `envs` which can be used to within the script. A <b>Request</b> script must return the `request` object.
 
 <b>Post-Request</b> scripts would have access to the `request`, `response` and `envs` and expected to return the `response` object.
+
+<b>Cron</b> scripts would be run at a certain schedule (passed during creation). It will have access to just the user passed `envs`.
 
 ### Script context
 
 Script has access to a global object named context (read only) that has the following properties:
 
 #### request
+
+> `cron` scripts do not get this field.
 
 It contains the `request` information, which has the following structure:
 
@@ -57,6 +62,8 @@ It contains the `request` information, which has the following structure:
 - `headers` represents request headers in the key/value format, where `key` represents the header name and `value` represents the header value.
 
 #### response
+
+> `cron` scripts do not get this field.
 
 Response returned by Elasticsearch in the following format:
 
@@ -75,6 +82,8 @@ Response returned by Elasticsearch in the following format:
 > Note: The `response` property is not available in <b>Pre-Request</b> scripts.
 
 #### envs
+
+> `cron` scripts do not get the following envs. It is passed the `envs` that the user sets while creating the cron script.
 
 Environment variables specific to a request, which could be helpful to write conditional logic in a script. The `envs` object has the following properties:
 
@@ -195,6 +204,38 @@ The following script modifies the response body by adding a custom value in resp
             }) 
         }
     }
+```
+
+## Cron Script
+
+Cron scripts are useful to run a certain task with a schedule. For eg: thinnk of a script that fetches data from some external endpoint and adds it to a certain index every n minutes. Cron scripts allow to do that.
+
+Unlike request and response scripts, cron scripts just take a block of code and runs it as a JS script. This gives the user more freedom regarding their code.
+
+The following script adds a `data` to the `test` index.
+
+The schedule should be passed in the `trigger.expression` field.
+
+```ts
+const data = {
+    'data': {
+        'my_data': true
+    }
+};
+
+async function putData() {
+    const r = await fetch('http://localhost:8000/test-v2/_doc', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': context.envs.auth
+        },
+        body: JSON.stringify(data)
+
+    });
+}
+
+putData();
 ```
 
 
