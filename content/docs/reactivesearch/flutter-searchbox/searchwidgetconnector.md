@@ -1,5 +1,5 @@
 ---
-title: 'Flutter SearchWidgetConnector API Reference'
+title: 'SearchWidgetConnector'
 meta_title: 'API Reference for Flutter SearchWidgetConnector'
 meta_description: 'Flutter SearchWidgetConnector offers a performance focused SearchWidgetConnector UI widget to query and display results from your Elasticsearch cluster.'
 keywords:
