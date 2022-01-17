@@ -1,5 +1,5 @@
 ---
-title: 'SearchBaseProvider API Reference'
+title: 'SearchBaseProvider'
 meta_title: 'API Reference for SearchBaseProvider'
 meta_description: 'SearchBaseProvider is a provider component that provides the search context to the child widgets.'
 keywords:
