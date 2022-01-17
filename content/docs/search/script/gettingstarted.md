@@ -1,33 +1,49 @@
 ---
-title: 'Getting Started'
-meta_title: 'Introduction to Script'
-meta_description: 'Query rules can act like a trigger event for a script to perform side effects'
+title: 'Getting Started with Scripts'
+meta_title: 'Getting started with scripts | Query Rules'
+meta_description: 'Scripts (Javascript) are user defined functions that can be executed during the request or response cycle of a search query, while indexing data or as a cron job.'
 keywords:
     - concepts
     - appbase
     - elasticsearch
     - reactivesearch
     - script
+    - query-rules
     - pipeline
 sidebar: 'docs'
 ---
 
-## Script Definition
-A script is a function written in JavaScript that must return the request/response based on the execution context.
+## What Are Scripts
+
+A script is a user defined JavaScript function typically executed during the request or response cycle of a search query or when indexing data. A script can also be invoked with a cron trigger. Scripts are available as an action with query rules.
+
+> **Note:** Conceptually, a script is run in a [V8 engine isolate](https://v8.dev/), and it is architecturally similar to how a Cloudflare worker operates.
+
+Use-cases for scripts:
+- Use a synchronous fetch request to get additional context, e.g. knowledge graph for a search query to return along with the search engine response
+- Use an asynchronous fetch request to create a side-effect, e.g. saving search logs/state to an external system, recording of search analytics to an external system
+- Use NLU/NLP to recognize entities and other PoS to modify the weights of the search query terms
+- Use cryptographic utilities to apply additional security checks
+
+Scripts run on the same machine that hosts the `reactivesearch-api` service (and Elasticsearch if it is hosted with appbase.io) and can make use of storage and state persistence using Elasticsearch.
 
 ### Types of Scripts
-We can categorize the scripts in two categories on the basis of execution context.
-- Pre-Request
-- Post-Request
 
-<b>Pre-Request</b> scripts would have access to the `request` and `envs` which can be used to implement the script. A <b>Pre-Request</b> script must return the `request` object.
+We can categorize the scripts into two categories on the basis of execution context.
+
+- Request
+- Response
+
+<b>Response</b> scripts would have access to the `request` and `envs` which can be used to within the script. A <b>Request</b> script must return the `request` object.
 
 <b>Post-Request</b> scripts would have access to the `request`, `response` and `envs` and expected to return the `response` object.
 
 ### Script context
-Script has access to a global object named context(read only) which would have the following properties:
+
+Script has access to a global object named context (read only) that has the following properties:
 
 #### request
+
 It contains the `request` information, which has the following structure:
 
 ```ts
@@ -38,10 +54,11 @@ It contains the `request` information, which has the following structure:
 ```
 
 - `body` represents the request body in string format.
-- `headers` Request headers in key/value format, where `key` represents the header name and `value` is the header value.
+- `headers` represents request headers in the key/value format, where `key` represents the header name and `value` represents the header value.
 
 #### response
-Response returned by Elasticsearch in following format:
+
+Response returned by Elasticsearch in the following format:
 
 ```ts
 {
@@ -50,13 +67,15 @@ Response returned by Elasticsearch in following format:
     headers: Object
 }
 ```
+
 - `code` HTTP response status code
 - `body` represents the response body in string format.
-- `headers` Response headers in key/value format, where `key` represents the header name and `value` is the header value.
+- `headers` represents response headers in the key/value format, where `key` represents the header name and `value` represents the header value.
 
 > Note: The `response` property is not available in <b>Pre-Request</b> scripts.
 
 #### envs
+
 Environment variables specific to a request, which could be helpful to write conditional logic in a script. The `envs` object has the following properties:
 
 ```ts
@@ -93,7 +112,7 @@ Environment variables specific to a request, which could be helpful to write con
     - `filters`: Filters extracted from the request body of `term` type of requests, where - `key` represents the filter name and `value` is the filter value.
 
 
-<b>An example with all Environments</b>
+<b>An example with all environments</b>
 
 ```ts
 {
@@ -111,11 +130,12 @@ Environment variables specific to a request, which could be helpful to write con
 }
 ```
 
-## How to define script?
-### Pre-Request script
-A pre-request script can be used to modify the incoming request or perform a side effect (for e.g. send reports to analytics) before the final request is made to Elasticsearch.
+## How to define a script?
+### Request script
 
-Pre-request script must implement the following function:
+A request script can be used to modify the incoming request or perform a side effect (for e.g. send reports to analytics) before the final request is made to Elasticsearch.
+
+request script must implement the following function:
 
 ```ts
     function handleRequest() {
@@ -149,8 +169,9 @@ The following script modifies the request body by adding a filter by brand name.
     }
 ```
 
-### Post-Request script
-Post-request script is useful to modify the Elasticsearch response or perform a side effect (for e.g. saved search) after getting the response from Elasticsearch.
+### Response script
+
+Response script is useful to modify the Elasticsearch response or perform a side effect (for e.g. saved search) after getting the response from Elasticsearch.
 
 Pre-request script must implement the following function:
 
@@ -178,7 +199,8 @@ The following script modifies the response body by adding a custom value in resp
 
 
 ## Validate Script
-A script can be validated using <a href="https://api.reactivesearch.io/#cef019de-b2da-4272-a38e-5ee0bb29ac6f" target="_blank">_script/validate</a> endpoint. It is possible to validate script with custom context variables (`request`, `response` and `envs`).
+
+A script can be validated using the <a href="https://api.reactivesearch.io/#cef019de-b2da-4272-a38e-5ee0bb29ac6f" target="_blank">_script/validate</a> endpoint. It is possible to validate a script with custom context variables (`request`, `response` and `envs`).
 
 The following request modifies the request body, which can be seen in the response of the <a href="https://api.reactivesearch.io/#cef019de-b2da-4272-a38e-5ee0bb29ac6f" target="_blank">_script/validate</a> route.
 
