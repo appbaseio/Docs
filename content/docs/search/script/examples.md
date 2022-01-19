@@ -65,4 +65,4 @@ An example, to modify the Elasticsearch bulk request to add a new field to `inde
 
 An example, to add a new doc into an index `test-v2` every minute.
 
-<iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Index-data-with-cron-script#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="600px" width="100%" src="https://replit.com/@appbaseio/Script-Index-data-with-cron-script?lite=true#script.js" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
