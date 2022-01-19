@@ -93,6 +93,18 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 											}`}
 										/>
 									</li>
+									<li>
+										<SidebarLink
+											link="/docs/reactivesearch/customization/"
+											title="Customization"
+											linkClasses={` link ${
+												location.pathname ===
+												'/docs/reactivesearch/customization/'
+													? 'sidebarlink-active blue fw6'
+													: 'midgrey hover-blue-l2'
+											}`}
+										/>
+									</li>
 								</ul>
 							) : null}
 							<NestedSidebar nestedSidebar={nestedSidebarFile} location={location} />
