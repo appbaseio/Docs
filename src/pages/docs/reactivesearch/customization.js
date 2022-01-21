@@ -12,7 +12,7 @@ const Customization = props => {
 			post={{ title: '' }}
 		>
 			<h2>Customization Guide</h2>
-			<p>In this guide we will discuss the customization possibilities with UI libraries.</p>
+			<p>In this guide, we will discuss the customization possibilities with the ReactiveSearch UI libraries.</p>
 			<div className="container">
 				<h3>Theming</h3>
 				<p>
