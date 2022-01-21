@@ -152,7 +152,7 @@ const HomePage = ({ data, location }) => {
 												duration: 1,
 											},
 											{
-												title: 'Customization',
+												title: 'UI Customization',
 												link: '/docs/reactivesearch/ui-customization',
                                                 description: 'Customization guide for UI libraries',
 												duration: 3,
