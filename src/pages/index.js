@@ -133,6 +133,13 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/search/rules/',
 												duration: 7,
 											},
+											{
+												title: 'Scripts',
+												description:
+													'User defined JavaScript functions typically executed during the request or response cycle of a search query or when indexing data',
+												link: '/docs/search/script/',
+												duration: 10,
+											},
 										],
 									},
 									'4': {
