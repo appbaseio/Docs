@@ -96,7 +96,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 									<li>
 										<SidebarLink
 											link="/docs/reactivesearch/customization/"
-											title="Customization"
+											title="UI Customization"
 											linkClasses={` link ${
 												location.pathname ===
 												'/docs/reactivesearch/customization/'
