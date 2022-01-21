@@ -99,7 +99,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 											title="UI Customization"
 											linkClasses={` link ${
 												location.pathname ===
-												'/docs/reactivesearch/customization/'
+												'/docs/reactivesearch/ui-customization/'
 													? 'sidebarlink-active blue fw6'
 													: 'midgrey hover-blue-l2'
 											}`}
