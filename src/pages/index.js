@@ -159,6 +159,12 @@ const HomePage = ({ data, location }) => {
 												duration: 1,
 											},
 											{
+												title: 'UI Customization',
+												link: '/docs/reactivesearch/ui-customization',
+                                                description: 'Customization guide for UI libraries',
+												duration: 3,
+											},
+											{
 												title: 'ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/v3/overview/quickstart/',
