@@ -35,7 +35,7 @@ The below props are only needed if you're not using the `SearchComponent` compon
     URL for the Elasticsearch cluster
 
 -   **credentials** `string` [Required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
+    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
 -   **appbaseConfig** `Object`
     allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
