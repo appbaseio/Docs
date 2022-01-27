@@ -372,3 +372,7 @@ In this example, we can see the usage of the `index` prop in the author-search-c
 In this example, we show the usage of the `transformRequest` prop, which gives us the request object whenever a query gets triggered from the search-box component. It allows us to either modify the request being sent or create a side-effect based on this request. Please go over [here](/docs/reactivesearch/vue-searchbox/examples/#transformrequest-prop-usage) to check it out.
 
 Check out the docs for API Reference over [here](/docs/reactivesearch/vue-searchbox/apireference/).
+
+### UI Customization Guide
+
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).

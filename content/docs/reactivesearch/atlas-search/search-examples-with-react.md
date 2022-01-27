@@ -241,4 +241,6 @@ Use [RangeInput](/docs/reactivesearch/v3/range/rangeinput/) component to add num
    ></iframe>
 
 
+### UI Customization Guide
 
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).
