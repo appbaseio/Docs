@@ -29,6 +29,10 @@ Start with deploying this project as a [Realm function](/docs/reactivesearch/atl
 
 Test the deployed Realm function with a React UI over [here](/docs/reactivesearch/atlas-search/search-examples-with-react/) or with Vue UI over [here](/docs/reactivesearch/atlas-search/search-examples-with-vue/).
 
+### UI Customization Guide
+
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).
+
 ### Search Use Cases with REST API examples
 
 Run different search use-cases with the deployed Realm function's REST API directly over [here](/docs/reactivesearch/atlas-search/search-examples/).
