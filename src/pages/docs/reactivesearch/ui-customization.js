@@ -11,8 +11,9 @@ const Customization = props => {
 			location={props.location}
 			post={{ title: '' }}
 		>
-			<h2>Customization Guide</h2>
+			<h2>UI Customization Guide</h2>
 			<p>In this guide, we will discuss the customization possibilities with the ReactiveSearch UI libraries.</p>
+			<img src="https://i.imgur.com/W3Fc4CB.jpg" alt="UI customization guide" max-width="800px"></img>
 			<div className="container">
 				<h3>Theming</h3>
 				<p>
