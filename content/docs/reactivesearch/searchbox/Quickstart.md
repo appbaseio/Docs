@@ -124,3 +124,7 @@ Custom styles can be added to make the UI sophisticated. Check the below demo wh
 ## Demo with custom styling
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/searchbox/examples/searchbar-with-style?fontsize=14&hidenavigation=1&view=preview" title="autocomplete-example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+### UI Customization Guide
+
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).
