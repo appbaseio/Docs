@@ -81,6 +81,8 @@ Example uses:
     title of the component to be shown in the UI.
 -   **defaultValue** `String` [optional]
     pre-select a label from the `data` array.
+-   **value** `String` [optional]
+    sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	
 -   **showRadio** `Boolean` [optional]
     show radio button icon for each range item. Defaults to `true`.
 -   **showFilter** `Boolean` [optional]
@@ -198,6 +200,35 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     ```
 
 ## Events
+
+- **change**
+  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+
+  ```jsx
+  <template>
+      <single-range
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: ""
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 -   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
