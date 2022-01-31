@@ -71,8 +71,8 @@ Example uses:
     title of the component to be shown in the UI.
 -   **defaultValue** `String` or `Array` [optional]
     an array of default selected label(s) to pre-select one or more buttons.
--   **value** `String Array` [optional]
-    controls the current value of the component. It selects the label (on mount and on update). Use this prop in conjunction with `onChange` function.
+-   **value** `String | Array<String>` [optional]
+    controls the current value of the component. It selects the label (on mount and on update). Use this prop in conjunction with the `change` event.	
 -   **multiSelect** `Boolean` [optional]
     whether multiple buttons can be selected, defaults to **true**. When set to **false**, only one button can be selected.
 -   **nestedField** `String` [optional]
@@ -208,6 +208,32 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 -   **change**
     gets triggered when you are using the `value` props and the component's value changes.
+
+  ```jsx
+  <template>
+      <toggle-button
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: ""
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 ## Examples
 
