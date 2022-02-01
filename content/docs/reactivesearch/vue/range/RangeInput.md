@@ -228,6 +228,35 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
 -   **change**
     is an event which accepts component's current **value** as a parameter. It is called when you are using the value prop and the component's value changes.
 
+  ```jsx
+  <template>
+      <range-input
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: {
+				  start: 3000,
+				  end: 50000
+			  }
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
+	
 ## Examples
 
 See more stories for RangeInput on Vue playground.

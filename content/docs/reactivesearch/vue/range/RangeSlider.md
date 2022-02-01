@@ -77,6 +77,8 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     title of the component to be shown in the UI.
 -   **defaultValue** `Object` [optional]
     an object with `start` and `end` keys and corresponding numeric values denoting the pre-selected range values.
+-   **value** `Object` [optional]
+    sets the current value of the component. It sets the value(an object with `start` and `end` keys), on mount and on update. Use this prop in conjunction with the `change` event.		
 -   **showFilter** `Boolean` [optional]
     show the selected item as a filter in the selected filters view. Defaults to `true`.
 -   **URLParams** `Boolean` [optional]
@@ -188,6 +190,38 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     ```
 
 ## Events
+
+- **change**
+  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+
+  ```jsx
+  <template>
+      <range-slider
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: {
+				  start: 3000,
+				  end: 50000
+			  }
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 -   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
