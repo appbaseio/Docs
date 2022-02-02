@@ -65,7 +65,7 @@ You can also configure rules for specific `indexes` in your Elasticsearch cluste
 
 Query Rules also comes with an advanced editor that allows writing truly expressive trigger conditions. A condition is of the form "`$field` `$operator` `$value`". It also allows combining conditions with AND/OR and ( ... ) clauses.
 
-![](http://recordit.co/yuOlGhAZQj.gif)
+![](https://imgur.com/44SGfkC.gif)
 
 A condition can be expressed using one of the following operators. Each operator operates on the `$field` and `$value`.
 

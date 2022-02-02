@@ -1,7 +1,7 @@
 ---
-title: 'Script Examples'
-meta_title: 'Script examples based on use cases'
-meta_description: 'Script - Implementation guide. Learn more about the Script concepts and see examples for some common use cases'
+title: 'ReactiveSarch Scripts: Examples'
+meta_title: 'ReactiveSearch Scripts: Examples based on use cases'
+meta_description: 'ReactiveSearch Scripts: Implementation guide. Learn more about the Script concepts and see examples for some common use cases'
 keywords:
     - concepts
     - appbase

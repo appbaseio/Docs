@@ -1,7 +1,7 @@
 ---
-title: 'Overview: Scripts'
-meta_title: 'Concepts and use-cases for scripts | Query Rules'
-meta_description: 'Scripts (Javascript) are user defined functions that can be executed during the request or response cycle of a search query, while indexing data or as a cron job.'
+title: 'Overview: ReactiveSearch Scripts'
+meta_title: 'Concepts and use-cases for ReactiveSearch Scripts | Query Rules'
+meta_description: 'ReactiveSearch Scripts (Javascript) are user defined functions that can be executed during the request or response cycle of a search query, while indexing data or as a cron job.'
 keywords:
     - concepts
     - appbase
@@ -13,39 +13,43 @@ keywords:
 sidebar: 'docs'
 ---
 
-## What Are Scripts
+## ReactiveSearch Scripts
 
-A script is a user defined JavaScript function typically executed during the request or response cycle of a search query or when indexing data. A script can also be invoked with a cron trigger. Scripts are available as an action with query rules.
+![](https://i.imgur.com/evlfAGN.png)
+
+A ReactiveSearch script is a user defined JavaScript function typically executed during the request or response cycle of a search query or when indexing data. A script can also be invoked with a cron trigger. Scripts are available as an action with query rules.
 
 > **Note:** Conceptually, a script is run in a [V8 engine isolate](https://v8.dev/), and it is architecturally similar to how a Cloudflare worker operates.
 
 Scripts run on the same machine that hosts the `reactivesearch-api` service (and Elasticsearch if it is hosted with appbase.io) and can make use of storage and state persistence using Elasticsearch.
 
-## Use-cases of scripts
+## Use-cases for ReactiveSearch Scripts
 
 Typical use-cases of scripts are:
 
-### To modify a request before querying the Elasticsearch
+### Modify a request before querying Elasticsearch
 
-- Create a script for `search` type of requests to pre-process the search query using NLP.
-- A script to add calculated fields to Elasticsearch index requests, for e.g. calculate `age` field from date of birth.
+- Use script to pre-process the user search query using NLP techniques
+- Add dynamic  fields to an Elasticsearch indexing request, for e.g. calculate age field from date of birth and add it to the document being indexed
 
-### To modify the response
+### Transform the search response
 
-- To promote/hide a result for search type of requests.
+- Promote or hide search results based on a dynamic criterion
+- Use an external API call to return additional context with the search response (e.g. implement a did you mean functionality)
 
-### To create side-effects
+### Create side effects
 
-- A script for `search` type of requests to read the search query and call a third party API asynchronously to record a search (saved search).
-- To use a third party API(synchronously) to correct the misspelled words for search type of requests.
+- Implement a saved search functionality by posting search query to an external API (asynchronously)
+- Log indexing requests or search queries that match a set criterion
+- Send e-mail alerts based on a certain set of search queries
 
-### To run at intervals
+### Run periodically
 
-A script can also be run in **cron** mode, where it is invoked at specific intervals. Here, the use-cases can be to:
+A script can also be run in a cron mode, where it is invoked at specific intervals.
 
-- Regularly update the search index with data from a primary data source,
-- Enrich data in the search index, e.g. performing named entity recognition,
-- Perform classification of data, e.g. unsupervised clustering.
+- Regularly update the search index with data from a primary data source (e.g. Sync updated data from Postgres or MongoDB),
+- Enrich data in the search index, e.g. perform named entity recognition,
+- Perform classification of data, e.g. unsupervised clustering
 
 ## Why Use Scripts
 

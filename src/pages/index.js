@@ -134,10 +134,10 @@ const HomePage = ({ data, location }) => {
 												duration: 7,
 											},
 											{
-												title: 'Scripts',
+												title: 'ReactiveSearch Scripts',
 												description:
-													'User defined JavaScript functions typically executed during the request or response cycle of a search query or when indexing data',
-												link: '/docs/search/script/',
+													'User defined JavaScript functions to tailor search relevance, transform indexing documents or apply security trimming',
+												link: '/docs/search/scripts/',
 												duration: 10,
 											},
 										],

@@ -13,7 +13,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-## What Are Scripts
+## What Are ReactiveSearch Scripts
 
 A script is a user defined JavaScript function typically executed during the request or response cycle of a search query or when indexing data. A script can also be invoked with a cron trigger. Scripts are available as an action with query rules.
 
