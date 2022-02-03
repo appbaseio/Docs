@@ -44,14 +44,19 @@ Here are some use cases where Query Rules can help you improve the search releva
     <br />
     Here, you can also configure filter conditions, which can help you set triggers based on filtering field and value. For example, `brand` is `apple`.
     
-    ![Trigger type Query](https://imgur.com/299HvCQ.png)
+    ![Trigger type Query](https://i.imgur.com/299HvCQ.png)
 
 2.  **Index**
 
     An index based trigger is useful when you want to execute an action based on an indexing request. For example, add a custom field when indexing a document. There are four types of indexing requests: `Index`, `Update`, `Create` and `Bulk` that can be used here.
-    ![Trigger type Index](https://imgur.com/UnrSql9.png)
+    ![Trigger type Index](https://i.imgur.com/VIUfeIk.png)
 
-3.  **Always**
+3. **Cron**
+    
+	A cron based trigger is useful when you want to execute a script on a periodic or a pre-defined schedule. For example, you can use a cron trigger to sync your search index with your primary data residing in a SQL database. Or you can use it to enrich the search index, e.g. perform a clustering analysis or add dynamic ranks or synonyms to the index.
+   ![Trigger type Cron](https://i.imgur.com/mYSzC0G.png)
+
+4.  **Always**
 
     This is helpful when you want to execute an action with all the search requests. For example, you want to always **hide** a product that is no longer available in store.
 
