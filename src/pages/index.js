@@ -194,6 +194,14 @@ const HomePage = ({ data, location }) => {
                                                     description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
+                                            {
+												title: 'No-code Search UI Builder',
+												description: '',
+												link:
+													'/docs/reactivesearch/ui-builder/search/',
+                                                    description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
+												duration: 6,
+											},
 										],
 									},
 									'5': {
