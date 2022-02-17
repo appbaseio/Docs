@@ -14,7 +14,7 @@ const GettingStarted = props => {
 			<h2>Choose your UI Library</h2>
 			<p>You can choose from these UI components libraries for building your search UI.</p>
             <p style={{marginTop: '10px', marginRight: '10px', display: 'inline'}}>Or take this 2 mins interactive quiz to get a library recommendation based on your use-case:</p>
-            <button data-tf-popup="o6CkRn05" data-tf-iframe-props="title=Choose UI Library" data-tf-medium="snippet" style={{all: 'unset', fontFamily: 'Helvetica,Arial,sans-serif', display: 'inline-block', maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', backgroundColor: '#0445AF', color: '#FFFFFF', fontSize: '16px', borderRadius: '20px', padding: '0 26px', fontWeight: 'bold', height: '40px', cursor: 'pointer', lineHeight: '40px', textAlign: 'center', margin: 0, textDecoration: 'none'}}>Take interactive quiz 🪄</button>
+            <button data-tf-popup="Zyd2RDro" data-tf-iframe-props="title=Choose UI Library" data-tf-medium="snippet" style={{all: 'unset', fontFamily: 'Helvetica,Arial,sans-serif', display: 'inline-block', maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', backgroundColor: '#0445AF', color: '#FFFFFF', fontSize: '16px', borderRadius: '20px', padding: '0 26px', fontWeight: 'bold', height: '40px', cursor: 'pointer', lineHeight: '40px', textAlign: 'center', margin: 0, textDecoration: 'none'}}>Take interactive quiz 🪄</button>
 			<div className="container getting-started" style={{ marginTop: "40px"}}>
 				<div className="card">
 					<img src="/images/ui-builder.png" alt="UI Builder" />
