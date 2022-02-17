@@ -17,6 +17,7 @@ const Customization = props => {
             <div style={{marginTop: '20px'}}>
                 <p style={{marginRight: '10px', display: 'inline'}}>Take this 2 mins interactive quiz to get a UI library recommendation based on your use-case</p>
                 <button data-tf-popup="Zyd2RDro" data-tf-iframe-props="title=Choose UI Library" data-tf-medium="snippet" style={{all: 'unset', fontFamily: 'Helvetica,Arial,sans-serif', display: 'inline-block', maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', backgroundColor: '#0445AF', color: '#FFFFFF', fontSize: '16px', borderRadius: '20px', padding: '0 26px', fontWeight: 'bold', height: '40px', cursor: 'pointer', lineHeight: '40px', textAlign: 'center', margin: 0, textDecoration: 'none'}}>Take interactive quiz 🪄</button>
+                <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
 			<div className="container">
 				<h3>Theming</h3>
