@@ -63,6 +63,7 @@ const plugins = [
 			icon: `static/favicon.png`,
 		},
 	},
+	`gatsby-plugin-offline`,
 	`gatsby-plugin-react-helmet`,
 	`gatsby-plugin-force-trailing-slashes`,
 
