@@ -81,6 +81,13 @@ const plugins = [
 	`gatsby-plugin-force-trailing-slashes`,
 
 	`gatsby-offline-search-index`,
+	{
+		resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+		options: {
+			devMode: true,
+		}
+	},	
+	// `gatsby-plugin-perf-budgets`,
 	/**
 	 *  Display Plugins
 	 */
