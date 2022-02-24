@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
 import { Link } from 'gatsby';
-import { Button } from '@appbaseio/designkit';
+// import { Button } from '@appbaseio/designkit';
 import { NavBar } from '../common';
 import { Spirit } from '../../styles/spirit-styles';
 
@@ -38,7 +38,13 @@ class HomeHeader extends React.Component {
 							instantly from your favorite sources. Create relevance visually. Build delightful search experiences with our low code UI kits.
 						</p>
 						<div className="mt8">
-							<Button
+							<button
+								style={{ background: '#00f68e' }}
+								className="signup-btn"
+							>
+								SignUp for free
+							</button>
+							{/* <Button
 								success
 								uppercase
 								shadow
@@ -48,16 +54,22 @@ class HomeHeader extends React.Component {
 								className="signup-btn"
 							>
 								SignUp for free
-							</Button>
+							</Button> */}
 							<Link to="/tutorial">
-								<Button 								
+								{/* <Button 								
 									uppercase 
 									shadow									
 									className="video-btn"
 									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
 								>
 									Try Interactive Tutorial
-								</Button>
+								</Button> */}
+								<button
+									className="video-btn"
+									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
+								>
+									Try Interactive Tutorial
+								</button>
 							</Link>
 							<Modal
 								open={open}
