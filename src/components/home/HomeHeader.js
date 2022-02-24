@@ -77,7 +77,7 @@ class HomeHeader extends React.Component {
 					</div>
 					<div className="home-header-graphics">
 						<div className="graphic">
-							<img src="images/app-cluster@3x.png" />
+							<img src="images/app-cluster@3x.webp" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Choose how to deploy
 							</p>
@@ -87,13 +87,13 @@ class HomeHeader extends React.Component {
 							<p className={`${Spirit.p} middarkgrey text-center`}>Low code UI Kits</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-search-relevancy@3x.png" />
+							<img src="images/home-search-relevancy@3x.webp" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Search Relevance ⚙️ 
 							</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-analytics@3x.png" />
+							<img src="images/home-analytics@3x.webp" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Search Insights
 							</p>

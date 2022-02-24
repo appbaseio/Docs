@@ -420,7 +420,7 @@ const HomePage = ({ data, location }) => {
 								elevation="2"
 								radius="4"
 							>
-								<img className="w10 mb1" src="/images/swift-logo.png" alt="Swift" />
+								<img className="w10 mb1" src="/images/swift-logo.webp" alt="Swift" />
 								Swift
 							</Box>
 							<Box

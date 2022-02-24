@@ -625,7 +625,7 @@ kbd {
 	/* background: url(../images/bg-home.svg) no-repeat, radial-gradient(ellipse at top, rgba(252,253,255,1) 0%,rgba(228,233,245,1) 100%); */
 	/* background: url(../images/bg-home.svg) no-repeat, linear-gradient(60deg, rgba(75, 55, 172, 1) 0%, rgba(99, 199, 193, 1) 100%);; */
 	background: linear-gradient(to right, rgba(199, 244, 255, 0.8), rgba(199, 244, 255, 0)),
-		url(../images/banner.png) no-repeat;
+		url(../images/banner.webp) no-repeat;
 	background-size: cover;
 }
 
