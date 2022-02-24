@@ -4,14 +4,21 @@ import loadable from '@loadable/component'
 import PropTypes from 'prop-types';
 
 // import TimelineOption from '@appbaseio/designkit/lib/molecules/TimelineOption';
-import Grid from '@appbaseio/designkit/lib/atoms/Grid';
-import { Card } from '@appbaseio/designkit';
-import { Icon, Box } from '../components/common';
-import { Layout } from '../components/common/layout';
-import { HomeHeader } from '../components/home';
+// import Grid from '@appbaseio/designkit/lib/atoms/Grid';
+// import { Card } from '@appbaseio/designkit';
+// import { Icon, Box } from '../components/common';
+// import { Layout } from '../components/common/layout';
+// import { HomeHeader } from '../components/home';
 import { Spirit } from '../styles/spirit-styles';
 
-const TimelineOption = loadable(() => import('@appbaseio/designkit/lib/molecules/TimelineOption'))
+const TimelineOption = loadable(() => import('@appbaseio/designkit/lib/molecules/TimelineOption'));
+const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
+const Card = loadable(() => import('@appbaseio/designkit'));
+const Icon = loadable(() => import('../components/common/Icon'));
+const Box = loadable(() => import('../components/common/Box'));
+const Layout = loadable(() => import('../components/common/layout'));
+const HomeHeader = loadable(() => import('../components/home'));
+
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
 const HomePage = ({ data, location }) => {
