@@ -467,12 +467,12 @@ const HomePage = ({ data, location }) => {
 							className="mt5"
 						>
 							<Card href="https://medium.appbase.io/tagged/appbase">
-								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" />
+								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
 								<h3>Tutorials</h3>
 								<p>Go from scratch to a full app with these tutorial guides.</p>
 							</Card>
 							<Card href=" https://appbase.io/pricing/#premium-support">
-								<img src={`${imagePrefix}/Support.png`} alt="Support" />
+								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
 								<h3>Support</h3>
 								<p>
 									Get dedicated support from the appbase.io team for your search
@@ -480,7 +480,7 @@ const HomePage = ({ data, location }) => {
 								</p>
 							</Card>
 							<Card>
-								<img src={`${imagePrefix}/Gitter.svg`} alt="Gitter" />
+								<img src={`${imagePrefix}/Gitter.svg`} alt="Gitter" width="120px" height="120px" />
 								<h3>Community</h3>
 								<p>We are always around and happy to help.</p>
 								<div className="community-icons pr-3 pl-3">
