@@ -366,7 +366,7 @@ const NavBar = ({ theme }) => {
 															<img
 																style={{ filter: 'grayscale(1)' }}
 																className="dropdown-content-icon mr2"
-																src="/images/swift-logo.png"
+																src="/images/swift-logo.webp"
 																alt="Swift"
 															/>
 															Swift
