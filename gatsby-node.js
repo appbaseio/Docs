@@ -11,30 +11,30 @@ exports.onCreateNode = async ({ node, getNode, actions }) =>
 	await onCreateNode.createMarkdownNodeFields({ node, getNode, actions });
 
 
-exports .onCreateWebpackConfig = ({
-	stage,
-	rules,
-	loaders,
-	plugins,
-	actions,
-  }) => {
-	  actions.setWebpackConfig({
-		optimization: {
-			splitChunks: {
-				name: false,
-				chunks: `all`,
-				cacheGroups: {
-					default: false,
-					vendors: false,
-					commons: {
-					  name: `commons`,
-					  chunks: `all`,
-					  // if a chunk is used more than half the components count,
-					  // we can assume it's pretty global
-					  minChunks: 2,
-					},
-				}
-			}
-		}
-	  })
-  }
+// exports .onCreateWebpackConfig = ({
+// 	stage,
+// 	rules,
+// 	loaders,
+// 	plugins,
+// 	actions,
+//   }) => {
+// 	  actions.setWebpackConfig({
+// 		optimization: {
+// 			splitChunks: {
+// 				name: false,
+// 				chunks: `all`,
+// 				cacheGroups: {
+// 					default: false,
+// 					vendors: false,
+// 					commons: {
+// 					  name: `commons`,
+// 					  chunks: `all`,
+// 					  // if a chunk is used more than half the components count,
+// 					  // we can assume it's pretty global
+// 					  minChunks: 2,
+// 					},
+// 				}
+// 			}
+// 		}
+// 	  })
+//   }
