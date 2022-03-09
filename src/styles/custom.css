@@ -1330,6 +1330,7 @@ to be custom HTML.
 	background: #e5eff5;
 	border-radius: 2px;
 	padding: 15px;
+	padding-left: 30px;
 }
 
 .home-search {
@@ -1345,7 +1346,7 @@ to be custom HTML.
 }
 
 .home-search-container {
-	width: 30%;
+	width: 35%;
 }
 
 .guide-box-container {
@@ -1631,6 +1632,7 @@ to be custom HTML.
 	}
 	.home-input {
 		padding: 8px;
+		padding-left: 30px;
 	}
 	.nav-logo {
 		padding-right: 2rem;
@@ -1905,4 +1907,16 @@ tbody tr td:nth-child(-n + 3) {
 	min-width: 8em;
 	max-width: 8em;
 	word-break: break-all;
+}
+
+.search-shorcut-button {
+	--inline-code-keylineColor: rgba(0, 0, 0, 0.05);
+	font-style: italic;
+	border: 1px solid var(--inline-code-keylineColor);
+	border-color: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	vertical-align: middle;
+	width: 20px;
+	height: 25px;
+	font-size: 15px;
 }

@@ -6,7 +6,7 @@ import data from '../../../data/search.index.json';
 import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
 import sidebar from '../../../data/sidebars/all-sidebar';
-
+import '../../../styles/custom.css';
 const search = new JsSearch.Search('url');
 search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
 
@@ -259,7 +259,7 @@ class AutoComplete extends React.Component {
 
 		return (
 			<>
-				<Icon name="search" className="w3 absolute top-3 right-3" />
+				<Icon name="search" className="w3 absolute top-3 left-3" />
 				<Autosuggest
 					suggestions={hits}
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -270,6 +270,7 @@ class AutoComplete extends React.Component {
 					inputProps={inputProps}
 					theme={theme}
 				/>
+				<button className='w3 absolute top-3 right-3 search-shorcut-button'>/</button>
 			</>
 		);
 	}
