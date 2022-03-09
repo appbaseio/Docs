@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
@@ -9,21 +9,37 @@ import Footer from './Footer';
 import '../../../styles/app.css';
 import '../../../styles/prism.css';
 
-const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => (
-	<>
-		<Helmet>
-			<html lang="en" className="fs-base" />
-			<title>Appbase.io Docs - Search stack for Elasticsearch</title>
-			<body className={`${bodyClass} flex flex-column whitney f7 fw4 darkgrey readability`} />
-		</Helmet>
+const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => {
+	useEffect(() => {
+		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions')) || [];
+		if(!recentSuggestionsArr.includes(window.location.pathname)) {
+			if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
+				recentSuggestionsArr.pop();
+			recentSuggestionsArr.unshift(window.location.pathname);
+			localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
+		} else {
+			let newArr = recentSuggestionsArr.filter(e => e !== window.location.pathname);
+			newArr.unshift(window.location.pathname);
+			localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
+		}
+	}, []);
 
-		{header || <Header dividerStyle={headerDividerStyle} />}
+	return (
+		<>
+			<Helmet>
+				<html lang="en" className="fs-base" />
+				<title>Appbase.io Docs - Search stack for Elasticsearch</title>
+				<body className={`${bodyClass} flex flex-column whitney f7 fw4 darkgrey readability`} />
+			</Helmet>
 
-		<main className={mainClass || `bg-whitegrey-l2 pb5 pb10-ns`}>{children}</main>
+			{header || <Header dividerStyle={headerDividerStyle} />}
 
-		<Footer />
-	</>
-);
+			<main className={mainClass || `bg-whitegrey-l2 pb5 pb10-ns`}>{children}</main>
+
+			<Footer />
+		</>
+	);
+}
 
 DefaultLayout.defaultProps = {
 	headerDividerStyle: `shadow`,
