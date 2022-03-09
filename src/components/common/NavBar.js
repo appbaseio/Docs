@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
+import ThemeSwitch from './themeSwitch';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './Logo';
@@ -30,7 +30,7 @@ const NavBar = ({ theme }) => {
 	};
 
 	return (
-		<nav className="shadow-3 on-white">
+		<nav className="shadow-3 on-white" >
 			<div
 				className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
 				data-cy="header-navigation"
@@ -65,6 +65,7 @@ const NavBar = ({ theme }) => {
 										{value.selectedKey === 'guides' ? (
 											<div
 												className="dropdown-content"
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
@@ -193,6 +194,7 @@ const NavBar = ({ theme }) => {
 										{value.selectedKey === 'api' ? (
 											<div
 												className="dropdown-content"
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
@@ -445,9 +447,10 @@ const NavBar = ({ theme }) => {
 						</a>
 					</div>
 				</div>
-				<div className="relative home-search-container">
+				<div className="relative home-search-container" style={{ marginRight: 10 }}>
 					<Search />
 				</div>
+				<ThemeSwitch />
 				<MobileNav />
 			</div>
 		</nav>
