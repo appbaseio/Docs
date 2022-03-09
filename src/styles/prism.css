@@ -166,3 +166,19 @@ body.light > div > div > header {
 body.dark > div > div > header {
 	background: #082429;
 }
+
+body.light > div > div > main {
+	background: #fff;
+}
+
+body.dark > div > div > main {
+	background: #082429;
+}
+
+body.light > div > div > div > header {
+	background: #fff;
+}
+
+body.dark > div > div > div > header {
+	background: #082429;
+}

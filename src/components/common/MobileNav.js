@@ -5,6 +5,7 @@ import Search from './search/HomeSearch';
 import Icon from './Icon';
 
 import MobileLinks from './MobileLinks';
+import ThemeSwitch from './themeSwitch';
 
 const getValue = () => {
 	if (globalHistory) {
@@ -125,6 +126,7 @@ class MobileNav extends React.Component {
 	state = {
 		open: false,
 		rs: getValue(),
+		theme: typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light',
 	};
 
 	handleSidebar = () => {
@@ -139,14 +141,24 @@ class MobileNav extends React.Component {
 		});
 	};
 
+	handleClick = (val) => {
+		this.setState({
+			theme: val,
+		});
+	}
+
 	render() {
-		const { open, rs } = this.state;
+		const { open, rs, theme } = this.state;
+		console.log(theme);
 		return (
 			<div className="mobile-nav">
 				<div onClick={this.handleSidebar}>
 					<Icon name="hamburger" className="hamburger" />
 				</div>
-				<div className={`mobile-sidebar pa5 pb10 ${open ? 'open' : ''}`}>
+				<div 
+					className={`mobile-sidebar pa5 pb10 ${open ? 'open' : ''}`}
+					style={{background: theme === 'dark' ? '#082429' : 'white'}}
+				>
 					<div className="mobile-nav-container">
 						{/* <div className="relative home-search-container mb5">
 							<Search />
@@ -212,7 +224,7 @@ class MobileNav extends React.Component {
 							<div className="mobile-links-container">
 								<MobileLinks file={getFileName(rs)} />
 							</div>
-						</div>
+						</div>						
 						<div className="sticky-cta pa3 pl5 pr5">
 							<a
 								target="_blank"
@@ -222,6 +234,7 @@ class MobileNav extends React.Component {
 							>
 								Appbase.io
 							</a>
+							{typeof window !== `undefined` && window.innerWidth <= 768 ? <ThemeSwitch onClick={val => this.handleClick(val)}/> : null}
 							<a
 								target="_blank"
 								rel="noopener noreferrer"

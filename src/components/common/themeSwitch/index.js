@@ -1,9 +1,10 @@
 import React from 'react';
 import { Switch } from 'antd';
+import PropTypes from 'prop-types';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import "./styles.css";
   
-const ThemeSwitch = () => {
+const ThemeSwitch = ({ onClick }) => {
   return (
     // <div>
     //   <Switch 
@@ -26,7 +27,8 @@ const ThemeSwitch = () => {
               <input
               type="checkbox"
               onChange={e => {
-                  toggleTheme(e.target.checked ? 'dark' : 'light')
+                  toggleTheme(e.target.checked ? 'dark' : 'light');
+                  onClick(e.target.checked ? 'dark' : 'light');
               }}
               checked={theme === 'dark'}
               />{' '}
@@ -43,5 +45,13 @@ const ThemeSwitch = () => {
 
   );
 };
-  
+ 
+ThemeSwitch.defaultProps = {
+  onClick: () => {},
+};
+
+ThemeSwitch.propTypes = {
+  onClick: PropTypes.func,
+};
+
 export default ThemeSwitch;

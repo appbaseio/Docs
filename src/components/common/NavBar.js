@@ -450,7 +450,7 @@ const NavBar = ({ theme }) => {
 				<div className="relative home-search-container" style={{ marginRight: 10 }}>
 					<Search />
 				</div>
-				<ThemeSwitch />
+				{typeof window !== `undefined` && window.innerWidth > 768 ? <ThemeSwitch /> : null}				
 				<MobileNav />
 			</div>
 		</nav>
