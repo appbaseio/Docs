@@ -115,7 +115,7 @@ class Post extends React.Component {
 							>
 								<article className="flex-auto pa5 pa8-m pa15-l pt10-ns pb10-ns pt10-l pb10-l relative">
 									<div className="flex content-between items-baseline justify-between no-wrap">
-										<h1 className={`${Spirit.h1}`} style={{ color: '#738a94'}}>
+										<h1 className={`${Spirit.h1}`}>
 											{post.frontmatter.title}
 										</h1>
 										{githubLink && (

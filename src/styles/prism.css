@@ -159,6 +159,22 @@ body.dark {
 	font-size: 1.35rem;
 }
 
+body.dark div span p h1 h2 h3 {
+	color: #fff !important;
+}
+
+body.light div span p h1 h2 h3 {
+	color: #000 !important;
+}
+
+body.dark .table-header-text {
+	color: #fff;
+}
+
+body.light .table-header-text {
+	color: #000;
+}
+
 body.light > div > div > header {
 	background: #fff;
 }
@@ -181,4 +197,12 @@ body.light > div > div > div > header {
 
 body.dark > div > div > div > header {
 	background: #082429;
+}
+
+code {
+	color: black;
+}
+
+pre > code {
+	color: white;
 }

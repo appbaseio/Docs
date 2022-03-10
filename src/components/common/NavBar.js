@@ -14,7 +14,7 @@ const NavBar = ({ theme }) => {
 	// Theme definitions
 	const themeClasses = {
 		dark: {
-			menuItem: `middarkgrey-l1 link hover-blue nowrap`,
+			menuItem: ` link hover-blue nowrap`,
 			logoTheme: `light`,
 			docsTitleClass: `blue`,
 			searchBox: `bg-darkgrey-searchbar middarkgrey dark-placeholder`,
@@ -52,7 +52,7 @@ const NavBar = ({ theme }) => {
 												themeClasses[theme].menuItem
 											} nowrap f8 pa3 mr1 mr3-l nl3 ${
 												value.selectedKey === 'guides'
-													? 'fw6 darkgrey'
+													? 'fw6'
 													: 'fw3'
 											} cursor-pointer`}
 											onMouseEnter={() => {
@@ -72,7 +72,7 @@ const NavBar = ({ theme }) => {
 													className={`${Spirit.page.xl} pt2 pb2 grid-dropdown grid-dropdown-4`}
 												>
 													<div>
-														<h2 className="f2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+														<h2 className="f2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 															Guides
 														</h2>
 														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
@@ -182,7 +182,7 @@ const NavBar = ({ theme }) => {
 											className={`${
 												themeClasses[theme].menuItem
 											} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer ${
-												value.selectedKey === 'api' ? 'fw6 darkgrey' : 'fw3'
+												value.selectedKey === 'api' ? 'fw6' : 'fw3'
 											}`}
 											onMouseEnter={() => {
 												value.handleKey('api');
@@ -201,7 +201,7 @@ const NavBar = ({ theme }) => {
 													className={`${Spirit.page.xl} pt2 pb2 grid-dropdown grid-dropdown-4`}
 												>
 													<div>
-														<h3 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+														<h3 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 															APIs and Integrations
 														</h3>
 														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
@@ -226,7 +226,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
 															UI Libraries
 														</h2>
 
@@ -319,7 +319,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns middarkgrey mb2">
 															REST API
 														</h2>
 													<Link
@@ -375,7 +375,7 @@ const NavBar = ({ theme }) => {
 														</a>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns middarkgrey mb2">
 															Interactive Examples
 														</h2>
 														<Link
@@ -441,6 +441,7 @@ const NavBar = ({ theme }) => {
 							target="_blank"
 							rel="noopener norefferer"
 							className={`${themeClasses[theme].menuItem} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer fw3 link-faq`}
+							style={{ color: 'inherit' }}
 						>
 							FAQs
 							<Icon name="external-link" className="link-icon" />

@@ -29,7 +29,7 @@ const HomePage = ({ data, location }) => {
 			>
 				<div className="pt-vw3 ">
 					<div className={`${Spirit.page.xl} col-12 home-section`}>
-						<span className={`${Spirit.h3} fw6 link darkgrey home-title`}>Guides</span>
+						<span className={`${Spirit.h3} fw6 link home-title`}>Guides</span>
 						<p
 							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
@@ -331,7 +331,7 @@ const HomePage = ({ data, location }) => {
 					<section
 						className={`${Spirit.page.xl} col-12 mt8 pt5 home-section integration-home`}
 					>
-						<h3 className={`${Spirit.h3} fw6 link darkgrey home-title`}>
+						<h3 className={`${Spirit.h3} fw6 link home-title`}>
 							Integrations
 						</h3>
 						<p
@@ -451,7 +451,7 @@ const HomePage = ({ data, location }) => {
 						</div>
 					</section>
 					<section className={`${Spirit.page.xl} col-12 mt10 pt8 home-section`}>
-						<h3 className={`${Spirit.h3} fw6 link darkgrey home-title`}>Need Help?</h3>
+						<h3 className={`${Spirit.h3} fw6 link home-title`}>Need Help?</h3>
 						<p
 							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
 						>

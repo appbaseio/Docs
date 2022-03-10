@@ -163,10 +163,10 @@ class MobileNav extends React.Component {
 						{/* <div className="relative home-search-container mb5">
 							<Search />
 						</div> */}
-						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 							Guides
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							Step wise guide from making your search app to securing it.
 						</p>
 						<div className="mt5 mb3">
@@ -174,7 +174,7 @@ class MobileNav extends React.Component {
 								<MobileLinks file="docs" />
 							</div>
 						</div>
-						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 darkgrey">
+						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0">
 							APIs and Integrations
 						</h2>
 						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
