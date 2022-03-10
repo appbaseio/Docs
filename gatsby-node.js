@@ -27,7 +27,7 @@ exports .onCreateWebpackConfig = ({
 					default: false,
 					vendors: false,
 					commons: {
-					  name: `commons`,
+					  name: `vendors`,
 					  chunks: `all`,
 					  // if a chunk is used more than half the components count,
 					  // we can assume it's pretty global
