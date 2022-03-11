@@ -90,7 +90,7 @@ Example uses:
 
 <br />
 
-|    **Key** |                                             **Explanation**                                              |
+|    <p style="margin: 0px;" class="table-header-text">Key</p>|                                             <p style="margin: 0px;" class="table-header-text">Explanation</p>                                              |
 | ---------: | :------------------------------------------------------------------------------------------------------: |
 |     `item` |    The wrapping [Item](http://docs.nativebase.io/Components.html#Form) component from **native-base**    |
 | `listItem` |  [ListItem](http://docs.nativebase.io/Components.html#list-def-headref) component from **native-base**   |

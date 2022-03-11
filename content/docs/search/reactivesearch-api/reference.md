@@ -35,7 +35,7 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
 
 The unique identifier for the query can be referenced in the `react` property of other queries. The response of the `ReactiveSearch API` is a map of query ids to `Elasticsearch` response which means that `id` is also useful to retrieve the response for a particular query.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | true     |
 
@@ -93,7 +93,7 @@ For examples,
     ]
 ```
 
-| Type                                       | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>                                       | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------------------------------------------ | --------------------------- | -------- |
 | `string | DataField | Array` | `all`                       | true     |
 
@@ -120,7 +120,7 @@ For example, the below query has two data fields defined and each field has a di
 }
 ```
 
-| Type         | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>         | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------------ | --------------------------- | -------- |
 | `Array<int>` | `search`,`suggestion`       | false    |
 
@@ -129,7 +129,7 @@ For example, the below query has two data fields defined and each field has a di
 
 This property represents the type of the query which is defaults to `search`, valid values are `search`, `suggestion`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
@@ -137,7 +137,7 @@ This property represents the type of the query which is defaults to `search`, va
 
 Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type), each kind of query has the different type of value format.
 
-| Type  | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `any` | `all`                       | false    |
 
@@ -230,7 +230,7 @@ The below example represents a **geo bounding box** query:
 
 The `index` property can be used to explicitly specify an `index` for a particular query. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `index` path variable defined in the URL.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
@@ -265,7 +265,7 @@ Here, the first query uses the `my-index` index to query against, as specified i
 
 To set the number of results to be returned by a query.
 
-| Type  | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `int` | `all`                       | false    |
 
@@ -276,7 +276,7 @@ To set the number of results to be returned by a query.
 
 Starting document offset. Defaults to `0`.
 
-| Type  | Applicable on query of type              | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>              | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | ---------------------------------------- | -------- |
 | `int` | `search`,`suggestion`,`geo`,`range`      | false    |
 
@@ -286,7 +286,7 @@ Starting document offset. Defaults to `0`.
 ### pagination
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
 
-| Type  | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `bool` | `term`                     | false    |
 
@@ -301,7 +301,7 @@ This property allows you to implement the `pagination` for `term` type of querie
 
 To set the number of buckets to be returned by aggregations.
 
-| Type  | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `int` | `term`                      | false    |
 
@@ -322,7 +322,7 @@ Sets the query format, can be `or`, `and` and [date format](https://www.elastic.
 
 - `queryFormat` can be set as Elasticsearch [date format](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) for `range` type of queries. It allows Elasticsearch to parse the range values (dates) to a specified format before querying the data. You can find the valid date formats at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
@@ -333,7 +333,7 @@ Sets the query format, can be `or`, `and` and [date format](https://www.elastic.
 
 Useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, `fox` can become `box`. Read more about it in the elastic search https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html.
 
-| Type           | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>           | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------------- | --------------------------- | -------- |
 | `int | string` | `search`, `suggestion`      | false    |
 
@@ -348,7 +348,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 Data field whose values are used to provide category specific suggestions.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `search`,`suggestion`       | false    |
 
@@ -363,7 +363,7 @@ Data field whose values are used to provide category specific suggestions.
 
 This is the selected category value. It is used for informing the search result.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `search`,`suggestion`       | false    |
 
@@ -378,7 +378,7 @@ This property can be used to sort the results in a particular format. The valid 
 - `count`, sorts the aggregations by `count`.
 
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`*                      | false    |
 
@@ -393,7 +393,7 @@ This property can be used to sort the results in a particular format. The valid 
 
 To specify dependent queries to update that particular query for which the react prop is defined. You can read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
@@ -404,7 +404,7 @@ To specify dependent queries to update that particular query for which the react
 
 This property can be used to enable the highlighting in the returned results. If set to `false`, [highlightField](/docs/search/reactivesearch-api/reference/#highlightfield) and [highlightConfig](/docs/search/reactivesearch-api/reference/#highlightconfig) values will be ignored.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `all`                       | false    |
 
@@ -415,7 +415,7 @@ This property can be used to enable the highlighting in the returned results. If
 
 When highlighting is `enabled`, this property allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to apply highlights on the field(s) specified in the `dataField` prop.
 
-| Type            | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
 
@@ -426,7 +426,7 @@ When highlighting is `enabled`, this property allows specifying the fields which
 
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
@@ -439,7 +439,7 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 
 Defaults to `false`. If set to `true` then you can use special characters in the search query to enable an advanced search behavior. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `search`,`suggestion`       | false    |
 
@@ -452,7 +452,7 @@ Defaults to `false`. If set to `true` then you can use special characters in the
 
 Defaults to `false`. If set to `true` than it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `search`,`suggestion`       | false    |
 
@@ -465,7 +465,7 @@ Defaults to `false`. If set to `true` than it allows you to create a complex sea
 
 Data fields to be included in search results. Defaults to `[*]` which means all fields are included.
 
-| Type            | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
 
@@ -476,7 +476,7 @@ Data fields to be included in search results. Defaults to `[*]` which means all 
 
 Data fields to be excluded in search results.
 
-| Type            | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
 
@@ -487,7 +487,7 @@ Data fields to be excluded in search results.
 
 Defaults to `false`. When set to `true` then it also retrieves the aggregations for missing fields.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `term`                      | false    |
 
@@ -497,7 +497,7 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 ### missingLabel
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `term`                      | false    |
 
@@ -509,7 +509,7 @@ Defaults to `N/A`. It allows you to specify a custom label to show when [showMis
 ### selectAllLabel
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `term`                      | false    |
 
@@ -520,7 +520,7 @@ This property allows you to add a new property in the list with a particular val
 
 If you have sparse data or documents or items not having the value in the specified field or mapping, then this prop enables you to show that data.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `range`                     | false    |
 
@@ -531,7 +531,7 @@ If you have sparse data or documents or items not having the value in the specif
 
 To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
-| Type  | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `int` | `range`                     | false    |
 
@@ -544,7 +544,7 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 
 To set the histogram bar interval when range value is of type date, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. You can read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#calendar_intervals).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `range`                     | false    |
 
@@ -555,7 +555,7 @@ To set the histogram bar interval when range value is of type date, applicable w
 
 `aggregationField` enables you to get `DISTINCT` results (useful when you are dealing with sessions, events, and logs type data). It utilizes [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
@@ -567,7 +567,7 @@ This property can be used to implement the pagination for `aggregations`. We use
 
 You need to define the `after` property in the next request to retrieve the next set of aggregations.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
@@ -582,7 +582,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 - `min`: to retrieve the minimum value for a `dataField`,
 - `histogram`: to retrieve the histogram aggregations for a particular `interval`
 
-| Type            | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `range`                     | false    |
 
@@ -593,7 +593,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 
 Set the path of the nested type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a nested type mapping.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | false    |
 
@@ -606,7 +606,7 @@ This property is useful to customize the source query, as defined in Elasticsear
 
 You can read more about the `defaultQuery` usage over [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
@@ -621,7 +621,7 @@ Custom query property will be applied to the dependent queries by `react` proper
 >
 > It'll not affect that particular query for which it has been defined, it'll only affect the query for dependent queries. If you want to customize the source query then use the [defaultQuery](/docs/search/reactivesearch-api/reference/#defaultquery) property instead.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
 | `Object` | `all`                       | false    |
 
@@ -634,7 +634,7 @@ Custom query property will be applied to the dependent queries by `react` proper
 Sometimes it may require that you want to apply some query for results with the help of `react` property but want to avoid any un-necessary query execution for the performance reasons. If you set `execute` to `false` for a particular query then you can use it with `react` prop without executing it.
 For example, consider a scenario where we want to filter the search query by some range. To implement it with RS API we need to define two queries(search & range type). Since you defined the two queries then by default both queries will get executed, however you can avoid this by setting `execute` to `false` for the range query.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   |<p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `all`                       | false    |
 
@@ -645,7 +645,7 @@ For example, consider a scenario where we want to filter the search query by som
 
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `bool` | `search`,`suggestion`       | false    |
 
@@ -655,7 +655,7 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 ### rankFeature
 This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields.
 
-| Type   | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>   | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------ | --------------------------- | -------- |
 | `object` | `search`,`suggestion`     | false    |
 
@@ -751,7 +751,7 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 ### distinctField
 This property returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `string` | `all`                  | false    |
 
@@ -776,7 +776,7 @@ The following query would return the products for distinct brands.
 ### distinctFieldConfig
 This property allows specifying additional options to the `distinctField` property. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `object` | `all`                       | false    |
 
@@ -814,28 +814,28 @@ The following query would return the products for distinct brands. Additionally,
 ### enablePredictiveSuggestions
 When set to `true`, it predicts the next relevant words from the value of a field based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
 ### maxPredictedWords
 Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between `[1, 5]`.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `int`    | `suggestion`                | false    |
 
 ### applyStopwords
 When set to `true`, it would not predict a suggestion which starts or ends with a stopword. You can use [searchLanguage](/docs/search/reactivesearch-api/reference/#searchlanguage) property to apply language specific stopwords.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
 ### customStopwords
 It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `array`   | `suggestion`               | false    |
 
@@ -869,7 +869,7 @@ We support following languages:
 - [thai](https://github.com/bbalet/stopwords/blob/master/stopwords_th.go#L7)
 - [turkish ](https://github.com/bbalet/stopwords/blob/master/stopwords_tr.go#L7)
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `string` | `suggestion`                | false    |
 
@@ -877,7 +877,7 @@ We support following languages:
 ### urlField
 Data field whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `string` | `suggestion`                | false    |
 
@@ -889,7 +889,7 @@ Data field whose value contains a URL. This is a convenience prop that allows re
 When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through [recentSuggestionsConfig](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig) or via Recent Suggestions settings in the control plane).
 
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
@@ -906,7 +906,7 @@ Specify additional options for fetching recent suggestions. It can accept the fo
 
 > Note: It is possible to define multiple indices using comma separated pattern, for e.g `products,categories`.
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 
@@ -929,7 +929,7 @@ For example,
 ### enablePopularSuggestions
 When set to `true`, popular searches based on aggregate end-user data are returned as suggestions as per the popular suggestions config (either defaults, or as set through [popularSuggestionsConfig](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig) or via Popular Suggestions settings in the control plane)
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
@@ -950,7 +950,7 @@ Specify additional options for fetching popular suggestions. It can accept the f
 > Note: It is possible to define multiple indices using a comma separated pattern, for e.g `products,categories`.
 
 
-| Type     | Applicable on query of type | Required |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 

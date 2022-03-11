@@ -159,11 +159,11 @@ body.dark {
 	font-size: 1.35rem;
 }
 
-body.dark div span p h1 h2 h3 {
+body.dark div span p h1 h2 h3 th {
 	color: #fff !important;
 }
 
-body.light div span p h1 h2 h3 {
+body.light div span p h1 h2 h3 th {
 	color: #000 !important;
 }
 
