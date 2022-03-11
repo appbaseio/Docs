@@ -84,7 +84,7 @@ const plugins = [
 	{
 		resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
 		options: {
-			devMode: true,
+			disable: true,
 		}
 	},	
 	// `gatsby-plugin-perf-budgets`,

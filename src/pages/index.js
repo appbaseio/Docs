@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import loadable from '@loadable/component'
 import PropTypes from 'prop-types';
@@ -18,9 +19,20 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
+	console.log("data is: ", data);
+	data.site.siteMetadata = {
+		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
+		description: "Docs home page"
+	}
 // testing
 	return (
 		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<meta name="title" content="Appbase.io Docs - Home Page" />
+				<meta name="description" content="Appbase.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch." />
+				<link rel="canonical" href="https://docs.appbase.io" />
+			</Helmet>
 			<Layout
 				headerDividerStyle="shadow"
 				bodyClass="bg-white"
@@ -158,27 +170,27 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Choose your UI Library',
 												link: '/docs/reactivesearch/gettingstarted',
-                                                description: 'Choose from NoCode, React, Vue, React Native, Flutter, Vanilla JavaScript',
+												description: 'Choose from NoCode, React, Vue, React Native, Flutter, Vanilla JavaScript',
 												duration: 1,
 											},
 											{
 												title: 'UI Customization',
 												link: '/docs/reactivesearch/ui-customization',
-                                                description: 'Customization guide for UI libraries',
+												description: 'Customization guide for UI libraries',
 												duration: 3,
 											},
 											{
 												title: 'ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/v3/overview/quickstart/',
-                                                    description: 'Get started with the React version of ReactiveSearch',
+													description: 'Get started with the React version of ReactiveSearch',
 												duration: 6,
 											},
 											{
 												title: 'Vue ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/vue/overview/QuickStart/',
-                                                    description: 'Get started with the Vue version of ReactiveSearch',
+													description: 'Get started with the Vue version of ReactiveSearch',
 												duration: 8,
 											},
 											{
@@ -186,7 +198,7 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/react-native-searchbox/quickstart/',
-                                                    description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
+													description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
 											{
@@ -194,15 +206,15 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/flutter-searchbox/quickstart/',
-                                                    description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
+													description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
-                                            {
+											{
 												title: 'No-code Search UI Builder',
 												description: '',
 												link:
 													'/docs/reactivesearch/ui-builder/search/',
-                                                    description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
+													description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
 												duration: 6,
 											},
 										],
@@ -222,31 +234,31 @@ const HomePage = ({ data, location }) => {
 												title: 'Analytics',
 												link: '/docs/analytics/overview/',
 												duration: 5,
-                                                description: 'Quick overview of appbase.io analytics'
+												description: 'Quick overview of appbase.io analytics'
 											},
 											{
 												title: 'Implement Analytics',
 												link: '/docs/analytics/implement/',
 												duration: 9,
-                                                description: 'Learn how to implement appbase.io analytics for your stack'
+												description: 'Learn how to implement appbase.io analytics for your stack'
 											},
 											{
 												title: 'Querying Analytics',
 												link: '/docs/analytics/querying-analytics/',
 												duration: 1,
-                                                description: 'Learn how to query appbase.io analytics via REST APIs'
+												description: 'Learn how to query appbase.io analytics via REST APIs'
 											},
 											{
 												title: 'Suggestions',
 												link: '/docs/analytics/popular-recent-suggestions/',
 												duration: 4,
-                                                description: 'Leverage popular, recent suggestions via APIs and UI components'
+												description: 'Leverage popular, recent suggestions via APIs and UI components'
 											},
 											{
 												title: 'Analytics Insights',
 												link: '/docs/analytics/insights/',
 												duration: 2,
-                                                description: 'Get actionable insights to improve your search KPIs'
+												description: 'Get actionable insights to improve your search KPIs'
 											},
 										],
 									},
@@ -278,19 +290,19 @@ const HomePage = ({ data, location }) => {
 												title: 'API Credentials',
 												link: '/docs/security/credentials/',
 												duration: 6,
-                                                description: 'Build access controled search experiences with API credentials'
+												description: 'Build access controled search experiences with API credentials'
 											},
 											{
 												title: 'User Management',
 												link: '/docs/security/user-management/',
 												duration: 2,
-                                                description: 'Add teammates with scoped access to appbase.io dashboard'
+												description: 'Add teammates with scoped access to appbase.io dashboard'
 											},
 											{
 												title: 'Role Based Access',
 												link: '/docs/security/role/',
 												duration: 6,
-                                                description: 'Build secure and access controled search experiences with RBAC using JWTs'
+												description: 'Build secure and access controled search experiences with RBAC using JWTs'
 											},
 										],
 									},
@@ -446,7 +458,7 @@ const HomePage = ({ data, location }) => {
 								radius="4"
 							>
 								<Icon name="more" className="w8 nudge-top--6" />
-								See More
+								View All Integrations
 							</Box>
 						</div>
 					</section>
@@ -469,20 +481,19 @@ const HomePage = ({ data, location }) => {
 							<Card href="https://medium.appbase.io/tagged/appbase">
 								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
 								<h3>Tutorials</h3>
-								<p>Go from scratch to a full app with these tutorial guides.</p>
+								<p>Go from scratch to a full app with these tutorial guides</p>
 							</Card>
-							<Card href=" https://appbase.io/pricing/#premium-support">
+							<Card href="https://www.appbase.io/contact/">
 								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
 								<h3>Support</h3>
 								<p>
-									Get dedicated support from the appbase.io team for your search
-									app.
+									Get dedicated support from our engineering team
 								</p>
 							</Card>
-							<Card>
+							<Card href="https://github.com/appbaseio/reactivesearch/discussions">
 								<img src={`${imagePrefix}/Gitter.svg`} alt="Gitter" width="120px" height="120px" />
 								<h3>Community</h3>
-								<p>We are always around and happy to help.</p>
+								<p>Ask other ReactiveSearch users</p>
 								<div className="community-icons pr-3 pl-3">
 									<a
 										href="https://github.com/appbaseio"
@@ -506,7 +517,7 @@ const HomePage = ({ data, location }) => {
 										title="Github Discussions"
 										rel="noopener noreferrer"
 									>
-										<Icon name="gitter" />
+										<Icon name="chat-double-bubble" />
 									</a>
 								</div>
 							</Card>

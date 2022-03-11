@@ -436,16 +436,6 @@ const NavBar = ({ theme }) => {
 								)}
 							</DropdownLink.Item>
 						</DropdownLink>
-						<a
-							href="https://help.appbase.io"
-							target="_blank"
-							rel="noopener norefferer"
-							className={`${themeClasses[theme].menuItem} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer fw3 link-faq`}
-							style={{ color: 'inherit' }}
-						>
-							FAQs
-							<Icon name="external-link" className="link-icon" />
-						</a>
 					</div>
 				</div>
 				<div className="relative home-search-container" style={{ marginRight: 10 }}>

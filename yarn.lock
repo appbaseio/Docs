@@ -49,10 +49,10 @@
     react-slick "^0.24.0"
     slick-carousel "^1.8.1"
 
-"@appbaseio/reactivecore@9.11.1":
-  version "9.11.1"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.11.1.tgz#b3dd9908def2d7474af17f98a1625c038822feef"
-  integrity sha512-HQkM3iTLs1zPuUnbX7LkZBdHtF86XpqmWlKDmxIuiL6xuRKeOIq8GZ5HcABTLmHBxAqtL9XSMw8Akv+AjTlc6A==
+"@appbaseio/reactivecore@9.14.0":
+  version "9.14.0"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivecore/-/reactivecore-9.14.0.tgz#8369ab003456ba6180adb8dc0486d9b6c176ed36"
+  integrity sha512-bCHa+UHBskKM2iIrXc7iqpT64P/b8jm4gg1je5TuW9padxxFVoXP6V91Lfj9OYd1ih6++7xttoXBIso8x4+0vw==
   dependencies:
     cross-fetch "^3.0.4"
     prop-types "^15.6.0"
@@ -60,10 +60,10 @@
     redux-thunk "^2.3.0"
     xdate "^0.8.2"
 
-"@appbaseio/reactivemaps@^3.0.0-beta.10":
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivemaps/-/reactivemaps-3.0.0-beta.11.tgz#b3dc66a4047eec4f6663f7ea21fa2a7f2957d124"
-  integrity sha512-ef74S3dAdfqOtrn2AKAphBPlcTnTfxAmdGrFrLbMT7R0V2+OXg32La4cQqJ3QPI0WaO0koOk0EBKO2HCEvZlRg==
+"@appbaseio/reactivemaps@^3.0.0-beta.17":
+  version "3.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivemaps/-/reactivemaps-3.0.0-beta.17.tgz#ff78037126803701d92de95ab95d7ef704b01d3c"
+  integrity sha512-fK8pKPWT5VPhcpN8nMv9v/1xKHy6eJa/ySaFPIoLvQck1V7Iy0BwVzd84zA06V5SAaBMV6A8/N1UKJ/2GdPsDg==
   dependencies:
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
@@ -76,19 +76,20 @@
     react-leaflet "^2.1.3"
     rheostat "^2.1.1"
 
-"@appbaseio/reactivesearch@^3.12.2":
-  version "3.18.1"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.18.1.tgz#d34bb584753626fe59218c292cc6a5f2088710d1"
-  integrity sha512-UpQWbIwQHx2mmGkuEJZVRc7+pwRJMqCPU7Ifzs3SmP8hg5kYLxghksUfgRq2MWdHiBODwjltFZOs9UgS140OMA==
+"@appbaseio/reactivesearch@^3.29.0":
+  version "3.29.0"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-3.29.0.tgz#07158920e305a81a8a47217694a8febc53910d6b"
+  integrity sha512-2BDAk7LYkPrv0uu8wZ0h3XO7M7yWe4mW/ohG3PQVDdAXujKNZWlvFl9n++7kIDzhJqNOCHzCP7kJnAlfj7lQPQ==
   dependencies:
-    "@appbaseio/reactivecore" "9.11.1"
+    "@appbaseio/reactivecore" "9.14.0"
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
-    appbase-js "^4.1.0"
+    appbase-js "5.0.0"
     cross-env "^5.2.0"
     downshift "^1.31.2"
     emotion-theming "^10.0.27"
     hoist-non-react-statics "^3.2.1"
+    hotkeys-js "^3.8.7"
     polished "^1.9.3"
     prop-types "^15.6.0"
     react-day-picker "^7.0.5"
@@ -2967,17 +2968,14 @@ anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appbase-js@^4.1.0:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-4.1.3.tgz#7139a616e97632ec515099493b9e702a12d8ef3f"
-  integrity sha512-EeAyhfsC7pWS7O1C8CVeEgOWV54BGNrCfIEY/IiNWzAru+efv7ql3aXk/MmwCvON+GFk3QVFWTQhUz+F7WW60g==
+appbase-js@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/appbase-js/-/appbase-js-5.0.0.tgz#9f3e25ad718251e153593f7559cfac7b4d4ac961"
+  integrity sha512-TOvBaXEpRd85Oo118X+NNQq7CMtZE3eyp7zYWZ7LO2o9mrdTQRUk+ADE0P8xFkga2c4WHHRyBhoeJglux12LZg==
   dependencies:
-    cross-fetch "^2.2.2"
-    json-stable-stringify "^1.0.1"
+    cross-fetch "^3.1.5"
     querystring "^0.2.0"
-    stream "^0.0.2"
     url-parser-lite "^0.1.0"
-    ws "^6.1.2"
 
 application-config-path@^0.1.0:
   version "0.1.0"
@@ -6179,13 +6177,12 @@ cross-fetch@3.1.4, cross-fetch@^3.0.4:
   dependencies:
     node-fetch "2.6.1"
 
-cross-fetch@^2.2.2:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-2.2.3.tgz#e8a0b3c54598136e037f8650f8e823ccdfac198e"
-  integrity sha512-PrWWNH3yL2NYIb/7WF/5vFG3DCQiXDOVf8k3ijatbrtnwNuhMWLC7YF7uqf53tbTFDzHIUD8oITw4Bxt8ST3Nw==
+cross-fetch@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
   dependencies:
-    node-fetch "2.1.2"
-    whatwg-fetch "2.0.4"
+    node-fetch "2.6.7"
 
 cross-spawn@5.1.0, cross-spawn@^5.0.1:
   version "5.1.0"
@@ -7253,11 +7250,6 @@ elliptic@^6.5.3:
     inherits "^2.0.4"
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
-
-emitter-component@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/emitter-component/-/emitter-component-1.1.1.tgz#065e2dbed6959bf470679edabeaf7981d1003ab6"
-  integrity sha1-Bl4tvtaVm/RwZ57avq95gdEAOrY=
 
 "emoji-regex@>=6.0.0 <=6.1.1":
   version "6.1.1"
@@ -10477,6 +10469,11 @@ hosted-git-info@^3.0.6:
   dependencies:
     lru-cache "^6.0.0"
 
+hotkeys-js@^3.8.7:
+  version "3.8.7"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.8.7.tgz#c16cab978b53d7242f860ca3932e976b92399981"
+  integrity sha512-ckAx3EkUr5XjDwjEHDorHxRO2Kb7z6Z2Sxul4MbBkN8Nho7XDslQsgMJT+CiJ5Z4TgRxxvKHEpuLE3imzqy4Lg==
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
@@ -11891,13 +11888,6 @@ json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
-
-json-stable-stringify@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/json-stable-stringify/-/json-stable-stringify-1.0.1.tgz#9a759d39c5f2ff503fd5300646ed445f88c4f9af"
-  integrity sha1-mnWdOcXy/1A/1TAGRu1EX4jE+a8=
-  dependencies:
-    jsonify "~0.0.0"
 
 json-stringify-safe@5.0.x, json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
@@ -13427,15 +13417,17 @@ node-eta@^0.9.0:
   resolved "https://registry.yarnpkg.com/node-eta/-/node-eta-0.9.0.tgz#9fb0b099bcd2a021940e603c64254dc003d9a7a8"
   integrity sha1-n7CwmbzSoCGUDmA8ZCVNwAPZp6g=
 
-node-fetch@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
-  integrity sha1-q4hOjn5X44qUR1POxwb3iNF2i7U=
-
 node-fetch@2.6.1, node-fetch@^2.5.0, node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
+node-fetch@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+  dependencies:
+    whatwg-url "^5.0.0"
 
 node-fetch@^1.0.1:
   version "1.7.3"
@@ -18320,13 +18312,6 @@ stream-shift@^1.0.0:
   resolved "https://registry.yarnpkg.com/stream-shift/-/stream-shift-1.0.1.tgz#d7088281559ab2778424279b0877da3c392d5a3d"
   integrity sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ==
 
-stream@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/stream/-/stream-0.0.2.tgz#7f5363f057f6592c5595f00bc80a27f5cec1f0ef"
-  integrity sha1-f1Nj8Ff2WSxVlfALyAon9c7B8O8=
-  dependencies:
-    emitter-component "^1.1.1"
-
 strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
@@ -19104,6 +19089,11 @@ tough-cookie@~2.5.0:
   dependencies:
     psl "^1.1.28"
     punycode "^2.1.1"
+
+tr46@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
+  integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
 
 traverse@0.6.6:
   version "0.6.6"
@@ -19994,6 +19984,11 @@ web-namespaces@^1.0.0, web-namespaces@^1.1.2:
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.4.tgz#bc98a3de60dadd7faefc403d1076d529f5e030ec"
   integrity sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==
 
+webidl-conversions@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
+  integrity sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=
+
 webpack-bundle-analyzer@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.5.0.tgz#1b0eea2947e73528754a6f9af3e91b2b6e0f79d5"
@@ -20186,15 +20181,18 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-whatwg-fetch@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
-  integrity sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==
-
 whatwg-fetch@>=0.10.0:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
   integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
+
+whatwg-url@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
+  integrity sha1-lmRU6HZUYuN2RNNib2dCzotwll0=
+  dependencies:
+    tr46 "~0.0.3"
+    webidl-conversions "^3.0.0"
 
 whet.extend@~0.9.9:
   version "0.9.9"
@@ -20486,7 +20484,7 @@ ws@^5.2.0:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^6.0.0, ws@^6.1.2, ws@^6.2.1:
+ws@^6.0.0, ws@^6.2.1:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.2.tgz#dd5cdbd57a9979916097652d78f1cc5faea0c32e"
   integrity sha512-zmhltoSR8u1cnDsD43TX59mzoMZsLKqUweyYBAIvTngR3shc0W6aOZylZmq/7hqyVxPdi+5Ud2QInblgyE72fw==
