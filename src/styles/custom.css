@@ -1305,7 +1305,6 @@ to be custom HTML.
 .dropdown-link {
 	display: flex;
 	align-items: center;
-	color: #738a94;
 }
 
 .dropdown-link:hover .dropdown-content-icon {
@@ -1744,8 +1743,13 @@ to be custom HTML.
 	background: #00f68e;
 }
 
+.header-title {
+	color: var(--darkgrey) !important;
+}
+
 @media (max-width: 1240px) {
 	.header-title {
+		color: var(--darkgrey);
 		margin-top: 50px;
 	}
 }

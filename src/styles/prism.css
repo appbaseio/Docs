@@ -168,7 +168,7 @@ body.light div span p h2 h3 th a {
 }
 
 body.dark h1 {
-	color: #efefef !important;
+	color: #efefef;
 }
 
 body.light h1 {
