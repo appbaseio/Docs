@@ -148,8 +148,8 @@ body.dark {
 	-webkit-font-smoothing: antialiased;
 	background: #082429;
 	/* #2c3031  */
-	/* background: darkslategray; */
-	color: #fff;
+	background: darkslategray;
+	color: #dfdfdf;
 	--bg: darkslategray;
 	--textNormal: rgba(255, 255, 255, 0.88);
 	--textTitle: white;
@@ -159,16 +159,24 @@ body.dark {
 	font-size: 1.35rem;
 }
 
-body.dark div span p h1 h2 h3 th {
-	color: #fff !important;
+body.dark div span p h2 h3 th a {
+	color: #dfdfdf !important;
 }
 
-body.light div span p h1 h2 h3 th {
+body.light div span p h2 h3 th a {
+	color: #000 !important;
+}
+
+body.dark h1 {
+	color: #efefef !important;
+}
+
+body.light h1 {
 	color: #000 !important;
 }
 
 body.dark .table-header-text {
-	color: #fff;
+	color: #efefef;
 }
 
 body.light .table-header-text {
