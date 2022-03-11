@@ -207,6 +207,22 @@ body.dark > div > div > div > header {
 	background: #082429;
 }
 
+body.dark .toc-list-container ol a {
+	color: var(--lightwhite);
+}
+
+body.light .toc-list-container ol a {
+	color: var(--midlightgrey);
+}
+
+body.dark .toc-list-container .is-active-link {
+	color: var(--darkwhite);
+}
+
+body.light .toc-list-container .is-active-link {
+	color: var(--darkgrey);
+}
+
 code {
 	color: black;
 }
