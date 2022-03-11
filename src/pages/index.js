@@ -346,7 +346,7 @@ const HomePage = ({ data, location }) => {
 							Integrations
 						</h3>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Getting started guides for your favorite libraries and frameworks
 						</p>
@@ -464,7 +464,7 @@ const HomePage = ({ data, location }) => {
 					<section className={`${Spirit.page.xl} col-12 mt10 pt8 home-section`}>
 						<h3 className={`${Spirit.h3} fw6 link home-title`}>Need Help?</h3>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Resources to get help with appbase.io
 						</p>
