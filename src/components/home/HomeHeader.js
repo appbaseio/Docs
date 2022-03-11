@@ -39,7 +39,10 @@ class HomeHeader extends React.Component {
 						</p>
 						<div className="mt8">
 							<button
-								style={{ background: '#00f68e' }}
+								style={{ 
+									background: '-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
+									borderRadius: '1rem',
+								}}
 								className="signup-btn"
 							>
 								SignUp for free
