@@ -19,7 +19,6 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
-	console.log("data is: ", data);
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
@@ -43,7 +42,7 @@ const HomePage = ({ data, location }) => {
 					<div className={`${Spirit.page.xl} col-12 home-section`}>
 						<span className={`${Spirit.h3} fw6 link home-title`}>Guides</span>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Appbase.io features organized by guides and chapters
 						</p>
