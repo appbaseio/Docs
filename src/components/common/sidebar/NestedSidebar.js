@@ -102,7 +102,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 								linkClasses={
 									location.pathname === item.link
 										? 'link sidebarlink-active blue fw6'
-										: 'midgrey hover-blue-l2 link'
+										: 'link-container hover-blue-l2 link'
 								}
 								title={item.title}
 								link={item.link}
@@ -124,7 +124,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 									<SidebarLink
 										link={group.items[0].link}
 										title={group.group}
-										linkClasses="link sidebarlink-active blue fw6"
+										linkClasses="link-container link sidebarlink-active blue fw6"
 									/>
 								</Fragment>
 							) : (
@@ -142,7 +142,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 							<SidebarLink
 								link={group.items[0].link}
 								title={group.group}
-								linkClasses="midgrey hover-blue-l2 link"
+								linkClasses="link-container hover-blue-l2 link"
 							/>
 						) : (
 							group.group

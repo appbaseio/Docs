@@ -223,6 +223,14 @@ body.light .toc-list-container .is-active-link {
 	color: var(--darkgrey);
 }
 
+body.dark .link-container {
+	color: var(--lightwhite);
+}
+
+body.light .link-container {
+	color: var(--midgrey);
+}
+
 code {
 	color: black;
 }
