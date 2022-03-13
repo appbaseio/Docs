@@ -464,7 +464,7 @@ const HomePage = ({ data, location }) => {
 							gutter="20px"
 							lgGutter="12px"
 							smGutter="0px"
-							className="mt5"
+							className="mt5 font-classes"
 						>
 							<Card href="https://medium.appbase.io/tagged/appbase">
 								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
