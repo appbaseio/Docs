@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 import Button from '@appbaseio/designkit/lib/atoms/Button';
 import { Spirit } from '../../styles/spirit-styles';
-import Logo from './Logo';
+import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import Search from './search/HomeSearch';
@@ -37,7 +37,7 @@ const NavBar = ({ theme }) => {
 			>
 				<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
 					<Link to="/" className="nudge-top--3">
-						<Logo theme="light" />
+						<Logo />
 					</Link>
 				</div>
 				{/* navbar-container wrapper element and bottom padding is needed to hide the horizontal scrollbar on smaller screensizes */}
