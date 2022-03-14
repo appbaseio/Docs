@@ -1,8 +1,10 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
-import loadable from '@loadable/component'
+// import loadable from '@loadable/component'
 import PropTypes from 'prop-types';
+import TimelineOption from '@appbaseio/designkit/lib/molecules/TimelineOption';
+import Grid from '@appbaseio/designkit/lib/atoms/Grid';
 import { Card } from '@appbaseio/designkit';
 import { Icon, Box } from '../components/common';
 import { Layout } from '../components/common/layout';
@@ -10,7 +12,7 @@ import { HomeHeader } from '../components/home';
 import { Spirit } from '../styles/spirit-styles';
 
 // const TimelineOption = loadable(() => import('@appbaseio/designkit/lib/molecules/TimelineOption'));
-const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
+// const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
 
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
@@ -43,7 +45,7 @@ const HomePage = ({ data, location }) => {
 						>
 							Appbase.io features organized by guides and chapters
 						</p>
-						{/* <div className="mt5 timeline-steps">
+						<div className="mt5 timeline-steps">
 							<TimelineOption
 								onClick={info => navigate(info.link)}
 								primaryColor="#3eb0ef"
@@ -333,7 +335,7 @@ const HomePage = ({ data, location }) => {
 									},
 								}}
 							/>
-						</div> */}
+						</div>
 					</div>
 
 					<section
