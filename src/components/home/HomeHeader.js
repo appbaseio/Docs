@@ -37,7 +37,7 @@ class HomeHeader extends React.Component {
 							Appbase.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
 							instantly from your favorite sources. Create relevance visually. Build delightful search experiences with our low code UI kits.
 						</p>
-						<div className="mt8">
+						<div className="mt8 mobile-btn">
 							<button
 								style={{ 
 									background: '-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
@@ -47,26 +47,7 @@ class HomeHeader extends React.Component {
 							>
 								SignUp for free
 							</button>
-							{/* <Button
-								success
-								uppercase
-								shadow
-								href="https://dashboard.appbase.io/signup"
-								target="_blank"
-								style={{ background: '#00f68e' }}
-								className="signup-btn"
-							>
-								SignUp for free
-							</Button> */}
 							<Link to="/tutorial">
-								{/* <Button 								
-									uppercase 
-									shadow									
-									className="video-btn"
-									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
-								>
-									Try Interactive Tutorial
-								</Button> */}
 								<button
 									className="video-btn"
 									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}

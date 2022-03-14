@@ -231,6 +231,11 @@ kbd {
 .w-sidebar {
 	width: 22rem;
 }
+
+.w-sidebar-l {
+	width: 22rem;
+}
+
 @media (--breakpoint-not-small) {
 	.w-sidebar-ns {
 		width: 22rem;
@@ -243,7 +248,7 @@ kbd {
 }
 @media (--breakpoint-large) {
 	.w-sidebar-l {
-		width: 26rem;
+		width: 22rem;
 	}
 }
 
@@ -1792,13 +1797,13 @@ to be custom HTML.
 }
 
 .signup-btn {
-	color: var(--darkgrey) !important;
+	color: white;
 	font-size: 1.6rem !important;
 	font-weight: 600 !important;
 	font-family: 'Inter', sans-serif;
-	padding: 0px 22px;
+	padding: 1.5rem;
 	width: 185px;
-	height: 40px;
+	height: 50px;
 	border-radius: 3px;
 	cursor: pointer;
 	user-select: none;
@@ -1835,6 +1840,16 @@ to be custom HTML.
 	box-shadow: rgb(0 0 0 / 10%) 0px 3px 3px 0px;
 	border: none;
 	outline: none;
+}
+
+@media (max-width: 700px) {
+	.mobile-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+	}
 }
 
 .cursor-pointer {
