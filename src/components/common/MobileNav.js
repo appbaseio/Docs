@@ -149,7 +149,7 @@ class MobileNav extends React.Component {
 
 	render() {
 		const { open, rs, theme } = this.state;
-		console.log(theme);
+		
 		return (
 			<div className="mobile-nav">
 				<div onClick={this.handleSidebar}>
@@ -177,7 +177,7 @@ class MobileNav extends React.Component {
 						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0">
 							APIs and Integrations
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							UI Libraries, clients and interactive examples for working with
 							appbase.io
 						</p>
@@ -186,11 +186,11 @@ class MobileNav extends React.Component {
 								<MobileLinks file="api-reference" />
 							</div>
 						</div>
-						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 darkgrey between">
-							<span className="middarkgrey">ReactiveSearch {getVersionName(rs)}</span>
+						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 between">
+							<span>ReactiveSearch {getVersionName(rs)}</span>
 							<Icon className="dropdown-content-icon ml2" name={getIconName(rs)} />
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							Read about ReactiveSearch Libraries and how to integrate and adapt it in
 							your app.
 						</p>
@@ -234,7 +234,7 @@ class MobileNav extends React.Component {
 							>
 								Appbase.io
 							</a>
-							{typeof window !== `undefined` && window.innerWidth <= 768 ? <ThemeSwitch onClick={val => this.handleClick(val)}/> : null}
+							{typeof window !== 'undefined' && window.innerWidth <= 768 ? <ThemeSwitch onClick={val => this.handleClick(val)}/> : null}						
 							<a
 								target="_blank"
 								rel="noopener noreferrer"

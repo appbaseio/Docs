@@ -57,7 +57,7 @@ class MobileLinks extends React.Component {
 									window.location.pathname === link.link
 										? 'blue fw6 active-link'
 										: 'hover-blue'
-								} midlightgrey  `}
+								}`}
 								to={link.link}
 							>
 								{link.title}
@@ -78,7 +78,7 @@ class MobileLinks extends React.Component {
 						return (
 							<div key={item.group}>
 								<div
-									className="middarkgrey-d2 link hover-blue nowrap fw6 nowrap f5 pa3 pb1 mr3 mr3-l nl3 dropdown-link"
+									className="link hover-blue nowrap fw6 nowrap f5 pa3 pb1 mr3 mr3-l nl3 dropdown-link"
 									onClick={() => this.toggleLinks(item.group)}
 								>
 									{item.icon && (
