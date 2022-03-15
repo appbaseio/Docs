@@ -229,6 +229,27 @@ class AutoComplete extends React.Component {
 		return <HitTemplate hit={hit} currentValue={value} />;
 	};
 
+	renderSuggestionsContainer = ({ containerProps, children, query }) => {
+		const { value } = this.state;
+		
+		return (
+			<div {...containerProps}>
+				{(children && children?.props?.items) ? (
+					<>
+						{children.props?.items.map((item) => (
+							<HitTemplate hit={item} currentValue={value} />
+						))}
+						<div className='autosuggest-footer-container'>
+							{/* color: '#8792a2', background: '#f7fafc' */}
+							<div>↑↓ Navigate</div>
+							<div>↩ Go</div>
+						</div>
+					</>
+				) : null}
+			</div>
+		)
+	}
+
 	render() {
 		// Don't show sections with no results
 		const { hits, value, hasMounted } = this.state;
@@ -251,6 +272,7 @@ class AutoComplete extends React.Component {
 			suggestionsList: `list pa0 ma0 pt1 flex-auto`,
 			sectionContainer: `pb4 mb4`,
 			sectionTitle: `f8 lh-h4 fw5 midgrey w30 tr mt2 sticky top-2 pr2`,
+
 		};
 
 		if (!hasMounted) {
@@ -266,7 +288,8 @@ class AutoComplete extends React.Component {
 					onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 					getSuggestionValue={this.getSuggestionValue}
 					onSuggestionSelected={this.suggestionSelected}
-					renderSuggestion={this.renderSuggestion}
+					// renderSuggestion={this.renderSuggestion}
+					renderSuggestionsContainer={this.renderSuggestionsContainer}
 					inputProps={inputProps}
 					theme={theme}
 				/>

@@ -19,7 +19,6 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
-	console.log("data is: ", data);
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
