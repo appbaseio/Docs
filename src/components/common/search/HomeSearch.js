@@ -235,7 +235,7 @@ class AutoComplete extends React.Component {
 		return (
 			<div {...containerProps}>
 				{(children && children?.props?.items) ? (
-					<>
+					<div>
 						{children.props?.items.map((item) => (
 							<HitTemplate hit={item} currentValue={value} />
 						))}
@@ -244,7 +244,7 @@ class AutoComplete extends React.Component {
 							<div>↑↓ Navigate</div>
 							<div>↩ Go</div>
 						</div>
-					</>
+					</div>
 				) : null}
 			</div>
 		)
