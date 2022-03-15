@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
-// import TimelineOption from '@appbaseio/designkit/lib/molecules/TimelineOption';
+import TimelineOption from '@appbaseio/designkit/lib/molecules/TimelineOption';
 import Grid from '@appbaseio/designkit/lib/atoms/Grid';
 import { Card } from '@appbaseio/designkit';
 import { Icon, Box } from '../components/common';
@@ -40,7 +40,7 @@ const HomePage = ({ data, location }) => {
 						>
 							Appbase.io features organized by guides and chapters
 						</p>
-						{/* <div className="mt5 timeline-steps">
+						<div className="mt5 timeline-steps">
 							<TimelineOption
 								onClick={info => navigate(info.link)}
 								primaryColor="#3eb0ef"
@@ -330,7 +330,7 @@ const HomePage = ({ data, location }) => {
 									},
 								}}
 							/>
-						</div> */}
+						</div>
 					</div>
 
 					<section
