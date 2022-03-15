@@ -33,6 +33,7 @@ const NavBar = ({ theme }) => {
 		<nav className="shadow-3 on-white">
 			<div
 				className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
+				style={{height: 75}}
 				data-cy="header-navigation"
 			>
 				<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
