@@ -73,11 +73,6 @@ Yes, as simple as that, we will take care of the rest.
 
 Now that we know the user has access to index the data, let's use the ip field to get the location from it.
 
-#### Things to Note
-
-- For the location we will use the [ip-api](https://ip-api.com/docs/api:json).
-- This stage will have to be run **asynchronously** because we will be making an external call.
-
 Since, this is a custom stage, we will pass a **JavaScript** file to the pipeline. We will also pass the `async` stage set to `true` so that this stage is run asynchronously.
 
 This stage will be defined in the followin way:
@@ -126,9 +121,95 @@ async function handleRequest() {
 
 In the above script, we are adding an `extractedLocation` field in the context with the extracted location.
 
+#### Things to Note
+
+- For the location we will use the [ip-api](https://ip-api.com/docs/api:json).
+- This stage will have to be run **asynchronously** because we will be making an external call.
+
 #### Why not update the request body directly?
 
 The question might arise, why are we not updating the request body directly in the above script?
 
 This is because stages that are running asynchronously, or in other words, that have the `async: true` set are not allowed to update the context values but they are allowed to add new fields to the context.
 
+### Add Details to Body
+
+We now have the location added to the context, we can update the request body with the extracted location. This stage is important because it will run synchronously and update the request body in context.
+
+This stage will be simple and defined in the following way
+
+```yaml
+- id: add details to body
+  scriptRef: "addDetails.js"
+  needs:
+    - get location details
+```
+
+> Note that we have a `needs` stage here. The `needs` makes sure this stage is executed only after all the stages that it _needs_ are completed.
+
+In the above stage, we are refering an `addDetails.js` file. This file can be defined in the following way
+
+```js
+function handleRequest() {
+    const requestBody = JSON.parse(context.request.body)
+    return {
+        request: {
+            ...context.request,
+            body: JSON.stringify({
+                ...requestBody,
+                location: context.extractedLocation
+            })
+        }
+    }
+}
+```
+
+In the above script, we are adding the `context.extractedLocation` field to the request body. Here, the request body is a stringified JSON. This is why we are parsing it and unparsing it back to make it properly readable in former stages.
+
+### Index Data
+
+We are at the final stage now. We just need to pass the request body to ElasticSearch and we are done. We can do that by using the pre-built stage `elasticsearchQuery`.
+
+We can define this stage in the following way
+
+```yaml
+- id: index data
+  uses: elasticsearchQuery
+  needs:
+    - add details to body
+```
+
+We are using the `needs` property to make sure this stage gets executed after the `location` is added to the body.
+
+## Complete Pipeline
+
+Let's now take a look at the completed pipeline to see how it looks like in one file.
+
+```yaml
+enabled: true
+description: Index data into user-info with a location field
+
+routes:
+  - path: /user-info/_doc
+    method: POST
+      classify:
+        category: elasticsearch
+        acl: index
+
+stages:
+  - id: authorise user
+    uses: authorization
+  - id: get location details
+    scriptRef: "getLocation.js"
+    async: true
+  - id: add details to body
+    scriptRef: "addDetails.js"
+    needs:
+      - get location details
+  - id: index data
+    uses: elasticsearchQuery
+    needs:
+      - add details to body
+```
+
+In just a few lines of code, we have the pipeline ready. This pipeline can be tested through the dashboard at [dash.appbase.io](https://dash.appbase.io).
