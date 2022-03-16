@@ -36,10 +36,10 @@
     lodash "^4.17.21"
     resize-observer-polyfill "^1.5.0"
 
-"@appbaseio/designkit@^0.9.12":
-  version "0.9.12"
-  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.9.12.tgz#805cac433e3e278d8c694a606055380be2b4efd7"
-  integrity sha512-FUYLZr6EOo4Vr5wldeH26pHm4N4soEo2oo6wkaCCUSzW7FAtxjW7FlntAvn36Az5Cs5spIJnaGv++izLeOtUYQ==
+"@appbaseio/designkit@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.11.0.tgz#6f0fce707239a8255ef3127b5889703368773cb8"
+  integrity sha512-qX5Ych7sgPKl4IP7jWiT7ISalDpky7IMS9fNxDH/M9rDsJ46AZABaC8xnuODWQPWtA0qHbW35TWltFxjfQ5TJA==
   dependencies:
     "@storybook/react" "^3.2.19"
     prop-types "^15.6.0"
