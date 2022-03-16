@@ -147,6 +147,16 @@ const NavBar = ({ theme }) => {
 														</Link>
 													</div>
 													<div>
+                                                        <Link
+															to="/docs/search/pipelines/"
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+														>
+															<Icon
+																name="pipeline"
+																className="dropdown-content-icon mr2"
+															/>
+															ReactiveSearch Pipelines
+														</Link>
 														<Link
 															to="/docs/analytics/overview/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}

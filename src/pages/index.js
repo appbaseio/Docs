@@ -158,6 +158,24 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'4': {
+										title: 'ReactiveSearch Pipelines',
+										subtitle: 'Configure search and indexing routes, and author data processing stages with JavaScript',
+										icon: (
+											<Icon
+												name="pipeline"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: 'How to guides',
+												link: '/docs/pipelines/how-to/create-an-indexing-pipeline',
+												description: 'See actionable guides for building search pipelines with examples',
+												duration: 1,
+											}
+										]
+									},
+									'5': {
 										title: 'Building Search UI',
 										subtitle: 'UI Components for making your Search Experience',
 										icon: (
@@ -219,7 +237,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'5': {
+									'6': {
 										title: 'Actionable Analytics',
 										subtitle:
 											'Analytics offers actionable insights into how your search is performing.',
@@ -262,7 +280,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'6': {
+									'7': {
 										title: 'Speed',
 										subtitle: 'Blazing ⚡️ fast search performance',
 										icon: <Icon name="zap" className="dropdown-content-icon" />,
@@ -276,7 +294,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'7': {
+									'8': {
 										title: 'Access Control',
 										subtitle: 'Out-of-the-box access control for search',
 										icon: (
@@ -306,7 +324,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'8': {
+									'9': {
 										title: 'Hosting',
 										icon: (
 											<Icon name="rocket" className="dropdown-content-icon" />

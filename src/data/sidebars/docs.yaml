@@ -42,6 +42,14 @@
                   title: "Getting Started"
                 - link: /docs/search/scripts/examples
                   title: "Code Examples"
+      - group: "ReactiveSearch Pipelines"
+        icon: search
+        items:
+            - link: /docs/pipelines/how-to/
+              title: "How To"
+              items:
+                  - link: /docs/pipelines/how-to/create-an-indexing-pipeline
+                    title: "Create an indexing pipeline"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
