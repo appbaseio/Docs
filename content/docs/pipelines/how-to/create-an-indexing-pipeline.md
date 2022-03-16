@@ -68,3 +68,67 @@ We can use this stage in the following way:
 ```
 
 Yes, as simple as that, we will take care of the rest.
+
+### Get Location Details
+
+Now that we know the user has access to index the data, let's use the ip field to get the location from it.
+
+#### Things to Note
+
+- For the location we will use the [ip-api](https://ip-api.com/docs/api:json).
+- This stage will have to be run **asynchronously** because we will be making an external call.
+
+Since, this is a custom stage, we will pass a **JavaScript** file to the pipeline. We will also pass the `async` stage set to `true` so that this stage is run asynchronously.
+
+This stage will be defined in the followin way:
+
+```yaml
+- id: get location details
+  scriptRef: "getLocation.js"
+  async: true
+```
+
+In the above, we are referencing a `getLocation.js` in the `scriptRef` field.
+
+> `scriptRef` is a path to a JS script that contains the code to be executed for this stage.
+
+The file will be defined in the following way:
+
+```js
+async function getLocationFromIP(ip) {
+    /* Get location from the passed IP address */
+    const response = await fetch(`http://ip-api.com/json/${ip}`);
+
+    if (response.status != 200) return "";
+
+    /* Parse the response */
+    const jsonResponse = JSON.parse(response);
+    
+    if (jsonResponse.status != "success") return "";
+
+    /* Return the string in `city, state, country` format */
+    return [jsonResponse.city, jsonResponse.regionName, jsonResponse.country].join(", ");
+}
+
+async function handleRequest() {
+    const requestBody = JSON.parse(context.request.body);
+    const passedIP = requestBody.ip;
+
+    if (passedIP == undefined || passedIP == null || passedIP == "") return {};
+
+    /* Get the location from IP */
+    const location = await getLocationFromIP(passedIP);
+    return {
+        extractedLocation: location
+    };
+}
+```
+
+In the above script, we are adding an `extractedLocation` field in the context with the extracted location.
+
+#### Why not update the request body directly?
+
+The question might arise, why are we not updating the request body directly in the above script?
+
+This is because stages that are running asynchronously, or in other words, that have the `async: true` set are not allowed to update the context values but they are allowed to add new fields to the context.
+
