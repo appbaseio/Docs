@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 
 const SidebarLink = ({ link, title, linkClasses }) => {
 	if (link) {
-		console.log('link: ', link, 'title: ', title);
 		if (link.match(/^\s?http(s?)/gi)) {
 			// use anchor links for external links
 			return (

@@ -26,6 +26,7 @@ const plugins = [
 			name: `images`,
 		},
 	},
+	`gatsby-plugin-image`,
 	`gatsby-plugin-sharp`,
 	`gatsby-transformer-sharp`,
 	{
@@ -84,7 +85,7 @@ const plugins = [
 	{
 		resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
 		options: {
-			devMode: true,
+			disable: true,
 		}
 	},	
 	// `gatsby-plugin-perf-budgets`,
