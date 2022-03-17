@@ -12,7 +12,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-# Add External Search Results
+# External Search Results
 
 ReactiveSearch already provides a lot of flexibility for searching indexes. However, leveraging the ReactiveSearch Pipelines, we can even add external search results to a querys response and return them to the user accordingly.
 
@@ -119,7 +119,7 @@ In the above script, as described, we are hitting the knowledge graph API. Once 
 
 > Note that async stages are not allowed to update already exisiting fields in the context. They can however, add new fields to the context.
 
-## ElasticSearch Query
+### ElasticSearch Query
 
 Let's now hit ElasticSearch to get the response from ES. As explained before, we have already updated the request body to make it acceptable by ElasticSearch.
 
