@@ -70,3 +70,135 @@ We can use the pre-built stage `authorization` for this stage. That can be done 
 ```
 
 Yes, that's it. We will take care of the authorization in just two lines of code.
+
+### ReactiveSearch
+
+Now that we know the user has access to this endpoint, let's convert the request body. This stage will convert the passed request body to the equivalent ElasticSearch body so that it can be hit in the following stages.
+
+We can use the pre-built stage `reactivesearchQuery` for this stage. That can be done in the following way:
+
+```yaml
+- id: reactivesearch
+  uses: reactivesearchQuery
+```
+
+Above stage will automatically update the body in the context as well as update the URL that the elasticsearch stage will use. This is an essential step.
+
+### Google Knowledge Graph
+
+We are finally at the stage where we will hit Google's Knowledge Graph API. Before we start defining this stage, there are a few things we need to keep in mind:
+
+#### Things to Note
+
+- This stage will be run asynchronously because external calls will be made that needs to be awaited. The `async: true` field will be used to do so.
+- This stage will utilize the `knowledgeGraphAPIKey` key from the `envs` to make the request.
+
+
+This stage can be defined in the following way
+
+```yaml
+- id: google knowledge graph
+  scriptRef: "knowledgeGraph.js"
+  async: true
+```
+
+In the above stage, we are refering to a JavaScript file `knowledgeGraph.js`. We will need to define this file with some JavaScript code. When this stage will be executed, this file will be invoked.
+
+```js
+async function handleRequest() {
+    try {
+        const URL = `https://kgsearch.googleapis.com/v1/entities:search?query=${context.envs.query}&key=${context.envs.knowledgeGraphAPIKey}&limit=1&indent=True`;
+        const responseBody = await fetch(URL);
+        const response = JSON.parse(responseBody);
+        return { knowledge_graph: response }
+    } catch (e) { } return context;
+}
+```
+
+In the above script, as described, we are hitting the knowledge graph API. Once we have the response, we are adding that to the context with the key `knowledge_graph`.
+
+> Note that async stages are not allowed to update already exisiting fields in the context. They can however, add new fields to the context.
+
+## ElasticSearch Query
+
+Let's now hit ElasticSearch to get the response from ES. As explained before, we have already updated the request body to make it acceptable by ElasticSearch.
+
+We can now use the pre-built stage `elasticsearchQuery` to hit Elastic Search.
+
+We can do that in the following way:
+
+```yaml
+- id: es query
+  uses: elasticsearchQuery
+```
+
+It's as straightforward as that to hit ElasticSearch. This will automatically update the `context.response` field with whatever ElasticSearch returns.
+
+## Merge Response
+
+Now that we have both knowledge graph and Elastic Search response, we can finally merge the responses together so that the user gets both of them.
+
+We can do that by defining a script. Note that this script will run synchronously so it **will** be able to update the `response` body.
+
+We will define the stage in the following way:
+
+```yaml
+- id: merge response
+  scriptRef: "mergeResponse.js"
+  needs:
+    - es query
+    - google knowledge graph
+```
+
+In the above, we are using the `needs` property to indicate that this stage will be executed only after the _needed_ stages are completed.
+
+We are refering to a `mergeResponse.js` that we will define in the following way
+
+```js
+function handleRequest() {
+    const esResponse = JSON.parse(context.elasticsearchQuery);
+    const knowledgeGraph = context['knowledge_graph'];
+    return {
+        ...context, response: {
+            ...context.response,
+            body: JSON.stringify({ ...esResponse, knowledgeGraph })
+        }
+    }
+}
+```
+
+In the above script, we are merging the responses from Elastic Search and Knowledge Graph and completing the final stage. Now the response will contain both responses inside.
+
+## Complete Pipeline
+
+Now that all stages are complete, let's take look at the complete pipeline at once
+
+```yaml
+enabled: true
+description: Add Knowledge Graph Data to response
+
+routes:
+  - path: /{index}/_reactivesearch
+    method: POST
+    classify:
+      category: reactivesearch
+
+envs:
+  knowledgeGraphAPIKey: "someAPIkey"
+
+stages:
+  - id: authorze user
+    uses: authorization
+  - id: reactivesearch
+    uses: reactivesearchQuery
+  - id: google knowledge graph
+    scriptRef: "knowledgeGraph.js"
+    async: true
+  - id: es query
+    uses: elasticsearchQuery
+  - id: merge response
+    scriptRef: "mergeResponse.js"
+    needs:
+      - es query
+      - google knowledge graph
+```
