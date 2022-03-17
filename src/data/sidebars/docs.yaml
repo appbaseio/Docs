@@ -50,6 +50,8 @@
               items:
                   - link: /docs/pipelines/how-to/create-an-indexing-pipeline
                     title: "Create an indexing pipeline"
+                  - link: /docs/pipelines/how-to/add-external-search-results
+                    title: "Add external search results to response"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
