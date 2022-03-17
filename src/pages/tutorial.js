@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Button } from '@appbaseio/designkit';
-// import { LeftOutlined } from '@ant-design/icons'
 
 const Tutorial = () => {
     return (
@@ -10,7 +9,6 @@ const Tutorial = () => {
                 <Link to="/">                    
                     <Button style={{ backgroundColor: '#e4faff' }}> 
                         ◀ Back to docs
-                        {/* <LeftOutlined style={{ marginRight: 10 }} /> Back to docs */}
                     </Button>
                 </Link> 
             </div>                       
