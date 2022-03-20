@@ -10,7 +10,7 @@ import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
 
-const NavBar = ({ theme }) => {
+const NavBar = ({ theme, setThemeType }) => {
 	// Theme definitions
 	const themeClasses = {
 		dark: {
@@ -34,7 +34,6 @@ const NavBar = ({ theme }) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			setMockWindow(window);
-			console.log(window);
 		}
 	}, []);
 
@@ -450,8 +449,8 @@ const NavBar = ({ theme }) => {
 				<div className="relative home-search-container" style={{ marginRight: 10 }}>
 					<Search />
 				</div>
-				{mockWindow?.innerWidth > 768 ? <ThemeSwitch /> : null}	
-				<MobileNav />
+				{mockWindow?.innerWidth > 768 ? <ThemeSwitch setThemeType={setThemeType}/> : null}	
+				<MobileNav setThemeType={setThemeType}/>
 			</div>
 		</nav>
 	);
@@ -459,10 +458,12 @@ const NavBar = ({ theme }) => {
 
 NavBar.defaultProps = {
 	theme: `dark`,
+	setThemeType: () => {},
 };
 
 NavBar.propTypes = {
 	theme: PropTypes.oneOf([`dark`, `light`]),
+	setThemeType: PropTypes.func,
 };
 
 export default NavBar;

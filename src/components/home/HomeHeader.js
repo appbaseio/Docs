@@ -18,10 +18,12 @@ class HomeHeader extends React.Component {
 
 	render() {
 		const { open } = this.state;
+		const { setThemeType } = this.props;
+		
 		return (
 			<div className="gh-bg-home bb b--whitegrey">
 				<header className="top-0 left-0 right-0 bg-white fixed z-999">
-					<NavBar theme="dark" />
+					<NavBar theme="dark" setThemeType={setThemeType}/>
 				</header>
 				<div
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}

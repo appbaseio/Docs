@@ -142,6 +142,8 @@ class MobileNav extends React.Component {
 	};
 
 	handleClick = (val) => {
+		const { setThemeType } = this.props;
+		setThemeType(val);
 		this.setState({
 			theme: val,
 		});

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import loadable from '@loadable/component'
@@ -18,6 +18,8 @@ const Card = loadable(() => import('@appbaseio/designkit/lib/atoms/Card'));
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
 const HomePage = ({ data, location }) => {
+	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
+
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
@@ -35,7 +37,11 @@ const HomePage = ({ data, location }) => {
 				headerDividerStyle="shadow"
 				bodyClass="bg-white"
 				mainClass="bg-whitegrey-l2 pb-vw6 pb-vw3-ns"
-				header={<HomeHeader />}
+				header={
+					<HomeHeader 
+						setThemeType={(val) => setThemeType(val)}
+					/>
+				}
 			>
 				<div className="pt-vw3 ">
 					<div className={`${Spirit.page.xl} col-12 home-section`}>
@@ -49,6 +55,7 @@ const HomePage = ({ data, location }) => {
 							<TimelineOption
 								onClick={info => navigate(info.link)}
 								primaryColor="#3eb0ef"
+								theme={themeType}
 								items={{
 									'1': {
 										title: 'Getting Started',

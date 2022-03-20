@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import './styles.css';
 
-const ThemeSwitch = ({ onClick }) => {
+const ThemeSwitch = ({ onClick, setThemeType }) => {
 	return (
 		<div>
 			<ThemeToggler>
@@ -14,6 +14,7 @@ const ThemeSwitch = ({ onClick }) => {
 							onChange={e => {
 								toggleTheme(e.target.checked ? 'dark' : 'light');
 								onClick(e.target.checked ? 'dark' : 'light');
+								setThemeType(e.target.checked ? 'dark' : 'light');
 							}}
 							checked={theme === 'dark'}
 						/>{' '}
@@ -63,10 +64,12 @@ const ThemeSwitch = ({ onClick }) => {
 
 ThemeSwitch.defaultProps = {
 	onClick: () => {},
+	setThemeType: () => {},
 };
 
 ThemeSwitch.propTypes = {
 	onClick: PropTypes.func,
+	setThemeType: PropTypes.func,
 };
 
 export default ThemeSwitch;
