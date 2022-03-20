@@ -32,8 +32,11 @@ const NavBar = ({ theme }) => {
 	const [mockWindow, setMockWindow] = useState();
 
 	useEffect(() => {
-		setMockWindow(window);
-	}, [window?.innerWidth]);
+		if (typeof window !== "undefined") {
+			setMockWindow(window);
+			console.log(window);
+		}
+	}, []);
 
 	return (
 		<nav className="shadow-3 on-white" >

@@ -29,11 +29,24 @@
 	height: 20px;
 	width: 20px;
 	left: -1px;
-	bottom: -4.5px;
-	background-color: rgb(67 63 63);
+	bottom: -4px;
+	background: #e1c8ac;
+	/* background-color: rgb(67 63 63); */
 	box-shadow: 0 0 0 1px rgb(0 0 0 / 7%), 0 1px 3px 0 rgb(59 65 94 / 10%);
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
+}
+
+.dark-theme-icon {
+	position: absolute;
+	left: 3px;
+	bottom: -3px;
+}
+
+.light-theme-icon {
+	position: absolute;
+	left: 23px;
+	bottom: -3px;
 }
 
 /* input:checked + .slider {
@@ -48,7 +61,7 @@ input:checked + .slider:before {
 	-webkit-transform: translateX(26px);
 	-ms-transform: translateX(26px);
 	transform: translateX(20px);
-	background-color: #e1c8ac;
+	background-color: #939496;
 }
 
 /* Rounded sliders */
