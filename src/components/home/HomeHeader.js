@@ -21,7 +21,7 @@ class HomeHeader extends React.Component {
 		const { setThemeType, themeType } = this.props;
 		
 		return (
-			<div className="gh-bg-home bb b--whitegrey">
+			<div className="gh-bg-home b--whitegrey">
 				<header className="top-0 left-0 right-0 bg-white fixed z-999">
 					<NavBar theme="dark" setThemeType={setThemeType} themeType={themeType}/>
 				</header>
