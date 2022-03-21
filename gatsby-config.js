@@ -55,8 +55,8 @@ const plugins = [
 	{
 		resolve: `gatsby-plugin-manifest`,
 		options: {
-			name: `Appbase Docs`,
-			short_name: `Appbase`,
+			name: `Reactivesearch Docs`,
+			short_name: `Reactivesearch`,
 			start_url: `/`,
 			background_color: `#343f44`,
 			theme_color: `#343f44`,
@@ -141,9 +141,9 @@ const plugins = [
 
 module.exports = {
 	siteMetadata: {
-		title: `Appbase.io Docs`,
+		title: `Reactivesearch.io Docs`,
 		siteUrl: `https://github.com/appbaseio/Docs`,
-		description: `Appbase.io Docs Reference - JavaScript and REST APIs for indexing, querying and streaming data.`,
+		description: `Reactivesearch.io Docs Reference - JavaScript and REST APIs for indexing, querying and streaming data.`,
 	},
 	plugins,
 };

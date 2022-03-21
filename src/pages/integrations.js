@@ -21,7 +21,7 @@ const APIPage = () => {
 							APIs and Integrations
 						</h1>
 						<p className={Spirit.sectionSubHeading}>
-							UI Libraries, clients and interactive examples for working with appbase.io
+							UI Libraries, clients and interactive examples for working with reactivesearch.io
 						</p>
 					</div>
 				</section>
@@ -34,7 +34,7 @@ const APIPage = () => {
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
 								Lightweight and performance focused searchbox UI component for
-								appbase.io
+								reactivesearch.io
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>
@@ -77,7 +77,7 @@ const APIPage = () => {
 								ReactiveSearch
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
-								Search, Facets and Results UI components for appbase.io and
+								Search, Facets and Results UI components for reactivesearch.io and
 								Elasticsearch
 							</p>
 						</div>
@@ -103,7 +103,7 @@ const APIPage = () => {
 								Clients
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
-								Client libraries for interacting with the appbase.io API directly
+								Client libraries for interacting with the reactivesearch.io API directly
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>

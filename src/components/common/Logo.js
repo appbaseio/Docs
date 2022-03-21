@@ -19,9 +19,9 @@ const Logo = ({ height, theme }) => {
 			<title>0BA2BF95-0ED3-4D35-A8D2-345C03475D56@3x</title>
 			<desc>Created with sketchtool.</desc>
 			<g id="Website" className="st0">
-				<g id="Appbase.io-_x2F_-Support" transform="translate(-198.000000, -663.000000)">
+				<g id="Reactivesearch.io-_x2F_-Support" transform="translate(-198.000000, -663.000000)">
 					<g
-						id="Logo_Appbase"
+						id="Logo_Reactivesearch"
 						transform="translate(198.000000, 663.000000)"
 						style={{ fill: fillColor }}
 					>

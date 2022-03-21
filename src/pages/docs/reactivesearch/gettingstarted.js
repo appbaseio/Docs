@@ -125,7 +125,7 @@ const GettingStarted = props => {
 					<img src="/images/REST.png" alt="REST API" />
 					<div className="content">
 						<h2>REST API</h2>
-						<p>Appbase.io REST API (Elasticsearch compatible)</p>
+						<p>Reactivesearch.io REST API (Elasticsearch compatible)</p>
 						<a className="btn" href="/api/rest/quickstart/">
 							Start with REST API
 						</a>
@@ -135,7 +135,7 @@ const GettingStarted = props => {
 					<img src="/images/android.jpeg" alt="Android Library" />
 					<div className="content">
 						<h2>Android Library</h2>
-						<p>Elasticsearch and appbase.io library for Android (and Java)</p>
+						<p>Elasticsearch and reactivesearch.io library for Android (and Java)</p>
 						<a
 							className="btn"
 							href="https://github.com/appbaseio/appbase-droid"
@@ -150,7 +150,7 @@ const GettingStarted = props => {
 					<img src="/images/swift.jpeg" alt="Swift Library" />
 					<div className="content">
 						<h2>Swift Library</h2>
-						<p>Elasticsearch and appbase.io library for Swift iOS / MacOS</p>
+						<p>Elasticsearch and reactivesearch.io library for Swift iOS / MacOS</p>
 						<a
 							className="btn"
 							href="https://github.com/appbaseio/appbase-swift"

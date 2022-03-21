@@ -205,7 +205,7 @@ const NavBar = ({ theme }) => {
 														</h3>
 														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
 															UI Libraries, clients and interactive examples for working
-															with appbase.io
+															with reactivesearch.io
 														</p>
 														<Link
 															style={{ textDecoration: 'none' }}

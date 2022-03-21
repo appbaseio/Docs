@@ -15,8 +15,8 @@ const NotFoundPage = () => (
 				<Link to="/" className="pa2 dib blue hover-darkgrey link br b--whitegrey">
 					Docs
 				</Link>
-				<a href="https://appbase.io" className="pa2 dib blue hover-darkgrey link">
-					Appbase.io
+				<a href="https://reactivesearch.io" className="pa2 dib blue hover-darkgrey link">
+					Reactivesearch.io
 				</a>
 			</div>
 		</div>

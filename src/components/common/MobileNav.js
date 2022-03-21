@@ -167,7 +167,7 @@ class MobileNav extends React.Component {
 						</h2>
 						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
 							UI Libraries, clients and interactive examples for working with
-							appbase.io
+							reactivesearch.io
 						</p>
 						<div className="mt5 mb3">
 							<div className="mobile-links-container">
@@ -218,15 +218,15 @@ class MobileNav extends React.Component {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="midgrey hover-blue-l2 link"
-								href="https://appbase.io"
+								href="https://reactivesearch.io"
 							>
-								Appbase.io
+								Reactivesearch.io
 							</a>
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
 								className="midgrey hover-blue-l2 link"
-								href="https://dashboard.appbase.io"
+								href="https://dashboard.reactivesearch.io"
 							>
 								Dashboard
 							</a>
