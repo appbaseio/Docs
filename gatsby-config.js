@@ -40,9 +40,19 @@ const plugins = [
 						withWebp: true,
 					},
 				},
+				{
+					resolve: `gatsby-remark-prismjs`,
+					options: {
+						classPrefix: "language-",
+						showLineNumbers: true,
+						aliases: {
+							js: "javascript"
+						}
+					}
+				},
 				`gatsby-remark-autolink-headers`,
 				`gatsby-remark-code-titles`,
-				`gatsby-remark-prismjs`,
+				`gatsby-remark-check-links`,
 				`gatsby-remark-external-links`,
 			],
 		},
@@ -64,15 +74,15 @@ const plugins = [
 			icon: `static/favicon.png`,
 			icons: [
 				{
-				  src: `static/favicon.pngg`,
-				  sizes: `192x192`,
-				  type: `image/png`,
-				  purpose: "any maskable"
+					src: `static/favicon.pngg`,
+					sizes: `192x192`,
+					type: `image/png`,
+					purpose: "any maskable"
 				},
 				{
-				  src: `static/favicon.png`,
-				  sizes: `512x512`,
-				  type: `image/png`,
+					src: `static/favicon.png`,
+					sizes: `512x512`,
+					type: `image/png`,
 				},
 			],
 		},
@@ -87,7 +97,7 @@ const plugins = [
 		options: {
 			disable: true,
 		}
-	},	
+	},
 	// `gatsby-plugin-perf-budgets`,
 	/**
 	 *  Display Plugins
@@ -128,13 +138,6 @@ const plugins = [
 			height: 3,
 			prependToBody: false,
 			color: `#3eb0ef`,
-		},
-	},
-
-	{
-		resolve: 'gatsby-transformer-remark',
-		options: {
-			plugins: ['gatsby-remark-autolink-headers', 'gatsby-remark-check-links'],
 		},
 	},
 ];
