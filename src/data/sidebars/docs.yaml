@@ -45,7 +45,7 @@
       - group: "ReactiveSearch Pipelines"
         icon: search
         items:
-            - link: /docs/pipelines/how-to/
+            - link: /docs/pipelines/how-to/overview
               title: "How To"
               items:
                   - link: /docs/pipelines/how-to/create-an-indexing-pipeline
