@@ -52,6 +52,8 @@
                     title: "Create an indexing pipeline"
                   - link: /docs/pipelines/how-to/add-external-search-results
                     title: "Add external search results to response"
+                  - link: /docs/pipelines/add-side-effect-search-query
+                    title: "Add Side Effect to a search query"
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
