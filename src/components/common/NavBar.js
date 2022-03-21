@@ -10,7 +10,7 @@ import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
 
-const NavBar = ({ theme, setThemeType }) => {
+const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
 	const themeClasses = {
 		dark: {
@@ -45,7 +45,7 @@ const NavBar = ({ theme, setThemeType }) => {
 			>
 				<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
 					<Link to="/" className="nudge-top--3">
-						<Logo theme="light" />
+						<Logo theme={themeType} />
 					</Link>
 				</div>
 				{/* navbar-container wrapper element and bottom padding is needed to hide the horizontal scrollbar on smaller screensizes */}

@@ -40,6 +40,7 @@ const HomePage = ({ data, location }) => {
 				header={
 					<HomeHeader 
 						setThemeType={(val) => setThemeType(val)}
+						themeType={themeType}
 					/>
 				}
 			>
