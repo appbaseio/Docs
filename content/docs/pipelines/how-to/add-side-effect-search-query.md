@@ -113,3 +113,72 @@ async function handleRequest() {
 ```
 
 This stage will use the environment variables to store the request body by making a **POST** request to the `/_doc` endpoint.
+
+### Reactive Search Query
+
+We will use the pre-built stage `reactivesearchQuery` for this stage. We will be converting the RS Query to ES Query in this stage.
+
+Since the above stage is async, we also need to make sure that that stage is completed before this stage so that the request is actually properly stored.
+
+We can define this stage in the following way:
+
+```yaml
+- id: reactive search query
+  use: reactivesearchQuery
+  needs:
+    - save search
+```
+
+### Elastic Search Query
+
+The final stage, we make the ES call and return the response accordingly. At this stage, the request body should be converted to the ES body so that ES can understand it.
+
+We will be using the pre-built stage `elasticsearchQuery` at this stage.
+
+We can define this stage in the following way:
+
+```yaml
+- id: elastic search query
+  use: elasticsearchQuery
+```
+
+## Complete Pipeline
+
+Now that all the stages are defined, let's take a look at the whole pipeline at once:
+
+```yaml
+enabled: true
+description: Pipeline to save search to an Elasticsearch index
+routes:
+- path: "/{index}/_reactivesearch"
+  method: POST
+  classify:
+    category: reactivesearch
+
+envs:
+  saved_search_index: savedsearch
+  saved_search_credentials: foo:bar
+
+stages:
+  - id: "authorize user"
+    use: "authorization"
+  - id: "save search"
+    async: true
+    scriptRef: "saveSearch.js"
+  - id: reactive search query
+    use: reactivesearchQuery
+    needs:
+      - save search
+  - id: elastic search query
+    use: elasticsearchQuery
+```
+
+## Testing the Pipeline
+
+We can hit the pipeline and see if the request is being saved to the index. We just need to hit a `/_reactivesearch` endpoint and the request will be saved.
+
+For instance, let's hit the `app-store-data` index in the following way:
+
+```sh
+curl -X POST http://localhost:8000/app-store-data/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
+```
