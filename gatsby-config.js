@@ -46,7 +46,9 @@ const plugins = [
 						classPrefix: "language-",
 						showLineNumbers: true,
 						aliases: {
-							js: "javascript"
+							js: "javascript",
+							sh: "bash",
+							curl: "bash"
 						}
 					}
 				},
