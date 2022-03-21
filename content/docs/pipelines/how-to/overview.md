@@ -11,3 +11,12 @@ keywords:
     - how to
 sidebar: 'docs'
 ---
+
+# How to guides for pipelines
+
+Get started with ReactiveSearch Pipelines with our How To guides curated considering all scenarios that a developer might come across. Our guides are aimed at giving the reader a proper idea of the pipelines and giving them an idea of how capable ReactiveSearch Pipelines are.
+
+## List of Guides
+
+- [Create an Indexing Pipeline](/docs/pipelines/how-to/create-an-indexing-pipeline)
+- [Add external search results to response](/docs/pipelines/how-to/add-external-search-results)
