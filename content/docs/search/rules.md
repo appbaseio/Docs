@@ -74,7 +74,7 @@ Query Rules also comes with an advanced editor that allows writing truly express
 
 A condition can be expressed using one of the following operators. Each operator operates on the `$field` and `$value`.
 
-| Operator Name | Description                       |
+| <p style="margin: 0px;" class="table-header-text">Operator Name</p> | <p style="margin: 0px;" class="table-header-text">Description</p>                       |
 |---------------|-----------------------------------|
 | `exactlyMatches` | The field's value set by the search query should exactly match the provided value. |
 | `doesNotMatch` | The field's value set by the search query should not match the provided value. |

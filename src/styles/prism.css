@@ -133,3 +133,112 @@ Usage, in Markdown files:
 .font-link {
 	font-family: 'Inter', sans-serif;
 }
+
+body {
+	-webkit-font-smoothing: antialiased;
+	--bg: white;
+	--textNormal: #222;
+	--textTitle: #222;
+	--textLink: blue;
+	--hr: hsla(0, 0%, 0%, 0.2);
+
+	color: rgb(52, 63, 68);
+	background-color: var(--bg);
+	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-size: 1.35rem;
+}
+
+body.dark {
+	-webkit-font-smoothing: antialiased;
+	background: #082429;
+	/* #2c3031  */
+	background: darkslategray;
+	color: #dfdfdf;
+	--bg: darkslategray;
+	--textNormal: rgba(255, 255, 255, 0.88);
+	--textTitle: white;
+	--textLink: yellow;
+	--hr: hsla(0, 0%, 100%, 0.2);
+	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-size: 1.35rem;
+}
+
+body.dark div span p h2 h3 th a {
+	color: #dfdfdf !important;
+}
+
+body.light div span p h2 h3 th a {
+	color: #000 !important;
+}
+
+body.dark h1 {
+	color: #efefef;
+}
+
+body.light h1 {
+	color: #000 !important;
+}
+
+body.dark .table-header-text {
+	color: #efefef;
+}
+
+body.light .table-header-text {
+	color: #000;
+}
+
+body.light > div > div > header {
+	background: #fff;
+}
+
+body.dark > div > div > header {
+	background: #082429;
+}
+
+body.light > div > div > main {
+	background: #f8fafc;
+}
+
+body.dark > div > div > main {
+	background: #082429;
+}
+
+body.light > div > div > div > header {
+	background: #fff;
+}
+
+body.dark > div > div > div > header {
+	background: #082429;
+}
+
+body.dark .toc-list-container ol a {
+	color: var(--lightwhite);
+}
+
+body.light .toc-list-container ol a {
+	color: var(--midlightgrey);
+}
+
+body.dark .toc-list-container .is-active-link {
+	color: var(--darkwhite);
+}
+
+body.light .toc-list-container .is-active-link {
+	color: var(--darkgrey);
+}
+
+body.dark .link-container {
+	color: var(--lightwhite);
+}
+
+body.light .link-container {
+	color: var(--midgrey);
+}
+
+code {
+	color: black;
+}
+
+pre > code {
+	color: white;
+}
