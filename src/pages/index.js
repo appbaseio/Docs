@@ -25,7 +25,7 @@ const HomePage = ({ data, location }) => {
 	}
 // testing
 	if(typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
-		localStorage.setItem('recentSuggestions', []);
+		localStorage.setItem('recentSuggestions', JSON.stringify([]));
 
 	return (
 		<>

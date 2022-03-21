@@ -11,17 +11,19 @@ import '../../../styles/prism.css';
 
 const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => {
 	useEffect(() => {
-		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions')) || [];
-		if(!recentSuggestionsArr.includes(window.location.pathname)) {
-			if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
-				recentSuggestionsArr.pop();
-			recentSuggestionsArr.unshift(window.location.pathname);
-			localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
-		} else {
-			let newArr = recentSuggestionsArr.filter(e => e !== window.location.pathname);
-			newArr.unshift(window.location.pathname);
-			localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
-		}
+		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions') || []);
+		if(window.location.pathname !== '/') {
+			if(!recentSuggestionsArr.includes(window.location.pathname)) {
+				if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
+					recentSuggestionsArr.pop();
+				recentSuggestionsArr.unshift(window.location.pathname);
+				localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
+			} else {
+				let newArr = recentSuggestionsArr.filter(e => e !== window.location.pathname);
+				newArr.unshift(window.location.pathname);
+				localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
+			}
+		}		
 	}, []);
 
 	return (
