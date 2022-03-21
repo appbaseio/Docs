@@ -34,7 +34,7 @@ When you select a primary language that's different from Universal, the universa
 \* The following languages require additional analyzer plugins to be installed in your Elasticsearch cluster.
 
 
-| Language | Plugin Required | Context |
+| <p style="margin: 0px;" class="table-header-text">Language</p> | <p style="margin: 0px;" class="table-header-text">Plugin Required</p> | <p style="margin: 0px;" class="table-header-text">Context</p> |
 |----------|-----------------|---------|
 | chinese  | [smartcn](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-smartcn.html)         |  The chinese language falls back to the built-in `cjk` analyzer, but it's recommended to install the smartcn analyzer for a better chinese or mixed chinese-english text analysis. |
 | japanese | [kuromoji](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji.html) |  The kuromoji analyzer enables the analysis of japanese text. |
@@ -238,7 +238,7 @@ Popular suggestions panel allows configuring suggestions based on popularity of 
 
 You can set the index and query time preferences for popular suggestions from appbase.io dashboard's Popular Suggestions.  Unlike other suggestion types, Popular suggestions are re-calculated and populated in a special index on a daily basis based on the aggregate end-user search analytics data and index time suggestion preferences. These help optimize the behavior of suggestions for your specific use-case.
 
-| Label                | Applicable At | Description                                                                                     |
+| <p style="margin: 0px;" class="table-header-text">Label</p>                | <p style="margin: 0px;" class="table-header-text">Applicable At</p> | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                     |
 |----------------------|---------------|-------------------------------------------------------------------------------------------------|
 | Indices              | Index, Query  | Specified indices will be considered to calculate the suggestions.                              |
 | Number of days       | Index         | Set the last <X> days interval to use for populating the popular suggestions index.             |
@@ -264,7 +264,7 @@ Recent suggestions panel allows configuring how an end-user sees their recent se
 
 You can set the constaints for returning recent suggestions from appbase.io dashboard's Recent Suggestions settings menu. Only recent suggestions that meet these constraints will be returned back.
 
-| Label          | Description                                                                    |
+| <p style="margin: 0px;" class="table-header-text">Label</p>          | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                    |
 |----------------|--------------------------------------------------------------------------------|
 | Min Hits       | Define the minimum number of results (aka hits) that should've been returned for a search term to be included.       |
 | Size           | Maximum number of recent suggestions to be returned at query time.                         |
@@ -283,7 +283,7 @@ Index suggestions settings allow configuring how an end-user would see the searc
 
 ![](https://imgur.com/JzNzHnI.png)
 
-| Label                         | Description                                                                                                                                                                                     |
+| <p style="margin: 0px;" class="table-header-text">Label</p>                         | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                                                                                                                     |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Indices                       | Specified indices will be considered to calculate the suggestions.                                                                                                                          |
 | Show Distinct Suggestions     | Show only up to 1 suggestion per document (i.e. record). If set to false, multiple suggestions can be shown when relevant (based on different matching fields) from the same document.          |

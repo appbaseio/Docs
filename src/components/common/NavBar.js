@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
+import ThemeSwitch from './themeSwitch';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './ReactivesearchLogo';
@@ -10,11 +10,11 @@ import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
 
-const NavBar = ({ theme }) => {
+const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
 	const themeClasses = {
 		dark: {
-			menuItem: `middarkgrey-l1 link hover-blue nowrap`,
+			menuItem: ` link hover-blue nowrap`,
 			logoTheme: `light`,
 			docsTitleClass: `blue`,
 			searchBox: `bg-darkgrey-searchbar middarkgrey dark-placeholder`,
@@ -28,9 +28,17 @@ const NavBar = ({ theme }) => {
 			icon: `fill-white`,
 		},
 	};
+	
+	const [mockWindow, setMockWindow] = useState();
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setMockWindow(window);
+		}
+	}, []);
 
 	return (
-		<nav className="shadow-3 on-white">
+		<nav className="shadow-3 on-white" >
 			<div
 				className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
 				style={{height: 75}}
@@ -38,7 +46,7 @@ const NavBar = ({ theme }) => {
 			>
 				<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
 					<Link to="/" className="nudge-top--3">
-						<Logo />
+						<Logo theme={themeType} />
 					</Link>
 				</div>
 				{/* navbar-container wrapper element and bottom padding is needed to hide the horizontal scrollbar on smaller screensizes */}
@@ -53,7 +61,7 @@ const NavBar = ({ theme }) => {
 												themeClasses[theme].menuItem
 											} nowrap f8 pa3 mr1 mr3-l nl3 ${
 												value.selectedKey === 'guides'
-													? 'fw6 darkgrey'
+													? 'fw6'
 													: 'fw3'
 											} cursor-pointer`}
 											onMouseEnter={() => {
@@ -66,16 +74,17 @@ const NavBar = ({ theme }) => {
 										{value.selectedKey === 'guides' ? (
 											<div
 												className="dropdown-content"
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
 													className={`${Spirit.page.xl} pt2 pb2 grid-dropdown grid-dropdown-4`}
 												>
 													<div>
-														<h2 className="f2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+														<h2 className="f2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 															Guides
 														</h2>
-														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 															Step wise guide from making your search
 															app to securing it.
 														</p>
@@ -86,7 +95,7 @@ const NavBar = ({ theme }) => {
 													</h2> */}
 														<Link
 															to="/docs/gettingstarted/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="gettingStarted"
@@ -96,7 +105,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/data/model/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="importData"
@@ -106,7 +115,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/hosting/clusters/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="rocket"
@@ -118,7 +127,7 @@ const NavBar = ({ theme }) => {
 													<div>
 														<Link
 															to="/docs/search/relevancy/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="searchRelevancy"
@@ -128,7 +137,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/v3/overview/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="buildingUI"
@@ -138,7 +147,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/speed/cache-management/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="zap"
@@ -150,7 +159,7 @@ const NavBar = ({ theme }) => {
 													<div>
 														<Link
 															to="/docs/analytics/overview/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="analytics"
@@ -160,7 +169,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/security/credentials/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="security"
@@ -182,7 +191,7 @@ const NavBar = ({ theme }) => {
 											className={`${
 												themeClasses[theme].menuItem
 											} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer ${
-												value.selectedKey === 'api' ? 'fw6 darkgrey' : 'fw3'
+												value.selectedKey === 'api' ? 'fw6' : 'fw3'
 											}`}
 											onMouseEnter={() => {
 												value.handleKey('api');
@@ -194,16 +203,17 @@ const NavBar = ({ theme }) => {
 										{value.selectedKey === 'api' ? (
 											<div
 												className="dropdown-content"
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
 													className={`${Spirit.page.xl} pt2 pb2 grid-dropdown grid-dropdown-4`}
 												>
 													<div>
-														<h3 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+														<h3 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 															APIs and Integrations
 														</h3>
-														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+														<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 															UI Libraries, clients and interactive examples for working
 															with appbase.io
 														</p>
@@ -225,16 +235,16 @@ const NavBar = ({ theme }) => {
 														</Link>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns mb2">
 															UI Libraries
 														</h2>
 
-														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns mb2">
 															ReactiveSearch UI Kit
 														</h3>
 														<Link
 															to="/docs/reactivesearch/v3/overview/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="react-bw"
@@ -244,7 +254,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/vue/overview/QuickStart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="vue-bw"
@@ -254,7 +264,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/native/overview/QuickStart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="react-bw"
@@ -263,12 +273,12 @@ const NavBar = ({ theme }) => {
 															Native
 														</Link>
 
-														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+														<h3 className="f5 lh-h5 lh-h4-l fw6 ma0 pa0 mt0 mt2-ns mb2">
 															Searchbox
 														</h3>
 														<Link
 															to="/docs/reactivesearch/searchbox/Quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="js-bw"
@@ -278,7 +288,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/react-searchbox/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="react-bw"
@@ -288,7 +298,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/vue-searchbox/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="vue-bw"
@@ -298,7 +308,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/react-native-searchbox/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="react-bw"
@@ -308,7 +318,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/docs/reactivesearch/flutter-searchbox/quickstart"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="flutter"
@@ -318,12 +328,12 @@ const NavBar = ({ theme }) => {
 														</Link>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns mb2">
 															REST API
 														</h2>
 													<Link
 															to="/api/rest/overview/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="rest"
@@ -331,13 +341,13 @@ const NavBar = ({ theme }) => {
 															/>
 															Overview
 														</Link>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns mb2">
 															Clients
 														</h2>
 
 														<Link
 															to="/api/javascript/quickstart/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="js-bw"
@@ -349,7 +359,7 @@ const NavBar = ({ theme }) => {
 															href="https://github.com/appbaseio/appbase-droid"
 															target="_blank"
 															rel="noopener noreferrer"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="android-logo"
@@ -362,7 +372,7 @@ const NavBar = ({ theme }) => {
 															href="https://github.com/appbaseio/appbase-swift"
 															target="_blank"
 															rel="noopener noreferrer"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<img
 																style={{ filter: 'grayscale(1)' }}
@@ -374,12 +384,12 @@ const NavBar = ({ theme }) => {
 														</a>
 													</div>
 													<div>
-														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey mb2">
+														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns mb2">
 															Interactive Examples
 														</h2>
 														<Link
 															to="/api/examples/rest/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="rest"
@@ -389,7 +399,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/api/examples/python/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="python-bw"
@@ -399,7 +409,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/api/examples/js/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="js-bw"
@@ -409,7 +419,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/api/examples/go/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="go-bw"
@@ -419,7 +429,7 @@ const NavBar = ({ theme }) => {
 														</Link>
 														<Link
 															to="/api/examples/php/"
-															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link`}
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
 															<Icon
 																name="php-bw"
@@ -437,10 +447,11 @@ const NavBar = ({ theme }) => {
 						</DropdownLink>
 					</div>
 				</div>
-				<div className="relative home-search-container">
+				<div className="relative home-search-container" style={{ marginRight: 10 }}>
 					<Search />
 				</div>
-				<MobileNav />
+				{mockWindow?.innerWidth > 768 ? <ThemeSwitch setThemeType={setThemeType}/> : null}	
+				<MobileNav setThemeType={setThemeType}/>
 			</div>
 		</nav>
 	);
@@ -448,10 +459,12 @@ const NavBar = ({ theme }) => {
 
 NavBar.defaultProps = {
 	theme: `dark`,
+	setThemeType: () => {},
 };
 
 NavBar.propTypes = {
 	theme: PropTypes.oneOf([`dark`, `light`]),
+	setThemeType: PropTypes.func,
 };
 
 export default NavBar;

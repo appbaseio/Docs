@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import loadable from '@loadable/component'
@@ -18,6 +18,8 @@ const Card = loadable(() => import('@appbaseio/designkit/lib/atoms/Card'));
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
 const HomePage = ({ data, location }) => {
+	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
+
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
@@ -35,13 +37,18 @@ const HomePage = ({ data, location }) => {
 				headerDividerStyle="shadow"
 				bodyClass="bg-white"
 				mainClass="bg-whitegrey-l2 pb-vw6 pb-vw3-ns"
-				header={<HomeHeader />}
+				header={
+					<HomeHeader 
+						setThemeType={(val) => setThemeType(val)}
+						themeType={themeType}
+					/>
+				}
 			>
 				<div className="pt-vw3 ">
 					<div className={`${Spirit.page.xl} col-12 home-section`}>
-						<span className={`${Spirit.h3} fw6 link darkgrey home-title`}>Guides</span>
+						<span className={`${Spirit.h3} fw6 link home-title`}>Guides</span>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Appbase.io features organized by guides and chapters
 						</p>
@@ -49,6 +56,7 @@ const HomePage = ({ data, location }) => {
 							<TimelineOption
 								onClick={info => navigate(info.link)}
 								primaryColor="#3eb0ef"
+								theme={themeType}
 								items={{
 									'1': {
 										title: 'Getting Started',
@@ -341,11 +349,11 @@ const HomePage = ({ data, location }) => {
 					<section
 						className={`${Spirit.page.xl} col-12 mt8 pt5 home-section integration-home`}
 					>
-						<h3 className={`${Spirit.h3} fw6 link darkgrey home-title`}>
+						<h3 className={`${Spirit.h3} fw6 link home-title`}>
 							Integrations
 						</h3>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Getting started guides for your favorite libraries and frameworks
 						</p>
@@ -461,9 +469,9 @@ const HomePage = ({ data, location }) => {
 						</div>
 					</section>
 					<section className={`${Spirit.page.xl} col-12 mt10 pt8 home-section`}>
-						<h3 className={`${Spirit.h3} fw6 link darkgrey home-title`}>Need Help?</h3>
+						<h3 className={`${Spirit.h3} fw6 link home-title`}>Need Help?</h3>
 						<p
-							className={`${Spirit.h4} mt2 midgrey flex flex-column flex-row-ns justify-between items-center-ns`}
+							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
 							Resources to get help with appbase.io
 						</p>

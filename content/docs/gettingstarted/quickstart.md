@@ -55,7 +55,7 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 	</a>
 </div>
 
-| Hosting                                     | Description                                                                                                                                                                                                      |
+| <p style="margin: 0px;" class="table-header-text">Hosting</p>                                     | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Clusters](/docs/hosting/clusters/)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
 | [Bring Your Own Cluster](/docs/hosting/byoc/) | Already have an Elasticsearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |
