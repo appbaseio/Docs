@@ -40,7 +40,7 @@
 		}
 	},
 	"engines": {
-		"node": ">=16.4.0"
+		"node": ">=14.17.1"
 	},
 	"devDependencies": {
 		"autoprefixer": "9.5.0",
