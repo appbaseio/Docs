@@ -98,7 +98,7 @@ Example uses:
 
 <br />
 
-|   **Key** |                                            **Explanation**                                            |
+|  <p style="margin: 0px;" class="table-header-text">Key</p>  |                                            <p style="margin: 0px;" class="table-header-text">Explanation</p>                                            |
 | --------: | :---------------------------------------------------------------------------------------------------: |
 |    `icon` |   [Icon](http://docs.nativebase.io/Components.html#icon-def-headref) component from **native-base**   |
 |  `button` | [Button](http://docs.nativebase.io/Components.html#button-def-headref) component from **native-base** |

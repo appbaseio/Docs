@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SidebarLink from './SidebarLink';
 
 const SidebarList = ({ items, location, compact }) => {
-	const linkClasses = `midgrey fw4 hover-blue-l2`;
+	const linkClasses = `link-container fw4 hover-blue-l2`;
 	const activeLinkClasses = item => item.link === location.pathname ? `sidebarlink-active blue fw6` : `blue fw6`;
 
 	return (
