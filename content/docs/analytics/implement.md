@@ -31,7 +31,7 @@ Appbase.io offers turnkey search analytics for Elasticsearch. No matter how your
 
  If you're already consuming any of the below libraries to build your search UI, then you don't need any additional setup. These libraries support a prop called `analytics` which when set to `true` enables the recording of search analytics. They also come with additional configs to track custom events. You can go to the specific library that you're using to learn more.
 
-| Library                |  Variant    | Docs                                               |
+| <p style="margin: 0px;" class="table-header-text">Library</p>                |  <p style="margin: 0px;" class="table-header-text">Variant</p>    | <p style="margin: 0px;" class="table-header-text">Docs</p>                                               |
 | -------------------- | ----------  | -----------------------------------------------------------|
 | **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/v3/advanced/analytics/)    |
 | **`ReactiveSearch`** | `Vue`       | [Learn More](/docs/reactivesearch/vue/advanced/analytics/)  |

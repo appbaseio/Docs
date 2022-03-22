@@ -11,9 +11,8 @@ import '../../../styles/prism.css';
 
 const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => {
 	useEffect(() => {
-		console.log();
-		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions') || '[]');
-		if(window.location.pathname !== '/') {
+		const recentSuggestionsArr = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions') || '[]' : '[]');
+		if(typeof window !== 'undefined' && window.location.pathname !== '/') {
 			let obj = recentSuggestionsArr.find(o => o.url === window.location.pathname);
 			if(!obj) {
 				if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
@@ -39,12 +38,12 @@ const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerSt
 			<Helmet>
 				<html lang="en" className="fs-base" />
 				<title>Appbase.io Docs - Search stack for Elasticsearch</title>
-				<body className={`${bodyClass} flex flex-column whitney f7 fw4 darkgrey readability`} />
+				<body />
 			</Helmet>
 
 			{header || <Header dividerStyle={headerDividerStyle} />}
 
-			<main className={mainClass || `bg-whitegrey-l2 pb5 pb10-ns`}>{children}</main>
+			<main className={mainClass || `pb5 pb10-ns`}>{children}</main>
 
 			<Footer />
 		</>

@@ -1305,7 +1305,6 @@ to be custom HTML.
 .dropdown-link {
 	display: flex;
 	align-items: center;
-	color: #738a94;
 }
 
 .dropdown-link:hover .dropdown-content-icon {
@@ -1696,7 +1695,7 @@ to be custom HTML.
 }
 
 .timeline-steps .timeline .item svg circle {
-	fill: #f8fafc;
+	/* fill: #f8fafc; */
 }
 
 .capitalize {
@@ -1711,7 +1710,7 @@ to be custom HTML.
 	margin-top: 10px;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	background: #f8fafc;
+	/* background: #f8fafc; */
 	border-top: 1px solid #c5d2d9;
 }
 
@@ -1752,8 +1751,13 @@ to be custom HTML.
 	background: #00f68e;
 }
 
+.header-title {
+	color: var(--darkgrey) !important;
+}
+
 @media (max-width: 1240px) {
 	.header-title {
+		color: var(--darkgrey);
 		margin-top: 50px;
 	}
 }
