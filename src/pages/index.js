@@ -22,15 +22,15 @@ const HomePage = ({ data, location }) => {
 
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
-		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
+		title: "Reactivesearch.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
 	}
 	return (
 		<>
 			<Helmet>
 				<meta charSet="utf-8" />
-				<meta name="title" content="Appbase.io Docs - Home Page" />
-				<meta name="description" content="Appbase.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch." />
+				<meta name="title" content="Reactivesearch.io Docs - Home Page" />
+				<meta name="description" content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch." />
 				<link rel="canonical" href="https://docs.appbase.io" />
 			</Helmet>
 			<Layout
@@ -50,7 +50,7 @@ const HomePage = ({ data, location }) => {
 						<p
 							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
-							Appbase.io features organized by guides and chapters
+							Reactivesearch.io features organized by guides and chapters
 						</p>
 						<div className="mt5 timeline-steps">
 							<TimelineOption
@@ -71,7 +71,7 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Overview',
 												description:
-													'Overview and Quickstart with appbase.io',
+													'Overview and Quickstart with reactivesearch.io',
 												link: '/docs/gettingstarted/quickstart/',
 												duration: 3,
 											}
@@ -80,7 +80,7 @@ const HomePage = ({ data, location }) => {
 									'2': {
 										title: 'Managing Data',
 										subtitle:
-											"Appbase's data schema, data browser and how to import data to Elasticsearch.",
+											"Reactivesearch's data schema, data browser and how to import data to Elasticsearch.",
 										icon: (
 											<Icon
 												name="importData"
@@ -91,7 +91,7 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Data Model',
 												description:
-													'Take a look at the data model of appbase.io',
+													'Take a look at the data model of reactivesearch.io',
 												link: '/docs/data/model/',
 												duration: 2,
 											},
@@ -240,19 +240,19 @@ const HomePage = ({ data, location }) => {
 												title: 'Analytics',
 												link: '/docs/analytics/overview/',
 												duration: 5,
-												description: 'Quick overview of appbase.io analytics'
+												description: 'Quick overview of reactivesearch.io analytics'
 											},
 											{
 												title: 'Implement Analytics',
 												link: '/docs/analytics/implement/',
 												duration: 9,
-												description: 'Learn how to implement appbase.io analytics for your stack'
+												description: 'Learn how to implement reactivesearch.io analytics for your stack'
 											},
 											{
 												title: 'Querying Analytics',
 												link: '/docs/analytics/querying-analytics/',
 												duration: 1,
-												description: 'Learn how to query appbase.io analytics via REST APIs'
+												description: 'Learn how to query reactivesearch.io analytics via REST APIs'
 											},
 											{
 												title: 'Suggestions',
@@ -278,7 +278,7 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/speed/cache-management/',
 												duration: 3,
 												description:
-													'Blazing ⚡️ fast search performance with appbase.io cache',
+													'Blazing ⚡️ fast search performance with reactivesearch.io cache',
 											},
 										],
 									},
@@ -302,7 +302,7 @@ const HomePage = ({ data, location }) => {
 												title: 'User Management',
 												link: '/docs/security/user-management/',
 												duration: 2,
-												description: 'Add teammates with scoped access to appbase.io dashboard'
+												description: 'Add teammates with scoped access to reactivesearch.io dashboard'
 											},
 											{
 												title: 'Role Based Access',
@@ -323,14 +323,14 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/hosting/clusters/',
 												duration: 3,
 												description:
-													'Deploy Elasticsearch with appbase.io for all your app search needs',
+													'Deploy Elasticsearch with reactivesearch.io for all your app search needs',
 											},
 											{
 												title: 'Bring your own Cluster',
 												link: '/docs/hosting/byoc/',
 												duration: 11,
 												description:
-													'Deploy appbase.io with your own Elasticsearch cluster hosted anywhere',
+													'Deploy reactivesearch.io with your own Elasticsearch cluster hosted anywhere',
 											},
 											{
 												title: 'Deploy OpenSearch',
@@ -473,7 +473,7 @@ const HomePage = ({ data, location }) => {
 						<p
 							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
-							Resources to get help with appbase.io
+							Resources to get help with reactivesearch.io
 						</p>
 						<Grid
 							size={3}
@@ -484,12 +484,12 @@ const HomePage = ({ data, location }) => {
 							smGutter="0px"
 							className="mt5 font-classes"
 						>
-							<Card href="https://medium.appbase.io/tagged/appbase">
+							<Card href="https://medium.reactivesearch.io/tagged/appbase">
 								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
 								<h3>Tutorials</h3>
 								<p>Go from scratch to a full app with these tutorial guides</p>
 							</Card>
-							<Card href="https://www.appbase.io/contact/">
+							<Card href="https://www.reactivesearch.io/contact/">
 								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
 								<h3>Support</h3>
 								<p>

@@ -30,13 +30,13 @@ class HomeHeader extends React.Component {
 				>
 					<div className="pr3">
 						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l darkgrey header-heading-shadow header-title">
-							Appbase.io Docs
+							Reactivesearch.io Docs
 						</h1>
 						<p
 							className={`${Spirit.sectionSubHeading} lh-1-65 f1 darkgrey`}
 							style={{ lineHeight: '1.6' }}
 						>
-							Appbase.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
+							Reactivesearch.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
 							instantly from your favorite sources. Create relevance visually. Build delightful search experiences with our low code UI kits.
 						</p>
 						<div className="mt8 mobile-btn">
