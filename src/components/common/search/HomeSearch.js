@@ -40,7 +40,7 @@ const getSuggestions = value => {
 			...topResults.slice(exactMatchIndex + 1),
 		];
 	}
-	return inputLength === 0 ? JSON.parse(localStorage.getItem('recentSuggestions')  || '[]') : topResults;
+	return inputLength === 0 ? JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions')  || '[]' : '[]') : topResults;
 };
 
 const getSection = url => {
