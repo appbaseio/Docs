@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-
+import searchIndexData from '../../../data/search.index.json';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -11,17 +11,25 @@ import '../../../styles/prism.css';
 
 const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => {
 	useEffect(() => {
-		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions') || []);
+		console.log();
+		const recentSuggestionsArr = JSON.parse(localStorage.getItem('recentSuggestions') || '[]');
 		if(window.location.pathname !== '/') {
-			if(!recentSuggestionsArr.includes(window.location.pathname)) {
+			let obj = recentSuggestionsArr.find(o => o.url === window.location.pathname);
+			if(!obj) {
 				if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
 					recentSuggestionsArr.pop();
-				recentSuggestionsArr.unshift(window.location.pathname);
-				localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
+				let newVal = searchIndexData.find(o => o.url === window.location.pathname);
+				if(newVal) {
+					recentSuggestionsArr.unshift(newVal);
+					localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
+				}							
 			} else {
-				let newArr = recentSuggestionsArr.filter(e => e !== window.location.pathname);
-				newArr.unshift(window.location.pathname);
-				localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
+				let newVal = searchIndexData.find(o => o.url === window.location.pathname);
+				if(newVal) {
+					let newArr = recentSuggestionsArr.filter(o => o.url !== window.location.pathname);
+					newArr.unshift(newVal);
+					localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
+				}				
 			}
 		}		
 	}, []);

@@ -40,7 +40,7 @@ const getSuggestions = value => {
 			...topResults.slice(exactMatchIndex + 1),
 		];
 	}
-	return inputLength === 0 ? [] : topResults;
+	return inputLength === 0 ? JSON.parse(localStorage.getItem('recentSuggestions')  || '[]') : topResults;
 };
 
 const getSection = url => {
@@ -167,6 +167,15 @@ const HitTemplate = ({ hit, currentValue }) => {
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>
+				<svg
+					className="icon-position"
+					xmlns="http://www.w3.org/2000/svg"
+					alt="Recent Search"
+					viewBox="0 0 24 24"
+					>
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+				</svg>
 			</div>
 		</Link>
 	);
@@ -178,13 +187,15 @@ class AutoComplete extends React.Component {
 
 		this.state = {
 			value: '',
-			hits: [],
+			hits: getSuggestions(''),
 			hasMounted: false,
 		};
 
 		this.onChange = this.onChange.bind(this);
+		this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
+    	this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
 		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-		this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+		// this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 		this.renderSuggestion = this.renderSuggestion.bind(this);
 		this.getSuggestionValue = this.getSuggestionValue.bind(this);
 	}
@@ -195,9 +206,16 @@ class AutoComplete extends React.Component {
 		});
 	}
 
-	onChange(event, { newValue }) {
-		this.setState(() => {
-			return { value: newValue };
+	onChange(event, { newValue, method }) {
+		this.setState({
+		  value: newValue
+		});
+	}
+
+	onSuggestionsUpdateRequested({ value }) {
+		const suggestions = getSuggestions(value);
+		this.setState({
+			hits: suggestions,
 		});
 	}
 
@@ -208,11 +226,15 @@ class AutoComplete extends React.Component {
 		});
 	}
 
-	onSuggestionsClearRequested() {
-		this.setState({
-			hits: [],
-		});
+	shouldRenderSuggestions() {
+		return true;
 	}
+
+	// onSuggestionsClearRequested() {
+	// 	this.setState({
+	// 		hits: [],
+	// 	});
+	// }
 
 	getSuggestionValue = hit => {
 		return hit.title;
@@ -250,10 +272,13 @@ class AutoComplete extends React.Component {
 		)
 	}
 
+	enableFocus = () => {
+		document.querySelector("[data-cy='search-input']").focus();
+	}
+
 	render() {
 		// Don't show sections with no results
 		const { hits, value, hasMounted } = this.state;
-
 		const inputProps = {
 			placeholder: `Search documentation...`,
 			onChange: this.onChange,
@@ -284,16 +309,16 @@ class AutoComplete extends React.Component {
 				<Icon name="search" className="w3 absolute top-3 left-3" />
 				<Autosuggest
 					suggestions={hits}
+					onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+        			shouldRenderSuggestions={this.shouldRenderSuggestions}
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-					onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 					getSuggestionValue={this.getSuggestionValue}
 					onSuggestionSelected={this.suggestionSelected}
-					// renderSuggestion={this.renderSuggestion}
 					renderSuggestionsContainer={this.renderSuggestionsContainer}
 					inputProps={inputProps}
 					theme={theme}
 				/>
-				<button className='w3 absolute top-3 right-3 search-shorcut-button'>/</button>
+				<button className='w3 absolute top-3 right-3 search-shorcut-button' onClick={() => this.enableFocus()}>/</button>
 			</>
 		);
 	}

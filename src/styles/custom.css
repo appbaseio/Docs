@@ -1495,6 +1495,12 @@ to be custom HTML.
 	height: 24px;
 }
 
+.icon-position {
+	height: 20px;
+	margin-left: 10px;
+	fill: rgb(112, 112, 112);
+}
+
 .suggestion-container {
 	align-items: center;
 	display: flex;
@@ -1919,6 +1925,7 @@ tbody tr td:nth-child(-n + 3) {
 	width: 20px;
 	height: 25px;
 	font-size: 15px;
+	background: #e5eff5;
 }
 
 .autosuggest-footer-container {
