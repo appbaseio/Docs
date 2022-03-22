@@ -17,10 +17,7 @@ const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerSt
 			<link rel="preconnect" href="https://fonts.googleapis.com" />
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 			<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-			{/* <body className={`${bodyClass} flex flex-column f7 fw4 darkgrey readability font-link`}/> */}
-			<body  font-link
-			// className={`${bodyClass} flex flex-column whitney f7 fw4 darkgrey readability`} 
-			/>
+			<body  font-link />
 		</Helmet>
 
 		{header || <Header dividerStyle={headerDividerStyle} />}
