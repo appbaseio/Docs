@@ -231,6 +231,14 @@ body.light .link-container {
 	color: var(--midgrey);
 }
 
+body.dark .box-container {
+	background: #2a3644;
+}
+
+body.light .box-container {
+	background: #fff;
+}
+
 code {
 	color: black;
 }
