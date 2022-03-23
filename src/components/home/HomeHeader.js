@@ -29,11 +29,11 @@ class HomeHeader extends React.Component {
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
 				>
 					<div className="pr3">
-						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l darkgrey header-heading-shadow header-title">
+						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l header-heading-shadow header-title">
 							Reactivesearch.io Docs
 						</h1>
 						<p
-							className={`${Spirit.sectionSubHeading} lh-1-65 f1 darkgrey`}
+							className={`${Spirit.sectionSubHeading} lh-1-65 f1`}
 							style={{ lineHeight: '1.6' }}
 						>
 							Reactivesearch.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
