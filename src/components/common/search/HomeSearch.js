@@ -253,21 +253,20 @@ class AutoComplete extends React.Component {
 
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
 		const { value } = this.state;
-		
+		console.log(children, children?.props?.items);
 		return (
 			<div {...containerProps}>
 				{(children && children?.props?.items) ? (
 					<div>
 						{children.props?.items.map((item) => (
 							<HitTemplate hit={item} currentValue={value} />
-						))}
-						<div className='autosuggest-footer-container'>
-							{/* color: '#8792a2', background: '#f7fafc' */}
-							<div>↑↓ Navigate</div>
-							<div>↩ Go</div>
-						</div>
+						))}						
 					</div>
 				) : null}
+				<div className='autosuggest-footer-container'>
+					<div>↑↓ Navigate</div>
+					<div>↩ Go</div>
+				</div>
 			</div>
 		)
 	}
