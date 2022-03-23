@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import loadable from '@loadable/component'
@@ -19,7 +19,6 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
-
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
@@ -30,7 +29,14 @@ const HomePage = ({ data, location }) => {
 		localStorage.setItem('recentSuggestions', JSON.stringify([]));
 
 	return (
-		<>
+		<div 
+			tabIndex="0" 
+			onKeyUpCapture={e => {
+				console.log(e);
+				if(e.key === '/')
+					document.querySelector("[data-cy='search-input']").focus();
+			}}
+		>
 			<Helmet>
 				<meta charSet="utf-8" />
 				<meta name="title" content="Appbase.io Docs - Home Page" />
@@ -535,7 +541,7 @@ const HomePage = ({ data, location }) => {
 					</section>
 				</div>
 			</Layout>
-		</>
+		</div>
 	);
 };
 
