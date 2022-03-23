@@ -1404,7 +1404,7 @@ to be custom HTML.
 	border-radius: 2px;
 }
 
-@media (max-width: 1240px) {
+@media (min-width: 1200px) {
 	.home-search-container {
 		width: 500px;
 	}
