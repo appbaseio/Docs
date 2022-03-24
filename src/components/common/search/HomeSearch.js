@@ -230,6 +230,12 @@ class AutoComplete extends React.Component {
 		return true;
 	}
 
+	// onSuggestionsClearRequested() {
+	// 	this.setState({
+	// 		hits: [],
+	// 	});
+	// }
+
 	getSuggestionValue = hit => {
 		return hit.title;
 	};
@@ -247,6 +253,7 @@ class AutoComplete extends React.Component {
 
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
 		const { value } = this.state;
+		console.log(children, children?.props?.items);
 		return (
 			<div {...containerProps}>
 				{(children && children?.props?.items) ? (
