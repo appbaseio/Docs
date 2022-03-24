@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { graphql, navigate } from 'gatsby';
 import loadable from '@loadable/component'
 import PropTypes from 'prop-types';
-// import TimelineOption from '@appbaseio/designkit/lib/molecules/TimelineOption';
-// import Grid from '@appbaseio/designkit/lib/atoms/Grid';
-// import Card from '@appbaseio/designkit/lib/atoms/Card';
 import { Icon, Box } from '../components/common';
 import { Layout } from '../components/common/layout';
 import { HomeHeader } from '../components/home';
@@ -17,32 +14,22 @@ const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
 const Card = loadable(() => import('@appbaseio/designkit/lib/atoms/Card'));
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
+
 const HomePage = ({ data, location }) => {
 	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
 	
-	// useEffect=(() => {
-	// 	document.getElementById('gatsby-focus-wrapper').trigger('click');
-	// }, []);
-
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
 	}
-// testing
+
 	if(typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
 		localStorage.setItem('recentSuggestions', JSON.stringify([]));
 	
 
 	return (
-		<div
-			tabIndex={0}
-			onKeyUpCapture={e => {
-				console.log(e);
-				if(e.key === '/')
-					document.querySelector("[data-cy='search-input']").focus();
-			}}
-		>
+		<>
 			<Helmet>
 				<meta charSet="utf-8" />
 				<meta name="title" content="Appbase.io Docs - Home Page" />
@@ -547,7 +534,7 @@ const HomePage = ({ data, location }) => {
 					</section>
 				</div>
 			</Layout>
-		</div>
+		</>
 	);
 };
 

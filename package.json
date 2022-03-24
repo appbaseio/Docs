@@ -102,6 +102,7 @@
 		"gatsby-transformer-remark": "5.9.0",
 		"gatsby-transformer-sharp": "^4.9.0",
 		"gatsby-transformer-yaml": "4.9.0",
+		"hotkeys-js": "^3.8.7",
 		"js-search": "^1.4.2",
 		"moment": "^2.24.0",
 		"prismjs": "1.27.0",

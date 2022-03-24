@@ -2,6 +2,7 @@ import React from 'react';
 import { navigate, Link } from 'gatsby';
 import * as JsSearch from 'js-search';
 import Autosuggest from 'react-autosuggest';
+import hotkeys from 'hotkeys-js';
 import data from '../../../data/search.index.json';
 import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
@@ -205,6 +206,11 @@ class AutoComplete extends React.Component {
 	componentDidMount () {
 		this.setState({
 			hasMounted: true,
+		});
+		hotkeys('/', function(event, handler){
+			// Prevent the default refresh event under WINDOWS system
+			event.preventDefault() 
+			document.querySelector("[data-cy='search-input']").focus(); 
 		});
 	}
 
