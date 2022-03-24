@@ -239,6 +239,22 @@ body.light .box-container {
 	background: #fff;
 }
 
+body.dark .home-input,
+.home-search {
+	background: #3a4246;
+	color: #fff;
+}
+
+body.light .home-input {
+	background: #e5eff5;
+	color: #000;
+}
+
+body.light .home-search {
+	background: #fff;
+	color: var(--midgrey);
+}
+
 code {
 	color: black;
 }
