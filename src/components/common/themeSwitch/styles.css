@@ -37,16 +37,30 @@
 	transition: 0.4s;
 }
 
-.dark-theme-icon {
+.light-theme-icon {
 	position: absolute;
 	left: 3px;
 	bottom: -3px;
 }
 
-.light-theme-icon {
+.dark-theme-icon {
 	position: absolute;
 	left: 23px;
 	bottom: -3px;
+}
+
+@keyframes learn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.icon-transition {
+	animation-name: learn;
+	animation-duration: 1s;
 }
 
 /* input:checked + .slider {
