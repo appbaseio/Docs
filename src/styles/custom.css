@@ -1932,10 +1932,16 @@ tbody tr td:nth-child(-n + 3) {
 	background: #e5eff5;
 }
 
+.autosuggest-content {
+	overflow: scroll;
+	max-height: 500px;
+}
+
 .autosuggest-footer-container {
 	display: flex;
 	justify-content: space-between;
 	color: #8792a2;
 	background: #f7fafc;
 	padding: 10px;
+	height: 40px;
 }
