@@ -255,6 +255,22 @@ body.light .home-search {
 	color: var(--midgrey);
 }
 
+body.light .search-result:hover {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .search-result:hover {
+	background: #5e6061;
+}
+
+body.light .highlighted-suggestion {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .highlighted-suggestion {
+	background: #5e6061;
+}
+
 code {
 	color: black;
 }

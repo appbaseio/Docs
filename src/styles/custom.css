@@ -600,6 +600,7 @@ kbd {
 .search-modal-field-bg,
 .search-result:hover {
 	background: color-mod(var(--whitegrey) l(+4%));
+	border-radius: 0;
 }
 
 .search-result-page mark {
