@@ -10,3 +10,7 @@ keywords:
     - relevant
 sidebar: 'docs'
 ---
+
+A search query doesn't just hit against a field and returns the results. A search query understands the query and returns fields accordingly.
+
+We can build both kinds of search endpoints using ReactiveSearch pipelines. In this guide, we will build a search pipeline with search relevancy, popular and recent suggestions.
