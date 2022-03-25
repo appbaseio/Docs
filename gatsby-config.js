@@ -40,6 +40,7 @@ const plugins = [
 						withWebp: true,
 					},
 				},
+				`gatsby-remark-prismjs-copy-button`,
 				{
 					resolve: `gatsby-remark-prismjs`,
 					options: {
