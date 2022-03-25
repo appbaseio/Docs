@@ -484,19 +484,19 @@ const HomePage = ({ data, location }) => {
 							smGutter="0px"
 							className="mt5"
 						>
-							<Card href="https://medium.appbase.io/tagged/appbase">
+							<Card href="https://medium.appbase.io/tagged/appbase" theme={themeType}>
 								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
 								<h3>Tutorials</h3>
 								<p>Go from scratch to a full app with these tutorial guides</p>
 							</Card>
-							<Card href="https://www.appbase.io/contact/">
+							<Card href="https://www.appbase.io/contact/" theme={themeType}>
 								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
 								<h3>Support</h3>
 								<p>
 									Get dedicated support from our engineering team
 								</p>
 							</Card>
-							<Card href="https://github.com/appbaseio/reactivesearch/discussions">
+							<Card href="https://github.com/appbaseio/reactivesearch/discussions" theme={themeType}>
 								<img src={`${imagePrefix}/Gitter.svg`} alt="Gitter" width="120px" height="120px" />
 								<h3>Community</h3>
 								<p>Ask other ReactiveSearch users</p>
