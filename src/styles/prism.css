@@ -271,6 +271,14 @@ body.dark .highlighted-suggestion {
 	background: #5e6061;
 }
 
+body.light .sticky-nav {
+	background: #f8fafc !important;
+}
+
+body.dark .sticky-nav {
+	background: #082429 !important;
+}
+
 code {
 	color: black;
 }
