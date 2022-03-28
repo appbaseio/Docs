@@ -244,17 +244,18 @@ pre > code {
 }
 
 .announcement-banner {
-	background: #23263b;
-	padding: 12px;
-	color: #fff;
+	padding: 5px;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	font-size: 16px;
+	color: var(--midgrey);
+	background: #fff;
 }
 
 .banner-link-container {
-	color: #fff;
-	text-decoration: underline;
+	color: var(--midgrey);
+	text-decoration: none;
 }
 
 .banner-link-container:hover {
