@@ -190,6 +190,7 @@ class AutoComplete extends React.Component {
 
 		this.state = {
 			value: '',
+			showContainer: false,
 			hits: getSuggestions(''),
 			hasMounted: false,
 		};
@@ -198,7 +199,6 @@ class AutoComplete extends React.Component {
 		this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
     	this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
 		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-		// this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 		this.renderSuggestion = this.renderSuggestion.bind(this);
 		this.getSuggestionValue = this.getSuggestionValue.bind(this);
 	}
@@ -234,15 +234,9 @@ class AutoComplete extends React.Component {
 		});
 	}
 
-	shouldRenderSuggestions() {
+	shouldRenderSuggestions() {		
 		return true;
 	}
-
-	// onSuggestionsClearRequested() {
-	// 	this.setState({
-	// 		hits: [],
-	// 	});
-	// }
 
 	getSuggestionValue = hit => {
 		return hit.title;
@@ -260,21 +254,14 @@ class AutoComplete extends React.Component {
 	};
 
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
-		const { value } = this.state;
+		const { value, showContainer } = this.state;
 		return (
 			<div {...containerProps} >
-				{(children && children?.props?.items) ? (
-					<div>
-						<div className='autosuggest-content'>
-							{children.props?.items.map((item) => (
-								<HitTemplate hit={item} currentValue={value} />
-							))}
-						</div>
-						<div className='autosuggest-footer-container'>
-							{/* color: '#8792a2', background: '#f7fafc' */}
-							<div>↑↓ Navigate</div>
-							<div>↩ Go</div>
-						</div>
+				<div className='autosuggest-content'>{children}</div>
+				{showContainer ? (
+					<div className='autosuggest-footer-container'>
+						<div>↑↓ Navigate</div>
+						<div>↩ Go</div>
 					</div>
 				) : null}
 			</div>
@@ -285,6 +272,18 @@ class AutoComplete extends React.Component {
 		document.querySelector("[data-cy='search-input']").focus();
 	}
 
+	onFocus = () => {
+		this.setState({
+			showContainer: true,
+		})
+	}
+
+	onBlur = () => {
+		this.setState({
+			showContainer: false,
+		})
+	}
+
 	render() {
 		// Don't show sections with no results
 		const { hits, value, hasMounted } = this.state;
@@ -292,6 +291,8 @@ class AutoComplete extends React.Component {
 			placeholder: `Search documentation...`,
 			onChange: this.onChange,
 			value,
+			onFocus: this.onFocus,
+			onBlur: this.onBlur,
 			'data-cy': `search-input`,
 		};
 
@@ -323,8 +324,9 @@ class AutoComplete extends React.Component {
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
 					getSuggestionValue={this.getSuggestionValue}
 					onSuggestionSelected={this.suggestionSelected}
-					renderSuggestionsContainer={this.renderSuggestionsContainer}
+					renderSuggestion={this.renderSuggestion}
 					inputProps={inputProps}
+					renderSuggestionsContainer={this.renderSuggestionsContainer}					
 					theme={theme}
 				/>
 				<button className='w3 absolute top-3 right-3 search-shorcut-button' onClick={() => this.enableFocus()}>/</button>
