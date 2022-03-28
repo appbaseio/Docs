@@ -286,3 +286,9 @@ code {
 pre > code {
 	color: white;
 }
+
+.gatsby-remark-prismjs-copy-button {
+	position: absolute;
+	right: 20px;
+	background: #2a3644;
+}
