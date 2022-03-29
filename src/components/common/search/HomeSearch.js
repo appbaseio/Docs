@@ -256,7 +256,7 @@ class AutoComplete extends React.Component {
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
 		const { value, showContainer } = this.state;
 		return (
-			<div {...containerProps} >
+			<div {...containerProps} style={{position: 'absolute', right: 0, left: 0}} >
 				<div className='autosuggest-content'>{children}</div>
 				{showContainer ? (
 					<div className='autosuggest-footer-container'>
