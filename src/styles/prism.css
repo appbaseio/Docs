@@ -167,49 +167,29 @@ body.light div span p h2 h3 th a {
 	color: #000 !important;
 }
 
-body.dark h1 {
-	color: #efefef;
-}
-
-body.light h1 {
-	color: #000 !important;
-}
-
+body.dark h1,
 body.dark .table-header-text {
 	color: #efefef;
 }
 
+body.light h1,
 body.light .table-header-text {
-	color: #000;
+	color: #000 !important;
 }
 
-body.light > div > div > header {
+body.light header,
+body.light main {
 	background: #fff;
 }
 
-body.dark > div > div > header {
+body.dark header,
+body.dark main {
 	background: #082429;
 }
 
-body.light > div > div > main {
-	background: #f8fafc;
-}
-
-body.dark > div > div > main {
-	background: #082429;
-}
-
-body.light > div > div > div > header {
-	background: #fff;
-}
-
-body.dark > div > div > div > header {
-	background: #082429;
-}
-
-body.dark .toc-list-container ol a {
+/* body.dark .toc-list-container ol a {
 	color: var(--lightwhite);
-}
+} */
 
 body.light .toc-list-container ol a {
 	color: var(--midlightgrey);
@@ -223,7 +203,8 @@ body.light .toc-list-container .is-active-link {
 	color: var(--darkgrey);
 }
 
-body.dark .link-container {
+body.dark .link-container,
+body.dark .toc-list-container ol a {
 	color: var(--lightwhite);
 }
 
