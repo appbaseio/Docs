@@ -236,11 +236,31 @@ stages:
 
 ## Testing the Pipeline
 
-We can hit the pipeline and see if response contains rearranged results based on vector data. We just need to hit a `/_reactivesearch` endpoint and the request will be saved.
+We can hit the pipeline and see if response contains rearranged results based on vector data. We just need to hit a `/_reactivesearch` endpoint.
 
 For instance, let's hit the `app-store-data` index in the following way:
 
 ```sh
 curl -X POST http://localhost:8000/app-store-data/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
 ```
+
+## Script For kNN
+
+The script input field in the `kNN` stage can take any valid script depending on the backend.
+
+### ElasticSearch
+
+In case of ElasticSearch, this script should be either defined in painless or be one of the pre defined scripts. By default the script is set to `cosineSimilarity(params.queryVector, params.dataField) + 1.0`
+
+[Read more about ElasticSearch kNN on query](https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html#exact-knn)
+
+### OpenSearch
+
+In case of OpenSearch, the script should be one of the allowed values from [here](https://opendistro.github.io/for-elasticsearch-docs/docs/knn/knn-score-script/#spaces). By default it is set to `cosinesimil`.
+
+Other options are:
+
+- `hammingbit`
+- `l1`
+- `l2`
 
