@@ -45,8 +45,21 @@
       - group: "ReactiveSearch Pipelines"
         icon: search
         items:
-            - link: /docs/pipelines/how-to/overview
-              title: "How To"
+          - link: /docs/pipelines/how-to/overview
+            title: "How To"
+            items:
+              - link: /docs/pipelines/how-to/overview
+                title: How To Overview
+              - link: /docs/pipelines/how-to/add-external-search-results
+                title: Add External Search Results
+              - link: /docs/pipelines/how-to/create-an-indexing-pipeline
+                title: Create An Indexing Pipeline
+              - link: /docs/pipelines/how-to/add-side-effect-search-query
+                title: "Add Side Effect"
+              - link: /docs/pipelines/how-to/knn-response-stage
+                title: "kNN response stage"
+              - link: /docs/pipelines/how-to/relevant-search-stages
+                title: Relevant Search Stages
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
