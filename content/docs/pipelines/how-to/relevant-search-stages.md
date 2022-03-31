@@ -251,3 +251,46 @@ Let's say we want to add some custom data to the response body, we can do that t
 In the above example, the response will have an _custom_ key added to it. This key will be `reference` and the value will be set to the value passed in the above example.
 
 Basically, we insert the object passed in the `inputs.data` field as is to the root level of the response body.
+
+## Testing the pipeline
+
+This pipeline can be testing with the following request. We will hit the URL: `http://localhost:8000/good-books-ds/_reactivesearch`.
+
+The body passed will be following:
+
+```json
+{
+    "query": [
+        "value": "some query"
+    ]
+}
+```
+
+> Note that the `dataField` will be automatically added using `searchRelevancy`. Also the search term will be replaced and manipulated.
+
+Hit the above request using the following cURL to see the magic happen:
+
+```sh
+curl -X POST http://localhost:8000/good-books-ds/_reactivesearch -H "Content-Type: application/json" -d '{"query": ["value": "some query"]}'
+```
+
+## Above and Beyond
+
+Let's say we want to get more out of the above pre-built stages. We can make the data passed to them dynamic. Let's say we have a complex JavaScript script that determines whether or not a certain query is to be replaced with a new query.
+
+We can use this script with a custom stage along with the `scriptRef` field. Once we run this script, all we need to do is store the new search term in the context.
+
+Let's say we save the new search term in the context with the key `newSearchTerm`. Once we do that, we can access this new search term in the `inputs.data` field for `replaceSearchTerm`. This can be achieved in the following way:
+
+> Assuming the stage that adds the `newSearchTerm` field has the `id` set to `determine search term`.
+
+```yml
+- id: replace dynamic search term
+  use: replaceSearchTerm
+  needs:
+   - determine search term
+  inputs:
+    data: '{{newSearchTerm}}'
+```
+
+Yes, it's as simple as that and the pipeline will take care of the rest.
