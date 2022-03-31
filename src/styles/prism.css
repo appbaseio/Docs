@@ -242,3 +242,28 @@ code {
 pre > code {
 	color: white;
 }
+
+.announcement-banner {
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	color: var(--midgrey);
+	background: #fff;
+}
+
+.banner-link-container {
+	color: var(--midgrey);
+	text-decoration: none;
+}
+
+.banner-link-container:hover {
+	color: #1890ff;
+}
+
+.close-icon {
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+}
