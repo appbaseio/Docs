@@ -57,7 +57,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						<div className="dn flex-ns flex-auto items-center overflow-x-auto mr12 mr0-l ml5 ml0-l pb20">
 							<DropdownLink>
 								<DropdownLink.Item>
-									{value => (
+									{value => {
+										value.selectedKey='guides'
+										return (
 										<React.Fragment>
 											<span
 												className={`${
@@ -77,7 +79,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 											{value.selectedKey === 'guides' ? (
 												<div
 													className="dropdown-content"
-													style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
+													style={{ background: typeof window !== 'undefined' ? localStorage.getItem('theme') === 'dark' ? '#082429' : 'white' : 'white'}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
 													<div
@@ -185,7 +187,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 												</div>
 											) : null}
 										</React.Fragment>
-									)}
+									)}}
 								</DropdownLink.Item>
 								<DropdownLink.Item>
 									{value => (
