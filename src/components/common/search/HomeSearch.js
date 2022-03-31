@@ -127,7 +127,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 	const highlightedTitle = hit.title.replace(new RegExp(currentValue, 'ig'), matched => {
 		return `<mark>${matched}</mark>`;
 	});
-	const tokens = hit.tokens.filter(item => item.includes(currentValue));
+	const tokens = hit.tokens;
 	let highlightedToken =
 		tokens[0] &&
 		tokens[0].replace(new RegExp(currentValue, 'ig'), matched => {
