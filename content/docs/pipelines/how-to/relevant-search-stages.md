@@ -61,3 +61,86 @@ envs:
 Note that we have also set the `envs.index` field as `good-books-ds`. This is an _optional_ step but is good practice. The ElasticSearch step reads the index from this step as a fallback.
 
 We are also setting the `envs.category` as `reactivesearch` for reference.
+
+## Stages
+
+Now that we have the pre setup out of the way, let's define the stages for the pipeline.
+
+## Authorization
+
+We need to make sure that the requests made to this endpoint are authenticated. To do this, we can use the pre-built stage `authorization`. We can define it in the following way:
+
+```yml
+- id: authorize request
+  use: authorization
+```
+
+It's as simple as that, we don't need to do anything else, rest will be taken care of by the pipeline.
+
+### Search Relevancy
+
+As explained above, this stage lets us set default values for fields so that even if those are not passed in the request body, they are automatically applied. ReactiveSearch pipelines provides this as a pre-built stage in the name `searchRelevancy`.
+
+We will define this stage in the following way:
+
+```yml
+- id: search relevancy
+  use: searchRelevancy
+  inputs:
+    search:
+      dataField:
+        - original_title
+      size: 1
+    suggestion:
+      dataField:
+        - original_title
+      enablePopularSuggestions: true
+      size: 3
+      popularSuggestionsConfig:
+        size: 1
+      enableRecentSuggestions: true
+      recentSuggestionsConfig:
+        size: 1
+  continueOnError: false
+```
+
+In the above, we are passing the following fields as inputs:
+
+- `search.dataField`: The field present in the index to be set as `dataField` in the request body.
+- `search.size`: The `size` value to be set in the request body if it's not already passed.
+- `suggestion.dataField`: This is similar to the above search field but it is applied for `suggestion` type of requests.
+- `suggestion.enablePopularSuggestions`: This fields sets the `enablePopularSuggestion` field in the request body if it's not already passed.
+- `suggestion.size`: Same as above except this is for `suggestion` type of requests.
+- `suggestion.popularSuggestionsConfig.size`: As the name suggests, sets the `size` field for `popularSuggestionsConfig` if it's not already passed in the request body.
+- `suggestion.enableRecentSuggestions`: This field indicates whether or not to enable recent suggestions and is set if not already passed in the request body.
+- `suggestions.recentSuggestionsConfig.size`: Similar as above except for recent suggestions.
+
+Besides this, we are also setting the `continueOnError` as `false` which indicates that the execution of the pipeline should not continue if this stage fails. This is important since without applying these fields, the request will not be properly translated to the equivalent ElasticSearch request.
+
+### Replace Search Term
+
+At times, we might have the need to replace the search term with something different. This can be achieved by using the pre-built stage `replaceSearchTerm`. We can define it in the following way:
+
+```yml
+- id: replace search term
+  use: replaceSearchTerm
+  inputs:
+    data: harry potter
+```
+
+We can pass the new search term through the `inputs.data` field.
+
+### Remove Words
+
+At times, we might even want to remove certain words from the search term entered by the user. We can use the pre-built stage `replaceWords` in a situation like this. We can define it in the following way:
+
+```yml
+- id: replace words
+  use: replaceWords
+  inputs:
+    data:
+      - test
+      - rick astley
+```
+
+We can pass the words to be removed in the `inputs.data` field. This field should be an array of strings and every word that occurs in this array will be removed from the search term.
