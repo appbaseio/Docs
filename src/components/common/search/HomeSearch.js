@@ -164,7 +164,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 						) : null}
 					</div>
 					<p
-						className={`${Spirit.small} midgrey mt1 truncate-3`}
+						className={`link-container ${Spirit.small} mt1 truncate-3`}
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>

@@ -43,10 +43,10 @@
     lodash "^4.17.21"
     resize-observer-polyfill "^1.5.0"
 
-"@appbaseio/designkit@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.12.0.tgz#56df4d817674546e1da0babad69fa45dd151e5b4"
-  integrity sha512-OPpo17r/D23GaGNDnxdONAJuJhSB4OlWTDb2rqYhSndPxBMcaEfzzI+tNoB5M3HNxzIl6OceklJb6FAsyozcDQ==
+"@appbaseio/designkit@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@appbaseio/designkit/-/designkit-0.13.0.tgz#79e184cb7ed283c7a07ccc7c75d8a3236a58b7ea"
+  integrity sha512-qZSXG1vrhUflrQUFhEDxT/iAdBZc75YNhyEg69nzQipRkDJVvj0cRo2D4CSLHWBjznKB9eMAY8oNq/LmFAMBJQ==
   dependencies:
     "@storybook/react" "^3.2.19"
     prop-types "^15.6.0"
@@ -9324,6 +9324,11 @@ gatsby-remark-images@6.9.0:
     query-string "^6.14.1"
     unist-util-select "^3.0.4"
     unist-util-visit-parents "^3.1.1"
+
+gatsby-remark-prismjs-copy-button@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs-copy-button/-/gatsby-remark-prismjs-copy-button-0.3.1.tgz#5d772d64b4fce0bee417c7ea7fe39b5a34403d62"
+  integrity sha512-/A3BuZSdmI62+uSitAbgqdoS3QtYX4kiz9DZZgc1qMqpPss07YTmU8dFuVNxnNDP13h9jAMfr3BxP7J60ATZSg==
 
 gatsby-remark-prismjs@6.9.0:
   version "6.9.0"
