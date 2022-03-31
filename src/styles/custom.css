@@ -605,6 +605,7 @@ kbd {
 .search-modal-field-bg,
 .search-result:hover {
 	background: color-mod(var(--whitegrey) l(+4%));
+	border-radius: 0;
 }
 
 .search-result-page mark {
@@ -1341,15 +1342,14 @@ to be custom HTML.
 }
 
 .home-input {
-	background: #e5eff5;
 	border-radius: 2px;
 	padding: 15px;
+	padding-left: 30px;
 }
 
 .home-search {
 	top: 50px;
 	position: absolute;
-	background: white;
 	width: 100%;
 	max-height: 70vh;
 	z-index: 999;
@@ -1359,7 +1359,7 @@ to be custom HTML.
 }
 
 .home-search-container {
-	width: 30%;
+	width: 35%;
 }
 
 .guide-box-container {
@@ -1418,9 +1418,9 @@ to be custom HTML.
 	border-radius: 2px;
 }
 
-@media (max-width: 1240px) {
+@media (min-width: 1200px) {
 	.home-search-container {
-		width: 40%;
+		width: 500px;
 	}
 }
 
@@ -1506,6 +1506,12 @@ to be custom HTML.
 .hamburger {
 	width: 24px;
 	height: 24px;
+}
+
+.icon-position {
+	height: 20px;
+	margin-left: 10px;
+	fill: rgb(112, 112, 112);
 }
 
 .suggestion-container {
@@ -1645,6 +1651,7 @@ to be custom HTML.
 	}
 	.home-input {
 		padding: 8px;
+		padding-left: 30px;
 	}
 	.nav-logo {
 		padding-right: 2rem;
@@ -1717,7 +1724,6 @@ to be custom HTML.
 	margin-top: 10px;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	/* background: #f8fafc; */
 	border-top: 1px solid #c5d2d9;
 }
 
@@ -1927,4 +1933,31 @@ tbody tr td:nth-child(-n + 3) {
 	min-width: 8em;
 	max-width: 8em;
 	word-break: break-all;
+}
+
+.search-shorcut-button {
+	--inline-code-keylineColor: rgba(0, 0, 0, 0.05);
+	font-style: italic;
+	border: 1px solid var(--inline-code-keylineColor);
+	border-color: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	vertical-align: middle;
+	width: 20px;
+	height: 25px;
+	font-size: 15px;
+	background: #e5eff5;
+}
+
+.autosuggest-content {
+	overflow: scroll;
+	max-height: 500px;
+}
+
+.autosuggest-footer-container {
+	display: flex;
+	justify-content: space-between;
+	color: #8792a2;
+	background: #f7fafc;
+	padding: 10px;
+	height: 40px;
 }

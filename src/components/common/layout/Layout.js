@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-
+import searchIndexData from '../../../data/search.index.json';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -9,24 +9,49 @@ import Footer from './Footer';
 import '../../../styles/app.css';
 import '../../../styles/prism.css';
 
-const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => (
-	<>
-		<Helmet>
-			<html lang="en" className="fs-base" />
-			<title>Reactivesearch.io Docs - Search stack for Elasticsearch</title>
-			<link rel="preconnect" href="https://fonts.googleapis.com" />
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-			<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-			<body  font-link />
-		</Helmet>
+const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerStyle }) => {
+	useEffect(() => {
+		const recentSuggestionsArr = JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions') || '[]' : '[]');
+		if(typeof window !== 'undefined' && window.location.pathname !== '/') {
+			let obj = recentSuggestionsArr.find(o => o.url === window.location.pathname);
+			if(!obj) {
+				if(recentSuggestionsArr.length && recentSuggestionsArr.length >= 5)
+					recentSuggestionsArr.pop();
+				let newVal = searchIndexData.find(o => o.url === window.location.pathname);
+				if(newVal) {
+					recentSuggestionsArr.unshift(newVal);
+					localStorage.setItem('recentSuggestions', JSON.stringify(recentSuggestionsArr));
+				}							
+			} else {
+				let newVal = searchIndexData.find(o => o.url === window.location.pathname);
+				if(newVal) {
+					let newArr = recentSuggestionsArr.filter(o => o.url !== window.location.pathname);
+					newArr.unshift(newVal);
+					localStorage.setItem('recentSuggestions', JSON.stringify(newArr));
+				}				
+			}
+		}		
+	}, []);
 
-		{header || <Header dividerStyle={headerDividerStyle} />}
+	return (
+		<>
+			<Helmet>
+				<html lang="en" className="fs-base" />
+				<title>Reactivesearch.io Docs - Search stack for Elasticsearch</title>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+				<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+				<body font-link/>
+			</Helmet>
 
-		<main className={mainClass || `pb5 pb10-ns`}>{children}</main>
+			{header || <Header dividerStyle={headerDividerStyle} />}
 
-		<Footer />
-	</>
-);
+			<main className={mainClass || `pb5 pb10-ns`}>{children}</main>
+
+			<Footer />
+		</>
+	);
+}
 
 DefaultLayout.defaultProps = {
 	headerDividerStyle: `shadow`,

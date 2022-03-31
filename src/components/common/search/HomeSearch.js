@@ -2,11 +2,12 @@ import React from 'react';
 import { navigate, Link } from 'gatsby';
 import * as JsSearch from 'js-search';
 import Autosuggest from 'react-autosuggest';
+import hotkeys from 'hotkeys-js';
 import data from '../../../data/search.index.json';
 import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
 import sidebar from '../../../data/sidebars/all-sidebar';
-
+import '../../../styles/custom.css';
 const search = new JsSearch.Search('url');
 search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
 
@@ -40,7 +41,7 @@ const getSuggestions = value => {
 			...topResults.slice(exactMatchIndex + 1),
 		];
 	}
-	return inputLength === 0 ? [] : topResults;
+	return inputLength === 0 ? JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions')  || '[]' : '[]') : topResults;
 };
 
 const getSection = url => {
@@ -163,10 +164,21 @@ const HitTemplate = ({ hit, currentValue }) => {
 						) : null}
 					</div>
 					<p
-						className={`${Spirit.small} midgrey mt1 truncate-3`}
+						className={`link-container ${Spirit.small} mt1 truncate-3`}
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>
+				{!currentValue ? (
+					<svg
+						className="icon-position"
+						xmlns="http://www.w3.org/2000/svg"
+						alt="Recent Search"
+						viewBox="0 0 24 24"
+						>
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+					</svg>
+				) : null }
 			</div>
 		</Link>
 	);
@@ -178,13 +190,15 @@ class AutoComplete extends React.Component {
 
 		this.state = {
 			value: '',
-			hits: [],
+			showContainer: false,
+			hits: getSuggestions(''),
 			hasMounted: false,
 		};
 
 		this.onChange = this.onChange.bind(this);
+		this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
+    	this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
 		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-		this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 		this.renderSuggestion = this.renderSuggestion.bind(this);
 		this.getSuggestionValue = this.getSuggestionValue.bind(this);
 	}
@@ -193,11 +207,23 @@ class AutoComplete extends React.Component {
 		this.setState({
 			hasMounted: true,
 		});
+		hotkeys('/', function(event, handler){
+			// Prevent the default refresh event under WINDOWS system
+			event.preventDefault() 
+			document.querySelector("[data-cy='search-input']").focus(); 
+		});
 	}
 
-	onChange(event, { newValue }) {
-		this.setState(() => {
-			return { value: newValue };
+	onChange(event, { newValue, method }) {
+		this.setState({
+		  value: newValue
+		});
+	}
+
+	onSuggestionsUpdateRequested({ value }) {
+		const suggestions = getSuggestions(value);
+		this.setState({
+			hits: suggestions,
 		});
 	}
 
@@ -208,10 +234,8 @@ class AutoComplete extends React.Component {
 		});
 	}
 
-	onSuggestionsClearRequested() {
-		this.setState({
-			hits: [],
-		});
+	shouldRenderSuggestions() {		
+		return true;
 	}
 
 	getSuggestionValue = hit => {
@@ -229,14 +253,46 @@ class AutoComplete extends React.Component {
 		return <HitTemplate hit={hit} currentValue={value} />;
 	};
 
+	renderSuggestionsContainer = ({ containerProps, children, query }) => {
+		const { value, showContainer } = this.state;
+		return (
+			<div {...containerProps} style={{position: 'absolute', right: 0, left: 0}} >
+				<div className='autosuggest-content'>{children}</div>
+				{showContainer ? (
+					<div className='autosuggest-footer-container'>
+						<div>↑↓ Navigate</div>
+						<div>↩ Go</div>
+					</div>
+				) : null}
+			</div>
+		)
+	}
+
+	enableFocus = () => {
+		document.querySelector("[data-cy='search-input']").focus();
+	}
+
+	onFocus = () => {
+		this.setState({
+			showContainer: true,
+		})
+	}
+
+	onBlur = () => {
+		this.setState({
+			showContainer: false,
+		})
+	}
+
 	render() {
 		// Don't show sections with no results
 		const { hits, value, hasMounted } = this.state;
-
 		const inputProps = {
 			placeholder: `Search documentation...`,
 			onChange: this.onChange,
 			value,
+			onFocus: this.onFocus,
+			onBlur: this.onBlur,
 			'data-cy': `search-input`,
 		};
 
@@ -251,6 +307,7 @@ class AutoComplete extends React.Component {
 			suggestionsList: `list pa0 ma0 pt1 flex-auto`,
 			sectionContainer: `pb4 mb4`,
 			sectionTitle: `f8 lh-h4 fw5 midgrey w30 tr mt2 sticky top-2 pr2`,
+
 		};
 
 		if (!hasMounted) {
@@ -259,17 +316,20 @@ class AutoComplete extends React.Component {
 
 		return (
 			<>
-				<Icon name="search" className="w3 absolute top-3 right-3" />
+				<Icon name="search" className="w3 absolute top-3 left-3" />
 				<Autosuggest
 					suggestions={hits}
+					onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+        			shouldRenderSuggestions={this.shouldRenderSuggestions}
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-					onSuggestionsClearRequested={this.onSuggestionsClearRequested}
 					getSuggestionValue={this.getSuggestionValue}
 					onSuggestionSelected={this.suggestionSelected}
 					renderSuggestion={this.renderSuggestion}
 					inputProps={inputProps}
+					renderSuggestionsContainer={this.renderSuggestionsContainer}					
 					theme={theme}
 				/>
+				<button className='w3 absolute top-3 right-3 search-shorcut-button' onClick={() => this.enableFocus()}>/</button>
 			</>
 		);
 	}

@@ -144,7 +144,7 @@ body {
 
 	color: rgb(52, 63, 68);
 	background-color: var(--bg);
-	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 1.35rem;
 }
 
@@ -159,7 +159,7 @@ body.dark {
 	--textTitle: white;
 	--textLink: yellow;
 	--hr: hsla(0, 0%, 100%, 0.2);
-	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 1.35rem;
 }
 
@@ -171,49 +171,29 @@ body.light div span p h2 h3 th a {
 	color: #000 !important;
 }
 
-body.dark h1 {
-	color: #efefef;
-}
-
-body.light h1 {
-	color: #000 !important;
-}
-
+body.dark h1,
 body.dark .table-header-text {
 	color: #efefef;
 }
 
+body.light h1,
 body.light .table-header-text {
-	color: #000;
+	color: #000 !important;
 }
 
-body.light > div > div > header {
+body.light header,
+body.light main {
 	background: #fff;
 }
 
-body.dark > div > div > header {
+body.dark header,
+body.dark main {
 	background: #082429;
 }
 
-body.light > div > div > main {
-	background: #f8fafc;
-}
-
-body.dark > div > div > main {
-	background: #082429;
-}
-
-body.light > div > div > div > header {
-	background: #fff;
-}
-
-body.dark > div > div > div > header {
-	background: #082429;
-}
-
-body.dark .toc-list-container ol a {
+/* body.dark .toc-list-container ol a {
 	color: var(--lightwhite);
-}
+} */
 
 body.light .toc-list-container ol a {
 	color: var(--midlightgrey);
@@ -227,12 +207,61 @@ body.light .toc-list-container .is-active-link {
 	color: var(--darkgrey);
 }
 
-body.dark .link-container {
+body.dark .link-container,
+body.dark .toc-list-container ol a {
 	color: var(--lightwhite);
 }
 
 body.light .link-container {
 	color: var(--midgrey);
+}
+
+body.dark .box-container {
+	background: #2a3644;
+}
+
+body.light .box-container {
+	background: #fff;
+}
+
+body.dark .home-input,
+.home-search {
+	background: #3a4246;
+	color: #fff;
+}
+
+body.light .home-input {
+	background: #e5eff5;
+	color: #000;
+}
+
+body.light .home-search {
+	background: #fff;
+	color: var(--midgrey);
+}
+
+body.light .search-result:hover {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .search-result:hover {
+	background: #5e6061;
+}
+
+body.light .highlighted-suggestion {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .highlighted-suggestion {
+	background: #5e6061;
+}
+
+body.light .sticky-nav {
+	background: #f8fafc !important;
+}
+
+body.dark .sticky-nav {
+	background: #082429 !important;
 }
 
 code {
@@ -266,4 +295,12 @@ pre > code {
 	position: absolute;
 	right: 30px;
 	cursor: pointer;
+}
+
+.gatsby-remark-prismjs-copy-button-container {
+	margin: -12px 0px 0px 0px !important;
+}
+
+.gatsby-remark-prismjs-copy-button {
+	margin-right: 15px;
 }
