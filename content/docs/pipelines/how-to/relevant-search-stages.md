@@ -196,3 +196,58 @@ Once we have executed the reactivesearch query, we can continue and hit Elastic 
 - id: elasticsearch query
   use: elasticsearchQuery
 ```
+
+### Promote Results
+
+Let's now do some manipulation to the response that we got from ElasticSearch. Let's say we want to modify the response and add a new item in the 5th position. We can do that by using the pre-built stage `promoteResults`.
+
+This stage can be defined in the following way:
+
+```yaml
+- id: promote 5th result
+  use: promoteResults
+  inputs:
+    data:
+     - doc:
+         _id: inserted_5
+         _source:
+           title: This is the 5th result
+       position: 5
+```
+
+We can pass the data that needs to be inserted in the above way using the `inputs.data` field. The data field should be an array of objects. Each object should contain the following fields:
+
+- `doc`: The document to insert
+- `position`: The position at which the document is to be inserted.
+
+### Hide Results
+
+As explained above, at times we might want to hide certain results. This can be achieved by using the `_id` of that document with the pre-built stage `hideResults`.
+
+This stage can be defined in the following way:
+
+```yml
+- id: hide results
+  use: hideResults
+  inputs:
+    data:
+      - some_id_to_remove
+```
+
+We need to pass the data in the `inputs.data` field and the ID (if present in the response) will be removed.
+
+### Custom Data
+
+Let's say we want to add some custom data to the response body, we can do that through the `customData` pre-built stage. This stage can be defined in the following way:
+
+```yaml
+- id: custom data
+  use: customData
+  inputs:
+    data:
+      reference: Hercule Poirot
+```
+
+In the above example, the response will have an _custom_ key added to it. This key will be `reference` and the value will be set to the value passed in the above example.
+
+Basically, we insert the object passed in the `inputs.data` field as is to the root level of the response body.
