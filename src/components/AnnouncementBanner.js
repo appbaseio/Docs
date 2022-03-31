@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { css } from 'emotion';
 
-const AnnouncementBanner = () => {
-	const [showBanner, setShowBanner] = useState(
-		typeof window !== 'undefined' ? localStorage.getItem('announcementBanner') === 'true' : false,
-	);
-	if (typeof window !== 'undefined' && localStorage.getItem('announcementBanner') === null) {
-		localStorage.setItem('announcementBanner', 'true');
-		setShowBanner(true);
-	}
-
+const AnnouncementBanner = ({showBanner, setShowBanner}) => {
+		
 	return (
 		<div>
 			{showBanner ? (

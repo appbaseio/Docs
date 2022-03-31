@@ -29,22 +29,30 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 			icon: `fill-white`,
 		},
 	};
-	
+
 	const [mockWindow, setMockWindow] = useState();
+	const [showBanner, setShowBanner] = useState(
+		typeof window !== 'undefined' ? localStorage.getItem('announcementBanner') === 'true' : false,
+	);
+
+	if (typeof window !== 'undefined' && localStorage.getItem('announcementBanner') === null) {
+		localStorage.setItem('announcementBanner', 'true');
+		setShowBanner(true);
+	}
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
+		if (typeof window !== 'undefined') {
 			setMockWindow(window);
 		}
 	}, []);
 
 	return (
 		<div>
-			<AnnouncementBanner />
-			<nav className="shadow-3 on-white" >
+			<AnnouncementBanner showBanner={showBanner}  setShowBanner={setShowBanner}/>
+			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
-					style={{height: 75}}
+					style={{ height: 75 }}
 					data-cy="header-navigation"
 				>
 					<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
@@ -57,9 +65,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						<div className="dn flex-ns flex-auto items-center overflow-x-auto mr12 mr0-l ml5 ml0-l pb20">
 							<DropdownLink>
 								<DropdownLink.Item>
-									{value => {
-										value.selectedKey='guides'
-										return (
+									{value => (
 										<React.Fragment>
 											<span
 												className={`${
@@ -79,7 +85,19 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 											{value.selectedKey === 'guides' ? (
 												<div
 													className="dropdown-content"
-													style={{ background: typeof window !== 'undefined' ? localStorage.getItem('theme') === 'dark' ? '#082429' : 'white' : 'white'}}
+													style={{
+														background:
+															typeof window !== 'undefined'
+																? localStorage.getItem(
+																		'theme',
+																	) === 'dark'
+																	? '#082429'
+																	: 'white'
+																: 'white',
+														top: showBanner
+															? '105px'
+															: '75px',
+													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
 													<div
@@ -90,14 +108,14 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Guides
 															</h2>
 															<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
-																Step wise guide from making your search
-																app to securing it.
+																Step wise guide from making your
+																search app to securing it.
 															</p>
 														</div>
 														<div>
 															{/* <h2 className="f3 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns middarkgrey mb2">
-															Clients
-														</h2> */}
+														Clients
+													</h2> */}
 															<Link
 																to="/docs/gettingstarted/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
@@ -187,7 +205,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 												</div>
 											) : null}
 										</React.Fragment>
-									)}}
+									)}
 								</DropdownLink.Item>
 								<DropdownLink.Item>
 									{value => (
@@ -208,7 +226,15 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 											{value.selectedKey === 'api' ? (
 												<div
 													className="dropdown-content"
-													style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
+													style={{
+														background:
+															localStorage.getItem('theme') === 'dark'
+																? '#082429'
+																: 'white',
+														top: showBanner
+															? '105px'
+															: '75px',
+													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
 													<div
@@ -219,7 +245,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																APIs and Integrations
 															</h3>
 															<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
-																UI Libraries, clients and interactive examples for working
+																UI Libraries, clients and
+																interactive examples for working
 																with reactivesearch.io
 															</p>
 															<Link
@@ -336,7 +363,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns mb2">
 																REST API
 															</h2>
-														<Link
+															<Link
 																to="/api/rest/overview/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
@@ -368,7 +395,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															>
 																<Icon
 																	name="android-logo"
-																	style={{ filter: 'grayscale(1)' }}
+																	style={{
+																		filter: 'grayscale(1)',
+																	}}
 																	className="dropdown-content-icon mr2"
 																/>
 																Android
@@ -380,7 +409,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<img
-																	style={{ filter: 'grayscale(1)' }}
+																	style={{
+																		filter: 'grayscale(1)',
+																	}}
 																	className="dropdown-content-icon mr2"
 																	src="/images/swift-logo.webp"
 																	alt="Swift"
@@ -455,8 +486,10 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
 						<Search />
 					</div>
-					{mockWindow?.innerWidth > 768 ? <ThemeSwitch setThemeType={setThemeType}/> : null}	
-					<MobileNav setThemeType={setThemeType}/>
+					{mockWindow?.innerWidth > 768 ? (
+						<ThemeSwitch setThemeType={setThemeType} />
+					) : null}
+					<MobileNav setThemeType={setThemeType} />
 				</div>
 			</nav>
 		</div>
