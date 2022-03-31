@@ -144,3 +144,55 @@ At times, we might even want to remove certain words from the search term entere
 ```
 
 We can pass the words to be removed in the `inputs.data` field. This field should be an array of strings and every word that occurs in this array will be removed from the search term.
+
+### Replace Words
+
+Sometimes, we might have the need to replace certain words with some other words. This can be for any number of reasons like improving search relevancy for the user and so.
+
+We can do that in the following way using the pre-built stage `replaceWords`:
+
+```yml
+- id: replace words
+  use: replaceWords
+  inputs:
+    data:
+      harry: harry potter
+```
+
+We can pass whatever field we want to replace in the `inputs.data` field as an object. Every word matching the `key` in the data field will be replaced with the value passed along with it.
+
+### Add Filter
+
+Adding filter is sometimes an useful function in order to improve the search results. Let's say we want to add a filter to set the `authors` field to `Agatha Christie`. We can do that using the pre-built stage `addFilter`.
+
+That can be achieved in the following way:
+
+```yml
+- id: add filter
+  use: addFilter
+  inputs:
+    data:
+      authors: Agatha Christie
+```
+
+In the above case, we can pass the data through `inputs.data` field. This field should be an object where every key is the field we want to add filter for with the value being the value.
+
+### Reactive Search
+
+Now that we have applied most query rules, let's finally make the ReactiveSearch call. We can do that by using the `reactivesearchQuery`
+
+This can be defined in the following way:
+
+```yml
+- id: reactive search query
+  use: reactivesearchQuery
+```
+
+### Elastic Search Query
+
+Once we have executed the reactivesearch query, we can continue and hit Elastic Search with the **translated** query now. This can be done by using the pre-built stage `elasticsearchQuery` in the following way:
+
+```yml
+- id: elasticsearch query
+  use: elasticsearchQuery
+```
