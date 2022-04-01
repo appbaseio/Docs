@@ -127,7 +127,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 	const highlightedTitle = hit.title.replace(new RegExp(currentValue, 'ig'), matched => {
 		return `<mark>${matched}</mark>`;
 	});
-	const tokens = hit.tokens.filter(item => item.includes(currentValue));
+	const tokens = hit.tokens;
 	let highlightedToken =
 		tokens[0] &&
 		tokens[0].replace(new RegExp(currentValue, 'ig'), matched => {
@@ -284,6 +284,12 @@ class AutoComplete extends React.Component {
 		})
 	}
 
+	onKeyDown = (e) => {
+		if(e.keyCode === 27) {
+			document.querySelector("[data-cy='search-input']").blur(); 
+		}
+	}
+
 	render() {
 		// Don't show sections with no results
 		const { hits, value, hasMounted } = this.state;
@@ -293,6 +299,7 @@ class AutoComplete extends React.Component {
 			value,
 			onFocus: this.onFocus,
 			onBlur: this.onBlur,
+			onKeyDown: this.onKeyDown,
 			'data-cy': `search-input`,
 		};
 

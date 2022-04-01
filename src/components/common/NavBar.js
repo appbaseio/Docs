@@ -46,6 +46,11 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		if(mockWindow)
+			setThemeType(localStorage.getItem('theme'));
+	}, [mockWindow])
+
 	return (
 		<div>
 			<AnnouncementBanner showBanner={showBanner}  setShowBanner={setShowBanner}/>
