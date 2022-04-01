@@ -10,3 +10,5 @@ keywords:
     - reactivesearch
 sidebar: 'docs'
 ---
+
+Pipeline Concepts consist of basic concepts that would be useful to understand how pipelines work and how pipelines can be utilized to get the best out of it.
