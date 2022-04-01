@@ -166,6 +166,12 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
+												title: "Pipeline Concepts",
+												link: "/docs/pipelines/concepts/overview",
+												description: "Learn about core concepts of pipelines to know how to use them",
+												duration: 12,
+											},
+											{
 												title: 'How to guides',
 												link: '/docs/pipelines/how-to/overview',
 												description: 'See actionable guides for building search pipelines with examples',
