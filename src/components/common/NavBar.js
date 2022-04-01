@@ -34,6 +34,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			setMockWindow(window);
+			setThemeType(localStorage.getItem('theme'));
 		}
 	}, []);
 
