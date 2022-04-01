@@ -47,6 +47,9 @@
         items:
           - link: /docs/pipelines/concepts/overview
             title: Pipeline Concepts
+            items:
+              - title: Pass data between stages
+                link: /docs/pipelines/concepts/pass-data-between-stages
           - link: /docs/pipelines/how-to/overview
             title: "How To"
             items:
