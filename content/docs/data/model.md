@@ -72,7 +72,7 @@ Appbase.io takes an opinionated approach to handle both search and aggregations 
 
 When setting the use-case as `Search` within appbase.io's [Schema UI](/docs/search/relevancy/#schema), a field will have the following multi-fields added. This covers all the search scenarios, from handling autosuggestions, partial search, a language specific search to a synonyms driven search.
 
-| Field | Description | When To Use |
+| <p style="margin: 0px;" class="table-header-text">Field</p> | <p style="margin: 0px;" class="table-header-text">Description</p> | <p style="margin: 0px;" class="table-header-text">When To Use</p> |
 |-------|-------------|-------------|
 | `${field}` | Analyzed field using a standard analyzer. | A good default field to search on. |
 | `${field}.keyword` | Non-analyzed field. | Useful for finding exact matches. |

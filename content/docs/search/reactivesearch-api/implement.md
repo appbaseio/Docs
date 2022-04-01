@@ -47,7 +47,7 @@ The below query returns all the books for which either the `title` or `descripti
 
 When you use appbase.io, it indexes all the search use-case fields using a variety of analyzers so that they are searchable no matter what the context is. The table below explains the sub-fields indexed by appbase.io and when to use them:
 
-| Field | Description | When To Use |
+| <p style="margin: 0px;" class="table-header-text">Field</p> | <p style="margin: 0px;" class="table-header-text">Description</p> | <p style="margin: 0px;" class="table-header-text">>When To Use</p |
 |-------|-------------|-------------|
 | `${field}` | Analyzed field using a standard analyzer. | A good default field to search on. |
 | `${field}.keyword` | Non-analyzed field. | Useful for finding exact matches. |
@@ -340,7 +340,7 @@ We have a set of frontend libraries for different platforms that support the `Re
 
 Here is a list of all frontend libraries available for different platforms:
 
-| Library                |  Variant    | Docs                                               |
+| <p style="margin: 0px;" class="table-header-text">Library</p>                |  <p style="margin: 0px;" class="table-header-text">Variant</p>    | <p style="margin: 0px;" class="table-header-text">Docs</p>                                               |
 | -------------------- | ----------  | -----------------------------------------------------------|
 | **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/v3/overview/quickstart/)    |
 | **`ReactiveSearch`** | `Vue`       | [Learn More](/docs/reactivesearch/vue/overview/QuickStart/)  |
