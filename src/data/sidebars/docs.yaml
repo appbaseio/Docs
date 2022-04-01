@@ -45,6 +45,8 @@
       - group: "ReactiveSearch Pipelines"
         icon: search
         items:
+          - link: /docs/pipelines/concepts/overview
+            title: Pipeline Concepts
           - link: /docs/pipelines/how-to/overview
             title: "How To"
             items:
