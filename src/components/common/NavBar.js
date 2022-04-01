@@ -37,6 +37,11 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		if(mockWindow)
+			setThemeType(localStorage.getItem('theme'));
+	}, [mockWindow])
+
 	return (
 		<nav className="shadow-3 on-white" >
 			<div
