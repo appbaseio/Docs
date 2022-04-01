@@ -35,7 +35,7 @@ This table below can help you choose the right method for your use-case:
 
 <div class="table-less-width">
 
-|                   | **Ease of Use** | **Supports Automation** | **Importing Large Dataset** | **Data Sources Supported**                                     |
+|                   | <p style="margin: 0px;" class="table-header-text">Ease of Use</p> | <p style="margin: 0px;" class="table-header-text">Supports Automation</p> | <p style="margin: 0px;" class="table-header-text">Importing Large Dataset</p> | <p style="margin: 0px;" class="table-header-text">Data Sources Supported</p>                                    |
 | ----------------- | --------------- | ----------------------- | --------------------------- | -------------------------------------------------------------- |
 | **Dashboard GUI** | ✔️              | ✖️️️                    | ✔️                          | CSV, JSON, Elasticsearch and SQL.                              |
 | **ABC CLI**       | ✔️\*            | ✔️\*                    | ✔️                          | Everything above plus MongoDB, Firestore, Kafka, Redis, Neo4J. |

@@ -117,7 +117,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 
 <br />
 
-|              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
+|              <p style="margin: 0px;" class="table-header-text">queryFormat</p> | <p style="margin: 0px;" class="table-header-text">Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)</p> |
 | ---------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | `epoch_millis` **(default)** |                                                                       `epoch_millis`                                                                       |
 |               `epoch_second` |                                                                       `epoch_second`                                                                       |

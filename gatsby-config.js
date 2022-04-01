@@ -93,7 +93,7 @@ const plugins = [
 	`gatsby-plugin-offline`,
 	`gatsby-plugin-react-helmet`,
 	`gatsby-plugin-force-trailing-slashes`,
-
+	'gatsby-plugin-dark-mode',
 	`gatsby-offline-search-index`,
 	{
 		resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
