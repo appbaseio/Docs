@@ -8,10 +8,9 @@ const ThemeSwitch = ({ onClick, setThemeType }) => {
 		<div>
 			<ThemeToggler>
 				{({ theme, toggleTheme }) => {
-
-				if(typeof window !== 'undefined' && !localStorage.getItem('theme'))
-				localStorage.setItem('theme', theme);
-
+					if(typeof window !== 'undefined' && !localStorage.getItem('theme'))
+					localStorage.setItem('theme', theme);
+	
 					return (
 						<label className="switch">
 							<input
@@ -25,7 +24,7 @@ const ThemeSwitch = ({ onClick, setThemeType }) => {
 							/>{' '}
 							<span className="slider round">
 								{theme !== 'dark' ? (
-									<div className="dark-theme-icon">
+									<div className="light-theme-icon icon-transition">
 										<svg
 											width="12px"
 											height="12px"
@@ -42,7 +41,7 @@ const ThemeSwitch = ({ onClick, setThemeType }) => {
 										</svg>
 									</div>
 								) : (
-									<div className="light-theme-icon">
+									<div className="dark-theme-icon icon-transition">
 										<svg
 											width="12px"
 											height="12px"

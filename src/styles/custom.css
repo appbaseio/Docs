@@ -600,6 +600,7 @@ kbd {
 .search-modal-field-bg,
 .search-result:hover {
 	background: color-mod(var(--whitegrey) l(+4%));
+	border-radius: 0;
 }
 
 .search-result-page mark {
@@ -1326,7 +1327,6 @@ to be custom HTML.
 }
 
 .home-input {
-	background: #e5eff5;
 	border-radius: 2px;
 	padding: 15px;
 	padding-left: 30px;
@@ -1335,7 +1335,6 @@ to be custom HTML.
 .home-search {
 	top: 50px;
 	position: absolute;
-	background: white;
 	width: 100%;
 	max-height: 70vh;
 	z-index: 999;
@@ -1710,7 +1709,6 @@ to be custom HTML.
 	margin-top: 10px;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	/* background: #f8fafc; */
 	border-top: 1px solid #c5d2d9;
 }
 
@@ -1940,6 +1938,7 @@ tbody tr td:nth-child(-n + 3) {
 .autosuggest-footer-container {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	color: #8792a2;
 	background: #f7fafc;
 	padding: 10px;
