@@ -49,3 +49,9 @@ async function hitExternal() {
 ```
 
 The above script will run fine and it will add a new field to the context. [Read more about context modifications here](./write-to-global-context).
+
+## When to use it?
+
+This field should not be used all the time since it can impact the performace of the request. It is advisable that this field is used when there is a call that needs to be **awaited** and the response from this call is necessary for the functioning of another stage.
+
+Also, note that in order to make another stage wait till the stage has executed, [the `needs` field should be used](./wait-for-other-stage).
