@@ -1839,6 +1839,16 @@ to be custom HTML.
 	outline: none;
 }
 
+@media (max-width: 700px) {
+	.mobile-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+	}
+}
+
 .cursor-pointer {
 	cursor: pointer;
 }
@@ -1943,4 +1953,10 @@ tbody tr td:nth-child(-n + 3) {
 	background: #f7fafc;
 	padding: 10px;
 	height: 40px;
+}
+
+@media (max-width: 700px) {
+	.autosuggest-footer-container {
+		display: none;
+	}
 }
