@@ -1972,3 +1972,9 @@ tbody tr td:nth-child(-n + 3) {
 	padding: 10px;
 	height: 40px;
 }
+
+@media (max-width: 700px) {
+	.autosuggest-footer-container {
+		display: none;
+	}
+}
