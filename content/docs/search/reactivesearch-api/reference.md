@@ -1044,6 +1044,21 @@ For ElasticSearch, the script should be written in [painless](https://www.elasti
 cosineSimilarity(params.queryVector, params.dataField) + 1.0
 ```
 
+Following is an example to pass the above script:
+
+```json
+{
+    "query": [
+        {
+            "value": "sudoku",
+            "vectorDataField": "name_vector",
+            "queryVector": [1.0, -0.3],
+            "script": "cosineSimilarity(params.queryVector, params.dataField) + 1.0"
+        }
+    ]
+}
+```
+
 #### OpenSearch
 
 For OpenSearch, the script can be one of the following values:
@@ -1055,6 +1070,21 @@ For OpenSearch, the script can be one of the following values:
 
 The default is set to `cosinesimil`.
 
+Following is an example to pass the script field for opensearch
+
+```json
+{
+    "query": [
+        {
+            "value": "sudoku",
+            "vectorDataField": "name_vector",
+            "queryVector": [1.0, -0.3],
+            "script": "cosinesimil"
+        }
+    ]
+}
+```
+
 ### candidates
 
 This indicates the number of candidates to consider while using the `script_score` functionality to reorder the results using kNN provided by ElasticSearch/OpenSearch.
@@ -1064,7 +1094,6 @@ This indicates the number of candidates to consider while using the `script_scor
 | `int` | `search`, `suggestion` | false |
 
 This field can be an integer. The default value is set to **10**.
-
 
 ## Settings Properties
 
