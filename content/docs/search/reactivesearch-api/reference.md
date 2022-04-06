@@ -1129,3 +1129,33 @@ This field can be an integer. The default value is set to **10**.
 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/LfmsZDWgTw5Zf2Z3WTR9"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+### backend
+
+This field indicates the backend of ReactiveSearch. Backend implies the search service being used to store the data.
+
+As of now, the `backend` field supports the following values:
+
+1. `elasticsearch`: ElasticSearch
+2. `opensearch`: OpenSearch
+
+where `elasticsearch` is the default value.
+
+> This field is necessary if backend is OpenSearch and the kNN reordering of scripts are to be used.
+
+Following example indicates how to use this field to use kNN reordering with OpenSearch as backend:
+
+```json
+{
+    "query": [
+        {
+            "value": "sudoku",
+            "vectorDataField": "name_vector",
+            "queryVector": [1.0, -0.2],
+        }
+    ],
+    "settings": {
+        "backend": "opensearch"
+    }
+}
+```
