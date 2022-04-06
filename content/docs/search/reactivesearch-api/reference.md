@@ -995,6 +995,38 @@ Following is an example of how `queryVector` can be passed:
 }
 ```
 
+### vectorDataField
+
+This field indicates the name of the field in the index that is supposed to be used in order to reorder the results using `kNN` provided by OpenSearch/ElasticSearch.
+
+This is a **required** field in order to invoke the kNN reordering.
+
+This field should be of type:
+
+- `dense_vector` for ElasticSearch
+- `knn_vector` for OpenSearch
+
+| Type | Applicable on query of type | Required |
+| --- | --- | --- |
+| `string` | `search`, `suggestion` | false |
+
+
+Following is an example of passing this field along with the `queryVector` field.
+
+> We are assuming that the `name_vector` field is present in the index and this field is of the desired type to store vector data.
+
+
+```json
+{
+    "query": [
+        {
+            "value": "sudoku",
+            "vectorDataField": "name_vector",
+            "queryVector": [1.0, -0.1, ...]
+        }
+    ]
+}
+```
 
 ## Settings Properties
 
