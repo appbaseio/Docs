@@ -1028,6 +1028,44 @@ Following is an example of passing this field along with the `queryVector` field
 }
 ```
 
+### script
+
+This field indicates the script to run while reordering the results. This script will be executed through ElasticSearch/OpenSearch directly and won't be run by ReactiveSearch.
+
+| Type | Applicable on query of type | Required |
+| --- | --- | --- |
+| `string` | `search`, `suggestion` | false |
+
+#### ElasticSearch
+
+For ElasticSearch, the script should be written in [painless](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-painless.html). By default the value is set to:
+
+```
+cosineSimilarity(params.queryVector, params.dataField) + 1.0
+```
+
+#### OpenSearch
+
+For OpenSearch, the script can be one of the following values:
+
+1. `l2`
+2. `l1`
+3. `cosinesimil`
+4. `hammingbit`
+
+The default is set to `cosinesimil`.
+
+### candidates
+
+This indicates the number of candidates to consider while using the `script_score` functionality to reorder the results using kNN provided by ElasticSearch/OpenSearch.
+
+| Type | Applicable on query of type | Required |
+| --- | --- | --- |
+| `int` | `search`, `suggestion` | false |
+
+This field can be an integer. The default value is set to **10**.
+
+
 ## Settings Properties
 
 ### recordAnalytics
