@@ -232,6 +232,16 @@ kbd {
 	width: 22rem;
 }
 
+@media (max-width: 768px) {
+	.reactivesearch-logo {
+		width: 40px;
+	}
+
+	.w-sidebar-l {
+		width: 10rem !important;
+	}
+}
+
 .w-sidebar-l {
 	width: 22rem;
 }

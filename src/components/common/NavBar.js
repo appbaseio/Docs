@@ -34,6 +34,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	const [showBanner, setShowBanner] = useState(
 		typeof window !== 'undefined' ? localStorage.getItem('announcementBanner') === 'true' : false,
 	);
+	const [isMobile, setIsMobile] = useState(false);
 
 	if (typeof window !== 'undefined' && localStorage.getItem('announcementBanner') === null) {
 		localStorage.setItem('announcementBanner', 'true');
@@ -47,8 +48,10 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, []);
 
 	useEffect(() => {
-		if(mockWindow)
+		if(mockWindow) {
 			setThemeType(localStorage.getItem('theme'));
+			setIsMobile(mockWindow.innerWidth <= 768);
+		}			
 	}, [mockWindow])
 
 	return (
@@ -62,7 +65,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 				>
 					<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
 						<Link to="/" className="nudge-top--3">
-							<Logo theme={themeType} />
+							<Logo theme={themeType} isMobile={isMobile}/>
 						</Link>
 					</div>
 					{/* navbar-container wrapper element and bottom padding is needed to hide the horizontal scrollbar on smaller screensizes */}
