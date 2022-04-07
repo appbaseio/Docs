@@ -1901,7 +1901,7 @@ a:link {
 	justify-content: space-evenly;
 }
 
-.truncate-3 {
+.truncate-desc {
 	line-height: 1.4;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -1960,7 +1960,7 @@ tbody tr td:nth-child(-n + 3) {
 
 .autosuggest-content {
 	overflow: scroll;
-	max-height: 500px;
+	max-height: 600px;
 }
 
 .autosuggest-footer-container {
@@ -1976,5 +1976,17 @@ tbody tr td:nth-child(-n + 3) {
 @media (max-width: 700px) {
 	.autosuggest-footer-container {
 		display: none;
+	}
+	.suggestion-content-icon {
+		display: none;
+	}
+	.truncate-desc {
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.home-search {
+		max-height: 75vh;
 	}
 }

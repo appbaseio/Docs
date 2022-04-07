@@ -492,7 +492,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						</div>
 					</div>
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
-						<Search />
+						<Search isMobile={isMobile}/>
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
 						<ThemeSwitch setThemeType={setThemeType} />

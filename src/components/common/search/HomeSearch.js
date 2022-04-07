@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { navigate, Link } from 'gatsby';
 import * as JsSearch from 'js-search';
 import Autosuggest from 'react-autosuggest';
@@ -18,31 +19,6 @@ search.addIndex('meta_title');
 search.addIndex('tokens');
 
 search.addDocuments(data);
-
-const getSuggestions = value => {
-	const inputValue = value.trim().toLowerCase();
-	const inputLength = inputValue.length;
-	const searchValue = search
-		.search(inputValue)
-		.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
-		.filter(item => item.url !== '/data-schema/');
-	let topResults = searchValue.filter(item => !item.heading).slice(0, 20);
-	const withHeading = searchValue.filter(item => item.heading);
-	if (topResults.length < 8) {
-		topResults = [...topResults, ...withHeading.slice(0, 20 - topResults.length)];
-	}
-	const exactMatchIndex = topResults.findIndex(
-		item => item.title.toLowerCase() === inputValue && !item.heading,
-	);
-	if (exactMatchIndex > 0) {
-		topResults = [
-			topResults[exactMatchIndex],
-			...topResults.slice(0, exactMatchIndex),
-			...topResults.slice(exactMatchIndex + 1),
-		];
-	}
-	return inputLength === 0 ? JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions')  || '[]' : '[]') : topResults;
-};
 
 const getSection = url => {
 	const isHavingHash = url.indexOf('#');
@@ -164,7 +140,7 @@ const HitTemplate = ({ hit, currentValue }) => {
 						) : null}
 					</div>
 					<p
-						className={`link-container ${Spirit.small} mt1 truncate-3`}
+						className={`link-container ${Spirit.small} mt1 truncate-desc`}
 						dangerouslySetInnerHTML={{ __html: highlightedToken }}
 					/>
 				</div>
@@ -191,7 +167,7 @@ class AutoComplete extends React.Component {
 		this.state = {
 			value: '',
 			showContainer: false,
-			hits: getSuggestions(''),
+			hits: this.getSuggestions(''),
 			hasMounted: false,
 		};
 
@@ -214,6 +190,33 @@ class AutoComplete extends React.Component {
 		});
 	}
 
+	getSuggestions = value => {
+		const {isMobile} = this.props;
+		const noOfSuggestions = isMobile ? 5 : 20;
+		const inputValue = value.trim().toLowerCase();
+		const inputLength = inputValue.length;
+		const searchValue = search
+			.search(inputValue)
+			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
+			.filter(item => item.url !== '/data-schema/');
+		let topResults = searchValue.filter(item => !item.heading).slice(0, noOfSuggestions);
+		const withHeading = searchValue.filter(item => item.heading);
+		if (topResults.length < 8) {
+			topResults = [...topResults, ...withHeading.slice(0, noOfSuggestions - topResults.length)];
+		}
+		const exactMatchIndex = topResults.findIndex(
+			item => item.title.toLowerCase() === inputValue && !item.heading,
+		);
+		if (exactMatchIndex > 0) {
+			topResults = [
+				topResults[exactMatchIndex],
+				...topResults.slice(0, exactMatchIndex),
+				...topResults.slice(exactMatchIndex + 1),
+			];
+		}
+		return inputLength === 0 ? JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions')  || '[]' : '[]') : topResults;
+	};
+
 	onChange(event, { newValue, method }) {
 		this.setState({
 		  value: newValue
@@ -221,14 +224,14 @@ class AutoComplete extends React.Component {
 	}
 
 	onSuggestionsUpdateRequested({ value }) {
-		const suggestions = getSuggestions(value);
+		const suggestions = this.getSuggestions(value);
 		this.setState({
 			hits: suggestions,
 		});
 	}
 
 	onSuggestionsFetchRequested({ value }) {
-		const suggestions = getSuggestions(value);
+		const suggestions = this.getSuggestions(value);
 		this.setState({
 			hits: suggestions,
 		});
@@ -341,5 +344,13 @@ class AutoComplete extends React.Component {
 		);
 	}
 }
+
+AutoComplete.defaultProps = {
+	isMobile: false,
+};
+
+AutoComplete.propTypes = {
+	isMobile: PropTypes.bool,
+};
 
 export default AutoComplete;
