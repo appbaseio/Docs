@@ -59,6 +59,18 @@ Example uses:
         }"
     >
     ```
+-   **clearAllBlacklistComponents** `Array` [optional] allows defining a list of 
+    component IDs, which would reset their values when `clearAll` action gets triggered.
+
+    The following example instructs the `SelectedFilters` component to not reset the `searchbox` component's value when `clearAll` button is clicked by the user.
+
+    ```html
+    <selected-filters
+        :clearAllBlacklistComponents="['searchbox']"
+    >
+    ```
+
+    > Note: The `clearAllBlacklistComponents` prop has priority over `resetToValues` and `resetToDefault` props which means component would retain its current value and would ignore the values defined in `resetToValues` map or `defaultValue` prop.
 
 Most ReactiveSearch filter components have a prop `showFilter` (defaults to `true`) which can be used to control whether the component's selected state appears in the SelectedFilters component. There is also a `filterLabel` prop which controls how that component is displayed.
 
@@ -68,7 +80,7 @@ Most ReactiveSearch filter components have a prop `showFilter` (defaults to `tru
 
 As an example, check [MultiList usage](/docs/reactivesearch/vue/list/MultiList/#usage) to see how `showFilter` and `filterLabel` can be used.
 
-###Events
+### Events
 
 -   **change** `function` [optional]
     Provides access to the current selected values. This enables you to retrieve the selected filters and current search state in a convenient way.
