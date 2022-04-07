@@ -1040,7 +1040,7 @@ This field indicates the script to run while reordering the results. This script
 
 For ElasticSearch, the script should be written in [painless](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-painless.html). By default the value is set to:
 
-```
+```js
 cosineSimilarity(params.queryVector, params.dataField) + 1.0
 ```
 
