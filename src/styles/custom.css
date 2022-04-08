@@ -238,7 +238,7 @@ kbd {
 	}
 
 	.w-sidebar-l {
-		width: 10rem !important;
+		width: 6rem !important;
 	}
 }
 
@@ -1973,7 +1973,7 @@ tbody tr td:nth-child(-n + 3) {
 	height: 40px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 	.autosuggest-footer-container {
 		display: none;
 	}
@@ -1988,5 +1988,18 @@ tbody tr td:nth-child(-n + 3) {
 	}
 	.home-search {
 		max-height: 75vh;
+	}
+}
+
+@media (max-width: 769px) and (min-width: 701px) {
+	.home-search-container {
+		width: 45%;
+	}
+
+	.truncate-desc {
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
