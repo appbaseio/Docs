@@ -105,6 +105,79 @@ Example uses:
     restricts predictions to specified country (ISO 3166-1 Alpha-2 country code, case insensitive). For example, 'us', 'in', or 'au'. You can provide an array of up to five country code strings.
 -   **serviceOptions** `Object` [optional]
     allows to add more options to AutoCompletionRequest, available from [Google Places library](https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest)
+-   **renderItem** `Function` [optional]
+    customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
+    ```js
+    renderItem={(label, isSelected) => (
+        <div>
+            <span style={{
+                marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+            }}>
+                {label}
+            </span>
+        </div>
+    )}
+    ```
+-   **render** `Function` [optional]
+    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+    <br/>
+    It accepts an object with these properties:
+    -   **`loading`**: `boolean`
+        indicates that the query is still in progress
+    -   **`error`**: `object`
+        An object containing the error info
+    -   **`data`**: `array`
+        An array of results obtained from the applied query.
+    -   **`rawData`** `object`
+        An object of raw response as-is from elasticsearch query.
+    -   **`value`**: `array`
+        current selected value.
+    -   **`handleChange`**: `function`
+        A callback function can be used to mark the list value as selected.
+    -   **`downshiftProps`**: `object`
+        provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
+        Read more about it [here](https://github.com/downshift-js/downshift#children-function).
+
+```js
+<GeoDistanceDropdown
+	render={({ loading, error, data, handleChange, downshiftProps }) => {
+		if (loading) {
+			return <div>Fetching Results.</div>;
+		}
+		if (error) {
+			return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+		}
+    if(downshiftProps.isOpen === false){
+      return null;
+    }
+		return data.map(item => (
+			<div onClick={() => handleChange(item)} key={item.label}>
+				<span>{item.label}</span>
+				<span>{item.distance}</span>
+			</div>
+		));
+	}}
+/>
+```
+
+Or you can also use render function as children
+
+```js
+<GeoDistanceDropdown>
+        {
+            ({
+                loading,
+                error,
+                data,
+                value,
+                handleChange,
+                downshiftProps
+            }) => (
+                // return UI to be rendered
+            )
+        }
+</GeoDistanceDropdown>
+```
 
 ## Demo
 
