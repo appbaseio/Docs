@@ -61,6 +61,39 @@ Example uses:
   showFilter={true}
   filterLabel="Location"
   URLParams={false}
+	render={({ loading, error, data, handleChange, downshiftProps }) => {
+		if (loading) {
+			return <div>Fetching Results.</div>;
+		}
+		if (error) {
+			return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+		}
+    if(downshiftProps.isOpen === false){
+      return null;
+    }
+		return data.map(item => (
+			<div onClick={() => handleChange(item)} key={item.label}>
+				<span>{item.label}</span>
+				<span>{item.distance}</span>
+			</div>
+		));
+	}}
+  // use either renderItem OR render prop
+  renderItem={(label, isSelected) => (
+    <div>
+        <span style={{
+            marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+        }}>
+            {label}
+        </span>
+    </div>
+  )}
+  onData={
+    (prop) => {
+      const {value, error} = prop;
+      // do something
+    }
+  }
 />
 ```
 
@@ -138,46 +171,57 @@ Example uses:
         provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
         Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
-```js
-<GeoDistanceDropdown
-	render={({ loading, error, data, handleChange, downshiftProps }) => {
-		if (loading) {
-			return <div>Fetching Results.</div>;
-		}
-		if (error) {
-			return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
-		}
-    if(downshiftProps.isOpen === false){
-      return null;
+  ```js
+  <GeoDistanceDropdown
+    render={({ loading, error, data, handleChange, downshiftProps }) => {
+      if (loading) {
+        return <div>Fetching Results.</div>;
+      }
+      if (error) {
+        return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+      }
+      if(downshiftProps.isOpen === false){
+        return null;
+      }
+      return data.map(item => (
+        <div onClick={() => handleChange(item)} key={item.label}>
+          <span>{item.label}</span>
+          <span>{item.distance}</span>
+        </div>
+      ));
+    }}
+  />
+  ```
+
+  Or you can also use render function as children
+
+  ```js
+  <GeoDistanceDropdown>
+          {
+              ({
+                  loading,
+                  error,
+                  data,
+                  value,
+                  handleChange,
+                  downshiftProps
+              }) => (
+                  // return UI to be rendered
+              )
+          }
+  </GeoDistanceDropdown>
+  ```
+
+-   **onData** `Function` [optional]
+    gets triggered after data changes, which returns an object with these properties: `value` & `error`.
+  ```js
+    onData={
+      (prop) => {
+        const {value, error} = prop;
+        // do something
+      }
     }
-		return data.map(item => (
-			<div onClick={() => handleChange(item)} key={item.label}>
-				<span>{item.label}</span>
-				<span>{item.distance}</span>
-			</div>
-		));
-	}}
-/>
-```
-
-Or you can also use render function as children
-
-```js
-<GeoDistanceDropdown>
-        {
-            ({
-                loading,
-                error,
-                data,
-                value,
-                handleChange,
-                downshiftProps
-            }) => (
-                // return UI to be rendered
-            )
-        }
-</GeoDistanceDropdown>
-```
+  ```
 
 ## Demo
 
@@ -216,7 +260,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
 ```js
 <GeoDistanceDropdown
-  ...
+  // ...
   className="custom-class"
   style={{"paddingBottom": "10px"}}
   customQuery={
