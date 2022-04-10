@@ -61,23 +61,24 @@ Example uses:
   showFilter={true}
   filterLabel="Location"
   URLParams={false}
-	render={({ loading, error, data, handleChange, downshiftProps }) => {
-		if (loading) {
-			return <div>Fetching Results.</div>;
-		}
-		if (error) {
-			return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
-		}
-    if(downshiftProps.isOpen === false){
-      return null;
-    }
-		return data.map(item => (
-			<div onClick={() => handleChange(item)} key={item.label}>
-				<span>{item.label}</span>
-				<span>{item.distance}</span>
-			</div>
-		));
-	}}
+  render={({ loading, error, data, handleChange, downshiftProps }) => {
+      if (loading) {
+        return <div>Fetching Results.</div>;
+      }
+      if (error) {
+        return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+      }
+      if(downshiftProps.isOpen === false){
+        return null;
+      }
+      return data.map(item => (
+        <div onClick={() => handleChange(item)} key={item.label}>
+          <span>{item.label}</span>
+          <span>{item.distance}</span>
+        </div>
+      ));
+	  }
+  }
   // use either renderItem OR render prop
   renderItem={(label, isSelected) => (
     <div>

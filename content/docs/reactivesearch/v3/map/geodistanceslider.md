@@ -61,6 +61,12 @@ Example uses:
 	showFilter={true}
 	filterLabel="Location"
 	URLParams={false}
+    onData={
+      (prop) => {
+        const {value, error} = prop;
+        // do something
+      }
+    }    
 />
 ```
 
@@ -137,6 +143,17 @@ Example uses:
         }
     }}
     ```
+-   **onData** `Function` [optional]
+    gets triggered after data changes, which returns an object with these properties: `value` & `error`.
+    ```js
+    onData={
+        (prop) => {
+            const {value, error} = prop;
+            // do something
+        }
+    }
+    ```
+
 ## Demo
 
 <br />
