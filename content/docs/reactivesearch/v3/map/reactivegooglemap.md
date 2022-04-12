@@ -187,6 +187,13 @@ renderError={(error) => (
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 -   **onData** `Function` [optional]
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
+-   **libraries** `Array<String>` 
+    accepts the list of addiotional maps libraries to load. The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+    - `drawing`
+    - `geometry`
+    - `localContext`
+    - `places`
+    - `visualization`
 
 ## Demo
 
