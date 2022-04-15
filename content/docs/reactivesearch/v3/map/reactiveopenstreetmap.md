@@ -150,41 +150,104 @@ renderError={(error) => (
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
 
 -   **render** `function`
-    use to display results and map component together. Usage:
+    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+    <br/>
+    It accepts an object with these properties:
+    -   **`loading`**: `boolean`
+        indicates that the query is still in progress
+    -   **`error`**: `object`
+        An object containing the error info
+    -   **`data`**: `array`
+        An array of results obtained from combining `promoted` results along with the `hits`.
+    -   **`aggregationData`** `array`
+        An array of aggregations buckets. Each bucket would have a `top_hits` property if you're using Elasticsearch top hits aggregations in `defaultQuery` prop.
+    -   **`promotedData`**: `array`
+        An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
 
-```js
-render={(props) => { 
-    const 
-    {
-        data, // parased hits
-        loading,
-        error,
-        promotedData,
-        customData,
-        rawData,
-        resultStats: {
-           numberOfResults
-           numberOfPages
-           currentPage
-           displayedResults
-           time
-           hidden
-           promoted
-        },
-        loadMore // func to load more results
-        triggerClickAnalytics // to trigger click analytics
-        setPage,
-        renderMap // allow users to render the map component at any place
-        renderPagination // allows to render pagination component after displaying results
-    } = props;
-    return(
-        <>
-            {data.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
-            {renderMap()}
-        </pre>
-    )
-}
-```
+    > Note:
+    >
+    > `data` and `promotedData` results has a property called `_click_id` which can be used with triggerClickAnalytics to register the click analytics info.
+
+    -   **`customData`** `object`
+        Custom data set in the query rule when appbase.io is used as backend. [Read More](/docs/search/rules/#custom-data)
+    -   **`rawData`** `object`
+        An object of raw response as-is from elasticsearch query.
+    -   **`resultStats`**: `object`
+        An object with the following properties which can be helpful to render custom stats:
+        -   **`numberOfResults`**: `number`
+            Total number of results found
+        -   **`numberOfPages`**: `number`
+            Total number of pages found based on current page size
+        -   **`currentPage`**: `number`
+            Current page number for which data is being rendered
+        -   **`time`**: `number`
+            Time taken to find total results (in ms)
+        -   **`displayedResults`**: `number`
+            Number of results displayed in current view
+        -   **`hidden`**: `number`
+            Total number of hidden results found
+        -   **`promoted`**: `number`
+            Total number of promoted results found
+    -   **`loadMore`**: `function`
+        A callback function to be called to load the next page of results into the view. The callback function is only applicable in the case of infinite loading view (i.e. `infiniteScroll` prop set to `true`).
+    -   **`triggerClickAnalytics`**: `function`
+        A function which can be called to register a click analytics. [Read More](docs/reactivesearch/v3/advanced/analytics/)
+
+    ```js
+    render={(props) => { 
+        const 
+        {
+            data, // parased hits
+            loading,
+            error,
+            promotedData,
+            customData,
+            rawData,
+            resultStats: {
+            numberOfResults
+            numberOfPages
+            currentPage
+            displayedResults
+            time
+            hidden
+            promoted
+            },
+            loadMore // func to load more results
+            triggerClickAnalytics // to trigger click analytics
+            setPage,
+            renderMap // allow users to render the map component at any place
+            renderPagination // allows to render pagination component after displaying results
+        } = props;
+        return(
+            <>
+                {data.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
+                {renderMap()}
+            </pre>
+        )
+    }
+    ```
+    Or you can also use render function as children
+
+    ```jsx
+    <ReactiveOpenStreetMap
+     // ...other props
+    >
+        {
+            ({
+                loading,
+                error,
+                data,
+                promotedData,
+                rawData,
+                resultStats,
+                handleLoadMore,
+                triggerClickAnalytics
+            }) => (
+                // return UI to be rendered
+            )
+        }
+    </ReactiveOpenStreetMap>
+    ```
 
 ## Demo
 
