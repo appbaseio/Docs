@@ -17,16 +17,16 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
-	
+
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
 	}
 
-	if(typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
+	if (typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
 		localStorage.setItem('recentSuggestions', JSON.stringify([]));
-	
+
 
 	return (
 		<>
@@ -41,7 +41,7 @@ const HomePage = ({ data, location }) => {
 				bodyClass="bg-white"
 				mainClass="bg-whitegrey-l2 pb-vw6 pb-vw3-ns"
 				header={
-					<HomeHeader 
+					<HomeHeader
 						setThemeType={(val) => setThemeType(val)}
 						themeType={themeType}
 					/>
@@ -178,13 +178,13 @@ const HomePage = ({ data, location }) => {
 										chapters: [
 											{
 												title: "Pipeline Concepts",
-												link: "/docs/pipelines/concepts/overview",
+												link: "/docs/pipelines/concepts/",
 												description: "Learn about core concepts of pipelines to know how to use them",
 												duration: 12,
 											},
 											{
 												title: 'How to guides',
-												link: '/docs/pipelines/how-to/overview',
+												link: '/docs/pipelines/how-to/',
 												description: 'See actionable guides for building search pipelines with examples',
 												duration: 1,
 											}
@@ -394,7 +394,7 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/react.png"
-									alt="React"									
+									alt="React"
 									width={40}
 									height={40}
 								/>
@@ -424,7 +424,7 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/react.png"
-									alt="React Native"									
+									alt="React Native"
 									width={40}
 									height={40}
 								/>
@@ -463,8 +463,8 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/rest-api.png"
-									alt="React Native"									
-									style={{ width: 90}}
+									alt="React Native"
+									style={{ width: 90 }}
 									height={40}
 								/>
 								REST API
