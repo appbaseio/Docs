@@ -213,3 +213,18 @@ stages:
 ```
 
 In just a few lines of code, we have the pipeline ready. This pipeline can be tested through the dashboard at [dash.appbase.io](https://dash.appbase.io).
+
+## Create the pipeline
+
+Now that we have the whole pipeline defined, we can create the pipeline by hitting the **ReactiveSearch** instance.
+
+The URL we will hit is: `/_pipeline` with a **POST** request.
+
+The above endpoint expects a `multipart/form-data` body with the `pipeline` key containing the path to the pipeline file. All the `scriptRef` files can be passed as a separate key in the form data and will be parsed by the API automatically. [Read more about this endpoint here](https://api.reactivesearch.io/#05fbf00d-1698-4ddf-9ad1-22bc740a5379)
+
+We can create the pipeline in the following request:
+
+> Below request assumes all the files mentioned in this guide are present in the current directory
+
+```sh
+curl -X POST 'http://APPBASE_id/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "addDetails.js=addDetails.js" --form "getLocation.js=getLocation.js"
