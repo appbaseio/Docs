@@ -35,7 +35,7 @@ enabled: true
 description: Add Knowledge Graph Data to response
 
 routes:
-  - path: /{index}/_reactivesearch
+  - path: /external-search/_reactivesearch
     method: POST
     classify:
       category: reactivesearch
@@ -178,7 +178,7 @@ enabled: true
 description: Add Knowledge Graph Data to response
 
 routes:
-  - path: /{index}/_reactivesearch
+  - path: /external-search/_reactivesearch
     method: POST
     classify:
       category: reactivesearch
@@ -224,7 +224,8 @@ curl -X POST 'http://APPBASE_id/_pipeline' -H "Content-Type: multipart/form-data
 Now that we have the pipeline in place, let's try it out. Following cURL request sends a search query to the `/app-store-data/_reactivesearch` endpoint.
 
 ```sh
-curl -X POST 'http://localhost:8000/app-store-data/_reactivesearch' -H "Content-Type: application/json" -d '{"query": [{"id": "test search", "value": "sudoku", "dataField": ["Name", "Description"], "includeFields": ["Name", "Description"]}]}' 
+curl -X POST 'CLUSTER_ID/external-search/_reactivesearch' -H "Content-Type: application/json" -d \
+'{"query": [{"id": "test search", "value": "sudoku", "dataField": ["Name", "Description"], "includeFields": ["Name", "Description"]}]}' 
 ```
 
 Above, cURL requests response should include a `knowledge_graph` field with the search results inside.

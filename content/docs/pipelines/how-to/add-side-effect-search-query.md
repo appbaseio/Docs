@@ -32,7 +32,7 @@ The file will be defined in the following way.
 enabled: true
 description: Pipeline to save search to an Elasticsearch index
 routes:
-- path: "/{index}/_reactivesearch"
+- path: "/side-effect/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
@@ -150,7 +150,7 @@ Now that all the stages are defined, let's take a look at the whole pipeline at 
 enabled: true
 description: Pipeline to save search to an Elasticsearch index
 routes:
-- path: "/{index}/_reactivesearch"
+- path: "/side-effect/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
@@ -196,5 +196,5 @@ We can hit the pipeline and see if the request is being saved to the index. We j
 For instance, let's hit the `app-store-data` index in the following way:
 
 ```sh
-curl -X POST http://localhost:8000/app-store-data/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
+curl -X POST CLUSTER_URL/side-effect/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
 ```

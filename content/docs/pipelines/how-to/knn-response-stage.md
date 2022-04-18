@@ -63,7 +63,7 @@ The file will be defined in the following way:
 ```yaml
 enabled: true
 routes:
-- path: "/{index}/_reactivesearch"
+- path: "/knn-test/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
@@ -203,7 +203,7 @@ Now that all stages are defined, we can have a look at the completed pipeline at
 ```yaml
 enabled: true
 routes:
-- path: "/{index}/_reactivesearch"
+- path: "/knn-test/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
@@ -257,7 +257,7 @@ We can hit the pipeline and see if response contains rearranged results based on
 For instance, let's hit the `app-store-data` index in the following way:
 
 ```sh
-curl -X POST http://localhost:8000/app-store-data/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
+curl -X POST CLUSTER_ID/knn-test/_reactivesearch -H "Content-Type: application/json" -d '{"query": [{"id": "some ID", "value": "sudoku", "dataField": ["Name", "Description"]}]}'
 ```
 
 ## Script For kNN

@@ -287,7 +287,7 @@ The body passed will be following:
 Hit the above request using the following cURL to see the magic happen:
 
 ```sh
-curl -X POST http://localhost:8000/good-books-ds/_reactivesearch -H "Content-Type: application/json" -d '{"query": ["value": "some query"]}'
+curl -X POST CLUSTER_ID/good-books-ds/_reactivesearch -H "Content-Type: application/json" -d '{"query": ["value": "some query"]}'
 ```
 
 ## Above and Beyond
