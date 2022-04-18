@@ -228,3 +228,4 @@ We can create the pipeline in the following request:
 
 ```sh
 curl -X POST 'http://APPBASE_id/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "addDetails.js=addDetails.js" --form "getLocation.js=getLocation.js"
+```
