@@ -265,12 +265,12 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'http://APPBASE_id/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
 ```
 
 ## Testing the pipeline
 
-This pipeline can be testing with the following request. We will hit the URL: `http://localhost:8000/good-books-ds/_reactivesearch`.
+This pipeline can be testing with the following request. We will hit the URL: `CLUSTER_ID/good-books-ds/_reactivesearch`.
 
 The body passed will be following:
 
