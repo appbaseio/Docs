@@ -65,7 +65,7 @@ This is the first step and is important whenever we define a pipeline. This is b
 We can use the pre-built stage `authorization` for this stage. That can be done in the following way:
 
 ```yaml
-- id: authorze user
+- id: authorize user
   uses: authorization
 ```
 
@@ -187,7 +187,7 @@ envs:
   knowledgeGraphAPIKey: "someAPIkey"
 
 stages:
-  - id: authorze user
+  - id: authorize user
     uses: authorization
   - id: reactivesearch
     uses: reactivesearchQuery
