@@ -564,6 +564,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`triggerCustomQuery`** `(options): Promise<any>` can be used to trigger the `defaultQuery` programmatically
     -   **`setDataField`** `( dataField: string | Array<string | DataField>, options?: Options ) => void`
     -   **`setValue`** `( value: any, options?: Options ) => void` can be used to set the `value` property
+    -   **setCategoryValue** `(value: string, options?: Options) => void`  can be used to set the `categoryValue` property.
     -   **`setSize`** `( size: number, options?: Options ) => void` can be used to set the `size` property
     -   **`setFrom`** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
     -   **setAfter** `(after: object, options?: Options) => void`
