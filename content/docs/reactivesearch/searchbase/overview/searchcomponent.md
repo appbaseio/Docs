@@ -593,6 +593,8 @@ The following methods of `SearchComponent` class can be used to set or update th
     can be used to set the custom `results`
 -   **setValue** `(value: string, options?: Options) => void`
     can be used to set the `value` property
+-   **setCategoryValue** `(value: string, options?: Options) => void`
+    can be used to set the `categoryValue` property.
 
 -   **setReact** `(react: Object, options?: types.Options): void`
     can be used to set the `react` property
@@ -708,6 +710,7 @@ These are the properties that can be subscribed for the changes:
 -   `requestStatus`
 -   `error`
 -   `value`
+-   `categoryValue`
 -   `query`
 -   `micStatus`
 -   `dataField`
