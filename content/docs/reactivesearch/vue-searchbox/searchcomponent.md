@@ -648,7 +648,7 @@ Returns the current mic instance. Can be used to set mic language and other prop
 The following methods can be used to set or update the properties in the search state:
 
 -   **setValue** `( value: any, options?: Options ) => void`  can be used to set the `value` property
--   **setCategoryValue** `(value: string, options?: Options) => void`  can be used to set the `categoryValue` property.
+-   **setCategoryValue** `(categoryValue: string, options?: Options) => void`  can be used to set the `categoryValue` property.
 -   **setSize** `( size: number, options?: Options ) => void`  can be used to set the `size` property
 -   **setFrom** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
 -   **setAfter** `(after: object, options?: Options) => void`

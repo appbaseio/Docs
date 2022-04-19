@@ -872,7 +872,7 @@ These are the properties that can be subscribed to:
     -   **`triggerCustomQuery`** `(options): Promise<any>` can be used to trigger the `defaultQuery` programmatically
     -   **`setDataField`** `( dataField: String | Array<String | DataField>, options?: Options ) => void`
     -   **`setValue`** `( value: any, options?: Options ) => void` can be used to set the `value` property
-    -   **setCategoryValue** `(value: string, options?: Options) => void` can be used to set the `categoryValue` property.
+    -   **setCategoryValue** `(categoryValue: string, options?: Options) => void` can be used to set the `categoryValue` property.
     -   **`setSize`** `( size: Number, options?: Options ) => void` can be used to set the `size` property
     -   **`setFrom`** `( from: Number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
     -   **`setFuzziness`** `( fuzziness: String|Number, options?: Options ) => void` can be used to set the `fuzziness` property.
