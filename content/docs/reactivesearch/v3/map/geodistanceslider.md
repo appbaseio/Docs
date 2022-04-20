@@ -25,49 +25,57 @@ Example uses:
 ### Basic Usage
 
 ```js
-<GeoDistanceSlider
-	componentId="locationUI"
-	dataField="location"
-	range={{
-		start: 0,
-		end: 20,
-	}}
-/>
+<ReactiveBase
+  mapLibraries={['places']} // required
+>
+    <GeoDistanceSlider
+        componentId="locationUI"
+        dataField="location"
+        range={{
+            start: 0,
+            end: 20,
+        }}
+    />
+</ReactiveBase>
 ```
 
 ### Usage With All Props
 
 ```js
-<GeoDistanceSlider
-	componentId="GeoDistanceSensor"
-	dataField="location"
-	title="Geo Distance Slider"
-	range={{
-		start: 0,
-		end: 20,
-	}}
-	rangeLabels={{
-		start: '0 mi',
-		end: '20 mi',
-	}}
-	defaultValue={{
-		location: 'London, UK',
-		distance: 12,
-	}}
-	countries={['uk']}
-	placeholder="Select a distance range.."
-	unit="mi"
-	autoLocation={true}
-	showFilter={true}
-	filterLabel="Location"
-	URLParams={false}
-    onData={
-      (prop) => {
-        const {value, error} = prop;
-        // do something
-      }
-    }    
-/>
+<ReactiveBase
+  mapLibraries={['places']} // required
+>
+    <GeoDistanceSlider
+        componentId="GeoDistanceSensor"
+        dataField="location"
+        title="Geo Distance Slider"
+        range={{
+            start: 0,
+            end: 20,
+        }}
+        rangeLabels={{
+            start: '0 mi',
+            end: '20 mi',
+        }}
+        defaultValue={{
+            location: 'London, UK',
+            distance: 12,
+        }}
+        countries={['uk']}
+        placeholder="Select a distance range.."
+        unit="mi"
+        autoLocation={true}
+        showFilter={true}
+        filterLabel="Location"
+        URLParams={false}
+        onData={
+        (prop) => {
+            const {value, error} = prop;
+            // do something
+        }
+        }    
+    />
+</ReactiveBase>    
 ```
 
 ## Props

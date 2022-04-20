@@ -25,77 +25,85 @@ Example uses:
 ### Basic Usage
 
 ```js
-<GeoDistanceDropdown
-	componentId="LocationUI"
-	dataField="location"
-	data={[
-		{ distance: 20, label: '< 20 miles' },
-		{ distance: 50, label: '< 50 miles' },
-		{ distance: 100, label: '< 100 miles' },
-	]}
-/>
+<ReactiveBase
+  mapLibraries={['places']} // required
+>
+  <GeoDistanceDropdown
+    componentId="LocationUI"
+    dataField="location"
+    data={[
+      { distance: 20, label: '< 20 miles' },
+      { distance: 50, label: '< 50 miles' },
+      { distance: 100, label: '< 100 miles' },
+    ]}
+  />
+</ReactiveBase>
 ```
 
 ### Usage With All Props
 
 ```js
-<GeoDistanceDropdown
-  componentId="locationUI"
-  dataField="location"
-  title="Location Dropdown Selector"
-  data={
-    [
-      { "distance": 20, "label": "< 20 miles" },
-      { "distance": 50, "label": "< 50 miles" },
-      { "distance": 100, "label": "< 100 miles" },
-    ]
-  }
-  defaultValue={{
-    location: "London, UK"
-    label: "< 100 miles"
-  }}
-  countries={["uk"]}
-  placeholder="Select a distance range.."
-  unit="mi"
-  autoLocation={true}
-  showFilter={true}
-  filterLabel="Location"
-  URLParams={false}
-  render={({ loading, error, data, handleChange, downshiftProps }) => {
-      if (loading) {
-        return <div>Fetching Results.</div>;
-      }
-      if (error) {
-        return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
-      }
-      if(downshiftProps.isOpen === false){
-        return null;
-      }
-      return data.map(item => (
-        <div onClick={() => handleChange(item)} key={item.label}>
-          <span>{item.label}</span>
-          <span>{item.distance}</span>
-        </div>
-      ));
-	  }
-  }
-  // use either renderItem OR render prop
-  renderItem={(label, isSelected) => (
-    <div>
-        <span style={{
-            marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
-        }}>
-            {label}
-        </span>
-    </div>
-  )}
-  onData={
-    (prop) => {
-      const {value, error} = prop;
-      // do something
+<ReactiveBase
+  mapLibraries={['places']} // required
+>
+  <GeoDistanceDropdown
+    componentId="locationUI"
+    dataField="location"
+    title="Location Dropdown Selector"
+    data={
+      [
+        { "distance": 20, "label": "< 20 miles" },
+        { "distance": 50, "label": "< 50 miles" },
+        { "distance": 100, "label": "< 100 miles" },
+      ]
     }
-  }
-/>
+    defaultValue={{
+      location: "London, UK"
+      label: "< 100 miles"
+    }}
+    countries={["uk"]}
+    placeholder="Select a distance range.."
+    unit="mi"
+    autoLocation={true}
+    showFilter={true}
+    filterLabel="Location"
+    URLParams={false}
+    render={({ loading, error, data, handleChange, downshiftProps }) => {
+        if (loading) {
+          return <div>Fetching Results.</div>;
+        }
+        if (error) {
+          return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+        }
+        if(downshiftProps.isOpen === false){
+          return null;
+        }
+        return data.map(item => (
+          <div onClick={() => handleChange(item)} key={item.label}>
+            <span>{item.label}</span>
+            <span>{item.distance}</span>
+          </div>
+        ));
+      }
+    }
+    // use either renderItem OR render prop
+    renderItem={(label, isSelected) => (
+      <div>
+          <span style={{
+              marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+          }}>
+              {label}
+          </span>
+      </div>
+    )}
+    onData={
+      (prop) => {
+        const {value, error} = prop;
+        // do something
+      }
+    }
+  />
+</ReactiveBase>
 ```
 
 ## Props
