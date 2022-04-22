@@ -24,6 +24,10 @@ This example covers the scenario where a person might want to include external r
 
 An indexing pipeline is useful when there are custom steps that needs to be done while a document is being indexed. This guide uses the example of adding vector data for a certain field of the passed documentation by hitting an external API. [Read More](create-an-indexing-pipeline)
 
+## Handle Authorization Effectively
+
+This example explains how authorization is handled effectively with the pre-built `authorization` stage and how to test it. [Read More](handle-authorization-effectively)
+
 ## Add Side Effect
 
 Adding side effects while a search request is being made might be an useful scenario. Side effects include things like saving the request body everytime there is a request and so on. In this guide, an example of saving the request body to an index is taken and explained. [Read More](add-side-effect-search-query)
