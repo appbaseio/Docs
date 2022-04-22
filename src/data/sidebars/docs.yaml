@@ -69,6 +69,8 @@
                 title: Add External Search Results
               - link: /docs/pipelines/how-to/create-an-indexing-pipeline
                 title: Create An Indexing Pipeline
+              - link: /docs/pipelines/how-to/handle-authorization-effectively
+                title: Handle Authorization Effectively
               - link: /docs/pipelines/how-to/add-side-effect-search-query
                 title: "Add Side Effect"
               - link: /docs/pipelines/how-to/knn-response-stage
