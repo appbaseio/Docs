@@ -23,9 +23,10 @@ Some benefits offered by SSR technique
 
 `@appbaseio/react-searchbox` is compatible with server-side rendering. We provide an API that works with any SSR solution.
 
-The basic idea of SSR support for `@appbaseio/react-searchbox` is to perform any necessary API calls to the search client and compute the initial state of App, then redyhrate the client side with the initialState computed on the server-side.
 
 ## How does it work?
+
+The basic idea of SSR support for `@appbaseio/react-searchbox` is to perform any necessary API calls to the search client and compute the initial state of App, then redyhrate the client side with the initialState computed on the server-side.
 
 We split the concerns into:
 
