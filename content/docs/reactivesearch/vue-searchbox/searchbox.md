@@ -994,7 +994,7 @@ You can use a custom icon in place of the default icon for the popular searches 
         :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }"
     >
         <button
-            :style="{ border: '1px solid #c3c3c3', cursor       'pointer' }"
+            :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
             v-on:click="onClick"
         >
             🔍 Search
