@@ -28,7 +28,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 			icon: `fill-white`,
 		},
 	};
-	
+
 	const [mockWindow, setMockWindow] = useState();
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, []);
 
 	useEffect(() => {
-		if(mockWindow)
+		if (mockWindow)
 			setThemeType(localStorage.getItem('theme'));
 	}, [mockWindow])
 
@@ -61,13 +61,11 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 								{value => (
 									<React.Fragment>
 										<span
-											className={`${
-												themeClasses[theme].menuItem
-											} nowrap f8 pa3 mr1 mr3-l nl3 ${
-												value.selectedKey === 'guides'
+											className={`${themeClasses[theme].menuItem
+												} nowrap f8 pa3 mr1 mr3-l nl3 ${value.selectedKey === 'guides'
 													? 'fw6'
 													: 'fw3'
-											} cursor-pointer`}
+												} cursor-pointer`}
 											onMouseEnter={() => {
 												value.handleKey('guides');
 											}}
@@ -78,7 +76,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 										{value.selectedKey === 'guides' ? (
 											<div
 												className="dropdown-content"
-												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white' }}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
@@ -162,6 +160,16 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 													</div>
 													<div>
 														<Link
+															to="/docs/pipelines/concepts/"
+															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+														>
+															<Icon
+																name="pipeline"
+																className="dropdown-content-icon mr2"
+															/>
+															ReactiveSearch Pipelines
+														</Link>
+														<Link
 															to="/docs/analytics/overview/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
@@ -192,11 +200,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 								{value => (
 									<React.Fragment>
 										<span
-											className={`${
-												themeClasses[theme].menuItem
-											} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer ${
-												value.selectedKey === 'api' ? 'fw6' : 'fw3'
-											}`}
+											className={`${themeClasses[theme].menuItem
+												} nowrap f8 pa3 mr1 mr3-l nl3 cursor-pointer ${value.selectedKey === 'api' ? 'fw6' : 'fw3'
+												}`}
 											onMouseEnter={() => {
 												value.handleKey('api');
 											}}
@@ -207,7 +213,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 										{value.selectedKey === 'api' ? (
 											<div
 												className="dropdown-content"
-												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white'}}
+												style={{ background: localStorage.getItem('theme') === 'dark' ? '#082429' : 'white' }}
 												onMouseLeave={() => value.handleKey(null)}
 											>
 												<div
@@ -335,7 +341,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 														<h2 className="f4 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns mb2">
 															REST API
 														</h2>
-													<Link
+														<Link
 															to="/api/rest/overview/"
 															className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 														>
@@ -454,8 +460,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 				<div className="relative home-search-container" style={{ marginRight: 10 }}>
 					<Search />
 				</div>
-				{mockWindow?.innerWidth > 768 ? <ThemeSwitch setThemeType={setThemeType}/> : null}	
-				<MobileNav setThemeType={setThemeType}/>
+				{mockWindow?.innerWidth > 768 ? <ThemeSwitch setThemeType={setThemeType} /> : null}
+				<MobileNav setThemeType={setThemeType} />
 			</div>
 		</nav>
 	);
@@ -463,7 +469,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 
 NavBar.defaultProps = {
 	theme: `dark`,
-	setThemeType: () => {},
+	setThemeType: () => { },
 };
 
 NavBar.propTypes = {

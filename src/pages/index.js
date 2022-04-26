@@ -17,16 +17,16 @@ const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support
 
 const HomePage = ({ data, location }) => {
 	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
-	
+
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
 		title: "Appbase.io Docs - Build powerful search apps powered by Elasticsearch",
 		description: "Docs home page"
 	}
 
-	if(typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
+	if (typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
 		localStorage.setItem('recentSuggestions', JSON.stringify([]));
-	
+
 
 	return (
 		<>
@@ -41,7 +41,7 @@ const HomePage = ({ data, location }) => {
 				bodyClass="bg-white"
 				mainClass="bg-whitegrey-l2 pb-vw6 pb-vw3-ns"
 				header={
-					<HomeHeader 
+					<HomeHeader
 						setThemeType={(val) => setThemeType(val)}
 						themeType={themeType}
 					/>
@@ -117,12 +117,12 @@ const HomePage = ({ data, location }) => {
 												description: 'Visually create, update and manage results for your Search.',
 												link: '/docs/data/search-preview/',
 												duration: 3,
-										   },
+											},
 											{
-											 	title: 'Stored Queries',
-											 	description: 'Use stored queries to prevent script injections',
-											 	link: '/docs/data/stored-queries/',
-											 	duration: 4,
+												title: 'Stored Queries',
+												description: 'Use stored queries to prevent script injections',
+												link: '/docs/data/stored-queries/',
+												duration: 4,
 											},
 										],
 									},
@@ -167,6 +167,30 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'4': {
+										title: 'ReactiveSearch Pipelines',
+										subtitle: 'Configure search and indexing routes, and author data processing stages with JavaScript',
+										icon: (
+											<Icon
+												name="pipeline"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: "ReactiveSearch Pipelines: Concepts",
+												link: "/docs/pipelines/concepts/",
+												description: "Learn about core concepts of ReactiveSearch pipelines and how to use them",
+												duration: 12,
+											},
+											{
+												title: 'How to guides',
+												link: '/docs/pipelines/how-to/',
+												description: 'See actionable guides for building search with ReactiveSearch pipelines',
+												duration: 1,
+											}
+										]
+									},
+									'5': {
 										title: 'Building Search UI',
 										subtitle: 'UI Components for making your Search Experience',
 										icon: (
@@ -192,14 +216,14 @@ const HomePage = ({ data, location }) => {
 												title: 'ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/v3/overview/quickstart/',
-													description: 'Get started with the React version of ReactiveSearch',
+												description: 'Get started with the React version of ReactiveSearch',
 												duration: 6,
 											},
 											{
 												title: 'Vue ReactiveSearch QuickStart',
 												link:
 													'/docs/reactivesearch/vue/overview/QuickStart/',
-													description: 'Get started with the Vue version of ReactiveSearch',
+												description: 'Get started with the Vue version of ReactiveSearch',
 												duration: 8,
 											},
 											{
@@ -207,7 +231,7 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/react-native-searchbox/quickstart/',
-													description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
+												description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
 											{
@@ -215,7 +239,7 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/flutter-searchbox/quickstart/',
-													description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
+												description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
 												duration: 6,
 											},
 											{
@@ -223,12 +247,12 @@ const HomePage = ({ data, location }) => {
 												description: '',
 												link:
 													'/docs/reactivesearch/ui-builder/search/',
-													description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
+												description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
 												duration: 6,
 											},
 										],
 									},
-									'5': {
+									'6': {
 										title: 'Actionable Analytics',
 										subtitle:
 											'Analytics offers actionable insights into how your search is performing.',
@@ -271,7 +295,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'6': {
+									'7': {
 										title: 'Speed',
 										subtitle: 'Blazing ⚡️ fast search performance',
 										icon: <Icon name="zap" className="dropdown-content-icon" />,
@@ -285,7 +309,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'7': {
+									'8': {
 										title: 'Access Control',
 										subtitle: 'Out-of-the-box access control for search',
 										icon: (
@@ -315,7 +339,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'8': {
+									'9': {
 										title: 'Hosting',
 										icon: (
 											<Icon name="rocket" className="dropdown-content-icon" />
@@ -370,10 +394,10 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/react.png"
-									alt="React"									
+									alt="React"
 									width={40}
 									height={40}
-								/>								
+								/>
 								React
 							</Box>
 							<Box
@@ -385,10 +409,10 @@ const HomePage = ({ data, location }) => {
 								<StaticImage
 									className="w10 mb1"
 									src="https://vuejs.org/images/logo.png"
-									alt="Vue"									
+									alt="Vue"
 									width={40}
 									height={40}
-								/>								
+								/>
 								Vue
 							</Box>
 							<Box
@@ -400,10 +424,10 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/react.png"
-									alt="React Native"									
+									alt="React Native"
 									width={40}
 									height={40}
-								/>								
+								/>
 								React Native
 							</Box>
 							<Box
@@ -415,10 +439,10 @@ const HomePage = ({ data, location }) => {
 								<StaticImage
 									className="w10 mb1"
 									src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-									alt="Javascript"									
+									alt="Javascript"
 									width={40}
 									height={40}
-								/>									
+								/>
 								Javascript
 							</Box>
 							<Box
@@ -439,10 +463,10 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/rest-api.png"
-									alt="React Native"									
-									style={{ width: 90}}
+									alt="React Native"
+									style={{ width: 90 }}
 									height={40}
-								/>								
+								/>
 								REST API
 							</Box>
 							<Box
@@ -454,10 +478,10 @@ const HomePage = ({ data, location }) => {
 								<img
 									className="w10 mb1"
 									src="/images/swift-logo.webp"
-									alt="Swift" 									
+									alt="Swift"
 									width={40}
 									height={40}
-								/>									
+								/>
 								Swift
 							</Box>
 							<Box

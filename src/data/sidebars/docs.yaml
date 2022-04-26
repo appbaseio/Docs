@@ -42,6 +42,41 @@
                   title: "Getting Started"
                 - link: /docs/search/scripts/examples
                   title: "Code Examples"
+      - group: "ReactiveSearch Pipelines"
+        icon: search
+        items:
+          - link: /docs/pipelines/concepts/
+            title: Pipeline Concepts
+            items:
+              - title: Write to Global Context
+                link: /docs/pipelines/concepts/write-to-global-context
+              - title: Pass data between stages
+                link: /docs/pipelines/concepts/pass-data-between-stages
+              - title: Environments for stage
+                link: /docs/pipelines/concepts/envs-for-stage
+              - title: Error Handling in stages
+                link: /docs/pipelines/concepts/error-handling
+              - title: Pass inputs to stages
+                link: /docs/pipelines/concepts/pass-inputs-to-stage
+              - title: Run stage asynchronously
+                link: /docs/pipelines/concepts/run-stage-async
+              - title: Wait for other stages
+                link: /docs/pipelines/concepts/wait-for-other-stage
+          - link: /docs/pipelines/how-to/
+            title: "How To Guides"
+            items:
+              - link: /docs/pipelines/how-to/add-external-search-results
+                title: Add External Search Results
+              - link: /docs/pipelines/how-to/create-an-indexing-pipeline
+                title: Create An Indexing Pipeline
+              - link: /docs/pipelines/how-to/handle-authorization-effectively
+                title: Handle Authorization Effectively
+              - link: /docs/pipelines/how-to/add-side-effect-search-query
+                title: "Add Side Effect"
+              - link: /docs/pipelines/how-to/knn-response-stage
+                title: "kNN response stage"
+              - link: /docs/pipelines/how-to/relevant-search-stages
+                title: Relevant Search Stages
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
