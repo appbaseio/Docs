@@ -986,10 +986,7 @@ You can use a custom icon in place of the default icon for the popular searches 
 ```jsx
 <search-box
       ...
-      :enablePopularSuggestions="true"
-      :innerClass="{
-         'popular-search-icon': '...'
-      }"
+      :enterButton="true"
 >
     <div
         slot="renderEnterButton"
