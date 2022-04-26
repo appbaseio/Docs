@@ -784,6 +784,41 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`.
+
+    <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox            
+            id="search-component"
+            enterButton={true}
+        />
+    ```
+-   **renderEnterButton** `Function` [optional] renders a custom jsx markup for the enter button. Use in conjunction with `enterButton` prop set to `true`.
+
+    <img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox
+            id="search-component"
+            enterButton
+            renderEnterButton={clickHandler => (
+                <div
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'stretch',
+                    }}
+                >
+                    <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                        🔍 Search
+                    </button>
+                </div>
+            )}
+        />
+    ```
+
+
 ## Examples
 
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
