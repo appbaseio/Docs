@@ -177,15 +177,15 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
-												title: "Pipeline Concepts",
+												title: "ReactiveSearch Pipelines: Concepts",
 												link: "/docs/pipelines/concepts/",
-												description: "Learn about core concepts of pipelines to know how to use them",
+												description: "Learn about core concepts of ReactiveSearch pipelines and how to use them",
 												duration: 12,
 											},
 											{
 												title: 'How to guides',
 												link: '/docs/pipelines/how-to/',
-												description: 'See actionable guides for building search pipelines with examples',
+												description: 'See actionable guides for building search with ReactiveSearch pipelines',
 												duration: 1,
 											}
 										]

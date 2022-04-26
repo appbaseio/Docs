@@ -1,7 +1,7 @@
 ---
-title: 'Pipeline Concepts'
-meta_title: 'ReactiveSearch Pipeline Concepts | Introduction to Appbase.io'
-meta_description: 'Learn about the concepts of pipelines in ReactiveSearch and how to utilize them while creating a pipeline'
+title: 'ReactiveSearch Pipelines: Concepts'
+meta_title: 'Concepts for ReactiveSearch Pipelines'
+meta_description: 'Learn about the concepts for ReactiveSearch pipelines and understand how to use them'
 keywords:
     - concepts
     - appbase.io

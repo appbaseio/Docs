@@ -63,7 +63,7 @@
               - title: Wait for other stages
                 link: /docs/pipelines/concepts/wait-for-other-stage
           - link: /docs/pipelines/how-to/
-            title: "How To"
+            title: "How To Guides"
             items:
               - link: /docs/pipelines/how-to/add-external-search-results
                 title: Add External Search Results
