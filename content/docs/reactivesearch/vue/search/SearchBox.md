@@ -632,6 +632,41 @@ Or you can also use render as prop.
 -   **categoryField** `string` [optional]
     Data field whose values are used to provide category specific suggestions.
 
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`.
+
+    <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
+
+```jsx
+ <search-box
+    :enterButton="true"        
+  >
+  // ... other slots
+ </search-box>
+```   
+
+-   **renderEnterButton** `slot-scope` [optional] The custom HTML markup displayed for enterButton. Use in conjunction with `enterButton` prop set to `true`.
+<img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
+
+```jsx
+<search-box
+      ...
+      :enterButton="true"
+>
+    <div
+        slot="renderEnterButton"
+        slot-scope="onClick"
+        :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }"
+    >
+        <button
+            :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
+            v-on:click="onClick"
+        >
+            🔍 Search
+        </button>
+    </div>
+</search-box>
+```
+
 ## Demo
 
 <br />
