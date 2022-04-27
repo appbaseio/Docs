@@ -25,6 +25,8 @@ Notice that the `QueryTranslate` step has a check to see if it should continue w
 
 This behaviour can be tweaked with the `continueOnError` field.
 
+## Concepts of Pipelines
+
 Following pages explain the concepts in detail with examples:
 
 - [Pipeline Route Matching](execution-process)
@@ -36,3 +38,29 @@ Following pages explain the concepts in detail with examples:
 - [Pass Environments to Stage](envs-for-stage)
 - [Error Handling in Pipelines](error-handling)
 - [Pre-Defined vs User-Defined Stages](pre-defined-vs-user-defined)
+
+## Features of ReactiveSearch Pipelines
+
+ReactiveSearch Pipelines comes with a lot of features aimed at developers along with observability.
+
+### Pipeline Metrics
+
+ReactiveSearch provides access to real time logs for pipelines along with features like per stage diffs that shows what exactly happened in each stage. This also helps in checking which stage threw an error and what the error was. How much time did a particular stage take. Everything is provided through logs.
+
+### JavaScript Stages with access to npm packages
+
+ReactiveSearch Pipelines support using JavaScript for custom stages along with access to almost all of public npm packages. This provides the developer full freedom to execute their scripts for whatever task they have in mind.
+
+### Fine Tuned Development Experiance
+
+Since Pipelines are aimed at developer first, it is necessary for developers to be able to test them out without affecting production. We provide exactly that, a simulation where the pipeline is executed through the exact same handler that executes the production pipeline but as a mock!
+
+Pipelines can also be edited through our dashboard directly without worrying about adding a certain file to the form data request. Moreover, JS errors are reported with line numbers so that it is easy for developers to debug it.
+
+[Learn more about developing and debugging pipelines](../developing/)
+
+## How-To Guides
+
+We have curated a list of how-to guides that would be helpful to get started with ReactiveSearch Pipelines.
+
+[Check out the How-To Guides here](../how-to/)
