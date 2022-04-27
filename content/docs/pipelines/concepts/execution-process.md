@@ -18,6 +18,8 @@ This concept guide explains the execution process of pipelines on how the API de
 
 Following whimsical visualizes the execution process of determining which pipeline to execute.
 
+![Pipeline Route Matching](/images/concepts/pipeline_route.png "Pipeline Route Matching Visualized")
+
 ## Priority
 
 The routes are iterated in order of `priority` so the highest priority pipeline route will be present first in the router. This is why the `priority` field is passed in the pipeline. This lets the developer have control over which pipeline is matched first.
