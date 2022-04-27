@@ -690,7 +690,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 />
 ```
 
--   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`.
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enterButton` key in the `innerClass` prop.
 
     <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
 
@@ -734,6 +734,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     -   `list`
     -   `recent-search-icon`
     -   `popular-search-icon`
+    -   `enterButton`
 
 -   **className** `String`
     CSS class to be injected on the component container.
