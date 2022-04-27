@@ -84,6 +84,8 @@
                 title: "kNN response stage"
               - link: /docs/pipelines/how-to/relevant-search-stages
                 title: Relevant Search Stages
+              - link: /docs/pipelines/how-to/error-handling-in-pipeline
+                title: Error handling in Pipeline
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
