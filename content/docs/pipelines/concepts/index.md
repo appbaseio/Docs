@@ -34,3 +34,4 @@ Following pages explain the concepts in detail with examples:
 - [Write to Global Context](write-to-global-context)
 - [Pass Environments to Stage](envs-for-stage)
 - [Error Handling in Pipelines](error-handling)
+- [Pre-Defined vs User-Defined Stages](pre-defined-vs-user-defined)

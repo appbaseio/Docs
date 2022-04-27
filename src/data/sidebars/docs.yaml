@@ -62,6 +62,8 @@
                 link: /docs/pipelines/concepts/run-stage-async
               - title: Wait for other stages
                 link: /docs/pipelines/concepts/wait-for-other-stage
+              - title: Pre-Defined vs User-Defined Stages
+                link: /docs/pipelines/concepts/pre-defined-vs-user-defined
           - link: /docs/pipelines/how-to/
             title: "How To Guides"
             items:
