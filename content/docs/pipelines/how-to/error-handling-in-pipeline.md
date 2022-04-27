@@ -65,3 +65,29 @@ function handleRequest() {
 Now, if there will be an error in the `reactive search with error` step then the response will be the one we set in the `setError.js` script.
 
 ## Custom Errors
+
+At times, there might be need to throw custom errors. This can be done by defining a custom stage that **throws** an error.
+
+### Example: Throw error if `query` is not present
+
+Let's understand this with an example. Let's say we want the query field to be present in the request body. If the field is not present, we cannot continue execution and want it to stop. We can do that in the following way with a custom script.
+
+```js
+function handleRequest() {
+  const requestBody = JSON.parse(context.request.body);
+
+  if requestBody.query == null {
+    throw error("query is a required field!");
+  }
+}
+```
+
+We can then use this script in the following way:
+
+```yml
+- id: check query field
+  scriptRef: checkQueryWithError.js
+  continueOnError: false
+```
+
+> Note that we are setting the `continueOnError` field because we are throwing an error.
