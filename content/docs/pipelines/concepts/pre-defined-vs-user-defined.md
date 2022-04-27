@@ -62,10 +62,19 @@ Let's say there is a requirement to add a new field to the request body passed b
 > We will use the `scriptRef` field in the following example. Let's say the following JS script is named `save.js`
 
 ```js
-const request = JSON.parse(context.request.body);
+function handleRequest() {
+  const requestBody = JSON.parse(context.request.body);
 
-request.newField = "test field added";
-context.request.body = JSON.stringify(request);
+  requestBody.newField = "this is a test field";
+
+  return {
+    "request": {
+      ...context.request,
+      "body": JSON.stringify(requestBody)
+    }
+  }
+  
+}
 ```
 
 And the yml can be defined in the following way:
