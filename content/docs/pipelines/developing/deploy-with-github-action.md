@@ -96,6 +96,12 @@ jobs:
           url: ${{secrets.APPBASEIOURL}}
 ```
 
+## Get Started Examples
+
+We have curated a template repository that contains some example pipelines that uses [pipelines-action] to deploy/redeploy. This repo can be [found over here](https://github.com/appbaseio/pipelines-template). 
+
+The examples are pretty straightforward and can be used out of the box. The instructions in the repo should suffice to get started with it. If not, [issues are always open](https://github.com/appbaseio/pipelines-template/issues)
+
 ## Read More
 
 More information can be found about the pipeline [on GitHub marketplace](https://github.com/marketplace/actions/reactivesearch-pipelines) or in the pipelines repository [here](https://github.com/appbaseio/pipelines-action)
