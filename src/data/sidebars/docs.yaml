@@ -48,6 +48,8 @@
           - link: /docs/pipelines/concepts/
             title: Pipeline Concepts
             items:
+              - title: Pipeline Route Matching Process
+                link: /docs/pipelines/execution-process
               - title: Write to Global Context
                 link: /docs/pipelines/concepts/write-to-global-context
               - title: Pass data between stages
