@@ -37,3 +37,7 @@ This guide explains how kNN (k-Nearest Neighbor) can be utilized to rearrange th
 ## Relevant Search Stages
 
 Making a proper search pipeline can be a hard task. This guide explains how to use all the pre-built plugins provided by ReactiveSearch in order to make a **relevant** search pipeline. [Read More](relevant-search-stages)
+
+## Error Handling in Pipelines
+
+Handling errors gracefully is a skill that a lot of developers crave. ReactiveSearch Pipelines makes it easy to handle pipeline errors and return distinct responses for better understanding. [Read More](error-handling-in-pipeline)
