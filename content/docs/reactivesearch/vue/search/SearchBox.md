@@ -632,7 +632,7 @@ Or you can also use render as prop.
 -   **categoryField** `string` [optional]
     Data field whose values are used to provide category specific suggestions.
 
--   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`.
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enterButton` key in the `innerClass` prop.
 
     <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
 
@@ -681,6 +681,7 @@ Or you can also use render as prop.
 - `input`
 - `recent-search-icon`
 - `popular-search-icon`
+- `enterButton`
 
 Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
