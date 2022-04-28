@@ -10,6 +10,7 @@ import {
 	ToggleButton,
 	ReactiveList,
 	DateRange,
+	SearchBox,
 } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 import moment from 'moment';
@@ -39,6 +40,23 @@ const dataSearchProps = {
 	dataField: ['name', 'name.autosuggest', 'name.keyword', 'name.search'],
 	className: 'showcase-search',
 	componentId: 'search',
+};
+
+const searchBoxProps = {
+	dataField: ['name', 'name.autosuggest', 'name.keyword', 'name.search'],
+	componentId: 'searchbox',
+	enableRecentSuggestions: true,
+	enablePopularSuggestions: true,
+	enablePredictiveSuggestions: true,
+	popularSuggestionsConfig: {
+		size: 3,
+		minHits: 2,
+		minChars: 4,
+	},
+	recentSuggestionsConfig: {
+		size: 3,
+		minChars: 4,
+	},
 };
 
 const multilistProps = {
@@ -256,6 +274,14 @@ class Showcase extends React.Component {
 				{mounted ? (
 					<ReactiveBase {...settings}>
 						<div className="showcase">
+							<div className="w-100">
+								<ShowcaseComponent
+									title="SearchBox"
+									link="/docs/reactivesearch/v3/search/searchbox/"
+								>
+									<SearchBox {...searchBoxProps} />
+								</ShowcaseComponent>
+							</div>
 							<div className="w-100">
 								<ShowcaseComponent
 									title="DataSearch"
