@@ -12,10 +12,10 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
  
-ReactiveMaps is rolled out with new features and easy to setup/ use setup. This guide talks about what's changed and how should a user be switching to the newest version without breaking things.
+ReactiveMaps 3.0.0 is published 🎉 with new features and is easier than ever to setup and use. This guide talks about what's changed and how should you as a user be switching to a 3.x stable version without breaking things.
 
 
-> Behind the scenes, we have switched from using the unmaintained `react-google-maps` to a maintained rewirte `@react-google-maps/api` library.
+> Behind the scenes, we have switched from using the unmaintained `react-google-maps` to a maintained rewrite in the `@react-google-maps/api` library.
 
 ## Script Loading
 
@@ -27,7 +27,7 @@ Now, just pass the secret google key to the `ReactiveBase` wrapper component usi
 	```html
 	<html>
 		<head>
-			<script src="_GOOGLE_SCRIT_LINK"></script>
+			<script src="_GOOGLE_SCRIPT_LINK"></script>
 		</head>
 	</html>	
 	```
@@ -40,8 +40,7 @@ Now, just pass the secret google key to the `ReactiveBase` wrapper component usi
 		</ReactiveBase>
 	```
 
-Additionally, pass the `mapLibraries` prop to load additional google libraries like `places`, `visualization`, etc.
-The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+Additionally, pass the `mapLibraries` prop to load additional google libraries like `places`, `visualization`, and more. The following values can be set as per the [Google Maps API Docs](https://developers.google.com/maps/documentation/javascript/libraries):
     - `drawing`
     - `geometry`
     - `localContext`
@@ -56,7 +55,7 @@ The following are available according to [Google Docs](https://developers.google
 />
 ```
 
-> Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
+> It's required to pass ***`mapLibraries={['places']}`*** when using either GeoDistanceDropdown or GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
 
 ## Component API changes
 
@@ -83,7 +82,7 @@ The following are available according to [Google Docs](https://developers.google
         render={(props) => { 
             const 
             {
-                data: hits, // parased hits
+                data: hits, // parsed hits
                 loading,
                 error,
                 promotedData,
@@ -113,7 +112,7 @@ The following are available according to [Google Docs](https://developers.google
         }
         ```
 		
-2. `renderData` changes to `renderItem` prop.
+2. `renderData` changes to `renderItem` prop
     - before
         
         ```jsx
