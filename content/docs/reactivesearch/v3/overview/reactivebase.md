@@ -188,6 +188,28 @@ The above example will change the default `_msearch` request to `_search` reques
 }
 ```
 
+
+> 💡 &nbsp; Use below props when using [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/) &nbsp; library.
+-   **mapKey** `String` [optional]     
+    accepts the secret key to load google script.
+-   **mapLibraries** `Array<String>` [optional]     
+    accepts the list of addiotional maps libraries to load. The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+    - `drawing`
+    - `geometry`
+    - `localContext`
+    - `places`
+    - `visualization`
+
+    ```jsx
+    <ReactiveBase
+		mapKey="<YOUR_MAP_KEY>"
+		mapLibraries={['visualization', 'places']}
+        // ...other props
+    />
+    ```
+
+    > Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
+
 ### Connect to Elasticsearch
 
 > Note

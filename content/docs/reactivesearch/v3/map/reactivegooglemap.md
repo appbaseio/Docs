@@ -49,7 +49,7 @@ Example uses:
 		and: 'CitySensor',
 	}}
 	// map events
-	renderData={this.renderData}
+	renderItem={this.renderItem}
 	// less useful props
 	autoCenter={true}
 />
@@ -114,55 +114,125 @@ Example uses:
     CSS class to be injected on the component container.
 -   **style** `Object`
     CSS style object to be applied to the `ReactiveGoogleMap` component.
--   **renderData** `function`
+-   **renderItem** `function`
     event fired when one or more markers are indexed, updated or removed from the map. It takes an object with the following formats (`label`, `icon`, `custom`):
 
 ```js
 // To render the given text in the marker
-renderData={result => ({
+renderItem={result => ({
     label: result.title,
 })}
 
 // To render a marker image
-renderData={result => ({
+renderItem={result => ({
     icon: 'https://i.imgur.com/NHR2tYL.png',
 })}
 
 // To render a custom markup (as label) in the marker position
-renderData={result => ({
+renderItem={result => ({
     custom: (<div>{result.mag}</div>),
 })}
 ```
 
--   **renderAllData** `function`
-    use to display results and map component together. Usage:
+-   **render** `function`
+    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+    <br/>
+    It accepts an object with these properties:
+    -   **`loading`**: `boolean`
+        indicates that the query is still in progress
+    -   **`error`**: `object`
+        An object containing the error info
+    -   **`data`**: `array`
+        An array of results obtained from combining `promoted` results along with the `hits`.
+    -   **`aggregationData`** `array`
+        An array of aggregations buckets. Each bucket would have a `top_hits` property if you're using Elasticsearch top hits aggregations in `defaultQuery` prop.
+    -   **`promotedData`**: `array`
+        An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
 
-```js
-    renderAllData={(hits, loadMore, renderMap, renderPagination, triggerClickAnalytics, meta) => {
-        // hits are the results returned from query.
-        // loadMore is used to load more results.
-        // renderMap is the function which is used to render Map.
-		// renderPagination is the function which is used to render Pagination like in ReactiveList.
-		// triggerClickAnalytics is the function which can be called to register click analytics.
-        // meta represents an object which has the following properties:
-        //  promotedData: Represents the promoted results,
-        //  customData: Represents the customData,
-        //  rawData: Raw response from Elasticsearch,
-        //  resultStats: An object with the following properties which can be helpful to render custom stats:
-        //      numberOfResults: Total number of results found,
-        //      numberOfPages: Total number of pages found based on current page size,
-        //      time: Time taken to find total results (in ms),
-        //      displayedResults: Number of results displayed in current view,
-        //      hidden: Total number of hidden results found,
-        //      promoted: Total number of promoted results found.
+    > Note:
+    >
+    > `data` and `promotedData` results has a property called `_click_id` which can be used with triggerClickAnalytics to register the click analytics info.
+
+    -   **`customData`** `object`
+        Custom data set in the query rule when appbase.io is used as backend. [Read More](/docs/search/rules/#custom-data)
+    -   **`rawData`** `object`
+        An object of raw response as-is from elasticsearch query.
+    -   **`resultStats`**: `object`
+        An object with the following properties which can be helpful to render custom stats:
+        -   **`numberOfResults`**: `number`
+            Total number of results found
+        -   **`numberOfPages`**: `number`
+            Total number of pages found based on current page size
+        -   **`currentPage`**: `number`
+            Current page number for which data is being rendered
+        -   **`time`**: `number`
+            Time taken to find total results (in ms)
+        -   **`displayedResults`**: `number`
+            Number of results displayed in current view
+        -   **`hidden`**: `number`
+            Total number of hidden results found
+        -   **`promoted`**: `number`
+            Total number of promoted results found
+    -   **`loadMore`**: `function`
+        A callback function to be called to load the next page of results into the view. The callback function is only applicable in the case of infinite loading view (i.e. `infiniteScroll` prop set to `true`).
+    -   **`triggerClickAnalytics`**: `function`
+        A function which can be called to register a click analytics. [Read More](docs/reactivesearch/v3/advanced/analytics/)
+
+    ```js
+    render={(props) => { 
+        const 
+        {
+            data, // parased hits
+            loading,
+            error,
+            promotedData,
+            customData,
+            rawData,
+            resultStats: {
+            numberOfResults
+            numberOfPages
+            currentPage
+            displayedResults
+            time
+            hidden
+            promoted
+            },
+            loadMore // func to load more results
+            triggerClickAnalytics // to trigger click analytics
+            setPage,
+            renderMap // allow users to render the map component at any place
+            renderPagination // allows to render pagination component after displaying results
+        } = props;
         return(
             <>
-                {hits.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
+                {data.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
                 {renderMap()}
-            </>
+            </pre>
         )
     }
-```
+    ```
+    Or you can also use render function as children
+
+    ```jsx
+    <ReactiveGoogleMap
+     // ...other props
+    >
+        {
+            ({
+                loading,
+                error,
+                data,
+                promotedData,
+                rawData,
+                resultStats,
+                handleLoadMore,
+                triggerClickAnalytics
+            }) => (
+                // return UI to be rendered
+            )
+        }
+    </ReactiveGoogleMap>
+    ```
 
 -   **renderError** `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
@@ -180,6 +250,7 @@ renderError={(error) => (
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 -   **onData** `Function` [optional]
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
+
 
 ## Demo
 

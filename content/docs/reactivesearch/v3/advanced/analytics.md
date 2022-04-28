@@ -51,12 +51,12 @@ Example:
 
 ## Click Analytics in Map Component
 
-When rendering results using `renderAllData` in `ReactiveGoogleMap` you may have to call the `triggerClickAnalytics` function by using the `_click_id` property of the result items as an argument. This method also supports the document id(optional) as the second param. If document id is not set then ReactiveSearch will calculate it based on the click position. Example:
+When rendering results using `render` prop in `ReactiveGoogleMap` you may have to call the `triggerClickAnalytics` function by using the `_click_id` property of the result items as an argument. This method also supports the document id(optional) as the second param. If document id is not set then ReactiveSearch will calculate it based on the click position. Example:
 
 ```jsx
 <ReactiveGoogleMap
     ...
-    renderAllData={(hits, loadMore, renderMap, renderPagination, triggerClickAnalytics) => {
+    render={({data: hits, loadMore, renderMap, renderPagination, triggerClickAnalytics}) => {
         return(
             <>
 				{hits.map(hit => (
@@ -76,7 +76,7 @@ Similarily, in `OpenStreetMap`:
 ```jsx
 <ReactiveOpenStreetMap
     ...
-    renderAllData={(hits, loadMore, renderMap, renderPagination, triggerClickAnalytics) => {
+    render={({data: hits, loadMore, renderMap, renderPagination, triggerClickAnalytics}) => {
         return(
             <>
 				{hits.map(hit => (
