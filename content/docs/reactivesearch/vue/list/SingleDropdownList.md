@@ -211,6 +211,7 @@ You can use render as a slot as shown below:
 -   **showLoadMore** `Boolean` [optional]
     defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
 
+-   **isOpen** `Boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 ## Demo
 
 <br/>
