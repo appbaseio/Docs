@@ -1,7 +1,7 @@
 ---
 title: 'ReactiveMaps Migration Guide'
 meta_title: 'ReactiveMaps Migration Guide'
-meta_description: 'ReactiveMaps Migration guide provides with smooth migration to the new release.'
+meta_description: 'ReactiveMaps Migration guide for the 3.x stable release'
 keywords:
     - migration guide
     - reactivesearch
@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
  
-ReactiveMaps 3.0.0 is published 🎉 with new features and is easier than ever to setup and use. This guide talks about what's changed and how should you as a user be switching to a 3.x stable version without breaking things.
+ReactiveMaps 3.0.0 is published 🎉 with new features and is easier than ever to setup and use. This guide talks about what has changed in 3.0.0 and how should you as a user be switching to a 3.x stable version without breaking things.
 
 
 > Behind the scenes, we have switched from using the unmaintained `react-google-maps` to a maintained rewrite in the `@react-google-maps/api` library.
@@ -59,7 +59,9 @@ Additionally, pass the `mapLibraries` prop to load additional google libraries l
 
 ## Component API changes
 
-### ReactiveGoogleMap/ ReactiveOpenStreetMap
+### ReactiveMap
+
+The following API changes apply to both [ReactiveGoogleMap](/docs/reactivesearch/v3/map/reactivegooglemap/) and [ReactiveOpenStreetMap](/docs/reactivesearch/v3/map/reactiveopenstreetmap/) components.
 
 1. `renderAllData` changes to `render` prop.
     - before
