@@ -1,7 +1,6 @@
 import React from 'react';
 import {
 	ReactiveBase,
-	DataSearch,
 	MultiList,
 	RatingsFilter,
 	SingleDropdownList,
@@ -34,12 +33,6 @@ const settings = {
 			alertColor: '#d9534f',
 		},
 	},
-};
-
-const dataSearchProps = {
-	dataField: ['name', 'name.autosuggest', 'name.keyword', 'name.search'],
-	className: 'showcase-search',
-	componentId: 'search',
 };
 
 const searchBoxProps = {
@@ -280,14 +273,6 @@ class Showcase extends React.Component {
 									link="/docs/reactivesearch/v3/search/searchbox/"
 								>
 									<SearchBox {...searchBoxProps} />
-								</ShowcaseComponent>
-							</div>
-							<div className="w-100">
-								<ShowcaseComponent
-									title="DataSearch"
-									link="/docs/reactivesearch/v3/search/datasearch/"
-								>
-									<DataSearch {...dataSearchProps} />
 								</ShowcaseComponent>
 							</div>
 							<div className="showcase-grid grid-2">
