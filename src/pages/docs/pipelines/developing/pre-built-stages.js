@@ -1,15 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import PostLayout from '../../../../components/PostLayout';
 
 class PreBuilt extends React.Component {
-    state = {
-        mounted: false,
-    };
-
-    // TOOD: Fetch the schema and render it accordingly
-
     render() {
         const { location } = this.props;
         return (
@@ -19,12 +12,7 @@ class PreBuilt extends React.Component {
                 location={location}
                 post={{ title: 'Pre Built Stages' }}
             >
-                <Helmet>
-
-                </Helmet>
-                {mounted ? (
-                    <h1></h1>
-                ) : ('Loading')}
+                <h1>Test</h1>
             </PostLayout>
         )
     }
