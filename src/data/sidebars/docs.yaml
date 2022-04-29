@@ -71,8 +71,6 @@
             items:
               - link: /docs/pipelines/developing/deploy-with-github-action
                 title: Deploy a pipeline with GitHub Action
-              - link: /docs/pipelines/developing/pre-built-stages
-                title: Pre-Defined Stages
           - link: /docs/pipelines/how-to/
             title: "How To Guides"
             items:
