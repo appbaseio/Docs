@@ -13,7 +13,7 @@ nestedSidebar: 'web-reactivesearch'
 
 ReactiveMaps is a complimentary library to ReactiveSearch. Map components require ReactiveSearch architecture and its root component to begin with. If you wish to build anything on reactivemaps, you'll need to install reactivesearch along with it.
 
-> Existing users can checkout the [migration guide](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps-migration/) to switch to the newest version of ReactiveMaps library.
+> Existing users can checkout the [migration guide](https://docs.appbase.io/docs/reactivesearch/v3/advanced/migration/#reactivemaps) to switch to the newest version of ReactiveMaps library.
 
 ### Step 0: Create Boilerplate
 

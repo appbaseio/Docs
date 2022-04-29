@@ -5,8 +5,6 @@
               link: /docs/reactivesearch/v3/overview/quickstart/
             - title: ReactiveMaps QuickStart
               link: /docs/reactivesearch/v3/overview/reactivemaps/
-            - title: ReactiveMaps Migration Guide
-              link: /docs/reactivesearch/v3/overview/reactivemaps-migration/
             - title: Importing Data
               link: /docs/reactivesearch/v3/overview/importing/
             - title: ReactiveBase
