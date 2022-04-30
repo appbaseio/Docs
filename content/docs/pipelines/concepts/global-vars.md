@@ -24,7 +24,13 @@ Global variables can be created in two ways as of now:
 
 Global Variables can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-vars)
 
-> Following image shows how a variable can be added through dashboard
+> Following video shows how a variable can be added through dashboard
+
+<br>
+<video controls autoplay loop>
+  <source src="https://i.imgur.com/db8QEAQ.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 
 ### Through Pipeline
