@@ -79,7 +79,13 @@ As explained before, a global variable can be updated through the pipeline file 
 
 The variables page can be accessed in order to update the value of a variable or any other features of the variable.
 
-> Following image shows how it's done.
+> Following video shows how a global env can be updated
+
+<br>
+<video controls autoplay loop>
+  <source src="https://i.imgur.com/HnPHgt3.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ### Through Create Pipeline
 
