@@ -22,9 +22,10 @@ Global variables can be created in two ways as of now:
 
 ### Through Dashboard
 
-Global Variables can be created directly through the dashboard by visiting [this URL]()
+Global Variables can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-vars)
 
-> Following image will be added shortly.
+> Following image shows how a variable can be added through dashboard
+
 
 ### Through Pipeline
 
@@ -84,6 +85,12 @@ A global variable can be validated as well, through the frontend. This adds an e
 
 The validation details can be passed with the `validate` field inside the global variable field in the pipeline file.
 
+### `expected_status` field
+
+The `expected_status` field is used to make sure the validation was succesfull. It is an integer that should match the status code of the validate request when it is successfull.
+
+### Example: Validate an index
+
 Following example explains how the `validate` field can be used to verify that an index exists:
 
 ```yml
@@ -104,3 +111,27 @@ Above will resolve to the following cURL request where if the `expected_status` 
 ```sh
 curl -X GET http://localhost:9200/some_index
 ```
+
+### Example: Validate an URL
+
+Following example explaings how the `validate` field can be used to verify the saved URL:
+
+```yml
+global_vars:
+  - label: ElasticSearch URL
+    key: ES_URL
+    value: http://localhost:9200
+    description: A valid ElasticSEarch URL
+    validate:
+      url: ${{ES_URL}}
+      method: GET
+      expected_status: 200
+```
+
+Above request resolves to the following cURL request:
+
+```sh
+curl -X GET http://localhost:9200
+```
+
+The `expected_status` field, as explained, above is used as the status code to make sure the variable is validated.
