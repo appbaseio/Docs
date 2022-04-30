@@ -66,6 +66,8 @@
                 link: /docs/pipelines/concepts/wait-for-other-stage
               - title: Pre-Defined vs User-Defined Stages
                 link: /docs/pipelines/concepts/pre-defined-vs-user-defined
+              - title: Global Environments
+                link: /docs/pipelines/concepts/global-envs
           - link: /docs/pipelines/developing/
             title: Developing/Debugging Pipelines
             items:
