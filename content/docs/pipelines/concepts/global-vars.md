@@ -1,30 +1,30 @@
 ---
-title: 'Global Vars'
-meta_title: 'Global Vars | Introduction to Appbase.io'
-meta_description: 'Learn about global vars and how they work on ReactiveSearch Pipelines'
+title: 'Global Envs'
+meta_title: 'Global Envs | Introduction to Appbase.io'
+meta_description: 'Learn about global environments and how they work on ReactiveSearch Pipelines'
 keywords:
     - concepts
     - appbase.io
     - global
-    - vars
+    - envs
     - pipelines
     - reactivesearch
 sidebar: 'docs'
 ---
 
-Global Variables can be thought of environment values that are globally present throughout the cluster and are **modifiable**.
+Global Environments can be thought of environment values that are globally present throughout the cluster and are **modifiable**.
 
-It is important that global vars be understood properly in order to not face any weird errors when the pipeline is deployed.
+It is important that global envs be understood properly in order to not face any weird errors when the pipeline is deployed.
 
-## How To Create Global Variables
+## How To Create Global Environments
 
-Global variables can be created in two ways as of now:
+Global environments can be created in two ways as of now:
 
 ### Through Dashboard
 
-Global Variables can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-vars)
+Global Environments can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-vars)
 
-> Following video shows how a variable can be added through dashboard
+> Following video shows how an env can be added through dashboard
 
 <br>
 <video controls autoplay loop>
@@ -35,7 +35,7 @@ Your browser does not support the video tag.
 
 ### Through Pipeline
 
-Global Vars can also be created when the pipeline is being created. The `global_vars` in the route of the pipeline file can be used.
+Global Envs can also be created when the pipeline is being created. The `global_vars` in the route of the pipeline file can be used.
 
 It can be used in the following way:
 
@@ -47,37 +47,37 @@ global_vars:
     description: Just some description
 ```
 
-Above defines a global variable which will be created when the pipeline is created and saved in the cluster.
+Above defines a global environment which will be created when the pipeline is created and saved in the cluster.
 
 #### What is the write behaviour
 
-The global variable created is overwritten by default whenever a pipeline update request is sent or a new pipeline defines the same variable.
+The global environment created is overwritten by default whenever a pipeline update request is sent or a new pipeline defines the same env.
 
-It is important to understand this behaviour of the pipeline create endpoint since this can lead to unexpected affects in case two pipelines define the same global variable.
+It is important to understand this behaviour of the pipeline create endpoint since this can lead to unexpected affects in case two pipelines define the same global environment.
 
 ### How to access them
 
-All global variables present in a cluster are injected into the environment context during the execution of the pipeline. This means that all the variables can be accessed through their key from the `context.envs` field.
+All global environments present in a cluster are injected into the environment context during the execution of the pipeline. This means that all the environments can be accessed through their key from the `context.envs` field.
 
-For example, if there is a global variable defined with the key `ES_URL`, it will be accessible through:
+For example, if there is a global env defined with the key `ES_URL`, it will be accessible through:
 
 ```context.envs.ES_URL```
 
 #### Conflict Handling
 
-There can be cases when there is global variable defined and the same key is passed in the `envs` field in the pipeline that is saved.
+There can be cases when there is global environment defined and the same key is passed in the `envs` field in the pipeline that is saved.
 
 This means that the same key would be present in the same pipeline twice. In such cases, **the user passed values in `envs` are respected**.
 
-This means the user passed `envs` key will be present in the `context.envs` and the global variable will not be injected into the context.
+This means the user passed `envs` key will be present in the `context.envs` and the global environment will not be injected into the context.
 
 ## Updating a Variable
 
-As explained before, a global variable can be updated through the pipeline file or from the dashboard. The behaviour of the pipeline create endpoint will be **overwrite** when the pipeline is created.
+As explained before, a global environment can be updated through the pipeline file or from the dashboard. The behaviour of the pipeline create endpoint will be **overwrite** when the pipeline is created.
 
 ### Through Dashboard
 
-The variables page can be accessed in order to update the value of a variable or any other features of the variable.
+The environment page can be accessed in order to update the value of a environment or any other features of the environment.
 
 > Following video shows how a global env can be updated
 
@@ -89,13 +89,13 @@ Your browser does not support the video tag.
 
 ### Through Create Pipeline
 
-Passing the global variable in the `global_vars` normally while creating/updating the pipeline, it will be overwritten.
+Passing the global environment in the `global_vars` normally while creating/updating the pipeline, it will be overwritten.
 
-## Validate a variable
+## Validate an environment
 
-A global variable can be validated as well, through the frontend. This adds an extra layer of check to make sure the value of the variable is what is expected and it will work as expected in the pipeline.
+A global environment can be validated as well, through the frontend. This adds an extra layer of check to make sure the value of the environment is what is expected and it will work as expected in the pipeline.
 
-The validation details can be passed with the `validate` field inside the global variable field in the pipeline file.
+The validation details can be passed with the `validate` field inside the global environment field in the pipeline file.
 
 ### `expected_status` field
 
@@ -116,7 +116,7 @@ global_vars:
       expected_status: 200
 ```
 
-Above syntax will ensure that the variable is validated before it is created. The URL `http://localhost:9200/${{INDEX}}` will resolve to the following and will be hit with a `GET` request.
+Above syntax will ensure that the env is validated before it is created. The URL `http://localhost:9200/${{INDEX}}` will resolve to the following and will be hit with a `GET` request.
 
 Above will resolve to the following cURL request where if the `expected_status` is same as the got status, it is considered.
 
@@ -146,4 +146,4 @@ Above request resolves to the following cURL request:
 curl -X GET http://localhost:9200
 ```
 
-The `expected_status` field, as explained, above is used as the status code to make sure the variable is validated.
+The `expected_status` field, as explained, above is used as the status code to make sure the env is validated.
