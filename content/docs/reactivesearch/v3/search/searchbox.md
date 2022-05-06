@@ -589,7 +589,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 -   `list`
 -   `recent-search-icon`
 -   `popular-search-icon`
--   `enterButton`
+-   `enter-button`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
@@ -785,7 +785,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **isOpen** `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 
--   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enterButton` key in the `innerClass` prop.
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
 
     <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
 
