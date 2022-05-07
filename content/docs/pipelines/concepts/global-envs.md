@@ -16,13 +16,13 @@ Global Environments can be thought of environment values that are globally prese
 
 It is important that global envs be understood properly in order to not face any weird errors when the pipeline is deployed.
 
-## How To Create Global Environments
+## How To: Create Global Env
 
 Global environments can be created in two ways as of now:
 
 ### Through Dashboard
 
-Global Environments can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-vars)
+Global Environments can be created directly through the dashboard by visiting [this URL](https://dash.appbase.io/cluster/global-envs)
 
 > Following video shows how an env can be added through dashboard
 
@@ -35,16 +35,16 @@ Your browser does not support the video tag.
 
 ### Through Pipeline
 
-Global Envs can also be created when the pipeline is being created. The `global_vars` in the route of the pipeline file can be used.
+Global Envs can also be created when the pipeline is being created. The `global_envs` in the route of the pipeline file can be used.
 
 It can be used in the following way:
 
 ```yml
-global_vars:
-  - label: Some new Var
-    key: SOME_VAR
-    value: Some random value
-    description: Just some description
+global_envs:
+  - label: API Key
+    key: API_KEY
+    value: ***************
+    description: API Key env allows setting your search engine backend's API key
 ```
 
 Above defines a global environment which will be created when the pipeline is created and saved in the cluster.
@@ -71,7 +71,7 @@ This means that the same key would be present in the same pipeline twice. In suc
 
 This means the user passed `envs` key will be present in the `context.envs` and the global environment will not be injected into the context.
 
-## Updating a Variable
+## Update an env
 
 As explained before, a global environment can be updated through the pipeline file or from the dashboard. The behaviour of the pipeline create endpoint will be **overwrite** when the pipeline is created.
 
@@ -89,7 +89,7 @@ Your browser does not support the video tag.
 
 ### Through Create Pipeline
 
-Passing the global environment in the `global_vars` normally while creating/updating the pipeline, it will be overwritten.
+Passing the global environment in the `global_envs` normally while creating/updating the pipeline, it will be overwritten.
 
 ## Validate an environment
 
@@ -106,7 +106,7 @@ The `expected_status` field is used to make sure the validation was succesfull. 
 Following example explains how the `validate` field can be used to verify that an index exists:
 
 ```yml
-global_vars:
+global_envs:
   - label: Index
     key: INDEX
     value: some_index
@@ -129,7 +129,7 @@ curl -X GET http://localhost:9200/some_index
 Following example explaings how the `validate` field can be used to verify the saved URL:
 
 ```yml
-global_vars:
+global_envs:
   - label: ElasticSearch URL
     key: ES_URL
     value: http://localhost:9200
