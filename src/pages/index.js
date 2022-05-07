@@ -187,6 +187,12 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/pipelines/how-to/',
 												description: 'See actionable guides for building search with ReactiveSearch pipelines',
 												duration: 1,
+											},
+											{
+												title: "Developing/Debugging Pipelines",
+												link: "/docs/pipelines/developing/",
+												description: "Learn how to develop and debug pipelines before deploying them",
+												duration: 12
 											}
 										]
 									},

@@ -48,6 +48,8 @@
           - link: /docs/pipelines/concepts/
             title: Pipeline Concepts
             items:
+              - title: Pipeline Route Matching Process
+                link: /docs/pipelines/execution-process
               - title: Write to Global Context
                 link: /docs/pipelines/concepts/write-to-global-context
               - title: Pass data between stages
@@ -62,6 +64,15 @@
                 link: /docs/pipelines/concepts/run-stage-async
               - title: Wait for other stages
                 link: /docs/pipelines/concepts/wait-for-other-stage
+              - title: Pre-Defined vs User-Defined Stages
+                link: /docs/pipelines/concepts/pre-defined-vs-user-defined
+              - title: Global Environments
+                link: /docs/pipelines/concepts/global-envs
+          - link: /docs/pipelines/developing/
+            title: Developing/Debugging Pipelines
+            items:
+              - link: /docs/pipelines/developing/deploy-with-github-action
+                title: Deploy a pipeline with GitHub Action
           - link: /docs/pipelines/how-to/
             title: "How To Guides"
             items:
@@ -77,6 +88,8 @@
                 title: "kNN response stage"
               - link: /docs/pipelines/how-to/relevant-search-stages
                 title: Relevant Search Stages
+              - link: /docs/pipelines/how-to/error-handling-in-pipeline
+                title: Error handling in Pipeline
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
