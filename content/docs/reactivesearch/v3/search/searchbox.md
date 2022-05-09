@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-![Searchbox image](https://i.imgur.com/8UPzgG4.png)
+![Searchbox image](https://i.imgur.com/EGQTmNY.png)
 
 `SearchBox` creates a search box UI component that is connected to one or more database fields. A `SearchBox` queries the appbase.io backend with query type `suggestion` to render different kind of suggestions, read more about the `suggestion` query type [here](https://docs.appbase.io/docs/search/reactivesearch-api/implement/#suggestion).
 
@@ -151,6 +151,25 @@ Example uses:
     >
     > This property only works with [ReactiveSearch API](/docs/search/reactivesearch-api/) i.e when `enableAppbase` is set to `true` in `ReactiveBase` component.
 
+-   **enableIndexSuggestions** `Boolean` Defaults to `true`. When set to `false`, index suggestions are not returned from the backend.
+
+-   **indexSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
+
+    It can accept the following keys:
+    - **section**: `string` custom html markup for section title.
+    
+    <br/>
+
+```jsx
+    <SearchBox
+        enableIndexSuggestions={true}
+        indexSuggestionsConfig={{
+            section: '<h3>Index suggestions</h3>'
+        }}
+    />
+```
+
+
 -   **enablePopularSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
@@ -165,6 +184,7 @@ Example uses:
     - **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
     - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+    - **section**: `string` custom html markup for section title.    
     <br/>
 
 ```jsx
@@ -176,6 +196,7 @@ Example uses:
             minChars: 3,
             showGlobal: false,
             index: "good-books-ds",  // further restrict the index to search on
+            section: '<h3>Popular suggestions</h3>'
         }}
     />
 ```
@@ -183,13 +204,14 @@ Example uses:
 -   **enableRecentSuggestions** `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane).
 
 > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
-- **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
+-   **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
 
     It can accept the following keys:
     - **size**: `number` Maximum number of recent suggestions to return. Defaults to 5.
     - **minHits**: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
     - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+    - **section**: `string` custom html markup for section title.        
     <br/>
 
 ```jsx
@@ -200,9 +222,36 @@ Example uses:
             minHits: 5,
             minChars: 3,
             index: "good-books-ds",  // further restrict the index to search on
+            section: '<h3>Index suggestions</h3>' 
         }}
     />
 ```
+
+-   **enableFeaturedSuggestions** `bool` [optional]
+    Defaults to `false`. When set to `true`, featured suggestions are returned as suggestions as per the featured suggestions config (either defaults, or as set through `featuredSuggestionsConfig` or via Featured Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
+
+- **featuredSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
+
+    It can accept the following keys:
+    - **featuredSuggestionsGroupId**: `string` [Required] unique id for featured suggestions' group.
+    - **visibleSuggestionsPerSection**: `number` default number of suggestions visible per section.
+    - **maxSuggestionsPerSection**: `number` maximum number of featured suggestions fetched per section.
+    - **sectionsOrder**: `Array<String>` accepts an array of section id(s). The order in which section id(s) are defined in the array describes the order in which the sections appear in the UI.
+    
+    <br/>
+
+```jsx
+    <SearchBox
+        enableFeaturedSuggestions={true}
+        featuredSuggestionsConfig={{
+            featuredSuggestionsGroupId: 'document-search', // # mandatory
+            visibleSuggestionsPerSection: 3, 
+            maxSuggestionsPerSection: 10,    
+            sectionsOrder: ['document', 'pages', 'help'], 
+        }}
+    />
+```
+
 
 -   **enablePredictiveSuggestions** `Boolean` [optional]
     Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
@@ -724,7 +773,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 
 -   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
-<img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
+<img src="https://i.imgur.com/15fnDsj.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
@@ -743,7 +792,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 
-<img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
+<img src="https://i.imgur.com/MbtXwfU.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
@@ -760,7 +809,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     ```
 
 -   **expandSuggestionsContainer** `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
-<img src="https://i.imgur.com/x3jF23m.png"/>
+<img src="https://i.imgur.com/3ADhMSQ.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
