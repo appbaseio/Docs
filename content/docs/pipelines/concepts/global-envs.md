@@ -97,9 +97,47 @@ A global environment can be validated as well, through the frontend. This adds a
 
 The validation details can be passed with the `validate` field inside the global environment field in the pipeline file.
 
+Validation is essentially a sophisticated **fetch** request where we also check if the response status code matches the one that the user specifies.
+
 ### `expected_status` field
 
 The `expected_status` field is used to make sure the validation was succesfull. It is an integer that should match the status code of the validate request when it is successfull.
+
+### `url` field
+
+The `url` field is used to specify the URL that is supposed to be hit during validating the global environment before adding it.
+
+### `method` field
+
+It might be important to specify the method field in order to get the `expected_status`. This can be done by passing the method as a string. By default the value is set to `GET`.
+
+Some of the other valid options are:
+
+- `POST`
+- `PUT`
+- `PATCH`
+
+### `headers` field
+
+Headers can be essential to alter the response recieved from hitting a particular URL. Headers can be passed during validating by using the `headers` field.
+
+For eg, a `Content-Type` header can be passed in the following way:
+
+```yml
+global_envs:
+  - label: ES URL
+    key: ES_URL
+    value: http://localhost:9200
+    validate:
+      headers:
+        "Content-Type": "application/json"
+```
+
+### `body` field
+
+At times, there might be the need to pass the body in a response in order to get the `expected_status`. This is also supported by passing the body in the `body` field.
+
+The body should be passed as a **string**. If JSON, this should be a stringified JSON.
 
 ## Validate Examples
 
