@@ -632,6 +632,10 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 -   `list`
 -   `recent-search-icon`
 -   `popular-search-icon`
+-   `featured-search-icon`
+-   `section-label`
+-   `active-suggestion-item`
+-   `suggestion-item`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
@@ -830,3 +834,47 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 ## Examples
 
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
+
+
+### Customize suggestions using innerClass
+
+
+<img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
+
+```jsx
+	<SearchBox
+	    title="SearchBox"
+	    dataField={['original_title', 'original_title.search']}
+	    componentId="BookSensor"
+	    innerClass={{
+            'section-label': 'section-label',
+	    	'active-suggestion-item': 'active-test-suggestion',
+	    	'suggestion-item': 'test-suggestion',
+	    }}
+	    enableFeaturedSuggestions
+    />
+```
+
+Inside `custom_styles.css`
+
+```css
+.section-label {
+	font-weight: 800;
+	font-size: 14px;
+	text-decoration: overline;
+}
+
+.active-test-suggestion {
+	border-left: 6px solid #ffa000;
+	background-color: #6629ea !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+.test-suggestion {
+	background-color: #f0e1e1 !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+```
