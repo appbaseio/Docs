@@ -135,7 +135,7 @@ global_envs:
     value: http://localhost:9200
     description: A valid ElasticSEarch URL
     validate:
-      url: ${{ES_URL}}
+      url: ${ES_URL}
       method: GET
       expected_status: 200
 ```
