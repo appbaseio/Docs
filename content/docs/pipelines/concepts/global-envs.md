@@ -101,6 +101,10 @@ The validation details can be passed with the `validate` field inside the global
 
 The `expected_status` field is used to make sure the validation was succesfull. It is an integer that should match the status code of the validate request when it is successfull.
 
+## Validate Examples
+
+Following examples show how to validate an environment variable when it is being added. This is useful for creating template pipeline files that can be used as others through the Dashboard.
+
 ### Example: Validate an index
 
 Following example explains how the `validate` field can be used to verify that an index exists:
