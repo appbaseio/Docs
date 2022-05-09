@@ -49,10 +49,6 @@ Example uses:
         defaultValue="Songwriting"
         placeholder="Search for cities or venues"
         autosuggest={true}
-        defaultSuggestions={[
-            { label: 'Songwriting', value: 'Songwriting' },
-            { label: 'Musicians', value: 'Musicians' },
-        ]}
         highlight={true}
         highlightField="group_city"
         queryFormat="or"
@@ -235,8 +231,6 @@ Example uses:
     set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`.
 -   **strictSelection** `Boolean` [optional]
     defaults to `false`. When set to `true` the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared on selection. This is only relevant with `autosuggest`.
--   **defaultSuggestions** `Array` [optional]
-    preset search suggestions to be shown on focus when the search box does not have any search query text set. Accepts an array of objects each having a **label** and **value** property. The label can contain either String or an HTML element.
 -   **debounce** `Number` [optional]
     set the milliseconds to wait before executing the query. Defaults to `0`, i.e. no debounce.
 -   **highlight** `Boolean` [optional]
