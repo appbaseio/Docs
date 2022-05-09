@@ -833,6 +833,8 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 ## Examples
 
+### SearchBox with default props
+
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
 
 
@@ -855,7 +857,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     />
 ```
 
-Inside `custom_styles.css`
+Inside your css file ->
 
 ```css
 .section-label {
