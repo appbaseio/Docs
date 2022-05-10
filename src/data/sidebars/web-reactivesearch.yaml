@@ -99,6 +99,8 @@
               link: /docs/reactivesearch/v3/advanced/stateprovider/
             - title: Grouping Results
               link: /docs/reactivesearch/v3/advanced/groupingresults/
+            - title: Multi index search
+              link: /docs/reactivesearch/v3/advanced/multiindexsearch/
             - title: Custom Suggestions
               link: /docs/reactivesearch/v3/advanced/customsuggestions/
             - title: Custom Queries
@@ -113,8 +115,6 @@
               link: /docs/reactivesearch/v3/advanced/usage/
             - title: Migration Guide
               link: /docs/reactivesearch/v3/advanced/migration/
-            - title: Multi index search
-              link: /docs/reactivesearch/v3/advanced/multiindexsearch/
             - title: Advanced Guides
               link: /docs/reactivesearch/v3/advanced/guides/
             - title: Search and Click Analytics
