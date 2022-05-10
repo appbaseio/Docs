@@ -164,7 +164,7 @@ Only selected indices will be considered to calculate the suggestions.
 
 This is an example showing index, category and popular suggestions.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/QuerySuggestion?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/savvyshah/reactivesearch/tree/docs-query-suggestions/packages/web/examples/QuerySuggestion?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="searchbox"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
