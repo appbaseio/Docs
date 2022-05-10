@@ -113,7 +113,7 @@
               link: /docs/reactivesearch/v3/advanced/usage/
             - title: Migration Guide
               link: /docs/reactivesearch/v3/advanced/migration/
-            - title: Mutli index search
+            - title: Multi index search
               link: /docs/reactivesearch/v3/advanced/multiindexsearch/
             - title: Advanced Guides
               link: /docs/reactivesearch/v3/advanced/guides/
@@ -123,5 +123,5 @@
               link: /docs/reactivesearch/v3/advanced/data/
             - title: Typescript Support
               link: /docs/reactivesearch/v3/advanced/typescript/
-            - title: Comparision with Other Projects
+            - title: Comparison with Other Projects
               link: /docs/reactivesearch/v3/advanced/comparison/
