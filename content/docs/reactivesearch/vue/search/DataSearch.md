@@ -69,6 +69,11 @@ Example uses:
     and: ['CategoryFilter', 'SearchFilter']
   }"
 	:URLParams="false"
+  :defaultSuggestions="[
+		{ label: 'Songwriting', value: 'Songwriting' },
+		{ label: 'Musicians', value: 'Musicians' },
+	]"
+  :enableDefaultSuggestions="true"
 />
 ```
 
@@ -199,6 +204,12 @@ Example uses:
 
 `Note:` Check the above concept in action over [here](https://codesandbox.io/s/musing-allen-qc58z).
 
+-   **defaultSuggestions** `Array` [optional]
+    preset search suggestions to be shown on focus when the search box does not have any search query text set. Accepts an array of objects each having a **label** and **value** property.
+
+-   **enableDefaultSuggestions** `bool` [optional]
+    Defaults to `true`. When set to `false`, initial suggestions(including recent, popular, index, or defaultSuggestions) are not displayed when the query value is empty.    
+    
 - **filterLabel** `String` [optional]
   An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 - **clearIcon** `JSX` [optional]
