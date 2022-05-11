@@ -1,37 +1,80 @@
 ---
-title: 'SearchWidgetConnector'
-meta_title: 'API Reference for Flutter SearchWidgetConnector'
-meta_description: 'Flutter SearchWidgetConnector offers a performance focused SearchWidgetConnector UI widget to query and display results from your Elasticsearch cluster.'
+title: 'StateProvider'
+meta_title: 'API Reference for StateProvider'
+meta_description: 'StateProvider allows you to access the current state of flutter-searchbox widgets.'
 keywords:
     - flutter-searchbox
     - api-reference
+    - state-provider
     - elasticsearch
     - search-ui
 sidebar: 'docs'
 nestedSidebar: 'flutter-searchbox'
 ---
 
-## How does it work?
 
-[SearchWidgetConnector](https://pub.dev/documentation/flutter_searchbox/latest/flutter_searchbox/SearchWidgetConnector-class.html) represents a search widget that can be used to bind to different kinds of search UI widgets.
+# How does it work?
 
-It uses the [SearchController](https://pub.dev/documentation/searchbase/1.0.1/searchbase/SearchController-class.html) class to bind any UI widget to be able to query appbase.io declaratively. Some examples of components you can bind this with:
+[StateProvider](https://pub.dev/documentation/flutter_searchbox/latest/flutter_searchbox/StateProvider-class.html) allows you to access the current state of your app widgets along with the search results. For instance, you can use this component to create results/no results or query/no query pages.
 
-a category filter widget,
-a search bar widget,
-a price range widget,
-a location filter widget,
-a widget to render the search results.
+Example Use(s):
+ - perform side-effects based on the results states of various widgets.
+ - render custom UI based on the current state of app.
 
 ## Usage
 
 ### Basic Usage
 
 ```dart
+StateProvider(
+  ...
+  onChange: (nextState, prevState) {
+        // do something here
+    },
+  ...
+)
+```
 
+### Usage with All Props
+
+```dart
+StateProvider(
+  subscribeTo: {
+   'result-component': [KeysToSubscribe.Results, KeysToSubscribe.From]
+  },       
+  onChange: (nextState, prevState) {
+        // do something here
+    },
+  build: (controllerState) {
+    return Text(
+      'Total results on screen--- ${controllerState["result-widget"]?.results?.data?.length ?? ''}',
+      style: TextStyle(
+        fontSize: 19.0,
+        color: Colors.red,
+      ),
+    );
+  },    
+)
+```
+
+## API Reference
+
+Check the complete API reference [here](https://pub.dev/documentation/flutter_searchbox/latest/flutter_searchbox/StateProvider-class.html).
+
+## Example
+
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <img alt="Basic Example" src="https://i.imgur.com/QdZrMse.gif" width="250" />   
+</div>
+
+In this example, a basic search application is made that has a result widget is listened for state changes using the `StateProvider` widget and a custom ui is rendered to show the total number of results on screen.
+
+```dart
 import 'package:flutter/material.dart';
 import 'package:searchbase/searchbase.dart';
 import 'package:flutter_searchbox/flutter_searchbox.dart';
+import 'results.dart';
+import 'author_filter.dart';
 
 void main() {
   runApp(FlutterSearchBoxApp());
@@ -62,252 +105,6 @@ class FlutterSearchBoxApp extends StatelessWidget {
       child: MaterialApp(
         title: "SearchBox Demo",
         theme: ThemeData(
-          // ...
-        ),
-        home: Scaffold(
-          body: Center(
-            // A custom UI widget to render a list of results
-            child: SearchWidgetConnector(
-              id: 'result-widget',
-              dataField: 'original_title',
-              size: 10,
-              triggerQueryOnInit: true,
-              preserveResults: true,
-              builder: (context, searchController) => ResultsWidget(searchController)),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-```
-
-### Usage with All Props
-
-``` dart
-    SearchWidgetConnector(         
-        id: 'result-widget',
-        dataField: 'original_title',
-        size: 10,
-        triggerQueryOnInit: true,
-        preserveResults: true,
-        builder: (context, searchController) => ResultsWidget(searchController)),
-        subscribeTo: [KeysToSubscribe.Results],
-        shouldListenForChanges: true,
-        destroyOnDispose: true,
-        index: 'good-books-ds',
-        url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
-        credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61', 
-        headers: {
-            "x-custom-header": "12345"
-        },
-        appbaseConfig: AppbaseSettings(recordAnalytics: true,  userId: 'jon@appbase.io',
-        type: QueryType.term,
-        react:{
-            'and': ['test-widget'],
-        },
-        queryFormat: "or"
-        dataField: [
-            {'field': 'original_title', 'weight': 1},
-            {'field': 'original_title.search', 'weight': 3}
-        ],
-        categoryField: "authors.keyword",
-        categoryValue: "John Doe",
-        nestedField: "settings", 
-        from: 0,
-        size: 10,
-        sortBy: SortType.asc,
-        aggregationField: "authors.keyword",
-        aggregationSize: 10,
-        after: {
-            "authors.keyword": "Jerry Lovato"
-        },
-        includeNullValues: false,
-        includeFields: ["original_publication_year", "title", "authors"],   
-        excludeFields: [""],
-        fuzziness: 1,
-        searchOperators: true,
-        highlight: true,
-        highlightField: "title",
-        customHighlight: {
-                "fields": {
-                    "title": {}
-                },
-                "pre_tags": [
-                    "<pre>"
-                ],
-                "post_tags": [
-                    "</pre>"
-                ],
-                "require_field_match": false
-        },
-        interval: 1,
-        aggregations: ["max"],
-        showMissing: true,
-        missingLabel: "N/A",
-        defaultQuery: (SearchController searchController) =>(
-            {
-                "query":{
-                    "match":{
-                        "original_title":"harry potter"
-                    }
-                },
-                "timeout":"1s"
-            }
-        ),
-        customQuery: (SearchController searchController) =>(
-            {
-                "query":{
-                    "term":{
-                        "authors.keyword":"J.K. Rowling"
-                    }
-                }
-            }  
-        ),        
-        enableSynonyms: true,
-        selectAllLabel: "Paradise Lost", // works for term type of queries
-        pagination: true,
-        queryString: true,        
-        enablePopularSuggestions: true,
-        maxPopularSuggestions: 3,
-        showDistinctSuggestions: true,
-        preserveResults: true,
-        clearOnQueryChange: true,
-        transformRequest: Future (Map request) =>
-            Future.value({
-                ...request,
-                'credentials': 'include',
-            })
-        }       
-        transformResponse: Future (Map elasticsearchResponse) async {
-            final ids = elasticsearchResponse['hits']['hits'].map(item => item._id);
-            final extraInformation = await getExtraInformation(ids);
-            final hits = elasticsearchResponse['hits']['hits'].map(item => {
-                final extraInformationItem = extraInformation.find(
-                    otherItem => otherItem._id === item._id,
-                );
-                return Future.value({
-                    ...item,
-                    ...extraInformationItem,
-                };
-            }));
-        
-            return Future.value({
-                ...elasticsearchResponse,
-                'hits': {
-                    ...elasticsearchResponse.hits,
-                    hits,
-                },
-            });
-        }            
-        results: [
-                    {
-                        "_index": "good-books-ds",
-                        "_type": "_doc",
-                        "_id": "rT7tXXEBhDwVijd9RE6K",
-                        "_score": 7.2774067,
-                        "_source": {
-                            "original_publication_year": 2016,
-                            "title": "Hogwarts: An Incomplete and Unreliable Guide (Pottermore Presents, #3)",
-                            "authors": "J.K. Rowling"
-                        }
-                    },                
-                    {
-                        "_index": "good-books-ds",
-                        "_type": "_doc",
-                        "_id": "Sj7tXXEBhDwVijd9m1hJ",
-                        "_score": 7.2774067,
-                        "_source": {
-                            "original_publication_year": 1998,
-                            "title": "Harry Potter Boxset (Harry Potter, #1-7)",                        
-                            "authors": "J.K. Rowling"
-                        }
-                    },
-        ],
-        distinctField: 'authors.keyword',
-        distinctFieldConfig: {
-            'inner_hits': {
-                'name': 'other_books',
-                'size': 5,
-                'sort': [
-                {'timestamp': 'asc'}
-                ],
-            },
-            'max_concurrent_group_searches': 4, 
-        },
-        beforeValueChange: Future (value) {
-            // called before the value is set
-            // returns a [Future]
-            // update state or component props
-            return Future.value(value);
-            // or Future.error()
-        },
-        onValueChange: (next, {prev}){
-            // perform side-effects as value changes
-        },
-        onResults: (nextMap, {prevMap}){
-            // perform side-effects as results change
-        },
-        onAggregationData: (nextMap, {prevMap}){
-            // perform side-effects as aggregation data changes
-        },   
-        onError: (error){
-            // handle error
-        },        
-        onRequestStatusChange: (next, {prev}){
-            // listen to request status changes
-        },                  
-        onQueryChange: (nextQuery, {prevQuery}){
-            // listen to request query changes
-        },                
-    )
-```
-
-
-## API Reference
-
-Check the complete API reference [here](https://pub.dev/documentation/flutter_searchbox/latest/flutter_searchbox/SearchWidgetConnector-class.html).
-
-## Example
-
-In this example, a basic search application is made that has a result widget made using [SearchWidgetConnector](/docs/reactivesearch/flutter-searchbox/searchwidgetconnector/) for populating results.
-
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:searchbase/searchbase.dart';
-import 'package:flutter_searchbox/flutter_searchbox.dart';
-
-void main() {
-  runApp(FlutterSearchBoxApp());
-}
-
-class FlutterSearchBoxApp extends StatelessWidget {
-  // Avoid creating searchbase instance in build method
-  // to preserve state on hot reloading
-  final searchbaseInstance = SearchBase(
-      'good-books-ds',
-      'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
-      'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
-      appbaseConfig: AppbaseSettings(
-          recordAnalytics: true,
-          // Use unique user id to personalize the recent searches
-          userId: 'jon@appbase.io'));
-
-  FlutterSearchBoxApp({Key key = const Key("demo")}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    // The SearchBaseProvider should wrap your MaterialApp or WidgetsApp. This will
-    // ensure all routes have access to the store.
-    return SearchBaseProvider(
-      // Pass the searchbase instance to the SearchBaseProvider. Any ancestor `SearchWidgetConnector`
-      // Widgets will find and use this value as the `SearchController`.
-      searchbase: searchbaseInstance,
-      child: MaterialApp(
-        title: "SearchBox Demo",
-        theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
@@ -328,17 +125,62 @@ class HomePage extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: Center(
-          // A custom UI widget to render a list of results
-          child: SearchWidgetConnector(
-              id: 'result-widget',
-              dataField: 'original_title',
-              size: 10,
-              triggerQueryOnInit: true,
-              preserveResults: true,
-              builder: (context, searchController) =>
-                  ResultsWidget(searchController)),
-        ),
+          bottomNavigationBar: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: StateProvider(
+              subscribeTo: {
+                "result-widget": [KeysToSubscribe.Results , KeysToSubscribe.Value, KeysToSubscribe.From],                
+              },
+              onChange: (nextState, prevState) {
+                print('prevState ${prevState["result-widget"]?.results?.data?.length}');
+                print('nextState ${nextState["result-widget"]?.results?.data?.length}');                
+              },
+              build: (controllerState) {
+                return Text(
+                  'Total results on screen--- ${controllerState["result-widget"]?.results?.data?.length ?? ''} ',
+                  style: TextStyle(
+                    fontSize: 19.0,
+                    color: Colors.red,
+                  ),
+                );
+              },
+            ),
+          ),
+          body: Center(
+            // A custom UI widget to render a list of results
+            child: SearchWidgetConnector(
+                id: 'result-widget',
+                dataField: 'original_title',               
+                size: 10,
+                triggerQueryOnInit: true,
+                preserveResults: true,
+                builder: (context, searchController) =>
+                    ResultsWidget(searchController)),
+            ),         
+          ),
+    );
+  }
+}
+
+
+
+// The result widget to show results
+
+class StarDisplay extends StatelessWidget {
+  final int value;
+  const StarDisplay({Key? key, this.value = 0}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(5, (index) {
+          return Icon(
+            index < value ? Icons.star : Icons.star_border,
+            size: 20,
+          );
+        }),
       ),
     );
   }
@@ -358,7 +200,7 @@ class ResultsWidget extends StatelessWidget {
               color: Colors.white,
               height: 20,
               child: Text(
-                  '${searchController.results!.numberOfResults} results found in ${searchController.results!.time.toString()} ms'),
+                  '${searchController.results.numberOfResults} results found in ${searchController.results.time.toString()} ms'),
             ),
           ),
         ),
@@ -369,18 +211,17 @@ class ResultsWidget extends StatelessWidget {
                 var offset = (searchController.from != null
                         ? searchController.from
                         : 0)! +
-                    (searchController.size ?? 0);
+                    searchController.size!;
                 if (index == offset - 1) {
-                  if ((searchController.results!.numberOfResults) > offset) {
+                  if (searchController.results.numberOfResults > offset) {
                     // Load next set of results
                     searchController.setFrom(offset,
                         options: Options(triggerDefaultQuery: true));
                   }
                 }
               });
-
               return Container(
-                  child: (index < searchController.results!.data.length)
+                  child: (index < searchController.results.data.length)
                       ? Container(
                           margin: const EdgeInsets.all(0.5),
                           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
@@ -397,7 +238,7 @@ class ResultsWidget extends StatelessWidget {
                                       semanticContainer: true,
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
                                       child: Image.network(
-                                        searchController.results!.data[index]
+                                        searchController.results.data[index]
                                             ["image_medium"],
                                         fit: BoxFit.fill,
                                       ),
@@ -437,18 +278,18 @@ class ResultsWidget extends StatelessWidget {
                                                 color: Colors.white,
                                               ),
                                               message:
-                                                  'By: ${searchController.results!.data[index]["original_title"]}',
+                                                  'By: ${searchController.results.data[index]["original_title"]}',
                                               child: Text(
                                                 searchController
-                                                            .results!
+                                                            .results
                                                             .data[index][
                                                                 "original_title"]
                                                             .length <
                                                         40
-                                                    ? searchController.results!
-                                                            .data[index]
+                                                    ? searchController
+                                                            .results.data[index]
                                                         ["original_title"]
-                                                    : '${searchController.results!.data[index]["original_title"].substring(0, 39)}...',
+                                                    : '${searchController.results.data[index]["original_title"].substring(0, 39)}...',
                                                 style: TextStyle(
                                                   fontSize: 20.0,
                                                 ),
@@ -474,16 +315,16 @@ class ResultsWidget extends StatelessWidget {
                                                 color: Colors.white,
                                               ),
                                               message:
-                                                  'By: ${searchController.results!.data[index]["authors"]}',
+                                                  'By: ${searchController.results.data[index]["authors"]}',
                                               child: Text(
                                                 searchController
-                                                            .results!
+                                                            .results
                                                             .data[index]
                                                                 ["authors"]
                                                             .length >
                                                         50
-                                                    ? 'By: ${searchController.results!.data[index]["authors"].substring(0, 49)}...'
-                                                    : 'By: ${searchController.results!.data[index]["authors"]}',
+                                                    ? 'By: ${searchController.results.data[index]["authors"].substring(0, 49)}...'
+                                                    : 'By: ${searchController.results.data[index]["authors"]}',
                                                 style: TextStyle(
                                                   fontSize: 15.0,
                                                 ),
@@ -498,13 +339,24 @@ class ResultsWidget extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.fromLTRB(
                                                       25, 0, 0, 0),
+                                              child: IconTheme(
+                                                data: IconThemeData(
+                                                  color: Colors.amber,
+                                                  size: 48,
+                                                ),
+                                                child: StarDisplay(
+                                                    value: searchController
+                                                            .results
+                                                            .data[index][
+                                                        "average_rating_rounded"]),
+                                              ),
                                             ),
                                             Padding(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
                                                       10, 5, 0, 0),
                                               child: Text(
-                                                '(${searchController.results!.data[index]["average_rating"]} avg)',
+                                                '(${searchController.results.data[index]["average_rating"]} avg)',
                                                 style: TextStyle(
                                                   fontSize: 12.0,
                                                 ),
@@ -519,7 +371,7 @@ class ResultsWidget extends StatelessWidget {
                                                   const EdgeInsets.fromLTRB(
                                                       27, 10, 0, 0),
                                               child: Text(
-                                                'Pub: ${searchController.results!.data[index]["original_publication_year"]}',
+                                                'Pub: ${searchController.results.data[index]["original_publication_year"]}',
                                                 style: TextStyle(
                                                   fontSize: 12.0,
                                                 ),
@@ -542,8 +394,7 @@ class ResultsWidget extends StatelessWidget {
                                 child: RichText(
                                   text: TextSpan(
                                     text:
-                                        searchController.results!.data.length >
-                                                0
+                                        searchController.results.data.length > 0
                                             ? "No more results"
                                             : 'No results found',
                                     style: TextStyle(
@@ -555,7 +406,7 @@ class ResultsWidget extends StatelessWidget {
                               ),
                             )));
             },
-            itemCount: searchController.results!.data.length + 1,
+            itemCount: searchController.results.data.length + 1,
           ),
         ),
       ],
@@ -564,3 +415,5 @@ class ResultsWidget extends StatelessWidget {
 }
 
 ```
+
+

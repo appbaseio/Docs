@@ -66,7 +66,7 @@ $ flutter pub get
 ```dart
     ReactiveGoogleMap(
         id: "map-widget",
-        subscribeTo: ['results'],
+        subscribeTo: [KeysToSubscribe.Results],
         triggerQueryOnInit: true,
         shouldListenForChanges: true,
         destroyOnDispose: true,
