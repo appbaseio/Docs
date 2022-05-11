@@ -28,7 +28,7 @@ Example Use(s):
 ```dart
 StateProvider(
   ...
-  onChange: (prevState, nextState) {
+  onChange: (nextState, prevState) {
         // do something here
     },
   ...
