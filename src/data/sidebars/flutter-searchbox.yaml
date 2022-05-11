@@ -1,3 +1,13 @@
 - items:
   - title: Getting Started
     link: /docs/reactivesearch/flutter-searchbox/quickstart/
+  - title: API Reference
+    link: /docs/reactivesearch/flutter-searchbox/apireference/
+  - title: SearchBaseProvider
+    link: /docs/reactivesearch/flutter-searchbox/searchbaseprovider/
+  - title: SearchWidgetConnector
+    link: /docs/reactivesearch/flutter-searchbox/searchwidgetconnector/
+  - title: SearchBox
+    link: /docs/reactivesearch/flutter-searchbox/searchbox/
+  - title: StateProvider
+    link: /docs/reactivesearch/flutter-searchbox/stateprovider/

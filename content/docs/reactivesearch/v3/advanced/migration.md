@@ -1,7 +1,7 @@
 ---
-title: 'Migration Guide'
-meta_title: 'Migration Guide'
-meta_description: 'This guide will give you a brief about all the changes.'
+title: 'ReactiveSearch: Migration Guide'
+meta_title: 'ReactiveSearch: Migration Guide'
+meta_description: 'This guide will give you a brief about all the changes in the 3.x release of ReactiveSearch.'
 keywords:
     - reactivesearch
     - migrationguide
@@ -11,9 +11,9 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-With the release of version 3.0 of reactivesearch and reactivemaps, we are now fully compatible with React 16.6 and above. This release comes after the feedback we have gathered from the iterative deployment of reactivesearch in production for the dozens of our clients in the past 6–8 months. In this version, we have changed the way certain props behaved in the earlier versions. This guide will give you a brief about all the changes.
+ReactiveSearch and ReactiveMaps are fully compatible with React 16.6 and above with the 3.x releases. This release comes after the feedback we have gathered from the iterative deployment of reactivesearch in production for the dozens of our clients over the last year. In this version, we have changed the way certain props behave, and included new components. This guide will give you a brief about all the changes.
 
-## Breaking Changes
+## ReactiveSearch
 
 ### Controlled and Uncontrolled component behaviors
 
@@ -317,7 +317,9 @@ customQuery = {() => ({
 }
 ```
 
-### ReactiveMaps
+## ReactiveMaps
+
+### New Components
 
 In **v3**, we have added support for [OpenStreetMaps](https://www.openstreetmap.org) along with [GoogleMaps](https://www.google.com/maps). To optimize the final build based on the map that you would like to integrate, we are now exporting [`ReactiveGoogleMap`](/docs/reactivesearch/v3/map/reactivegooglemap/#props) and [`ReactiveOpenStreetMap`](/docs/reactivesearch/v3/map/reactiveopenstreetmap/#props) instead of `ReactiveMap`. This helps with tree shaking, by removing unnecessary imports based on the map that you are using. Most of the props for `ReactiveGoogleMap` remains same as `ReactiveMap` from `v2`, there are few additional props introduced for `ReactiveOpenStreetMap` based on its library requirement, you can check [here](/docs/reactivesearch/v3/map/reactiveopenstreetmap/#props).
 
@@ -348,3 +350,123 @@ import { ReactiveOpenStreetMap } from '@appbaseio/reactivemaps';
 > NOTE
 >
 > `GeoDistanceSlider` and `GeoDistanceDropdown` have also been updated and are now compatible with react >= v16.6. They also support same controlled and uncontrolled behaviour mentioned above in the [guide](#controlled-and-uncontrolled-component-behaviors).
+
+ReactiveMaps 3 is published 🎉 with new features and is easier than ever to setup and use. This guide talks about what has changed in 3.0.0 and how should you as a user be switching to a 3.x stable version without breaking things.
+
+
+> Behind the scenes, we have switched from using the unmaintained `react-google-maps` to a maintained rewrite in the `@react-google-maps/api` library.
+
+### Component API changes
+
+The following API changes apply to both [ReactiveGoogleMap](/docs/reactivesearch/v3/map/reactivegooglemap/) and [ReactiveOpenStreetMap](/docs/reactivesearch/v3/map/reactiveopenstreetmap/) components.
+
+1. `renderAllData` changes to `render` prop.
+    - before
+        
+        ```jsx
+        
+        renderAllData={(hits, loadMore, renderMap, renderPagination, triggerClickAnalytics, meta) => {        
+                return(
+                    <>
+                        {hits.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
+                        {renderMap()}
+                    </>
+                )
+            }
+        ```
+        
+    - after
+        
+        ```jsx
+        render={(props) => { 
+            const 
+            {
+                data: hits, // parsed hits
+                loading,
+                error,
+                promotedData,
+                customData,
+                rawData,
+                resultStats: {
+                   numberOfResults
+                   numberOfPages
+                   currentPage
+                   displayedResults
+                   time
+                   hidden
+                   promoted
+                },
+                loadMore // func to load more results
+                triggerClickAnalytics // to trigger click analytics
+                setPage,
+                renderMap // allow users to render the map component at any place
+                renderPagination // allows to render pagination component after displaying results
+            } = props;
+            return(
+                <>
+                    {data.map(hit => <pre onClick={() => triggerClickAnalytics(hit._click_id)}>{JSON.stringify(hit)}</pre>)}
+                    {renderMap()}
+                </pre>
+            )
+        }
+        ```
+		
+2. `renderData` changes to `renderItem` prop
+    - before
+        
+        ```jsx
+        renderData={result => ({
+            custom: (<div>{result.mag}</div>),
+        })}
+        
+        ```
+        
+    - after
+        
+        ```jsx
+        renderItem={result => ({
+            custom: (<div>{result.mag}</div>),
+        })}
+        ```
+
+### Script Loading
+
+ReactiveMaps now takes the responsibility of loding the script by itself instead of letting the user add a script tag in head of the site's html file.
+
+Now, just pass the secret google key to the `ReactiveBase` wrapper component using `mapKey` prop and that's it. 
+
+- before
+	```html
+	<html>
+		<head>
+			<script src="_GOOGLE_SCRIPT_LINK"></script>
+		</head>
+	</html>	
+	```
+
+- after
+	```jsx
+		<ReactiveBase
+			mapKey="<YOUR_MAP_KEY>"
+		>
+		</ReactiveBase>
+	```
+
+Additionally, pass the `mapLibraries` prop to load additional google libraries like `places`, `visualization`, and more. The following values can be set as per the [Google Maps API Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+    - `drawing`
+    - `geometry`
+    - `localContext`
+    - `places`
+    - `visualization`
+
+```jsx
+<ReactiveBase
+	mapKey="<YOUR_MAP_KEY>"
+	mapLibraries={['visualization', 'places']}
+    // ...other props
+/>
+```
+
+> It's required to pass ***`mapLibraries={['places']}`*** when using either GeoDistanceDropdown or GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
+
+

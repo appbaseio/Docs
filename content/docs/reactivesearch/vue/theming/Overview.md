@@ -60,3 +60,7 @@ You can overwrite the aforementioned default styles by providing the respective 
   <Component2 .. />
 </ReactiveBase>
 ```
+
+### UI Customization Guide
+
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).

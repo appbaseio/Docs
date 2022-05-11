@@ -37,7 +37,7 @@ createSuggestionsPlugin(
     - **enableTelemetry** `Boolean`when set to `false`, it disables telemetry. Defaults to `true`.
     - **settings** `Object` an object consisting of the properties to control your search experience. Read more [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference/#settings-properties).
 
-    | Property     | Type | Required | Description |
+    | <p style="margin: 0px;" class="table-header-text">Property</p>     | <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | <p style="margin: 0px;" class="table-header-text">Description</p> |
     | -------- | --------------------------- | -------- |------|
     | url | `String`                      | `true`    | Appbase.io cluster URL.  |
     | app | `String`                      | `true`    | appbase.io search index name as displayed in the dashboard.  |

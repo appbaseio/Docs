@@ -79,6 +79,8 @@ Example uses:
     sort the list items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the list by the frequency of count value, most first.
 -   **defaultValue** `string` [optional]
     pre-select an item from the list.
+-   **value** `string` [optional]
+    sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	
 -   **selectAllLabel** `String` [optional]
     add an extra `Select all` item to the list with the provided label string.
 -   **showRadio** `Boolean` [optional]
@@ -337,6 +339,35 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Events
+
+- **change**
+  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+
+  ```jsx
+  <template>
+      <single-list
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: ""
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 -   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.

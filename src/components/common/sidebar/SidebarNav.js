@@ -61,7 +61,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 									<SidebarLink
 										link={group.items[0].link}
 										title={group.group}
-										linkClasses="midgrey hover-blue-l2 link"
+										linkClasses="link-container hover-blue-l2 link"
 									/>
 								) : (
 									group.group
@@ -76,7 +76,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 								linkClasses={` link ${
 									location.pathname.startsWith('/docs/reactivesearch')
 										? 'sidebarlink-active blue fw6'
-										: 'midgrey hover-blue-l2'
+										: 'link-container hover-blue-l2'
 								}`}
 							/>
 							{location.pathname.startsWith('/docs/reactivesearch/') ? (
@@ -89,7 +89,19 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 												location.pathname ===
 												'/docs/reactivesearch/gettingstarted/'
 													? 'sidebarlink-active blue fw6'
-													: 'midgrey hover-blue-l2'
+													: 'link-container hover-blue-l2'
+											}`}
+										/>
+									</li>
+									<li>
+										<SidebarLink
+											link="/docs/reactivesearch/ui-customization/"
+											title="UI Customization"
+											linkClasses={` link ${
+												location.pathname ===
+												'/docs/reactivesearch/ui-customization/'
+													? 'sidebarlink-active blue fw6'
+													: 'link-container hover-blue-l2'
 											}`}
 										/>
 									</li>

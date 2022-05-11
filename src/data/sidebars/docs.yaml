@@ -35,6 +35,61 @@
                   title: "API Reference"
             - link: /docs/search/rules/
               title: "Query Rules"
+            - link: /docs/search/scripts/
+              title: "ReactiveSearch Scripts"
+              items:
+                - link: /docs/search/scripts/getting-started
+                  title: "Getting Started"
+                - link: /docs/search/scripts/examples
+                  title: "Code Examples"
+      - group: "ReactiveSearch Pipelines"
+        icon: search
+        items:
+          - link: /docs/pipelines/concepts/
+            title: Pipeline Concepts
+            items:
+              - title: Pipeline Route Matching Process
+                link: /docs/pipelines/execution-process
+              - title: Write to Global Context
+                link: /docs/pipelines/concepts/write-to-global-context
+              - title: Pass data between stages
+                link: /docs/pipelines/concepts/pass-data-between-stages
+              - title: Environments for stage
+                link: /docs/pipelines/concepts/envs-for-stage
+              - title: Error Handling in stages
+                link: /docs/pipelines/concepts/error-handling
+              - title: Pass inputs to stages
+                link: /docs/pipelines/concepts/pass-inputs-to-stage
+              - title: Run stage asynchronously
+                link: /docs/pipelines/concepts/run-stage-async
+              - title: Wait for other stages
+                link: /docs/pipelines/concepts/wait-for-other-stage
+              - title: Pre-Defined vs User-Defined Stages
+                link: /docs/pipelines/concepts/pre-defined-vs-user-defined
+              - title: Global Environments
+                link: /docs/pipelines/concepts/global-envs
+          - link: /docs/pipelines/developing/
+            title: Developing/Debugging Pipelines
+            items:
+              - link: /docs/pipelines/developing/deploy-with-github-action
+                title: Deploy a pipeline with GitHub Action
+          - link: /docs/pipelines/how-to/
+            title: "How To Guides"
+            items:
+              - link: /docs/pipelines/how-to/add-external-search-results
+                title: Add External Search Results
+              - link: /docs/pipelines/how-to/create-an-indexing-pipeline
+                title: Create An Indexing Pipeline
+              - link: /docs/pipelines/how-to/handle-authorization-effectively
+                title: Handle Authorization Effectively
+              - link: /docs/pipelines/how-to/add-side-effect-search-query
+                title: "Add Side Effect"
+              - link: /docs/pipelines/how-to/knn-response-stage
+                title: "kNN response stage"
+              - link: /docs/pipelines/how-to/relevant-search-stages
+                title: Relevant Search Stages
+              - link: /docs/pipelines/how-to/error-handling-in-pipeline
+                title: Error handling in Pipeline
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics

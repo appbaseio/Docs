@@ -17,7 +17,7 @@ const Box = ({ children, to, href, className, elevation, radius, onWhite }) => {
         return (
             <Link
                 to={to}
-                className={`${baseBoxClass} ${shadowClasses} ${(onWhite ? `on-white` : ``)} ${radiusClasses} db ${className}`}
+                className={`box-container ${shadowClasses} ${(onWhite ? `on-white` : ``)} ${radiusClasses} db ${className}`}
             >
                 {children}
             </Link>
@@ -27,7 +27,7 @@ const Box = ({ children, to, href, className, elevation, radius, onWhite }) => {
         return (
             <a
                 href={href}
-                className={`${baseBoxClass} ${shadowClasses} ${(onWhite ? `on-white` : ``)} ${radiusClasses} db ${className}`}
+                className={`box-container ${shadowClasses} ${(onWhite ? `on-white` : ``)} ${radiusClasses} db ${className}`}
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -37,7 +37,7 @@ const Box = ({ children, to, href, className, elevation, radius, onWhite }) => {
     } else {
         // non-link boxes
         return (
-            <div className={`${baseBoxClass} ${shadowClasses} ${radiusClasses} ${className}`}>
+            <div className={`box-container ${shadowClasses} ${radiusClasses} ${className}`}>
                 {children}
             </div>
         )

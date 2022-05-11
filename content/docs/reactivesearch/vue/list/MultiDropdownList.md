@@ -86,6 +86,8 @@ Example uses:
     -   `desc` sorts the list in the descending order of the term. Defaulted to `count`.
 -   **defaultValue** `Array` [optional]
     pre-select one or more options from the dropdown list. Accepts an `Array` object containing the items that should be selected. It is important for the passed value(s) exactly match with the field value(s) as stored in appbase.io app.
+-   **value** `Array<String>` [optional]
+    sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	    
 -   **queryFormat** `String` [optional]
     queries the selected items from the list in one of two modes: `or`, `and`.
     -   Defaults to `or` which queries for results where any of the selected list items are present.
@@ -248,7 +250,7 @@ export default {
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **showLoadMore** `Boolean` [optional]
     defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
-
+-   **isOpen** `Boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 ## Demo
 
 <br/>
@@ -373,6 +375,36 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Events
+
+
+- **change**
+  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+
+  ```jsx
+  <template>
+      <multi-dropdown-list
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: []
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 -   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.

@@ -69,6 +69,11 @@ Example uses:
     and: ['CategoryFilter', 'SearchFilter']
   }"
 	:URLParams="false"
+  :defaultSuggestions="[
+		{ label: 'Songwriting', value: 'Songwriting' },
+		{ label: 'Musicians', value: 'Musicians' },
+	]"
+  :enableDefaultSuggestions="true"
 />
 ```
 
@@ -199,6 +204,12 @@ Example uses:
 
 `Note:` Check the above concept in action over [here](https://codesandbox.io/s/musing-allen-qc58z).
 
+-   **defaultSuggestions** `Array` [optional]
+    preset search suggestions to be shown on focus when the search box does not have any search query text set. Accepts an array of objects each having a **label** and **value** property.
+
+-   **enableDefaultSuggestions** `bool` [optional]
+    Defaults to `true`. When set to `false`, initial suggestions(including recent, popular, index, or defaultSuggestions) are not displayed when the query value is empty.    
+    
 - **filterLabel** `String` [optional]
   An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 - **clearIcon** `JSX` [optional]
@@ -735,7 +746,7 @@ The `suggestions` parameter receives all the unparsed suggestions from elasticse
 
 ## Events
 
-- **change** `function` [optional]
+- **change**
   is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
 
   ```jsx
@@ -769,7 +780,7 @@ The `suggestions` parameter receives all the unparsed suggestions from elasticse
 
 > Note:
 >
-> If you're using the controlled behavior than it's your responsibility to call the `triggerQuery` method to update the query i.e execute the search query and update the query results in connected components by `react` prop. It is not mandatory to call the `triggerQuery` in `onChange` you can also call it in other input handlers like `onBlur` or `onKeyPress`. The `triggerQuery` method accepts an object with `isOpen` property (default to `false`) that can be used to control the opening state of the suggestion dropdown.
+> If you're using the controlled behavior than it's your responsibility to call the `triggerQuery` method to update the query i.e execute the search query and update the query results in connected components by `react` prop. It is not mandatory to call the `triggerQuery` in `@change` event handler you can also call it in other input handlers like `onBlur` or `onKeyPress`. The `triggerQuery` method accepts an object with `isOpen` property (default to `false`) that can be used to control the opening state of the suggestion dropdown.
 
 - **query-change**
   is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.

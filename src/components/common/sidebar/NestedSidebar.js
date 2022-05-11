@@ -18,10 +18,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
 		} else if (value.value === 'Atlas Search') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
-		}
-		else if (value.value === 'Algolia Autocomplete') {
+		} else if (value.value === 'Algolia Autocomplete') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/autocomplete-plugin/quickstart/`;
-		}else if (value.value === 'React - v3') {
+		} else if (value.value === 'React - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v2/overview/QuickStart/`;
@@ -31,6 +30,8 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/react-searchbox/quickstart/`;
 		} else if (value.value === 'React Native Searchbox') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/react-native-searchbox/quickstart/`;
+		} else if (value.value === 'Flutter Searchbox UI') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/flutter-searchbox-ui/quickstart/`;
 		} else if (value.value === 'Flutter Searchbox') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/flutter-searchbox/quickstart/`;
 		} else if (value.value === 'Searchbase Dart') {
@@ -72,6 +73,9 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbase-dart')) {
 			return 'Searchbase Dart';
 		}
+		if (location.pathname.startsWith('/docs/reactivesearch/flutter-searchbox-ui')) {
+			return 'Flutter Searchbox UI';
+		}
 		if (location.pathname.startsWith('/docs/reactivesearch/flutter-searchbox')) {
 			return 'Flutter Searchbox';
 		}
@@ -98,7 +102,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 								linkClasses={
 									location.pathname === item.link
 										? 'link sidebarlink-active blue fw6'
-										: 'midgrey hover-blue-l2 link'
+										: 'link-container hover-blue-l2 link'
 								}
 								title={item.title}
 								link={item.link}
@@ -120,7 +124,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 									<SidebarLink
 										link={group.items[0].link}
 										title={group.group}
-										linkClasses="link sidebarlink-active blue fw6"
+										linkClasses="link-container link sidebarlink-active blue fw6"
 									/>
 								</Fragment>
 							) : (
@@ -138,7 +142,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 							<SidebarLink
 								link={group.items[0].link}
 								title={group.group}
-								linkClasses="midgrey hover-blue-l2 link"
+								linkClasses="link-container hover-blue-l2 link"
 							/>
 						) : (
 							group.group
@@ -160,10 +164,11 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Vue Searchbox',
 					'React Native Searchbox',
 					'Flutter Searchbox',
+					'Flutter Searchbox UI',
 					'Searchbase',
 					'Searchbase Dart',
 					'Atlas Search',
-					'Algolia Autocomplete'
+					'Algolia Autocomplete',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

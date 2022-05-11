@@ -7,11 +7,12 @@ import { Spirit } from '../../styles/spirit-styles';
 import { SidebarNav } from '../../components/common/sidebar';
 import { PrevNextSection } from '../../components/common/prev-next';
 import { Icon, TOC } from '../../components/common';
+import { Helmet } from 'react-helmet';
 
 const getGitHubLink = absoluteFilePath => {
 	const splitPath = absoluteFilePath.split('/content')[1];
 
-	return `https://github.com/appbaseio/Docs/tree/v2/content${splitPath}`;
+	return `https://github.com/appbaseio/Docs/tree/dev/content${splitPath}`;
 };
 
 class Post extends React.Component {
@@ -34,7 +35,6 @@ class Post extends React.Component {
 	render() {
 		const { location, data } = this.props;
 		const post = data.markdownRemark;
-
 		const githubLink = getGitHubLink(post.fileAbsolutePath);
 
 		const sideBarLayout = {};
@@ -83,6 +83,12 @@ class Post extends React.Component {
 
 		return (
 			<>
+				<Helmet>
+					<meta charSet="utf-8" />
+					<meta name="title" content={`${post.frontmatter.meta_title}`} />
+					<meta name="description" content={`${post.frontmatter.meta_description}`} />
+					<link rel="canonical" href={`${location.protocol}//${location.host}${location.pathname}`} />
+				</Helmet>
 				<Layout>
 					<div
 						className={`${Spirit.page.xl} flex flex-column flex-row-ns ${
@@ -109,13 +115,13 @@ class Post extends React.Component {
 						) : null}
 						<div>
 							<div
-								className={`w-100 mw-content bg-white shadow-2 br4 ${
+								className={`w-100 mw-content shadow-2 br4 ${
 									this.state.isToggleOn ? `` : ` br--bottom`
 								}`}
 							>
 								<article className="flex-auto pa5 pa8-m pa15-l pt10-ns pb10-ns pt10-l pb10-l relative">
 									<div className="flex content-between items-baseline justify-between no-wrap">
-										<h1 className={`${Spirit.h1} darkgrey`}>
+										<h1 className={`${Spirit.h1}`}>
 											{post.frontmatter.title}
 										</h1>
 										{githubLink && (

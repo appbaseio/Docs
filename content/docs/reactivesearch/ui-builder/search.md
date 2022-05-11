@@ -1,7 +1,7 @@
 ---
 title: 'Search UI Builder'
 meta_title: 'NoCode UI Builder For Search'
-meta_description: 'Visually build a search UI with NoCode. Export to your favorite E-Commerce Platform or your own site.'
+meta_description: 'Visually build a search UI with no-code. Build e-commerce search, site search and geo search UIs, export to your platform of choice - Shopify, Webflow, Wordpress, Wix and more.'
 keywords:
     - ui-builder
     - ui-integrations
@@ -15,7 +15,7 @@ nestedSidebar: 'ui-builder-reactivesearch'
 ## Overview
 
 
-[Appbase.io](http://appbase.io) now comes with **UI Builder** - a built-in visual search UI builder that gives developers and business teams freedom to alter search layout and settings in realtime. This WYSIWYG storefront search preview can be easily integrated with your favorite E-Commerce platform or site.
+[Appbase.io](http://appbase.io)'s **UI Builder** is a built-in visual search UI builder that gives developers and business teams the freedom to configure search layout, relevance and styling instantly with no-code. It also comes with an inline code editor and a live preview to modify the configuration presets with React code. This WYSIWYG storefront search preview can be easily integrated with your favorite E-Commerce platform or site.
 
 You can watch this 5-mins video to follow along the process of creating a storefront search and installing into a Shopify store.
 
@@ -47,25 +47,55 @@ You can read more about the different preferences and how it works over [here](/
 
 The options in the `Layout and Design` tab will let you style and create a design for your search results and search results page.
 
-![Search Layout](https://imgur.com/fgxvpxh.png)
+#### Search Layout
 
-Starting with the `Search Layout` tab, you can select the overall look for your search page. Currently, you can select `Classic`, which has clearly defined boxes for filters and facets making it a great fit for multi-category stores, or `Minimal` which delivers a streamlined view preferred by fashion and jewelery retailers.
+![Search Layout](https://i.imgur.com/UWplgup.png)
 
-![Style Presets](https://imgur.com/VZpKmjp.png)
+Starting with the **Search Layout** tab, you can select a theme for deciding the baseline look for your search page. You can select from:
+1. `Classic` theme has clearly defined boxes for filters and facets making it a great fit for multi-category stores,
+2. `Minimal` theme is a minimalistic version of classic,
+3. `Geo` theme provides the building blocks for creating a geo search UI.
 
-The next tab, `Style Presets`, will let you set the font family and color preferences for the storefront search.
+---
 
-![Custom CSS](https://imgur.com/BhhZUr9.png)
+#### Branding
 
-In `Custom CSS`, you will be able to set your CSS to control the look and feel of the search results page on a more granular level by adding various classes. We've also given some examples you copy-paste in the editor. All these changes will be updated in realtime and you can have a look at them in the preview.
+![Branding](https://i.imgur.com/IB4m7lN.png)
+
+The next tab is **Branding**. Here, you can set your business logo to show to your end-users.
+
+![Preview with branding logo set](https://i.imgur.com/neExF37.png)
+
+Once set, the logo then shows up as per the configuration on your search page. The above image shows a preview of how this works.
+
+---
+
+#### Style Presets
+
+
+![Style Presets](https://i.imgur.com/qbb4VkJ.png)
+
+The **Style Presets** tab lets you set the font family and color preferences for your site search / e-commerce UI.
+
+---
+#### Custom CSS
+
+![Custom CSS](https://i.imgur.com/vN9WK9D.png)
+
+The **Custom CSS** tab lets set your CSS to control the look and feel of the search results page on a more granular level by adding various classes. We've also given some examples that you can copy/paste in the editor. Any classes you apply will reflect instantly in the preview.
 
 ### Search Settings
 
 In the `Search Settings` tab, you will be able to define the behavior for search, filters, and results.
 
+#### Search
+
 ![Search Tab](https://i.imgur.com/bNi4EYS.png)
 
 In the `Search` tab, you can configure the preferences and search settings. Here the preferences are related to suggestions and enabling of voice search and the search settings are regarding the fields to search on, field weights to apply, typo tolerance and synonyms settings. You can read more about the available options over [here](/docs/search/relevancy/#search-settings).
+
+---
+#### Filters
 
 ![Filters](https://imgur.com/5AxRfYG.png)
 
@@ -75,18 +105,32 @@ In the `Filters` tab, you can set the filters that should appear as facets in th
 
 You can also add custom filters in this view. Click on the **Add Filter** button. In the **Data Field** dropdown, select one of the fields from your index. Give it a title and save. The filter options will be populated by data present in the attributes.
 
+You can add filters for either:
+1. **List** (good for text data that needs to be shown as facets),
+2. **Range** (good for displaying price or other numeric information as facets), or 
+3. **Date** (good for displaying date information)
+
+---
+
+#### Results
+
 ![Results Tab](https://imgur.com/39icKEZ.png)
 
 The `Results` tab gives you control over the search UI for your store. It supports the following options:
 
 - Enable or Disable **Popular Suggestions** along with the search dropdown,
 - Show **Active Filters** on top of the search results page,
-- **Show Results as** allows choosing whether to show the results in grid or list view,
+- **Show Results as** allows choosing whether to show the results in grid or list or map view,
 - Enable **Results View Switcher** to allow end users to pick between grid and list view in the search UI,
+- When using the Geo layout, you can choose between using GoogleMap or OpenStreetMap for your search UI,
 - Toggle **Infinite Scroll** or **Pagination** on your search result pages,
+- Set sort options picker to allow your end-users to sort search results by,
+- Show highlighting of matching content in the search results with **Enable results highlighting**,
 - Select what fields appear on the Product Cards in the search results. You will be able to set data for **Product Title**, **Product Description**, **Product Price**, **Product Image**, and **Redirect URL**.
 
+---
 
+#### Custom Messages
 
 Custom Messages tab lets you customize the text and messaging that appears at various points of the search journey for E-Commerce visitors. You can customize these messages.
 
@@ -103,8 +147,18 @@ Custom Messages tab lets you customize the text and messaging that appears at va
 
 While some of these messages are on-screen for a brief period of time, it is considered a good Ux practice to have them set up. They can be used to guide your users to finding relevant search results.
 
+### Edit Code Inline
 
-### Exporting Code to Shopify
+![Edit code inline](https://i.imgur.com/Qc0R5V7.png)
+
+Starting January 2022, you can edit your saved search configuration inline in a codesandbox.io editor.
+
+Codesandbox provides a live preview of the current code - starting with the code generated by the UI Builder search configuration. You can fork this sandbox and persist your changes by updating its ID. When you open your Search UI inline editor next time, you will start off from the saved state.
+
+Codesandbox also supports a direct integration with Github as well as code deployment with Netlify and Vercel, making it a perfect place to edit your code changes.
+
+
+### Export Code to Shopify
 
 ![Export code](https://imgur.com/v3Pv4gz.png)
 
@@ -127,7 +181,7 @@ Once installed, you can head to the store and see the appbase.io generated searc
 **Image:** Search interface in list view
 
 
-### Exporting Code to other Platforms
+### Export Code to other Platforms
 
 While we offer a first-class support for Shopify, one can export the generated storefront search code to any other platform of choice, such as Magento, Wordpress, Webflow, Wix. You can also install into a site.
 

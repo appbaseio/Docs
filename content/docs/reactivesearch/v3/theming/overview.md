@@ -112,3 +112,7 @@ You can overwrite the aforementioned default styles by providing the respective 
 ```
 
 Check out the stories for `themePreset` set to `dark` on <a href="https://opensource.appbase.io/playground/?knob-themePreset=dark&selectedKind=theme&selectedStory=Dark%20Preset%20with%20ResultList&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs" target="_blank">playground</a>.
+
+### UI Customization Guide
+
+Looking to customize styles, rendering of a UI component or bring your own design system? See the [ReactiveSearch UI customization guide](https://docs.appbase.io/docs/reactivesearch/ui-customization/).

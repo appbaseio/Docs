@@ -30,14 +30,16 @@ The below props are only needed if you're not using the `SearchBox` component un
     URL for the Elasticsearch cluster
 
 -   **credentials** `string` [Required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
+    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
 -   **appbaseConfig** `Object`
     allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
     -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
     -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+    -   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
@@ -562,6 +564,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`triggerCustomQuery`** `(options): Promise<any>` can be used to trigger the `defaultQuery` programmatically
     -   **`setDataField`** `( dataField: string | Array<string | DataField>, options?: Options ) => void`
     -   **`setValue`** `( value: any, options?: Options ) => void` can be used to set the `value` property
+    -   **setCategoryValue** `(categoryValue: string, options?: Options) => void`  can be used to set the `categoryValue` property.
     -   **`setSize`** `( size: number, options?: Options ) => void` can be used to set the `size` property
     -   **`setFrom`** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
     -   **setAfter** `(after: object, options?: Options) => void`
@@ -686,6 +689,42 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     ...
 />
 ```
+
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
+
+    <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox            
+            id="search-component"
+            enterButton={true}
+        />
+    ```
+-   **renderEnterButton** `Function` [optional] renders a custom jsx markup for the enter button. Use in conjunction with `enterButton` prop set to `true`.
+
+    <img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox
+            id="search-component"
+            enterButton
+            renderEnterButton={clickHandler => (
+                <div
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'stretch',
+                    }}
+                >
+                    <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                        🔍 Search
+                    </button>
+                </div>
+            )}
+        />
+    ```
+
+
 ### Customize style
 
 -   **innerClass** `Object` `SearchBox` component supports an `innerClass` prop to provide styles to the sub-components of `SearchBox`. These are the supported keys:
@@ -695,6 +734,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     -   `list`
     -   `recent-search-icon`
     -   `popular-search-icon`
+    -   `enter-button`
 
 -   **className** `String`
     CSS class to be injected on the component container.

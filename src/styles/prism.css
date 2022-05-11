@@ -1,31 +1,31 @@
-@import "colors.css";
+@import 'colors.css';
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
 	padding: 2.4rem 3.2rem;
 	margin: 0;
 	overflow: auto;
 	border-radius: 8px;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    border: none;
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+	border: none;
 	background: #2a3644;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .3em .4em;
-	border-radius: .3em;
+:not(pre) > code[class*='language-'] {
+	padding: 0.3em 0.4em;
+	border-radius: 0.3em;
 	white-space: normal;
 	background: var(--whitegrey);
 	text-shadow: none;
 	color: var(--darkgrey);
-    font-size: 0.9em;
+	font-size: 0.9em;
 }
 
-a > code[class*="language-"] {
+a > code[class*='language-'] {
 	color: var(--blue);
 }
 
@@ -33,7 +33,7 @@ a > code[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: rgba(255,255,255,0.4);
+	color: rgba(255, 255, 255, 0.4);
 }
 
 .token.punctuation {
@@ -41,7 +41,7 @@ a > code[class*="language-"] {
 }
 
 .namespace {
-	opacity: .7;
+	opacity: 0.7;
 }
 
 .token.property,
@@ -103,7 +103,6 @@ a > code[class*="language-"] {
 	cursor: help;
 }
 
-
 /* Code block titles
 /* ----------------------------------------------------------------------- */
 
@@ -118,15 +117,161 @@ Usage, in Markdown files:
 */
 
 .gatsby-code-title {
-    position: relative;
-    z-index: 100;
-    width: 100%;
-    margin-bottom: -8px !important;
-    padding: 8px 15px;
-    color: rgba(255,255,255,0.65);
-    font-size: 1.3rem;
-    font-family: Menlo, Courier, monospace;
-    background: #222c37;
-    border-radius: 8px 8px 0 0;
-    user-select: none;
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	margin-bottom: -8px !important;
+	padding: 8px 15px;
+	color: rgba(255, 255, 255, 0.65);
+	font-size: 1.3rem;
+	font-family: Menlo, Courier, monospace;
+	background: #222c37;
+	border-radius: 8px 8px 0 0;
+	user-select: none;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	--bg: white;
+	--textNormal: #222;
+	--textTitle: #222;
+	--textLink: blue;
+	--hr: hsla(0, 0%, 0%, 0.2);
+
+	color: rgb(52, 63, 68);
+	background-color: var(--bg);
+	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-size: 1.35rem;
+}
+
+body.dark {
+	-webkit-font-smoothing: antialiased;
+	background: #082429;
+	/* #2c3031  */
+	background: darkslategray;
+	color: #dfdfdf;
+	--bg: darkslategray;
+	--textNormal: rgba(255, 255, 255, 0.88);
+	--textTitle: white;
+	--textLink: yellow;
+	--hr: hsla(0, 0%, 100%, 0.2);
+	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-size: 1.35rem;
+}
+
+body.dark div span p h2 h3 th a {
+	color: #dfdfdf !important;
+}
+
+body.light div span p h2 h3 th a {
+	color: #000 !important;
+}
+
+body.dark h1,
+body.dark .table-header-text {
+	color: #efefef;
+}
+
+body.light h1,
+body.light .table-header-text {
+	color: #000 !important;
+}
+
+body.light header,
+body.light main {
+	background: #fff;
+}
+
+body.dark header,
+body.dark main {
+	background: #082429;
+}
+
+/* body.dark .toc-list-container ol a {
+	color: var(--lightwhite);
+} */
+
+body.light .toc-list-container ol a {
+	color: var(--midlightgrey);
+}
+
+body.dark .toc-list-container .is-active-link {
+	color: var(--darkwhite);
+}
+
+body.light .toc-list-container .is-active-link {
+	color: var(--darkgrey);
+}
+
+body.dark .link-container,
+body.dark .toc-list-container ol a {
+	color: var(--lightwhite);
+}
+
+body.light .link-container {
+	color: var(--midgrey);
+}
+
+body.dark .box-container {
+	background: #2a3644;
+}
+
+body.light .box-container {
+	background: #fff;
+}
+
+body.dark .home-input,
+.home-search {
+	background: #3a4246;
+	color: #fff;
+}
+
+body.light .home-input {
+	background: #e5eff5;
+	color: #000;
+}
+
+body.light .home-search {
+	background: #fff;
+	color: var(--midgrey);
+}
+
+body.light .search-result:hover {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .search-result:hover {
+	background: #5e6061;
+}
+
+body.light .highlighted-suggestion {
+	background: color-mod(var(--whitegrey) l(+4%));
+}
+
+body.dark .highlighted-suggestion {
+	background: #5e6061;
+}
+
+body.light .sticky-nav {
+	background: #f8fafc !important;
+}
+
+body.dark .sticky-nav {
+	background: #082429 !important;
+}
+
+code {
+	color: black;
+}
+
+pre > code {
+	color: white;
+}
+
+.gatsby-remark-prismjs-copy-button-container {
+	margin: -12px 0px 0px 0px !important;
+}
+
+.gatsby-remark-prismjs-copy-button {
+	margin-right: 15px;
 }

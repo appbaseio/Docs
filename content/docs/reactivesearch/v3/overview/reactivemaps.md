@@ -13,6 +13,8 @@ nestedSidebar: 'web-reactivesearch'
 
 ReactiveMaps is a complimentary library to ReactiveSearch. Map components require ReactiveSearch architecture and its root component to begin with. If you wish to build anything on reactivemaps, you'll need to install reactivesearch along with it.
 
+> Existing users can checkout the [migration guide](https://docs.appbase.io/docs/reactivesearch/v3/advanced/migration/#reactivemaps) to switch to the newest version of ReactiveMaps library.
+
 ### Step 0: Create Boilerplate
 
 In this section, we will create a search UI based on an _earthquake dataset_ with ReactiveSearch components.
@@ -132,7 +134,7 @@ Next, we will look at the [**ReactiveGoogleMap**](/docs/reactivesearch/v3/map/re
 	react={{
 		and: 'places',
 	}}
-	renderData={result => ({
+	renderItem={result => ({
 		label: result.mag,
 	})}
 />
@@ -194,7 +196,7 @@ class App extends Component {
 						react={{
 							and: 'places',
 						}}
-						renderData={result => ({
+						renderItem={result => ({
 							label: result.mag,
 						})}
 					/>

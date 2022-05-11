@@ -65,7 +65,7 @@ Example uses:
 
 <br />
 
-|              **queryFormat** | **Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)** |
+|              <p style="margin: 0px;" class="table-header-text">queryFormat</p> | <p style="margin: 0px;" class="table-header-text">Representation as [elasticsearch date](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html#built-in-date-formats)</p> |
 | ---------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | `epoch_millis` **(default)** |                                                                       `epoch_millis`                                                                       |
 |               `epoch_second` |                                                                       `epoch_second`                                                                       |
@@ -82,7 +82,7 @@ Example uses:
 
 <br />
 
-|    **Key** |                                             **Explanation**                                              |
+|   <p style="margin: 0px;" class="table-header-text">Key</p> |                                             <p style="margin: 0px;" class="table-header-text">Explanation</p>                                             |
 | ---------: | :------------------------------------------------------------------------------------------------------: |
 |     `item` |    The wrapping [Item](http://docs.nativebase.io/Components.html#Form) component from **native-base**    |
 |     `icon` |    [Icon](http://docs.nativebase.io/Components.html#icon-def-headref) component from **native-base**     |

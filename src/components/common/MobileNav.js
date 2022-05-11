@@ -5,6 +5,7 @@ import Search from './search/HomeSearch';
 import Icon from './Icon';
 
 import MobileLinks from './MobileLinks';
+import ThemeSwitch from './themeSwitch';
 
 const getValue = () => {
 	if (globalHistory) {
@@ -12,7 +13,7 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
-        if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
+		if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/autocomplete-plugin')) {
@@ -41,6 +42,9 @@ const getValue = () => {
 		}
 		if (path && path.startsWith('/docs/reactivesearch/searchbase-dart')) {
 			return 'Searchbase Dart';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/flutter-searchbox-ui')) {
+			return 'Flutter Searchbox UI';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/flutter-searchbox')) {
 			return 'Flutter Searchbox';
@@ -73,6 +77,8 @@ const getFileName = value => {
 			return 'vue-searchbox-reactivesearch';
 		case 'Flutter Searchbox':
 			return 'flutter-searchbox';
+		case 'Flutter Searchbox UI':
+			return 'flutter-searchbox-ui';
 		case 'Searchbase Dart':
 			return 'searchbase-dart';
 		case 'UI Builder':
@@ -120,6 +126,7 @@ class MobileNav extends React.Component {
 	state = {
 		open: false,
 		rs: getValue(),
+		theme: typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light',
 	};
 
 	handleSidebar = () => {
@@ -134,22 +141,34 @@ class MobileNav extends React.Component {
 		});
 	};
 
+	handleClick = (val) => {
+		const { setThemeType } = this.props;
+		setThemeType(val);
+		this.setState({
+			theme: val,
+		});
+	}
+
 	render() {
-		const { open, rs } = this.state;
+		const { open, rs, theme } = this.state;
+		
 		return (
 			<div className="mobile-nav">
 				<div onClick={this.handleSidebar}>
 					<Icon name="hamburger" className="hamburger" />
 				</div>
-				<div className={`mobile-sidebar pa5 pb10 ${open ? 'open' : ''}`}>
+				<div 
+					className={`mobile-sidebar pa5 pb10 ${open ? 'open' : ''}`}
+					style={{background: theme === 'dark' ? '#082429' : 'white'}}
+				>
 					<div className="mobile-nav-container">
 						{/* <div className="relative home-search-container mb5">
 							<Search />
 						</div> */}
-						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns darkgrey">
+						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
 							Guides
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							Step wise guide from making your search app to securing it.
 						</p>
 						<div className="mt5 mb3">
@@ -157,22 +176,23 @@ class MobileNav extends React.Component {
 								<MobileLinks file="docs" />
 							</div>
 						</div>
-						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 darkgrey">
+						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0">
 							APIs and Integrations
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
-							UI Libraries, clients and interactive examples for working with appbase.io
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
+							UI Libraries, clients and interactive examples for working with
+							appbase.io
 						</p>
 						<div className="mt5 mb3">
 							<div className="mobile-links-container">
 								<MobileLinks file="api-reference" />
 							</div>
 						</div>
-						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 darkgrey between">
-							<span className="middarkgrey">ReactiveSearch {getVersionName(rs)}</span>
+						<h2 className="f4 mt6 mb2 lh-h5 lh-h4-l fw6 ma0 pa0 between">
+							<span>ReactiveSearch {getVersionName(rs)}</span>
 							<Icon className="dropdown-content-icon ml2" name={getIconName(rs)} />
 						</h2>
-						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns middarkgrey mb2">
+						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							Read about ReactiveSearch Libraries and how to integrate and adapt it in
 							your app.
 						</p>
@@ -188,7 +208,8 @@ class MobileNav extends React.Component {
 								'Vue SearchBox',
 								'Searchbase Dart',
 								'Flutter Searchbox',
-								'Algolia Autocomplete'
+								'Flutter Searchbox UI',
+								'Algolia Autocomplete',
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"
@@ -205,7 +226,7 @@ class MobileNav extends React.Component {
 							<div className="mobile-links-container">
 								<MobileLinks file={getFileName(rs)} />
 							</div>
-						</div>
+						</div>						
 						<div className="sticky-cta pa3 pl5 pr5">
 							<a
 								target="_blank"
@@ -215,6 +236,7 @@ class MobileNav extends React.Component {
 							>
 								Appbase.io
 							</a>
+							{typeof window !== 'undefined' && window.innerWidth <= 768 ? <ThemeSwitch onClick={val => this.handleClick(val)}/> : null}						
 							<a
 								target="_blank"
 								rel="noopener noreferrer"

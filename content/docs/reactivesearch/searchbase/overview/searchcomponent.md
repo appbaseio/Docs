@@ -42,14 +42,16 @@ const searchComponent = new SearchComponent(properties);
     URL for the Elasticsearch cluster
 
 -   **credentials** `string` [Required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard. If you are not using an appbase.io cluster, credentials may not be necessary - although having open access to your Elasticsearch cluster is not recommended.
+    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
 -   **appbaseConfig** `Object`
     allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
-    -   **recordAnalytics** `boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+    -   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
     -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+    -   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
     -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
     -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
@@ -591,6 +593,8 @@ The following methods of `SearchComponent` class can be used to set or update th
     can be used to set the custom `results`
 -   **setValue** `(value: string, options?: Options) => void`
     can be used to set the `value` property
+-   **setCategoryValue** `(categoryValue: string, options?: Options) => void`
+    can be used to set the `categoryValue` property.
 
 -   **setReact** `(react: Object, options?: types.Options): void`
     can be used to set the `react` property
@@ -706,6 +710,7 @@ These are the properties that can be subscribed for the changes:
 -   `requestStatus`
 -   `error`
 -   `value`
+-   `categoryValue`
 -   `query`
 -   `micStatus`
 -   `dataField`

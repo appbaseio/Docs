@@ -902,4 +902,4 @@ https://github.com/appbaseio/flutter-searchbox-typeahead-example
 
 
 ## API Reference
-You can check out the docs for API Reference over [here](https://pub.dev/documentation/flutter_searchbox/latest/).
+Check out the docs for API Reference over [here](https://pub.dev/documentation/flutter_searchbox/latest/).

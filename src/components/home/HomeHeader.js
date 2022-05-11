@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
 import { Link } from 'gatsby';
-import { Button } from '@appbaseio/designkit';
+// import { Button } from '@appbaseio/designkit';
 import { NavBar } from '../common';
 import { Spirit } from '../../styles/spirit-styles';
 
@@ -18,10 +18,12 @@ class HomeHeader extends React.Component {
 
 	render() {
 		const { open } = this.state;
+		const { setThemeType, themeType } = this.props;
+		
 		return (
 			<div className="gh-bg-home bb b--whitegrey">
 				<header className="top-0 left-0 right-0 bg-white fixed z-999">
-					<NavBar theme="dark" />
+					<NavBar theme="dark" setThemeType={setThemeType} themeType={themeType}/>
 				</header>
 				<div
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
@@ -37,27 +39,20 @@ class HomeHeader extends React.Component {
 							Appbase.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
 							instantly from your favorite sources. Create relevance visually. Build delightful search experiences with our low code UI kits.
 						</p>
-						<div className="mt8">
-							<Button
-								success
-								uppercase
-								shadow
-								href="https://dashboard.appbase.io/signup"
-								target="_blank"
+						<div className="mt8 mobile-btn">
+							<button
 								style={{ background: '#00f68e' }}
 								className="signup-btn"
 							>
 								SignUp for free
-							</Button>
+							</button>
 							<Link to="/tutorial">
-								<Button 								
-									uppercase 
-									shadow									
+								<button
 									className="video-btn"
 									style={{ backgroundColor: '#e4faff', marginLeft: 10 }}
 								>
 									Try Interactive Tutorial
-								</Button>
+								</button>
 							</Link>
 							<Modal
 								open={open}
@@ -77,23 +72,23 @@ class HomeHeader extends React.Component {
 					</div>
 					<div className="home-header-graphics">
 						<div className="graphic">
-							<img src="images/app-cluster@3x.png" />
+							<img src="images/app-cluster@3x.webp" alt="Choose how to deploy ReactiveSearch server" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Choose how to deploy
 							</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-search@3x.png" />
+							<img src="images/home-search@3x.png" alt="Low code UI Kits and components"/>
 							<p className={`${Spirit.p} middarkgrey text-center`}>Low code UI Kits</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-search-relevancy@3x.png" />
+							<img src="images/home-search-relevancy@3x.webp" alt="Configure search relevance" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Search Relevance ⚙️ 
 							</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-analytics@3x.png" />
+							<img src="images/home-analytics@3x.webp" alt="Search Insights" />
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Search Insights
 							</p>

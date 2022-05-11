@@ -11,3 +11,5 @@
         link: /docs/reactivesearch/react-searchbox/searchcomponent/
       - title: Examples
         link: /docs/reactivesearch/react-searchbox/examples/
+      - title: Server-side Rendering
+        link: /docs/reactivesearch/react-searchbox/server-side-rendering/

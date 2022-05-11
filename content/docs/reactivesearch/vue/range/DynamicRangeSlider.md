@@ -74,6 +74,8 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
     title of the component to be shown in the UI.
 -   **defaultValue** `Function` [optional]
     a function that accepts `min` and `max` range values as parameters and returns an object representing current selection from the range with `start` and `end` keys.
+-   **value** `Object` [optional]
+    sets the current value of the component. It sets the value(an object with `start` and `end` keys), on mount and on update. Use this prop in conjunction with the `change` event.
 -   **rangeLabels** `Function` [optional]
     a function that accepts `min` and `max` range values as parameters and returns an object representing labels with `start` and `end` keys.
 -   **showFilter** `Boolean` [optional]
@@ -185,6 +187,38 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     ```
 
 ## Events
+
+- **change**
+  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+
+  ```jsx
+  <template>
+      <dynamic-range-slider
+	      // ...other props
+          value="value"
+          @change="handleChange"
+      />
+  </template>
+
+  <script>
+  export default {
+    name: 'app',
+      data() {
+          return {
+              value: {
+				  start: 3000,
+				  end: 50000
+			  }
+          }
+      },
+      methods: {
+          handleChange(value) {
+              this.value = value;
+          }
+      }
+  };
+  </script>
+  ```
 
 -   **query-change**
     is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
