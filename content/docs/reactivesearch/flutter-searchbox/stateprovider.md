@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
               subscribeTo: {
                 "result-widget": [KeysToSubscribe.Results , KeysToSubscribe.Value, KeysToSubscribe.From],                
               },
-              onChange: (prevState, nextState) {
+              onChange: (nextState, prevState) {
                 print('prevState ${prevState["result-widget"]?.results?.data?.length}');
                 print('nextState ${nextState["result-widget"]?.results?.data?.length}');                
               },
