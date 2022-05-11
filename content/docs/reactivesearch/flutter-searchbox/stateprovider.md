@@ -42,7 +42,7 @@ StateProvider(
   subscribeTo: {
    'result-component': [KeysToSubscribe.Results, KeysToSubscribe.From]
   },       
-  onChange: (prevState, nextState) {
+  onChange: (nextState, prevState) {
         // do something here
     },
   build: (controllerState) {
