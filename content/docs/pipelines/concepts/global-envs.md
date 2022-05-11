@@ -152,9 +152,9 @@ global_envs:
   - label: Index
     key: INDEX
     value: some_index
-    description: A valid elasticsearch index
+    description: A valid Elasticsearch index
     validate:
-      url: http://localhost:9200/${{INDEX}}
+      url: http://localhost:9200/${INDEX}
       expected_status: 200
 ```
 
@@ -168,14 +168,14 @@ curl -X GET http://localhost:9200/some_index
 
 ### Example: Validate an URL
 
-Following example explaings how the `validate` field can be used to verify the saved URL:
+Following example explains how the `validate` field can be used to verify the saved URL:
 
 ```yml
 global_envs:
-  - label: ElasticSearch URL
+  - label: Elasticsearch URL
     key: ES_URL
     value: http://localhost:9200
-    description: A valid ElasticSEarch URL
+    description: A valid Elasticsearch URL
     validate:
       url: ${ES_URL}
       method: GET
@@ -186,6 +186,32 @@ Above request resolves to the following cURL request:
 
 ```sh
 curl -X GET http://localhost:9200
+```
+
+The `expected_status` field, as explained, above is used as the status code to make sure the env is validated.
+
+### Example: Validate API credential
+
+Following example explains how the `validate` field can be used to verify credentials. The example here uses the built-in `btoa` function of JavaScript. It also makes use of a previously defined env for `ES_URL`. An existing environment can also be used for validation of another environment.
+
+```yml
+global_envs:
+  - label: Elasticsearch credentials
+    key: ES_CREDS
+    value: elastic:my-password
+    description: Enter your Elasticsearch credentials in readable format
+    validate:
+      url: ${ES_URL}
+      method: GET
+      headers:
+        authorization: "`Basic ${btoa(${ES_CREDS})}`"
+      expected_status: 200
+```
+
+Above request resolves to the following cURL request:
+
+```sh
+curl -X GET http://localhost:9200 -H "Authorization: Basic ZWxhc3RpYzpteS1wYXNzd29yZA=="
 ```
 
 The `expected_status` field, as explained, above is used as the status code to make sure the env is validated.
