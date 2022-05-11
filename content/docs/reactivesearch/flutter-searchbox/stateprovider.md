@@ -1,7 +1,7 @@
 ---
 title: 'StateProvider'
 meta_title: 'API Reference for StateProvider'
-meta_description: 'StateProvider allows you to access the current state of your flutter app.'
+meta_description: 'StateProvider allows you to access the current state of flutter-searchbox widgets.'
 keywords:
     - flutter-searchbox
     - api-reference
