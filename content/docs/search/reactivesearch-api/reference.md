@@ -906,10 +906,6 @@ Specify additional options for fetching recent suggestions. It can accept the fo
 
 > Note: It is possible to define multiple indices using comma separated pattern, for e.g `products,categories`.
 
-| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
-| ------   | --------------------------- | -------- |
-| `Object` | `suggestion`                | false    |
-
 - **customEvents** `Object` Custom analytics events to filter the recent suggestions.
 For example,
 ```js
@@ -920,6 +916,14 @@ For example,
         }
     }
 ```
+
+**sectionLabel**: `string` To define the section title for recent suggestions.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object` | `suggestion`                | false    |
+
+**sectionLabel**: `string` To define the section title for popular suggestions.
 
 **Example Playground**: 
 
@@ -949,11 +953,6 @@ Specify additional options for fetching popular suggestions. It can accept the f
 
 > Note: It is possible to define multiple indices using a comma separated pattern, for e.g `products,categories`.
 
-
-| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
-| ------   | --------------------------- | -------- |
-| `Object` | `suggestion`                | false    |
-
 - **customEvents** `Object` Custom analytics events to filter the popular suggestions.
 For example,
 ```js
@@ -965,10 +964,17 @@ For example,
     }
 ```
 
+**sectionLabel**: `string` To define the section title for popular suggestions.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object` | `suggestion`                | false    |
+
+
+
 **Example Playground**: 
 
-<iframe src=https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-3H9Z2lOjp7nQjDqnHDZY   ></iframe>
-
+<iframe src=https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-3H9Z2lOjp7nQjDqnHDZY></iframe>
 
 ### queryVector
 
@@ -1094,6 +1100,44 @@ This indicates the number of candidates to consider while using the `script_scor
 | `int` | `search`, `suggestion` | false |
 
 This field can be an integer. The default value is set to **10**.
+
+### enableIndexSuggestions
+This property can be used to disable the index suggestions. If set the `false`, Appbase would not query the search backend to fetch the suggestions.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### indexSuggestionsConfig
+Specify the additional options for index suggestions. It accepts following keys:
+
+**sectionLabel**: `string` To define the section title for index suggestions.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object`   | `suggestion`                | false    |
+
+### enableFeaturedSuggestions
+When set to `true`, featured searches are returned as suggestions as per the featured suggestions config (either defaults, or as set through [featuredSuggestionsConfig](/docs/search/reactivesearch-api/reference/#featuredsuggestionsconfig).
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `bool`   | `suggestion`                | false    |
+
+### featuredSuggestionsConfig
+To define options to apply featured suggestions. It can accept the following keys:
+
+- **featuredSuggestionsGroupId**: `string` The featured suggestions group id is required to apply the featured suggestions. A featured suggestion group is a collection of featured suggestions.
+Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508
+
+- **maxSuggestionsPerSection**: `int` To restrict the number of featured suggestions per section.
+
+- **sectionsOrder**: `Array<string>` To define the order of sections to be displayed in UI. For e.g, `['document', 'pages', 'help']`.
+
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object`   | `suggestion`                | false    |
 
 ## Settings Properties
 
