@@ -52,9 +52,9 @@ Notice we reference a environment inside `script` as `context.envs.knowledgeGrap
 
 ### Building the search UI and rendering results
 
-Once the pipeline is built, we can start using the data we get. We would use `SearchBox` component to search results and `ReactiveList` component to display results. 
+Once the pipeline is built, we can start using the data we get. We would use [`SearchBox`](/docs/reactivesearch/v3/search/searchbox) component to search results and [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist) component to display results. 
 
-Our `SearchBox` component would look like below.
+Our [`SearchBox`](/docs/reactivesearch/v3/search/searchbox) component would look like below.
 ```js
 <SearchBox 
     className="SearchBox" 
@@ -64,7 +64,7 @@ Our `SearchBox` component would look like below.
 />
 ```
 
-We would use use `ReactiveList` as below. Note how we connect the `ReactiveList` to watch on changes to `SearchBox` by using `react` property.
+We would use use [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist) as below. Note how we connect the [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist) to watch on changes to [`SearchBox`](/docs/reactivesearch/v3/search/searchbox) by using `react` property.
 ```js
 <ReactiveList
     componentId="SearchResult"
@@ -78,7 +78,7 @@ We would use use `ReactiveList` as below. Note how we connect the `ReactiveList`
 />
 ```
 
-We would get data from `knowledgeGraph` inside of `rawData`, in the `render` method of `ReactiveList`. We would then render the results as below.
+We would get data from `knowledgeGraph` inside of `rawData`, in the `render` method of [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist). We would then render the results as below.
 ```js
 <ReactiveList
     //...props
@@ -114,7 +114,7 @@ You can look at the complete example below.
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-# Multiple index using pipelines
+# Data from multiple index using pipelines
 
 Just like we added google knowledge graph to the pipeline we can also create a pipeline to add data from multiple indices. We can see a running example below which combines information from two indices `good-books-ds` and `good-books`.
 
