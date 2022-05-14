@@ -99,7 +99,7 @@
               link: /docs/reactivesearch/v3/advanced/stateprovider/
             - title: Grouping Results
               link: /docs/reactivesearch/v3/advanced/groupingresults/
-            - title: Multi index search
+            - title: Multi-index Search
               link: /docs/reactivesearch/v3/advanced/multiindexsearch/
             - title: Custom Suggestions
               link: /docs/reactivesearch/v3/advanced/customsuggestions/
