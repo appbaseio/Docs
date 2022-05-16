@@ -107,12 +107,12 @@ We would get data from `knowledgeGraph` inside of `rawData`, in the `render` met
 
 You can look at the complete example below.
 
-<iframe src="https://codesandbox.io/embed/github/SavvyShah/reactivesearch/tree/docs%2Frich-snippets/packages/web/examples/RichSnippets?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/nice-bhaskara-c8fid5?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="SavvyShah/reactivesearch"
+     title="nice-bhaskara-c8fid5"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+   ></iframe>
 
 # Data from multiple index using pipelines
 
