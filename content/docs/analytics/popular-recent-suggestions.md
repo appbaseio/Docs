@@ -162,7 +162,19 @@ Only selected indices will be considered to calculate the suggestions.
 
 ### Query suggestions example
 
-This is an example showing index, category and popular suggestions.
+Different type of suggestions serve different purpose. **ReactiveSearch** provides a wide range of suggestions: index, category, popular, recent, ... 
+
+When a user types in the `Searchbox` he gets suggestions all the types of suggestions. We can differentiate between the suggestions by looking at the `_suggestion_type` and `_category` properties. The value for both the properties for different type of suggestion is given in the table below.
+
+
+
+| Type | `_suggestion_type` | `_category` |
+|------|--------------------|-------------|
+| Index| `"index"`          | `null`
+| Category| `"index"`  | `<category_name>`
+| Popular| `"popular"`  | `null`
+
+
 
 <iframe src="https://codesandbox.io/embed/github/savvyshah/reactivesearch/tree/docs-query-suggestions/packages/web/examples/QuerySuggestion?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
