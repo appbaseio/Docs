@@ -162,13 +162,13 @@ Only selected indices will be considered to calculate the suggestions.
 
 ### Query suggestions example
 
-Different type of suggestions serve different purpose. **ReactiveSearch** provides a wide range of suggestions: index, category, popular, recent, ... 
+Different type of suggestions serve different purpose. **ReactiveSearch** provides a wide range of suggestions: index, category, popular, recent, etc.
 
-When a user types in the `Searchbox` he gets suggestions all the types of suggestions. We can differentiate between the suggestions by looking at the `_suggestion_type` and `_category` properties. The value for both the properties for different type of suggestion is given in the table below.
+When a user types in the `Searchbox`, they get all the types of suggestions. We can differentiate between the suggestions by looking at the `_suggestion_type` and `_category` properties. The value for both the properties for different type of suggestion is given in the table below.
 
 
 
-| Type | `_suggestion_type` | `_category` |
+| `Type` | `_suggestion_type` | `_category` |
 |------|--------------------|-------------|
 | Index| `"index"`          | `null`
 | Category| `"index"`  | `<category_name>`
