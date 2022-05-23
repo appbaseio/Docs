@@ -1,3 +1,5 @@
 - items:
   - title: Getting Started
     link: /docs/reactivesearch/searchbase-dart/quickstart/
+  - title: SearchStateController
+    link: /docs/reactivesearch/searchbase-dart/search-state-controller/
