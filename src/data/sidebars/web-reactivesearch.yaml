@@ -107,6 +107,8 @@
               link: /docs/reactivesearch/v3/advanced/reactprop/
             - title: Reactive Component
               link: /docs/reactivesearch/v3/advanced/reactivecomponent/
+            - title: Rich Snippets
+              link: /docs/reactivesearch/v3/advanced/richsnippets/
             - title: Server Side Rendering
               link: /docs/reactivesearch/v3/advanced/ssr/
             - title: Components Usage
