@@ -107,9 +107,9 @@ We would get data from `knowledgeGraph` inside of `rawData`, in the `render` met
 
 You can look at the complete example below.
 
-<iframe src="https://codesandbox.io/embed/nice-bhaskara-c8fid5?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/RichSnippets?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="nice-bhaskara-c8fid5"
+     title="rich-snippets"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
@@ -118,7 +118,7 @@ You can look at the complete example below.
 
 Just like we added google knowledge graph to the pipeline we can also create a pipeline to add data from multiple indices. We can see a running example below which combines information from two indices `good-books-ds` and `good-books`.
 
-<iframe src="https://codesandbox.io/embed/github/SavvyShah/reactivesearch/tree/docs-multi-index/packages/web/examples/MultiIndexSearch?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MultiIndexSearch?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="multi-index-search"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
