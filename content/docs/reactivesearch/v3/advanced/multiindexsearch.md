@@ -49,7 +49,7 @@ In order to search, we would require a searchbar. We can make a searchbar by usi
 When users would search, we would be getting results from both the indices. We can use the `_index` property on hits to separate results on basis of index. We show it as different colored badges in the UI. For rendering the results we use [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist).
 
 You can see the live example below.
-<iframe src="https://codesandbox.io/embed/github/savvyshah/reactivesearch/tree/docs-multi-index/packages/web/examples/MultiIndexSearch?fontsize=14&hidenavigation=1&view=preview" title="autocomplete-example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MultiIndexSearch?fontsize=14&hidenavigation=1&view=preview" title="autocomplete-example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ### Using different index for facet/filter
 Sometimes we have separate indexes to store related information. eg. **authors** and **books**. But we might want to filter **books** by selecting from a list of **authors**. In this example we are exactly going to do that.
@@ -107,4 +107,4 @@ Another important thing we need to configure is query. The [`MultiList`](/docs/r
 ```
 
 You can see the live example below.
-<iframe src="https://codesandbox.io/embed/github/savvyshah/reactivesearch/tree/docs-multi-index/packages/web/examples/MultiIndexFacet?fontsize=14&hidenavigation=1&view=preview" title="autocomplete-example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MultiIndexFacet?fontsize=14&hidenavigation=1&view=preview" title="autocomplete-example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
