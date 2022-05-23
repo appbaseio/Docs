@@ -1,13 +1,12 @@
 ---
 title: 'Rich snippets'
 meta_title: 'Rich snippets'
-meta_description: 'Rich snippets helps to display information to users on multiple levels'
+meta_description: 'Increase user engagement for your search UIs with rich snippets - display additional context such as a knowledge graph, show related searches or annotate search results'
 keywords:
     - reactivesearch
     - appbase
     - elasticsearch
-    - rich 
-    - snippets
+    - rich-snippets
     - knowledge
     - graph
 sidebar: 'docs'
@@ -15,13 +14,16 @@ nestedSidebar: 'web-reactivesearch'
 ---
 
 # Overview
-Traditional search UI, display results in long lists, which doesn't pique user's interest. Instead we need to show information in layers. Sometimes it's useful to make a particular piece of content stand out, when user is searching for information. These are rich snippets. 
+
+Often times, it's useful to show additional context to what the search results are to cater to different search interests. For example, you may want to display knowledge graph or related search terms to aid users who are researching a topic instead of looking for solving their problem. With rich snippets, you can cater to this use-case and improve search engagement for your users.
 
 # How to implement rich snippets?
 
+In this post, we will show how to implement rich snippets.
+
 ### Creating a pipeline for google knowledge graph
 
-Pipelines are useful when we want to modify data before sending it to browser. Pipelines are implemented in the backend and we need to configure it using the [dashboard](https://dashboard.appbase.io/). Imagine a stream of data, where we want to add more information, or modify data structure, then we implement pipeline. They can be used for adding external search results, authorizing user and [much more.](https://docs.appbase.io/docs/pipelines/how-to/)
+Pipelines are useful when we want to modify data before sending it to browser. Pipelines are implemented in the backend and we need to configure it using the [dashboard](https://dashboard.appbase.io/). Imagine a stream of data, where we want to add more information, or modify data structure, then we implement pipeline. They can be used for adding external search results, authorizing user and [much more](/docs/pipelines/how-to/).
 
 We would create a pipeline for adding knowledge graph data from google search to our index search results. Data passes through various stages in a pipeline. Each stage adds more information or performs some action. We add google knowledge graph results in the pipeline as a stage. You can follow [the detailed guide to add stages](https://docs.appbase.io/docs/pipelines/how-to/add-external-search-results).
 
@@ -65,6 +67,7 @@ Our [`SearchBox`](/docs/reactivesearch/v3/search/searchbox) component would look
 ```
 
 We would use use [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist) as below. Note how we connect the [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist) to watch on changes to [`SearchBox`](/docs/reactivesearch/v3/search/searchbox) by using `react` property.
+
 ```js
 <ReactiveList
     componentId="SearchResult"
