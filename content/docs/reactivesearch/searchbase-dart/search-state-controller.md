@@ -45,6 +45,25 @@ We extend the [with-facet](https://docs.appbase.io/docs/reactivesearch/searchbas
 import 'dart:html';
 import 'package:searchbase/searchbase.dart';
 
+bool areListsEqual(var list1, var list2) {
+  // check if both are lists
+  if (!(list1 is List && list2 is List)
+      // check if both have same length
+      ||
+      list1.length != list2.length) {
+    return false;
+  }
+
+  // check if elements are equal
+  for (int i = 0; i < list1.length; i++) {
+    if (list1[i] != list2[i]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 class DefaultUriPolicy implements UriPolicy {
   DefaultUriPolicy();
   @override
@@ -90,34 +109,7 @@ void main() {
         ({'track_total_hits': true})
   });
 
-  // SearchStateController instantiated 
-  // and used for watching over various subscribable keys of different
-  // widgets
-  final searchStateController = SearchStateController(
-    searchBase: searchbase,
-    subscribeTo: {
-      'result-widget': [KeysToSubscribe.Results],
-      'language-filter': [KeysToSubscribe.AggregationData],
-      'search-widget': [KeysToSubscribe.Results],
-    },
-    onChange: (next, prev) {
-      if (next['result-widget'] != null) {
-        print('result-widget subscribed');
-        print('PREV ${prev['result-widget']?.results?.numberOfResults}');
-        print('NEXT ${next['result-widget']?.results?.numberOfResults}');
-      }
-      if (next['language-filter'] != null) {
-        print('language-widget subscribed');
-        print('${next['language-filter']?.aggregationData?.rawData}');
-      }
-      if (next['search-widget'] != null) {
-        print('search-widget subscribed');
-        print('PREV ${prev['search-widget']?.results?.numberOfResults}');
-        print('NEXT ${next['search-widget']?.results?.numberOfResults}');
-      }
-    },
-  );
-  // Render results
+// Render results
   querySelector('#output')!.innerHtml = '''
     <div id="root">
       <h2 class="text-center">Searchbase Demo with Facet</h2>
@@ -160,75 +152,95 @@ void main() {
   // Fetch initial results
   resultWidget.triggerDefaultQuery();
 
-  resultWidget.subscribeToStateChanges((change) {
-    final results = change.Results!.next;
-    final items = results!.data.map((i) {
-      return """
-    <div id=${i['_id']} class="result-set">
-      <div class="image">
-        <img src=${i['avatar']} alt=${i['name']} />
-      </div>
-      <div class="details">
-        <h4>${i['name']}</h4>
-        <p>${i['description']}</p>
-      </div>
-    </div>""";
-    });
-    final resultStats = '''<p class="results-stats">
-                          Showing ${results.numberOfResults} in ${results.time}ms
-                        <p>''';
-    resultElement!.setInnerHtml("$resultStats${items.join('')}",
-        validator: NodeValidatorBuilder.common()
-          ..allowHtml5()
-          ..allowElement('img',
-              attributes: ['src'], uriPolicy: DefaultUriPolicy()));
-  }, [KeysToSubscribe.Results]);
-
   // Fetch initial filter options
   filterWidget.triggerDefaultQuery();
+  List<Map<dynamic, dynamic>>? prevAggData = [];
 
-  filterWidget.subscribeToStateChanges((change) {
-    final aggregations = change.AggregationData!.next;
-    final container = document.getElementById('language-filter');
-    container!.setInnerHtml('');
-    aggregations?.data?.forEach((i) {
-      if (i['_key'] != null) {
-        final checkbox = document.createElement('input');
-        checkbox.setAttribute('type', 'checkbox');
-        checkbox.setAttribute('name', i['_key']);
-        checkbox.setAttribute('value', i['_key']);
-        checkbox.id = i['_key'];
-        checkbox.addEventListener('click', (event) {
-          List values = [];
-          if (filterWidget.value != null && filterWidget.value != "") {
-            values = filterWidget.value;
-          }
-          if (values.contains(i['_key'])) {
-            values.remove(i['_key']);
-          } else {
-            values.add(i['_key']);
-          }
-          // Set filter value and trigger custom query
-          filterWidget.setValue(values,
-              options: Options(stateChanges: true, triggerCustomQuery: true));
+  final searchStateController = SearchStateController(
+    searchBase: searchbase,
+    subscribeTo: {
+      'result-widget': [KeysToSubscribe.Results],
+      'language-filter': [KeysToSubscribe.AggregationData],
+      'search-widget': [KeysToSubscribe.Results],
+    },
+    onChange: (next, prev) {
+      // handle side-effects for state changes in result-widget
+      if (next['result-widget'] != null) {
+        print('result-widget subscribed');
+        final results = next['result-widget']!.results;
+        final items = results!.data.map((i) {
+          return """
+            <div id=${i['_id']} class="result-set">
+              <div class="image">
+                <img src=${i['avatar']} alt=${i['name']} />
+              </div>
+              <div class="details">
+                <h4>${i['name']}</h4>
+                <p>${i['description']}</p>
+              </div>
+            </div>""";
         });
-        final label = document.createElement('label');
-        label.setAttribute('htmlFor', 'i._key');
-        label.setInnerHtml("${i['_key']}(${i['_doc_count']})");
-        final div = document.createElement('div');
-        div.append(checkbox);
-        div.append(label);
-        container.append(div);
+        final resultStats = '''<p class="results-stats">
+                          Showing ${results.numberOfResults} in ${results.time}ms
+                        <p>''';
+        resultElement!.setInnerHtml("$resultStats${items.join('')}",
+            validator: NodeValidatorBuilder.common()
+              ..allowHtml5()
+              ..allowElement('img',
+                  attributes: ['src'], uriPolicy: DefaultUriPolicy()));
       }
-    });
-  }, [KeysToSubscribe.AggregationData]);
 
-  searchController.subscribeToStateChanges((change) {
-
-    // accessing the current state of the app
-    print(
-        'current ${searchStateController.current['language-filter']?.aggregationData?.rawData}');
-  }, [KeysToSubscribe.Results]);
+      // handle side-effects for state changes in language-filter
+      if (next['language-filter'] != null &&
+          areListsEqual(next['language-filter']!.aggregationData?.data,
+                  prevAggData) ==
+              false) {
+        prevAggData = next['language-filter']!.aggregationData?.data;
+        print('language-widget subscribed');
+        final aggregations = next['language-filter']!.aggregationData;
+        print(' aggregations?.data ${aggregations?.data}');
+        final container = document.getElementById('language-filter');
+        container!.setInnerHtml('');
+        aggregations?.data?.forEach((i) {
+          if (i['_key'] != null) {
+            final checkbox = document.createElement('input');
+            checkbox.setAttribute('type', 'checkbox');
+            checkbox.setAttribute('name', i['_key']);
+            checkbox.setAttribute('value', i['_key']);
+            checkbox.id = i['_key'];
+            checkbox.addEventListener('click', (event) {
+              List values = [];
+              if (filterWidget.value != null && filterWidget.value != "") {
+                values = filterWidget.value;
+              }
+              if (values.contains(i['_key'])) {
+                values.remove(i['_key']);
+              } else {
+                values.add(i['_key']);
+              }
+              // Set filter value and trigger custom query
+              filterWidget.setValue(values,
+                  options:
+                      Options(stateChanges: true, triggerCustomQuery: true));
+            });
+            final label = document.createElement('label');
+            label.setAttribute('htmlFor', 'i._key');
+            label.setInnerHtml("${i['_key']}(${i['_doc_count']})");
+            final div = document.createElement('div');
+            div.append(checkbox);
+            div.append(label);
+            container.append(div);
+          }
+        });
+      }
+      // handle side-effects for state changes in search-widget
+      if (next['search-widget'] != null) {
+        print('search-widget subscribed');
+        print('PREV ${prev['search-widget']?.results?.numberOfResults}');
+        print('NEXT ${next['search-widget']?.results?.numberOfResults}');
+      }
+    },
+  );
 }
 
 ```
