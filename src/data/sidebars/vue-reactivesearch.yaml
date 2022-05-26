@@ -41,6 +41,8 @@
         items:
             - title: DataSearch
               link: /docs/reactivesearch/vue/search/DataSearch/
+            - title: SearchBox
+              link: /docs/reactivesearch/vue/search/SearchBox/              
       - group: Result Components
         items:
             - title: ReactiveList
