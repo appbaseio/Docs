@@ -156,7 +156,9 @@ Example uses:
 -   **indexSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
 
     It can accept the following keys:
-    - **section**: `string` custom html markup for section title.
+    - **sectionLabel**: `string` custom html markup for section title.
+    - **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.
+    - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
     
     <br/>
 
@@ -164,7 +166,9 @@ Example uses:
     <SearchBox
         enableIndexSuggestions={true}
         indexSuggestionsConfig={{
-            section: '<h3>Index suggestions</h3>'
+            sectionLabel: '<h3>Index suggestions</h3>',
+            size: 5,
+            index: "good-books-ds",  // further restrict the index to search on
         }}
     />
 ```
@@ -184,7 +188,7 @@ Example uses:
     - **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
     - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
-    - **section**: `string` custom html markup for section title.    
+    - **sectionLabel**: `string` custom html markup for section title.    
     <br/>
 
 ```jsx
@@ -196,7 +200,7 @@ Example uses:
             minChars: 3,
             showGlobal: false,
             index: "good-books-ds",  // further restrict the index to search on
-            section: '<h3>Popular suggestions</h3>'
+            sectionLabel: '<h3>Popular suggestions</h3>'
         }}
     />
 ```
@@ -211,7 +215,7 @@ Example uses:
     - **minHits**: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
     - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
-    - **section**: `string` custom html markup for section title.        
+    - **sectionLabel**: `string` custom html markup for section title.        
     <br/>
 
 ```jsx
@@ -222,7 +226,7 @@ Example uses:
             minHits: 5,
             minChars: 3,
             index: "good-books-ds",  // further restrict the index to search on
-            section: '<h3>Index suggestions</h3>' 
+            sectionLabel: '<h3>Index suggestions</h3>' 
         }}
     />
 ```
@@ -230,11 +234,10 @@ Example uses:
 -   **enableFeaturedSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, featured suggestions are returned as suggestions as per the featured suggestions config (either defaults, or as set through `featuredSuggestionsConfig` or via Featured Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
-- **featuredSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
+-   **featuredSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
 
     It can accept the following keys:
     - **featuredSuggestionsGroupId**: `string` [Required] unique id for featured suggestions' group.
-    - **visibleSuggestionsPerSection**: `number` default number of suggestions visible per section.
     - **maxSuggestionsPerSection**: `number` maximum number of featured suggestions fetched per section.
     - **sectionsOrder**: `Array<String>` accepts an array of section id(s). The order in which section id(s) are defined in the array describes the order in which the sections appear in the UI.
     
@@ -245,7 +248,6 @@ Example uses:
         enableFeaturedSuggestions={true}
         featuredSuggestionsConfig={{
             featuredSuggestionsGroupId: 'document-search', // # mandatory
-            visibleSuggestionsPerSection: 3, 
             maxSuggestionsPerSection: 10,    
             sectionsOrder: ['document', 'pages', 'help'], 
         }}
