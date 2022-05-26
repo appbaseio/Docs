@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-![Searchbox image](https://i.imgur.com/8UPzgG4.png)
+![Searchbox image](https://i.imgur.com/EGQTmNY.png)
 
 `SearchBox` creates a search box UI component that is connected to one or more database fields. A `SearchBox` queries the appbase.io backend with query type `suggestion` to render different kind of suggestions, read more about the `suggestion` query type [here](https://docs.appbase.io/docs/search/reactivesearch-api/implement/#suggestion).
 
@@ -49,10 +49,6 @@ Example uses:
         defaultValue="Songwriting"
         placeholder="Search for cities or venues"
         autosuggest={true}
-        defaultSuggestions={[
-            { label: 'Songwriting', value: 'Songwriting' },
-            { label: 'Musicians', value: 'Musicians' },
-        ]}
         highlight={true}
         highlightField="group_city"
         queryFormat="or"
@@ -155,6 +151,29 @@ Example uses:
     >
     > This property only works with [ReactiveSearch API](/docs/search/reactivesearch-api/) i.e when `enableAppbase` is set to `true` in `ReactiveBase` component.
 
+-   **enableIndexSuggestions** `Boolean` Defaults to `true`. When set to `false`, index suggestions are not returned from the backend.
+
+-   **indexSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
+
+    It can accept the following keys:
+    - **sectionLabel**: `string` custom html markup for section title.
+    - **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.
+    - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+    
+    <br/>
+
+```jsx
+    <SearchBox
+        enableIndexSuggestions={true}
+        indexSuggestionsConfig={{
+            sectionLabel: '<h3>Index suggestions</h3>',
+            size: 5,
+            index: "good-books-ds",  // further restrict the index to search on
+        }}
+    />
+```
+
+
 -   **enablePopularSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
@@ -169,6 +188,7 @@ Example uses:
     - **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
     - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+    - **sectionLabel**: `string` custom html markup for section title.    
     <br/>
 
 ```jsx
@@ -180,6 +200,7 @@ Example uses:
             minChars: 3,
             showGlobal: false,
             index: "good-books-ds",  // further restrict the index to search on
+            sectionLabel: '<h3>Popular suggestions</h3>'
         }}
     />
 ```
@@ -187,13 +208,14 @@ Example uses:
 -   **enableRecentSuggestions** `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane).
 
 > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
-- **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
+-   **recentSuggestionsConfig** `Object` Specify additional options for fetching recent suggestions.
 
     It can accept the following keys:
     - **size**: `number` Maximum number of recent suggestions to return. Defaults to 5.
     - **minHits**: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
     - **minChars**: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
     - **index**: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+    - **sectionLabel**: `string` custom html markup for section title.        
     <br/>
 
 ```jsx
@@ -204,9 +226,37 @@ Example uses:
             minHits: 5,
             minChars: 3,
             index: "good-books-ds",  // further restrict the index to search on
+            sectionLabel: '<h3>Index suggestions</h3>' 
         }}
     />
 ```
+
+-   **enableFeaturedSuggestions** `bool` [optional]
+    Defaults to `false`. When set to `true`, featured suggestions are returned as suggestions as per the featured suggestions config (either defaults, or as set through `featuredSuggestionsConfig` or via Featured Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
+
+
+> Featured suggestions allow creating autocomplete experiences with user-defined suggestions. They're specified using the [Featured Suggestions API](https://api.reactivesearch.io/#337cdab6-d06c-4319-8c51-51e9ff0c1266), introduced in 8.1.0. This is a beta API and subject to change.
+
+-   **featuredSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
+
+    It can accept the following keys:
+    - **featuredSuggestionsGroupId**: `string` [Required] unique id for featured suggestions' group.
+    - **maxSuggestionsPerSection**: `number` maximum number of featured suggestions fetched per section.
+    - **sectionsOrder**: `Array<String>` accepts an array of section id(s). The order in which section id(s) are defined in the array describes the order in which the sections appear in the UI.
+    
+    <br/>
+
+```jsx
+    <SearchBox
+        enableFeaturedSuggestions={true}
+        featuredSuggestionsConfig={{
+            featuredSuggestionsGroupId: 'document-search', // # mandatory
+            maxSuggestionsPerSection: 10,    
+            sectionsOrder: ['document', 'pages', 'help'], 
+        }}
+    />
+```
+
 
 -   **enablePredictiveSuggestions** `Boolean` [optional]
     Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
@@ -235,8 +285,6 @@ Example uses:
     set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`.
 -   **strictSelection** `Boolean` [optional]
     defaults to `false`. When set to `true` the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared on selection. This is only relevant with `autosuggest`.
--   **defaultSuggestions** `Array` [optional]
-    preset search suggestions to be shown on focus when the search box does not have any search query text set. Accepts an array of objects each having a **label** and **value** property. The label can contain either String or an HTML element.
 -   **debounce** `Number` [optional]
     set the milliseconds to wait before executing the query. Defaults to `0`, i.e. no debounce.
 -   **highlight** `Boolean` [optional]
@@ -589,6 +637,10 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 -   `list`
 -   `recent-search-icon`
 -   `popular-search-icon`
+-   `featured-search-icon`
+-   `section-label`
+-   `active-suggestion-item`
+-   `suggestion-item`
 -   `enter-button`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
@@ -731,7 +783,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 
 -   **addonBefore** `string|JSX` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
-<img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
+<img src="https://i.imgur.com/15fnDsj.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
@@ -750,7 +802,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 -   **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 
-<img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
+<img src="https://i.imgur.com/MbtXwfU.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
@@ -767,7 +819,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     ```
 
 -   **expandSuggestionsContainer** `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
-<img src="https://i.imgur.com/x3jF23m.png"/>
+<img src="https://i.imgur.com/3ADhMSQ.png" style="margin:0 auto;display:block;"/>
 
     ```jsx
         <SearchBox
@@ -822,4 +874,50 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 ## Examples
 
+### SearchBox with default props
+
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
+
+
+### Customize suggestions using innerClass
+
+
+<img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
+
+```jsx
+	<SearchBox
+	    title="SearchBox"
+	    dataField={['original_title', 'original_title.search']}
+	    componentId="BookSensor"
+	    innerClass={{
+            'section-label': 'section-label',
+	    	'active-suggestion-item': 'active-test-suggestion',
+	    	'suggestion-item': 'test-suggestion',
+	    }}
+	    enableFeaturedSuggestions
+    />
+```
+
+Inside your css file ->
+
+```css
+.section-label {
+	font-weight: 800;
+	font-size: 14px;
+	text-decoration: overline;
+}
+
+.active-test-suggestion {
+	border-left: 6px solid #ffa000;
+	background-color: #6629ea !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+.test-suggestion {
+	background-color: #f0e1e1 !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+```
