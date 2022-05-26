@@ -234,6 +234,9 @@ Example uses:
 -   **enableFeaturedSuggestions** `bool` [optional]
     Defaults to `false`. When set to `true`, featured suggestions are returned as suggestions as per the featured suggestions config (either defaults, or as set through `featuredSuggestionsConfig` or via Featured Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
+
+> Featured suggestions allow creating autocomplete experiences with user-defined suggestions. They're specified using the [Featured Suggestions API](https://api.reactivesearch.io/#337cdab6-d06c-4319-8c51-51e9ff0c1266), introduced in 8.1.0. This is a beta API and subject to change.
+
 -   **featuredSuggestionsConfig** `Object` Specify additional options for fetching featured suggestions.
 
     It can accept the following keys:
