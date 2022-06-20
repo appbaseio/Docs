@@ -46,6 +46,10 @@ Caching and Analytics are some of the most important features for an user facing
 
 ReactiveSearch Pipelines also work with Solr as a backend. This pipeline demonstrates how Solr (or Fusion) can be used as a valid backend with ReactiveSearch. [Read More](solr-pipeline)
 
+## MongoDB Pipeline
+
+ReactiveSearch Pipeline also works with MongoDB as a backend. This pipeline demonstrates how MongoDB can be used as a valid backend with ReactiveSEarch. [Read More](mongodb-pipeline)
+
 ## Error Handling in Pipelines
 
 Handling errors gracefully is a skill that a lot of developers crave. ReactiveSearch Pipelines makes it easy to handle pipeline errors and return distinct responses for better understanding. [Read More](error-handling-in-pipeline)
