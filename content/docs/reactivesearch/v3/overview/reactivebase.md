@@ -211,7 +211,8 @@ The above example will change the default `_msearch` request to `_search` reques
     > Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
 
 -   **preferences** `Object` [optional]
-    accepts an object to configure the search settings for components. The `preferences` property enables you to configure the search settings for your components at one place. The preferences object must follow the following structure:
+    accepts an object to configure the search settings for components. The `preferences` property allows configuring the search settings for your components in one place. The preferences object must follow the following structure:
+
 ```ts
 {
     componentSettings: {
