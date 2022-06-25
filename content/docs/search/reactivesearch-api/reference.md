@@ -1203,3 +1203,42 @@ Following example indicates how to use this field to use kNN reordering with Ope
     }
 }
 ```
+
+## Metadata Properties
+
+ReactiveSearch also supports a `metadata` field in the root of the request body. This field can be used to pass additional data in the request that might be needed in places like Pipelines. The type of `metadata` is an `Object`.
+
+### Example Scenario
+
+Let's say we have a custom pipeline defined that needs a value `app` and it uses this value dynamically for any stage. In such a case, we can use the `metadata` field for passing this value.
+
+The value can be passed in the following way:
+
+```json
+{
+    "query": [{
+        "id": "test",
+        "value": "test",
+        "dataField": "test_field"
+    }],
+    "settings": {
+        "backend": "opensearch"
+    },
+    "metadata": {
+        "app": "some string"
+    }
+}
+```
+
+This `metadata.app` field will be ignored by ReactiveSearch, however since the body will be directly accessible in the pipeline execution (through context), the value can be used in the following way in a pipeline:
+
+```yaml
+- stages:
+  - id: extract app
+    script: "function handleRequest() { const body = JSON.parse(context.request.body); return { appPassed: body.metadata.app } }"
+  - id: custom stage
+    inputs:
+      app: {{appPassed}}
+```
+
+> Above example is just a demonstration and will not work as is.
