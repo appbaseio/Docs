@@ -287,7 +287,7 @@ Additionally, the ReactiveSearch components support `preferencesPath` prop which
 ```
 > Note:
 >
-> Preferences is meant to be one time configuration for components. We don't recommend to mutate it because it can cause performance issues.
+> Preferences is meant to be a one time configuration for components. We don't recommend to mutate it as it can cause performance issues.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/Preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
