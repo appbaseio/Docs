@@ -231,7 +231,7 @@ The above example will change the default `_msearch` request to `_search` reques
     }
 }
 ```
-To connect a reactivesearch component to a preference use the similar component Id prop. The following example has defined the `preferences` object for `bookSearch` component, the `DataSearch` component is using the same component Id (`bookSearch`).
+To connect a ReactiveSearch component to a preference, use the `componentId` prop. The following example has defined the `preferences` object for `bookSearch` component, the `DataSearch` component is using the same componentId (`bookSearch`).
 
 ```jsx
     <ReactiveBase preferences={{
