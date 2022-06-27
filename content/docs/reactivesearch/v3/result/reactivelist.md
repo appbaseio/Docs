@@ -121,6 +121,9 @@ Example uses:
     defaults to `true`, if set to `false` then the ReactiveList will not display the default loader.
 -   **showResultStats** `Boolean` [optional]
     whether to show result stats in the form of results found and time taken. Defaults to `true`.
+-   **showExport** `Boolean` [optional]
+    renders UI that lets exporting data into a CSV and JSON document. Defaults to `true`. 
+    The export options' UI can be styled by passing `export` key in `innerClass` prop.
 -   **react** `Object` [optional]
     a dependency object defining how this component should react based on the state changes in the sensor components.
 -   **URLParams** `Boolean` [optional]
@@ -229,7 +232,23 @@ Example uses:
           return selectPage;
     }
     ```
-
+-   **renderExport** `Function` [optional]
+    renders custom export options UI using a callback function that takes a object parameter as parameter and expects it to return a string or JSX. The parameter object contains following properties
+    -   **`triggerExportCSV`**: `function`
+        callback to trigger export of data to a CSV document.
+    -   **`triggerExportJSON`**: `function`
+        callback to trigger export of data to a JSON document.        
+    ```js
+    renderExport={
+        ({ 
+            triggerExportCSV, 
+            triggerExportJSON
+        }) =>   (<div> Custom Export
+                    <button onClick={triggerExportCSV}>CSV 🔢</button>
+                    <button onClick={triggerExportJSON}>JSON ❤️</button>
+                </div>)
+        }
+    ```
 -   **onData** `Function` [optional]
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
 -   **onError** `Function` [optional]
@@ -295,6 +314,7 @@ Example uses:
 -   `active`
 -   `list`
 -   `poweredBy`
+-   `export`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
@@ -378,6 +398,10 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
         A callback function to be called to load the next page of results into the view. The callback function is only applicable in the case of infinite loading view (i.e. `infiniteScroll` prop set to `true`).
     -   **`triggerClickAnalytics`**: `function`
         A function which can be called to register a click analytics. [Read More](docs/reactivesearch/v3/advanced/analytics/)
+    -   **`triggerExportCSV`**: `function`
+        callback to trigger export of data to a CSV document.
+    -   **`triggerExportJSON`**: `function`
+        callback to trigger export of data to a JSON document.  
 
 ```js
 <ReactiveList
