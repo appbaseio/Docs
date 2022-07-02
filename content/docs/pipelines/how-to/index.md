@@ -38,6 +38,18 @@ This guide explains how kNN (k-Nearest Neighbor) can be utilized to rearrange th
 
 Making a proper search pipeline can be a hard task. This guide explains how to use all the pre-built plugins provided by ReactiveSearch in order to make a **relevant** search pipeline. [Read More](relevant-search-stages)
 
+## Caching and Analytics
+
+Caching and Analytics are some of the most important features for an user facing search endpoint. This guide explains how to use pre-built stages to use cache and record analytics for recording user data. [Read More](caching-and-recording-analytics)
+
+## Solr Pipeline
+
+ReactiveSearch Pipelines also work with Solr as a backend. This pipeline demonstrates how Solr (or Fusion) can be used as a valid backend with ReactiveSearch. [Read More](solr-pipeline)
+
+## MongoDB Pipeline
+
+ReactiveSearch Pipeline also works with MongoDB as a backend. This pipeline demonstrates how MongoDB can be used as a valid backend with ReactiveSEarch. [Read More](mongodb-pipeline)
+
 ## Error Handling in Pipelines
 
 Handling errors gracefully is a skill that a lot of developers crave. ReactiveSearch Pipelines makes it easy to handle pipeline errors and return distinct responses for better understanding. [Read More](error-handling-in-pipeline)
