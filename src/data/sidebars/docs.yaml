@@ -90,6 +90,12 @@
                 title: Relevant Search Stages
               - link: /docs/pipelines/how-to/error-handling-in-pipeline
                 title: Error handling in Pipeline
+              - link: /docs/pipelines/how-to/caching-and-recording-analytics
+                title: Caching and Analytics
+              - link: /docs/pipelines/how-to/solr-pipeline
+                title: Solr Pipeline
+              - link: /docs/pipelines/how-to/mongodb-pipeline
+                title: MongoDB Pipeline
       - group: "Building Search UI"
       - group: "Actionable Analytics"
         icon: analytics
