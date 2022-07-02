@@ -32,6 +32,8 @@ There are some requirements that need to be satisfied in order to be able to use
 
 For the sake of example, let's say we will have a field in our index named `name_vector` that will contain the vector data for the field `Name`.
 
+[For more details about indexing vector data, read this how-to guide](knn-indexing)
+
 ### ElasticSearch
 
 For ElasticSearch, we will have to make the type of the field `dense_vector`. This is necessary so that ElasticSearch understands that the field we are storing vector data to **can** actually contain vector data. Moreover, the `kNN` algorithm requires the field to be of `dense_vector` type in order to sucessfully run.
