@@ -30,7 +30,11 @@ This example explains how authorization is handled effectively with the pre-buil
 
 Adding side effects while a search request is being made might be an useful scenario. Side effects include things like saving the request body everytime there is a request and so on. In this guide, an example of saving the request body to an index is taken and explained. [Read More](add-side-effect-search-query)
 
-## kNN Response Stage
+## kNN Index
+
+This guide explains how to create an indexing pipeline that extracts some data, generates vector for it and stores it. This goes hand-in-hand with the next pipeline for searching using kNN. [Read More](knn-indexing)
+
+## kNN Search
 
 This guide explains how kNN (k-Nearest Neighbor) can be utilized to rearrange the response results on the basis of a vector and an algorithm provided by the user. [Read More](knn-response-stage)
 
