@@ -84,8 +84,10 @@
                 title: Handle Authorization Effectively
               - link: /docs/pipelines/how-to/add-side-effect-search-query
                 title: "Add Side Effect"
+              - link: /docs/pipelines/how-to/knn-index
+                title: kNN Index
               - link: /docs/pipelines/how-to/knn-response-stage
-                title: "kNN search stage"
+                title: "kNN search"
               - link: /docs/pipelines/how-to/relevant-search-stages
                 title: Relevant Search Stages
               - link: /docs/pipelines/how-to/error-handling-in-pipeline
