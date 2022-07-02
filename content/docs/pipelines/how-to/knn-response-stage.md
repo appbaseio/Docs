@@ -32,7 +32,7 @@ There are some requirements that need to be satisfied in order to be able to use
 
 For the sake of example, let's say we will have a field in our index named `name_vector` that will contain the vector data for the field `Name`.
 
-[For more details about indexing vector data, read this how-to guide](knn-indexing)
+[For more details about indexing vector data, read this how-to guide](./knn-indexing)
 
 ### ElasticSearch
 
