@@ -20,11 +20,11 @@ Let's define the basics of the pipeline. It will be in the following way:
 ```yml
 enabled: true
 routes:
-- path: "/_fusion/_reactivesearch"
+- path: "/_solr/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
-- path: "/_fusion/_reactivesearch.v3"
+- path: "/_solr/_reactivesearch.v3"
   method: POST
   classify:
     category: reactivesearch
@@ -153,11 +153,11 @@ Now that all the stages are defined, let's take a look at the whole pipeline at 
 ```yml
 enabled: true
 routes:
-- path: "/_fusion/_reactivesearch"
+- path: "/_solr/_reactivesearch"
   method: POST
   classify:
     category: reactivesearch
-- path: "/_fusion/_reactivesearch.v3"
+- path: "/_solr/_reactivesearch.v3"
   method: POST
   classify:
     category: reactivesearch
