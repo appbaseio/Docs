@@ -15,7 +15,7 @@ nestedSidebar: 'web-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/su2VZte.png)
 
-The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/reactivechart) usage with histogram chart.
+The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/reactivechart) usage with histogram chart.
 
 ## Usage
 
