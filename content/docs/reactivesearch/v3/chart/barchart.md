@@ -15,7 +15,7 @@ nestedSidebar: 'web-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/fiXOsBx.png)
 
-The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/reactivechart) usage with bar chart.
+The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/reactivechart) usage with bar chart.
 
 ## Usage
 
