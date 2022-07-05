@@ -389,6 +389,14 @@ This property can be used to sort the results in a particular format. The valid 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
+### sortField
+
+This field should indicate the field that sort will be applied to. If not passed, then the first entry in the `dataField` (if passed as object or array) or the `dataField` itself (if passed as string) will be used.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| -------- | --------------------------- | -------- |
+| `String` | `all`                       | false  |
+
 ### react
 
 To specify dependent queries to update that particular query for which the react prop is defined. You can read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
@@ -1149,7 +1157,7 @@ This flag tells RS whether to use the deep pagination functionality provided by 
 
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
-| `Boolean`   | `any`                | false    |
+| `Boolean`   | `all`                | false    |
 
 ### deepPaginationConfig
 
@@ -1172,6 +1180,10 @@ For Solr, the `deepPaginationConfig.cursor` field should contain the `nextCursor
 [More can be read about it here](https://solr.apache.org/guide/6_6/pagination-of-results.html#constraints-when-using-cursors)
 
 > Note that it is important to use sorting by passing the `sortBy` and/or `sortField` value to get the `nextCursorMark` field in the response.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object`   | `all`                | false    |
 
 ## Settings Properties
 
