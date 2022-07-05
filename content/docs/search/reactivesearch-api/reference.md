@@ -1139,6 +1139,40 @@ Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#
 | ------   | --------------------------- | -------- |
 | `Object`   | `suggestion`                | false    |
 
+### deepPagination
+
+This flag tells RS whether to use the deep pagination functionality provided by the Backend to extract more than 10k results.
+
+[More about deepPagination can be read here for ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after)
+
+[More about deepPagination can be read here for Solr]()
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Boolean`   | `any`                | false    |
+
+### deepPaginationConfig
+
+Specify the configuration for using deep pagination in the respective backend.
+
+#### ElasticSearch
+
+For ElasticSearch, the `deepPaginationConfig.cursor` field should contain the `sort` array's first element of the last `hits.hits` item.
+
+So if `hits.hits` is of length 10, then the `deepPaginationConfig.cursor` should be the `sort` field of the 9th index item of the search result.
+
+[More can be read about it here](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after)
+
+> Note that it is important to use sorting by passing the `sortBy` and/or `sortField` value to get the `sort` field in the response.
+
+#### Solr
+
+For Solr, the `deepPaginationConfig.cursor` field should contain the `nextCursorMark` value received in the root of the response body in the first request.
+
+[More can be read about it here](https://solr.apache.org/guide/6_6/pagination-of-results.html#constraints-when-using-cursors)
+
+> Note that it is important to use sorting by passing the `sortBy` and/or `sortField` value to get the `nextCursorMark` field in the response.
+
 ## Settings Properties
 
 ### recordAnalytics
