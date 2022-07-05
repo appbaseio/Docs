@@ -389,6 +389,14 @@ This property can be used to sort the results in a particular format. The valid 
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
+### sortField
+
+This field should indicate the field that sort will be applied to. If not passed, then the first entry in the `dataField` (if passed as object or array) or the `dataField` itself (if passed as string) will be used.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| -------- | --------------------------- | -------- |
+| `String` | `all`                       | false  |
+
 ### react
 
 To specify dependent queries to update that particular query for which the react prop is defined. You can read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
@@ -1138,6 +1146,44 @@ Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `Object`   | `suggestion`                | false    |
+
+### deepPagination
+
+This flag tells RS whether to use the deep pagination functionality provided by the Backend to extract more than 10k results.
+
+[More about deepPagination can be read here for ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after)
+
+[More about deepPagination can be read here for Solr]()
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Boolean`   | `all`                | false    |
+
+### deepPaginationConfig
+
+Specify the configuration for using deep pagination in the respective backend.
+
+#### ElasticSearch
+
+For ElasticSearch, the `deepPaginationConfig.cursor` field should contain the `sort` array's first element of the last `hits.hits` item.
+
+So if `hits.hits` is of length 10, then the `deepPaginationConfig.cursor` should be the `sort` field of the 9th index item of the search result.
+
+[More can be read about it here](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after)
+
+> Note that it is important to use sorting by passing the `sortBy` and/or `sortField` value to get the `sort` field in the response.
+
+#### Solr
+
+For Solr, the `deepPaginationConfig.cursor` field should contain the `nextCursorMark` value received in the root of the response body in the first request.
+
+[More can be read about it here](https://solr.apache.org/guide/6_6/pagination-of-results.html#constraints-when-using-cursors)
+
+> Note that it is important to use sorting by passing the `sortBy` and/or `sortField` value to get the `nextCursorMark` field in the response.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `Object`   | `all`                | false    |
 
 ## Settings Properties
 
