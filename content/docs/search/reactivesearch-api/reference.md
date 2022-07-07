@@ -143,11 +143,22 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for `search` and `suggestion` type
+#### format for `search` type
+The value can be a `string`, `Array<string>` or `int`. The `Array<string>` format represents the multiple values to be searched on.
+
+**Example Playground**:
+<iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+
+**Example Playground (multi-value search)**:
+<iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
+
+#### format for `suggestion` type
 
 The value can be a `string` or `int`.
 **Example Playground**: 
-<iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+<iframe src=https://play.reactivesearch.io/embed/jDYw7ymFq6q4DgiMkZW5     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-jDYw7ymFq6q4DgiMkZW5   ></iframe>
+
 
 #### format for `term` type
 
