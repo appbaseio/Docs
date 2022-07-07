@@ -1185,6 +1185,54 @@ For Solr, the `deepPaginationConfig.cursor` field should contain the `nextCursor
 | ------   | --------------------------- | -------- |
 | `Object`   | `all`                | false    |
 
+### includeValues
+
+This fields indicates which values should be included in the terms aggregation (if done so). Only applied for `term` type of queries.
+
+This should be of type array of strings:
+
+```json
+{
+    "query": [{
+        "includeValues": ["someterm"]
+    }]
+}
+```
+
+> NOTE: The string can be a regex as well but only for ElasticSearch backend, not Solr.
+
+#### ElasticSearch
+
+For ElasticSearch this maps to the `include` field inside the `term` query.
+
+#### Solr
+
+For Solr, this maps to the `facet.contains` field.
+
+### excludeValues
+
+This fields indicates which values should not be included in the terms aggregation (if done so). Only applied for `term` type of queries.
+
+This should be of type array of strings:
+
+```json
+{
+    "query": [{
+        "excludeValues": ["someterm"]
+    }]
+}
+```
+
+> NOTE: The string can be a regex as well but only for ElasticSearch backend, not Solr.
+
+#### ElasticSearch
+
+For ElasticSearch this maps to the `exclude` field inside the `term` query.
+
+#### Solr
+
+For Solr, this maps to the `facet.excludeTerms` field.
+
 ## Settings Properties
 
 ### recordAnalytics
