@@ -111,6 +111,8 @@
               link: /docs/reactivesearch/v3/advanced/selectedfilters/
             - title: StateProvider
               link: /docs/reactivesearch/v3/advanced/stateprovider/
+            - title: ErrorBoundary
+              link: /docs/reactivesearch/v3/advanced/errorboundary/
             - title: Grouping Results
               link: /docs/reactivesearch/v3/advanced/groupingresults/
             - title: Multi Index Search
