@@ -395,7 +395,58 @@ This field should indicate the field that sort will be applied to. If not passed
 
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
-| `String` | `all`                       | false  |
+| `String`, `array of strings`, `array of string and objects` | `all`                       | false  |
+
+The `sortField` key accepts different types of values:
+
+#### 1. `string`
+
+String can be passed where the string is a dataField where sorting is supposed to be done on, following is an example:
+
+```json
+{
+    "sortField": "title"
+}
+```
+
+> In the above example, `title` is the dataField on which sorting will be done.
+
+In the above example, the sorting method will be the value of `sortBy` (if passed) else the default value (which is `asc` for any field other than `_score`).
+
+#### 2. Array of strings
+
+An array of strings can also be passed. This can be done in the following way:
+
+```json
+{
+    "sortField": [
+        "title",
+        "author",
+        "price"
+    ]
+}
+```
+
+> In the above example, `title`, `author` and `price` are valid dataFields on which sorting will be done.
+
+In the above example, the sorting method will be the value of `sortBy` (if passed) else the default value (which is `asc` for any field other than `_score`).
+
+#### 3. Array of strings and objects
+
+`sortField` also accepts a combined array where some fields are passed as object. Following is an example:
+
+```json
+{
+    "sortField": [
+        "title",
+        {"author": "desc"},
+        {"price": "asc"}
+    ]
+}
+```
+
+In the above, the sorting for `title` will be the `sortBy` value (if passed) else `ascending`. For the other fields, it will be as passed. The object should have the dataField as the **key** and the sorting method as the **value**. The sorting method should be a valid `sortBy` value.
+
 
 ### react
 
