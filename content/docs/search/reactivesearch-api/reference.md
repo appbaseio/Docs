@@ -386,6 +386,11 @@ This property can be used to sort the results in a particular format. The valid 
 >
 > Please note that the `count` value can only be applied when the query type is of `term`. In addition, the [pagination](/docs/search/reactivesearch-api/reference/#pagination) property for the query needs to be set to `false` (default behavior). When pagination is `true`, a composite aggregation is used under the hood, which doesn't support ordering by count.
 
+The `sortBy` value by default is set according to the following criterion:
+
+- If field is `_score`, set as `desc`.
+- If field is anything other than `_score`, set as `asc`
+
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
