@@ -155,7 +155,7 @@ The value can be a `string` or an `Array<string>`. The `Array<string>` format is
 
 #### format for `suggestion` type
 
-The value can be a `string` or `int`.
+The value can be a `string`.
 **Example Playground**: 
 <iframe src=https://play.reactivesearch.io/embed/jDYw7ymFq6q4DgiMkZW5     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-jDYw7ymFq6q4DgiMkZW5   ></iframe>
 
