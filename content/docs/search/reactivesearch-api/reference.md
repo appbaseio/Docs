@@ -418,9 +418,9 @@ String can be passed where the string is a dataField where sorting is supposed t
 
 In the above example, the sorting method will be the value of `sortBy` (if passed) else the default value (which is `asc` for any field other than `_score`).
 
-#### 2. Array of strings
+#### 2. Array of string
 
-An array of strings can also be passed. This can be done in the following way:
+An array of string can also be passed. This can be done in the following way:
 
 ```json
 {
@@ -434,9 +434,9 @@ An array of strings can also be passed. This can be done in the following way:
 
 > In the above example, `title`, `author` and `price` are valid dataFields on which sorting will be done.
 
-In the above example, the sorting method will be the value of `sortBy` (if passed) else the default value (which is `asc` for any field other than `_score`).
+In the above example, the sorting order will be based on the value of `sortBy` key if passed, or default to `asc` order. `_score` is a special field to sort by relevance, if specified, it is always sorted in `desc` order
 
-#### 3. Array of strings and objects
+#### 3. Array of string / object
 
 `sortField` also accepts a combined array where some fields are passed as object. Following is an example:
 
@@ -450,7 +450,7 @@ In the above example, the sorting method will be the value of `sortBy` (if passe
 }
 ```
 
-In the above, the sorting for `title` will be the `sortBy` value (if passed) else `ascending`. For the other fields, it will be as passed. The object should have the dataField as the **key** and the sorting method as the **value**. The sorting method should be a valid `sortBy` value.
+In the above example, the sort order for `title` field will be `asc` (i.e. ascending). For the other fields, it will be as passed. The object should have the dataField as the **key** and the sort order as its **value**, only `asc` or `desc` are valid values here.
 
 
 ### react
