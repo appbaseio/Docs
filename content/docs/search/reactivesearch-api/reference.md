@@ -143,7 +143,7 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for `search` type
+#### format for search type
 The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on.
 
 **Example Playground**:
@@ -153,20 +153,20 @@ The value can be a `string` or an `Array<string>`. The `Array<string>` format is
 **Example Playground (multi-value search)**:
 <iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
 
-#### format for `suggestion` type
+#### format for suggestion type
 
 The value can be a `string`.
 **Example Playground**: 
 <iframe src=https://play.reactivesearch.io/embed/jDYw7ymFq6q4DgiMkZW5     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-jDYw7ymFq6q4DgiMkZW5   ></iframe>
 
 
-#### format for `term` type
+#### format for term type
 
 The value can be a `string` or `Array<string>`.
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
-#### format for `range` type
+#### format for range type
 
 The value should be an `Object` in the following shape:
 
@@ -186,7 +186,7 @@ The value should be an `Object` in the following shape:
 <iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
 </iframe>
 
-#### format for `geo` type
+#### format for geo type
 
 The value should be an `Object` in the following shape:
 
@@ -235,6 +235,7 @@ The below example represents a **geo bounding box** query:
     }
 ```
 **Example Playground**: 
+
 <iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### index
