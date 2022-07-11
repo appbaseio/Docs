@@ -39,6 +39,7 @@ Following pages explain the concepts in detail with examples:
 - [Error Handling in Pipelines](error-handling)
 - [Pre-Defined vs User-Defined Stages](pre-defined-vs-user-defined)
 - [Global Environments](global-envs)
+- [Conditional Execution of Stages](conditional-stages)
 
 ## Features of ReactiveSearch Pipelines
 
