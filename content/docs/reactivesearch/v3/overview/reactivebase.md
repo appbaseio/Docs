@@ -188,6 +188,109 @@ The above example will change the default `_msearch` request to `_search` reques
 }
 ```
 
+
+> 💡 &nbsp; Use below props when using [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/) &nbsp; library.
+-   **mapKey** `String` [optional]     
+    accepts the secret key to load google script.
+-   **mapLibraries** `Array<String>` [optional]     
+    accepts the list of addiotional maps libraries to load. The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+    - `drawing`
+    - `geometry`
+    - `localContext`
+    - `places`
+    - `visualization`
+
+    ```jsx
+    <ReactiveBase
+		mapKey="<YOUR_MAP_KEY>"
+		mapLibraries={['visualization', 'places']}
+        // ...other props
+    />
+    ```
+
+    > Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
+
+-   **preferences** `Object` [optional]
+    accepts an object to configure the search settings for components. The `preferences` property allows configuring the search settings for your components in one place. The preferences object must follow the following structure:
+
+```ts
+{
+    componentSettings: {
+        [componentId]: {
+            // If disabled, the component would not get rendered and would not constitute the search query
+            enabled: true,
+            rsConfig: {
+                // props supported by reactivesearch components
+            }
+            // can have additional keys to store meta data for components
+            // the preference object for a component can be accessed using the 
+            // `SearchPreferencesContext` context.
+            // For e.g custom property to control the collapsible property for a facet
+            isCollapsible: true,
+        }
+    }
+}
+```
+To connect a ReactiveSearch component to a preference, use the `componentId` prop. The following example has defined the `preferences` object for `bookSearch` component, the `DataSearch` component is using the same componentId (`bookSearch`).
+
+```jsx
+    <ReactiveBase preferences={{
+        componentSettings: {
+            bookSearch: {
+                rsConfig: {
+                    dataField: 'original_title',
+                    title: 'Search for Books',
+                    size: 5,
+                }
+            }
+        }
+    }}>
+        <DataSearch componentId="bookSearch" />
+    </ReactiveBase>
+```
+Additionally, the ReactiveSearch components support `preferencesPath` prop which is helpful to define the path of preference object for a component. It is helpful when you have to use conflicting component Ids. The following example defines the preferences for `home` and `search` pages, components have defined the `preferencesPath` prop to connect to preferences.
+
+```jsx
+    <ReactiveBase preferences={{
+        pages: {
+            home: {
+                bookSearch: {
+                    rsConfig: {
+                        dataField: 'original_title',
+                        title: 'Search for Books',
+                        size: 5,
+                    }
+                }
+            },
+            search: {
+                bookSearch: {
+                    rsConfig: {
+                        dataField: ['original_title', 'authors', 'publishers'],
+                        title: 'Search for Books, Authors, Publishers',
+                        size: 10,
+                    }
+                }
+            }
+        }
+    }}>
+        {/** home page */}
+        <DataSearch 
+            preferencesPath="pages.home.bookSearch" 
+            componentId="bookSearch" 
+        />
+         {/** search page */}
+        <DataSearch 
+            preferencesPath="pages.search.bookSearch" 
+            componentId="bookSearch" 
+        />
+    </ReactiveBase>
+```
+> Note:
+>
+> Preferences is meant to be a one time configuration for components. We don't recommend to mutate it as it can cause performance issues.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/Preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
 ### Connect to Elasticsearch
 
 > Note

@@ -564,6 +564,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`triggerCustomQuery`** `(options): Promise<any>` can be used to trigger the `defaultQuery` programmatically
     -   **`setDataField`** `( dataField: string | Array<string | DataField>, options?: Options ) => void`
     -   **`setValue`** `( value: any, options?: Options ) => void` can be used to set the `value` property
+    -   **setCategoryValue** `(categoryValue: string, options?: Options) => void`  can be used to set the `categoryValue` property.
     -   **`setSize`** `( size: number, options?: Options ) => void` can be used to set the `size` property
     -   **`setFrom`** `( from: number, options?: Options ) => void` can be used to set the `from` property. Useful to implement pagination.
     -   **setAfter** `(after: object, options?: Options) => void`
@@ -688,6 +689,42 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     ...
 />
 ```
+
+-   **enterButton** `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
+
+    <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox            
+            id="search-component"
+            enterButton={true}
+        />
+    ```
+-   **renderEnterButton** `Function` [optional] renders a custom jsx markup for the enter button. Use in conjunction with `enterButton` prop set to `true`.
+
+    <img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
+
+    ```jsx
+        <SearchBox
+            id="search-component"
+            enterButton
+            renderEnterButton={clickHandler => (
+                <div
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'stretch',
+                    }}
+                >
+                    <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                        🔍 Search
+                    </button>
+                </div>
+            )}
+        />
+    ```
+
+
 ### Customize style
 
 -   **innerClass** `Object` `SearchBox` component supports an `innerClass` prop to provide styles to the sub-components of `SearchBox`. These are the supported keys:
@@ -697,6 +734,7 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
     -   `list`
     -   `recent-search-icon`
     -   `popular-search-icon`
+    -   `enter-button`
 
 -   **className** `String`
     CSS class to be injected on the component container.

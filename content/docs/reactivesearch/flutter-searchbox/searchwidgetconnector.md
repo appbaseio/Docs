@@ -93,7 +93,7 @@ class FlutterSearchBoxApp extends StatelessWidget {
         triggerQueryOnInit: true,
         preserveResults: true,
         builder: (context, searchController) => ResultsWidget(searchController)),
-        subscribeTo: ["results"],
+        subscribeTo: [KeysToSubscribe.Results],
         shouldListenForChanges: true,
         destroyOnDispose: true,
         index: 'good-books-ds',

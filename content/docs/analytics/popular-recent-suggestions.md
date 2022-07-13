@@ -144,7 +144,7 @@ Only selected indices will be considered to calculate the suggestions.
 
 ### Usage Example With Searchbox
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat/update-examples-nov-2021/packages/react-searchbox/examples/with-popular-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/with-popular-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="@appbaseio/react-searchbox-demo-example"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -153,9 +153,31 @@ Only selected indices will be considered to calculate the suggestions.
 
 ### Usage Example With ReactiveSearch
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Frs-searchbox/packages/web/examples/SearchBox?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBox?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="searchbox"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### Query suggestions example
+
+Different type of suggestions serve different purpose. **ReactiveSearch** provides a wide range of suggestions: index, category, popular, recent, etc.
+
+When a user types in the `Searchbox`, they get all the types of suggestions. We can differentiate between the suggestions by looking at the `_suggestion_type` and `_category` properties. The value for both the properties for different type of suggestion is given in the table below.
+
+
+
+| `Type` | `_suggestion_type` | `_category` |
+|------|--------------------|-------------|
+| Index| `"index"`          | `null`
+| Category| `"index"`  | `<category_name>`
+| Popular| `"popular"`  | `null`
+
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/QuerySuggestion?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="query-suggestion"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>

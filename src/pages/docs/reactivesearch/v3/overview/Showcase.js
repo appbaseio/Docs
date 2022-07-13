@@ -1,7 +1,6 @@
 import React from 'react';
 import {
 	ReactiveBase,
-	DataSearch,
 	MultiList,
 	RatingsFilter,
 	SingleDropdownList,
@@ -10,9 +9,9 @@ import {
 	ToggleButton,
 	ReactiveList,
 	DateRange,
+	SearchBox,
 } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
-import Helmet from 'react-helmet';
 import moment from 'moment';
 
 import PostLayout from '../../../../../components/PostLayout';
@@ -21,9 +20,10 @@ import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
 const settings = {
 	app: 'clone-airbeds',
 	credentials: '3f7ed293fbe0:47ff004a-4722-49fe-bc48-0ff0286e4de0',
-    url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
-    enableAppbase: true,
-    mapKey: 'AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU',
+	url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
+	enableAppbase: true,
+	mapKey: 'AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU',
+	mapLibraries: ['places'],
 	theme: {
 		colors: {
 			textColor: '#738a94',
@@ -35,21 +35,37 @@ const settings = {
 	},
 };
 
-const dataSearchProps = {
+const searchBoxProps = {
 	dataField: ['name', 'name.autosuggest', 'name.keyword', 'name.search'],
-	className: 'showcase-search',
-	componentId: 'search',
+	componentId: 'searchbox',
+	enableRecentSuggestions: true,
+	enablePopularSuggestions: true,
+	enablePredictiveSuggestions: true,
+	popularSuggestionsConfig: {
+		size: 3,
+		minHits: 2,
+		minChars: 4,
+	},
+	recentSuggestionsConfig: {
+		size: 3,
+		minChars: 4,
+	},
 };
 
 const multilistProps = {
 	dataField: 'accommodates',
 	componentId: 'multilist',
-	react: { and: ['search', 'togglebutton',
-    'ratingfilter',
-    'rangeslider',
-    'search',
-    'singledropdownlist',
-    'singlelist'] },
+	react: {
+		and: [
+			'search',
+			'togglebutton',
+			'ratingfilter',
+			'rangeslider',
+			'search',
+			'singledropdownlist',
+			'singlelist',
+		],
+	},
 	className: 'showcase-list',
 	showSearch: false,
 	placeholder: 'Select Accommodates',
@@ -58,12 +74,17 @@ const multilistProps = {
 const singleListProps = {
 	dataField: 'property_type.keyword',
 	componentId: 'singlelist',
-	react: { and: ['search', 'togglebutton',
-    'ratingfilter',
-    'rangeslider',
-    'search',
-    'singledropdownlist',
-    'multilist'] },
+	react: {
+		and: [
+			'search',
+			'togglebutton',
+			'ratingfilter',
+			'rangeslider',
+			'search',
+			'singledropdownlist',
+			'multilist',
+		],
+	},
 	className: 'showcase-list',
 	showSearch: false,
 	placeholder: 'Select Property Type',
@@ -73,24 +94,34 @@ const singleDropdownProps = {
 	dataField: 'property_type.keyword',
 	componentId: 'singledropdownlist',
 	className: 'dropdown-list',
-	react: { and: ['search', 'togglebutton',
-    'ratingfilter',
-    'rangeslider',
-    'search',
-    'singelist',
-    'multilist'] },
+	react: {
+		and: [
+			'search',
+			'togglebutton',
+			'ratingfilter',
+			'rangeslider',
+			'search',
+			'singelist',
+			'multilist',
+		],
+	},
 	showSearch: false,
 };
 
 const rangeSliderProps = {
 	dataField: 'price',
 	componentId: 'rangeslider',
-	react: { and: ['search', 'togglebutton',
-    'ratingfilter',
-    'multilist',
-    'search',
-    'singledropdownlist',
-    'singlelist'] },
+	react: {
+		and: [
+			'search',
+			'togglebutton',
+			'ratingfilter',
+			'multilist',
+			'search',
+			'singledropdownlist',
+			'singlelist',
+		],
+	},
 	showHistogram: true,
 	tooltipTrigger: 'hover',
 	rangeLabels: (min, max) => ({
@@ -185,7 +216,7 @@ const reactiveListProps = {
 
 const reactiveMapProps = {
 	componentId: 'map',
-    showMarkerClusters: false,
+	showMarkerClusters: false,
 	react: {
 		and: [
 			'togglebutton',
@@ -233,21 +264,15 @@ class Showcase extends React.Component {
 				location={location}
 				post={{ title: 'Showcase' }}
 			>
-				<Helmet>
-					<script
-						type="text/javascript"
-						src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU&libraries=places"
-					></script>
-				</Helmet>
 				{mounted ? (
 					<ReactiveBase {...settings}>
 						<div className="showcase">
 							<div className="w-100">
 								<ShowcaseComponent
-									title="DataSearch"
-									link="/docs/reactivesearch/v3/search/datasearch/"
+									title="SearchBox"
+									link="/docs/reactivesearch/v3/search/searchbox/"
 								>
-									<DataSearch {...dataSearchProps} />
+									<SearchBox {...searchBoxProps} />
 								</ShowcaseComponent>
 							</div>
 							<div className="showcase-grid grid-2">

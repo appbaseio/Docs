@@ -67,7 +67,7 @@ Deploy ReactiveSearch API as a MongoDB Realm app function with a single command.
     node rs-cli --private-api-key $private_key --api-key $public_key --app-id $app_id
     ```
     
-    [Once you have cloned the ReactiveSesearch Realm project](https://github.com/appbaseio/reactivesearch-realm-function) and run `yarn` or `npm install` to install the project dependencies, you can run the following command to deploy the ReactiveSearch API to your project.
+    [Once you have cloned the ReactiveSearch Realm project](https://github.com/appbaseio/reactivesearch-realm-function) and run `yarn` or `npm install` to install the project dependencies, you can run the following command to deploy the ReactiveSearch API to your project.
     
     where
     
