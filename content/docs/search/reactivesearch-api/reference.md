@@ -143,19 +143,30 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for `search` and `suggestion` type
+#### format for search type
+The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on.
 
-The value can be a `string` or `int`.
-**Example Playground**: 
+**Example Playground**:
 <iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
-#### format for `term` type
+
+**Example Playground (multi-value search)**:
+<iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
+
+#### format for suggestion type
+
+The value can be a `string`.
+**Example Playground**: 
+<iframe src=https://play.reactivesearch.io/embed/jDYw7ymFq6q4DgiMkZW5     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-jDYw7ymFq6q4DgiMkZW5   ></iframe>
+
+
+#### format for term type
 
 The value can be a `string` or `Array<string>`.
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
-#### format for `range` type
+#### format for range type
 
 The value should be an `Object` in the following shape:
 
@@ -175,7 +186,7 @@ The value should be an `Object` in the following shape:
 <iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
 </iframe>
 
-#### format for `geo` type
+#### format for geo type
 
 The value should be an `Object` in the following shape:
 
@@ -224,6 +235,7 @@ The below example represents a **geo bounding box** query:
     }
 ```
 **Example Playground**: 
+
 <iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### index
@@ -386,6 +398,11 @@ This property can be used to sort the results in a particular format. The valid 
 >
 > Please note that the `count` value can only be applied when the query type is of `term`. In addition, the [pagination](/docs/search/reactivesearch-api/reference/#pagination) property for the query needs to be set to `false` (default behavior). When pagination is `true`, a composite aggregation is used under the hood, which doesn't support ordering by count.
 
+The `sortBy` value by default is set according to the following criterion:
+
+- If field is `_score`, set as `desc`.
+- If field is anything other than `_score`, set as `asc`
+
 **Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
@@ -395,7 +412,58 @@ This field should indicate the field that sort will be applied to. If not passed
 
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------- | --------------------------- | -------- |
-| `String` | `all`                       | false  |
+| `String`, `array of strings`, `array of string and objects` | `all`                       | false  |
+
+The `sortField` key accepts different types of values:
+
+#### 1. `string`
+
+String can be passed where the string is a dataField where sorting is supposed to be done on, following is an example:
+
+```json
+{
+    "sortField": "title"
+}
+```
+
+> In the above example, `title` is the dataField on which sorting will be done.
+
+In the above example, the sorting method will be the value of `sortBy` (if passed) else the default value (which is `asc` for any field other than `_score`).
+
+#### 2. Array of string
+
+An array of string can also be passed. This can be done in the following way:
+
+```json
+{
+    "sortField": [
+        "title",
+        "author",
+        "price"
+    ]
+}
+```
+
+> In the above example, `title`, `author` and `price` are valid dataFields on which sorting will be done.
+
+In the above example, the sorting order will be based on the value of `sortBy` key if passed, or default to `asc` order. `_score` is a special field to sort by relevance, if specified, it is always sorted in `desc` order
+
+#### 3. Array of string / object
+
+`sortField` also accepts a combined array where some fields are passed as object. Following is an example:
+
+```json
+{
+    "sortField": [
+        "title",
+        {"author": "desc"},
+        {"price": "asc"}
+    ]
+}
+```
+
+In the above example, the sort order for `title` field will be `asc` (i.e. ascending). For the other fields, it will be as passed. The object should have the dataField as the **key** and the sort order as its **value**, only `asc` or `desc` are valid values here.
+
 
 ### react
 
@@ -1255,6 +1323,55 @@ Then for the query with ID `test`, the following will be the resolved `endpoint`
 ```
 
 > NOTE that the query was used directly because method is `POST` and the `endpoint` property is removed before using the query as the body.
+
+
+### includeValues
+
+This fields indicates which values should be included in the terms aggregation (if done so). Only applied for `term` type of queries.
+
+This should be of type array of strings:
+
+```json
+{
+    "query": [{
+        "includeValues": ["someterm"]
+    }]
+}
+```
+
+> NOTE: The string can be a regex as well but only for ElasticSearch backend, not Solr.
+
+#### ElasticSearch
+
+For ElasticSearch this maps to the `include` field inside the `term` query.
+
+#### Solr
+
+For Solr, this maps to the `facet.contains` field.
+
+### excludeValues
+
+This fields indicates which values should not be included in the terms aggregation (if done so). Only applied for `term` type of queries.
+
+This should be of type array of strings:
+
+```json
+{
+    "query": [{
+        "excludeValues": ["someterm"]
+    }]
+}
+```
+
+> NOTE: The string can be a regex as well but only for ElasticSearch backend, not Solr.
+
+#### ElasticSearch
+
+For ElasticSearch this maps to the `exclude` field inside the `term` query.
+
+#### Solr
+
+For Solr, this maps to the `facet.excludeTerms` field.
 
 ## Settings Properties
 
