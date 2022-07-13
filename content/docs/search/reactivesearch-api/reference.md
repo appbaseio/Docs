@@ -1253,6 +1253,78 @@ For Solr, the `deepPaginationConfig.cursor` field should contain the `nextCursor
 | ------   | --------------------------- | -------- |
 | `Object`   | `all`                | false    |
 
+### endpoint
+
+The `endpoint` field allows altering the default behavior of ReactiveSearch API by specifying values like `URL`, `method` etc to indicate where the request should be sent to.
+
+This property can be very useful in a scenario where there are multiple requests and are supposed to hit different backends.
+
+`endpoint` will be an object that can contain the following fields:
+
+| Name | Type | Description |
+| ---- | ---- | ---- |
+| `url` | string | URL to hit for the current query's request |
+| `method` | string | Method to use to hit the current query's request |
+| `headers` | Object | Headers to use in the current query's request |
+| `body` | Object | The body to use for hitting the URL |
+
+Assumptions made are:
+
+1. If `endpoint` is passed, `endpoint.url` is mandatory.
+2. When the main query is executed, the `query.execute` field is set to `false` for any query that has a valid `endpoint` field defined.
+
+#### `body`
+
+The body is decided automatically if it is not specified, following are the possible scenarios and how body is decided upon:
+
+1. If `body` is passed, it should be an object and it will be passed directly to the URL.
+2. If `body` is **not** passed and the method is passed as **POST** then the current query will be used (without the `endpoint` part).
+3. If `body` is **not** passed and method is **not** POST, then the body will be set to an empty object `{}`.
+
+Here's an example:
+
+For the following request body:
+
+```json
+{
+    "query": [
+        {
+            "id": "test",
+            "value": "*",
+            "dataField": "description",
+            "endpoint": {
+                "url": "https://some-safe-url.com/some-index",
+                "method": "POST"
+            }
+        }
+    ]
+}
+```
+
+Then for the query with ID `test`, the following will be the resolved `endpoint` body:
+
+```json
+{
+    "endpoint": {
+        "url": "https://some-safe-url.com/some-index",
+        "headers": {},
+        "method": "POST",
+        "body": {
+            "query": [
+                {
+                    "id": "test",
+                    "value": "*",
+                    "dataField": "description",
+                }
+            ]
+        }
+    }
+}
+```
+
+> NOTE that the query was used directly because method is `POST` and the `endpoint` property is removed before using the query as the body.
+
+
 ### includeValues
 
 This fields indicates which values should be included in the terms aggregation (if done so). Only applied for `term` type of queries.
