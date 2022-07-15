@@ -13,6 +13,7 @@ BUILD_CONFIG = [
     {
         engine: "all",
         path: "./content/docs/search/reactivesearch-api/reference/index.md",
+        mdPrefix: "---\ntitle: \'API Reference\'\nmeta_title: \'ReactiveSearch API Reference\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
         enabled: true
     },
     {
@@ -60,7 +61,13 @@ function parseRSReference() {
                         value.engine = "all"
                     }
 
-                    var markdownStr = parsePropertiesFromLevel(json, 1, "", null, value.engine)
+                    if (value.mdPrefix == undefined) {
+                        value.mdPrefix = ""
+                    }
+
+                    var originalString = `${value.mdPrefix}\n\n`
+
+                    var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine)
 
                     fs.writeFile(value.path, markdownStr, err => {
                         if (err) {console.log(err)}
