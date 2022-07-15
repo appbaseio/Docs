@@ -1,6 +1,6 @@
 const createPages = require(`./gatsby/createPages`);
 const onCreateNode = require(`./gatsby/onCreateNode`);
-const parseRSSchema = require(`./utils/auto-schema`);
+const parseRSSchema = require("./utils/auto-schema");
 
 
 exports.onPreBootstrap = ({ reporter }) => {
