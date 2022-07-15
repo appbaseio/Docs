@@ -183,4 +183,4 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 }
 
 
-parseRSReference()
+export var parse = parseRSReference
