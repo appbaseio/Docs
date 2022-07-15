@@ -41,6 +41,7 @@ Example uses:
 	highlightField="group_city"
 	queryFormat="or"
 	filterLabel="City"
+  :mode="tag"
 	:autosuggest="true"
 	:highlight="true"
 	:showFilter="true"
@@ -81,6 +82,22 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **mode** `String`
+    DataSearch component offers two modes of usage, `select` & `tag`. When mode is set to `tag` DataSearch allows selecting multiple suggestions. Defaults to `select`.
+
+    ```html
+    <template>
+	    <data-search
+        componentId="title"
+        highlight="true"
+        :dataField="['title', 'text']"
+        :mode="tag"
+      />
+    </template>
+    ```
+
+    <img src="https://i.imgur.com/DVhSiGV.png" alt="DataSearch tag mode" />
+
 -   **dataField** `string | Array<string | DataField*>` [optional*]
     index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -154,8 +171,11 @@ Example uses:
     set the title of the component to be shown in the UI.
 -   **defaultValue** `string` [optional]
     preset the search query text in the search box.
--   **value** `string` [optional]
+-   **value** `String` | `Array<String>` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `change` event.
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+    
 -   **fieldWeights** `Array` [optional]
     set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 -   **placeholder** `String` [optional]
@@ -607,6 +627,30 @@ You can use `DataSearch` with `renderQuerySuggestions slot` as shown:
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
+- **renderSelectedTags** `slot-scope` [optional] to custom render tags when mode is set to `tag`.
+  <img src="https://i.imgur.com/BzHc1tn.png" height="75px" style="margin:0 auto;display:block;"/>
+
+```jsx
+  <data-search
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<div slot="renderSelectedTags" slot-scope="{ values, handleClear, handleClearAll }">
+			<button
+				style="{ background-color: highlightedIndex ? 'grey' : 'transparent'color: 'green' }"
+				v-for="tagValue in values"
+				:key="tagValue"
+				@click="() => handleClear(tagValue)"
+			>
+				{{ tagValue }}
+			</button>
+		</div>
+  </data-search>
+```
+
 ## Demo
 
 <br />
@@ -621,6 +665,7 @@ You can use `DataSearch` with `renderQuerySuggestions slot` as shown:
 - `input`
 - `recent-search-icon`
 - `popular-search-icon`
+- `selected-tag`
 
 Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
