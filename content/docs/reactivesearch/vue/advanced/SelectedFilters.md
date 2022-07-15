@@ -107,3 +107,17 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     CSS class to be injected on the component container.
 -   **slot-scope** ( Default Slot )
     Enables custom rendering for **SelectedFilters** component. It provides an object as a param which contains all the props needed to render the custom selected-filters, including the functions to clear and update the component values. You can find the example at [here](https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/selected-filters-custom).
+
+    It accepts an object with these properties:
+    - **`components`**: `Array<String>`
+        array of `componentId`s which have got `showFilter` set to `true`.
+    - **`selectedValues`**: `Object`
+        map of components' Ids and their updated values.
+    - **`clearValues`**: `Function - () => void` 
+        function to clear all selected filters.
+    - **`clearValue`**: `Function - (String) => void` 
+        function to clear a selected filter's value. It takes the `componentId` as a param.
+    - **`setValue`**: `Function - (String, Any) => void` 
+        function to set a component's value. It takes the `componentId` and `value`(to set) as parameters.
+    - **resetValuesToDefault**: `Function`
+        function to reset values of the selected filters to their default values. It accepts an Array of componenIds to avoid resetting their values.
