@@ -137,9 +137,14 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
             markdownStr += propMarkdownDesc + "\n\n"
         }
 
+        var playgroundURL = propertyContainer["playgroundURL"]
+        if (playgroundURL != undefined) {
+            markdownStr += "**Try out an example in ReactiveSearch Playground**\n"
+            markdownStr += `<iframe src="${playgroundURL}"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>\n\n`
+        }
+
         // TODO: Handle engine support
         // TODO: Handle `required` mark as well.
-        // TODO: Parse playgroundURL as well.
     }
 
     // If properties is present for the container, recurse into that level
