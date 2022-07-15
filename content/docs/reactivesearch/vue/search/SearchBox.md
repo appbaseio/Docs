@@ -36,6 +36,7 @@ Example uses:
 ```html
 <search-box
 	componentId="SearchSensor"
+  :mode="tag"
 	title="Search"
 	defaultValue="Songwriting"
 	placeholder="Search for cities or venues"
@@ -118,6 +119,22 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **mode** `String`
+    SearchBox component offers two modes of usage, `select` & `tag`. When mode is set to `tag` SearchBox allows selecting multiple suggestions. Defaults to `select`.
+
+    ```html
+    <template>
+	    <search-box
+        componentId="title"
+        highlight="true"
+        :dataField="['title', 'text']"
+        :mode="tag"
+      />
+    </template>
+    ```
+
+    <img src="https://i.imgur.com/DVhSiGV.png" alt="SearchBox tag mode" />
+
 -   **dataField** `string | Array<string | DataField*>` [optional*]
     index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -234,8 +251,11 @@ Example uses:
     set the title of the component to be shown in the UI.
 -   **defaultValue** `string` [optional]
     preset the search query text in the search box.
--   **value** `string` [optional]
+-   **value** `String` | `Array<String>` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `change` event.
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+
 -   **fieldWeights** `Array` [optional]
     set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 -   **placeholder** `String` [optional]
@@ -339,7 +359,7 @@ Example uses:
   >
       <img slot="addonBefore" src="..." />
       <img slot="addonAfter" src="..." />
-  </data-sesarch>
+  </search-box>
 ```
 
 - **queryFormat** `String` [optional]
@@ -667,6 +687,38 @@ Or you can also use render as prop.
 </search-box>
 ```
 
+- **renderSelectedTags** `slot-scope` [optional] to custom render tags when mode is set to `tag`.
+Provides 
+It accepts an object with these properties:
+  - **`values`**: `Array<String>`
+    array of selected values.
+  - **`handleClear`**: `Function - (string) => void`
+    function to clear a tag value. It accepts the tag value(String) as a parameter.
+  - **`handleClearAll`**: `Function - () => void` 
+    function to clear all selected values.
+
+```jsx
+  <search-box
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<div slot="renderSelectedTags" slot-scope="{ values, handleClear, handleClearAll }">
+			<button
+				style="{ background-color: highlightedIndex ? 'grey' : 'transparent'color: 'green' }"
+				v-for="tagValue in values"
+				:key="tagValue"
+				@click="() => handleClear(tagValue)"
+			>
+				{{ tagValue }}
+			</button>
+		</div>
+  </search-box>
+```
+
+
 ## Demo
 
 <br />
@@ -682,6 +734,7 @@ Or you can also use render as prop.
 - `recent-search-icon`
 - `popular-search-icon`
 - `enter-button`
+- `selected-tag`
 
 Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
