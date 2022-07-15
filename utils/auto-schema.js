@@ -75,7 +75,7 @@ function parseRSReference() {
 
                     var originalString = `${value.mdPrefix}\n\n`
 
-                    var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine)
+                    var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required)
 
                     fs.writeFile(value.path, markdownStr, err => {
                         if (err) {console.log(err)}
@@ -93,10 +93,16 @@ function parseRSReference() {
     });
 }
 
-function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, engine) {
+function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, engine, previousReqProps) {
     var preservedOrder = propertyContainer.preservedOrder
     var properties = propertyContainer.properties
     var enginesSupported = propertyContainer.engine
+    var requiredProps = propertyContainer.required
+
+    // Set the previous required props to empty if it's undefined
+    if (previousReqProps == undefined || previousReqProps == null) {
+        previousReqProps = []
+    }
 
     // Determine whether or not filter should be applied based on engine.
     //
@@ -110,6 +116,11 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
     if (properties == undefined && propertyContainer.items != undefined) {
         properties = propertyContainer.items.properties
         preservedOrder = propertyContainer.items.preservedOrder
+        requiredProps = propertyContainer.items.required
+    }
+
+    if (requiredProps == undefined) {
+        requiredProps = []
     }
 
     // If engine is supposed to be checked, check it and return if it's not
@@ -128,7 +139,14 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
     }
 
     if (propTitle != undefined) {
-        markdownStr += `${"#".repeat(level)} ${propTitle}\n\n`
+        var isRequired = false
+
+        // Handle `required` mark as well.
+        if (previousReqProps.includes(key)) {
+            isRequired = true
+        }
+
+        markdownStr += `${"#".repeat(level)} ${propTitle} ${isRequired ? " *required": ""}\n\n`
 
         // Else, parse the property fields accordingly.
         var propMarkdownDesc = propertyContainer["markdownDescription"]
@@ -144,7 +162,6 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
         }
 
         // TODO: Handle engine support
-        // TODO: Handle `required` mark as well.
     }
 
     // If properties is present for the container, recurse into that level
@@ -156,7 +173,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 
         // We will just iterate it in order and extract using recursion.
         preservedOrder.forEach((preservedKey) => {
-            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey, engine)
+            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey, engine, requiredProps)
         })
     }
 
