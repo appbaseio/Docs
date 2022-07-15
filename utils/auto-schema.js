@@ -97,7 +97,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
     }
 
     if (propTitle != undefined) {
-        markdownStr += `${"#".repeat(level + 1)} ${propTitle}\n\n`
+        markdownStr += `${"#".repeat(level)} ${propTitle}\n\n`
 
         // Else, parse the property fields accordingly.
         var propMarkdownDesc = propertyContainer["markdownDescription"]
