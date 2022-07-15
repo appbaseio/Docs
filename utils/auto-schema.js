@@ -47,11 +47,27 @@ function parseRSReference() {
                 //
                 // Parse the top level properties first.
                 // We will keep writing as we parse the values.
-                var markdownStr = parsePropertiesFromLevel(json, 1, "", null, "all")
 
-                fs.writeFile("sample.md", markdownStr, err => {
-                    if (err) {console.log(err)}
+                BUILD_CONFIG.forEach(value => {
+                    if (!value.enabled) return
+
+                    if (value.path == undefined) {
+                        console.error("`path` cannot be empty or invalid: ", value.path)
+                        return
+                    }
+
+                    if (value.engine == undefined || value.engine == "") {
+                        value.engine = "all"
+                    }
+
+                    var markdownStr = parsePropertiesFromLevel(json, 1, "", null, value.engine)
+
+                    fs.writeFile(value.path, markdownStr, err => {
+                        if (err) {console.log(err)}
+                    })
                 })
+
+                
             } catch (error) {
                 console.error(error.message, error.stack);
             };
