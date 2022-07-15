@@ -26,9 +26,24 @@ BUILD_CONFIG = [
     },
     {
         engine: "elasticsearch",
-        path: "./context/docs/search/reactivesearch-api/elasticsearch.md",
-        enabled: false
-    }
+        path: "./content/docs/search/reactivesearch-api/reference/elasticsearch.md",
+        enabled: true
+    },
+    {
+        engine: "mongodb",
+        path: "./content/docs/search/reactivesearch-api/reference/mongodb.md",
+        enabled: true
+    },
+    {
+        engine: "solr",
+        path: "./content/docs/search/reactivesearch-api/reference/solr.md",
+        enabled: true
+    },
+    {
+        engine: "opensearch",
+        path: "./content/docs/search/reactivesearch-api/reference/opensearch.md",
+        enabled: true
+    },
 ]
 
 function parseRSReference() {
@@ -183,4 +198,5 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 }
 
 
-export var parse = parseRSReference
+// export var parse = parseRSReference
+parseRSReference()
