@@ -31,8 +31,16 @@
               items:
                 - link: /docs/search/reactivesearch-api/implement
                   title: "Implementation"
-                - link: /docs/search/reactivesearch-api/reference
+                - link: /docs/search/reactivesearch-api/reference/
                   title: "API Reference"
+                - link: /docs/search/reactivesearch-api/reference/elasticsearch
+                  title: "API Reference | ElasticSearch"
+                - link: /docs/search/reactivesearch-api/reference/opensearch
+                  title: "API Reference | OpenSearch"
+                - link: /docs/search/reactivesearch-api/reference/solr
+                  title: "API Reference | Solr"
+                - link: /docs/search/reactivesearch-api/reference/mongodb
+                  title: "API Reference | MongoDB"
             - link: /docs/search/rules/
               title: "Query Rules"
             - link: /docs/search/scripts/
