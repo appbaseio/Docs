@@ -119,5 +119,5 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
         function to clear a selected filter's value. It takes the `componentId` as a param.
     - **`setValue`**: `Function - (String, Any) => void` 
         function to set a component's value. It takes the `componentId` and `value`(to set) as parameters.
-    - **resetValuesToDefault**: `Function`
-        function to reset values of the selected filters to their default values. It accepts an Array of componenIds to avoid resetting their values.
+    - **`resetValuesToDefault`**: `Function - (Array<String>) => void`
+        function to reset values of the selected filters to their default values. It accepts an Array of componentIds to avoid resetting their values.
