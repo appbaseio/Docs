@@ -34,7 +34,7 @@
                 - link: /docs/search/reactivesearch-api/reference/
                   title: "API Reference"
                 - link: /docs/search/reactivesearch-api/reference/elasticsearch
-                  title: "API Reference | ElasticSearch"
+                  title: "API Reference | Elasticsearch"
                 - link: /docs/search/reactivesearch-api/reference/opensearch
                   title: "API Reference | OpenSearch"
                 - link: /docs/search/reactivesearch-api/reference/solr
