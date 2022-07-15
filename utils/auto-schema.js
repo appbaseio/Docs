@@ -8,6 +8,14 @@ const https = require("https");
  * 
  * Any engine changed (disabled/enabled) should be done here as well as
  * path changes, name changes etc.
+ * 
+ * An object in the following array can have the following fields:
+ * 
+ * - engine: The engine for which the reference should be generated.
+ * This should be the string that is used to filter the properties.
+ * - path: The path to the file where the final markdown content should be written. 
+ * - mdPrefix: markdown prefix to be added before the generated schema. (defaults to empty string)
+ * - enabled: Whether or not the engine is enabled.
  */
 BUILD_CONFIG = [
     {
@@ -131,6 +139,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 
         // TODO: Handle engine support
         // TODO: Handle `required` mark as well.
+        // TODO: Parse playgroundURL as well.
     }
 
     // If properties is present for the container, recurse into that level
