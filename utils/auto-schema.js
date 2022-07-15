@@ -47,7 +47,7 @@ function parseRSReference() {
                 //
                 // Parse the top level properties first.
                 // We will keep writing as we parse the values.
-                var markdownStr = parsePropertiesFromLevel(json, 1, "")
+                var markdownStr = parsePropertiesFromLevel(json, 1, "", null, "all")
 
                 fs.writeFile("sample.md", markdownStr, err => {
                     if (err) {console.log(err)}
@@ -62,13 +62,29 @@ function parseRSReference() {
     });
 }
 
-function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key) {
+function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, engine) {
     var preservedOrder = propertyContainer.preservedOrder
     var properties = propertyContainer.properties
+    var enginesSupported = propertyContainer.engine
+
+    // Determine whether or not filter should be applied based on engine.
+    //
+    // If the `engine` flag is passed as something other than `all`, it will be
+    // considered a filterable value.
+    //
+    // Moreover, another check is added to make sure that the engine field of the current
+    // property is present and not of length 0.
+    const shouldFilterOnEngine = engine != "all" && (enginesSupported != undefined && enginesSupported.length != 0)
 
     if (properties == undefined && propertyContainer.items != undefined) {
         properties = propertyContainer.items.properties
         preservedOrder = propertyContainer.items.preservedOrder
+    }
+
+    // If engine is supposed to be checked, check it and return if it's not
+    // supported.
+    if (shouldFilterOnEngine && !enginesSupported.includes(engine)) {
+        return markdownStr
     }
 
     const nextLevel = level + 1
@@ -103,7 +119,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key) {
 
         // We will just iterate it in order and extract using recursion.
         preservedOrder.forEach((preservedKey) => {
-            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey)
+            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey, engine)
         })
     }
 
