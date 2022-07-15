@@ -175,7 +175,7 @@ Example uses:
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `change` event.
 
     > Data type is Array<String> when `mode` prop is set to `tag`.
-    
+
 -   **fieldWeights** `Array` [optional]
     set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 -   **placeholder** `String` [optional]
@@ -628,7 +628,14 @@ You can use `DataSearch` with `renderQuerySuggestions slot` as shown:
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 - **renderSelectedTags** `slot-scope` [optional] to custom render tags when mode is set to `tag`.
-  <img src="https://i.imgur.com/BzHc1tn.png" height="75px" style="margin:0 auto;display:block;"/>
+Provides 
+It accepts an object with these properties:
+  - **`values`**: `Array<String>`
+    array of selected values.
+  - **`handleClear`**: `Function - (string) => void`
+    function to clear a tag value. It accepts the tag value(String) as a parameter.
+  - **`handleClearAll`**: `Function - () => void` 
+    function to clear all selected values.
 
 ```jsx
   <data-search
