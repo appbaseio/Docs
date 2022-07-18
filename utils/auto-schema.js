@@ -20,32 +20,32 @@ const https = require("https");
 BUILD_CONFIG = [
     {
         engine: "all",
-        path: "./content/docs/search/reactivesearch-api/reference/index.md",
-        mdPrefix: "./src/templates/markdown/reference/index.md",
+        path: "content/docs/search/reactivesearch-api/reference/index.md",
+        mdPrefix: "src/templates/markdown/reference/index.md",
         enabled: true
     },
     {
         engine: "elasticsearch",
-        path: "./content/docs/search/reactivesearch-api/reference/elasticsearch.md",
-        mdPrefix: "./src/templates/markdown/reference/elasticsearch.md",
+        path: "content/docs/search/reactivesearch-api/reference/elasticsearch.md",
+        mdPrefix: "src/templates/markdown/reference/elasticsearch.md",
         enabled: true
     },
     {
         engine: "mongodb",
-        path: "./content/docs/search/reactivesearch-api/reference/mongodb.md",
-        mdPrefix: "./src/templates/markdown/reference/mongodb.md",
+        path: "content/docs/search/reactivesearch-api/reference/mongodb.md",
+        mdPrefix: "src/templates/markdown/reference/mongodb.md",
         enabled: true
     },
     {
         engine: "solr",
-        path: "./content/docs/search/reactivesearch-api/reference/solr.md",
-        mdPrefix: "./src/templates/markdown/reference/solr.md",
+        path: "content/docs/search/reactivesearch-api/reference/solr.md",
+        mdPrefix: "src/templates/markdown/reference/solr.md",
         enabled: true
     },
     {
         engine: "opensearch",
-        path: "./content/docs/search/reactivesearch-api/reference/opensearch.md",
-        mdPrefix: "./src/templates/markdown/reference/opensearch.md",
+        path: "content/docs/search/reactivesearch-api/reference/opensearch.md",
+        mdPrefix: "src/templates/markdown/reference/opensearch.md",
         enabled: true
     },
 ]
@@ -53,8 +53,8 @@ BUILD_CONFIG = [
 PIPELINE_BUILD_CONFIG = [
     {
         enabled: true,
-        path: "./content/docs/pipelines/API/reference.md",
-        mdPrefix: "./src/templates/markdown/reference/pipelines.md"
+        path: "content/docs/pipelines/API/reference.md",
+        mdPrefix: "src/templates/markdown/reference/pipelines.md"
     }
 ]
 
