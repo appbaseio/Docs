@@ -199,6 +199,19 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
             }
         }
 
+        // If property has `enum`, add that in the list of supported values.
+        propertyEnum = propertyContainer["enum"]
+        if (propertyEnum != undefined) {
+            markdownStr += "**Following values are supported for this field**\n\n"
+            
+            supportedValues = ""
+            propertyEnum.forEach((value, index) => {
+                propertyEnum[index] = "`" + value + "`"
+            })
+
+            markdownStr += propertyEnum.join(", ") + "\n\n"
+        }
+
         var playgroundURL = propertyContainer["playgroundURL"]
         if (playgroundURL != undefined) {
             markdownStr += "**Try out an example in ReactiveSearch Playground**\n"
@@ -287,5 +300,3 @@ module.exports = {
     parse: parseRSReference,
     parsePipeline: parsePipelineReference,
 }
-
-parsePipelineReference()
