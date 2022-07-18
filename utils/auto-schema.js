@@ -181,8 +181,10 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
         markdownStr += `${"#".repeat(level)} ${propTitle} ${isRequired ? " *required": ""}\n\n`
 
         // Handle engine support and show it properly
-        markdownStr += "**Supported Engines**\n"
-        markdownStr += `${ enginesSupported != undefined ? enginesSupported.join(", ") : "Not dependent on engine, works for all."}\n\n`
+        if (!isPipeline) {
+            markdownStr += "**Supported Engines**\n"
+            markdownStr += `${ enginesSupported != undefined ? enginesSupported.join(", ") : "Not dependent on engine, works for all."}\n\n`
+        }
 
         // Else, parse the property fields accordingly.
         var propMarkdownDesc = propertyContainer["markdownDescription"]
