@@ -14,38 +14,38 @@ const https = require("https");
  * - engine: The engine for which the reference should be generated.
  * This should be the string that is used to filter the properties.
  * - path: The path to the file where the final markdown content should be written. 
- * - mdPrefix: markdown prefix to be added before the generated schema. (defaults to empty string)
+ * - mdPrefix: path to markdown file for prefix to be added before the generated schema. (defaults to empty string)
  * - enabled: Whether or not the engine is enabled.
  */
 BUILD_CONFIG = [
     {
         engine: "all",
         path: "./content/docs/search/reactivesearch-api/reference/index.md",
-        mdPrefix: "---\ntitle: \'API Reference\'\nmeta_title: \'ReactiveSearch API Reference\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
+        mdPrefix: "./src/templates/markdown/reference/index.md",
         enabled: true
     },
     {
         engine: "elasticsearch",
         path: "./content/docs/search/reactivesearch-api/reference/elasticsearch.md",
-        mdPrefix: "---\ntitle: \'API Reference | ElasticSearch\'\nmeta_title: \'ReactiveSearch API Reference | ElasticSearch\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them for ElasticSearch.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\nThis guide only contains the fields supported by the **ElasticSearch** engine.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
+        mdPrefix: "./src/templates/markdown/reference/elasticsearch.md",
         enabled: true
     },
     {
         engine: "mongodb",
         path: "./content/docs/search/reactivesearch-api/reference/mongodb.md",
-        mdPrefix: "---\ntitle: \'API Reference\'\nmeta_title: \'ReactiveSearch API Reference\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
+        mdPrefix: "./src/templates/markdown/reference/mongodb.md",
         enabled: true
     },
     {
         engine: "solr",
         path: "./content/docs/search/reactivesearch-api/reference/solr.md",
-        mdPrefix: "---\ntitle: \'API Reference | Solr\'\nmeta_title: \'ReactiveSearch API Reference | Solr\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them for Solr.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\n    - solr\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\nThis guide only contains the fields supported by the **Solr** engine.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
+        mdPrefix: "./src/templates/markdown/reference/solr.md",
         enabled: true
     },
     {
         engine: "opensearch",
         path: "./content/docs/search/reactivesearch-api/reference/opensearch.md",
-        mdPrefix: "---\ntitle: \'API Reference | OpenSearch\'\nmeta_title: \'ReactiveSearch API Reference | OpenSearch\'\nmeta_description: \'ReactiveSearch API Reference. Learn about all the props and how to use them for OpenSearch.\'\nkeywords:\n    - concepts\n    - appbase\n    - elasticsearch\n    - reactivesearch\n    - opensearch\nsidebar: \'docs\'\n---\n\nThis guide helps you to learn more about the each property of `ReactiveSearch` API and explains that how to use those properties to build the query for different use-cases.\n\nThis guide only contains the fields supported by the **OpenSearch** engine.\n\n`ReactiveSearch API` request body can be divided into two parts, `query` and `settings`. The `query` key is an `Array` of objects where each object represents a `ReactiveSearch` query to retrieve the results. Settings(`settings`) is an optional key which can be used to control the search experience. Here is an example of the request body of `ReactiveSearch` API to get the results for which the `title` field matches with `iphone`.\n\n```js\n{\n    query: [{\n        id: \"phone-search\",\n        dataField: \"title\",\n        size: 10,\n        value: \"iphone\"\n    }],\n    settings: { // optional\n        recordAnalytics: true, // to enable the analytics\n        enableQueryRules: true, // to enable the query rules\n    }\n}\n```",
+        mdPrefix: "./src/templates/markdown/reference/opensearch.md",
         enabled: true
     },
 ]
@@ -54,7 +54,7 @@ PIPELINE_BUILD_CONFIG = [
     {
         enabled: true,
         path: "./content/docs/pipelines/API/reference.md",
-        mdPrefix: ""
+        mdPrefix: "./src/templates/markdown/reference/pipelines.md"
     }
 ]
 
