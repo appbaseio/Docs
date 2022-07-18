@@ -50,6 +50,14 @@ BUILD_CONFIG = [
     },
 ]
 
+PIPELINE_BUILD_CONFIG = [
+    {
+        enabled: true,
+        path: "./content/docs/pipelines/API/reference.md",
+        mdPrefix: ""
+    }
+]
+
 function parseRSReference() {
 	/**
 	 * Parse the RS schema json and build a reference.md file
@@ -112,7 +120,7 @@ function parseRSReference() {
     });
 }
 
-function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, engine, previousReqProps) {
+function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, engine, previousReqProps, isPipeline = false) {
     var preservedOrder = propertyContainer.preservedOrder
     var properties = propertyContainer.properties
     var enginesSupported = propertyContainer.engine
@@ -136,6 +144,11 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
         properties = propertyContainer.items.properties
         preservedOrder = propertyContainer.items.preservedOrder
         requiredProps = propertyContainer.items.required
+    }
+
+    // If pipeline, then preservedOrder would not be present
+    if (isPipeline && properties != undefined) {
+        preservedOrder = Object.keys(properties)
     }
 
     if (requiredProps == undefined) {
@@ -176,6 +189,12 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 
         if (propMarkdownDesc != undefined) {
             markdownStr += propMarkdownDesc + "\n\n"
+        } else if (isPipeline) {
+            // Try to parse the description into markdown
+            var propDesc = propertyContainer["description"]
+            if (propDesc != undefined) {
+                markdownStr += propDesc + "\n\n"
+            }
         }
 
         var playgroundURL = propertyContainer["playgroundURL"]
@@ -194,13 +213,77 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
 
         // We will just iterate it in order and extract using recursion.
         preservedOrder.forEach((preservedKey) => {
-            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey, engine, requiredProps)
+            markdownStr = parsePropertiesFromLevel(properties[preservedKey], nextLevel, markdownStr, preservedKey, engine, requiredProps, isPipeline)
         })
     }
 
     return markdownStr
 }
 
-module.exports = {
-    parse: parseRSReference
+function parsePipelineReference() {
+    /**
+     * Parse the pipeline API reference jsonschema file
+     * and accordingly generate an API reference markdown file that can
+     * be added in the Docs.
+     * 
+     * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/pipelines-schema.json
+     */
+
+     rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/feat/rs-api-schema/schema/latest/pipelines-schema.json"
+
+     // Fetch the JSON
+     https.get(rsSchemaURL,(res) => {
+         let body = "";
+     
+         res.on("data", (chunk) => {
+             body += chunk;
+         });
+     
+         res.on("end", () => {
+             try {
+                 let json = JSON.parse(body);
+                 
+                 // Finally, we can parse the markdown
+                 //
+                 // Parse the top level properties first.
+                 // We will keep writing as we parse the values.
+ 
+                 PIPELINE_BUILD_CONFIG.forEach(value => {
+                     if (!value.enabled) return
+ 
+                     if (value.path == undefined) {
+                         console.error("`path` cannot be empty or invalid: ", value.path)
+                         return
+                     }
+ 
+                     
+                     if (value.mdPrefix == undefined) {
+                         value.mdPrefix = ""
+                     }
+ 
+                     var originalString = `${value.mdPrefix}\n\n`
+ 
+                     var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required, true)
+ 
+                     fs.writeFile(value.path, markdownStr, err => {
+                         if (err) {console.log(err)}
+                     })
+                 })
+ 
+                 
+             } catch (error) {
+                 console.error(error.message, error.stack);
+             };
+         });
+     
+     }).on("error", (error) => {
+         console.error(error.message, error.stack);
+     });
 }
+
+module.exports = {
+    parse: parseRSReference,
+    parsePipeline: parsePipelineReference,
+}
+
+parsePipelineReference()
