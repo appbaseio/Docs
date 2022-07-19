@@ -8,6 +8,10 @@ import { Spirit } from '../../styles/spirit-styles';
 class HomeHeader extends React.Component {
 	state = {
 		open: false,
+		showBanner:
+			typeof window !== 'undefined'
+				? localStorage.getItem('announcementBanner') === 'true'
+				: false,
 	};
 
 	handleModal = () => {
@@ -17,16 +21,19 @@ class HomeHeader extends React.Component {
 	};
 
 	render() {
-		const { open } = this.state;
+		const { open, showBanner } = this.state;
 		const { setThemeType, themeType } = this.props;
-		
+
 		return (
 			<div className="gh-bg-home b--whitegrey">
 				<header className="top-0 left-0 right-0 bg-white fixed z-999">
-					<NavBar theme="dark" setThemeType={setThemeType} themeType={themeType}/>
+					<NavBar theme="dark" setThemeType={setThemeType} themeType={themeType} />
 				</header>
 				<div
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt20-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
+					style={{
+						marginTop: showBanner ? 20 : 0,
+					}}
 				>
 					<div className="pr3">
 						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l header-heading-shadow header-title">
@@ -36,13 +43,16 @@ class HomeHeader extends React.Component {
 							className={`${Spirit.sectionSubHeading} lh-1-65 f1`}
 							style={{ lineHeight: '1.6' }}
 						>
-							Reactivesearch.io offers a supercharged experience for building app search. Host in our cloud or connect to your Elasticsearch. Import data
-							instantly from your favorite sources. Create relevance visually. Build delightful search experiences with our low code UI kits.
+							Reactivesearch.io offers a supercharged experience for building app
+							search. Host in our cloud or connect to your Elasticsearch. Import data
+							instantly from your favorite sources. Create relevance visually. Build
+							delightful search experiences with our low code UI kits.
 						</p>
 						<div className="mt8 mobile-btn">
 							<button
-								style={{ 
-									background: '-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
+								style={{
+									background:
+										'-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
 									borderRadius: '1rem',
 								}}
 								className="signup-btn"
@@ -75,26 +85,35 @@ class HomeHeader extends React.Component {
 					</div>
 					<div className="home-header-graphics">
 						<div className="graphic">
-							<img src="images/app-cluster@3x.webp" alt="Choose how to deploy ReactiveSearch server" />
+							<img
+								src="images/app-cluster@3x.webp"
+								alt="Choose how to deploy ReactiveSearch server"
+							/>
 							<p className={`${Spirit.p} middarkgrey text-center`}>
 								Choose how to deploy
 							</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-search@3x.png" alt="Low code UI Kits and components"/>
-							<p className={`${Spirit.p} middarkgrey text-center`}>Low code UI Kits</p>
+							<img
+								src="images/home-search@3x.png"
+								alt="Low code UI Kits and components"
+							/>
+							<p className={`${Spirit.p} middarkgrey text-center`}>
+								Low code UI Kits
+							</p>
 						</div>
 						<div className="graphic">
-							<img src="images/home-search-relevancy@3x.webp" alt="Configure search relevance" />
+							<img
+								src="images/home-search-relevancy@3x.webp"
+								alt="Configure search relevance"
+							/>
 							<p className={`${Spirit.p} middarkgrey text-center`}>
-								Search Relevance ⚙️ 
+								Search Relevance ⚙️
 							</p>
 						</div>
 						<div className="graphic">
 							<img src="images/home-analytics@3x.webp" alt="Search Insights" />
-							<p className={`${Spirit.p} middarkgrey text-center`}>
-								Search Insights
-							</p>
+							<p className={`${Spirit.p} middarkgrey text-center`}>Search Insights</p>
 						</div>
 					</div>
 				</div>
