@@ -32,7 +32,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 
 	const [mockWindow, setMockWindow] = useState();
 	const [showBanner, setShowBanner] = useState(
-		typeof window !== 'undefined' ? localStorage.getItem('announcementBanner') === 'true' : false,
+		typeof window !== 'undefined'
+			? localStorage.getItem('announcementBanner') === 'true'
+			: false,
 	);
 	const [isMobile, setIsMobile] = useState(false);
 
@@ -48,15 +50,15 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, []);
 
 	useEffect(() => {
-		if(mockWindow) {
+		if (mockWindow) {
 			setThemeType(localStorage.getItem('theme'));
 			setIsMobile(mockWindow.innerWidth <= 768);
-		}			
-	}, [mockWindow])
+		}
+	}, [mockWindow]);
 
 	return (
 		<div>
-			<AnnouncementBanner showBanner={showBanner}  setShowBanner={setShowBanner}/>
+			<AnnouncementBanner showBanner={showBanner} setShowBanner={setShowBanner} />
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
@@ -65,7 +67,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 				>
 					<div className="flex items-center pt3 pb3 nudge-bottom--2 w-sidebar-l pr8 nav-logo">
 						<Link to="/" className="nudge-top--3">
-							<Logo theme={themeType} isMobile={isMobile}/>
+							<Logo theme={themeType} isMobile={isMobile} />
 						</Link>
 					</div>
 					{/* navbar-container wrapper element and bottom padding is needed to hide the horizontal scrollbar on smaller screensizes */}
@@ -79,9 +81,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 												className={`${
 													themeClasses[theme].menuItem
 												} nowrap f8 pa3 mr1 mr3-l nl3 ${
-													value.selectedKey === 'guides'
-														? 'fw6'
-														: 'fw3'
+													value.selectedKey === 'guides' ? 'fw6' : 'fw3'
 												} cursor-pointer`}
 												onMouseEnter={() => {
 													value.handleKey('guides');
@@ -96,15 +96,12 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 													style={{
 														background:
 															typeof window !== 'undefined'
-																? localStorage.getItem(
-																		'theme',
-																	) === 'dark'
+																? localStorage.getItem('theme') ===
+																  'dark'
 																	? '#082429'
 																	: 'white'
 																: 'white',
-														top: showBanner
-															? '105px'
-															: '75px',
+														top: showBanner ? '105px' : '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -189,6 +186,16 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 														</div>
 														<div>
 															<Link
+																to="/docs/pipelines/concepts/"
+																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+															>
+																<Icon
+																	name="pipeline"
+																	className="dropdown-content-icon mr2"
+																/>
+																ReactiveSearch Pipelines
+															</Link>
+															<Link
 																to="/docs/analytics/overview/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
@@ -239,9 +246,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															localStorage.getItem('theme') === 'dark'
 																? '#082429'
 																: 'white',
-														top: showBanner
-															? '105px'
-															: '75px',
+                                                        top: showBanner
+                                                                ? '105px'
+                                                                : '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -255,7 +262,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 																UI Libraries, clients and
 																interactive examples for working
-																with reactivesearch.io
+																with appbase.io
 															</p>
 															<Link
 																style={{ textDecoration: 'none' }}
@@ -492,7 +499,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						</div>
 					</div>
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
-						<Search isMobile={isMobile}/>
+						<Search isMobile={isMobile} />
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
 						<ThemeSwitch setThemeType={setThemeType} />

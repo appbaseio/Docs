@@ -131,7 +131,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 ```html
 <template>
-	<toogle-button
+	<toggle-button
 		className="custom-class"
 		:customQuery="getCustomQuery"
 		:beforeValueChange="handleBeforeValueChange"

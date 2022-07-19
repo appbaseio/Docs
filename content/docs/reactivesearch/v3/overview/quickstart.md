@@ -202,6 +202,7 @@ We just need a results component to display the books that we're searching for. 
 ```jsx
 <ReactiveList
 	componentId="results"
+	dataField="_score"
 	size={6}
 	pagination={true}
 	react={{
