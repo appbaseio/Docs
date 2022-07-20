@@ -279,14 +279,21 @@ function parsePipelineReference() {
                          console.error("`path` cannot be empty or invalid: ", value.path)
                          return
                      }
- 
-                     
-                     if (value.mdPrefix == undefined) {
-                         value.mdPrefix = ""
-                     }
- 
-                     var originalString = `${value.mdPrefix}\n\n`
- 
+
+                    var originalString = ""
+
+                    if (value.mdPrefix != undefined) {
+                        // Make sure that the file exists
+                        if (!fs.existsSync(value.mdPrefix)) {
+                            console.error("invalid path passed for the `mdPrefix` value. Should be a valid markdown file.")
+                            return
+                        }
+
+                        // Read the file content and parse it.
+                        fileContent = fs.readFileSync(value.mdPrefix);
+                        originalString = fileContent + "\n\n"
+                    }
+
                      var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required, true)
  
                      fs.writeFile(value.path, markdownStr, err => {

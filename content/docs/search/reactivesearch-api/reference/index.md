@@ -41,7 +41,9 @@ elasticsearch, mongodb, solr, opensearch
 
 The unique identifier for the query can be referenced in the `react` property of other queries. The response of the `ReactiveSearch API` is a map of query ids to `Elasticsearch` response which means that `id` is also useful to retrieve the response for a particular query.
 
-| <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | | -------- | --------------------------- | -------- | | `string` | `all` | true |
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| -------- | --------------------------- | -------- |
+| `string` | `all`                       | true     |
 
 ### type 
 
