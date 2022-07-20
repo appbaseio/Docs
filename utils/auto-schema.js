@@ -65,7 +65,7 @@ function parseRSReference() {
 	 * 
 	 * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/schema.json
 	 */
-	rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/feat/rs-api-schema/schema/latest/schema.json"
+	rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/schema.json"
 
 	// Fetch the JSON
     https.get(rsSchemaURL,(res) => {
@@ -253,7 +253,7 @@ function parsePipelineReference() {
      * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/pipelines-schema.json
      */
 
-     rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/feat/rs-api-schema/schema/latest/pipelines-schema.json"
+     rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/pipelines-schema.json"
 
      // Fetch the JSON
      https.get(rsSchemaURL,(res) => {

@@ -39,14 +39,20 @@ Not dependent on engine, works for all.
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
 
-The unique identifier for the query can be referenced in the `react` property of other queries. The response of the `ReactiveSearch API` is a map of query ids to `Elasticsearch` response which means that `id` is also useful to retrieve the response for a particular query. | <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | | -------- | --------------------------- | -------- | | `string` | `all` | true |
+The unique identifier for the query can be referenced in the `react` property of other queries. The response of the `ReactiveSearch API` is a map of query ids to `Elasticsearch` response which means that `id` is also useful to retrieve the response for a particular query.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | | -------- | --------------------------- | -------- | | `string` | `all` | true |
 
 ### type 
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
 
-This property represents the type of the query which is defaults to `search`, valid values are `search`, `suggestion`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries). | <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | | -------- | --------------------------- | -------- | | `string` | `all` | false |
+This property represents the type of the query which is defaults to `search`, valid values are `search`, `suggestion`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| -------- | --------------------------- | -------- |
+| `string` | `all`                       | false    |
 
 **Following values are supported for this field**
 
@@ -102,7 +108,64 @@ Sets the query format, can be `or`, `and` and [date format](https://www.elastic.
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
 
-database field(s) to be queried against, useful for applying search across multiple fields. It accepts the following formats: - `string` - `DataField` - `Array<string|DataField>` The `DataField` type has the following shape: ```ts type DataField = { field: string; weight: float; }; ``` For examples, 1. `dataField` without field weights ```js dataField: ['title', 'title.search'] ``` 2. `dataField` with field weights ```js dataField: [ { "field": "title", "weight": 1 }, { "field": "title.search", "weight": 3 } ] ``` 3. `dataField` with and without field weights ```js dataField: [ { "field": "title", "weight": 1 }, { "field": "title.search", "weight": 3 }, "description" ] ``` | <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> | | ------------------------------------------ | --------------------------- | -------- | | `string | DataField | Array` | `all` | true | > Note: > Multiple `dataFields` are not applicable for `term` and `geo` queries.
+database field(s) to be queried against, useful for applying search across multiple fields.
+It accepts the following formats:
+- `string`
+- `DataField`
+- `Array<string|DataField>`
+
+The `DataField` type has the following shape:
+
+```ts
+type DataField = {
+    field: string;
+    weight: float;
+};
+```
+For examples,
+
+1. `dataField` without field weights
+```js
+    dataField: ['title', 'title.search']
+```
+
+2. `dataField` with field weights
+
+```js
+    dataField: [
+        {
+            "field": "title",
+            "weight": 1
+        },
+        {
+            "field": "title.search",
+            "weight": 3
+        }
+    ]
+```
+
+3. `dataField` with and without field weights
+
+```js
+    dataField: [
+        {
+            "field": "title",
+            "weight": 1
+        },
+        {
+            "field": "title.search",
+            "weight": 3
+        },
+        "description"
+    ]
+```
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>                                       | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------------------------------------------ | --------------------------- | -------- |
+| `string | DataField | Array` | `all`                       | true     |
+
+> Note:
+> Multiple `dataFields` are not applicable for `term` and `geo` queries.
 
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
@@ -235,7 +298,23 @@ The `sortBy` value by default is set according to the following criterion:
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
 
-Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type), each kind of query has the different type of value format. | <p style="margin: 0px;" class="table-header-text">Type</p> | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> | | ----- | --------------------------- | -------- | | `any` | `all` | false | You can check the `value` format for different `type` of queries: #### format for search type The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on. **Example Playground**: <iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe" style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe> **Example Playground (multi-value search)**: <iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title=rs-playground-e4RjjbQpQlFw7h61RKyz ></iframe> #### format for suggestion type The value can be a `string`. **Example Playground**: <iframe src=https://play.reactivesearch.io/embed/jDYw7ymFq6q4DgiMkZW5 style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title=rs-playground-jDYw7ymFq6q4DgiMkZW5 ></iframe> #### format for term type The value can be a `string` or `Array<string>`. **Example Playground**: <iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM" style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe> #### format for range type The value should be an `Object` in the following shape: ```js { "start": int | double | date, // optional "end": int | double | date, // optional "boost": int } ``` > Note: > > Either `start` or `end` property must present in the value. **Example Playground**: <iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s" style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"> </iframe> #### format for geo type The value should be an `Object` in the following shape: ```js { // The following properties can be used to get the results within a particular distance and location. "distance": int, "location": string, // must be in `{lat}, {lon}` format "unit": string, // The following properties can be used to get the results for a particular geo bounding box. "geoBoundingBox": { topLeft: string, // required, must be in `{lat}, {lon}` format bottomRight: string, // required, must be in `{lat}, {lon}` format } } ``` > Note: The `geoBoundingBox` property can not be used with `location` property, if both are defined than `geoBoundingBox` value will be ignored. The below example represents a **geo distance** query: ```js { "id": "distance_filter", "type": "geo", "dataField": ["location"], "value": { "distance":10, "location":"22.3184816, 73.17065699999999", "unit": "mi/yd/ft/km/m/cm/mm/nmi" } } ``` The below example represents a **geo bounding box** query: ```js { "id": "bounding_box_filter", "type": "geo", "dataField": ["location"], "value": { "geoBoundingBox": { "topLeft": "40.73, -74.1", "bottomRight": "40.01, -71.12", } } } ``` **Example Playground**: <iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX" style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type), each kind of query has the different type of value format.
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ----- | --------------------------- | -------- |
+| `any` | `all`                       | false    |
+
+You can check the `value` format for different `type` of queries:
+
+#### format for search type
+The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on.
+
+**Example Playground**:
+<iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+
+**Example Playground (multi-value search)**:
+<iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
 
 ### aggregationField 
 
