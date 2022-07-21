@@ -15,43 +15,51 @@ This guide explains all the properties for the ReactiveSearch Pipelines API and 
 
 
 
-## Pipeline ID 
+## Pipeline ID
 
 Auto-generated unique identifier for pipeline.
 
-## Enable Pipeline 
+## Enable Pipeline
 
 Set as 'false' to disable a Pipeline. Defaults to 'true'.
 
-## Description 
+## Description
 
 Description of pipeline.
 
-## Priority 
+## Priority
 
 In case of a conflict in pipeline routes, the pipeline with highest priority would get invoked.
 
-## Routes  *required
+## Routes
+
+**This is a required field**
 
 Pipeline routes.
 
-### Path  *required
+### Path
+
+**This is a required field**
 
 Route path. For example, '/books-search'
 
-### Method  *required
+### Method
+
+**This is a required field**
 
 HTTP method for route.
 
-### Record Logs 
+### Record Logs
 
 If set to 'true', then Appbase would record logs for the pipeline route. Defaults to 'false'.
 
-### Classify Route 
+### Classify Route
 
 Useful to categorize the route.
 
-#### Category  *required
+#### Category
+
+**This is a required field**
 
 Route category.
 
@@ -59,7 +67,7 @@ Route category.
 
 `docs`, `search`, `indices`, `cat`, `clusters`, `misc`, `user`, `permission`, `analytics`, `streams`, `rules`, `suggestions`, `auth`, `reactivesearch`, `searchrelevancy`, `synonyms`, `searchgrader`, `uibuilder`, `logs`, `cache`, `storedquery`, `sync`, `pipelines`
 
-#### ACL 
+#### ACL
 
 It a sub-category of category.
 
@@ -67,15 +75,15 @@ It a sub-category of category.
 
 `cat`, `bulk`, `cluster`, `search`, `remote`, `create`, `count`, `scripts`, `delete`, `doc`, `source`, `field_caps`, `close`, `analyze`, `exists`, `get`, `template`, `explain`, `indices`, `alias`, `aliases`, `delete_by_query`, `cache`, `index`, `mapping`, `flush`, `forcemerge`, `upgrade`, `settings`, `open`, `recovery`, `mappings`, `rollover`, `refresh`, `segments`, `shrink`, `split`, `shard_stores`, `stats`, `ingest`, `validate`, `msearch`, `mget`, `nodes`, `mtermvectors`, `reindex`, `update_by_query`, `render`, `rank_eval`, `search_shards`, `snapshot`, `tasks`, `termvectors`, `update`
 
-## Pipeline Environments 
+## Pipeline Environments
 
 Useful to define custom environment variables which could be accessed by stages during pipeline execution.
 
-## Trigger Expression 
+## Trigger Expression
 
 Trigger expression is to define the condition of Pipeline invocation. For example, only execute pipeline if query is 'mobile phones'. Check the documentation at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
 
-### Trigger Type 
+### Trigger Type
 
 Type of trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
 
@@ -83,23 +91,25 @@ Type of trigger expression. You can read more at [here](https://docs.appbase.io/
 
 `always`, `filter`, `index`, `query`, `cron`
 
-### Trigger Expression 
+### Trigger Expression
 
 Custom trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#advanced-editor).
 
-### Timeframe 
+### Timeframe
 
 To define the valid timeframe for trigger expression.
 
-#### start_time 
+#### start_time
 
-#### end_time 
+#### end_time
 
-## Stages  *required
+## Stages
+
+**This is a required field**
 
 Pipeline stages
 
-### Pre-built Stage 
+### Pre-built Stage
 
 Use a pre-built stage from Appbase.
 
@@ -107,77 +117,77 @@ Use a pre-built stage from Appbase.
 
 `authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`
 
-### Stage Id 
+### Stage Id
 
 User-defined unique identifier for stages. It is useful to define stage dependencies using 'needs' property.
 
-### Enabled 
+### Enabled
 
 Set to 'false' to disable a stage. Defaults to 'true'.
 
-### Execute Asynchronously 
+### Execute Asynchronously
 
 If set to 'true', then stage would get executed in parallel to other stages. Async stages can not modify the global 'request' and 'response' properties. Although, you can define a synchronous stage to consume the data of async stage (would be present in global context with stage id) to modify the global request/response.
 
-### Script 
+### Script
 
 Custom script to modify the request/response. You can also write custom variables to global context which can be consumed by other stages.
 
-### Script Reference 
+### Script Reference
 
 Path to script file.
 
-### Continue on Error 
+### Continue on Error
 
 If set to 'false' and an error occurs in stage execution, then Pipeline execution would stop immediately with an error.
 
-### Stage Inputs 
+### Stage Inputs
 
 Inputs required for a pre-built stage execution. The inputs structure may vary for each stage.
 
-### Needs 
+### Needs
 
 Useful to define the dependencies among stages. For example, if stage 'A' depends on stages 'B' and 'C' then stage 'A' would define 'needs' property as ['B', 'C']. Stage 'A' would only get executed once the stages 'B' and 'C' are completed.
 
-### Description 
+### Description
 
 User-defined description for stage.
 
-### Trigger 
+### Trigger
 
 Trigger will indicate whether or not to trigger the stage.
 
-#### Trigger Expression 
+#### Trigger Expression
 
 Custom trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#advanced-editor).
 
-## Global Envs 
+## Global Envs
 
 Global Envs will be saved to the cluster and can be used in the pipeline.
 
-### id 
+### id
 
-### label 
+### label
 
-### key 
+### key
 
-### value 
+### value
 
-### description 
+### description
 
-### validate 
+### validate
 
-#### url 
+#### url
 
-#### method 
+#### method
 
-#### body 
+#### body
 
-#### headers 
+#### headers
 
-#### expected_status 
+#### expected_status
 
-### created_at 
+### created_at
 
-### updated_at 
+### updated_at
 

@@ -29,12 +29,16 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
 }
 ```
 
-## query  *required
+## query
+
+**This is a required field**
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
-### id  *required
+### id
+
+**This is a required field**
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -45,7 +49,7 @@ The unique identifier for the query can be referenced in the `react` property of
 | -------- | --------------------------- | -------- |
 | `string` | `all`                       | true     |
 
-### type 
+### type
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -60,7 +64,7 @@ This property represents the type of the query which is defaults to `search`, va
 
 ```search```, ```term```, ```range```, ```geo```, ```suggestion```
 
-### react 
+### react
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -85,7 +89,7 @@ This property can be used to enable the highlighting in the returned results. If
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/AjkyDj8zGt32xV2QcOcu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### queryFormat 
+### queryFormat
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -105,7 +109,7 @@ Sets the query format, can be `or`, `and` and [date format](https://www.elastic.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/9NwNk4QRJxdbX0zQviNE"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### dataField 
+### dataField
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -172,7 +176,7 @@ For examples,
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### categoryField 
+### categoryField
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -190,7 +194,7 @@ Data field whose values are used to provide category specific suggestions.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/adZAj2AcCVpDlHmNljl0"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### categoryValue 
+### categoryValue
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -204,7 +208,7 @@ This is the selected category value. It is used for informing the search result.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/9MswTJYI7pne7Awi5vWT"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### nestedField 
+### nestedField
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -218,7 +222,7 @@ Set the path of the nested type under which the `dataField` is present. Only app
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/d3ADrjDKGVuRYQ6cxKRa"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### from 
+### from
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -232,7 +236,7 @@ Starting document offset. Defaults to `0`.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/vvurxeUDndDYLBfg0qNx"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### size 
+### size
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -246,7 +250,7 @@ To set the number of results to be returned by a query.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### aggregationSize 
+### aggregationSize
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -264,7 +268,7 @@ To set the number of buckets to be returned by aggregations.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/apAMBqEVwmgUJv2j7Y6C"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### sortBy 
+### sortBy
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -295,7 +299,7 @@ The `sortBy` value by default is set according to the following criterion:
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### value 
+### value
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -318,7 +322,7 @@ The value can be a `string` or an `Array<string>`. The `Array<string>` format is
 **Example Playground (multi-value search)**:
 <iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
 
-### aggregationField 
+### aggregationField
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -332,7 +336,7 @@ elasticsearch, mongodb, opensearch
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/9Q46nHI7Re5vHal9M8he"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### after 
+### after
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -348,7 +352,7 @@ You need to define the `after` property in the next request to retrieve the next
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/isUvzMDdjLFxTErHUw2i"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### includeNullValues 
+### includeNullValues
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -362,7 +366,7 @@ If you have sparse data or documents or items not having the value in the specif
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/WN0V4iEgY80vRe9UQSvm"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### includeFields 
+### includeFields
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -376,7 +380,7 @@ Data fields to be included in search results. Defaults to `[*]` which means all 
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/i0wVmWCvfJJLJAWAEn0F"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### excludeFields 
+### excludeFields
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -390,7 +394,7 @@ Data fields to be excluded in search results.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/MXpPbR2OGdAQPbN2ox2H"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### fuzziness 
+### fuzziness
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -408,7 +412,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/FfBZDt4981lxD2At3KuK"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### searchOperators 
+### searchOperators
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -424,7 +428,7 @@ Defaults to `false`. If set to `true` then you can use special characters in the
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/yb5IhaBzF9qUXtTam5j7"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### highlight 
+### highlight
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -438,7 +442,7 @@ This property can be used to enable the highlighting in the returned results. If
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/AjkyDj8zGt32xV2QcOcu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### highlightField 
+### highlightField
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -452,7 +456,7 @@ When highlighting is `enabled`, this property allows specifying the fields which
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### highlightConfig 
+### highlightConfig
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -466,7 +470,7 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/ycCvpsb6ZiWFrEIEPxMX"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### interval 
+### interval
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -480,7 +484,7 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/k5MeCmPeELaWvTYeqoGl"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### aggregations 
+### aggregations
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -498,7 +502,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/cnHhcTQ4nSiMzyaNtA4y"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### missingLabel 
+### missingLabel
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -514,7 +518,7 @@ Defaults to `N/A`. It allows you to specify a custom label to show when [showMis
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/QoFtxI5RCI5c4BWnCfRH"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### showMissing 
+### showMissing
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -528,7 +532,7 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/Ht0aHbUljvjjFVny2X2Y"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### defaultQuery 
+### defaultQuery
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -544,7 +548,7 @@ You can read more about the `defaultQuery` usage over [here](/docs/reactivesearc
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/DxQUolzQZnhas6Hma15A"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### customQuery 
+### customQuery
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -562,7 +566,7 @@ Custom query property will be applied to the dependent queries by `react` proper
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/IIPiPFpXbPbhKtL3IoPt"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### execute 
+### execute
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -577,7 +581,7 @@ For example, consider a scenario where we want to filter the search query by som
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/NSUbJjAEdAERswHFV6lv"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### enableSynonyms 
+### enableSynonyms
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -591,7 +595,7 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/FLwTmwBpcLZezTW3Wg5D"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### selectAllLabel 
+### selectAllLabel
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -605,7 +609,7 @@ This property allows you to add a new property in the list with a particular val
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/N1lkEUFb3W2SEKgJ1D2L"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### pagination 
+### pagination
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -623,7 +627,7 @@ This property allows you to implement the `pagination` for `term` type of querie
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/isUvzMDdjLFxTErHUw2i"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### queryString 
+### queryString
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -639,7 +643,7 @@ Defaults to `false`. If set to `true` than it allows you to create a complex sea
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/HEJtHdiyKC4LwE0cC1ZA"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### index 
+### index
 
 **Supported Engines**
 elasticsearch, mongodb, opensearch
@@ -678,7 +682,7 @@ Here, the first query uses the `my-index` index to query against, as specified i
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/GsFi6AyoFYD0iiGhNgQi"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### enablePopularSuggestions 
+### enablePopularSuggestions
 
 **Supported Engines**
 elasticsearch, mongodb, solr, opensearch
@@ -689,26 +693,26 @@ When set to `true`, popular searches based on aggregate end-user data are return
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
-## settings 
+## settings
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
-### recordAnalytics 
+### recordAnalytics
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
 `bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
 
-### userId 
+### userId
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
 `String` It allows you to define the user id which will be used to record the Appbase.io analytics.
 
-### customEvents 
+### customEvents
 
 **Supported Engines**
 Not dependent on engine, works for all.
@@ -727,21 +731,21 @@ Not dependent on engine, works for all.
 }
 ```
 
-### enableQueryRules 
+### enableQueryRules
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
 `bool` defaults to `true`. It allows you to configure whether to apply the query rules for a particular query or not.
 
-### enableSearchRelevancy 
+### enableSearchRelevancy
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
 `bool` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.
 
-### useCache 
+### useCache
 
 **Supported Engines**
 Not dependent on engine, works for all.
@@ -751,12 +755,12 @@ Not dependent on engine, works for all.
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/LfmsZDWgTw5Zf2Z3WTR9"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
-### queryRule 
+### queryRule
 
 **Supported Engines**
 Not dependent on engine, works for all.
 
-### backend 
+### backend
 
 **Supported Engines**
 Not dependent on engine, works for all.
@@ -793,7 +797,7 @@ Following example indicates how to use this field to use kNN reordering with Ope
 
 ```elasticsearch```, ```opensearch```, ```mongodb```, ```solr```
 
-## metadata 
+## metadata
 
 **Supported Engines**
 Not dependent on engine, works for all.

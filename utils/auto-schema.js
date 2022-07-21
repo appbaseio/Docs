@@ -187,7 +187,11 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
             isRequired = true
         }
 
-        markdownStr += `${"#".repeat(level)} ${propTitle} ${isRequired ? " *required": ""}\n\n`
+        markdownStr += `${"#".repeat(level)} ${propTitle}\n\n`
+
+        if (isRequired) {
+            markdownStr += `**This is a required field**\n\n`
+        }
 
         // Handle engine support and show it properly
         if (!isPipeline) {
