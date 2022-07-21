@@ -113,6 +113,16 @@ Useful to define custom environment variables which could be accessed by stages 
 
 Trigger expression is to define the condition of Pipeline invocation. For example, only execute pipeline if query is 'mobile phones'. Check the documentation at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
 
+Following is an example trigger for a pipeline that searches for mobile phones:
+
+```yml
+trigger:
+  type: always
+  expression: $query exactlyMatches "iphone x"
+```
+
+Above trigger will **always** run and execute the expression provided to it.
+
 ### Trigger Type
 
 Type of trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
