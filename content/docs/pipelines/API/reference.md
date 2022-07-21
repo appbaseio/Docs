@@ -45,6 +45,18 @@ Pipeline routes.
 
 Routes is an array of route which essentially indicates which routes the pipeline will be listening to. In other words, which routes will trigger the pipeline can be defined using this field.
 
+Following is an example of routes:
+
+```yml
+routes:
+  - path: good-books-ds-pipeline/_reactivesearch
+    method: POST
+    classify:
+      category: reactivesearch
+```
+
+Above code indicates that the pipeline will be triggered if the route is `good-books-ds-pipeline/_reactivesearch` and the method is `POST`.
+
 ### Path
 
 **This is a required field**
@@ -129,6 +141,24 @@ Pipeline stages.
 
 Stages can be thought of as steps of the pipeline that are executed (not always in the order of specification).
 
+Following is an example of pipeline stages:
+
+```yml
+
+stages:
+  - use: authorization
+  - use: useCache
+  - id: echo something
+    script: "console.log('Echoing something from a JS script instead of shell!');"
+  - use: reactivesearchQuery
+    continueOnError: false
+  - use: elasticsearchQuery
+    continueOnError: false
+  - use: recordAnalytics
+```
+
+Above uses some pre-built stages as well as a stage where the `script` field is used to just run some custom JavaScript. More can be read about the pre-built stages in the following section.
+
 ### Pre-built Stage
 
 Use a pre-built stage from Appbase.
@@ -185,7 +215,39 @@ Custom trigger expression. You can read more at [here](https://docs.appbase.io/d
 
 ## Global Envs
 
-Global Envs will be saved to the cluster and can be used in the pipeline.
+Global Envs will be saved to the cluster and can be used in the pipeline. Following is an example of an env being created from the pipeline definition.
+
+```yml
+global_envs:
+  - label: API Key
+    key: API_KEY
+    value: ***************
+    description: API Key env allows setting your search engine backend\'s API key
+```
+
+Above defines a global environment which will be created when the pipeline is created and saved in the cluster.
+
+#### What is the write behaviour
+
+The global environment created is overwritten by default whenever a pipeline update request is sent or a new pipeline defines the same env.
+
+It is important to understand this behaviour of the pipeline create endpoint since this can lead to unexpected affects in case two pipelines define the same global environment.
+
+### How to access them
+
+All global environments present in a cluster are injected into the environment context during the execution of the pipeline. This means that all the environments can be accessed through their key from the `context.envs` field.
+
+For example, if there is a global env defined with the key `ES_URL`, it will be accessible through:
+
+```context.envs.ES_URL```
+
+#### Conflict Handling
+
+There can be cases when there is global environment defined and the same key is passed in the `envs` field in the pipeline that is saved.
+
+This means that the same key would be present in the same pipeline twice. In such cases, **the user passed values in `envs` are respected**.
+
+This means the user passed `envs` key will be present in the `context.envs` and the global environment will not be injected into the context.
 
 ### Variable ID
 
@@ -209,17 +271,74 @@ Description of the global variable to indicate what exactly this variable is for
 
 ### Validate
 
-To validate the entered value of the global variable. This field can be used to validate the value entered for the current variable by following the specified validators.
+A global environment can be validated as well, through the frontend. This adds an extra layer of check to make sure the value of the environment is what is expected and it will work as expected in the pipeline.
+
+The validation details can be passed with the `validate` field inside the global environment field in the pipeline file.
+
+Validation is essentially a sophisticated **fetch** request where we also check if the response status code matches the one that the user specifies.
+
+### Example: Validate an index
+
+Following example explains how the `validate` field can be used to verify that an index exists:
+
+```yml
+global_envs:
+  - label: Index
+    key: INDEX
+    value: some_index
+    description: A valid Elasticsearch index
+    validate:
+      url: http://localhost:9200/${INDEX}
+      expected_status: 200
+```
+
+Above syntax will ensure that the env is validated before it is created. The URL `http://localhost:9200/${{INDEX}}` will resolve to the following and will be hit with a `GET` request.
+
+Above will resolve to the following cURL request where if the `expected_status` is same as the got status, it is considered.
+
+```sh
+curl -X GET http://localhost:9200/some_index
+```
 
 #### url
 
+The `url` field is used to specify the URL that is supposed to be hit during validating the global environment before adding it.
+
 #### method
+
+It might be important to specify the method field in order to get the `expected_status`. This can be done by passing the method as a string. By default the value is set to `GET`.
+
+Some of the other valid options are:
+
+- `POST`
+- `PUT`
+- `PATCH`
 
 #### body
 
+At times, there might be the need to pass the body in a response in order to get the `expected_status`. This is also supported by passing the body in the `body` field.
+
+The body should be passed as a **string**. If JSON, this should be a stringified JSON.
+
 #### headers
 
+Headers can be essential to alter the response recieved from hitting a particular URL. Headers can be passed during validating by using the `headers` field.
+
+For eg, a `Content-Type` header can be passed in the following way:
+
+```yml
+global_envs:
+  - label: ES URL
+    key: ES_URL
+    value: http://localhost:9200
+    validate:
+      headers:
+        "Content-Type": "application/json"
+```
+
 #### expected_status
+
+The `expected_status` field is used to make sure the validation was succesfull. It is an integer that should match the status code of the validate request when it is successfull.
 
 ### created_at
 
