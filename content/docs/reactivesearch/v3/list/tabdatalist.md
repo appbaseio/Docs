@@ -214,10 +214,10 @@ Or you can also use render function as children
 -   **className** `String`
     CSS class to be injected on the component container.
 -   **style** `Object`
-    CSS styles to be applied to the **SingleDataList** component.
+    CSS styles to be applied to the **TabDataList** component.
 -   **customQuery** `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **SingleDataList** component as long as the component is a part of `react` dependency of at least one other component.
+    `Note:` customQuery is called on value changes in the **TabDataList** component as long as the component is a part of `react` dependency of at least one other component.
 -   **defaultQuery** `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
     Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
