@@ -5,10 +5,10 @@ const parseRSSchema = require("./utils/auto-schema");
 
 
 exports.onPreBootstrap = ({ reporter }) => {
-	reporter.info("generating the schema files for ReactiveSearch API");
-	parseRSSchema.parse()
-	reporter.info("generating the schema for the Pipelines API");
-	parseRSSchema.parsePipeline()
+	// reporter.info("generating the schema files for ReactiveSearch API");
+	// parseRSSchema.parse()
+	// reporter.info("generating the schema for the Pipelines API");
+	// parseRSSchema.parsePipeline()
   };
   
 
