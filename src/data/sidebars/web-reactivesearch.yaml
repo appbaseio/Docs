@@ -27,6 +27,8 @@
               link: /docs/reactivesearch/v3/list/multidropdownlist/
             - title: SingleDataList
               link: /docs/reactivesearch/v3/list/singledatalist/
+            - title: TabDataList
+              link: /docs/reactivesearch/v3/list/tabdatalist
             - title: MultiDataList
               link: /docs/reactivesearch/v3/list/multidatalist/
             - title: ToggleButton
