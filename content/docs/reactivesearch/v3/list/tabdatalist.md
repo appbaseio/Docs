@@ -1,7 +1,7 @@
 ---
 title: 'TabDataList'
 meta_title: 'TabDataList'
-meta_description: 'TabDataList creates a multiple selection based list UI component that is connected to a database field.'
+meta_description: 'TabDataList creates a multiple selection based list UI component that is connected to a search index field.'
 keywords:
     - reactivesearch
     - tabdatalist
