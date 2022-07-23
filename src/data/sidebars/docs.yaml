@@ -34,13 +34,13 @@
                   - link: /docs/search/reactivesearch-api/reference/
                     title: 'API Reference'
                   - link: /docs/search/reactivesearch-api/reference/elasticsearch
-                    title: 'API Reference | Elasticsearch'
+                    title: 'API Ref | Elasticsearch'
                   - link: /docs/search/reactivesearch-api/reference/opensearch
-                    title: 'API Reference | OpenSearch'
+                    title: 'API Ref | OpenSearch'
                   - link: /docs/search/reactivesearch-api/reference/solr
-                    title: 'API Reference | Solr'
+                    title: 'API Ref | Solr'
                   - link: /docs/search/reactivesearch-api/reference/mongodb
-                    title: 'API Reference | MongoDB'
+                    title: 'API Ref | MongoDB'
             - link: /docs/search/rules/
               title: 'Query Rules'
             - link: /docs/search/scripts/
