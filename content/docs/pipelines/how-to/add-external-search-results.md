@@ -220,11 +220,16 @@ envs:
 stages:
   - id: authorize user
     uses: authorization
+  - id: extract user passed query
+    scriptRef: "extractUserQuery.js"
+    continueOnError: false
   - id: reactivesearch
     uses: reactivesearchQuery
   - id: google knowledge graph
     scriptRef: "knowledgeGraph.js"
     async: true
+    needs:
+      - extract user passed query
   - id: es query
     uses: elasticsearchQuery
   - id: merge response
@@ -247,7 +252,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js" --form "extractUserQuery.js=extractUserQuery.js"
 ```
 
 ## Testing the pipeline
