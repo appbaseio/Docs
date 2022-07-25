@@ -32,7 +32,8 @@
 		"start": "gatsby develop",
 		"prestart": "gatsby clean",
 		"lint": "eslint . --ext .js --cache",
-		"test": "gatsby clean && yarn build"
+		"test": "gatsby clean && yarn build",
+		"auto-schema": "node ./utils/schema.js"
 	},
 	"husky": {
 		"hooks": {
