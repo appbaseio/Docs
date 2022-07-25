@@ -33,14 +33,15 @@
                     title: 'Implementation'
                   - link: /docs/search/reactivesearch-api/reference/
                     title: 'API Reference'
-                  - link: /docs/search/reactivesearch-api/reference/elasticsearch
-                    title: 'API Ref | Elasticsearch'
-                  - link: /docs/search/reactivesearch-api/reference/opensearch
-                    title: 'API Ref | OpenSearch'
-                  - link: /docs/search/reactivesearch-api/reference/solr
-                    title: 'API Ref | Solr'
-                  - link: /docs/search/reactivesearch-api/reference/mongodb
-                    title: 'API Ref | MongoDB'
+                    items:
+                      - link: /docs/search/reactivesearch-api/reference/elasticsearch
+                        title: 'Elasticsearch'
+                      - link: /docs/search/reactivesearch-api/reference/opensearch
+                        title: 'OpenSearch'
+                      - link: /docs/search/reactivesearch-api/reference/solr
+                        title: 'Solr'
+                      - link: /docs/search/reactivesearch-api/reference/mongodb
+                        title: 'MongoDB'
             - link: /docs/search/rules/
               title: 'Query Rules'
             - link: /docs/search/scripts/
