@@ -42,6 +42,7 @@ routes:
 
 envs:
   knowledgeGraphAPIKey: "someAPIkey"
+  query: harry
 ```
 
 In the above file, we are also defining an `envs.knowledgeGraphAPIKey` that is being used to hit the Knowledge Graph API. This is necessary to be able to use the API properly.
@@ -53,10 +54,11 @@ Let's get started with the stages. We will have a few stages that will be explai
 The following stages will be used in this pipeline:
 
 1. authorize user
-2. reactivesearch
-3. google knowledge graph
-4. es query
-5. merge response
+2. extract user passed query
+3. reactivesearch
+4. google knowledge graph
+5. es query
+6. merge response
 
 ### Authorize User
 
@@ -70,6 +72,31 @@ We can use the pre-built stage `authorization` for this stage. That can be done 
 ```
 
 Yes, that's it. We will take care of the authorization in just two lines of code.
+
+## Extract use passed query
+
+Since the knowledge graph step requires a query that it uses in the knowledge graph API call, this query should be extracted from the user passed request. As a fallback, a default `query` value is set in the `envs` as `harry`.
+
+We can use the following script to extract the user passed query and set it in the envs:
+
+```js
+function handleRequest() {
+  const request = JSON.parse(context.request.body);
+  const queryToUse = request.query[0].value;
+  return {
+    ...context,
+    envs: { ...context.envs, query: queryToUse }
+  }; 
+}
+```
+
+Above JS script can be saved as `extractUserQuery.js` and  then we can add a step in the following way:
+
+```yaml
+- id: extract user passed query
+  scriptRef: extractUserQuery.js
+  continueOnError: false
+```
 
 ### ReactiveSearch
 
@@ -100,7 +127,11 @@ This stage can be defined in the following way
 - id: google knowledge graph
   scriptRef: "knowledgeGraph.js"
   async: true
+  needs:
+    - extract user passed query
 ```
+
+> NOTE that we are using the `extract user passed query` step as a needed step since we want the user query to be set in the envs.query field before this step is executed.
 
 In the above stage, we are refering to a JavaScript file `knowledgeGraph.js`. We will need to define this file with some JavaScript code. When this stage will be executed, this file will be invoked.
 
@@ -189,11 +220,16 @@ envs:
 stages:
   - id: authorize user
     uses: authorization
+  - id: extract user passed query
+    scriptRef: "extractUserQuery.js"
+    continueOnError: false
   - id: reactivesearch
     uses: reactivesearchQuery
   - id: google knowledge graph
     scriptRef: "knowledgeGraph.js"
     async: true
+    needs:
+      - extract user passed query
   - id: es query
     uses: elasticsearchQuery
   - id: merge response
@@ -216,7 +252,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js" --form "extractUserQuery.js=extractUserQuery.js"
 ```
 
 ## Testing the pipeline
