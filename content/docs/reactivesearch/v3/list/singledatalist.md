@@ -73,6 +73,8 @@ Example uses:
 	]}
 	showSearch={true}
 	showRadio={true}
+    showCount={true}
+    displayAsVertical={false}
 	placeholder="Filter meetups"
 	defaultValue="Social"
 	selectAllLabel="All meetups"
@@ -98,6 +100,8 @@ Example uses:
     whether to display a searchbox to filter the data list. Defaults to `false`.
 -   **showRadio** `Boolean` [optional]
     whether to display a radio button beside the list item. Defaults to `true`.
+-   **displayAsVertical** `Boolean` [optional]
+    whether to layout list vertically. Defaults to `true`.
 -   **placeholder** `String` [optional]
     placeholder to be displayed in the searchbox. Defaults to "Search". Applicable only when `showSearch` is true.
 -   **defaultValue** `string` [optional]
