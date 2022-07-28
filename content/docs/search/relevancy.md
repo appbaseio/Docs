@@ -1,18 +1,22 @@
 ---
 title: 'Search Relevancy'
-meta_title: 'Appbase.io Dashboard - Search Relevancy Controls for Elasticsearch'
-meta_description: 'Appbase.io offers a control plane for tuning search relevancy of your Elasticsearch queries.'
+meta_title: 'ReactiveSearch Dashboard - Search Relevancy Controls for Elasticsearch'
+meta_description: 'ReactiveSearch Dashboard offers a control plane for tuning search relevance of your Elasticsearch or OpenSearch queries.'
 keywords:
     - concepts
     - appbase.io
+    - opensearch
     - search relevancy
     - elasticsearch
+    - opensearch
 sidebar: 'docs'
 ---
 
+**Note**: This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
+
 A relevant search meets an end user's expectations every single time. However, both measuring and optimizing the search relevancy with Elasticsearch requires one to be an expert search engine user, and even then, it continues to be an ongoing effort that takes months to yield fruitful results.
 
-Appbase.io now offers **Search Relevancy** - a control plane containing a suite of GUIs that enable user to improve their search relevancy settings without requiring any guesswork. Combined with Actionable Analytics, Search Relevancy enables you to optimize your search's relevance in a data-driven manner.
+ReactiveSearch now offers **Search Relevancy** - a control plane containing a suite of GUIs that enable user to improve their search relevancy settings without requiring any guesswork. Combined with Actionable Analytics, Search Relevancy enables you to optimize your search's relevance in a data-driven manner.
 
 [![](https://i.imgur.com/1uywifE.jpg)](https://youtu.be/pES6u-GG3hc)
 👆Watch this 4-mins video to see it in action
@@ -23,7 +27,7 @@ Appbase.io now offers **Search Relevancy** - a control plane containing a suite 
 
 Language forms the core of a search engine. The **Language Settings** UI enables you to configure your search engine to work with the language that your users are going to search for.
 
-Appbase.io offers support for 38 languages with the default relevancy configured to work universally.
+ReactiveSearch dashboard offers support for 38 languages with the default relevancy configured to work universally.
 
 ![](https://i.imgur.com/CGUEBgG.png)
 
@@ -61,7 +65,7 @@ Search Settings enables you to control search query and relevance settings.
 
 The UI view lets you control and set the fields that have a search use-case and a variable field weight that's used to boost a match at search time.
 
-By default, when appbase.io is used to import data for an Elasticsearch index, it sets the search use-case and the appropriate indexing and search analyzers for all the `text` fields. As a user, you can change the fields that are searchable.
+By default, when ReactiveSearch dashboard is used to import data for an Elasticsearch index, it sets the search use-case and the appropriate indexing and search analyzers for all the `text` fields. As a user, you can change the fields that are searchable.
 
 #### Advanced Settings
 
@@ -82,7 +86,7 @@ By default, all of these options are searched against. The search relevance weig
 #### Relevance Tuning with Rank Feature
 
 
-**What is a rank feature**: A [rank_feature](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-feature.html) field works similarly to a regular float field from the outside, but indexes data in a way that allows Elasticsearch to run queries efficiently when it is used for ranking. Appbase.io natively supports applying additional relevance tuning using rank feature.
+**What is a rank feature**: A [rank_feature](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-feature.html) field works similarly to a regular float field from the outside, but indexes data in a way that allows Elasticsearch to run queries efficiently when it is used for ranking. ReactiveSearch dashboard natively supports applying additional relevance tuning using rank feature.
 
 You can add a rank_feature field from the [Schema UI view](#schema).
 
@@ -132,7 +136,7 @@ Allowing typo-tolerance beyond 2 isn't recommended as that can yield a lot of fa
 
 **Enable Synonyms:** Enabling synonyms lets you set a dictionary of synonyms that is used at search time to map to the indexed content. This setting is disabled by default.
 
-**Enable N-grams:** appbase.io adds an n-grams tokenizer to enable partial infix matching of search terms, but this comes with a substantial storage increase. By disabling n-grams, you can make significant storage savings.
+**Enable N-grams:** ReactiveSearch dashboard adds an n-grams tokenizer to enable partial infix matching of search terms, but this comes with a substantial storage increase. By disabling n-grams, you can make significant storage savings.
 
 ## Aggregation Settings
 
@@ -236,7 +240,7 @@ Popular suggestions panel allows configuring suggestions based on popularity of 
 
 ![](https://imgur.com/uqZB0K0.png)
 
-You can set the index and query time preferences for popular suggestions from appbase.io dashboard's Popular Suggestions.  Unlike other suggestion types, Popular suggestions are re-calculated and populated in a special index on a daily basis based on the aggregate end-user search analytics data and index time suggestion preferences. These help optimize the behavior of suggestions for your specific use-case.
+You can set the index and query time preferences for popular suggestions from ReactiveSearch dashboard's Popular Suggestions.  Unlike other suggestion types, Popular suggestions are re-calculated and populated in a special index on a daily basis based on the aggregate end-user search analytics data and index time suggestion preferences. These help optimize the behavior of suggestions for your specific use-case.
 
 | <p style="margin: 0px;" class="table-header-text">Label</p>                | <p style="margin: 0px;" class="table-header-text">Applicable At</p> | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                     |
 |----------------------|---------------|-------------------------------------------------------------------------------------------------|
@@ -252,7 +256,7 @@ You can set the index and query time preferences for popular suggestions from ap
 
 #### Query Popular Suggestions via API
 
-While Popular suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) the applicable settings at query time using the Suggestions API. See the API reference for enabling and configuring popular suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig).
+While Popular suggestions' defaults can be set using the ReactiveSearch dashboard, one can also apply (override) the applicable settings at query time using the Suggestions API. See the API reference for enabling and configuring popular suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#popularsuggestionsconfig).
 
 <iframe src=https://play.reactivesearch.io/embed/pVsIGW32K1SRLhixRgGv     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-pVsIGW32K1SRLhixRgGv   ></iframe>
 
@@ -262,7 +266,7 @@ Recent suggestions panel allows configuring how an end-user sees their recent se
 
 ![](https://imgur.com/kOrxta3.png)
 
-You can set the constaints for returning recent suggestions from appbase.io dashboard's Recent Suggestions settings menu. Only recent suggestions that meet these constraints will be returned back.
+You can set the constaints for returning recent suggestions from ReactiveSearch dashboard's Recent Suggestions settings menu. Only recent suggestions that meet these constraints will be returned back.
 
 | <p style="margin: 0px;" class="table-header-text">Label</p>          | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                    |
 |----------------|--------------------------------------------------------------------------------|
@@ -273,7 +277,7 @@ You can set the constaints for returning recent suggestions from appbase.io dash
 
 #### Query Recent Suggestions via API
 
-While Recent suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring recent suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig).
+While Recent suggestions' defaults can be set using the ReactiveSearch dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring recent suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#recentsuggestionsconfig).
 
 <iframe     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"  src="https://play.reactivesearch.io/embed/hqrRunRhWsc7oJWWE1qx"></iframe>
 
@@ -302,7 +306,7 @@ Index suggestions settings allow configuring how an end-user would see the searc
 
 #### Query Index Suggestions via API
 
-While Index suggestions' defaults can be set using the appbase.io dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring index suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#enablepredictivesuggestions).
+While Index suggestions' defaults can be set using the ReactiveSearch dashboard, one can also apply (override) them at query time using the Suggestions API. See the API reference for enabling and configuring index suggestions at query time over [here](/docs/search/reactivesearch-api/reference/#enablepredictivesuggestions).
 
 <iframe src=https://play.reactivesearch.io/embed/2YaNeEx4AEF4PHeJrSdw     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-2YaNeEx4AEF4PHeJrSdw   ></iframe>
 
@@ -328,7 +332,7 @@ The **Search Preview UI** is at the core of Search Relevancy views. It lets you 
 
 You can see it present on all the views with a `Test Search Relevancy` button.
 
-**Raw view:** The Raw view lets you see the underlying search API call as well as modify it and see the response as a raw JSON. Under the hood, appbase.io uses the [ReactiveSearch API](/docs/search/reactivesearch-api/) to make the search requests.
+**Raw view:** The Raw view lets you see the underlying search API call as well as modify it and see the response as a raw JSON. Under the hood, ReactiveSearch uses the [ReactiveSearch API](/docs/search/reactivesearch-api/) to make the search requests.
 
 ![](https://i.imgur.com/j2K7nYB.png)
 

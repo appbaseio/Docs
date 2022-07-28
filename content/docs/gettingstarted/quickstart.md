@@ -1,19 +1,19 @@
 ---
 title: 'Introduction'
-meta_title: 'Introduction to Appbase.io'
-meta_description: 'Appbase.io provides a supercharged search experience for creating the most demanding app search experiences with NoCode, REST APIs or JavaScript components.'
+meta_title: 'Introduction to ReactiveSearch'
+meta_description: 'ReactiveSEarch provides a supercharged search experience for creating the most demanding app search experiences with NoCode, REST APIs or JavaScript components.'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
 sidebar: 'docs'
 ---
 
-[Appbase.io](https://appbase.io) provides a supercharged [Elasticsearch](https://github.com/elastic/elasticsearch) experience for creating the most demanding app search experiences with a no-code search relevance control plane, UI builder, out-of-the-box search analytics and low-code UI components.
+[ReactiveSearch.io](https://reactivesearch.io) provides a supercharged [Elasticsearch](https://github.com/elastic/elasticsearch) experience for creating the most demanding app search experiences with a no-code search relevance control plane, UI builder, out-of-the-box search analytics and low-code UI components.
 
 ## Overview
 
-With appbase.io, you can:
+With ReactiveSearch, you can:
 
 -   [Import your data](/docs/data/import/) from various sources via dashboard or CLI or REST APIs,
 -   [Test search relevancy visually](/docs/search/relevancy/),
@@ -26,21 +26,21 @@ With appbase.io, you can:
 -   Get improved search performance and throughput with [application layer caching](/docs/speed/cache-management/),
 -   Build access controled search experiences with built-in Basic Auth or JWT based authentication, read/write access keys with granular ACLs, field level security, IP based rate limits, time to live - [read more over here](/docs/security/credentials/).
 
-![Appbase.io Architecture](https://i.imgur.com/lM8NNC8.png)
-**Image:** appbase.io overview diagram
+![ReactiveSearch.io Architecture](https://i.imgur.com/iTRCXe1.png)
+**Image:** ReactiveSearch overview diagram
 
 ## Out of the Box Features
 
-appbase.io offers the following advantages over running your own Elasticsearch cluster.
+ReactiveSearch offers the following advantages over running your own Elasticsearch cluster.
 
-![](https://i.imgur.com/aaxqnN2.png)
-**Image:** appbase.io feature stack overview
+![](https://i.imgur.com/8jz4Ssp.png)
+**Image:** ReactiveSearch feature stack overview
 
 1. **Analytics** - Get rich insights and analytics for your search app.
 2. **Security** - Read/write access credentials, IP sources and HTTP Referers based restriction, Role based access control.
 3. **Zero Ops** - Automated provisioning, scaling, logging and daily backups so you can enjoy a peace of mind.
-4. **An Active Ecosystem** - From UI toolkits to build [search interfaces](https://opensource.appbase.io/reactivesearch) and [map UIs](https://opensource.appbase.io/reactivemaps), to the [leading Elasticsearch data browser](https://opensource.appbase.io/dejavu/) to a [GUI for writing queries](https://opensource.appbase.io/mirage/) to [backend data connectors](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d) to import data from SQL, MongoDB, JSON, CSV sources into Elasticsearch, we are actively working on open-standards to improve accessibility of building apps with appbase.io and Elasticsearch.
-5. **No Vendor Lock-in** - Hosted APIs often come with a huge lock-in cost. appbase.io is offered as [a hosted API](https://appbase.io) as well as a [cloud native software](https://github.com/appbaseio/arc), offering a consistent experience without becoming a walled garden.
+4. **An Active Ecosystem** - From UI toolkits to build [search interfaces](https://opensource.appbase.io/reactivesearch) and [map UIs](https://opensource.appbase.io/reactivemaps), to the [leading Elasticsearch data browser](https://opensource.appbase.io/dejavu/) to a [GUI for writing queries](https://opensource.appbase.io/mirage/) to [backend data connectors](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d) to import data from SQL, MongoDB, JSON, CSV sources into Elasticsearch, we are actively working on open-standards to improve accessibility of building apps with ReactiveSearch.
+5. **No Vendor Lock-in** - Hosted APIs often come with a huge lock-in cost. ReactiveSearch.io is offered as [a hosted API](https://reactivesearch.io) as well as a [cloud native software](https://github.com/appbaseio/reactivesearch-api), offering a consistent experience without becoming a walled garden.
 
 ## Choose your hosting
 
@@ -58,4 +58,4 @@ appbase.io offers the following advantages over running your own Elasticsearch c
 | <p style="margin: 0px;" class="table-header-text">Hosting</p>                                     | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Clusters](/docs/hosting/clusters/)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
-| [Bring Your Own Cluster](/docs/hosting/byoc/) | Already have an Elasticsearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the appbase.io docker container or image as a hosted service from the dashboard or deploy it yourself. |
+| [Bring Your Own Cluster](/docs/hosting/byoc/) | Already have an Elasticsearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the ReactiveSearch docker container or image as a hosted service from the dashboard or deploy it yourself. |

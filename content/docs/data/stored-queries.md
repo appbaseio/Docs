@@ -5,10 +5,14 @@ meta_description: 'Stored Queries prevent script injections by only passing the 
 keywords:
     - security
     - appbaseio
+    - reactivesearch
     - stored-queries
+    - opensearch
     - elasticesearch
 sidebar: 'docs'
 ---
+
+**Note:** This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
 
 Stored Queries prevent script injections by only passing the parameters to your search query rather than passing the query itself over a network request.
 

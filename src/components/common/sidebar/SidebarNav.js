@@ -125,7 +125,7 @@ const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="midgrey hover-blue-l2 link"
-					href="https://dashboard.appbase.io"
+					href="https://dashboard.reactivesearch.io"
 				>
 					Dashboard
 				</a>

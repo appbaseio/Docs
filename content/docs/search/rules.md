@@ -5,10 +5,14 @@ meta_description: 'Query Rules are If-This-Then-That kind of rules that can be t
 keywords:
     - concepts
     - appbaseio
+    - reactivesearch
     - elasticsearch
+    - opensearch
     - queryrules
 sidebar: 'docs'
 ---
+
+**Note**: This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
 
 ## Overview
 

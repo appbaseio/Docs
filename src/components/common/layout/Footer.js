@@ -11,22 +11,22 @@ const Footer = () => (
 						{
 							title: 'Relevant Search',
 							openWithTab: true,
-							href: 'https://appbase.io/product/search',
+							href: 'https://reactivesearch.io/product/search',
 						},
 						{
 							title: 'Actionable Analytics',
 							openWithTab: true,
-							href: 'https://appbase.io/product/analytics',
+							href: 'https://reactivesearch.io/product/analytics',
 						},
 						{
 							title: 'Access Control',
 							openWithTab: true,
-							href: 'https://appbase.io/product/access-control',
+							href: 'https://reactivesearch.io/product/access-control',
 						},
 						{
 							title: 'Search UI',
 							openWithTab: true,
-							href: 'https://appbase.io/product/search-ui/',
+							href: 'https://reactivesearch.io/product/search-ui/',
 						},
 
 					],
@@ -37,22 +37,22 @@ const Footer = () => (
 						{
 							title: 'AWS Elasticsearch',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/aws-elasticsearch',
+							href: 'https://reactivesearch.io/solutions/aws-elasticsearch',
 						},
 						{
 							title: 'Heroku',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/heroku-elasticsearch',
+							href: 'https://reactivesearch.io/solutions/heroku-elasticsearch',
 						},
 						{
 							title: 'Docker',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/elasticsearch-with-docker',
+							href: 'https://reactivesearch.io/solutions/elasticsearch-with-docker',
 						},
 						{
 							title: 'Kubernetes',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/elasticsearch-with-kubernetes',
+							href: 'https://reactivesearch.io/solutions/elasticsearch-with-kubernetes',
 						},
 					],
 				},
@@ -62,27 +62,27 @@ const Footer = () => (
 						{
 							title: 'E-Commerce',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/ecommerce-search',
+							href: 'https://reactivesearch.io/solutions/ecommerce-search',
 						},
 						{
 							title: 'SaaS Search',
 							openWithTab: true,
-							href: 'https://appbase.io/solutions/saas-search/',
+							href: 'https://reactivesearch.io/solutions/saas-search/',
 						},
 						{
 							title: 'Geo Apps',
 							openWithTab: true,
-							href: 'https://appbase.io/usecases/geo-apps',
+							href: 'https://reactivesearch.io/usecases/geo-apps',
 						},
 						{
 							title: 'Mobile Search',
 							openWithTab: true,
-							href: 'https://appbase.io/usecases/mobile-search/',
+							href: 'https://reactivesearch.io/usecases/mobile-search/',
 						},
 						{
 							title: 'Realtime Search',
 							openWithTab: true,
-							href: 'https://appbase.io/usecases/realtime-search',
+							href: 'https://reactivesearch.io/usecases/realtime-search',
 						},
 
 					],
@@ -93,17 +93,17 @@ const Footer = () => (
 						{
 							title: 'Terms of Service',
 							openWithTab: true,
-							href: 'https://appbase.io/tos',
+							href: 'https://reactivesearch.io/tos',
 						},
 						{
 							title: 'Privacy Policy',
 							openWithTab: true,
-							href: 'https://appbase.io/privacy',
+							href: 'https://reactivesearch.io/privacy',
 						},
 						{
 							title: 'Cookies Policy',
 							openWithTab: true,
-							href: 'https://appbase.io/cookie',
+							href: 'https://reactivesearch.io/cookie',
 						},
 					],
 				},

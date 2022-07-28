@@ -6,7 +6,7 @@ const AnnouncementBanner = ({ showBanner, setShowBanner }) => {
 		<div>
 			{showBanner ? (
 				<div className="announcement-banner">
-					appbase.io is reactivesearch.io{' '}
+					appbase.io is now reactivesearch.io{' '}
 					<a
 						href="https://blog.reactivesearch.io/appbaseio-is-reactivesearch"
 						target="_blank"

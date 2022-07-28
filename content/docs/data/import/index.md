@@ -1,16 +1,20 @@
 ---
 title: 'Importing Data'
-meta_title: 'Importing data into appbase.io'
-meta_description: 'Import through GUI and command line sources such as Dashboard, ABC CLI, Rest APIs, and Zapier.'
+meta_title: 'Importing data into ReactiveSearch'
+meta_description: 'Import data into ReactiveSearch through GUI and command line sources such as Dashboard, ABC CLI, Rest APIs, and Zapier. Applies when using Elasticsearch or OpenSearch engines.'
 keywords:
     - dataschema
     - appbase
+    - reactivesearch
     - import
+    - opensearch
     - elasticsearch
 sidebar: 'docs'
 ---
 
-You can bring your data from various sources into an `appbase.io` app or cluster using one of the following methods:
+**Note**: This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
+
+You can bring your data from various sources into a ReactiveSearch or cluster using one of the following methods:
 
 <div class="grid-integrations-index mt4 mt6-l f8">
     <a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="#importing-through-dashboard">

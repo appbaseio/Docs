@@ -17,7 +17,7 @@ While appbase.io maintains 100% API compatibility with Elasticsearch, it also pr
 
 ## ReactiveSearch API Examples
 
-You can read the API reference for the ReactiveSearch API over [here](http://docs.appbase.io/docs/search/reactivesearch-api/reference). In the following section, we will show interactive examples for using the API.
+You can read the API reference for the ReactiveSearch API over [here](/docs/search/reactivesearch-api/reference). In the following section, we will show interactive examples for using the API.
 
 ### Basic Usage
 

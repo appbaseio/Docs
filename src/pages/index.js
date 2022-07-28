@@ -34,7 +34,7 @@ const HomePage = ({ data, location }) => {
 				<meta charSet="utf-8" />
 				<meta name="title" content="Reactivesearch.io Docs - Home Page" />
 				<meta name="description" content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch." />
-				<link rel="canonical" href="https://docs.appbase.io" />
+				<link rel="canonical" href="https://docs.reactivesearch.io" />
 			</Helmet>
 			<Layout
 				headerDividerStyle="shadow"
@@ -63,7 +63,7 @@ const HomePage = ({ data, location }) => {
 								items={{
 									'1': {
 										title: 'Getting Started',
-										subtitle: 'Overview and Quickstart with appbase.io',
+										subtitle: 'Overview and Quickstart with reactivesearch.io',
 										icon: (
 											<Icon
 												name="gettingStarted"
@@ -522,7 +522,7 @@ const HomePage = ({ data, location }) => {
 								<h3>Tutorials</h3>
 								<p>Go from scratch to a full app with these tutorial guides</p>
 							</Card>
-							<Card href="https://www.appbase.io/contact/" theme={themeType}>
+							<Card href="https://www.reactivesearch.io/contact/" theme={themeType}>
 								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
 								<h3>Support</h3>
 								<p>

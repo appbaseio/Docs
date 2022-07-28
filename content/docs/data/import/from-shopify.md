@@ -1,10 +1,11 @@
 ---
 title: 'Import From Shopify'
-meta_title: 'Importing Shopify Store Data to appbase.io'
-meta_description: 'Natively import your Shopify Store data to appbase.io with our dashboard GUI. Select sync preferences to index products, collections, collects, meta fields, or named tags.'
+meta_title: 'Importing Shopify Store Data to ReactiveSearch'
+meta_description: 'Natively import your Shopify Store data to ReactiveSearch with our dashboard GUI. Select sync preferences to index products, collections, collects, meta fields, or named tags.'
 keywords:
     - shopify
     - appbase
+    - reactivesearch
     - import
     - namedtags
     - metafields
@@ -12,7 +13,9 @@ keywords:
 sidebar: 'docs'
 ---
 
-Appbase.io natively supports importing your Shopify store's data into appbase.io through the dashboard GUI.
+**Note**: This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
+
+ReactiveSearch.io natively supports importing your Shopify store's data through the dashboard GUI.
 
 You can navigate here from the `Explore Cluster > Develop > Import` menu.
 
@@ -24,30 +27,30 @@ Once you select your indexing preferences and connect, you will see the Connect 
 
 ![Connect screen](https://i.imgur.com/d4Ts7VE.png)
 
-Once synced, appbase.io will also track for automatic updates to products and custom collections (any additions, changes or deletions) and keep your appbase.io data updated.
+Once synced, ReactiveSearch will also track for automatic updates to products and custom collections (any additions, changes or deletions) and keep your ReactiveSearch data updated.
 
 
 ## Products
 
-Shopify Products are synced to appbase.io by default. However, you can choose to turn them off.
+Shopify Products are synced to ReactiveSearch by default. However, you can choose to turn them off.
 
 ## Smart Collections
 
-Smart collections and their associated products are synced to appbase.io by default. However, you can choose to turn them off.
+Smart collections and their associated products are synced to ReactiveSearch by default. However, you can choose to turn them off.
 
-`Note:` Appbase.io doesn't support automatic updates to smart collections, i.e. additions/removals of products within a collection. This is a limitation within Shopify itself. If you rely on smart collections for filtering products, you should re-sync the data instead.
+`Note:` ReactiveSearch doesn't support automatic updates to smart collections, i.e. additions/removals of products within a collection. This is a limitation within Shopify itself. If you rely on smart collections for filtering products, you should re-sync the data instead.
 
 ## Custom Collections
 
-Custom collections are synced to appbase.io by default. However, you can choose to turn them off.
+Custom collections are synced to ReactiveSearch by default. However, you can choose to turn them off.
 
 ## Product-Collection Relationships
 
-Product-collection relationships (aka Collects) aren't synced to appbase.io by default. If you intend to create a filter by collections for your products, you should turn them on.
+Product-collection relationships (aka Collects) aren't synced to ReactiveSearch by default. If you intend to create a filter by collections for your products, you should turn them on.
 
 ## Meta Fields
 
-Metafields in Shopify allow associating additional information to a resource's Shopify schema. When you sync metafields, appbase.io will sync metafields associated with collections and products. You can learn more about metafields over [here](https://shopify.dev/docs/admin-api/rest/reference/metafield).
+Metafields in Shopify allow associating additional information to a resource's Shopify schema. When you sync metafields, ReactiveSearch will sync metafields associated with collections and products. You can learn more about metafields over [here](https://shopify.dev/docs/admin-api/rest/reference/metafield).
 
 `Note:` Metafields API doesn't support bulk requests and being prone to Shopify's API limits, is slower to sync for larger datasets (> 10,000 products). We recommend using Named Tags instead.
 
@@ -89,6 +92,6 @@ Here, we have added the named tag `variant:black` to a product.
 
 ## Managing Data Types
 
-When you first index your data from Shopify (or any other source) into appbase.io, it gets automatically indexed with Text/Keyword mapping with both searchable and aggregatable set.
+When you first index your data from Shopify (or any other source) into reactivesearch.io, it gets automatically indexed with Text/Keyword mapping with both searchable and aggregatable set.
 
 However, you may want to assign specific data types (e.g. change a field to numeric to apply a range facet on it) and/or change the default search and aggregation use-cases to optimize on the storage size. You can do this is via the [Schema UI view](/docs/search/relevancy/#schema).
