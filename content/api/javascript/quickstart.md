@@ -1,7 +1,7 @@
 ---
 title: 'Quickstart'
 meta_title: 'Quickstart to Javascript'
-meta_description: 'Appbase-js is a universal JavaScript client library for working with the appbase.io database.'
+meta_description: 'Appbase-js is a universal JavaScript client library for working with the ReactiveSearch API.'
 keywords:
     - quickstart
     - javascript
@@ -10,7 +10,7 @@ keywords:
 sidebar: 'api-reference'
 ---
 
-[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the appbase.io database.
+[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the ReactiveSearch API.
 
 It can:
 
@@ -21,20 +21,18 @@ It can't:
 
 -   Configure mappings, change analyzers, or capture snapshots. All these are provided by [elasticsearch.js](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) - the official Elasticsearch JS client library.
 
-[Appbase.io - the database service](https://appbase.io) is opinionated about cluster setup and hence doesn't support the Elasticsearch devops APIs. See [rest.appbase.io](https://rest.appbase.io) for a full reference on the supported APIs.
-
 ## Create Cluster
 
-You can start by creating an [Elasticsearch cluster with appbase.io](/docs/hosting/clusters/) or [bring your Elasticsearch cluster](/docs/hosting/byoc/) or [self-host appbase.io](https://docs.appbase.io/docs/hosting/byoc/#quickstart-recipes).
+You can start by creating an [Elasticsearch cluster with appbase.io](/docs/hosting/clusters/) or [bring your Elasticsearch cluster](/docs/hosting/byoc/) or [self-host appbase.io](/docs/hosting/byoc/#quickstart-recipes).
 
--   Log in to[Appbase Dashboard](https://dashboard.appbase.io), and create a new cluster.
+-   Log in to[Appbase Dashboard](https://dashboard.reactivesearch.io), and create a new cluster.
 -   Copy the URL of your cluster for further actions
 
-You can read see the different options for creating a cluster and their pricing over [here](https://appbase.io/pricing/).
+You can read see the different options for creating a cluster and their pricing over [here](https://reactivesearch.io/pricing/).
 
 ## Creating an Index
 
-This gif shows how to create an index on appbase.io cluster, which we will need for this quickstart guide.
+This gif shows how to create an index on reactivesearch.io cluster, which we will need for this quickstart guide.
 
 ![](https://www.dropbox.com/s/qa5nazj2ajaskr6/wky0vrsPPB.gif?raw=1)
 
@@ -42,7 +40,7 @@ For this tutorial, we will use an index called `good-books-demo`. The credential
 
 > Note <i class="fa fa-info-circle"></i>
 >
-> Appbase.io uses _HTTP Basic Auth_, a widely used protocol for simple username/password authentication. It also support creating various API credentials with different access. You can read more about access control in [docs](/docs/security/credentials/).
+> reactivesearch.io uses _HTTP Basic Auth_, a widely used protocol for simple username/password authentication. It also support creating various API credentials with different access. You can read more about access control in [docs](/docs/security/credentials/).
 
 ## Install appbase-js
 
@@ -60,7 +58,7 @@ Adding it in the browser should be a one line script addition.
 
 Alternatively, a UMD build of the library can be used directly from [jsDelivr](https://cdn.jsdelivr.net/npm/appbase-js/dist/).
 
-To write data to [appbase.io](https://appbase.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the `Appbase` constructor:
+To write data to [appbase.io](https://reactivesearch.io), we need to first create a reference object. We do this by passing the appbase.io API URL, app name, and credentials into the `Appbase` constructor:
 
 ```js
 var appbaseRef = Appbase({

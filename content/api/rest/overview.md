@@ -12,7 +12,7 @@ sidebar: 'api-reference'
 
 Appbase.io provides an API gateway and control plane for Elasticsearch -  with a mission of powering the most demanding application search use-cases.
 
-To get started with the APIs, the first pre-requisite is to create an appbase.io cluster. You can do this by creating a cluster [using the cloud service](/docs/hosting/clusters/), or [bring your existing Elasticsearch](/docs/hosting/byoc/) cluster, or [self-host appbase.io](https://docs.appbase.io/docs/hosting/byoc/#using-docker).
+To get started with the APIs, the first pre-requisite is to create an appbase.io cluster. You can do this by creating a cluster [using the cloud service](/docs/hosting/clusters/), or [bring your existing Elasticsearch](/docs/hosting/byoc/) cluster, or [self-host reactivesearch.io](/docs/hosting/byoc/#using-docker).
 
 ## REST APIs
 

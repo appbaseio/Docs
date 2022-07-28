@@ -3,7 +3,7 @@ import url from 'url';
 
 // TODO: this should be available as global var without the need to query
 // the siteMetadata.
-const SITEURL = process.env.SITE_URL || `https://docs.appbase.io`;
+const SITEURL = process.env.SITE_URL || `https://docs.reactivesearch.io`;
 
 const imageUrls = {
 	faq: url.resolve(SITEURL, `/images/meta/Ghost-FAQ.jpg`),

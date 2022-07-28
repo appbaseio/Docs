@@ -1,16 +1,17 @@
 ---
 title: 'Clusters'
 meta_title: 'Clusters'
-meta_description: 'Appbase.io clusters provide a hosted app search experience.'
+meta_description: 'ReactiveSearch clusters provide a hosted app search experience.'
 keywords:
     - clusters
     - appbaseio
     - appbase
-    - Elasticsearch
+    - elasticsearch
+    - opensearch
 sidebar: 'docs'
 ---
 
-[Appbase.io](https://www.appbase.io/pricing)'s cloud service provides a fully hosted Elasticsearch + appbase.io experience in over 16+ global regions. It's the easiest way to get started with appbase.io. The cloud service comes with the following benefits over a [bring your cluster](/docs/hosting/byoc/) option:
+[ReactiveSearch's cloud service](https://www.reactivesearch.io/pricing) provides a fully hosted Elasticsearch + ReactiveSearch experience in over 16+ global regions. It's the easiest way to get started with ReactiveSearch. The cloud service comes with the following benefits over a [bring your cluster](/docs/hosting/byoc/) option:
 
   - **A zero config app search experience**: With the cloud service, appbase.io deploys both Elasticsearch and appbase.io services in a performance-optimized fashion,
   - **16+ available regions**: Deploy your cluster in one of 16+ global regions on GCP or AWS,
@@ -22,20 +23,20 @@ sidebar: 'docs'
 
 Following are the steps that you can follow, to create a new cluster:
 
--   Login to [appbase.io dashboard](https://dashboard.appbase.io/)
+-   Login to [ReactiveSearch dashboard](https://dashboard.reactivesearch.io/)
     <br/>
 
      <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden"><img src="https://www.dropbox.com/s/m8my8lq3keju99c/Screenshot%202019-08-08%2015.57.03.png?raw=1" alt="cluster creation gif" style="width:100%;" /></div>
 
--   Go to [cluster pages](https://dashboard.appbase.io/clusters) and click [Create New Cluster](https://dashboard.appbase.io/clusters/new). Enter the following details for cluster creation:
+-   Go to [cluster pages](https://dashboard.reactivesearch.io/clusters) and click [Create New Cluster](https://dashboard.reactivesearch.io/clusters/new). Enter the following details for cluster creation:
 
-    -   Select a plan. You can check out the pricing plan details over [here](https://appbase.io/pricing).
+    -   Select a plan. You can check out the pricing plan details over [here](https://reactivesearch.io/pricing).
 
     -   Input the desired name for cluster.
 
-    -   Select Elasticsearch flavour, i.e. [Open Source Elasticsearch Distribution](https://github.com/elastic/elasticsearch) or [Open Distro for Elasticsearch](https://opendistro.github.io/for-elasticsearch/).
+    -   Select Elasticsearch flavour, i.e. [Open Source Elasticsearch Distribution](https://github.com/elastic/elasticsearch) or [OpenSearch](https://github.com/opensearch-project/OpenSearch).
 
-    -   Select addons to be deployed. Example Kibana/Grafana, Appbase.io's GUI dashboard, Elasticsearch HQ for browsing data + analytics + security features.
+    -   Optionally, add Kibana or OpenSearch Dashboards for search visualization.
 
 
 ## Tracking Deployment Status
@@ -70,7 +71,7 @@ Once the cluster is deployed you can enable / disable the addons from Cluster de
 
 <div style="border: 1px solid #dfdfdf; border-radius: 5px;overflow:hidden;margin-top:10px;"><img src="https://i.imgur.com/Md3cXNf.png" alt="addons editing" /></div>
 
-### Accessing Appbase.io GUI Dashboard
+### Accessing ReactiveSearch GUI Dashboard
 
 In order to access and manage cluster data, you can click on **Explore Cluster** from cluster details page.
 

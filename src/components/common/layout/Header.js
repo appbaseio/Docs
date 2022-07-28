@@ -10,21 +10,32 @@ const headerShadow = {
 };
 
 const Header = ({ dividerStyle }) => {
-	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ?  localStorage.getItem('theme') || 'light' : 'light');
+	const [themeType, setThemeType] = useState(
+		typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light',
+	);
+	// eslint-disable-next-line
+	const [showBanner, setShowBanner] = useState(
+		typeof window !== 'undefined'
+			? localStorage.getItem('announcementBanner') === 'true'
+			: false,
+	);
 	return (
 		<>
 			<header
-				className={`${
-					headerShadow[dividerStyle]
-				} fixed bg-white top-0 left-0 right-0 z-500 mb10`}
+				className={`${headerShadow[dividerStyle]} fixed bg-white top-0 left-0 right-0 z-500 mb10`}
 			>
-				<NavBar theme="dark" themeType={themeType} setThemeType={setThemeType}/>
+				<NavBar theme="dark" themeType={themeType} setThemeType={setThemeType} />
 			</header>
-			<div className="h17" />{' '}
+			<div
+				className="h17"
+				style={{
+					marginTop: showBanner ? 20 : 0,
+				}}
+			/>{' '}
 			{/* We need to push down all the content because of the fixed header */}
 		</>
 	);
-}
+};
 
 Header.defaultProps = {
 	dividerStyle: `hairline`,

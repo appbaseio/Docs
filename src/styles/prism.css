@@ -130,6 +130,10 @@ Usage, in Markdown files:
 	user-select: none;
 }
 
+.font-link {
+	font-family: 'Inter', sans-serif;
+}
+
 body {
 	-webkit-font-smoothing: antialiased;
 	--bg: white;
@@ -140,7 +144,7 @@ body {
 
 	color: rgb(52, 63, 68);
 	background-color: var(--bg);
-	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 1.35rem;
 }
 
@@ -155,7 +159,7 @@ body.dark {
 	--textTitle: white;
 	--textLink: yellow;
 	--hr: hsla(0, 0%, 100%, 0.2);
-	font-family: 'Whitney SSm A', 'Whitney SSm B', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 1.35rem;
 }
 
@@ -253,7 +257,7 @@ body.dark .highlighted-suggestion {
 }
 
 body.light .sticky-nav {
-	background: #f8fafc !important;
+	background: #ffffff !important;
 }
 
 body.dark .sticky-nav {
@@ -266,6 +270,31 @@ code {
 
 pre > code {
 	color: white;
+}
+
+.announcement-banner {
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	color: var(--midgrey);
+	background: #fff;
+}
+
+.banner-link-container {
+	color: var(--midgrey);
+	text-decoration: none;
+}
+
+.banner-link-container:hover {
+	color: #1890ff;
+}
+
+.close-icon {
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
 }
 
 .gatsby-remark-prismjs-copy-button-container {

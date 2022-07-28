@@ -1,7 +1,7 @@
 ---
 title: 'API Reference'
 meta_title: 'API Reference Javascript'
-meta_description: 'Appbase-js is a universal JavaScript client library for working with the appbase.io database.'
+meta_description: 'Appbase-js is a universal JavaScript client library for working with the ReactiveSearch API.'
 keywords:
     - apireference
     - javascript
@@ -10,7 +10,7 @@ keywords:
 sidebar: 'api-reference'
 ---
 
-[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the appbase.io database.
+[appbase-js](https://github.com/appbaseio/appbase-js) is a universal JavaScript client library for working with the ReactiveSearch API.
 
 ## INSTANTIATION
 
@@ -33,7 +33,7 @@ var appbaseRef = Appbase({
 -   **appData** `Object` <br>A JavaScript object containing the following fields and values
 
     -   **url** `String` <br>Elasticsearch Cluster URL _<https://appbase-demo-ansible-abxiydt-arc.searchbase.io>_
-    -   **app** `String` <br>name of the index as displayed in the [dashboard](https://dashboard.appbase.io)
+    -   **app** `String` <br>name of the index as displayed in the [dashboard](https://dashboard.reactivesearch.io)
     -   **username** `String` <br>username as displayed in the [access control dashboard](/docs/security/credentials/)<br/>
     -   **password** `String` <br>password as displayed in the [access control dashboard](/docs/security/credentials/)<br/>
     -   **credentials** `String` <br>Api key as displayed in the [access control dashboard](/docs/security/credentials/)<br/>

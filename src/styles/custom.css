@@ -231,6 +231,21 @@ kbd {
 .w-sidebar {
 	width: 22rem;
 }
+
+@media (max-width: 768px) {
+	.reactivesearch-logo {
+		width: 40px;
+	}
+
+	.w-sidebar-l {
+		width: 6rem !important;
+	}
+}
+
+.w-sidebar-l {
+	width: 22rem;
+}
+
 @media (--breakpoint-not-small) {
 	.w-sidebar-ns {
 		width: 22rem;
@@ -625,9 +640,19 @@ kbd {
 .gh-bg-home {
 	/* background: url(../images/bg-home.svg) no-repeat, radial-gradient(ellipse at top, rgba(252,253,255,1) 0%,rgba(228,233,245,1) 100%); */
 	/* background: url(../images/bg-home.svg) no-repeat, linear-gradient(60deg, rgba(75, 55, 172, 1) 0%, rgba(99, 199, 193, 1) 100%);; */
-	background: linear-gradient(to right, rgba(199, 244, 255, 0.8), rgba(199, 244, 255, 0)),
-		url(../images/banner.webp) no-repeat;
-	background-size: cover;
+	background: hsla(217, 91%, 60%, 1);
+	background: linear-gradient(45deg, hsla(217, 91%, 60%, 0.6) 0%, hsla(341, 100%, 58%, 0.6) 100%);
+	background: -moz-linear-gradient(
+		45deg,
+		hsla(217, 91%, 60%, 0.6) 0%,
+		hsla(341, 100%, 58%, 0.6) 100%
+	);
+	background: -webkit-linear-gradient(
+		45deg,
+		hsla(217, 91%, 60%, 0.6) 0%,
+		hsla(341, 100%, 58%, 0.6) 100%
+	);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#3B82F6", endColorstr="#FF2A6F", GradientType=1 );
 }
 
 .gh-home-api-container {
@@ -1549,10 +1574,6 @@ to be custom HTML.
 	font-weight: 600;
 }
 
-#gatsby-plugin-page-progress {
-	top: 75px !important;
-}
-
 @media (max-width: 500px) {
 	#gatsby-plugin-page-progress {
 		top: 64px !important;
@@ -1749,13 +1770,8 @@ to be custom HTML.
 	background: #00f68e;
 }
 
-.header-title {
-	color: var(--darkgrey) !important;
-}
-
 @media (max-width: 1240px) {
 	.header-title {
-		color: var(--darkgrey);
 		margin-top: 50px;
 	}
 }
@@ -1792,14 +1808,13 @@ to be custom HTML.
 }
 
 .signup-btn {
-	color: var(--darkgrey) !important;
+	color: white;
 	font-size: 1.6rem !important;
 	font-weight: 600 !important;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		'Open Sans', 'Helvetica Neue', sans-serif;
-	padding: 0px 22px;
+	font-family: 'Inter', sans-serif;
+	padding: 1.5rem;
 	width: 185px;
-	height: 40px;
+	height: 50px;
 	border-radius: 3px;
 	cursor: pointer;
 	user-select: none;
@@ -1820,8 +1835,7 @@ to be custom HTML.
 	border: 0 !important;
 	font-weight: 600 !important;
 	background-color: #e4faff;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Inter', sans-serif;
 	padding: 0px 22px;
 	width: 270px;
 	height: 40px;
@@ -1883,7 +1897,7 @@ a:link {
 	justify-content: space-evenly;
 }
 
-.truncate-3 {
+.truncate-desc {
 	line-height: 1.4;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -1942,7 +1956,7 @@ tbody tr td:nth-child(-n + 3) {
 
 .autosuggest-content {
 	overflow: scroll;
-	max-height: 500px;
+	max-height: 600px;
 }
 
 .autosuggest-footer-container {
@@ -1955,8 +1969,33 @@ tbody tr td:nth-child(-n + 3) {
 	height: 40px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 	.autosuggest-footer-container {
 		display: none;
+	}
+	.suggestion-content-icon {
+		display: none;
+	}
+	.truncate-desc {
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.home-search {
+		max-height: 75vh;
+	}
+}
+
+@media (max-width: 769px) and (min-width: 701px) {
+	.home-search-container {
+		width: 45%;
+	}
+
+	.truncate-desc {
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }

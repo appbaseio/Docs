@@ -1,4 +1,4 @@
-Thank you for considering to contribute to appbase.io docs!
+Thank you for considering to contribute to reactivesearch.io docs!
 
 **Before submitting a pull request,** please make sure that the following is done:
 

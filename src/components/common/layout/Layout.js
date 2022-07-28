@@ -37,8 +37,11 @@ const DefaultLayout = ({ children, bodyClass, mainClass, header, headerDividerSt
 		<>
 			<Helmet>
 				<html lang="en" className="fs-base" />
-				<title>Appbase.io Docs - Search stack for Elasticsearch</title>
-				<body />
+				<title>Reactivesearch.io Docs - Search stack for Elasticsearch, OpenSearch, Solr, MongoDB</title>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+				<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+				<body font-link/>
 			</Helmet>
 
 			{header || <Header dividerStyle={headerDividerStyle} />}

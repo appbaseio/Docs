@@ -1,31 +1,36 @@
 ---
 title: 'Data Browser'
-meta_title: 'Appbase.io - Data Browser'
-meta_description: 'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io data.'
+meta_title: 'ReactiveSEarch - Data Browser'
+meta_description: 'Data Browser is a WYSIWYG GUI for adding, modifying and viewing your Elasticsearch or OpenSearch data.'
 keywords:
     - dataschema
     - appbase
+    - reactivesearch
     - databrowser
     - data-ui
     - mappings
+    - opensearch
     - elasticsearch
 sidebar: 'docs'
 ---
 
-Data Browser is a WYSIWYG GUI for adding, modifying and viewing your appbase.io app's data.
+**Note:** This guide applies when using ReactiveSearch with Elasticsearch or OpenSearch only.
+
+
+ReactiveSearch Data Browser is a WYSIWYG GUI for adding, modifying and viewing your Elasticsearch or OpenSearch index's data.
 
 Data is stored as JSON documents. You can read more about how to model your data over [here](/docs/data/model/).
 
 ## Installation
 
-The data browser is available within appbase.io dashboard. But it can also be:
+The data browser is available within ReactiveSearch dashboard. But it can also be:
 
 -   run as a [docker container](https://hub.docker.com/r/appbaseio/dejavu) or
 -   used as a hosted app [here](https://dejavu.appbase.io).
 
 ## Creating An App
 
-You can go to the [appbase.io dashboard](https://dashboard.appbase.io) view of your cluster and create an index.
+You can go to the [ReactiveSearch dashboard](https://dashboard.reactivesearch.io) view of your cluster and create an index.
 
 ![](https://www.dropbox.com/s/vr01bg1mlyrej87/create_app_new.gif?raw=1)
 
@@ -53,9 +58,9 @@ Field data types are present in one of three shapes:
 
 1. **Primitive**: Text, Keyword, Integer, Float, Double, Date, Geo Point, Boolean are some examples.
 
-2. **Array**: An array shape in appbase.io is just a container that can hold one or more values of the primitive data type. There is no special data type associated with it.
+2. **Array**: An array shape in ReactiveSearch is just a container that can hold one or more values of the primitive data type. There is no special data type associated with it.
 
-3. **Object**: An object shape in appbase.io acts as a container that can hold a nested JSON object, each keys of which representing a primitive data type or another object / array container.
+3. **Object**: An object shape in ReactiveSearch acts as a container that can hold a nested JSON object, each keys of which representing a primitive data type or another object / array container.
 
 Beyond the primitive data types, there are also specialized data types that are specific to a search engine, like `completion`, `ip`, `percolator`. You can read all about the supported data types over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html).
 
@@ -102,7 +107,7 @@ Data records can also be deleted easily. Select a record (or multiple) from the 
 
 ## Importing Data
 
-You can directly import JSON or CSV data files into appbase.io using the **[data import](https://importer.appbase.io)** functionality.
+You can directly import JSON or CSV data files into ReactiveSearch using the **[data import](https://importer.appbase.io)** functionality.
 
 Here is a pic showing import of a JSON file when creating a new app.
 
@@ -110,7 +115,7 @@ Here is a pic showing import of a JSON file when creating a new app.
 
 The import view lets you set the data mappings via a GUI and index data. Currently, it supports up to 100,000 records at a time (or up to 100 MB of data).
 
-Once your data is imported, you can view the data via the [browser view](https://dashboard.appbase.io/browser).
+Once your data is imported, you can view the data via the [browser view](https://dashboard.reactivesearch.io/browser).
 
 #### Setting a Unique Document ID
 
@@ -162,4 +167,4 @@ You don't need to use this feature if your documents are never the same or if yo
 
 ## Doing more with data
 
-The dashboard offers a great way to get started with appbase.io with importing data and applying search relevancy settings. From here on, you can create a Test UI and start progressively working with analytics, query rules and security features.
+The dashboard offers a great way to get started with ReactiveSearch with importing data and applying search relevancy settings. From here on, you can create a Test UI and start progressively working with analytics, query rules and security features.

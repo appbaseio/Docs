@@ -54,9 +54,9 @@ const ArticleMetaMD = ({ data, canonical }) => {
                         "@type": "Article",
                         "author": {
                             "@type": "Person",
-                            "name": "Appbase",
+                            "name": "Reactivesearch",
                             "sameAs": [
-                                "https://appbase.io/",
+                                "https://reactivesearch.io/",
                                 "https://twitter.com/appbaseio/"
                             ]
                         },

@@ -1,18 +1,19 @@
 ---
-title: 'Deploy OpenSearch with appbase.io'
-meta_title: 'Deploy OpenSearch with appbase.io'
-meta_description: 'Deploy the latest Apache 2.0 licensed OpenSearch and OpenSearch Dashboards with appbase.io cloud in a single click.'
+title: 'Deploy OpenSearch with ReactiveSearch'
+meta_title: 'Deploy OpenSearch with ReactiveSearch'
+meta_description: 'Deploy the latest Apache 2.0 licensed OpenSearch and OpenSearch Dashboards with ReactiveSearch cloud in a single click.'
 keywords:
     - opensearch
     - appbase.io
     - appbase
-    - Elasticsearch
-    - open-distro
+    - reactivesearch
+    - elasticsearch
     - odfe
+    - open-distro
 sidebar: 'docs'
 ---
 
-[OpenSearch](https://opensearch.org) is an Apache 2.0 licensed fork derived from Elasticsearch v7.10.2. appbase.io is an OpenSearch partner. You can deploy the [latest OpenSearch release with appbase.io](https://www.appbase.io/partnership/opensearch) for building enterprise and app search experiences.
+[OpenSearch](https://opensearch.org) is an Apache 2.0 licensed fork derived from Elasticsearch v7.10.2. ReactiveSearch (previously appbase.io) is an OpenSearch partner. You can deploy the [latest OpenSearch release with reactivesearch.io](https://www.reactivesearch.io/partnership/opensearch) for building enterprise and app search experiences.
 
 ## Deploying OpenSearch
 
@@ -23,14 +24,14 @@ You can select **OpenSearch** as an Elasticsearch flavour when creating a cluste
 ![Choose OpenSearch when creating a cluster](https://i.imgur.com/UdN1b4N.png)
 
 
-## Why host OpenSearch with appbase.io
+## Why host OpenSearch with ReactiveSearch
 
-appbase.io offers a no-code platform for creating app search experiences powered by Elasticsearch and OpenSearch.
+ReactiveSearch offers a no-code platform for creating the most demanding app search experiences powered by Elasticsearch and OpenSearch.
 
-When deploying OpenSearch with appbase.io, you get OpenSearch, OpenSearch Dashboards and an appbase.io cluster all deployed in a single-click to power your app search experience.
+When deploying OpenSearch with ReactiveSearch, you get OpenSearch, OpenSearch Dashboards and ReactiveSearch server all deployed in a single-click to power your app search experience.
 
-Features appbase.io offers on top of the OpenSearch hosting:
+Features ReactiveSearch offers on top of the OpenSearch hosting:
 
-![](https://i.imgur.com/aaxqnN2.png)
+![ReactiveSearch feature stack overview](https://i.imgur.com/8jz4Ssp.png)
 
-Read more about appbase.io in our [getting started guide](/docs/gettingstarted/quickstart/).
+Read more about ReactiveSearch in our [getting started guide](/docs/gettingstarted/quickstart/).

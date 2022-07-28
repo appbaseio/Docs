@@ -2,15 +2,14 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
 import { Button } from '@appbaseio/designkit';
-// import { LeftOutlined } from '@ant-design/icons'
 
 const Tutorial = () => {
 	return (
 		<>
 			<Helmet>
 				<html lang="en" className="fs-base" />
-				<title>Appbase.io Docs - Interactive tutorial to build a search app in under a minute</title>
-                <meta name="description" content="Follow this interactive tutorial to learn how to build a SaaS, E-Commerce and Geo search app in under a minute. Import data, configure search, facets and export code." />
+				<title>ReactiveSearch.io Docs - Interactive tutorial to build a search UI in under a minute</title>
+                <meta name="description" content="Follow this interactive tutorial to learn how to build a SaaS, E-Commerce and Geo search UI in under a minute. Import data, configure search, facets and export code." />
 				<body />
 			</Helmet>
 			<div>
