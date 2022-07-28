@@ -1,150 +1,161 @@
 ---
 - groups:
-      - group: "Getting Started"
+      - group: 'Getting Started'
         icon: gettingStarted
         items:
             - link: /docs/gettingstarted/quickstart/
               title: Overview
-      - group: "Managing Data"
+      - group: 'Managing Data'
         icon: importData
         items:
             - link: /docs/data/model/
-              title: "Data Model"
+              title: 'Data Model'
             - link: /docs/data/import/
-              title: "Importing Data"
+              title: 'Importing Data'
               items:
-                - link: /docs/data/import/from-shopify/
-                  title: "Import From Shopify"
+                  - link: /docs/data/import/from-shopify/
+                    title: 'Import From Shopify'
             - link: /docs/data/browser/
-              title: "Data Browser"
+              title: 'Data Browser'
             - link: /docs/data/search-preview/
-              title: "Search Preview"  
+              title: 'Search Preview'
             - link: /docs/data/stored-queries/
-              title: "Stored Queries"
-      - group: "Search Relevancy"
+              title: 'Stored Queries'
+      - group: 'Search Relevancy'
         icon: search
         items:
             - link: /docs/search/relevancy/
-              title: "Search Relevancy"
+              title: 'Search Relevancy'
             - link: /docs/search/reactivesearch-api/
-              title: "ReactiveSearch API"
+              title: 'ReactiveSearch API'
               items:
-                - link: /docs/search/reactivesearch-api/implement
-                  title: "Implementation"
-                - link: /docs/search/reactivesearch-api/reference
-                  title: "API Reference"
+                  - link: /docs/search/reactivesearch-api/implement
+                    title: 'Implementation'
+                  - link: /docs/search/reactivesearch-api/reference/
+                    title: 'API Reference'
+                    items:
+                      - link: /docs/search/reactivesearch-api/reference/elasticsearch
+                        title: 'Elasticsearch'
+                      - link: /docs/search/reactivesearch-api/reference/opensearch
+                        title: 'OpenSearch'
+                      - link: /docs/search/reactivesearch-api/reference/solr
+                        title: 'Solr'
+                      - link: /docs/search/reactivesearch-api/reference/mongodb
+                        title: 'MongoDB'
             - link: /docs/search/rules/
-              title: "Query Rules"
+              title: 'Query Rules'
             - link: /docs/search/scripts/
-              title: "ReactiveSearch Scripts"
+              title: 'ReactiveSearch Scripts'
               items:
-                - link: /docs/search/scripts/getting-started
-                  title: "Getting Started"
-                - link: /docs/search/scripts/examples
-                  title: "Code Examples"
-      - group: "ReactiveSearch Pipelines"
+                  - link: /docs/search/scripts/getting-started
+                    title: 'Getting Started'
+                  - link: /docs/search/scripts/examples
+                    title: 'Code Examples'
+      - group: 'ReactiveSearch Pipelines'
         icon: search
         items:
-          - link: /docs/pipelines/concepts/
-            title: Pipeline Concepts
-            items:
-              - title: Pipeline Route Matching Process
-                link: /docs/pipelines/concepts/execution-process
-              - title: Write to Global Context
-                link: /docs/pipelines/concepts/write-to-global-context
-              - title: Pass data between stages
-                link: /docs/pipelines/concepts/pass-data-between-stages
-              - title: Environments for stage
-                link: /docs/pipelines/concepts/envs-for-stage
-              - title: Error Handling in stages
-                link: /docs/pipelines/concepts/error-handling
-              - title: Pass inputs to stages
-                link: /docs/pipelines/concepts/pass-inputs-to-stage
-              - title: Run stage asynchronously
-                link: /docs/pipelines/concepts/run-stage-async
-              - title: Wait for other stages
-                link: /docs/pipelines/concepts/wait-for-other-stage
-              - title: Pre-Defined vs User-Defined Stages
-                link: /docs/pipelines/concepts/pre-defined-vs-user-defined
-              - title: Global Environments
-                link: /docs/pipelines/concepts/global-envs
-              - title: Conditional Execution of Stages
-                link: /docs/pipelines/concepts/conditional-stages
-          - link: /docs/pipelines/developing/
-            title: Developing/Debugging Pipelines
-            items:
-              - link: /docs/pipelines/developing/deploy-with-github-action
-                title: Deploy a pipeline with GitHub Action
-          - link: /docs/pipelines/how-to/
-            title: "How To Guides"
-            items:
-              - link: /docs/pipelines/how-to/add-external-search-results
-                title: Add External Search Results
-              - link: /docs/pipelines/how-to/create-an-indexing-pipeline
-                title: Create An Indexing Pipeline
-              - link: /docs/pipelines/how-to/handle-authorization-effectively
-                title: Handle Authorization Effectively
-              - link: /docs/pipelines/how-to/add-side-effect-search-query
-                title: "Add Side Effect"
-              - link: /docs/pipelines/how-to/knn-indexing
-                title: kNN Index
-              - link: /docs/pipelines/how-to/knn-response-stage
-                title: "kNN search"
-              - link: /docs/pipelines/how-to/relevant-search-stages
-                title: Relevant Search Stages
-              - link: /docs/pipelines/how-to/error-handling-in-pipeline
-                title: Error handling in Pipeline
-              - link: /docs/pipelines/how-to/caching-and-recording-analytics
-                title: Caching and Analytics
-              - link: /docs/pipelines/how-to/solr-pipeline
-                title: Solr Pipeline
-              - link: /docs/pipelines/how-to/mongodb-pipeline
-                title: MongoDB Pipeline
-      - group: "Building Search UI"
-      - group: "Actionable Analytics"
+            - link: /docs/pipelines/concepts/
+              title: Pipeline Concepts
+              items:
+                  - title: Pipeline Route Matching Process
+                    link: /docs/pipelines/concepts/execution-process
+                  - title: Write to Global Context
+                    link: /docs/pipelines/concepts/write-to-global-context
+                  - title: Pass data between stages
+                    link: /docs/pipelines/concepts/pass-data-between-stages
+                  - title: Environments for stage
+                    link: /docs/pipelines/concepts/envs-for-stage
+                  - title: Error Handling in stages
+                    link: /docs/pipelines/concepts/error-handling
+                  - title: Pass inputs to stages
+                    link: /docs/pipelines/concepts/pass-inputs-to-stage
+                  - title: Run stage asynchronously
+                    link: /docs/pipelines/concepts/run-stage-async
+                  - title: Wait for other stages
+                    link: /docs/pipelines/concepts/wait-for-other-stage
+                  - title: Pre-Defined vs User-Defined Stages
+                    link: /docs/pipelines/concepts/pre-defined-vs-user-defined
+                  - title: Global Environments
+                    link: /docs/pipelines/concepts/global-envs
+                  - title: Conditional Execution of Stages
+                    link: /docs/pipelines/concepts/conditional-stages
+            - link: /docs/pipelines/API/reference
+              title: Pipeline API Reference
+            - link: /docs/pipelines/developing/
+              title: Developing/Debugging Pipelines
+              items:
+                  - link: /docs/pipelines/developing/deploy-with-github-action
+                    title: Deploy a pipeline with GitHub Action
+            - link: /docs/pipelines/how-to/
+              title: 'How To Guides'
+              items:
+                  - link: /docs/pipelines/how-to/add-external-search-results
+                    title: Add External Search Results
+                  - link: /docs/pipelines/how-to/create-an-indexing-pipeline
+                    title: Create An Indexing Pipeline
+                  - link: /docs/pipelines/how-to/handle-authorization-effectively
+                    title: Handle Authorization Effectively
+                  - link: /docs/pipelines/how-to/add-side-effect-search-query
+                    title: 'Add Side Effect'
+                  - link: /docs/pipelines/how-to/knn-indexing
+                    title: kNN Index
+                  - link: /docs/pipelines/how-to/knn-response-stage
+                    title: 'kNN search'
+                  - link: /docs/pipelines/how-to/relevant-search-stages
+                    title: Relevant Search Stages
+                  - link: /docs/pipelines/how-to/error-handling-in-pipeline
+                    title: Error handling in Pipeline
+                  - link: /docs/pipelines/how-to/caching-and-recording-analytics
+                    title: Caching and Analytics
+                  - link: /docs/pipelines/how-to/solr-pipeline
+                    title: Solr Pipeline
+                  - link: /docs/pipelines/how-to/mongodb-pipeline
+                    title: MongoDB Pipeline
+      - group: 'Building Search UI'
+      - group: 'Actionable Analytics'
         icon: analytics
         items:
             - link: /docs/analytics/overview/
               title: Overview
             - link: /docs/analytics/insights/
-              title: "Analytics Insights"
+              title: 'Analytics Insights'
             - link: /docs/analytics/implement/
-              title: "Implement Analytics"
+              title: 'Implement Analytics'
             - link: /docs/analytics/querying-analytics/
-              title: "Querying Analytics"
+              title: 'Querying Analytics'
             - link: /docs/analytics/google-analytics/
-              title: "Integrate Google Analytics"
+              title: 'Integrate Google Analytics'
             - link: /docs/analytics/popular-recent-suggestions/
-              title: "Popular Suggestions"
+              title: 'Popular Suggestions'
             - link: /docs/analytics/curated-insights/
-              title: "Curated Insights"
+              title: 'Curated Insights'
       - group: Speed
         icon: zap
         items:
             - link: /docs/speed/cache-management/
               title: Cache Management
-      - group: "Access Control"
+      - group: 'Access Control'
         icon: security
         items:
             - link: /docs/security/credentials/
-              title: "API Credentials"
+              title: 'API Credentials'
             - link: /docs/security/user-management/
               title: User Management
             - link: /docs/security/role/
-              title: "Role Based Access Control"
+              title: 'Role Based Access Control'
             - link: /docs/security/node-sync-preferences/
-              title: "Node Sync Preferences"
+              title: 'Node Sync Preferences'
       - group: Hosting
         icon: rocket
         items:
             - link: /docs/hosting/clusters/
               title: Clusters
             - link: /docs/hosting/byoc/
-              title: "Bring Your Own Cluster"
+              title: 'Bring Your Own Cluster'
               items:
-              - link: /docs/hosting/byoc/connect-to-elastic-cloud/
-                title: "Connect to Elastic Cloud"
-              - link: /docs/hosting/byoc/connect-to-aws-opensearch/
-                title: "Connect to AWS OpenSearch"
+                  - link: /docs/hosting/byoc/connect-to-elastic-cloud/
+                    title: 'Connect to Elastic Cloud'
+                  - link: /docs/hosting/byoc/connect-to-aws-opensearch/
+                    title: 'Connect to AWS OpenSearch'
             - link: /docs/hosting/opensearch/
-              title: "Deploy OpenSearch"
+              title: 'Deploy OpenSearch'
