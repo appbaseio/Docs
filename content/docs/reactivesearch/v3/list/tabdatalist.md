@@ -116,11 +116,11 @@ When we want to show the no. of documents for each category(tab) then we can pas
 -   **showCount** `Boolean` [optional]
     show a count of the number of occurences besides each list item. Defaults to `false`.
 -   **displayAsVertical** `Boolean` [optional]
-    layout tabs for the list vertically instead of horizontally. 
+    layout tabs vertically. Defaults to `false`.
 -   **showSearch** `Boolean` [optional]
-    Filter tabs using a search bar
+    filter tabs using a search bar
 -   **showRadio** `Boolean` [optional]
-    show radio buttons with tabs just as we are using a `SingleDataList`
+    show radio buttons just as we are using a `SingleDataList`
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **renderItem** `Function` [optional]
