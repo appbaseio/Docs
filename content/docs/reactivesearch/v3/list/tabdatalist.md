@@ -18,7 +18,7 @@ This component is similar to `SingleDataList`. It just renders a tab list instea
 Example uses:
 
 -   select a category from a list of categories for filtering e-commerce search results.
--   separate pages of content on basis of category
+-   display result tabs based on a value classification
 
 ## Usage
 
