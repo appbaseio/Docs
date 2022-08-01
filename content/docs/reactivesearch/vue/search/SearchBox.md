@@ -36,7 +36,7 @@ Example uses:
 ```html
 <search-box
 	componentId="SearchSensor"
-  :mode="tag"
+    :mode="tag"
 	title="Search"
 	defaultValue="Songwriting"
 	placeholder="Search for cities or venues"

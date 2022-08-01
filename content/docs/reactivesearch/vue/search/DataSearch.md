@@ -41,7 +41,7 @@ Example uses:
 	highlightField="group_city"
 	queryFormat="or"
 	filterLabel="City"
-  :mode="tag"
+    :mode="tag"
 	:autosuggest="true"
 	:highlight="true"
 	:showFilter="true"
@@ -627,8 +627,7 @@ You can use `DataSearch` with `renderQuerySuggestions slot` as shown:
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
-- **renderSelectedTags** `slot-scope` [optional] to custom render tags when mode is set to `tag`.
-Provides 
+- **renderSelectedTags** `slot-scope` [optional] custom render tags when mode is set to `tag`.
 It accepts an object with these properties:
   - **`values`**: `Array<String>`
     array of selected values.
