@@ -13,12 +13,12 @@ nestedSidebar: 'web-reactivesearch'
 
 `TabDataList` creates a tabbed list UI component. It is used for filtering results based on the current selection from a list of data items.
 
-This component is similar to `TabDataList`. It just renders a tab list instead of radio buttons incase of `TabDataList`.
+This component is similar to `SingleDataList`. It just renders a tab list instead of radio buttons incase of `SingleDataList`.
 
 Example uses:
 
 -   select a category from a list of categories for filtering e-commerce search results.
--   filtering restaurants by a cuisine choice.
+-   display result tabs based on a value classification
 
 ## Usage
 
@@ -88,6 +88,8 @@ When we want to show the no. of documents for each category(tab) then we can pas
 		},
 	]}
     showCount={true}
+    showRadio={true}
+    showSearch={true}
     displayAsVertical={true}
 	placeholder="Filter meetups"
 	defaultValue="Social"
@@ -114,7 +116,11 @@ When we want to show the no. of documents for each category(tab) then we can pas
 -   **showCount** `Boolean` [optional]
     show a count of the number of occurences besides each list item. Defaults to `false`.
 -   **displayAsVertical** `Boolean` [optional]
-    layout tabs for the list vertically instead of horizontally. 
+    layout tabs vertically. Defaults to `false`.
+-   **showSearch** `Boolean` [optional]
+    filter tabs using a search bar
+-   **showRadio** `Boolean` [optional]
+    show radio buttons just as we are using a `SingleDataList`
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **renderItem** `Function` [optional]
