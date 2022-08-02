@@ -76,6 +76,39 @@ For example:
  }
 ```
 
+**`setSearchState`**: `Function`<br/>
+
+`setSearchState()` is a function which can be used to set custom search state of the app, takes one argument which is a custom state object.
+
+```js
+<StateProvider>
+	{({ setSearchState }) => (
+		<button
+			onClick={() => {
+				setSearchState(customSearchState);
+			}}
+		>
+			Set Search State
+		</button>
+	)}
+</StateProvider>
+```
+
+`customSearchState` is an object with component id as key and component's value as value.<br/>
+
+For example:
+
+```js
+ {
+  	BooksSearch: 'A song of Ice and Fire',
+  	RatingsFilter:  {
+            start: 4,
+            end: 5,
+            label: "★★★★ & up"
+	}
+ }
+```
+
 -   **includeKeys** `string[]` [optional]
     defaults set to `['value', 'hits', 'aggregations', 'error']` which means that by default your search state for a particular component will only contains these keys. Although the default search state fulfills most of your common use cases but you can also control it by defining your custom keys with the help of `includeKeys` prop.<br/><br/>
     For example:
