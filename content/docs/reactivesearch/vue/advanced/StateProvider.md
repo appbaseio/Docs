@@ -48,6 +48,48 @@ For example:
  }
 ```
 
+### Setting custom state
+
+`setSearchState()` is a function which can be used to set custom search state of the app, takes one argument which is a custom state object.
+
+```html
+<template>
+    <state-provider>
+        <div slot-scope="{ setSearchState }">
+           <button @click="() => setSearchState(this.searchState)">Replay Search</button>
+        </div>
+    </state-provider>
+</template>
+<script>
+export default {
+	data() {
+	    return {
+	        searchState: { 
+                // custom state
+                // [componentId]: component_value
+                'result': null,
+                'search': 'Netherlands'
+        }
+    }
+  }
+}
+</script>
+```
+
+Custom state is an object with component id as key and component's value as value.<br/>
+For example:
+
+```js
+ {
+  	BooksSearch: 'A song of Ice and Fire',
+  	RatingsFilter:  {
+            start: 4,
+            end: 5,
+            label: "★★★★ & up"
+	}
+ }
+```
+
 ### Props
 
 -   **componentIds** `string|string[]` [optional]
