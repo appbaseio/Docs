@@ -48,6 +48,57 @@ For example:
  }
 ```
 
+### Setting custom state
+
+`setSearchState()` is a function which can be used to set custom search state of the app, takes one argument which is a custom state object.
+
+```html
+<template>
+    <state-provider>
+        <div slot-scope="{ setSearchState }">
+           <button @click="() => setSearchState(this.searchState)">Replay Search</button>
+        </div>
+    </state-provider>
+</template>
+<script>
+export default {
+	data() {
+	    return {
+	        searchState: { 
+                // custom state
+                // [componentId]: component_value
+                'result': null,
+                'search': 'Netherlands'
+        }
+    }
+  }
+}
+</script>
+```
+
+Custom state is an object with component id as key and component's value as value.<br/>
+For example:
+
+```js
+ {
+  	BooksSearch: 'A song of Ice and Fire',
+  	RatingsFilter:  {
+            start: 4,
+            end: 5,
+            label: "★★★★ & up"
+	}
+ }
+```
+
+#### Example
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/saved-search?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="saved-search-support"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 ### Props
 
 -   **componentIds** `string|string[]` [optional]
