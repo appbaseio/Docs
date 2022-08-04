@@ -108,6 +108,15 @@ For example:
 	}
  }
 ```
+**Example**
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SavedSearchSupport?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="saved-search"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+   
 
 -   **includeKeys** `string[]` [optional]
     defaults set to `['value', 'hits', 'aggregations', 'error']` which means that by default your search state for a particular component will only contains these keys. Although the default search state fulfills most of your common use cases but you can also control it by defining your custom keys with the help of `includeKeys` prop.<br/><br/>
