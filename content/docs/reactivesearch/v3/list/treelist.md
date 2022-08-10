@@ -93,17 +93,17 @@ function Index(props) {
   "FURNITURE SO > SO CHAIR &RECLIN",
   "FURNITURE SO > SO DINING ROOM"
 ]);
-	return (
-		<TreeList
-			componentId="treeListSensor"
-			dataField={['class.keyword', 'subClass.keyword']}
-			size={100}
-			value={values}
-			onChange={(values)=>{
+    return (
+        <TreeList
+            componentId="treeListSensor"
+            dataField={['class.keyword', 'subCla            keyword']}
+            size={100}
+            value={values}
+            onChange={(values)=>{
                 setValues(values);
             }}
-		/>
-	);
+        />
+    );
 }
 ```
 
