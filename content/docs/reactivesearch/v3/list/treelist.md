@@ -148,10 +148,10 @@ function Index(props) {
     
     ```jsx
         icon={
-			<span role="img" aria-label="folder-icon">
-				🦷
-			</span>
-		}
+	        <span role="img" aria-label="folder-icon">
+	        	🦷
+	        </span>
+	    }
     ```         
 -   **showLeafIcon** `Boolean` [optional]
     show icon for leaf hierarchy items. Defaults to `false`.   
@@ -160,10 +160,10 @@ function Index(props) {
     
     ```jsx
         icon={
-			<span role="img" aria-label="leaf-icon">
-				🥬
-			</span>
-		}
+	        <span role="img" aria-label="leaf-icon">
+	        	🥬
+	        </span>
+	    }
     ```     
 -   **showSwitcherIcon** `Boolean` [optional]
     show switcher icon for TreeList.   
