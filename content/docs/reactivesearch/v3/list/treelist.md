@@ -274,19 +274,19 @@ function Index(props) {
             selectedValues, 
             handleClick
         ) {
-		return (
-			<ul style={isExpanded ? { fontWeight: 600 } : {}}>
-				{transformedData.map(listItem =>
-					renderListItems(
-                        listItem,
-                        parentPath,
-                        selectedValues,
-                        handleClick
-                    ),
-				)}
-			</ul>
-		);
-	}
+            return (
+                <ul style={isExpanded ? { fontWeight: 600 } : {}}>
+                    {transformedData.map(listItem =>
+                        renderListItems(
+                            listItem,
+                            parentPath,
+                            selectedValues,
+                            handleClick
+                        ),
+                    )}
+                </ul>
+            );      
+        }
 
 <TreeList
     //... other props as applicable
