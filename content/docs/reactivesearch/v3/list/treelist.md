@@ -14,7 +14,7 @@ nestedSidebar: 'web-reactivesearch'
 
 ![TreeList image](https://i.imgur.com/AwUfFJ7.png)
 
-`TreeList` creates a selection based hierarchical tree UI component that is connected to a database field. It can support single as well as multiple item selections.
+`TreeList` creates a selection based hierarchical tree UI component that is connected to multiple database fields. It can support single as well as multiple item selections.
 
 Example uses:
 
