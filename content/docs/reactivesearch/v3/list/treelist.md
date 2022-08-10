@@ -96,7 +96,7 @@ function Index(props) {
     return (
         <TreeList
             componentId="treeListSensor"
-            dataField={['class.keyword', 'subCla            keyword']}
+            dataField={['class.keyword', 'subclass.keyword']}
             size={100}
             value={values}
             onChange={(values)=>{
