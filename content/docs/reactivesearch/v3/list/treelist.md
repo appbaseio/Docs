@@ -25,58 +25,64 @@ Example uses:
 ### Basic Usage
 
 ```js
-<TreeList componentId="treeListSensor" dataField={['class.keyword', 'subClass.keyword']} title="Products" />
+    <TreeList 
+        componentId="treeListSensor" 
+        dataField={['class.keyword', 'subClass.keyword']} 
+        title="Products" 
+    />
 ```
 
 ### Usage With All Props
 
 ```js
-<TreeList
-    title="TreeList Component"
-	loader={<h3>loading...⏰</h3>}
-	renderNoResults={() => <b>Oops! Nothing found!</b>}
-	componentId="treeListSensor"
-	showCount
-	// showRadio // use with mode="single"
-	showCheckbox
-	mode="multiple"
-	dataField={['class.keyword', 'subClass.keyword']}
-    showSwitcherIcon
-	switcherIcon={bool =>
-		(bool ? <span> &#8592;</span> : <span> &#8598;</span>)
-	}
-	showIcon
-	showLeafIcon
-	icon={
-		<span role="img" aria-label="folder-icon">
-			🦷
-		</span>
-	}
-	leafIcon={
-		<span role="img" aria-label="leaf-icon">
-			☘️
-		</span>
-	}
-	showLine
-    showSearch
-	// renderItem={(label, count, isSelected) => (
-	// 	<span style={isSelected ? { background: 'green' } : {}}>
-	// 		{label} - {count}
-	// 	</span>
-	// )}	
-	// render={(propData) => {
-	// 	const {
-	// 		/* eslint-disable no-unused-vars */
-	// 		data,
-	// 		rawData,
-	// 		error,
-	// 		handleClick,
-	// 		value,
-	// 		loading,
-	// 	} = propData;
-	// 	return this.renderLists(data, '', true, value, handleClick);
-	// }}
-	
+    <TreeList
+        title="TreeList Component"
+        loader={<h3>loading...⏰</h3>}
+        renderNoResults={() => <b>Oops! Nothing found!</b>}
+        componentId="treeListSensor"
+        showCount
+        // showRadio // use with mode="single"
+        showCheckbox
+        mode="multiple"
+        dataField={['class.keyword', 'subClass.keyword']}
+        showSwitcherIcon
+        switcherIcon={bool =>
+            {
+                return bool ? <span> &#8592;</span> : <span> &#8598;</span>;
+            }
+        }
+        showIcon
+        showLeafIcon
+        icon={
+            <span role="img" aria-label="folder-icon">
+                🦷
+            </span>
+        }
+        leafIcon={
+            <span role="img" aria-label="leaf-icon">
+                ☘️
+            </span>
+        }
+        showLine
+        showSearch
+        // renderItem={(label, count, isSelected) => (
+        // 	<span style={isSelected ? { background: 'green' } : {}}>
+        // 		{label} - {count}
+        // 	</span>
+        // )}	
+        // render={(propData) => {
+        // 	const {
+        // 		/* eslint-disable no-unused-vars */
+        // 		data,
+        // 		rawData,
+        // 		error,
+        // 		handleClick,
+        // 		value,
+        // 		loading,
+        // 	} = propData;
+        // 	return this.renderLists(data, '', true, value, handleClick);
+        // }}
+    />
 ```
 
 ### Usage as a controlled component
