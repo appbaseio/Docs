@@ -309,18 +309,18 @@ Or you can also use render function as children
 
 ```js
 <TreeList>
-        {
-            ({
-                data,
-			rawData,
-			error,
-			handleClick,
-			value,
-			loading,
-            }) => (
-                // return UI to be rendered
-            )
-        }
+    {
+        ({
+            data,
+            rawData,
+            error,
+            handleClick,
+            value,
+            loading
+        }) => (
+            // return UI to be rendered
+        )
+    }
 </TreeList>
 ```
 
@@ -380,7 +380,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
 ```js
 <TreeList
-  ...
+  // ...
   className="custom-class"
   style={{"paddingBottom": "10px"}}
   customQuery={
