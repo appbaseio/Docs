@@ -1,7 +1,7 @@
 ---
 title: 'TreeList'
 meta_title: 'TreeList'
-meta_description: 'TreeList creates a multiple selection based tree UI component that is connected to a database field.'
+meta_description: 'TreeList creates a multiple selection based tree UI component that is connected to multiple database fields.'
 keywords:
     - reactivesearch
     - treelist
