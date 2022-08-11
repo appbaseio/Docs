@@ -17,7 +17,7 @@ One of the key ideas behind Reactive Search and Reactive Maps is the abstraction
 
 The UI components are already associated with the data queries. For instance,
 
--   **SingleList** and **MultiList** components create a exact term match query based on the selected items.
+-   **SingleList**, **MultiList** and **TreeList** components create a exact term match query based on the selected items.
 -   A **RangeSlider** component creates a numeric range query based on the selected `start` and `end` values.
 
 Components rely on the `dataField` prop for selecting the database field on which the query needs to be applied.

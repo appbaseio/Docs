@@ -47,6 +47,12 @@ The components can also be used with `Numeric` datatype fields.
 
 <p>
 
+**[TreeList](/docs/reactivesearch/v3/list/treelist/)** is useful for displaying a nested tree list of values where multiple or single values can be selected at a time. Similar to SingleList, these values are retrieved by a database query on the field specified in the **dataField** prop.
+
+</p>
+
+<p>
+
 **[SingleDataList](/docs/reactivesearch/v3/list/singledatalist/)** is useful for displaying a list of user defined values where only one value item can be selected at a time. Unlike SingleList and MultiList where the values are auto-fetched, here the **data** prop allows curation of which values to display.
 
 </p>

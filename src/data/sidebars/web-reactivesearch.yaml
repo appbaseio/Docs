@@ -21,6 +21,8 @@
               link: /docs/reactivesearch/v3/list/singlelist/
             - title: MultiList
               link: /docs/reactivesearch/v3/list/multilist/
+            - title: TreeList
+              link: /docs/reactivesearch/v3/list/treelist/              
             - title: SingleDropdownList
               link: /docs/reactivesearch/v3/list/singledropdownlist/
             - title: MultiDropdownList
