@@ -43,6 +43,7 @@ Example uses:
 			"weight": 3
 		}
 	]}
+    mode="tag" // accepts either of 'select' or 'tag' defaults to 'select'    
 	title="Search"
 	defaultValue="Songwriting"
 	placeholder="Search for cities or venues"
@@ -70,6 +71,17 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **mode** `String`
+    DataSearch component offers two modes of usage, `select` & `tag`. When mode is set to `tag` DataSearch allows selecting multiple suggestions. Defaults to `select`.
+    
+    ```jsx
+    <DataSearch
+        componentId="searchSensor"
+        // ... other props
+        mode="tag"
+    />
+    ```    
+
 -   **dataField** `string | Array<string | DataField*>` [optional*]
     index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -116,8 +128,11 @@ Example uses:
     set the title of the component to be shown in the UI.
 -   **defaultValue** `string` [optional]
     set the initial search query text on mount.
--   **value** `string` [optional]
+-   **value** `String` | `Array<String>` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+
 -   **enableSynonyms** `bool` [optional]
     Defaults to `true`, can be used to `disable/enable` the synonyms behavior for the search query. Read more about it [here](/docs/search/reactivesearch-api/reference/#enablesynonyms)
     > Note:
@@ -523,6 +538,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 -   `list`
 -   `recent-search-icon`
 -   `popular-search-icon`
+-   `selected-tag`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
@@ -731,6 +747,31 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
         ...
  />
 ```
+
+-   **renderSelectedTags** `Function` [optional] to custom render tags when mode is set to `tag`.
+
+Function param accepts an object with the following properties:
+  - **`values`**: `Array<String>`
+    array of selected values.
+  - **`handleClear`**: `Function - (string) => void`
+    function to clear a tag value. It accepts the tag value(String) as a parameter.
+
+  - **`handleClearAll`**: `Function - () => void` 
+    function to clear all selected values.
+
+    ```jsx
+        <DataSearch
+            id="search-component"
+            enterButton
+            renderSelectedTags=({ 
+                values = [], 
+                handleClear, 
+                handleClearAll }) => {
+                // return custom rendered tags 
+            }
+        />
+    ```
+
 
 ## Examples
 
