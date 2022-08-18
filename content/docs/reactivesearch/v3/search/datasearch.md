@@ -126,8 +126,11 @@ Example uses:
     Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
 -   **title** `String or JSX` [optional]
     set the title of the component to be shown in the UI.
--   **defaultValue** `string` [optional]
+-   **defaultValue** `String` | `Array<String>` [optional]
     set the initial search query text on mount.
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+    
 -   **value** `String` | `Array<String>` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
 
