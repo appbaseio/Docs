@@ -24,3 +24,5 @@
               link: /api/examples/python/
             - title: Php
               link: /api/examples/php/
+            - title: Solr
+              link: /api/examples/solr_rest/
