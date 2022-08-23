@@ -24,7 +24,7 @@ You can read the API reference for the ReactiveSearch API over [here](/docs/sear
 
 This is just a basic usage example for Solr. The following query translates to Solr and gets the results accordingly.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/pwoSczx4ockFptlMDtbj"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/5SWxI3jFVRR2mXz3A6n0"></iframe>
 
 ### Search + Facet
 
@@ -32,13 +32,13 @@ In this example, we will see how to apply a search and a facet query together. T
 
 We also introduce a concept for executing a query that depends on another query using the react and execute properties. Here, the search query also utilizes the value of the facet query while returning the documents.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/Opb3qZjZyXUiuT5vEAvn"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/mTwhAOJ9zs4pBkC2Y1YT"></iframe>
 
 ### Search + Facet + Result
 
 In this example, we will be using three queries: search + facet + result. If you had a UI, visualize a scenario where the user has entered something in the searchbox and selected a value in the facet filter. These two should inform the final results that get displayed.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/7Gv4GLOdh1dOXjmKXclm"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/YHTPCQGRfm0JHjbCJGg6"></iframe>
 
 > Note: execute property's usage shows whether we expect the particular query to return a response. It's set to true only for the results (books) query, as a result, only that key is returned back.
 
@@ -46,18 +46,18 @@ In this example, we will be using three queries: search + facet + result. If you
 
 In this example, we will see a more complex use-case where an additional range filter is also applied.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/J3pHbbxGEIM8x7FgJSkI"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/xyOazKLxx4CbmZG78k3I"></iframe>
 
 ### Use Solr Query
 
 In this example, we show how to use Solr's query using the defaultQuery property. This provides the flexibility of overriding the ReactiveSearch API completely for advanced use-cases.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/wEpaw7k1zJoyXZ10pmUI"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/qJ2TDRVcx9ydwVa68KZb"></iframe>
 
 
 ### Combining ReactiveSearch API with Solr Query
 
 In this example, we show how to use Solr's query for writing a term query using the customQuery property. This query is then applied to the search results query, which is composed using the ReactiveSearch API.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/rQmdp6U8pRH0fT6wUx9R"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/x00WnUrLhD5Xyzr7ew5P"></iframe>
 
