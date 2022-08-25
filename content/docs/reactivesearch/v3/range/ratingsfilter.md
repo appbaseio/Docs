@@ -40,20 +40,20 @@ Example uses:
 
 ```js
 <RatingsFilter
-	componentId="CarCategorySensor"
-	dataField="ratings"
-	title="Ratings Filter"
-	data={[
-		{ start: 4, end: 5, label: '4 & up' },
-		{ start: 3, end: 5, label: '3 & up' },
-		{ start: 1, end: 5, label: 'All' },
-	]}
-	defaultValue={{
-		start: 4,
-		end: 5,
-	}}
-	URLParams={false}
-	includeNullValues
+    componentId="CarCategorySensor"
+    dataField="ratings"
+    title="Ratings Filter"
+    data={[
+    	{ start: 4, end: 5, label: '4 & up' },
+    	{ start: 3, end: 5, label: '3 & up' },
+    	{ start: 1, end: 5, label: 'All' },
+    ]}
+    defaultValue={{
+    	start: 4,
+    	end: 5,
+    }}
+    URLParams={false}
+    includeNullValues
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
