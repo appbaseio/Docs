@@ -82,6 +82,13 @@ Example uses:
         // 	} = propData;
         // 	return this.renderLists(data, '', true, value, handleClick);
         // }}
+        endpoint={{
+            url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+            headers:{
+                // relevant headers
+            },
+            method: 'POST'
+        }}        
     />
 ```
 
@@ -111,6 +118,21 @@ function Index(props) {
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+      
 -   **dataField** `String Array`
     data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. `dataField` aray must have values in order, i.e, category > sub-cateogry and so-on.
 -   **title** `String or JSX` [optional]
