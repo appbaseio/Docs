@@ -36,38 +36,38 @@ Example uses:
 
 ```js
 <CategorySearch
-	componentId="SearchSensor"
+    componentId="SearchSensor"
     dataField={[
-		{
-			"field": "group_venue",
-			"weight": 1
-		},
-		{
-			"field": "group_city",
-			"weight": 3
-		}
-	]}
-	categoryField="group_topics"
-	title="Search"
-	defaultValue={{
-		term: 'Paris',
-		category: '*',
-	}}
-	placeholder="Search for cities or venues"
-	autoSuggest={true}
-	defaultSuggestions={[{ label: 'Programming', value: 'Programming' }]}
-	highlight={false}
-	highlightField="group_city"
-	queryFormat="or"
-	fuzziness={0}
-	debounce={100}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	size={10}
-	showFilter={true}
-	filterLabel="Venue filter"
-	URLParams={false}
+    	{
+    		"field": "group_venue",
+    		"weight": 1
+    	},
+    	{
+    		"field": "group_city",
+    		"weight": 3
+    	}
+    ]}
+    categoryField="group_topics"
+    title="Search"
+    defaultValue={{
+    	term: 'Paris',
+    	category: '*',
+    }}
+    placeholder="Search for cities or venues"
+    autoSuggest={true}
+    defaultSuggestions={[{ label: 'Programming', value: 'Programming' }]}
+    highlight={false}
+    highlightField="group_city"
+    queryFormat="or"
+    fuzziness={0}
+    debounce={100}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    size={10}
+    showFilter={true}
+    filterLabel="Venue filter"
+    URLParams={false}
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
