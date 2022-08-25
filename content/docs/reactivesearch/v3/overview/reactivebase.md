@@ -81,10 +81,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
             headers: {
                 // put relevant headers
             }
-            method: 'POST',
-            body: {
-                // request body
-            }
+            method: 'POST'
         }}
     >
         <Component1 .. />
