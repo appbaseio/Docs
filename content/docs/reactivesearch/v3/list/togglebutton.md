@@ -54,13 +54,13 @@ Example uses:
 	showFilter={true}
 	filterLabel="City"
 	URLParams={false}
-  endpoint={{
-    url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
-    headers:{
-       // relevant headers
-    },
-    method: 'POST'
-  }}   
+  	endpoint={{
+    	url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+    	headers:{
+    	   // relevant headers
+    	},
+   	 	method: 'POST'
+ 	}}   
 />
 ```
 
