@@ -62,9 +62,6 @@ Example uses:
         // relevant headers
       },
       method: 'PATCH',
-      body: {
-        // request body
-      },
     }}    
 />
 ```
