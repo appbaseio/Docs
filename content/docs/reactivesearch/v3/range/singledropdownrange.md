@@ -46,21 +46,21 @@ Example uses:
 
 ```js
 <SingleDropdownRange
-	componentId="PriceSensor"
-	dataField="price"
-	data={[
-		{ start: 0, end: 10, label: 'Cheap' },
-		{ start: 11, end: 20, label: 'Moderate' },
-		{ start: 21, end: 50, label: 'Pricey' },
-		{ start: 51, end: 1000, label: 'First Date' },
-	]}
-	title="Prices"
-	defaultValue="Cheap"
-	placeholder="Select price range"
-	showFilter={false}
-	filterLabel="Price"
-	URLParams={false}
-	includeNullValues
+  componentId="PriceSensor"
+  dataField="price"
+  data={[
+  	{ start: 0, end: 10, label: 'Cheap' },
+  	{ start: 11, end: 20, label: 'Moderate' },
+  	{ start: 21, end: 50, label: 'Pricey' },
+  	{ start: 51, end: 1000, label: 'First Date' },
+  ]}
+  title="Prices"
+  defaultValue="Cheap"
+  placeholder="Select price range"
+  showFilter={false}
+  filterLabel="Price"
+  URLParams={false}
+  includeNullValues
   endpoint={{
     url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
     headers:{
