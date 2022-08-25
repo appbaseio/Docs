@@ -32,19 +32,19 @@ Example uses:
 
 ```js
 <DatePicker
-	componentId="DateSensor"
-	dataField="mtime"
-	title="DatePicker"
-	defaultValue="2017-04-01"
-	focused={true}
-	numberOfMonths={1}
-	queryFormat="date"
-	placeholder="Pick date"
-	showClear={true}
-	clickUnselectsDay={true}
-	showFilter={true}
-	filterLabel="Date"
-	URLParams={false}
+    componentId="DateSensor"
+    dataField="mtime"
+    title="DatePicker"
+    defaultValue="2017-04-01"
+    focused={true}
+    numberOfMonths={1}
+    queryFormat="date"
+    placeholder="Pick date"
+    showClear={true}
+    clickUnselectsDay={true}
+    showFilter={true}
+    filterLabel="Date"
+    URLParams={false}
     endpoint={{
         url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
         headers:{
