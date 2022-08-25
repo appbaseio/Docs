@@ -49,10 +49,7 @@ Example uses:
       headers:{
         // relevant headers
       },
-      method: 'POST',
-      body: {
-        // request body
-      },
+      method: 'POST'
     }}
     URLParams={false}
 />

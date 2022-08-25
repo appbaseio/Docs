@@ -61,7 +61,7 @@ Example uses:
       headers:{
         // relevant headers
       },
-      method: 'POST',
+      method: 'POST'
     }}    
 />
 ```
