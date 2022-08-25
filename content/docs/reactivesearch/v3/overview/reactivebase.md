@@ -60,7 +60,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 ```
 
 -   **endpoint** `Object` [optional] 
-    endpoint prop provides ability to query a different backend service other than elasticesearch. Works only when `enableAppbase` is `true`.
+    endpoint prop provides the ability to query a different backend service other than elasticesearch. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
         URL where the data cluster is hosted.
