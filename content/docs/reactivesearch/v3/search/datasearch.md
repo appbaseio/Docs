@@ -32,37 +32,37 @@ Example uses:
 
 ```js
 <DataSearch
-	componentId="SearchSensor"
+    componentId="SearchSensor"
     dataField={[
-		{
-			"field": "group_venue",
-			"weight": 1
-		},
-		{
-			"field": "group_city",
-			"weight": 3
-		}
-	]}
-	title="Search"
-	defaultValue="Songwriting"
-	placeholder="Search for cities or venues"
-	autosuggest={true}
-	defaultSuggestions={[
-		{ label: 'Songwriting', value: 'Songwriting' },
-		{ label: 'Musicians', value: 'Musicians' },
-	]}
-	highlight={true}
-	highlightField="group_city"
-	queryFormat="or"
-	fuzziness={0}
-	debounce={100}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	size={10}
-	showFilter={true}
-	filterLabel="Venue filter"
-	URLParams={false}
+    	{
+    		"field": "group_venue",
+    		"weight": 1
+    	},
+    	{
+    		"field": "group_city",
+    		"weight": 3
+    	}
+    ]}
+    title="Search"
+    defaultValue="Songwriting"
+    placeholder="Search for cities or venues"
+    autosuggest={true}
+    defaultSuggestions={[
+    	{ label: 'Songwriting', value: 'Songwriting' },
+    	{ label: 'Musicians', value: 'Musicians' },
+    ]}
+    highlight={true}
+    highlightField="group_city"
+    queryFormat="or"
+    fuzziness={0}
+    debounce={100}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    size={10}
+    showFilter={true}
+    filterLabel="Venue filter"
+    URLParams={false}
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
