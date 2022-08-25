@@ -57,10 +57,10 @@ Example uses:
   endpoint={{
     url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
     headers:{
-      // relevant headers
+       // relevant headers
     },
     method: 'POST'
-  }}      
+  }}   
 />
 ```
 
