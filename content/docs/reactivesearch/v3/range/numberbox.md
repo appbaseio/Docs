@@ -37,24 +37,24 @@ Example uses:
 
 ```js
 <NumberBox
-  componentId="NumberBoxSensor"
-  dataField="guests"
-  data={{ label: 'Guests', start: 0, end: 5 }}
-  title="NumberBox component"
-  defaultValue={0}
-  labelPosition="left"
-  queryFormat="gte"
-  endpoint={{
-    url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
-    headers:{
-      // relevant headers
-    },
-    method: 'PATCH',
-    body: {
-      // request body
-    },
-  }}
-  URLParams={false}
+    componentId="NumberBoxSensor"
+    dataField="guests"
+    data={{ label: 'Guests', start: 0, end: 5 }}
+    title="NumberBox component"
+    defaultValue={0}
+    labelPosition="left"
+    queryFormat="gte"
+    endpoint={{
+      url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+      headers:{
+        // relevant headers
+      },
+      method: 'PATCH',
+      body: {
+        // request body
+      },
+    }}
+    URLParams={false}
 />
 ```
 
