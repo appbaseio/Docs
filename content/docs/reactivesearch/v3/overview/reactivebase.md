@@ -59,6 +59,39 @@ This is the first component you will need to add when using `ReactiveSearch`.
 </ReactiveBase>
 ```
 
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides ability to query a different backend service other than elasticesearch. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request.
+    
+    > Top level props - `url`, `app` and `credentials` are optional and overridden in the final request when `endpoint` prop is defined.
+
+    ```js{4-6}
+    <ReactiveBase
+        enableAppbase
+        endpoint={{
+            url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+            headers: {
+                // put relevant headers
+            }
+            method: 'PATCH',
+            body: {
+                // request body
+            }
+        }}
+    >
+        <Component1 .. />
+        <Component2 .. />
+    </ReactiveBase>
+    ```
+
 -   **appbaseConfig** `Object` [optional]
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
