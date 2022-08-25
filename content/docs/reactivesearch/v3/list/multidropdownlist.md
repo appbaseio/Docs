@@ -36,21 +36,21 @@ Example uses:
 
 ```js
 <MultiDropdownList
-	componentId="CitySensor"
-	dataField="group.group_city.raw"
-	title="Cities"
-	size={100}
-	sortBy="count"
-	defaultValue={['London']}
-	showCount={true}
-	placeholder="Search City"
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	showFilter={true}
-	filterLabel="City"
-	URLParams={false}
-	loader="Loading ..."
+    componentId="CitySensor"
+    dataField="group.group_city.raw"
+    title="Cities"
+    size={100}
+    sortBy="count"
+    defaultValue={['London']}
+    showCount={true}
+    placeholder="Search City"
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    showFilter={true}
+    filterLabel="City"
+    URLParams={false}
+    loader="Loading ..."
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
