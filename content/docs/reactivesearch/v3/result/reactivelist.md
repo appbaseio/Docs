@@ -38,24 +38,24 @@ Example uses:
 
 ```js
 <ReactiveList
-	componentId="SearchResult"
-	dataField="ratings"
-	pagination={false}
-	paginationAt="bottom"
-	pages={5}
-	sortBy="desc"
-	size={10}
-	loader="Loading Results.."
-	showResultStats={true}
-	renderItem={res => <div>{res.title}</div>}
-	renderResultStats={function(stats) {
-		return `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
-			stats.time
-		} ms`;
-	}}
-	react={{
-		and: ['CitySensor', 'SearchSensor'],
-	}}
+    componentId="SearchResult"
+    dataField="ratings"
+    pagination={false}
+    paginationAt="bottom"
+    pages={5}
+    sortBy="desc"
+    size={10}
+    loader="Loading Results.."
+    showResultStats={true}
+    renderItem={res => <div>{res.title}</div>}
+    renderResultStats={function(stats) {
+    	return `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
+    		stats.time
+    	} ms`;
+    }}
+    react={{
+    	and: ['CitySensor', 'SearchSensor'],
+    }}
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
