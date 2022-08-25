@@ -52,12 +52,12 @@ Example uses:
 	filterLabel="Date"
 	URLParams={false}
     endpoint={{
-      url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
-      headers:{
-        // relevant headers
-      },
-      method: 'POST'
-    }}    
+        url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory,
+        headers:{
+            // relevant headers
+        },
+        method: 'POST'
+    }}
 />
 ```
 
