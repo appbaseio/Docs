@@ -61,7 +61,7 @@ Example uses:
       headers:{
         // relevant headers
       },
-      method: 'PATCH',
+      method: 'POST',
       body: {
         // request body
       },
