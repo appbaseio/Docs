@@ -38,27 +38,27 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 
 ```js
 <DynamicRangeSlider
-	componentId="DynamicRangeSensor"
-	dataField="guests"
-	title="Guests"
-	defaultValue={(min, max) => ({
-		start: min,
-		end: Math.min(min + 5, max),
-	})}
-	rangeLabels={(min, max) => ({
-		start: min + ' guest',
-		end: max + ' guests',
-	})}
-	stepValue={1}
-	showHistogram={true}
-	showFilter={true}
-	interval={2}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	URLParams={true}
-	loader="Loading ..."
-	includeNullValues
+    componentId="DynamicRangeSensor"
+    dataField="guests"
+    title="Guests"
+    defaultValue={(min, max) => ({
+    	start: min,
+    	end: Math.min(min + 5, max),
+    })}
+    rangeLabels={(min, max) => ({
+    	start: min + ' guest',
+    	end: max + ' guests',
+    })}
+    stepValue={1}
+    showHistogram={true}
+    showFilter={true}
+    interval={2}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    URLParams={true}
+    loader="Loading ..."
+    includeNullValues
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
