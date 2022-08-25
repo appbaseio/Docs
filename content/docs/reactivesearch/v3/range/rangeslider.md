@@ -42,30 +42,30 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 
 ```js
 <RangeSlider
-	componentId="RangeSliderSensor"
-	dataField="guests"
-	title="Guests"
-	range={{
-		start: 0,
-		end: 10,
-	}}
-	defaultValue={{
-		start: 1,
-		end: 5,
-	}}
-	rangeLabels={{
-		start: 'Start',
-		end: 'End',
-	}}
-	stepValue={1}
-	showHistogram={true}
-	showFilter={true}
-	interval={2}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	URLParams={false}
-	includeNullValues
+    componentId="RangeSliderSensor"
+    dataField="guests"
+    title="Guests"
+    range={{
+    	start: 0,
+    	end: 10,
+    }}
+    defaultValue={{
+    	start: 1,
+    	end: 5,
+    }}
+    rangeLabels={{
+    	start: 'Start',
+    	end: 'End',
+    }}
+    stepValue={1}
+    showHistogram={true}
+    showFilter={true}
+    interval={2}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    URLParams={false}
+    includeNullValues
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
