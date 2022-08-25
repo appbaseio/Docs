@@ -42,30 +42,30 @@ Example uses:
 
 ```js
 <RangeInput
-	componentId="RangeInputSensor"
-	dataField="rating"
-	title="Ratings"
-	range={{
-		start: 3000,
-		end: 50000,
-	}}
-	defaultValue={{
-		start: 4000,
-		end: 10000,
-	}}
-	rangeLabels={{
-		start: 'Start',
-		end: 'End',
-	}}
-	showFilter={true}
-	stepValue={1}
-	showHistogram={true}
-	interval={2}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	URLParams={false}
-	includeNullValues
+    componentId="RangeInputSensor"
+    dataField="rating"
+    title="Ratings"
+    range={{
+    	start: 3000,
+    	end: 50000,
+    }}
+    defaultValue={{
+    	start: 4000,
+    	end: 10000,
+    }}
+    rangeLabels={{
+    	start: 'Start',
+    	end: 'End',
+    }}
+    showFilter={true}
+    stepValue={1}
+    showHistogram={true}
+    interval={2}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    URLParams={false}
+    includeNullValues
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
       headers:{
