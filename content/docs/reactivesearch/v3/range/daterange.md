@@ -32,25 +32,25 @@ Example uses:
 
 ```js
 <DateRange
-	componentId="DateSensor"
-	dataField="mtime"
-	title="DateRange"
-	defaultValue={{
-		start: new Date('2017-04-01'),
-		end: new Date('2017-04-07'),
-	}}
-	placeholder={{
-		start: 'Start Date',
-		end: 'End Date',
-	}}
-	focused={true}
-	numberOfMonths={2}
-	queryFormat="date"
-	autoFocusEnd={true}
-	showClear={true}
-	showFilter={true}
-	filterLabel="Date"
-	URLParams={false}
+    componentId="DateSensor"
+    dataField="mtime"
+    title="DateRange"
+    defaultValue={{
+    	start: new Date('2017-04-01'),
+    	end: new Date('2017-04-07'),
+    }}
+    placeholder={{
+    	start: 'Start Date',
+    	end: 'End Date',
+    }}
+    focused={true}
+    numberOfMonths={2}
+    queryFormat="date"
+    autoFocusEnd={true}
+    showClear={true}
+    showFilter={true}
+    filterLabel="Date"
+    URLParams={false}
     endpoint={{
         url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory,
         headers:{
