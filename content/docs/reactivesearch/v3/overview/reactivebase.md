@@ -60,7 +60,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 ```
 
 -   **endpoint** `Object` [optional] 
-    endpoint prop provides the ability to query a different backend service other than elasticesearch. Works only when `enableAppbase` is `true`.
+    endpoint prop provides the ability to query a user-defined backend service for ReactiveBase and its children components. This service is typically a ReactiveSearch backend pipeline or any other API handler that works with the ReactiveSearch API references. This property works only when `enableAppbase` is set to `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
         URL where the data cluster is hosted.
@@ -69,7 +69,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
     -   **method** `String` [optional]    
         set method of the API request.
     -   **body** `Object` [optional]    
-        request body of the API request.
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
     
     > Top level props - `url`, `app` and `credentials` are optional and overridden in the final request when `endpoint` prop is defined.
 
