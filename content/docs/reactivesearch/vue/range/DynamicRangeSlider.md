@@ -45,19 +45,26 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 		componentId="BookSensor"
 		title="DynamicRangeSlider: Ratings"
 		:defaultValue="function(min, max){
-          return {
-              start: min + 1000,
-              end: max - 1000,
-          }
-      }"
+		  return {
+		      start: min + 1000,
+		      end: max - 1000,
+		  }
+		}"
 		:rangeLabels="function(min, max){
-          return {
-              start: min + ' Books',
-              end: max + ' Books',
-          }
-      }"
+		  return {
+		      start: min + ' Books',
+		      end: max + ' Books',
+		  }
+		}"
 		:showFilter="true"
 		:URLParams="false"
+		:endpoint="{
+			url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
+			headers: {
+				// put relevant headers
+			},
+			method: 'POST'
+		}"		
 	/>
 </template>
 ```
