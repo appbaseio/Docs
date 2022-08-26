@@ -76,7 +76,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 	<reactive-base
 		:enableAppbase="true"
 		:endpoint="{
-			url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+			url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
 			headers: {
                 // put relevant headers
             },
