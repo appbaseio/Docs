@@ -37,18 +37,18 @@ Example uses:
 
 ```html
 <reactive-list
-	componentId="SearchResult"
-	dataField="ratings"
-	paginationAt="bottom"
-	loader="Loading Results.."
-	prevLabel="Prev"
-	nextLabel="Next"
-	sortBy="desc"
-	:pagination="false"
-	:pages="5"
-	:size="10"
-	:showResultStats="true"
-	:react="{ and: ['CitySensor', 'SearchSensor'] }"
+    componentId="SearchResult"
+    dataField="ratings"
+    paginationAt="bottom"
+    loader="Loading Results.."
+    prevLabel="Prev"
+    nextLabel="Next"
+    sortBy="desc"
+    :pagination="false"
+    :pages="5"
+    :size="10"
+    :showResultStats="true"
+    :react="{ and: ['CitySensor', 'SearchSensor'] }"
     :endpoint="{
         url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
         headers: {
