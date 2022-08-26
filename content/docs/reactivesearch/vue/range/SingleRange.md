@@ -55,14 +55,21 @@ Example uses:
 		defaultValue="Cheap"
 		filterLabel="Price"
 		:data="
-            [{'start': 0, 'end': 10, 'label': 'Cheap'},
-            {'start': 11, 'end': 20, 'label': 'Moderate'},
-            {'start': 21, 'end': 50, 'label': 'Pricey'},
-            {'start': 51, 'end': 1000, 'label': 'First Date'}]
-        "
+			[{'start': 0, 'end': 10, 'label': 'Cheap'},
+			 {'start': 11, 'end': 20, 'label': 'Moderate'},
+			 {'start': 21, 'end': 50, 'label': 'Pricey'},
+			 {'start': 51, 'end': 1000, 'label': 'First Date'}]
+		"
 		:showRadio="true"
 		:showFilter="true"
 		:URLParams="false"
+		:endpoint="{
+			url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
+			headers: {
+				// put relevant headers
+			},
+			method: 'POST'
+		}"		
 	/>
 </template>
 ```
