@@ -37,14 +37,21 @@ Example uses:
 
 ```js
 <NumberBox
-	componentId="NumberBoxSensor"
-	dataField="guests"
-	data={{ label: 'Guests', start: 0, end: 5 }}
-	title="NumberBox component"
-	defaultValue={0}
-	labelPosition="left"
-	queryFormat="gte"
-	URLParams={false}
+    componentId="NumberBoxSensor"
+    dataField="guests"
+    data={{ label: 'Guests', start: 0, end: 5 }}
+    title="NumberBox component"
+    defaultValue={0}
+    labelPosition="left"
+    queryFormat="gte"
+    endpoint={{
+      url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+      headers:{
+        // relevant headers
+      },
+      method: 'POST'
+    }}
+    URLParams={false}
 />
 ```
 
@@ -52,6 +59,21 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+    
 -   **dataField** `String`
     DB data field to be mapped with the component's UI view. The selected box value creates a database query on this field.
 -   **data** `Object`

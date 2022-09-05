@@ -38,27 +38,34 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 
 ```js
 <DynamicRangeSlider
-	componentId="DynamicRangeSensor"
-	dataField="guests"
-	title="Guests"
-	defaultValue={(min, max) => ({
-		start: min,
-		end: Math.min(min + 5, max),
-	})}
-	rangeLabels={(min, max) => ({
-		start: min + ' guest',
-		end: max + ' guests',
-	})}
-	stepValue={1}
-	showHistogram={true}
-	showFilter={true}
-	interval={2}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	URLParams={true}
-	loader="Loading ..."
-	includeNullValues
+    componentId="DynamicRangeSensor"
+    dataField="guests"
+    title="Guests"
+    defaultValue={(min, max) => ({
+    	start: min,
+    	end: Math.min(min + 5, max),
+    })}
+    rangeLabels={(min, max) => ({
+    	start: min + ' guest',
+    	end: max + ' guests',
+    })}
+    stepValue={1}
+    showHistogram={true}
+    showFilter={true}
+    interval={2}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    URLParams={true}
+    loader="Loading ..."
+    includeNullValues
+    endpoint={{
+      url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+      headers:{
+        // relevant headers
+      },
+      method: 'POST'
+    }}         
 />
 ```
 
@@ -66,6 +73,21 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+             
 -   **dataField** `String`
     DB data field to be mapped with the component's UI view.The selected range creates a database query on this field.
 -   **nestedField** `String` [optional]

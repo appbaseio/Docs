@@ -268,7 +268,21 @@ Check demo [here](https://codesandbox.io/s/3ylrrr0r5q).
 
 	> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+        
 
 ### Examples
 

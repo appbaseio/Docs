@@ -32,37 +32,44 @@ Example uses:
 
 ```js
 <DataSearch
-	componentId="SearchSensor"
+    componentId="SearchSensor"
     dataField={[
-		{
-			"field": "group_venue",
-			"weight": 1
-		},
-		{
-			"field": "group_city",
-			"weight": 3
-		}
-	]}
-	title="Search"
-	defaultValue="Songwriting"
-	placeholder="Search for cities or venues"
-	autosuggest={true}
-	defaultSuggestions={[
-		{ label: 'Songwriting', value: 'Songwriting' },
-		{ label: 'Musicians', value: 'Musicians' },
-	]}
-	highlight={true}
-	highlightField="group_city"
-	queryFormat="or"
-	fuzziness={0}
-	debounce={100}
-	react={{
-		and: ['CategoryFilter', 'SearchFilter'],
-	}}
-	size={10}
-	showFilter={true}
-	filterLabel="Venue filter"
-	URLParams={false}
+    	{
+    		"field": "group_venue",
+    		"weight": 1
+    	},
+    	{
+    		"field": "group_city",
+    		"weight": 3
+    	}
+    ]}
+    title="Search"
+    defaultValue="Songwriting"
+    placeholder="Search for cities or venues"
+    autosuggest={true}
+    defaultSuggestions={[
+    	{ label: 'Songwriting', value: 'Songwriting' },
+    	{ label: 'Musicians', value: 'Musicians' },
+    ]}
+    highlight={true}
+    highlightField="group_city"
+    queryFormat="or"
+    fuzziness={0}
+    debounce={100}
+    react={{
+    	and: ['CategoryFilter', 'SearchFilter'],
+    }}
+    size={10}
+    showFilter={true}
+    filterLabel="Venue filter"
+    URLParams={false}
+    endpoint={{
+      url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+      headers:{
+        // relevant headers
+      },
+      method: 'POST'
+    }}        
 />
 ```
 
@@ -70,6 +77,21 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+          
 -   **dataField** `string | Array<string | DataField*>` [optional*]
     index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
