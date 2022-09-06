@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-![Image to be displayed](https://imgur.com/4TxrKmi)
+![Image to be displayed](https://i.imgur.com/4TxrKmi.png)
 
 The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/reactivechart) usage with `custom` chart.
 
@@ -191,4 +191,4 @@ Here is a complete example using all the options.
     />
 ```
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/ReactiveChart/" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/ReactiveChart/StackedBarChart" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
