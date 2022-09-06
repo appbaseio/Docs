@@ -12,7 +12,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-![Image to be displayed](https://i.imgur.com/DQvhVov.png)
+![Image to be displayed](https://imgur.com/4TxrKmi)
 
 The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/reactivechart) usage with `custom` chart.
 
