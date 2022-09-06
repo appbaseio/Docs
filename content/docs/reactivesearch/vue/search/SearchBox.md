@@ -35,83 +35,90 @@ Example uses:
 
 ```html
 <search-box
-	componentId="SearchSensor"
-    :mode="tag"
-	title="Search"
-	defaultValue="Songwriting"
-	placeholder="Search for cities or venues"
-	highlightField="group_city"
-	queryFormat="or"
-	filterLabel="City"
-	:autosuggest="true"
-	:highlight="true"
-	:showFilter="true"
+  componentId="SearchSensor"
+  :mode="tag"
+  title="Search"
+  defaultValue="Songwriting"
+  placeholder="Search for cities or venues"
+  highlightField="group_city"
+  queryFormat="or"
+  filterLabel="City"
+  :autosuggest="true"
+  :highlight="true"
+  :showFilter="true"
   :dataField="[
-			{
-				'field': 'group_venue',
-				'weight': 1
-			},
-			{
-				'field': 'group_city',
-				'weight': 3
-			},
-	]"
+    {
+    	'field': 'group_venue',
+    	'weight': 1
+    },
+    {
+    	'field': 'group_city',
+    	'weight': 3
+    },
+  ]"
   :defaultSuggestions="[
-            { label: 'Songwriting', value: 'Songwriting' },
-            { label: 'Musicians', value: 'Musicians' },
-        ]"
-	:fuzziness="0"
-	:size="10"
-	:debounce="100"
-	:react="{
+    { label: 'Songwriting', value: 'Songwriting' },
+    { label: 'Musicians', value: 'Musicians' },
+  ]"
+  :fuzziness="0"
+  :size="10"
+  :debounce="100"
+  :react="{
     and: ['CategoryFilter', 'SearchFilter']
   }"
-	:URLParams="false"
+  :URLParams="false"
   className="result-list-container"
-	:size="3"
-	:enablePopularSuggestions="true"
-	:popularSuggestionsConfig="{ size: 3, minChars: 2, index: 'good-books-ds' }"
-	:enableRecentSuggestions="true"
-	:recentSuggestionsConfig="{
-		size: 3,
-		index: 'good-books-ds',
-		minChars: 4,
-	}"
-	@on-data="
-		(param) => {
-			// do something
-		}
-	"
-	:showClear="true"
-	@valueSelected="
-		(value, cause) => {
-			// do something
-		}
-	"
-	categoryField="authors.keyword"
-	:defaultQuery="
-		(value) => {
-			return {
-				query: {
-					// ...
-				},
-				timeout: '1s',
-			};
-		}
-	"
-	:customQuery="
-		(value) => {
-			return {
-				query: {
-					// ...
-				},
-				timeout: '1s',
-			};
-		}
-	"  
-	:applyStopwords="true"
-	:customStopwords="['be', 'the']"
-	:enablePredictiveSuggestions="true"
+  :size="3"
+  :enablePopularSuggestions="true"
+  :popularSuggestionsConfig="{ size: 3, minChars: 2, index: 'good-books-ds' }"
+  :enableRecentSuggestions="true"
+  :recentSuggestionsConfig="{
+    size: 3,
+    index: 'good-books-ds',
+    minChars: 4,
+  }"
+  @on-data="
+    (param) => {
+    	// do something
+    }
+  "
+  :showClear="true"
+  @valueSelected="
+    (value, cause) => {
+    	// do something
+    }
+  "
+  categoryField="authors.keyword"
+  :defaultQuery="
+    (value) => {
+    	return {
+          query: {
+          	// ...
+          },
+          timeout: '1s',
+    	};
+    }
+  "
+  :customQuery="
+    (value) => {
+    	return {
+          query: {
+          	// ...
+          },
+          timeout: '1s',
+    	};
+    }
+  "  
+  :applyStopwords="true"
+  :customStopwords="['be', 'the']"
+  :enablePredictiveSuggestions="true"
+  :endpoint="{
+    url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
+    headers: {
+        // put relevant headers
+    },
+    method: 'POST'
+  }"  
 />
 ```
 
@@ -119,6 +126,21 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+
 -   **mode** `String`
     SearchBox component offers two modes of usage, `select` & `tag`. When mode is set to `tag` SearchBox allows selecting multiple suggestions. Defaults to `select`.
 

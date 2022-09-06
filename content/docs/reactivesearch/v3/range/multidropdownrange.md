@@ -46,21 +46,28 @@ Example uses:
 
 ```js
 <MultiDropdownRange
-	componentId="PriceSensor"
-	dataField="price"
-	data={[
-		{ start: 0, end: 10, label: 'Cheap' },
-		{ start: 11, end: 20, label: 'Moderate' },
-		{ start: 21, end: 50, label: 'Pricey' },
-		{ start: 51, end: 1000, label: 'First Date' },
-	]}
-	title="Prices"
-	defaultValue={['Cheap', 'Moderate']}
-	placeholder="Select price ranges"
-	showFilter={true}
-	filterLabel="Price"
-	URLParams={false}
-	includeNullValues
+  componentId="PriceSensor"
+  dataField="price"
+  data={[
+  	{ start: 0, end: 10, label: 'Cheap' },
+  	{ start: 11, end: 20, label: 'Moderate' },
+  	{ start: 21, end: 50, label: 'Pricey' },
+  	{ start: 51, end: 1000, label: 'First Date' },
+  ]}
+  title="Prices"
+  defaultValue={['Cheap', 'Moderate']}
+  placeholder="Select price ranges"
+  showFilter={true}
+  filterLabel="Price"
+  URLParams={false}
+  includeNullValues
+  endpoint={{
+    url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+    headers:{
+      // relevant headers
+    },
+    method: 'POST'
+  }}        
 />
 ```
 
@@ -101,6 +108,21 @@ function Index(props) {
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+             
 -   **dataField** `String`
     data field to be connected to the component's UI view. The range items are filtered by a database query on this field.
 -   **data** `Object Array`

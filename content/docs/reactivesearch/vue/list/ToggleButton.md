@@ -43,19 +43,26 @@ Example uses:
 
 ```html
 <toggle-button
-	componentId="MeetupTops"
-	dataField="group_topics.topic_name.raw"
-	title="Meetups"
-	filterLabel="City"
-	:data="[
+    componentId="MeetupTops"
+    dataField="group_topics.topic_name.raw"
+    title="Meetups"
+    filterLabel="City"
+    :data="[
       {'label': 'Social',   'value': 'Social'},
       {'label': 'Travel',   'value': 'Travel'},
       {'label': 'Outdoors', 'value': 'Outdoors'}
-  ]"
-	:defaultValue="['Social']"
-	:multiSelect="true"
-	:showFilter="true"
-	:URLParams="false"
+    ]"
+    :defaultValue="['Social']"
+    :multiSelect="true"
+    :showFilter="true"
+    :URLParams="false"
+    :endpoint="{
+        url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
+        headers: {
+            // put relevant headers
+        },
+        method: 'POST'
+    }"    
 />
 ```
 

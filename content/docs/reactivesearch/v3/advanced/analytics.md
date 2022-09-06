@@ -183,7 +183,7 @@ You can define the `appbaseConfig` prop in the `ReactiveBase` component to custo
 For example in the following code, we're setting up two custom events that will be recorded with each search request.
 
 ```js
-<Reactivebase
+<ReactiveBase
     appbaseConfig={{
             customEvents: {
                 platform: "ios",
@@ -191,7 +191,7 @@ For example in the following code, we're setting up two custom events that will 
             }
     }}
 >
-</Reactivebase>
+</ReactiveBase>
 ```
 
 - **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.

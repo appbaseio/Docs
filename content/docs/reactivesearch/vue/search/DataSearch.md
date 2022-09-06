@@ -34,47 +34,54 @@ Example uses:
 
 ```html
 <data-search
-	componentId="SearchSensor"
-	title="Search"
-	defaultValue="Songwriting"
-	placeholder="Search for cities or venues"
-	highlightField="group_city"
-	queryFormat="or"
-	filterLabel="City"
-    :mode="tag"
-	:autosuggest="true"
-	:highlight="true"
-	:showFilter="true"
+  componentId="SearchSensor"
+  title="Search"
+  defaultValue="Songwriting"
+  placeholder="Search for cities or venues"
+  highlightField="group_city"
+  queryFormat="or"
+  filterLabel="City"
+  :mode="tag"
+  :autosuggest="true"
+  :highlight="true"
+  :showFilter="true"
   :dataField="[
-			{
-				'field': 'group_venue',
-				'weight': 1
-			},
-			{
-				'field': 'group_city',
-				'weight': 3
-			},
-			{
-				'field': 'original_title',
-				'weight': 5
-			},
-			{
-				'field': 'original_title.autosuggest',
-				'weight': 1
-			}
-	]"
-	:fuzziness="0"
-	:size="10"
-	:debounce="100"
-	:react="{
+    {
+    	'field': 'group_venue',
+    	'weight': 1
+    },
+    {
+    	'field': 'group_city',
+    	'weight': 3
+    },
+    {
+    	'field': 'original_title',
+    	'weight': 5
+    },
+    {
+    	'field': 'original_title.autosuggest',
+    	'weight': 1
+    }
+  ]"
+  :fuzziness="0"
+  :size="10"
+  :debounce="100"
+  :react="{
     and: ['CategoryFilter', 'SearchFilter']
   }"
-	:URLParams="false"
+  :URLParams="false"
   :defaultSuggestions="[
-		{ label: 'Songwriting', value: 'Songwriting' },
-		{ label: 'Musicians', value: 'Musicians' },
-	]"
+    { label: 'Songwriting', value: 'Songwriting' },
+    { label: 'Musicians', value: 'Musicians' },
+  ]"
   :enableDefaultSuggestions="true"
+  :endpoint="{
+    url:'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3',
+    headers: {
+        // put relevant headers
+    },
+    method: 'POST'
+  }"
 />
 ```
 
@@ -82,6 +89,21 @@ Example uses:
 
 -   **componentId** `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
+-   **endpoint** `Object` [optional] 
+    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+    Accepts the following properties:
+    -   **url** `String` [Required]
+        URL where the data cluster is hosted.
+    -   **headers** `Object` [optional]        
+        set custom headers to be sent with each server request as key/value pairs.
+    -   **method** `String` [optional]    
+        set method of the API request.
+    -   **body** `Object` [optional]    
+        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+    > - Overrides the endpoint property defined in ReactiveBase.
+    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+
 -   **mode** `String`
     DataSearch component offers two modes of usage, `select` & `tag`. When mode is set to `tag` DataSearch allows selecting multiple suggestions. Defaults to `select`.
 
