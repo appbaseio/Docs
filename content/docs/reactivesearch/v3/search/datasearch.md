@@ -43,6 +43,7 @@ Example uses:
     		"weight": 3
     	}
     ]}
+    mode="tag" // accepts either of 'select' or 'tag' defaults to 'select'
     title="Search"
     defaultValue="Songwriting"
     placeholder="Search for cities or venues"
@@ -76,7 +77,7 @@ Example uses:
 ## Props
 
 -   **componentId** `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
+    unique identifier of the component, can be referenced in other components' `react` prop. 
 -   **endpoint** `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
@@ -91,7 +92,18 @@ Example uses:
 
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
-          
+
+-   **mode** `String`
+    DataSearch component offers two modes of usage, `select` & `tag`. When mode is set to `tag` DataSearch allows selecting multiple suggestions. Defaults to `select`.
+    
+    ```jsx
+    <DataSearch
+        componentId="searchSensor"
+        // ... other props
+        mode="tag"
+    />
+    ```          
+    
 -   **dataField** `string | Array<string | DataField*>` [optional*]
     index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
     Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -136,10 +148,16 @@ Example uses:
     Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
 -   **title** `String or JSX` [optional]
     set the title of the component to be shown in the UI.
--   **defaultValue** `string` [optional]
+-   **defaultValue** `String` | `Array<String>` [optional]
     set the initial search query text on mount.
--   **value** `string` [optional]
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+    
+-   **value** `String` | `Array<String>` [optional]
     sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
+
+    > Data type is Array<String> when `mode` prop is set to `tag`.
+
 -   **enableSynonyms** `bool` [optional]
     Defaults to `true`, can be used to `disable/enable` the synonyms behavior for the search query. Read more about it [here](/docs/search/reactivesearch-api/reference/#enablesynonyms)
     > Note:
@@ -545,6 +563,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 -   `list`
 -   `recent-search-icon`
 -   `popular-search-icon`
+-   `selected-tag`
 
 Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
@@ -753,6 +772,31 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
         ...
  />
 ```
+
+-   **renderSelectedTags** `Function` [optional] to custom render tags when mode is set to `tag`.
+
+Function param accepts an object with the following properties:
+  - **`values`**: `Array<String>`
+    array of selected values.
+  - **`handleClear`**: `Function - (string) => void`
+    function to clear a tag value. It accepts the tag value(String) as a parameter.
+
+  - **`handleClearAll`**: `Function - () => void` 
+    function to clear all selected values.
+
+    ```jsx
+        <DataSearch
+            id="search-component"
+            enterButton
+            renderSelectedTags=({ 
+                values = [], 
+                handleClear, 
+                handleClearAll }) => {
+                // return custom rendered tags 
+            }
+        />
+    ```
+
 
 ## Examples
 
