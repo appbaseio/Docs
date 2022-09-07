@@ -134,7 +134,7 @@ function Index(props) {
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
       
 -   **dataField** `String Array`
-    data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. `dataField` aray must have values in order, i.e, category > sub-cateogry and so-on.
+    data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. `dataField` array must have values in order, i.e, category > sub-cateogry and so-on.
 -   **title** `String or JSX` [optional]
     title of the component to be shown in the UI. Defaults to no title being shown.
 -   **loader** `String or JSX` [optional]
