@@ -91,6 +91,8 @@
               items:
                   - link: /docs/pipelines/how-to/add-external-search-results
                     title: Add External Search Results
+                  - link: /docs/pipelines/how-to/query-rules
+                    title: Search Relevancy using Query Rules
                   - link: /docs/pipelines/how-to/create-an-indexing-pipeline
                     title: Create An Indexing Pipeline
                   - link: /docs/pipelines/how-to/handle-authorization-effectively

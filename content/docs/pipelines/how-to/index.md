@@ -18,6 +18,9 @@ Get started with ReactiveSearch Pipelines with our How To guides curated conside
 
 This example covers the scenario where a person might want to include external results into the querytranslate response. This guide explains how this can be done by using an example of adding external results by accessing Google's Knowledge Graph API. [Read More](add-external-search-results)
 
+## Search Relevancy using Query Rules
+[Query Rules](docs/search/rules/) enable you to cover the search relevance blind spots by creating "If this, then that" style rules tailored to your business use-case. The following guide explains the query rules usage with pipelines to add dynamic facets, replace search words and promote/boost search results. [Read More](query-rules)
+
 ## Create an Indexing Pipeline
 
 An indexing pipeline is useful when there are custom steps that needs to be done while a document is being indexed. This guide uses the example of adding vector data for a certain field of the passed documentation by hitting an external API. [Read More](create-an-indexing-pipeline)
