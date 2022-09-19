@@ -62,3 +62,14 @@ In this example, we show how to use Solr's query for writing a term query using 
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/rPUT7N2HhE7nsRAhrBDV"></iframe>
 
+### Configuring Search Settings
+
+In this example, we see usage of advanced search settings that show how to record custom analytics events, pass custom data, and enable cache (per request).
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/tr17HUK5wHCQlkXEso8y"></iframe>
+
+### Search + Geo
+
+In this example, we will see an application of a search query along with a geo query. We are searching for houses within 1000000km distance of a particular location co-ordinate.
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/k123UjA2kaDTPFpcXrMX"></iframe>
