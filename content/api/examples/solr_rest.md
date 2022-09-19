@@ -6,6 +6,7 @@ keywords:
     - REST
     - examples
     - appbase
+    - reactivesearch
     - solr
     - fusion
 sidebar: 'api-reference'
