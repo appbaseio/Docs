@@ -78,4 +78,4 @@ In this example, we will see an application of a search query along with a geo q
 
 In this example, we make two search queries - each on a different index.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/ste5gaALLxEW78hXezHX"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/j0Pas50Wn398l8xCtvfK"></iframe>
