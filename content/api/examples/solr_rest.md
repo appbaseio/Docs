@@ -73,3 +73,9 @@ In this example, we see usage of advanced search settings that show how to recor
 In this example, we will see an application of a search query along with a geo query. We are searching for houses within 1000000km distance of a particular location co-ordinate.
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/k123UjA2kaDTPFpcXrMX"></iframe>
+
+### Search on Multiple Indices
+
+In this example, we make two search queries - each on a different index.
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/ste5gaALLxEW78hXezHX"></iframe>
