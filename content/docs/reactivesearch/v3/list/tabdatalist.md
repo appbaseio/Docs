@@ -87,6 +87,7 @@ When we want to show the no. of documents for each category(tab) then we can pas
 			value: 'Outdoors',
 		},
 	]}
+	selectAllLabel="All"
     showCount={true}
     showRadio={true}
     showSearch={true}
@@ -123,13 +124,13 @@ When we want to show the no. of documents for each category(tab) then we can pas
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
       
--   **dataField** `String`
+-   **dataField** `string`
     data field to be connected to the component's UI view.
 -   **data** `Object Array`
     collection of UI `labels` with associated `value` to be matched against the database field.
--   **title** `String or JSX` [optional]
+-   **title** `string or JSX` [optional]
     title of the component to be shown in the UI.
--   **placeholder** `String` [optional]
+-   **placeholder** `string` [optional]
     placeholder to be displayed in the searchbox. Defaults to "Search". Applicable only when `showSearch` is true.
 -   **defaultValue** `string` [optional]
     selects an initial item from the list on mount.
@@ -143,6 +144,8 @@ When we want to show the no. of documents for each category(tab) then we can pas
     filter tabs using a search bar
 -   **showRadio** `Boolean` [optional]
     show radio buttons just as we are using a `SingleDataList`
+-   **selectAllLabel** `string` [optional] 
+	If set, an additional option to select all the values is displayed
 -   **URLParams** `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 -   **renderItem** `Function` [optional]
