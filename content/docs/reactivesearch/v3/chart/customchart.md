@@ -29,8 +29,21 @@ We can edit pre-defined charts using `setOption` and other methods available. Bu
         // By default useAsFilter is true
         useAsFilter={false}
         // Required when chartType is custom
-        defaultQuery={()=>({})}
-        setOption={()=>({})}
+        defaultQuery={() => ({
+            timeout: '1s',
+        })}
+        setOption={() => ({
+            xAxis: {
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'bar',
+                    data: [23, 24, 18, 25, 27, 28, 25],
+                },
+            ],
+        })}
     />
 ```
 
@@ -41,11 +54,28 @@ We can edit pre-defined charts using `setOption` and other methods available. Bu
         chartType="custom"
         componentId="custom_chart"
         // Required when chartType is custom
-        defaultQuery={()=>({})}
-        setOption={()=>({})}
+        defaultQuery={() => ({
+            timeout: '1s',
+        })}
+        setOption={() => ({
+            xAxis: {
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+            yAxis: {},
+            series: [
+                {
+                    type: 'bar',
+                    data: [23, 24, 18, 25, 27, 28, 25],
+                },
+            ],
+        })}
         useAsFilter={true}
         // When useAsFilter we have to define customQuery
-        customQuery={()=>({})}
+        customQuery={()=>({
+            query:{
+                match_all:{}
+            }
+        })}
     />
 ```
 
