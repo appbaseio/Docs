@@ -93,6 +93,7 @@ When we want to show the no. of documents for each category(tab) then we can pas
     displayAsVertical={true}
 	placeholder="Filter meetups"
 	defaultValue="Social"
+    selectAllLabel="All meetups"
 	URLParams={false}
     endpoint={{
       url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
@@ -135,6 +136,8 @@ When we want to show the no. of documents for each category(tab) then we can pas
     selects an initial item from the list on mount.
 -   **value** `string` [optional]
     controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
+-   **selectAllLabel** `String` [optional]
+    if provided displays an additional option to select all list values.
 -   **showCount** `Boolean` [optional]
     show a count of the number of occurences besides each list item. Defaults to `false`.
 -   **displayAsVertical** `Boolean` [optional]
