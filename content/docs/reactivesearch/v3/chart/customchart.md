@@ -23,60 +23,100 @@ We can edit pre-defined charts using `setOption` and other methods available. Bu
 ### Basic Usage
 
 ```jsx
+<ReactiveBase
+    app="movies-store-app"
+    url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+    enableAppbase
+    appbaseConfig={{
+        recordAnalytics: true,
+    }}
+>
     <ReactiveChart
         chartType="custom"
         componentId="custom_chart"
+        dataField="release_year"
         // By default useAsFilter is true
         useAsFilter={false}
         // Required when chartType is custom
         defaultQuery={() => ({
-            timeout: '1s',
-        })}
-        setOption={() => ({
-            xAxis: {
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            },
-            yAxis: {},
-            series: [
-                {
-                    type: 'bar',
-                    data: [23, 24, 18, 25, 27, 28, 25],
+            aggs: {
+                years: {
+                    terms: {
+                        field: 'release_year',
+                    },
                 },
-            ],
+            },
         })}
+        setOption={({ rawData }) => {
+            const buckets = (rawData && rawData.aggregations && rawData.aggregations.years.buckets) || [];
+            return ({
+                xAxis: {
+                    data: buckets.map(bucket => bucket.key),
+                },
+                yAxis: {},
+                series: [
+                    {
+                        type: 'bar',
+                        data: buckets.map(bucket => bucket.doc_count),
+                    },
+                ],
+            });
+        }}
     />
+</ReactiveBase>
 ```
 
 ### Usage With All Props
 
 ```jsx
+<ReactiveBase
+    app="movies-store-app"
+    url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+    enableAppbase
+    appbaseConfig={{
+        recordAnalytics: true,
+    }}
+>
     <ReactiveChart
         chartType="custom"
         componentId="custom_chart"
+        useAsFilter={true}
+        dataField="release_year"
         // Required when chartType is custom
         defaultQuery={() => ({
-            timeout: '1s',
-        })}
-        setOption={() => ({
-            xAxis: {
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            },
-            yAxis: {},
-            series: [
-                {
-                    type: 'bar',
-                    data: [23, 24, 18, 25, 27, 28, 25],
+            aggs: {
+                years: {
+                    terms: {
+                        field: 'release_year',
+                    },
                 },
-            ],
+            },
         })}
-        useAsFilter={true}
+        setOption={({ rawData }) => {
+            const buckets = (rawData && rawData.aggregations && rawData.aggregations.years.buckets) || [];
+            return ({
+                xAxis: {
+                    data: buckets.map(bucket => bucket.key),
+                },
+                yAxis: {},
+                series: [
+                    {
+                        type: 'bar',
+                        data: buckets.map(bucket => bucket.doc_count),
+                    },
+                ],
+            });
+        }}
         // When useAsFilter we have to define customQuery
-        customQuery={()=>({
-            query:{
-                match_all:{}
-            }
-        })}
+        customQuery={value => (value ? {
+						query: {
+							term: {
+								release_year: value.mainLabel,
+							},
+						},
+        } : { query: { match_all: {} } })}
     />
+</ReactiveBase>
 ```
 
 ## Validations
