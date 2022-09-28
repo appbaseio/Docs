@@ -83,6 +83,8 @@ The `_id` property of the elasticsearch hit object. This prop is required to tra
     This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
 -   **href** `string` [optional]
     can be used to specify the URL of the page the link goes to
+-   **as**  `string` [optional]
+    The html element tag which the component should use. Defaults to `a`(anchor tag).
 
 > Note
 >
