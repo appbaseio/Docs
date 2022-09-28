@@ -22,7 +22,7 @@
             - title: MultiList
               link: /docs/reactivesearch/v3/list/multilist/
             - title: TreeList
-              link: /docs/reactivesearch/v3/list/treelist/              
+              link: /docs/reactivesearch/v3/list/treelist/
             - title: SingleDropdownList
               link: /docs/reactivesearch/v3/list/singledropdownlist/
             - title: MultiDropdownList
@@ -101,6 +101,8 @@
               link: /docs/reactivesearch/v3/chart/linechart/
             - title: ScatterChart
               link: /docs/reactivesearch/v3/chart/scatterchart/
+            - title: CustomChart
+              link: /docs/reactivesearch/v3/chart/customchart/
       - group: Themes
         items:
             - title: Themes
