@@ -27,8 +27,6 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
         chartType="scatter"
         // unique id for component
         componentId="ratingsCount"
-        // Database field to connect
-        dataField="ratings_count"
         // Chart title
         title="Ratings"
         // Database field to extract data for x axis
@@ -43,7 +41,6 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
 ```jsx
     <ReactiveChart
         componentId="Language"
-        dataField="language_code.keyword"
         chartType="scatter"
         xAxisField="ratings_count"
         yAxisField="average_rating"
@@ -87,10 +84,6 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
 
     unique identifier of the component, can be referenced in other components' `react` prop.
     <br />
-
--   **dataField** `String`
-
-    data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
 -   **chartType** `String`
 
@@ -210,7 +203,7 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
         customQuery={(value, props) => ({
             "query": {
                 "term": {
-                    [props.dataField]: value
+                    "original_title": value
                 }
             }
         })}
