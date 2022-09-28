@@ -90,10 +90,10 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
     Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram` and `chart`.
 
 -   **xAxisField** `String`
-    Field name to extract the x axis data for scatter chart
+    Field name to extract the x axis data for scatter chart. Please note that the field value must be numeric.
     
 -   **yAxisField** `String`
-    Field name to extract the y axis data for scatter chart
+    Field name to extract the y axis data for scatter chart. Please note that the field value must be numeric.
 
 -   **nestedField** `String` [optional]
 
