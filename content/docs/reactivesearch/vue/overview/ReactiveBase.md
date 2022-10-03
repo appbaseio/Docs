@@ -92,16 +92,6 @@ This is the first component you will need to add when using `ReactiveSearch`.
 -   **appbaseConfig** `Object` [optional]
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/vue/advanced/analytics/#configure-the-analytics-experience).
--   **analytics** `Boolean` [optional]
-    allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.<br/>
-    Check the [analytics recipe](/docs/reactivesearch/vue/advanced/analytics/) for click analytics implementation.
-    > Note:
-    > This prop has been marked as deprecated. Please use the `recordAnalytics` property in the `appbaseConfig` prop instead.
--   **analyticsConfig** `Object` [optional]
-    allows you to customize the analytics experience when appbase.io is used as a backend.
-    Read more about it over [here](/docs/reactivesearch/vue/advanced/analytics/#configure-the-analytics-experience).
-    > Note:
-    > This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
 -	**initialQueriesSyncTime** `Number` [optional]
 	allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
 -   **as** `String` [optional]

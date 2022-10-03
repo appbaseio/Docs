@@ -144,8 +144,6 @@ Example uses:
     fields to be excluded in the suggestion's query when `autoSuggest` is true.
 -   **includeFields** `String Array` [optional]
     fields to be included in the suggestion's query when `autoSuggest` is true.
--   **enableQuerySuggestions** `bool` [optional]
-    This prop has been marked as deprecated starting `v1.7.8`. Please use the `enablePopularSuggestions` prop instead.
 -   **enablePopularSuggestions** `bool` [optional]
     Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
@@ -457,9 +455,6 @@ Or you can also use render as prop.
 	<div>Something went wrong!<br />Error details<br />{{ error }}</div>
 </template>
 ```
-
-- **renderQuerySuggestions** `Function|slot-scope` [optional]
-  This prop has been marked as deprecated starting `v1.7.8`. Please use the `renderPopularSuggestions` prop instead.
 
 - **renderPopularSuggestions** `Function|slot-scope` [optional]
   You can render popular suggestions in a custom layout by using the `renderQuerySuggestions` as a `prop` or a `slot`.

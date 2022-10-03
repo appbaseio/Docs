@@ -108,14 +108,14 @@ For example in the following code, we're setting up two custom events that will 
 
 ```html
 <template>
-	<reactive-base :analyticsConfig="analyticsConfig" />
+	<reactive-base :appbaseConfig="appbaseConfig" />
 </template>
 <script>
 	export default {
 		name: 'app',
 		methods: {
 			computed: {
-				analyticsConfig() {
+				appbaseConfig() {
 					return {
 						customEvents: {
 							platform: 'ios',
