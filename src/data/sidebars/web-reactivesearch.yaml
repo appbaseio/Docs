@@ -89,8 +89,6 @@
               link: /docs/reactivesearch/v3/map/reactiveopenstreetmap/
       - group: Chart Components
         items:
-            - title: ReactiveChart
-              link: /docs/reactivesearch/v3/chart/reactivechart/
             - title: PieChart
               link: /docs/reactivesearch/v3/chart/piechart/
             - title: BarChart
@@ -101,8 +99,8 @@
               link: /docs/reactivesearch/v3/chart/linechart/
             - title: ScatterChart
               link: /docs/reactivesearch/v3/chart/scatterchart/
-            - title: CustomChart
-              link: /docs/reactivesearch/v3/chart/customchart/
+            - title: ReactiveChart
+              link: /docs/reactivesearch/v3/chart/reactivechart/
       - group: Themes
         items:
             - title: Themes

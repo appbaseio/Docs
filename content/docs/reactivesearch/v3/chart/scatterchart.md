@@ -87,17 +87,13 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
 
 -   **chartType** `String`
 
-    Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram` and `chart`.
+    Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
 -   **xAxisField** `String`
     Field name to extract the x axis data for scatter chart. Please note that the field value must be numeric.
     
 -   **yAxisField** `String`
     Field name to extract the y axis data for scatter chart. Please note that the field value must be numeric.
-
--   **nestedField** `String` [optional]
-
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 
 -   **title** `String or JSX` [optional]
 

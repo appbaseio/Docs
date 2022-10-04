@@ -103,11 +103,7 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 
 -   **chartType** `String`
 
-    Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram` and `chart`.
-
--   **nestedField** `String` [optional]
-
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+    Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
 -   **title** `String or JSX` [optional]
 
