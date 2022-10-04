@@ -56,7 +56,16 @@ Example uses:
     placeholder="Search for cities or venues"
     autoSuggest={true}
     defaultSuggestions={[{ label: 'Programming', value: 'Programming' }]}
-    highlight={false}
+    highlight={true}
+    highlightConfig={{
+        'pre_tags': ['<mark>'],
+        'post_tags': ['</mark>'],
+        'fields': {
+            text: {},
+            title: 'sws'
+        },
+        'number_of_fragments': 0,
+    }}
     highlightField="group_city"
     queryFormat="or"
     fuzziness={0}
@@ -221,6 +230,25 @@ Example uses:
     set the milliseconds to wait before executing the query. Defaults to `0`, i.e. no debounce.
 -   **highlight** `Boolean` [optional]
     Whether highlighting should be enabled in the returned results. Defaults to `false`.
+-   **highlightConfig** `Object` [optional]
+    a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). For example,
+
+    ```js
+    <DataSearch
+    	componentId="title"
+    	dataField={['title', 'text']}
+    	highlight
+    	highlightConfig={{
+            'pre_tags': ['<mark>'],
+            'post_tags': ['</mark>'],
+            'fields': {
+                'text': {},
+                'title': {},
+            },
+            'number_of_fragments': 0,
+    	}}
+    />
+    ```
 -   **highlightField** `String` or `Array` [optional]
     When highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
 -   **customHighlight** `Function` [optional]

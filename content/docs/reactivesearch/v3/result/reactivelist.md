@@ -53,6 +53,16 @@ Example uses:
     		stats.time
     	} ms`;
     }}
+    highlight={true}
+    highlightConfig={{
+        'pre_tags': ['<mark>'],
+        'post_tags': ['</mark>'],
+        'fields': {
+            text: {},
+            title: 'sws'
+        },
+        'number_of_fragments': 0,
+    }}
     react={{
     	and: ['CitySensor', 'SearchSensor'],
     }}
@@ -272,7 +282,7 @@ Example uses:
         }
     ```
 -   **onData** `Function` [optional]
-    gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
+    gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData`, `settings` & `resultStats`.
 -   **onError** `Function` [optional]
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 -   **onPageChange** `Function` [optional]
@@ -307,6 +317,27 @@ Example uses:
 ```
 
 	> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
+
+-   **highlight** `Boolean` [optional]
+    Whether highlighting should be enabled in the returned results. Defaults to `false`.
+-   **highlightConfig** `Object` [optional]
+    a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). For example,
+
+    ```js
+    <ReactiveList
+    	componentId="title"
+    	highlight
+    	highlightConfig={{
+            'pre_tags': ['<mark>'],
+            'post_tags': ['</mark>'],
+            'fields': {
+                'text': {},
+                'title': {},
+            },
+            'number_of_fragments': 0,
+    	}}
+    />
+    ```
 
 ## Sub Components
 
@@ -400,6 +431,8 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
         Custom data set in the query rule when appbase.io is used as backend. [Read More](/docs/search/rules/#custom-data)
     -   **`rawData`** `object`
         An object of raw response as-is from elasticsearch query.
+    -   **`settings`** `object`
+        The settings object returned in ReactiveSearch API response which would contain the `queryId` property to record clicks and conversions analytics.
     -   **`resultStats`**: `object`
         An object with the following properties which can be helpful to render custom stats:
         -   **`numberOfResults`**: `number`
