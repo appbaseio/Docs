@@ -59,26 +59,26 @@ PIPELINE_BUILD_CONFIG = [
 ]
 
 function parseRSReference() {
-	/**
-	 * Parse the RS schema json and build a reference.md file
-	 * out of it.
-	 * 
-	 * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/schema.json
-	 */
-	rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/schema.json"
+    /**
+     * Parse the RS schema json and build a reference.md file
+     * out of it.
+     * 
+     * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/schema.json
+     */
+    rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/schema.json"
 
-	// Fetch the JSON
-    https.get(rsSchemaURL,(res) => {
+    // Fetch the JSON
+    https.get(rsSchemaURL, (res) => {
         let body = "";
-    
+
         res.on("data", (chunk) => {
             body += chunk;
         });
-    
+
         res.on("end", () => {
             try {
                 let json = JSON.parse(body);
-                
+
                 // Finally, we can parse the markdown
                 //
                 // Parse the top level properties first.
@@ -109,21 +109,21 @@ function parseRSReference() {
                         fileContent = fs.readFileSync(value.mdPrefix);
                         originalString = fileContent + "\n\n"
                     }
-                    
+
 
                     var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required)
 
                     fs.writeFile(value.path, markdownStr, err => {
-                        if (err) {console.log(err)}
+                        if (err) { console.log(err) }
                     })
                 })
 
-                
+
             } catch (error) {
                 console.error(error.message, error.stack);
             };
         });
-    
+
     }).on("error", (error) => {
         console.error(error.message, error.stack);
     });
@@ -196,7 +196,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
         // Handle engine support and show it properly
         if (!isPipeline) {
             markdownStr += "**Supported Engines**\n"
-            markdownStr += `${ enginesSupported != undefined ? enginesSupported.join(", ") : "Not dependent on engine, works for all."}\n\n`
+            markdownStr += `${enginesSupported != undefined ? enginesSupported.join(", ") : "Not dependent on engine, works for all."}\n\n`
         }
 
         // Else, parse the property fields accordingly.
@@ -216,7 +216,7 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
         propertyEnum = propertyContainer["enum"]
         if (propertyEnum != undefined) {
             markdownStr += "**Following values are supported for this field**\n\n"
-            
+
             supportedValues = ""
             propertyEnum.forEach((value, index) => {
                 propertyEnum[index] = "`" + value + "`"
@@ -225,10 +225,13 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
             markdownStr += propertyEnum.join(", ") + "\n\n"
         }
 
+        // If engine is `all`, set it to `elasticsearch`
+        if (engine == "all") engine = "elasticsearch"
+
         var playgroundURL = propertyContainer["playgroundURL"]
-        if (playgroundURL != undefined) {
+        if (playgroundURL != undefined && playgroundURL[engine] != undefined) {
             markdownStr += "**Try out an example in ReactiveSearch Playground**\n"
-            markdownStr += `<iframe src="${playgroundURL}"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>\n\n`
+            markdownStr += `<iframe src="${playgroundURL[engine]}"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>\n\n`
         }
     }
 
@@ -257,32 +260,32 @@ function parsePipelineReference() {
      * Schema for RS will be used from: https://github.com/appbaseio/reactivesearch-api/blob/feat/dev/schema/latest/pipelines-schema.json
      */
 
-     rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/pipelines-schema.json"
+    rsSchemaURL = "https://raw.githubusercontent.com/appbaseio/reactivesearch-api/dev/schema/latest/pipelines-schema.json"
 
-     // Fetch the JSON
-     https.get(rsSchemaURL,(res) => {
-         let body = "";
-     
-         res.on("data", (chunk) => {
-             body += chunk;
-         });
-     
-         res.on("end", () => {
-             try {
-                 let json = JSON.parse(body);
-                 
-                 // Finally, we can parse the markdown
-                 //
-                 // Parse the top level properties first.
-                 // We will keep writing as we parse the values.
- 
-                 PIPELINE_BUILD_CONFIG.forEach(value => {
-                     if (!value.enabled) return
- 
-                     if (value.path == undefined) {
-                         console.error("`path` cannot be empty or invalid: ", value.path)
-                         return
-                     }
+    // Fetch the JSON
+    https.get(rsSchemaURL, (res) => {
+        let body = "";
+
+        res.on("data", (chunk) => {
+            body += chunk;
+        });
+
+        res.on("end", () => {
+            try {
+                let json = JSON.parse(body);
+
+                // Finally, we can parse the markdown
+                //
+                // Parse the top level properties first.
+                // We will keep writing as we parse the values.
+
+                PIPELINE_BUILD_CONFIG.forEach(value => {
+                    if (!value.enabled) return
+
+                    if (value.path == undefined) {
+                        console.error("`path` cannot be empty or invalid: ", value.path)
+                        return
+                    }
 
                     var originalString = ""
 
@@ -298,22 +301,22 @@ function parsePipelineReference() {
                         originalString = fileContent + "\n\n"
                     }
 
-                     var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required, true)
- 
-                     fs.writeFile(value.path, markdownStr, err => {
-                         if (err) {console.log(err)}
-                     })
-                 })
- 
-                 
-             } catch (error) {
-                 console.error(error.message, error.stack);
-             };
-         });
-     
-     }).on("error", (error) => {
-         console.error(error.message, error.stack);
-     });
+                    var markdownStr = parsePropertiesFromLevel(json, 1, originalString, null, value.engine, json.required, true)
+
+                    fs.writeFile(value.path, markdownStr, err => {
+                        if (err) { console.log(err) }
+                    })
+                })
+
+
+            } catch (error) {
+                console.error(error.message, error.stack);
+            };
+        });
+
+    }).on("error", (error) => {
+        console.error(error.message, error.stack);
+    });
 }
 
 module.exports = {
