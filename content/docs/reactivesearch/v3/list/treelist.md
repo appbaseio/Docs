@@ -116,9 +116,9 @@ function Index(props) {
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -133,39 +133,39 @@ function Index(props) {
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
       
--   **dataField** `String Array`
+### dataField `String Array`
     data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. `dataField` array must have values in order, i.e, category > sub-cateogry and so-on.
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
     title of the component to be shown in the UI. Defaults to no title being shown.
--   **loader** `String or JSX` [optional]
+### loader `String or JSX` [optional]
     to display an optional loader while fetching the options.
 
--   **aggregationSize**
+### aggregationSize
     To set the number of buckets to be returned by aggregations.
 
     > Note: This prop is only applicable when `enableAppbase` is set to `true`.
 
--   **sortBy** `String` [optional]
+### sortBy `String` [optional]
     sort the list items by one of `count`, `asc`, or `desc`. Defaults to `count`, which sorts the list by the frequency of count value, most first.
--   **defaultValue** `String Array` [optional]
+### defaultValue `String Array` [optional]
     select one or more options from the list on mount. Accepts an `Array` object containing the items that should be selected.
--   **value** `String Array` [optional]
+### value `String Array` [optional]
     controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
--   **queryFormat** `String` [optional]
+### queryFormat `String` [optional]
     queries the selected items from the list in one of two modes: `or`, `and`.
     -   Defaults to `or` which queries for results where any of the selected list items are present.
     -   In `and` mode, the applied query filters results where all of the selected items are present.
--   **mode** `String` [optional]
+### mode `String` [optional]
     supports two modes, `multiple` and `single`. When set to `single`, only one selection from the hierarchy is allowed. Defaults to `multiple`.
--   **showCheckbox** `Boolean` [optional]
+### showCheckbox `Boolean` [optional]
     show checkbox icon for each list item. Defaults to `false`.Use this prop in conjunction with `mode` prop set to `multiple`.
--   **showRadio** `Boolean` [optional]
+### showRadio `Boolean` [optional]
     show radio icon for each list item. Defaults to `false`.Use this prop in conjunction with `mode` prop set to `single`.    
--   **showCount** `Boolean` [optional]
+### showCount `Boolean` [optional]
     show a count of the number of occurences besides each list item. Defaults to `true`.
--   **showIcon** `Boolean` [optional]
+### showIcon `Boolean` [optional]
     show icon for non-leaf hierarchy items. Defaults to `false`.   
--   **icon** `JSX` [optional]
+### icon `JSX` [optional]
     custom icon for non-leaf hierarchy items.
     
     ```jsx
@@ -175,9 +175,9 @@ function Index(props) {
 	        </span>
 	    }
     ```         
--   **showLeafIcon** `Boolean` [optional]
+### showLeafIcon `Boolean` [optional]
     show icon for leaf hierarchy items. Defaults to `false`.   
--   **leafIcon** `JSX` [optional]
+### leafIcon `JSX` [optional]
     custom icon for leaf hierarchy items.
     
     ```jsx
@@ -187,25 +187,25 @@ function Index(props) {
 	        </span>
 	    }
     ```     
--   **showSwitcherIcon** `Boolean` [optional]
+### showSwitcherIcon `Boolean` [optional]
     show switcher icon for TreeList.   
--   **switcherIcon** `Function` [optional] 
+### switcherIcon `Function` [optional] 
     custom switcher icon for TreeList. It takes an boolean argument to depict expanded/ collapsed list item.
     
     ```jsx
         switcherIcon={isExpanded => (isExpanded ? <span> ⤵</span> : <span> →</span>)}
     ```               
--   **showSearch** `Boolean` [optional]
+### showSearch `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to true.
--   **placeholder** `String` [optional]
+### placeholder `String` [optional]
     placeholder to be displayed in the searchbox, only applicable when the `showSearch` prop is set to `true`. When applicable, the default placeholder value is set to "Search".
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **renderItem** `Function` [optional]
+### renderItem `Function` [optional]
     customize the rendered list itemss via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
     ```js
      renderItem={(label, count, isSelected) => (
@@ -214,7 +214,7 @@ function Index(props) {
      	</span>
      )}	
     ```
--   **render** `Function` [optional]
+### render `Function` [optional]
     an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
     <br/>
     It accepts an object with these properties:
@@ -346,7 +346,7 @@ Or you can also use render function as children
 </TreeList>
 ```
 
--   **renderError** `String or JSX or Function` [optional]
+### renderError `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
     ```js
     renderError={(error) => (
@@ -356,18 +356,18 @@ Or you can also use render function as children
         )
     }
     ```
--   **renderNoResults** `Function` [optional]
+### renderNoResults `Function` [optional]
     can be used to render a message in case of no list items.
 
     ```js
     renderNoResults={() => <p>No Results Found!</p>}
     ```
 
--   **onChange** `function` [optional]
+### onChange `function` [optional]
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
--   **onError** `Function` [optional]
+### onError `Function` [optional]
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -468,18 +468,18 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **style** `Object`
+### style `Object`
     CSS styles to be applied to the **TreeList** component.
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **TreeList** component as long as the component is a part of `react` dependency of at least one other component.
     `Note:` When extending with customQuery, the `queryFormat` prop has no affect.
--   **defaultQuery** `Function`
+### defaultQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
     Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called every time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -496,11 +496,11 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
     };
     ```
 
--   **onValueChange** `Function`
+### onValueChange `Function`
     is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with an applicable discount coupon code when list item(s) is/are selected in a "E-commerce Product" TreeList.
--   **onQueryChange** `Function`
+### onQueryChange `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **TreeList's** options.
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.

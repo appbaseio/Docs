@@ -117,27 +117,27 @@ Example uses:
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
     <br />
 
--   **defaultQuery** `Function`
+### defaultQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to retrieve the chart data, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
     Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 
--   **setOption** `Function`
+### setOption `Function`
     `ReactiveChart` uses the [Echarts](https://echarts.apache.org/) library to render the UI. `ReactiveChart` component connects the search backend to retrieve the chart data. The `setOption` prop allows you to define the custom chart option support by [Echarts](https://echarts.apache.org/) to render any kind of chart UI. It accepts the an object containing the following properties:
     - `aggregationData` An array of aggregation buckets
     - `data` An array of search hits
     - `rawData` Search backend data in raw form
     - `value` Current selected value in chart UI
 
--   **customQuery** `Function` [optional*] (Required when `useAsFilter` is `true`)
+### customQuery `Function` [optional*] (Required when `useAsFilter` is `true`)
     is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     
 > Note: customQuery is called on value changes in the **ReactiveChart** component as long as the component is a part of `react` dependency of at least one other component.
 
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -152,36 +152,36 @@ Example uses:
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
--   **dataField** `String` [optional*]
+### dataField `String` [optional*]
 
     data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
 > Note: The `dataField` property is only required when using pre-built charts.
 
--   **chartType** `String`
+### chartType `String`
 
     Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
--   **useAsFilter** `Boolean` [optional]
+### useAsFilter `Boolean` [optional]
     If set to `false` then data selection on chart UI would not filter the results. Defaults to `true`.
 
--   **loader** `String or JSX` [optional]
+### loader `String or JSX` [optional]
 
     to display an optional loader while fetching the options.
 
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
 
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
 
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
 
     enable creating a URL query string parameter based on the selected value of the chart. This is useful for sharing URLs with the component state. Defaults to `false`.
 
--   **renderError** `String or JSX or Function` [optional]
+### renderError `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
 
     ```jsx
@@ -192,7 +192,7 @@ Example uses:
             )
         }
     ```
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -212,7 +212,7 @@ Example uses:
 `ReactiveChart` component can be extended to
 
 1. specify how chart data should be filtered or updated using `react` prop.
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **ReactiveChart's** options.
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.

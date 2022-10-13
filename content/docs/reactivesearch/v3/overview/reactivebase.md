@@ -29,21 +29,21 @@ This is the first component you will need to add when using `ReactiveSearch`.
 
 ### Props
 
--   **app** `String`
+### app `String`
     app name as it appears on the dashboard. Refers to an index if you're using your own Elasticsearch cluster. (Multiple indexes can be connected to by specifying comma-separated index names)
--   **type** `String` [optional]
+### type `String` [optional]
     types on which the queries should run on. Multiple types can be passed as comma-separated values. The default behavior here is to search on all the app types.
--   **credentials** `String` [optional]
+### credentials `String` [optional]
     app credentials as they appear on the dashboard. It should be a string of the format "username:password" and is used for authenticating the app. If you are not using an appbase.io app, credentials may not be necessary - although having an open-access Elasticsearch cluster is not recommended.
--   **url** `String` [optional]
+### url `String` [optional]
     URL where the Elasticsearch cluster is hosted, only needed if your app uses a non-appbase.io URL.
--   **enableAppbase** `boolean` [optional]
+### enableAppbase `boolean` [optional]
     Defaults to `false`. You can set this to `true` when you're using appbase.io alongside `Elasticsearch`. It enables the following features:
     -   Recording of analytics events - search and clicks. [Read more](/docs/reactivesearch/v3/advanced/analytics/).
     -   Query generation happens on server side - protecting against security concerns around query injection.
     -   Apply query rules and functions for search queries. [Read more](/docs/search/rules/).
     -   Apply additional security controls to requests: authenticate via RBAC (via JWTs) or Basic Auth, ACL based access control, IP based rate limits, IP/HTTP Referers whitelisting, fields filtering. [Read more](/docs/security/role/).
--   **headers** `Object` [optional]
+### headers `Object` [optional]
     set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```js{4-6}
@@ -59,16 +59,16 @@ This is the first component you will need to add when using `ReactiveSearch`.
 </ReactiveBase>
 ```
 
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for ReactiveBase and its children components. This service is typically a ReactiveSearch backend pipeline or any other API handler that works with the ReactiveSearch API references. This property works only when `enableAppbase` is set to `true`.
     Accepts the following properties:
-    -   **url** `String` [Required]
+    ### url `String` [Required]
         URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
+    ### headers `Object` [optional]        
         set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
+    ### method `String` [optional]    
         set method of the API request.
-    -   **body** `Object` [optional]    
+    ### body `Object` [optional]    
         request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
     
     > Top level props - `url`, `app` and `credentials` are optional and overridden in the final request when `endpoint` prop is defined.
@@ -89,32 +89,32 @@ This is the first component you will need to add when using `ReactiveSearch`.
     </ReactiveBase>
     ```
 
--   **appbaseConfig** `Object` [optional]
+### appbaseConfig `Object` [optional]
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
--   **analytics** `Boolean` [optional]
+### analytics `Boolean` [optional]
     allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.<br/>
     Check the [analytics recipe](/docs/reactivesearch/v3/advanced/analytics/) for click analytics implementation.
     > Note:
     > This prop has been marked as deprecated. Please use the `recordAnalytics` property in the `appbaseConfig` prop instead.
--   **analyticsConfig** `Object` [optional]
+### analyticsConfig `Object` [optional]
     allows you to customize the analytics experience when appbase.io is used as a backend.
     Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
     > Note:
     > This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
--	**initialQueriesSyncTime** `Number` [optional]
+### initialQueriesSyncTime `Number` [optional]
 	allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
--   **as** `String` [optional]
+### as `String` [optional]
     allows to use the custom html element tag, defaults to `div`.
--   **theme** `Object` [optional]
+### theme `Object` [optional]
     allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/v3/theming/overview/)
--   **themePreset** `String` [optional]
+### themePreset `String` [optional]
     allows over-writing of default styles by providing a preset value. Supported values are `light` (default) and `dark`. You can read more about its usage [here](/docs/reactivesearch/v3/theming/overview/)
--   **getSearchParams** `Function` [optional]
+### getSearchParams `Function` [optional]
     Enables you to customize the evaluation of query-params-string from the url (or) any other source. If this function is not set, the library will use `window.location.search` as the search query-params-string for parsing selected-values. This can come handy if the URL is using hash values.
--   **setSearchParams** `Function` [optional]
+### setSearchParams `Function` [optional]
     Enables you to customize setting of the query params string in the url by providing the updated query-params-string as the function parameter. If this function is not set, the library will set the `window.history` via `pushState` method.
--   **transformRequest** `Function` [optional]
+### transformRequest `Function` [optional]
     Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution. Note that this is an experimental API and will likely change in the future.
 	> Note:
     >
@@ -152,10 +152,10 @@ You can also modify the request `URL` in that way:
 
 The above example will change the default `_msearch` request to `_search` request.
 
--   **graphQLUrl** `String` [optional]
+### graphQLUrl `String` [optional]
     Allows user to query from GraphqQL server instead of `Elasticsearch` REST api. [graphql-compose-elasticsearch](https://github.com/graphql-compose/graphql-compose-elasticsearch) helps in transforming `GraphQL` queries into `Elasticsearch` rest api. Here is an example of `GraphQL` server which acts as proxy for `Elasticsearch`.
     -   [GraphQL Server for books application](https://github.com/appbaseio-apps/graphql-elasticsearch-server)
--   **transformResponse** `Function` [optional]
+### transformResponse `Function` [optional]
     Enables transformation of search network response before rendering them. This asynchronous function will give you elasticsearch response object and componentId as params and expects an updated response in return in the similar structure of elasticsearch. You can use `componentId` to conditionally transform response for a particular reactivesearch component only.
 
 ```js{7-34}
@@ -220,9 +220,9 @@ The above example will change the default `_msearch` request to `_search` reques
 
 
 > 💡 &nbsp; Use below props when using [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/) &nbsp; library.
--   **mapKey** `String` [optional]     
+### mapKey `String` [optional]     
     accepts the secret key to load google script.
--   **mapLibraries** `Array<String>` [optional]     
+### mapLibraries `Array<String>` [optional]     
     accepts the list of addiotional maps libraries to load. The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
     - `drawing`
     - `geometry`
@@ -240,7 +240,7 @@ The above example will change the default `_msearch` request to `_search` reques
 
     > Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
 
--   **preferences** `Object` [optional]
+### preferences `Object` [optional]
     accepts an object to configure the search settings for components. The `preferences` property allows configuring the search settings for your components in one place. The preferences object must follow the following structure:
 
 ```ts

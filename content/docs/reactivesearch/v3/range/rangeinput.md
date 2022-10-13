@@ -78,9 +78,9 @@ Example uses:
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -97,7 +97,7 @@ Example uses:
             
 -   **dataField** `String`
     DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
--   **range** `Object`
+### range `Object`
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
     
     `range` prop accepts (JavaScript) `Date` objects as values for the `start` and `end` keys when a date type field is used for the `dataField`.
@@ -114,17 +114,17 @@ Example uses:
             queryFormat="date"
         />
     ```
--   **nestedField** `String` [optional]
+### nestedField `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultValue** `Object` [optional]
+### defaultValue `Object` [optional]
     selects a initial range values using `start` and `end` key values from one of the data elements.
--   **value** `Object` [optional]
+### value `Object` [optional]
     controls the current value of the component.It selects the data from the range (on mount and on update). Use this prop in conjunction with `onChange` function.
--   **onChange** `function` [optional]
+### onChange `function` [optional]
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
--   **validateRange** `function` [optional]
+### validateRange `function` [optional]
     is a callback function that can be used to validate the range input values before applying it. This function accepts an array of numbers where first element represents the `start` range and second element represents the `end` range. The following example prevents the users to type negative value for start range input.
 ```js
     <RangeInput
@@ -136,23 +136,23 @@ Example uses:
         }}
     />
 ```
--   **rangeLabels** `Object` [optional]
+### rangeLabels `Object` [optional]
     an object with `start` and `end` keys and corresponding `String` labels to show labels near the ends of the `RangeInput` component.
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show the selected item as a filter in the selected filters view. Defaults to `true`.
--   **snap** `Boolean` [optional]
+### snap `Boolean` [optional]
     makes the slider snap on to points depending on the `stepValue` when the slider is released. Defaults to `true`. When set to `false`, `stepValue` is ignored.
--   **stepValue** `Number` [optional]
+### stepValue `Number` [optional]
     step value specifies the slider stepper. Value should be an integer greater than or equal to `1` and less than `Math.floor((range.end - range.start) / 2)`. Defaults to 1.
--   **showHistogram** `Boolean` [optional]
+### showHistogram `Boolean` [optional]
     whether to display the range histogram or not. Defaults to `true`.
--   **interval** `Number` [optional]
+### interval `Number` [optional]
     set the histogram bar interval, applicable when _showHistogram_ is `true`. Defaults to `Math.ceil((props.range.end - props.range.start) / 100) || 1`.
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **includeNullValues** `Boolean` [optional]
+### includeNullValues `Boolean` [optional]
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
--   **queryFormat** `String`
+### queryFormat `String`
     Pass the `queryFormat` prop when dealing with date-type fields. Defaults to `date`. It sets the date format to be used in the query, can accept one of the following:
 
 <br />
@@ -171,7 +171,7 @@ Example uses:
 
 > Note: `queryFormat` is mandatory to pass when dealing with date types.
 
--   **calendarInterval** `String` [optional]
+### calendarInterval `String` [optional]
     It sets the interval for aggreation-data when dealing with date-types. Default value is calculated internally based on the range - `start` and `end` values. It can accept one of the following: `year`, `quarter`, `month`, `week`, `day`, `hour`, and `minute`. 
     
 ## Demo
@@ -245,14 +245,14 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
 />
 ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **style** `Object`
+### style `Object`
     CSS styles to be applied to the **RangeInput** component.
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **RangeInput** component as long as the component is a part of `react` dependency of at least one other component.
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -269,11 +269,11 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
     };
     ```
 
--   **onValueChange** `Function`
+### onValueChange `Function`
     is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when some range is selected in a "Discounted Price" RangeInput.
--   **onQueryChange** `Function`
+### onQueryChange `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **RangeInput's** data view.
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.
@@ -284,7 +284,7 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
         -   `String` is used for specifying a single component by its `componentId`.
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.

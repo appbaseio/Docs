@@ -171,14 +171,14 @@ For an example,
 
 ## Configure the analytics experience
 You can define the `appbaseConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
-- **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-- **emptyQuery** `Boolean` If `false`, then appbase.io will not record the analytics for the empty queries i.e `match_all` queries. Defaults to `true`.
-- **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
--   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.  
-- **suggestionAnalytics** `Boolean` If `false`, then appbase.io will not record the click analytics for the suggestions. Defaults to `true`.
-- **userId** `String` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
--   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
-- **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+### recordAnalytics `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+### emptyQuery `Boolean` If `false`, then appbase.io will not record the analytics for the empty queries i.e `match_all` queries. Defaults to `true`.
+### enableQueryRules `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+### enableSearchRelevancy `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.  
+### suggestionAnalytics `Boolean` If `false`, then appbase.io will not record the click analytics for the suggestions. Defaults to `true`.
+### userId `String` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+### useCache `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
+### customEvents `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 <br/>
 For example in the following code, we're setting up two custom events that will be recorded with each search request.
 
@@ -194,4 +194,4 @@ For example in the following code, we're setting up two custom events that will 
 </ReactiveBase>
 ```
 
-- **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.
+### enableTelemetry `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.

@@ -92,64 +92,64 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
 
     unique identifier of the component, can be referenced in other components' `react` prop.
     <br />
 
--   **dataField** `String`
+### dataField `String`
 
     data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
--   **chartType** `String`
+### chartType `String`
 
     Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
 
     title of the component to be shown in the UI.
 
--   **loader** `String or JSX` [optional]
+### loader `String or JSX` [optional]
 
     to display an optional loader while fetching the options.
 
--   **size** `Number` [optional]
+### size `Number` [optional]
     number of items to be displayed.
 
     > Note: 
     > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
     > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
--   **aggregationSize**
+### aggregationSize
     To set the number of buckets to be returned by aggregations.
 
     > Note: This prop is only applicable when `enableAppbase` is set to `true`.
 
--   **sortBy** `String` [optional]
+### sortBy `String` [optional]
 
     sort the items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the by the frequency of count value, most first.
 
--   **showMissing** `Boolean` [optional]
+### showMissing `Boolean` [optional]
 
     defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
 
--   **missingLabel** `String` [optional]
+### missingLabel `String` [optional]
 
     defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
 
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
 
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
 
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
 
     enable creating a URL query string parameter based on the selected value of the chart. This is useful for sharing URLs with the component state. Defaults to `false`.
 
--   **renderError** `String or JSX or Function` [optional]
+### renderError `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
     ```jsx
         renderError={(error) => (
@@ -159,34 +159,34 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
             )
         }
     ```
--   **value** `string` [optional]
+### value `string` [optional]
     controls the current value of the component. It selects the item from the chart UI (on mount and on update). Use this prop in conjunction with `onChange` function.
 
--   **onChange** `function` [optional]
+### onChange `function` [optional]
     is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
 
--   **onError** `Function` [optional]
+### onError `Function` [optional]
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
--   **xAxisName** `String` [optional]
+### xAxisName `String` [optional]
     Label for x axis line
--   **yAxisName** `String` [optional]
+### yAxisName `String` [optional]
     Label for y axis line
--   **xAxisField** `String` [optional]
+### xAxisField `String` [optional]
     Field name to extract the x axis data for scatter chart
--   **yAxisField** `String` [optional]
+### yAxisField `String` [optional]
     Field name to extract the y axis data for scatter chart
--   **labelFormatter** `Function` [optional]
+### labelFormatter `Function` [optional]
     To customize the range labels, for example:
 ```js
     labelFormatter=(value)=>`${value} USD`
 ```
--   **range** `Object`
+### range `Object`
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
     
     `range` prop accepts `Date` objects as values corresponding to `start` and `end` keys when date-types are dealt with.
@@ -204,12 +204,12 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
         queryFormat="date"            
     />
 ```
--   **interval** `Number` [optional]
+### interval `Number` [optional]
     set the histogram bar interval, applicable when _showHistogram_ is `true`. Defaults to `Math.ceil((props.range.end - props.range.start) / 100) || 1`.
 
--   **includeNullValues** `Boolean` [optional]
+### includeNullValues `Boolean` [optional]
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
--   **useAsFilter** `Boolean` [optional]
+### useAsFilter `Boolean` [optional]
     If set to `false` then data selection on chart UI would not filter the results. Defaults to `true`.
 ## Demo
 
@@ -281,13 +281,13 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
     />
 ```
 
--   **customQuery** `Function`
+### customQuery `Function`
     is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **ReactiveChart** component as long as the component is a part of `react` dependency of at least one other component.
--   **defaultQuery** `Function`
+### defaultQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
     Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
--   **setOption** `Function`
+### setOption `Function`
     `ReactiveChart` uses the [Echarts](https://echarts.apache.org/) library to render the UI. `ReactiveChart` component connects the search backend to retrieve the chart data. The `setOption` prop allows you to define the custom chart option support by [Echarts](https://echarts.apache.org/) to render any kind of chart UI. It accepts the an object containing the following properties:
     - `aggregationData` An array of aggregation buckets
     - `data` An array of search hits
@@ -326,7 +326,7 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
             ],
         })}
     ```
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **ReactiveChart's** options.
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.

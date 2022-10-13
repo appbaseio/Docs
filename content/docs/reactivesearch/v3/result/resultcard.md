@@ -75,12 +75,12 @@ const { ResultCardsWrapper } = ReactiveList;
 
 ## Props
 
--   **id** `string|number` [optional]
+### id `string|number` [optional]
 The `_id` property of the elasticsearch hit object. This prop is required to track the impressions for search results. [Read More](docs/reactivesearch/v3/advanced/analytics#track-impressions-for-search-results)
 
--   **target** `string` [optional]
+### target `string` [optional]
     This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
--   **href** `string` [optional]
+### href `string` [optional]
     can be used to specify the URL of the page the link goes to
 
 > Note
@@ -89,15 +89,15 @@ The `_id` property of the elasticsearch hit object. This prop is required to tra
 
 ## Sub Components
 
--   **Image**
+### Image
     use it to render the result card image.
     <br/>
     The `ResultCard.Image` accepts the following props:
     -   **`src`**: `string`
         source url of the image
--   **Title**
+### Title
     renders the title of the result card.
--   **Description**
+### Description
     can be used to render the result card description UI.
 
 ## Demo

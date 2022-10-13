@@ -50,9 +50,9 @@ Check demo [here](https://codesandbox.io/s/7zrj740oj6).
 
 Here `TabComponent` is responsible to render the Tabs UI and handle the switching between tabs and displaying selected filters. We are using `render` prop to display the component which provides an object with different parameters that can be used in rendering the UI and dispatching a new query. Fow switching the tab we will use `onClick` event to fire a new query. We will make use of the following paramateres provided by `render` method:
 
--   **aggregations** `Object`
+### aggregations `Object`
     `aggregations` prop contains the results from `aggs` Elasticsearch query of the component.
--   **setQuery** `function`
+### setQuery `function`
     `setQuery` function sets the query of the component. It takes an object param of shape:
 
 ```javascript
@@ -62,7 +62,7 @@ Here `TabComponent` is responsible to render the Tabs UI and handle the switchin
     }
 ```
 
--   **value** `any`
+### value `any`
     `value` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
 
 **SelectedFilters with ReactiveComponent**
@@ -97,11 +97,11 @@ You can also take advantage of various ReactiveSearch components static method f
 
 ### Props
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **style** `Object`
+### style `Object`
     CSS styles to be applied to the **DataSearch** component.
--   **aggregationField** `String` [optional]
+### aggregationField `String` [optional]
     One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
     You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` or `onData` prop as shown:
 
@@ -117,25 +117,25 @@ You can also take advantage of various ReactiveSearch components static method f
 
     > It is possible to override this query by providing `defaultQuery` or `customQuery`.
 
--   **aggregationSize**
+### aggregationSize
     To set the number of buckets to be returned by aggregations.
 
     > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
--   **defaultQuery** `Function`
+### defaultQuery `Function`
     **returns** the default query to be applied to the component, as defined in Elasticsearch Query DSL.
--   **customQuery** `Function`
+### customQuery `Function`
     **returns** the custom query to be applied to the component, as defined in Elasticsearch Query DSL.
     Custom query can be used to change the component's behavior for its subscribers.
--   **onQueryChange** `Function`
+### onQueryChange `Function`
     is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **onData** `Function`
+### onData `Function`
     callback function which provides `data`, `rawData`, `aggregationData` and `aggregations` as function params.
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
--   **react** `Object`
+### react `Object`
     `react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveMap`](/docs/reactivesearch/v3/map/reactivegooglemap/), [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist/).
 
     -   **key** `String`
@@ -148,23 +148,23 @@ You can also take advantage of various ReactiveSearch components static method f
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
 
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
     
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
-    -   **url** `String` [Required]
+    ### url `String` [Required]
         URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
+    ### headers `Object` [optional]        
         set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
+    ### method `String` [optional]    
         set method of the API request.
-    -   **body** `Object` [optional]    
+    ### body `Object` [optional]    
         request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
     > - Overrides the endpoint property defined in ReactiveBase.

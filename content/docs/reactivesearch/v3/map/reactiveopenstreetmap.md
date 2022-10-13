@@ -51,36 +51,36 @@ Example uses:
 
 ### Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **dataField** `String`
+### dataField `String`
     DB data field to be connected to the component's UI view, usually of a geopoint (i.e. location) data type and used for rendering the markers on the map.
--   **size** `Number` [optional]
+### size `Number` [optional]
     number of results to show in the map view, can be a number in the range [1, 1000]. Defaults to 10.
--   **defaultZoom** `Number` [optional]
+### defaultZoom `Number` [optional]
     preset map's zoom level, accepts integer values between [0, 20]. 0 is the minimum zoom level, where you can see the entire globe. 20 is the maximum zoom level. Defaults to 13.
--   **defaultCenter** `Object` [optional]
+### defaultCenter `Object` [optional]
     preset map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
--   **center** `Object` [optional]
+### center `Object` [optional]
     set map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
--   **defaultRadius** `Number` [optional]
+### defaultRadius `Number` [optional]
     used as distance value for the geo-distance query when `defaultCenter` or `center` is set. It accepts all positive integers.
--   **unit** `String` [optional]
+### unit `String` [optional]
     unit for distance measurement, uses `mi` (for miles) by default. Distance units can be specified from the following:
     ![screenshot](https://i.imgur.com/STbeagk.png)
--   **showMarkers** `Boolean` [optional]
+### showMarkers `Boolean` [optional]
     whether to show the markers on the map, defaults to `true`. Sometimes, it doesn't make sense to display markers (when building a heatmap or weather map or a directions navigation map)
--   **showSearchAsMove** `Boolean` [optional]
+### showSearchAsMove `Boolean` [optional]
     whether to show the _Search As I Move_ checkbox in the UI. Defaults to `true`.
--   **searchAsMove** `Boolean` [optional]
+### searchAsMove `Boolean` [optional]
     whether to set the _Search As I Move_ checkbox. Defaults to `false`.
--   **defaultPin** `String` [optional]
+### defaultPin `String` [optional]
     URL of the default marker pin image to be shown. It comes with a default image. Should only be set if you wish to use a custom marker.
--   **onPopoverClick** `function` [optional]
+### onPopoverClick `function` [optional]
     a function that takes one argument for getting a marker's data and returns an HTML markup to be displayed in the popover box.
--   **autoClosePopover** `Boolean` [optional]
+### autoClosePopover `Boolean` [optional]
     automatically closes the exisiting open popovers when `onPopoverClick` gets fired. Defaults to `false`.
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.
@@ -91,10 +91,10 @@ Example uses:
         -   `String` is used for specifying a single component by its `componentId`.
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
--   **autoCenter** `Boolean` [optional]
+### autoCenter `Boolean` [optional]
     whether to auto center the map based on the geometric center of all the location markers. Defaults to `false`.
 
--   **tileServer** `String` [optional]
+### tileServer `String` [optional]
 
     Used to provide different style to OpenStreet Map. It accepts tiles url that is used for providing layering to map. For more tile servers you can check https://wiki.openstreetmap.org/wiki/Tile_servers.
 
@@ -108,11 +108,11 @@ Example uses:
 > <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" rel="stylesheet" />
 > ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **style** `Object`
+### style `Object`
     CSS style object to be applied to the `ReactiveOpenStreetMap` component.
--   **renderItem** `function`
+### renderItem `function`
     event fired when one or more markers are indexed, updated or removed from the map. It takes an object with the following formats (`label`, `icon`, `custom`):
 
 ```js
@@ -132,7 +132,7 @@ renderItem={result => ({
 })}
 ```
 
--   **renderError** `String or JSX or Function` [optional]
+### renderError `String or JSX or Function` [optional]
     can be used to render an error message in case of any error.
 
 ```js
@@ -144,12 +144,12 @@ renderError={(error) => (
 }
 ```
 
--   **onError** `Function` [optional]
+### onError `Function` [optional]
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
--   **onData** `Function` [optional]
+### onData `Function` [optional]
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
 
--   **render** `function`
+### render `function`
     an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
     <br/>
     It accepts an object with these properties:

@@ -29,13 +29,13 @@ nestedSidebar: 'web-reactivesearch'
 
 ### Props
 
--   **componentIds** `string|string[]` [optional]
+### componentIds `string|string[]` [optional]
     By default `ErrorBoundary` watches for network request errors in all components and runtime errors in all it's descendants. If we want to restrict the components for getting network request errors then we can use `componentIds`.
 
--	**renderError** `function` [optional]
+### renderError `function` [optional]
 	A function for customizing the error message. This passes two parameters, `error` and `componentId`, and returns a JSX component that would be shown on recieving error.
 
--	**onError** `function` [optional]
+### onError `function` [optional]
 	A function called for performing side-effects such as logging errors. It is passed the same parameters as `renderError`, `error` and `componentId`.
 
 ### Example
