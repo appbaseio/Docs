@@ -67,9 +67,9 @@ Example uses:
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -84,36 +84,36 @@ Example uses:
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
--   **dataField** `String`
+### dataField `String`
     data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
--   **nestedField** `String` [optional]
+### nestedField `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **size** `Number` [optional]
+### size `Number` [optional]
     number of list items to be displayed.
 
     > Note: 
     > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
     > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
--   **aggregationSize**
+### aggregationSize
     To set the number of buckets to be returned by aggregations.
 
     > Note: This prop is only applicable when `enableAppbase` is set to `true`.
--   **sortBy** `String` [optional]
+### sortBy `String` [optional]
     property that decides on how to sort the list items, accepts one of `count`, `asc` or `desc` as valid values. `count` sorts the list based on the count occurences, with highest value at the top. `asc` sorts the list in the ascending order of the list item (Alphabetical). `desc` sorts the list in the descending order of the term. Defaulted to `count`.
--   **defaultValue** `string` [optional]
+### defaultValue `string` [optional]
     default selected value pre-selects an option from the list.
--   **value** `String` [optional]
+### value `String` [optional]
     sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	    
--   **showCount** `Boolean` [optional]
+### showCount `Boolean` [optional]
     show count of number of occurences besides an item. Defaults to `true`.
--   **showSearch** `Boolean` [optional]
+### showSearch `Boolean` [optional]
     whether to show a searchbox to filter the list items locally. Defaults to false.
--   **showClear** `Boolean` [optional]
+### showClear `Boolean` [optional]
     whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
--   **renderItem** `Function|slot-scope` [optional]
+### renderItem `Function|slot-scope` [optional]
     customize the rendered list via a function or slot-scope which receives the item label, count and isChecked & expects a JSX or String back. For example:
 
 <!-- prettier-ignore -->
@@ -131,7 +131,7 @@ Example uses:
 </single-dropdown-list>
 ```
 
--   **renderError** `String|Function|slot-scope` [optional]
+### renderError `String|Function|slot-scope` [optional]
     can be used to render an error message in case of any error.
 
 <!-- prettier-ignore -->
@@ -144,21 +144,21 @@ Example uses:
 </template>
 ```
 
--   **showMissing** `Boolean` [optional]
+### showMissing `Boolean` [optional]
     defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
--   **missingLabel** `String` [optional]
+### missingLabel `String` [optional]
     defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
--   **placeholder** `String` [optional]
+### placeholder `String` [optional]
     placeholder to be displayed in the dropdown searchbox.
--   **selectAllLabel** `String` [optional]
+### selectAllLabel `String` [optional]
     if provided, shows an extra option to select all the options in the list with the provided string value.
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **render** `Function|slot-scope` [optional]
+### render `Function|slot-scope` [optional]
     an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
     <br/>
     It accepts an object with these properties:
@@ -213,7 +213,7 @@ You can use render as a slot as shown below:
 </single-dropdown-list>
 ```
 
--   **renderLabel** `Function|slot-scope` [optional]
+### renderLabel `Function|slot-scope` [optional]
     can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
 
     <!-- prettier-ignore -->
@@ -230,10 +230,10 @@ You can use render as a slot as shown below:
     </single-dropdown-list>
     ```
 
--   **showLoadMore** `Boolean` [optional]
+### showLoadMore `Boolean` [optional]
     defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
 
--   **isOpen** `Boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
+### isOpen `Boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 ## Demo
 
 <br/>
@@ -316,15 +316,15 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **SingleDropdownList** component as long as the component is a part of `react` dependency of at least one other component.
--   **defaultQuery** `Function`
+### defaultQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL.
     `Note:` defaultQuery doesn't get leaked to other components.
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -341,7 +341,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
     };
     ```
 
--   **renderNoResults** `String|Function|slot-scope` [optional]
+### renderNoResults `String|Function|slot-scope` [optional]
     show custom message or component when no results found.
 
 <!-- prettier-ignore -->
@@ -370,9 +370,9 @@ export default {
 
 ```
 
--   **transformData** `Function` [optional]
+### transformData `Function` [optional]
     allows transforming the data to render inside the list. You can change the order, remove, or add items, tranform their values with this method. It provides the data as param which is an array of objects of shape `{ key: <string>, doc_count: <number> }` and expects you to return the array of objects of same shape.
--   **react** `Object`
+### react `Object`
     specify dependent components to reactively update **SingleDropdownList's** options.
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.
@@ -383,14 +383,14 @@ export default {
         -   `String` is used for specifying a single component by its `componentId`.
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Events
 
-- **change**
+### change
   is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
 
   ```jsx
@@ -424,5 +424,5 @@ export default {
 -   **value-change**
     is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a list item is selected in a "Discounted Price" SingleList.
 
--   **error**
+### error
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.

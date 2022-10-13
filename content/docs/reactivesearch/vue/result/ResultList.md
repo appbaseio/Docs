@@ -66,9 +66,9 @@ Example uses:
 
 ## Props
 
--   **target** `string` [optional]
+### target `string` [optional]
     This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
--   **href** `string` [optional]
+### href `string` [optional]
     can be used to specify the URL of the page the link goes to
 
 > Note

@@ -76,9 +76,9 @@ Example uses:
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -93,27 +93,27 @@ Example uses:
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
--   **dataField** `String`
+### dataField `String`
     data field to be connected to the component's UI view. The range items are filtered by a database query on this field.
--   **nestedField** `String` [optional]
+### nestedField `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **data** `Object Array`
+### data `Object Array`
     collection of UI `labels` with associated `start` and `end` range values.
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultValue** `String` [optional]
+### defaultValue `String` [optional]
     pre-select a label from the `data` array.
--   **value** `Array<String>` [optional]
+### value `Array<String>` [optional]
     sets the current value of the component. It sets the value(an object with `start` and `end` keys), on mount and on update. Use this prop in conjunction with the `change` event.		
--   **showCheckbox** `Boolean` [optional]
+### showCheckbox `Boolean` [optional]
     show checkbox icon for each range item. Defaults to `true`.
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the range. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -197,14 +197,14 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **style** `Object`
+### style `Object`
     CSS styles to be applied to the **MultiRange** component.
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **MultiRange** component as long as the component is a part of `react` dependency of at least one other component.
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -224,7 +224,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 ## Events
 
-- **change**
+### change
   is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
 
   ```jsx

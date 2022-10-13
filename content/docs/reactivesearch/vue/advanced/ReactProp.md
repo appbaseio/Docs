@@ -27,7 +27,7 @@ One of the key ideas behind Reactive Search and Reactive Maps is the reactive de
 
 ### Props
 
--   **react** `Object`
+### react `Object`
     `react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/result/ReactiveList/).
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.

@@ -72,9 +72,9 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
+### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
     Accepts the following properties:
     -   **url** `String` [Required]
@@ -89,25 +89,25 @@ While `RangeSlider` only requires the above props to be used, it comes with many
     > - Overrides the endpoint property defined in ReactiveBase.
     > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
--   **dataField** `String`
+### dataField `String`
     DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
--   **nestedField** `String` [optional]
+### nestedField `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **range** `Object`
+### range `Object`
     an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
--   **title** `String or JSX` [optional]
+### title `String or JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultValue** `Object` [optional]
+### defaultValue `Object` [optional]
     an object with `start` and `end` keys and corresponding numeric values denoting the pre-selected range values.
--   **value** `Object` [optional]
+### value `Object` [optional]
     sets the current value of the component. It sets the value(an object with `start` and `end` keys), on mount and on update. Use this prop in conjunction with the `change` event.		
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show the selected item as a filter in the selected filters view. Defaults to `true`.
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **sliderOptions** `Object` [optional]
+### sliderOptions `Object` [optional]
     use to pass props directly to the slider component `RangeSlider` uses. Read more about it [here](https://github.com/NightCatSama/vue-slider-component)
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -189,12 +189,12 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
--   **className** `String`
+### className `String`
     CSS class to be injected on the component container.
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **RangeSlider** component as long as the component is a part of `react` dependency of at least one other component.
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -213,7 +213,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 
 ## Events
 
-- **change**
+### change
   is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
 
   ```jsx

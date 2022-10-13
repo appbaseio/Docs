@@ -68,27 +68,27 @@ Example uses:
 
 ## Props
 
--   **componentId** `String`
+### componentId `String`
     unique identifier of the component, can be referenced in other components' `react` prop.
--   **dataField** `String`
+### dataField `String`
     data field to be connected to the component's UI view.
--   **data** `Object Array`
+### data `Object Array`
     collection of UI `labels` with associated `value` to be matched against the database field.
--   **title** `String` or `JSX` [optional]
+### title `String` or `JSX` [optional]
     title of the component to be shown in the UI.
--   **defaultValue** `String` or `Array` [optional]
+### defaultValue `String` or `Array` [optional]
     an array of default selected label(s) to pre-select one or more buttons.
--   **value** `String | Array<String>` [optional]
+### value `String | Array<String>` [optional]
     controls the current value of the component. It selects the label (on mount and on update). Use this prop in conjunction with the `change` event.	
--   **multiSelect** `Boolean` [optional]
+### multiSelect `Boolean` [optional]
     whether multiple buttons can be selected, defaults to **true**. When set to **false**, only one button can be selected.
--   **nestedField** `String` [optional]
+### nestedField `String` [optional]
     use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **showFilter** `Boolean` [optional]
+### showFilter `Boolean` [optional]
     show as filter when a value is selected in a global selected filters view. Defaults to `true`.
--   **filterLabel** `String` [optional]
+### filterLabel `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
--   **renderItem** `Function|slot-scope` [optional]
+### renderItem `Function|slot-scope` [optional]
     customize the rendered button via a function or slot-scope which receives the item object, `isSelected` and `handleClick` method to listen to the click events & expects the html back. For example:
 
     <!-- prettier-ignore -->
@@ -104,13 +104,13 @@ Example uses:
     </toggle-button>
     ```
 
--   **URLParams** `Boolean` [optional]
+### URLParams `Boolean` [optional]
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **index** `String` [optional]
+### index `String` [optional]
     The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
     > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
--   **enableStrictSelection** `Boolean` [optional]
+### enableStrictSelection `Boolean` [optional]
     When set to `true`, a selected option can't be unselected. Although, it is possible to change the selected option. Defaults to `false`.
 	
 	> Note: This only works when `multiSelect` prop is set to `false`.
@@ -183,10 +183,10 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
--   **customQuery** `Function`
+### customQuery `Function`
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
     `Note:` customQuery is called on value changes in the **ToggleButton** component as long as the component is a part of `react` dependency of at least one other component.
--   **beforeValueChange** `Function`
+### beforeValueChange `Function`
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
     > Note:
@@ -210,10 +210,10 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 -   **value-change**
     is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a list item is selected in a "Discounted Price" SingleList.
 
--   **error**
+### error
     gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 
--   **change**
+### change
     gets triggered when you are using the `value` props and the component's value changes.
 
   ```jsx
