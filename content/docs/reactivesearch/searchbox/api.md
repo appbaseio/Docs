@@ -86,25 +86,35 @@ searchbox('#git', { instance }, [
 
 When initializing an autocomplete, there are a number of global options you can configure.
 
--   **autoselect** – If `true`, the first rendered suggestion in the dropdown will automatically have the `cursor` class, and pressing `<ENTER>` will select it.
+### autoselect
+ – If `true`, the first rendered suggestion in the dropdown will automatically have the `cursor` class, and pressing `<ENTER>` will select it.
 
--   **autoselectOnBlur** – If `true`, when the input is blurred, the first rendered suggestion in the dropdown will automatically have the `cursor` class, and pressing `<ENTER>` will select it. This option should be used on mobile, see [#113](https://github.com/algolia/autocomplete.js/issues/113).
+### autoselectOnBlur
+ – If `true`, when the input is blurred, the first rendered suggestion in the dropdown will automatically have the `cursor` class, and pressing `<ENTER>` will select it. This option should be used on mobile, see [#113](https://github.com/algolia/autocomplete.js/issues/113).
 
--   **tabAutocomplete** – If `true`, pressing tab will select the first rendered suggestion in the dropdown. Defaults to `true`.
+### tabAutocomplete
+ – If `true`, pressing tab will select the first rendered suggestion in the dropdown. Defaults to `true`.
 
--   **hint** – If `false`, the autocomplete will not show a hint. Defaults to `true`.
+### hint
+ – If `false`, the autocomplete will not show a hint. Defaults to `true`.
 
--   **debug** – If `true`, the autocomplete will not close on `blur`. Defaults to `false`.
+### debug
+ – If `true`, the autocomplete will not close on `blur`. Defaults to `false`.
 
--   **clearOnSelected** – If `true`, the autocomplete will empty the search box when a suggestion is selected. This is useful if you want to use this as a way to input tags using the `selected` event.
+### clearOnSelected
+ – If `true`, the autocomplete will empty the search box when a suggestion is selected. This is useful if you want to use this as a way to input tags using the `selected` event.
 
--   **openOnFocus** – If `true`, the dropdown menu will open when the input is focused. Defaults to `false`.
+### openOnFocus
+ – If `true`, the dropdown menu will open when the input is focused. Defaults to `false`.
 
--   **appendTo** – If set with a DOM selector, doesn't wrap the input and appends the wrapper and dropdown menu to the first DOM element matching the selector. It automatically positions the wrapper under the input, and sets it to the same width as the input. Can't be used with `hint: true`, because `hint` requires the wrapper around the input.
+### appendTo
+ – If set with a DOM selector, doesn't wrap the input and appends the wrapper and dropdown menu to the first DOM element matching the selector. It automatically positions the wrapper under the input, and sets it to the same width as the input. Can't be used with `hint: true`, because `hint` requires the wrapper around the input.
 
--   **dropdownMenuContainer** – If set with a DOM selector, it overrides the container of the dropdown menu.
+### dropdownMenuContainer
+ – If set with a DOM selector, it overrides the container of the dropdown menu.
 
--   **templates** – An optional hash overriding the default templates.
+### templates
+ – An optional hash overriding the default templates.
 
     -   **dropdownMenu** – the dropdown menu template. The template should include all _dataset_ placeholders.
     -   **header** – the header to prepend to the dropdown menu
@@ -114,7 +124,8 @@ When initializing an autocomplete, there are a number of global options you can 
     -   **empty** – the template to display when none of the datasets are returning results. The templating function
         is called with a context containing the underlying `query`.
 
--   **cssClasses** – An optional hash overriding the default css classes.
+### cssClasses
+ – An optional hash overriding the default css classes.
 
     -   **root** – the root classes. Defaults to `appbase-autocomplete`.
     -   **prefix** – the CSS class prefix of all nested elements. Defaults to `aa`.
@@ -129,13 +140,16 @@ When initializing an autocomplete, there are a number of global options you can 
     -   **empty** – the empty CSS class. Defaults to `empty`.
     -   **loader** – the loader CSS class. Defaults to `loader`.
 
--   **keyboardShortcuts** - Array of shortcut that will focus the input. For example if you want to bind `s` and `/`
+### keyboardShortcuts
+ - Array of shortcut that will focus the input. For example if you want to bind `s` and `/`
     you can specify: `keyboardShortcuts: ['s', '/']`
 
--   **minLength** – The minimum character length needed before suggestions start
+### minLength
+ – The minimum character length needed before suggestions start
     getting rendered. Defaults to `1`.
 
--   **autoWidth** – This option allow you to control the width of autocomplete wrapper. When `false` the autocomplete wrapper will not have the width style attribute and you are be able to put your specific width property in your css to control the wrapper. Default value is `true`.
+### autoWidth
+ – This option allow you to control the width of autocomplete wrapper. When `false` the autocomplete wrapper will not have the width style attribute and you are be able to put your specific width property in your css to control the wrapper. Default value is `true`.
 
 One scenario for use this option. e.g. You have a `max-width` css attribute in your `autocomplete-dropdown-menu` and you need to width grows until fill the `max-width`. In this scenario you put a `width: auto` in your autocomplete wrapper css class and the `max-width` in your autocomplete dropdown class and all done.
 
@@ -147,19 +161,22 @@ new value.
 
 Datasets can be configured using the following options.
 
--   **name** – The name of the dataset. This will be appended to `tt-dataset-` to
+### name
+ – The name of the dataset. This will be appended to `tt-dataset-` to
     form the class name of the containing DOM element. Must only consist of
     underscores, dashes, letters (`a-z`), and numbers. Defaults to a random
     number.
 
--   **displayKey** – For a given suggestion object, determines the string
+### displayKey
+ – For a given suggestion object, determines the string
     representation of it. This will be used when setting the value of the input
     control after a suggestion is selected. Can be either a key string or a
     function that transforms a suggestion object into a string. Defaults to
     `value`.
     Example function usage: `displayKey: function(suggestion) { return suggestion.nickname || suggestion.firstName }`
 
--   **templates** – A hash of templates to be used when rendering the dataset. Note
+### templates
+ – A hash of templates to be used when rendering the dataset. Note
     a precompiled template is a function that takes a JavaScript object as its
     first argument and returns a HTML string.
 
@@ -284,7 +301,8 @@ Datasets can be configured using the following options.
                 }
         ```
 
--   **debounce** – If set, will postpone the source execution until after `debounce` milliseconds
+### debounce
+ – If set, will postpone the source execution until after `debounce` milliseconds
     have elapsed since the last time it was invoked.
 
 ## Events
