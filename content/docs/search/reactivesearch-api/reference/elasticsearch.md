@@ -402,15 +402,88 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for search type
-The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on.
+#### format for `search` and `suggestion` type
 
-**Example Playground**:
+The value can be a `string` or `int`.
+**Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
+#### format for `term` type
 
-**Example Playground (multi-value search)**:
-<iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
+The value can be a `string` or `Array<string>`.
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+#### format for `range` type
+
+The value should be an `Object` in the following shape:
+
+```js
+{
+   "start": int | double | date, // optional
+   "end": int | double | date, // optional
+   "boost": int
+}
+```
+
+> Note:
+>
+> Either `start` or `end` property must present in the value.
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+</iframe>
+
+#### format for `geo` type
+
+The value should be an `Object` in the following shape:
+
+```js
+{
+   // The following properties can be used to get the results within a particular distance and location.
+   "distance": int,
+   "location": string, // must be in `{lat}, {lon}` format
+   "unit": string,
+   // The following properties can be used to get the results for a particular geo bounding box.
+   "geoBoundingBox": {
+       topLeft: string, // required, must be in `{lat}, {lon}` format
+       bottomRight: string, // required, must be in `{lat}, {lon}` format
+   }
+}
+```
+> Note: The `geoBoundingBox` property can not be used with `location` property, if both are defined than `geoBoundingBox` value will be ignored.
+
+The below example represents a **geo distance** query:
+
+```js
+    {
+        "id": "distance_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "distance":10,
+            "location":"22.3184816, 73.17065699999999",
+            "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        }
+    }
+```
+
+The below example represents a **geo bounding box** query:
+```js
+    {
+        "id": "bounding_box_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "geoBoundingBox": {
+                "topLeft": "40.73, -74.1",
+                "bottomRight": "40.01, -71.12",
+            }
+        }
+    }
+```
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### aggregationField
 
@@ -600,7 +673,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 ### missingLabel
 
 **Supported Engines**
-elasticsearch, mongodb, solr, opensearch
+elasticsearch, mongodb, opensearch
 
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
@@ -1331,6 +1404,11 @@ This property can be used to disable the index suggestions. If set the `false`, 
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
+### enableEndpointSuggestions
+
+**Supported Engines**
+elasticsearch, solr, opensearch
+
 ### indexSuggestionsConfig
 
 **Supported Engines**
@@ -1452,7 +1530,7 @@ For Solr, this maps to the `facet.contains` field.
 ### excludeValues
 
 **Supported Engines**
-elasticsearch, solr, opensearch
+elasticsearch, opensearch
 
 This fields indicates which values should not be included in the terms aggregation (if done so). Only applied for `term` type of queries.
 
@@ -1489,21 +1567,21 @@ Not dependent on engine, works for all.
 ### recordAnalytics
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, solr, opensearch
 
 `bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
 
 ### userId
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 `String` It allows you to define the user id which will be used to record the Appbase.io analytics.
 
 ### customEvents
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 `Object` It allows you to set the custom events which can be used to build your own analytics on top of the Appbase.io analytics. Further, these events can be used to filter the analytics stats from the Appbase.io dashboard. In the below example, we\'re setting up two custom events that will be recorded with each search request.
 
@@ -1522,21 +1600,21 @@ Not dependent on engine, works for all.
 ### enableQueryRules
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 `bool` defaults to `true`. It allows you to configure whether to apply the query rules for a particular query or not.
 
 ### enableSearchRelevancy
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 `bool` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.
 
 ### useCache
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard.
 
@@ -1546,12 +1624,12 @@ Not dependent on engine, works for all.
 ### queryRule
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, opensearch
 
 ### backend
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, solr, opensearch
 
 This field indicates the backend of ReactiveSearch. Backend implies the search service being used to store the data.
 
