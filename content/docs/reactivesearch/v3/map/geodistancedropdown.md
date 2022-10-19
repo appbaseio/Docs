@@ -24,7 +24,7 @@ Example uses:
 
 ### Basic Usage
 
-```js
+```jsx
 <ReactiveBase
   mapLibraries={['places']} // required
 >
@@ -42,7 +42,7 @@ Example uses:
 
 ### Usage With All Props
 
-```js
+```jsx
 <ReactiveBase
   mapLibraries={['places']} // required
 >
@@ -109,78 +109,78 @@ Example uses:
 ## Props
 
 ### componentId `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
+unique identifier of the component, can be referenced in other components' `react` prop.
 ### dataField `String`
-    data field to be connected to the component's UI view.
+data field to be connected to the component's UI view.
 ### nestedField `String` [optional]
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 ### data `Object Array`
-    collection of UI `labels` with associated `distance` value.
+collection of UI `labels` with associated `distance` value.
 ### title `String or JSX` [optional]
-    title of the component to be shown in the UI.
+title of the component to be shown in the UI.
 ### defaultValue `Object` [optional]
-    pre-select values of the search query with `label` and `location` keys.
+pre-select values of the search query with `label` and `location` keys.
 ### placeholder `String` [optional]
-    set the placeholder to show in the location search box, useful when no option is `defaultValue`.
+set the placeholder to show in the location search box, useful when no option is `defaultValue`.
 ### value `Object` [optional]
-    controls the current value of the component. It sets the item from the list & also sets the location (on mount and on update). Use this prop in conjunction with `onChange` function.
+controls the current value of the component. It sets the item from the list & also sets the location (on mount and on update). Use this prop in conjunction with `onChange` function.
 ### onChange `function` [optional]
-    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
+is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
 ### showIcon `Boolean` [optional]
-    whether to display a search or custom icon in the input box. Defaults to `true`.
+whether to display a search or custom icon in the input box. Defaults to `true`.
 ### iconPosition `String` [optional]
-    sets the position of the search icon. Can be `left` or `right`. Defaults to `right`.
+sets the position of the search icon. Can be `left` or `right`. Defaults to `right`.
 ### icon `JSX` [optional]
-    displays a custom search icon instead of the default 🔍
+displays a custom search icon instead of the default 🔍
 ### unit `String` [optional]
-    unit for distance measurement, uses `mi` (for miles) by default. Distance units can be specified from the following:
-    ![screenshot](https://i.imgur.com/STbeagk.png)
+unit for distance measurement, uses `mi` (for miles) by default. Distance units can be specified from the following:
+![screenshot](https://i.imgur.com/STbeagk.png)
 ### autoLocation `Boolean` [optional]
-    when enabled, preset the user's current location in the location search box. Defaults to `true`.
+when enabled, preset the user's current location in the location search box. Defaults to `true`.
 ### showFilter `Boolean` [optional]
-    show as filter when a value is selected in a global selected filters view. Defaults to `true`.
+show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 ### filterLabel `String` [optional]
-    An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
+An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 ### URLParams `Boolean` [optional]
-    enable creating a URL query string parameter based on the selected value from the dropdown. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string parameter based on the selected value from the dropdown. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### countries `String Array` [optional]
-    restricts predictions to specified country (ISO 3166-1 Alpha-2 country code, case insensitive). For example, 'us', 'in', or 'au'. You can provide an array of up to five country code strings.
+restricts predictions to specified country (ISO 3166-1 Alpha-2 country code, case insensitive). For example, 'us', 'in', or 'au'. You can provide an array of up to five country code strings.
 ### serviceOptions `Object` [optional]
-    allows to add more options to AutoCompletionRequest, available from [Google Places library](https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest)
+allows to add more options to AutoCompletionRequest, available from [Google Places library](https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest)
 ### renderItem `Function` [optional]
-    customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
-    ```js
-    renderItem={(label, isSelected) => (
-        <div>
-            <span style={{
-                marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
-            }}>
-                {label}
-            </span>
-        </div>
-    )}
-    ```
+customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
+```jsx
+renderItem={(label, isSelected) => (
+    <div>
+        <span style={{
+            marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+        }}>
+            {label}
+        </span>
+    </div>
+)}
+```
 ### render `Function` [optional]
-    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
-    <br/>
-    It accepts an object with these properties:
-    -   **`loading`**: `boolean`
-        indicates that the query is still in progress
-    -   **`error`**: `object`
-        An object containing the error info
-    -   **`data`**: `array`
-        An array of results obtained from the applied query.
-    -   **`rawData`** `object`
-        An object of raw response as-is from elasticsearch query.
-    -   **`value`**: `array`
-        current selected value.
-    -   **`handleChange`**: `function`
-        A callback function can be used to mark the list value as selected.
-    -   **`downshiftProps`**: `object`
-        provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
-        Read more about it [here](https://github.com/downshift-js/downshift#children-function).
+an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+<br/>
+It accepts an object with these properties:
+-   **`loading`**: `boolean`
+indicates that the query is still in progress
+-   **`error`**: `object`
+An object containing the error info
+-   **`data`**: `array`
+An array of results obtained from the applied query.
+-   **`rawData`** `object`
+An object of raw response as-is from elasticsearch query.
+-   **`value`**: `array`
+current selected value.
+-   **`handleChange`**: `function`
+A callback function can be used to mark the list value as selected.
+-   **`downshiftProps`**: `object`
+provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
+Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
-  ```js
+```jsx
   <GeoDistanceDropdown
     render={({ loading, error, data, handleChange, downshiftProps }) => {
       if (loading) {
@@ -200,37 +200,37 @@ Example uses:
       ));
     }}
   />
-  ```
+```
 
   Or you can also use render function as children
 
-  ```js
-  <GeoDistanceDropdown>
-          {
-              ({
-                  loading,
-                  error,
-                  data,
-                  value,
-                  handleChange,
-                  downshiftProps
-              }) => (
-                  // return UI to be rendered
-              )
-          }
-  </GeoDistanceDropdown>
-  ```
+```jsx
+<GeoDistanceDropdown>
+        {
+            ({
+                loading,
+                error,
+                data,
+                value,
+                handleChange,
+                downshiftProps
+            }) => (
+                // return UI to be rendered
+            )
+        }
+</GeoDistanceDropdown>
+```
 
 ### onData `Function` [optional]
-    gets triggered after data changes, which returns an object with these properties: `value` & `error`.
-  ```js
-    onData={
-      (prop) => {
-        const {value, error} = prop;
-        // do something
-      }
+gets triggered after data changes, which returns an object with these properties: `value` & `error`.
+```jsx
+  onData={
+    (prop) => {
+      const {value, error} = prop;
+      // do something
     }
-  ```
+  }
+```
 
 ## Demo
 
@@ -267,7 +267,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
     - onKeyUp
     - autoFocus
 
-```js
+```jsx
 <GeoDistanceDropdown
   // ...
   className="custom-class"
@@ -312,29 +312,29 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 ```
 
 ### className `String`
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### style `Object`
-    CSS styles to be applied to the **GeoDistanceDropdown** component.
+CSS styles to be applied to the **GeoDistanceDropdown** component.
 ### customQuery `Function`
-    takes **location**, **distance** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.<br/>
-    `Note:` customQuery is called on value changes in the **GeoDistanceDropdown** component as long as the component is a part of `react` dependency of at least one other component.
+takes **location**, **distance** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.<br/>
+`Note:` customQuery is called on value changes in the **GeoDistanceDropdown** component as long as the component is a part of `react` dependency of at least one other component.
 ### beforeValueChange `Function`
-    is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called every time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called every time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 ### onValueChange `Function`
-    is a callback function which accepts component's current **value** as a parameter. It is called every time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches within a specific location area.
+is a callback function which accepts component's current **value** as a parameter. It is called every time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches within a specific location area.
 ### onQueryChange `Function`
-    is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
+is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 ### react `Object`
-    specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
-    -   **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    -   **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
+-   **key** `String`
+    one of `and`, `or`, `not` defines the combining clause.
+    -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+    -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+    -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+-   **value** `String or Array or Object`
+    -   `String` is used for specifying a single component by its `componentId`.
+    -   `Array` is used for specifying multiple components by their `componentId`.
+    -   `Object` is used for nesting other key clauses.
 
 ## Examples
 
