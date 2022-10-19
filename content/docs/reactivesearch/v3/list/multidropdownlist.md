@@ -84,112 +84,108 @@ function Index(props) {
     unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint `Object` [optional] 
     endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
-
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
-       
+Accepts the following properties:
+-   **url** `String` [Required]
+    URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+    set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+    set method of the API request.
+-   **body** `Object` [optional]    
+    request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+ > - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
+   
 ### dataField `String`
-    DB data field to be mapped with the component's UI view. The dropdown list items are filtered by a database query on this field. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
+DB data field to be mapped with the component's UI view. The dropdown list items are filtered by a database query on this field. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
 ### nestedField `String` [optional]
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 ### loader `String or JSX` [optional]
-    to display an optional loader while fetching the options.
+to display an optional loader while fetching the options.
 ### title `String or JSX` [optional]
-    title of the component to be shown in the UI.
+title of the component to be shown in the UI.
 ### size `Number` [optional]
-    number of list items to be displayed.
-
-    > Note: 
-    > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
-    > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
+number of list items to be displayed.
+ > Note: 
+> 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
+> 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
 ### aggregationSize
-    To set the number of buckets to be returned by aggregations.
-
-    > Note: This prop is only applicable when `enableAppbase` is set to `true`.
+To set the number of buckets to be returned by aggregations.
+ > Note: This prop is only applicable when `enableAppbase` is set to `true`.
 ### sortBy `String` [optional]
-    property that decides on how to sort the list items, accepts one of `count`, `asc` or `desc` as valid values.
-    -   `count` sorts the list based on the count occurences, with highest value at the top.
-    -   `asc` sorts the list in the ascending order of the list item (Alphabetical).
-    -   `desc` sorts the list in the descending order of the term. Defaults to `count`.
+property that decides on how to sort the list items, accepts one of `count`, `asc` or `desc` as valid values.
+-   `count` sorts the list based on the count occurences, with highest value at the top.
+-   `asc` sorts the list in the ascending order of the list item (Alphabetical).
+-   `desc` sorts the list in the descending order of the term. Defaults to `count`.
 ### defaultValue `String Array` [optional]
-    select one or more options from the dropdown list on mount. Accepts an `Array` object containing the items that should be selected.
+select one or more options from the dropdown list on mount. Accepts an `Array` object containing the items that should be selected.
 ### value `String Array` [optional]
-    controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
+controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
 ### queryFormat `String` [optional]
-    queries the selected items from the list in one of two modes: `or`, `and`.
-    -   Defaults to `or` which queries for results where any of the selected list items are present.
-    -   In `and` mode, the applied query filters results where all of the selected items are present.
+queries the selected items from the list in one of two modes: `or`, `and`.
+-   Defaults to `or` which queries for results where any of the selected list items are present.
+-   In `and` mode, the applied query filters results where all of the selected items are present.
 ### showCount `Boolean` [optional]
-    show count of number of occurences besides an item. Defaults to `true`.
+show count of number of occurences besides an item. Defaults to `true`.
 ### showSearch `Boolean` [optional]
-    whether to show a searchbox to filter the list items locally. Defaults to `false`.
+whether to show a searchbox to filter the list items locally. Defaults to `false`.
 ### showClear `Boolean` [optional]
-    whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
+whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
 ### transformData `Function` [optional]
-    allows transforming the data to render inside the list. You can change the order, remove, or add items, tranform their values with this method. It provides the data as param which is an array of objects of shape `{ key: <string>, doc_count: <number> }` and expects you to return the array of objects of same shape.
+allows transforming the data to render inside the list. You can change the order, remove, or add items, tranform their values with this method. It provides the data as param which is an array of objects of shape `{ key: <string>, doc_count: <number> }` and expects you to return the array of objects of same shape.
 ### showMissing `Boolean` [optional]
-    defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
+defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
 ### missingLabel `String` [optional]
-    defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
+defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
 ### placeholder `String` [optional]
-    placeholder to be displayed in the select box. It'll be only applicable when no value is selected.
+placeholder to be displayed in the select box. It'll be only applicable when no value is selected.
 ### searchPlaceholder `String` [optional]
-    placeholder to be displayed in the search box. Defaults to `Type here to search...`.
+placeholder to be displayed in the search box. Defaults to `Type here to search...`.
 ### showFilter `Boolean` [optional]
-    show as filter when a value is selected in a global selected filters view. Defaults to `true`.
+show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 ### filterLabel `String` [optional]
-    An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
+An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 ### URLParams `Boolean` [optional]
-    enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### showLoadMore `Boolean` [optional]
-    defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation/). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
-
-    > Note:
-    >
-    > Composite aggregations do not support sorting by `count`. Hence with `showLoadMore`, you can only sort by: `asc` or `desc` order. `sortBy` prop defaults to `asc` when `showLoadMore` prop is used.
+defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation/). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
+ > Note:
+>
+> Composite aggregations do not support sorting by `count`. Hence with `showLoadMore`, you can only sort by: `asc` or `desc` order. `sortBy` prop defaults to `asc` when `showLoadMore` prop is used.
 ### renderItem `Function` [optional]
-    customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
-    ```js
-    renderItem={(label, count, isSelected) => (
-        <div>
-            {label}
-            <span style={{
-                marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
-            }}>
-                {count}
-            </span>
-        </div>
-    )}
-    ```
+customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
+```js
+renderItem={(label, count, isSelected) => (
+    <div>
+        {label}
+        <span style={{
+            marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+        }}>
+            {count}
+        </span>
+    </div>
+)}
+```
 ### render `Function` [optional]
-    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
-    <br/>
-    It accepts an object with these properties:
-    -   **`loading`**: `boolean`
-        indicates that the query is still in progress
-    -   **`error`**: `object`
-        An object containing the error info
-    -   **`data`**: `array`
-        An array of results obtained from the applied query.
-    -   **`rawData`** `object`
-        An object of raw response as-is from elasticsearch query.
-    -   **`value`**: `array`
-        current selected values.
-    -   **`handleChange`**: `function`
-        A callback function can be used to mark the list value as selected.
-    -   **`downshiftProps`**: `object`
-        provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
-        Read more about it [here](https://github.com/downshift-js/downshift#children-function).
+an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+<br/>
+It accepts an object with these properties:
+-   **`loading`**: `boolean`
+    indicates that the query is still in progress
+-   **`error`**: `object`
+    An object containing the error info
+-   **`data`**: `array`
+    An array of results obtained from the applied query.
+-   **`rawData`** `object`
+    An object of raw response as-is from elasticsearch query.
+-   **`value`**: `array`
+    current selected values.
+-   **`handleChange`**: `function`
+    A callback function can be used to mark the list value as selected.
+-   **`downshiftProps`**: `object`
+    provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
+    Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
 ```js
 <MultiDropdownList
@@ -202,8 +198,8 @@ function Index(props) {
 		}
 		return data.map(item => (
 			<div onClick={() => handleChange(item.key)} key={item.key}>
-				<span>{item.key}</span>
-				<span>{item.doc_count}</span>
+                <span>{item.key}</span>
+                <span>{item.doc_count}</span>
 			</div>
 		));
 	}}
@@ -214,57 +210,54 @@ Or you can also use render function as children
 
 ```js
 <MultiDropdownList>
-        {
-            ({
-                loading,
-                error,
-                data,
-                value,
-                handleChange,
-                downshiftProps
-            }) => (
-                // return UI to be rendered
-            )
-        }
+    {
+        ({
+            loading,
+            error,
+            data,
+            value,
+            handleChange,
+            downshiftProps
+        }) => (
+            // return UI to be rendered
+        )
+    }
 </MultiDropdownList>
 ```
 
 ### renderError `String or JSX or Function` [optional]
-    can be used to render an error message in case of any error.
-    ```js
-    renderError={(error) => (
-            <div>
-                Something went wrong!<br/>Error details<br/>{error}
-            </div>
-        )
-    }
-    ```
+can be used to render an error message in case of any error.
+```js
+renderError={(error) => (
+        <div>
+            Something went wrong!<br/>Error details<br/>{error}
+        </div>
+    )
+}
+```
 ### renderNoResults `Function` [optional]
-    can be used to render a message in case of no list items.
-
-    ```js
-    renderNoResults={() => <p>No Results Found!</p>}
-    ```
+can be used to render a message in case of no list items.
+```js
+renderNoResults={() => <p>No Results Found!</p>}
+```
 
 ### renderLabel `Function` [optional]
-    can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
-
-    ```js
-    renderLabel={(items) => Object.values(items).map((item) => (
-      <div>
-        <MyTranslationComponent key={item} />
-      </div>
-    ))}
-    ```
+can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
+ ```js
+renderLabel={(items) => Object.values(items).map((item) => (
+  <div>
+    <MyTranslationComponent key={item} />
+  </div>
+))}
+```
 
 ### onChange `function` [optional]
-    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
+is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
 ### onError `Function` [optional]
-    gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
+gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 ### index `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
-
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 ### isOpen `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 
 ## Demo
@@ -296,7 +289,6 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 
 ```js
 <MultiDropdownList
-  ...
   className="custom-class"
   style={{"paddingBottom": "10px"}}
   customQuery={
