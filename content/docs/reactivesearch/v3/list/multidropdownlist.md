@@ -28,13 +28,13 @@ Example uses:
 
 ### Basic Usage
 
-```js
+```jsx
 <MultiDropdownList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
 ### Usage With All Props
 
-```js
+```jsx
 <MultiDropdownList
     componentId="CitySensor"
     dataField="group.group_city.raw"
@@ -63,7 +63,7 @@ Example uses:
 
 ### Usage as a controlled component
 
-```js
+```jsx
 function Index(props) {
 	const [values, setValues] = useState([]);
 	return (
@@ -93,7 +93,7 @@ Accepts the following properties:
     set method of the API request.
 -   **body** `Object` [optional]    
     request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
- > - Overrides the endpoint property defined in ReactiveBase.
+> - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
    
 ### dataField `String`
@@ -106,7 +106,7 @@ to display an optional loader while fetching the options.
 title of the component to be shown in the UI.
 ### size `Number` [optional]
 number of list items to be displayed.
- > Note: 
+> Note: 
 > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
 > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
@@ -150,12 +150,13 @@ An optional label to display for the component in the global selected filters vi
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### showLoadMore `Boolean` [optional]
 defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation/). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
- > Note:
+
+> Note:
 >
 > Composite aggregations do not support sorting by `count`. Hence with `showLoadMore`, you can only sort by: `asc` or `desc` order. `sortBy` prop defaults to `asc` when `showLoadMore` prop is used.
 ### renderItem `Function` [optional]
 customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
-```js
+```jsx
 renderItem={(label, count, isSelected) => (
     <div>
         {label}
@@ -171,6 +172,7 @@ renderItem={(label, count, isSelected) => (
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 It accepts an object with these properties:
+
 -   **`loading`**: `boolean`
     indicates that the query is still in progress
 -   **`error`**: `object`
@@ -187,7 +189,7 @@ It accepts an object with these properties:
     provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
     Read more about it [here](https://github.com/downshift-js/downshift#children-function).
 
-```js
+```jsx
 <MultiDropdownList
 	render={({ loading, error, data, handleChange }) => {
 		if (loading) {
@@ -208,7 +210,7 @@ It accepts an object with these properties:
 
 Or you can also use render function as children
 
-```js
+```jsx
 <MultiDropdownList>
     {
         ({
@@ -227,7 +229,7 @@ Or you can also use render function as children
 
 ### renderError `String or JSX or Function` [optional]
 can be used to render an error message in case of any error.
-```js
+```jsx
 renderError={(error) => (
         <div>
             Something went wrong!<br/>Error details<br/>{error}
@@ -237,13 +239,13 @@ renderError={(error) => (
 ```
 ### renderNoResults `Function` [optional]
 can be used to render a message in case of no list items.
-```js
+```jsx
 renderNoResults={() => <p>No Results Found!</p>}
 ```
 
 ### renderLabel `Function` [optional]
 can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
- ```js
+ ```jsx
 renderLabel={(items) => Object.values(items).map((item) => (
   <div>
     <MyTranslationComponent key={item} />
@@ -287,7 +289,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 3. connect with external interfaces using `beforeValueChange`, `onValueChange` and `onQueryChange`,
 4. specify how options should be filtered or updated using `react` prop.
 
-```js
+```jsx
 <MultiDropdownList
   className="custom-class"
   style={{"paddingBottom": "10px"}}
@@ -343,47 +345,47 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 ```
 
 ### className `String`
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### style `Object`
-    CSS styles to be applied to the **MultiDropdownList** component.
+CSS styles to be applied to the **MultiDropdownList** component.
 ### customQuery `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **MultiDropdownList** component as long as the component is a part of `react` dependency of at least one other component.
+takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **MultiDropdownList** component as long as the component is a part of `react` dependency of at least one other component.
 ### defaultQuery `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
-    Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
+Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 ### beforeValueChange `Function`
-    is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
-    > Note:
-    >
-    > If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+> Note:
+>
+> If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
 
-    ```js
-    beforeValueChange = values => {
-        // The update is accepted by default
-    	if (values.includes('Dirk Pitt')) {
-    		// To reject the update, throw an error
-    		throw Error('Selected values should not include Dirk Pitt.');
-    	}
-    };
-    ```
+```jsx
+beforeValueChange = values => {
+    // The update is accepted by default
+    if (values.includes('Dirk Pitt')) {
+        // To reject the update, throw an error
+        throw Error('Selected values should not include Dirk Pitt.');
+    }
+};
+```
 
 ### onValueChange `Function`
-    is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when list item(s) is/are selected in a "Discounted Price" MultiDropdownList.
+is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when list item(s) is/are selected in a "Discounted Price" MultiDropdownList.
 ### onQueryChange `Function`
-    is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
+is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 ### react `Object`
-    specify dependent components to reactively update **MultiDropdownList's** options.
-    -   **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    -   **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+specify dependent components to reactively update **MultiDropdownList's** options.
+-   **key** `String`
+    one of `and`, `or`, `not` defines the combining clause.
+    -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+    -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+    -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+-   **value** `String or Array or Object`
+    -   `String` is used for specifying a single component by its `componentId`.
+    -   `Array` is used for specifying multiple components by their `componentId`.
+    -   `Object` is used for nesting other key clauses.
 
 ## Examples
 

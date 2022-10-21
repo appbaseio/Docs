@@ -95,16 +95,16 @@ title of the component to be shown in the UI.
 to display an optional loader while fetching the options.
 
 ### size `Number` [optional]
-    number of list items to be displayed.
+number of list items to be displayed.
 
-    > Note: 
-    > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
-    > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
+> Note: 
+> 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
+> 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
 
-    > Note: This prop is only applicable when `enableAppbase` is set to `true`.
+> Note: This prop is only applicable when `enableAppbase` is set to `true`.
 
 ### sortBy `String` [optional]
 sort the list items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the list by the frequency of count value, most first.
@@ -239,20 +239,20 @@ Or you can also use render function as children
 
 ### renderError `String or JSX or Function` [optional]
 can be used to render an error message in case of any error.
-    ```jsx
-    renderError={(error) => (
-            <div>
-                Something went wrong!<br/>Error details<br/>{error}
-            </div>
-        )
-    }
-    ```
+```jsx
+renderError={(error) => (
+        <div>
+            Something went wrong!<br/>Error details<br/>{error}
+        </div>
+    )
+}
+```
 ### renderNoResults `Function` [optional]
 can be used to render a message in case of no list items.
 
-    ```jsx
-    renderNoResults={() => <p>No Results Found!</p>}
-    ```
+```jsx
+renderNoResults={() => <p>No Results Found!</p>}
+```
 
 ### onChange `function` [optional]
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
@@ -261,7 +261,7 @@ gets triggered in case of an error and provides the `error` object, which can be
 ### index `String` [optional]
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 ### enableStrictSelection `Boolean` [optional]
 When set to `true`, a selected option can't be unselected. Although, it is possible to change the selected option. Defaults to `false`.
 
@@ -355,26 +355,26 @@ CSS class to be injected on the component container.
 CSS styles to be applied to the **SingleList** component.
 ### customQuery `Function`
 is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **SingleList** component as long as the component is a part of `react` dependency of at least one other component.
+`Note:` customQuery is called on value changes in the **SingleList** component as long as the component is a part of `react` dependency of at least one other component.
 ### defaultQuery `Function`
 takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
-    Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 ### beforeValueChange `Function`
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
-    > Note:
-    >
-    > If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+> Note:
+>
+> If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
 
-    ```js
-    beforeValueChange = value => {
-        // The update is accepted by default
-    	if (value === 'In Death') {
-    		// To reject the update, throw an error
-    		throw Error('Selected value should not be equal to In Death.');
-    	}
-    };
-    ```
+```js
+beforeValueChange = value => {
+    // The update is accepted by default
+    if (value === 'In Death') {
+        // To reject the update, throw an error
+        throw Error('Selected value should not be equal to In Death.');
+    }
+};
+```
 
 ### onValueChange `Function`
 is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a list item is selected in a "Discounted Price" SingleList.
@@ -382,15 +382,15 @@ is a callback function which accepts component's current **value** as a paramete
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 ### react `Object`
 specify dependent components to reactively update **SingleList's** options.
-    -   **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    -   **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+-   **key** `String`
+    one of `and`, `or`, `not` defines the combining clause.
+    -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+    -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+    -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+-   **value** `String or Array or Object`
+    -   `String` is used for specifying a single component by its `componentId`.
+    -   `Array` is used for specifying multiple components by their `componentId`.
+    -   `Object` is used for nesting other key clauses.
 
 ## Examples
 

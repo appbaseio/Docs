@@ -167,6 +167,7 @@ renderItem={(label, count, isSelected) => (
 ### render `Function` [optional]
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
+
 It accepts an object with these properties:
 -   **`data`**: `array`
     An array of results obtained from the applied query.

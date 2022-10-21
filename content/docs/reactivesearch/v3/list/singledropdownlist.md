@@ -186,7 +186,7 @@ It accepts an object with these properties:
 
 Or you can also use render function as children
 
-```js
+```jsx
 <SingleDropdownList>
     {
         ({
@@ -205,7 +205,7 @@ Or you can also use render function as children
 
 ### renderError `String or JSX or Function` [optional]
 can be used to render an error message in case of any error.
-```js
+```jsx
 renderError={(error) => (
         <div>
             Something went wrong!<br/>Error details<br/>{error}
@@ -215,13 +215,13 @@ renderError={(error) => (
 ```
 ### renderNoResults `Function` [optional]
 can be used to render a message in case of no list items.
- ```js
+ ```jsx
 renderNoResults={() => <p>No Results Found!</p>}
 ```
 
 ### renderLabel `Function` [optional]
 can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
-```js
+```jsx
 renderLabel={(items) => Object.values(items).map((item) => (
   <div>
     <MyTranslationComponent key={item} />
@@ -265,7 +265,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 3. connect with external interfaces using `beforeValueChange`, `onValueChange` and `onQueryChange`,
 4. specify how options should be filtered or updated using `react` prop.
 
-```js
+```jsx
 <SingleDropdownList
   ...
   className="custom-class"

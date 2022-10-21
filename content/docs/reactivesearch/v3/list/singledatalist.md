@@ -28,7 +28,7 @@ Example uses:
 
 ### Basic Usage
 
-```js
+```jsx
 <SingleDataList
 	componentId="MeetupTops"
 	dataField="group.group_topics.topic_name_raw.raw"
@@ -52,7 +52,7 @@ Example uses:
 
 ### Usage With All Props
 
-```js
+```jsx
 <SingleDataList
 	componentId="MeetupTops"
 	dataField="group.group_topics.topic_name_raw.raw"
@@ -73,8 +73,8 @@ Example uses:
 	]}
 	showSearch={true}
 	showRadio={true}
-    showCount={true}
-    displayAsVertical={false}
+  showCount={true}
+  displayAsVertical={false}
 	placeholder="Filter meetups"
 	defaultValue="Social"
 	selectAllLabel="All meetups"
@@ -141,7 +141,7 @@ show a count of the number of occurences besides each list item. Defaults to `fa
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### renderItem `Function` [optional]
 customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
-```js
+```jsx
 renderItem={(label, count, isSelected) => (
     <div>
         {label}
@@ -156,6 +156,7 @@ renderItem={(label, count, isSelected) => (
 ### render `Function` [optional]
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
+
 It accepts an object with these properties:
 -   **`data`**: `array`
     An array of results obtained from the applied query.
@@ -166,8 +167,8 @@ It accepts an object with these properties:
 -   **`handleChange`**: `function`
     A callback function can be used to mark the list value as selected.
 
-```js
-<SingleDropdownList
+```jsx
+<SingleDataList
 	render={({ data, handleChange }) =>
 		data.map(item => (
 			<div onClick={() => handleChange(item.key)} key={item.key}>
@@ -181,8 +182,8 @@ It accepts an object with these properties:
 
 Or you can also use render function as children
 
-```js
-<SingleDropdownList>
+```jsx
+<SingleDataList>
     {
         ({
             data,
@@ -192,18 +193,18 @@ Or you can also use render function as children
             // return UI to be rendered
         )
     }
-</SingleDropdownList>
+</SingleDataList>
 ```
 
 ### renderNoResults `Function` [optional]
 can be used to render a message in case of no list items.
- ```js
+ ```jsx
 renderNoResults={() => <p>No Results Found!</p>}
 ```
 
 ### renderError `String or JSX or Function` [optional]
 can be used to render an error message in case of any error.
-```js
+```jsx
 renderError={(error) => (
         <div>
             Something went wrong!<br/>Error details<br/>{error}
@@ -245,7 +246,7 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 2. update the underlying DB query with `customQuery`, `defaultQuery`,
 3. connect with external interfaces using `beforeValueChange`, `onValueChange` and `onQueryChange`.
 
-```js
+```jsx
 <SingleDataList
   ...
   className="custom-class"
@@ -311,7 +312,7 @@ is a callback function which accepts component's future **value** as a parameter
 > Note:
 >
 > If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
- ```js
+ ```jsx
 beforeValueChange = value => {
     // The update is accepted by default
 	if (value === 'Social') {

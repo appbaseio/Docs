@@ -206,11 +206,11 @@ enable creating a URL query string parameter based on the selected value of the 
 ### renderItem `Function` [optional]
 customize the rendered list itemss via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
 ```js
- renderItem={(label, count, isSelected) => (
- 	<span style={isSelected ? { background: 'green' } : {}}>
- 		{label} - {count}
- 	</span>
- )}	
+renderItem={(label, count, isSelected) => (
+    <span style={isSelected ? { background: 'green' } : {}}>
+        {label} - {count}
+    </span>
+)}	
 ```
 ### render `Function` [optional]
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
