@@ -64,25 +64,24 @@ Example uses:
 ## Props
 
 ### target `string` [optional]
-    This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
+This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
 ### href `string` [optional]
-    can be used to specify the URL of the page the link goes to
+can be used to specify the URL of the page the link goes to
 
 > Note
 >
 > ResultCard component accepts all the properties of html `a` tag.
 
 ## Sub Components
--   **ResultCardImage**
-    use it to render the result card image.
-    <br/>
-    It accepts the following props:
-    -   **`src`**: `string`
-        source url of the image
--   **ResultCardTitle**
-    renders the title of the result card.
--   **ResultCardDescription**
-    can be used to render the result card description UI.
+### ResultCardImage
+use it to render the result card image.
+It accepts the following props:
+-   **`src`**: `string`
+    source url of the image
+### ResultCardTitle
+renders the title of the result card.
+### ResultCardDescription
+can be used to render the result card description UI.
 
 ## Demo
 

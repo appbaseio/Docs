@@ -125,221 +125,227 @@ Example uses:
 ## Props
 
 ### componentId `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
+unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint `Object` [optional] 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+    URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+    set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+    set method of the API request.
+-   **body** `Object` [optional]    
+    request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
 
 ### mode `String`
-    SearchBox component offers two modes of usage, `select` & `tag`. When mode is set to `tag` SearchBox allows selecting multiple suggestions. Defaults to `select`.
+SearchBox component offers two modes of usage, `select` & `tag`. When mode is set to `tag` SearchBox allows selecting multiple suggestions. Defaults to `select`.
 
-    ```html
-    <template>
-	    <search-box
-        componentId="title"
-        highlight="true"
-        :dataField="['title', 'text']"
-        :mode="tag"
-      />
-    </template>
-    ```
+```html
+<template>
+  <search-box
+    componentId="title"
+    highlight="true"
+    :dataField="['title', 'text']"
+    :mode="tag"
+  />
+</template>
+```
 
-    <img src="https://i.imgur.com/DVhSiGV.png" alt="SearchBox tag mode" />
+<img src="https://i.imgur.com/DVhSiGV.png" alt="SearchBox tag mode" />
 
 ### dataField `string | Array<string | DataField*>` [optional*]
-    index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
-    Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
-    You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
-    The `DataField` type has the following shape:
+index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
+Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
+You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
+The `DataField` type has the following shape:
 
-    ```ts
-    type DataField = {
-    	field: string;
-    	weight: number;
-    };
-    ```
-    database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields. Check examples at [here](/docs/search/reactivesearch-api/reference/#datafield).
+```ts
+type DataField = {
+  field: string;
+  weight: number;
+};
+```
+database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields. Check examples at [here](/docs/search/reactivesearch-api/reference/#datafield).
 
-    > Note:
-    > 1. This prop is optional only when `enableAppbase` prop is set to `true` in `ReactiveBase` component.
-    > 2. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.21.0` and Appbase version `v7.47.0`.
+> Note:
+> 1. This prop is optional only when `enableAppbase` prop is set to `true` in `ReactiveBase` component.
+> 2. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.21.0` and Appbase version `v7.47.0`.
 
 ### size `Number` [optional]
-    number of suggestions to show. Defaults to `10`.
+number of suggestions to show. Defaults to `10`.
 ### excludeFields `String Array` [optional]
-    fields to be excluded in the suggestion's query when `autoSuggest` is true.
+fields to be excluded in the suggestion's query when `autoSuggest` is true.
 ### includeFields `String Array` [optional]
-    fields to be included in the suggestion's query when `autoSuggest` is true.
+fields to be included in the suggestion's query when `autoSuggest` is true.
 ### enablePopularSuggestions `bool` [optional]
-    Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
+Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
-    > Note:
-    >
-    > Popular Suggestions only work when `enableAppbase` prop is `true`.
+> Note:
+>
+> Popular Suggestions only work when `enableAppbase` prop is `true`.
 
 ### popularSuggestionsConfig `Object` Specify additional options for fetching popular suggestions.
-    It can accept the following keys:
-    ### size: `number` Maximum number of popular suggestions to return. Defaults to 5.
-    ### minCount: `number` Return only popular suggestions that have been searched at least `minCount` times. There is no default minimum count-based restriction.
-    ### minChars: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
-    ### showGlobal: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
-    ### index: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
-    <br/>
+It can accept the following keys:
+- **size**: `number` Maximum number of popular suggestions to return. Defaults to 5.
+- **minCount**: `number` Return only popular suggestions that have been searched at least `minCount` times. There is no default minimum count-based restriction.
+- **minChars**: `number` Return only popular suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+- **showGlobal**: `Boolean` Defaults to `true`. When set to `false`, returns popular suggestions only based on the current user's past searches.
+- **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+<br/>
 
-    ```jsx
-        <search-box
-            :enablePopularSuggestions="true"
-            :popularSuggestionsConfig="{
-                size: 5,
-                minCount: 5,
-                minChars: 3,
-                showGlobal: false,
-                index: "good-books-ds",  // further restrict the index to search on
-            }"
-        />
-    ```
+```jsx
+    <search-box
+        :enablePopularSuggestions="true"
+        :popularSuggestionsConfig="{
+            size: 5,
+            minCount: 5,
+            minChars: 3,
+            showGlobal: false,
+            index: "good-books-ds",  // further restrict the index to search on
+        }"
+    />
+```
 
 
 ### enablePredictiveSuggestions `bool` [optional]
-    Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
+Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to `false` (default), the entire field's value would be displayed. This may not be desirable for long-form fields (where average words per field value is greater than 4 and may not fit in a single line).
 
-### enableRecentSuggestions `Boolean` Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane). Appbase.io recommends defining a unique id(`userId` property) in `appbaseConfig` prop for each user to personalize the recent searches.
+### enableRecentSuggestions `Boolean` 
+Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane). Appbase.io recommends defining a unique id(`userId` property) in `appbaseConfig` prop for each user to personalize the recent searches.
 
-    > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
 
-### recentSuggestionsConfig `Object` Specify additional options for fetching recent suggestions.
+### recentSuggestionsConfig `Object` 
+Specify additional options for fetching recent suggestions.
 
-    It can accept the following keys:
-    ### size: `number` Maximum number of recent suggestions to return. Defaults to 5.
-    ### minHits: `number` Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
-    ### minChars: `number` Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
-    ### index: `string` Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
-    <br/>
+It can accept the following keys:
+- **size**: `number` 
+Maximum number of recent suggestions to return. Defaults to 5.
+- **minHits**: `number` 
+Return only recent searches that returned at least `minHits` results. There is no default minimum hits-based restriction.
+- **minChars**: `number` 
+Return only recent suggestions that have minimum characters, as set in this property. There is no default minimum character-based restriction.
+- **index**: `string` 
+Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
+<br/>
 
-  ```jsx
-      <search-box
-          :enableRecentSuggestions="true"
-          "recentSuggestionsConfig="{
-              size: 5,
-              minHits: 5,
-              minChars: 3,
-              index: "good-books-ds",  // further restrict the index to search on
-          }"
-      />
-  ```
+```jsx
+    <search-box
+        :enableRecentSuggestions="true"
+        "recentSuggestionsConfig="{
+            size: 5,
+            minHits: 5,
+            minChars: 3,
+            index: "good-books-ds",  // further restrict the index to search on
+        }"
+    />
+```
 
 
 ### aggregationField `String` [optional]
-    One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
-    You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` slot as shown:
+One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
+You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` slot as shown:
 
-    ```html
-    <template
-    	slot="render"
-    	slot-scope="{
-            ...
-            aggregationData
-        }"
-    >
-    	...
-    </template>
-    ```
+```html
+<template
+  slot="render"
+  slot-scope="{
+        ...
+        aggregationData
+    }"
+>
+  ...
+</template>
+```
 
-    > If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** slot.
+> If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** slot.
 
-    > It is possible to override this query by providing `customQuery`.
+> It is possible to override this query by providing `customQuery`.
 
-    > Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
+> Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
-    To set the number of buckets to be returned by aggregations.
+To set the number of buckets to be returned by aggregations.
 
-    > Note: This is a new feature and only available for appbase versions >= 7.41.0.
+> Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
 ### nestedField `String` [optional]
-    Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
+Set the path of the `nested` type under which the `dataField` is present. Only applicable only when the field(s) specified in the `dataField` is(are) present under a [`nested` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) mapping.
 ### title `String or JSX` [optional]
-    set the title of the component to be shown in the UI.
+set the title of the component to be shown in the UI.
 ### defaultValue `String` | `Array<String>` [optional]
-    preset the search query text in the search box.
+preset the search query text in the search box.
 
-    > Data type is Array<String> when `mode` prop is set to `tag`.
+> Data type is Array<String> when `mode` prop is set to `tag`.
 ### value `String` | `Array<String>` [optional]
-    sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `change` event.
+sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `change` event.
 
-    > Data type is Array<String> when `mode` prop is set to `tag`.
+> Data type is Array<String> when `mode` prop is set to `tag`.
 
 ### fieldWeights `Array` [optional]
-    set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
+set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 ### placeholder `String` [optional]
-    set placeholder text to be shown in the component's input field. Defaults to "Search".
+set placeholder text to be shown in the component's input field. Defaults to "Search".
 ### autosuggest `Boolean` [optional]
-    set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`. When set to `false`, it searches as user types, unless `debounce` is also set.
+set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`. When set to `false`, it searches as user types, unless `debounce` is also set.
 ### showIcon `Boolean` [optional]
-    whether to display a search or custom icon in the input box. Defaults to `true`.
+whether to display a search or custom icon in the input box. Defaults to `true`.
 ### iconPosition `String` [optional]
-    sets the position of the search icon. Can be set to either `left` or `right`. Defaults to `right`.
+sets the position of the search icon. Can be set to either `left` or `right`. Defaults to `right`.
 ### icon `JSX` [optional]
-    set a custom search icon instead of the default icon 🔍
+set a custom search icon instead of the default icon 🔍
 ### showClear `Boolean` [optional]
-    show a clear text `X` icon. Defaults to `true`.
+show a clear text `X` icon. Defaults to `true`.
 ### showFilter `Boolean` [optional]
-    show as filter when a value is selected in a global selected filters view. Defaults to `true`.
+show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 ### showVoiceSearch `Boolean` [optional]
-    show a voice icon in the searchbox to enable users to set voice input. Defaults to `false`.
+show a voice icon in the searchbox to enable users to set voice input. Defaults to `false`.
 ### showDistinctSuggestions `Boolean` [optional]
-    Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
-    <br/> <br/>
-    **Example** if you have `showDistinctSuggestions` is set to `false` and have following configurations
+Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
+<br/> <br/>
+**Example** if you have `showDistinctSuggestions` is set to `false` and have following configurations
 
-    ```js
-    // Your document:
-    {
-    	"name": "Warn",
-    	"address": "Washington"
-    }
+```js
+// Your document:
+{
+  "name": "Warn",
+  "address": "Washington"
+}
 
-    // Component:
-    <SearchBox dataField=['name', 'address'] .../>
+// Component:
+<SearchBox dataField=['name', 'address'] .../>
 
-    // Search Query:
-    "wa"
-    ```
+// Search Query:
+"wa"
+```
 
-    Then there will be 2 suggestions from the same document
-    as we have the search term present in both the fields
-    specified in `dataField`.
+Then there will be 2 suggestions from the same document
+as we have the search term present in both the fields
+specified in `dataField`.
 
-    ```
-    Warn
-    Washington
-    ```
+```
+Warn
+Washington
+```
 
 `Note:` Check the above concept in action over [here](https://codesandbox.io/s/musing-allen-qc58z).
 
 ### filterLabel `String` [optional]
-  An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
+An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 ### clearIcon `JSX` [optional]
-  set a custom icon for clearing text instead of the default cross.
+set a custom icon for clearing text instead of the default cross.
 ### debounce `Number` [optional]
-  set the milliseconds to wait before executing the query. Defaults to `0`, i.e. no debounce.
+set the milliseconds to wait before executing the query. Defaults to `0`, i.e. no debounce.
 ### highlight `Boolean` [optional]
-  whether highlighting should be enabled in the returned results.
+whether highlighting should be enabled in the returned results.
 ### highlightField `String or Array` [optional]
-  when highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
+when highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
 ### customHighlight `Function` [optional]
-  a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). It receives the `props` and expects you to return an object with the `highlight` key. Check out the <a href="https://opensource.appbase.io/reactivesearch/demos/technews/" target="_blank">technews demo</a> where the `SearchBox` component uses a `customHighlight` as given below,
+a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). It receives the `props` and expects you to return an object with the `highlight` key. Check out the <a href="https://opensource.appbase.io/reactivesearch/demos/technews/" target="_blank">technews demo</a> where the `SearchBox` component uses a `customHighlight` as given below,
 
 ```html
 <template>
@@ -371,10 +377,12 @@ Example uses:
 ```
 
 ### focusShortcuts `Array<string | number>` [optional]
-  A list of keyboard shortcuts that focus the search box. Accepts key names and key codes. Compatible with key combinations separated using '+'. Defaults to `['/']`.
-### autoFocus `boolean` [optional] When set to true, search box is auto-focused on page load. Defaults to `false`.
-### expandSuggestionsContainer `boolean` [optional] When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
-  <img src="https://i.imgur.com/x3jF23m.png"/>
+A list of keyboard shortcuts that focus the search box. Accepts key names and key codes. Compatible with key combinations separated using '+'. Defaults to `['/']`.
+### autoFocus `boolean` [optional] 
+When set to true, search box is auto-focused on page load. Defaults to `false`.
+### expandSuggestionsContainer `boolean` [optional] 
+When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
+<img src="https://i.imgur.com/x3jF23m.png"/>
 
 ```jsx
  <search-box
@@ -387,18 +395,18 @@ Example uses:
 ```
 
 ### queryFormat `String` [optional]
-  Sets the query format, can be **or** or **and**. Defaults to **or**.
+Sets the query format, can be **or** or **and**. Defaults to **or**.
 
-  - **or** returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
-  - On the other hand with **and**, only results matching both "bat" and "man" will be returned. It returns the results matching **all** of the search query text's parameters.
+- **or** returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
+- On the other hand with **and**, only results matching both "bat" and "man" will be returned. It returns the results matching **all** of the search query text's parameters.
 
 ### fuzziness `String or Number` [optional]
-  Sets a maximum edit distance on the search parameters, can be **0**, **1**, **2** or **"AUTO"**. Useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, **fox** can become **box**. Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html).
-  > Note:
-  >
-  > This prop doesn't work when the value of `queryFormat` prop is set to `and`.
+Sets a maximum edit distance on the search parameters, can be **0**, **1**, **2** or **"AUTO"**. Useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, **fox** can become **box**. Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html).
+> Note:
+>
+> This prop doesn't work when the value of `queryFormat` prop is set to `and`.
 ### innerRef `Function` [optional]
-  The `innerRef` prop along with the `ref` prop can be used to access the reference of the `input` element that can be used to access/manipulate the native events or values for input element. For, an example the below snippet changes the `type` of the `input` element to `search` from the `text`.
+The `innerRef` prop along with the `ref` prop can be used to access the reference of the `input` element that can be used to access/manipulate the native events or values for input element. For, an example the below snippet changes the `type` of the `input` element to `search` from the `text`.
 
 ```html
 <template>
@@ -420,43 +428,43 @@ Example uses:
 ```
 
 ### URLParams `Boolean` [optional]
-  enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### render `Function|slot-scope` [optional]
-  You can render suggestions in a custom layout by using the `render` as a `prop` or a `slot`.
-  <br/>
-  It accepts an object with these properties:
-  - **`loading`**: `boolean`
-    indicates that the query is still in progress.
-  - **`error`**: `object`
-    An object containing the error info.
-  - **`data`**: `array`
-    An array of parsed suggestions obtained from the applied query.
-  - **`rawData`** `object`
-    An object of raw response as-is from elasticsearch query.
-  - **`resultStats`**: `object`
-    An object with the following properties which can be helpful to render custom stats:
-    - **`numberOfResults`**: `number`
-      Total number of results found
-    - **`time`**: `number`
-      Time taken to find total results (in ms)
-    - **`hidden`**: `number`
-      Total number of hidden results found
-    - **`promoted`**: `number`
-      Total number of promoted results found
-  - **`value`**: `string`
-    current search input value i.e the search query being used to obtain suggestions.
-  - **`downshiftProps`**: `object`
-    provides the following control props from `downshift` which can be used to bind list items with click/mouse events.
-    - **isOpen** `boolean`
-      Whether the menu should be considered open or closed. Some aspects of the downshift component respond differently based on this value (for example, if isOpen is true when the user hits "Enter" on the input field, then the item at the highlightedIndex item is selected).
-    - **getItemProps** `function`
-      Returns the props you should apply to any menu item elements you render.
-    - **getItemEvents** `function`
-      Returns the events you should apply to any menu item elements you render.
-    - **highlightedIndex** `number`
-      The index that should be highlighted.
-  ### triggerClickAnalytics: `object`
-    method can be used to register click analytics for suggestions. It accepts two arguments, click position and document ID (required only if you're using `rawData` to render suggestions).
+You can render suggestions in a custom layout by using the `render` as a `prop` or a `slot`.
+
+It accepts an object with these properties:
+- **`loading`**: `boolean`
+  indicates that the query is still in progress.
+- **`error`**: `object`
+  An object containing the error info.
+- **`data`**: `array`
+  An array of parsed suggestions obtained from the applied query.
+- **`rawData`** `object`
+  An object of raw response as-is from elasticsearch query.
+- **`resultStats`**: `object`
+  An object with the following properties which can be helpful to render custom stats:
+  - **`numberOfResults`**: `number`
+    Total number of results found
+  - **`time`**: `number`
+    Time taken to find total results (in ms)
+  - **`hidden`**: `number`
+    Total number of hidden results found
+  - **`promoted`**: `number`
+    Total number of promoted results found
+- **`value`**: `string`
+  current search input value i.e the search query being used to obtain suggestions.
+- **`downshiftProps`**: `object`
+  provides the following control props from `downshift` which can be used to bind list items with click/mouse events.
+  - **isOpen** `boolean`
+    Whether the menu should be considered open or closed. Some aspects of the downshift component respond differently based on this value (for example, if isOpen is true when the user hits "Enter" on the input field, then the item at the highlightedIndex item is selected).
+  - **getItemProps** `function`
+    Returns the props you should apply to any menu item elements you render.
+  - **getItemEvents** `function`
+    Returns the events you should apply to any menu item elements you render.
+  - **highlightedIndex** `number`
+    The index that should be highlighted.
+### triggerClickAnalytics: `object`
+  method can be used to register click analytics for suggestions. It accepts two arguments, click position and document ID (required only if you're using `rawData` to render suggestions).
 
 You can use `SearchBox` with `render slot` as shown:
 
@@ -517,146 +525,147 @@ Or you can also use render as prop.
 ```
 
 ### renderNoSuggestion `String|slot-scope` [optional]
-  can be used to render a message when there are no suggestions found.
+can be used to render a message when there are no suggestions found.
 ### renderError `String|Function|slot-scope` [optional]
-  can be used to render an error message in case of any error.
+can be used to render an error message in case of any error.
 
 ```html
 <template slot="renderError" slot-scope="error">
-	<div>Something went wrong!<br />Error details<br />{{ error }}</div>
+<div>Something went wrong!<br />Error details<br />{{ error }}</div>
 </template>
 ```
 ### getMicInstance `Function` [optional]
-  You can pass a callback function to get the instance of `SpeechRecognition` object, which can be used to override the default configurations.
+You can pass a callback function to get the instance of `SpeechRecognition` object, which can be used to override the default configurations.
 ### renderMic `String|Function|slot-scope` [optional]
-  can be used to render the custom mic option.<br/>
-  It accepts an object with the following properties:
+can be used to render the custom mic option.<br/>
+It accepts an object with the following properties:
 
-  - **`handleClick`**: `function`
-    needs to be called when the mic option is clicked.
-  - **`status`**: `string`
-    is a constant which can have one of these values:<br/>
-    `INACTIVE` - mic is in inactive state i.e not listening<br/>
-    `STOPPED` - mic has been stopped by the user<br/>
-    `ACTIVE` - mic is listening<br/>
-    `DENIED` - permission is not allowed<br/>
+- **`handleClick`**: `function`
+needs to be called when the mic option is clicked.
+- **`status`**: `string`
+is a constant which can have one of these values:<br/>
+`INACTIVE` - mic is in inactive state i.e not listening<br/>
+`STOPPED` - mic has been stopped by the user<br/>
+`ACTIVE` - mic is listening<br/>
+`DENIED` - permission is not allowed<br/>
 
-  ```html
-      <template slot="renderMic" slot-scope="{ handleClick, status }">
-          <div v-if="status === `ACTIVE`">
-              <img src="/active_mic.png" onClick={handleClick} />
-          </div>
-          <div v-if="status === `DENIED`">
-              <img src="/denied_mic.png" onClick={handleClick} />
-          </div>
-          <div v-if="status === `STOPPED`">
-              <img src="/mute_mic.png" onClick={handleClick} />
-          </div>
-          <div v-if="typeof status === `undefined`">
-              <img src="/inactive_mic.png" onClick={handleClick} />
-          </div>
-      </template>
-  ```
+```html
+  <template slot="renderMic" slot-scope="{ handleClick, status }">
+      <div v-if="status === `ACTIVE`">
+          <img src="/active_mic.png" onClick={handleClick} />
+      </div>
+      <div v-if="status === `DENIED`">
+          <img src="/denied_mic.png" onClick={handleClick} />
+      </div>
+      <div v-if="status === `STOPPED`">
+          <img src="/mute_mic.png" onClick={handleClick} />
+      </div>
+      <div v-if="typeof status === `undefined`">
+          <img src="/inactive_mic.png" onClick={handleClick} />
+      </div>
+  </template>
+```
 
 ### recentSearchesIcon `slot-scope` [optional]
-  You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-search-icon` key in the `innerClass` prop.
+You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-search-icon` key in the `innerClass` prop.
 
-      ```html
-          <search-box
-              ...
-              :enableRecentSearches="true"
-              :innerClass="{
-                  'recent-search-icon': '...',
-              }"
-          >
-              <recent-icon slot="recentSearchesIcon" />
-          </search-box>
-      ```
+  ```html
+      <search-box
+          ...
+          :enableRecentSearches="true"
+          :innerClass="{
+              'recent-search-icon': '...',
+          }"
+      >
+          <recent-icon slot="recentSearchesIcon" />
+      </search-box>
+  ```
 
 ### popularSearchesIcon `slot-scope` [optional]
-  You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-search-icon` key in the `innerClass` prop.
+You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-search-icon` key in the `innerClass` prop.
 
-      ```html
-          <search-box
-              ...
-              :enablePopularSuggestions="true"
-              :innerClass="{
-                  'popular-search-icon': '...'
-              }"
-          >
-              <popular-icon slot="popularSearchesIcon" />
-          </search-box>
-      ```
+  ```html
+      <search-box
+          ...
+          :enablePopularSuggestions="true"
+          :innerClass="{
+              'popular-search-icon': '...'
+          }"
+      >
+          <popular-icon slot="popularSearchesIcon" />
+      </search-box>
+  ```
 
 ### addonBefore `slot-scope` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
-  <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
+<img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
 
-      ```html
-        <search-box
-            ...
-            :enablePopularSuggestions="true"
-            :innerClass="{
-              'popular-search-icon': '...'
-            }"
-        >
-            <img 
-              slot="addonBefore"
-              src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-              height="30px"
-            />
-        </search-box>
-      ```
+  ```html
+    <search-box
+        ...
+        :enablePopularSuggestions="true"
+        :innerClass="{
+          'popular-search-icon': '...'
+        }"
+    >
+        <img 
+          slot="addonBefore"
+          src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+          height="30px"
+        />
+    </search-box>
+  ```
 
-### addonAfter `slot-scope` [optional] The HTML markup displayed before (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
-  <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
+### addonAfter `slot-scope` [optional] 
+The HTML markup displayed before (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+<img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
 
-      ```html
-        <search-box
-            ...
-            :enablePopularSuggestions="true"
-            :innerClass="{
-              'popular-search-icon': '...'
-            }"
-        >
-            <img 
-              slot="addonBefore"
-              src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-              height="30px"
-            />
-        </search-box>
-      ```
+  ```html
+    <search-box
+        ...
+        :enablePopularSuggestions="true"
+        :innerClass="{
+          'popular-search-icon': '...'
+        }"
+    >
+        <img 
+          slot="addonBefore"
+          src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+          height="30px"
+        />
+    </search-box>
+  ```
 
 ### distinctField `String` [optional]
-  This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ### distinctFieldConfig `Object` [optional]
-  This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-      ```html
-      <search-box
-        ....
-        distinctField="authors.keyword"
-        :distinctFieldConfig="{
-          inner_hits: {
-            name: 'most_recent',
-            size: 5,
-            sort: [{ timestamp: 'asc' }],
-          },
-          max_concurrent_group_searches: 4,
-        }"
-      />
-      ```
+  ```html
+  <search-box
+    ....
+    distinctField="authors.keyword"
+    :distinctFieldConfig="{
+      inner_hits: {
+        name: 'most_recent',
+        size: 5,
+        sort: [{ timestamp: 'asc' }],
+      },
+      max_concurrent_group_searches: 4,
+    }"
+  />
+  ```
 
-    > Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
+> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
 ### index `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ### renderItem `Function` [optional] 
-     You can render each suggestion in a custom layout by using the `renderItem` prop.
-    <br/>
+  You can render each suggestion in a custom layout by using the `renderItem` prop.
+<br/>
 
 ```js
     <search-box
@@ -669,14 +678,17 @@ Or you can also use render as prop.
     </search-box>
 ```
 
-### applyStopwords `Boolean` When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
+### applyStopwords `Boolean` 
+When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
 
-### customStopwords `Array[String]` It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
+### customStopwords `Array[String]` 
+It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
 ### categoryField `string` [optional]
     Data field whose values are used to provide category specific suggestions.
 
-### enterButton `boolean` [optional] When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
+### enterButton `boolean` [optional] 
+When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
 
     <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
 
@@ -688,7 +700,8 @@ Or you can also use render as prop.
  </search-box>
 ```   
 
-### renderEnterButton `slot-scope` [optional] The custom HTML markup displayed for enterButton. Use in conjunction with `enterButton` prop set to `true`.
+### renderEnterButton `slot-scope` [optional] 
+The custom HTML markup displayed for enterButton. Use in conjunction with `enterButton` prop set to `true`.
 <img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
 
 ```jsx

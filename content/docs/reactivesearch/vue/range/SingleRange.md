@@ -77,46 +77,46 @@ Example uses:
 ## Props
 
 ### componentId `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
+unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint `Object` [optional] 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+	URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+	set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+	set method of the API request.
+-   **body** `Object` [optional]    
+	request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
 
 ### dataField `String`
-    data field to be connected to the component's UI view. The range items are filtered by a database query on this field.
+data field to be connected to the component's UI view. The range items are filtered by a database query on this field.
 ### data `Object Array`
-    collection of UI `labels` with associated `start` and `end` range values.
+collection of UI `labels` with associated `start` and `end` range values.
 ### nestedField `String` [optional]
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 ### title `String or JSX` [optional]
-    title of the component to be shown in the UI.
+title of the component to be shown in the UI.
 ### defaultValue `String` [optional]
-    pre-select a label from the `data` array.
+pre-select a label from the `data` array.
 ### value `String` [optional]
-    sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	
+sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	
 ### showRadio `Boolean` [optional]
-    show radio button icon for each range item. Defaults to `true`.
+show radio button icon for each range item. Defaults to `true`.
 ### showFilter `Boolean` [optional]
-    show as filter when a value is selected in a global selected filters view. Defaults to `true`.
+show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 ### filterLabel `String` [optional]
-    An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
+An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 ### URLParams `Boolean` [optional]
-    enable creating a URL query string parameter based on the selected value of the range. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string parameter based on the selected value of the range. This is useful for sharing URLs with the component state. Defaults to `false`.
 ### index `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Demo
 
@@ -200,62 +200,62 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 ```
 
 ### className `String`
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### customQuery `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **SingleRange** component as long as the component is a part of `react` dependency of at least one other component.
+takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **SingleRange** component as long as the component is a part of `react` dependency of at least one other component.
 ### beforeValueChange `Function`
-    is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
-    > Note:
-    >
-    > If you're using Reactivesearch version >= `1.1.0`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+> Note:
+>
+> If you're using Reactivesearch version >= `1.1.0`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
 
-    ```js
-    beforeValueChange = value => {
-    	// The update is accepted by default
-    	if (value.start < 4) {
-    		// To reject the update, throw an error
-    		throw Error('Rating must be greater than or equal to 4.');
-    	}
-    };
-    ```
+```js
+beforeValueChange = value => {
+	// The update is accepted by default
+	if (value.start < 4) {
+		// To reject the update, throw an error
+		throw Error('Rating must be greater than or equal to 4.');
+	}
+};
+```
 
 ## Events
 
 ### change
-  is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
+is an event that accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This event is useful to control the value updates of search input.
 
-  ```jsx
-  <template>
-      <single-range
-	      // ...other props
-          value="value"
-          @change="handleChange"
-      />
-  </template>
+```jsx
+<template>
+	<single-range
+		// ...other props
+		value="value"
+		@change="handleChange"
+	/>
+</template>
 
-  <script>
-  export default {
-    name: 'app',
-      data() {
-          return {
-              value: ""
-          }
-      },
-      methods: {
-          handleChange(value) {
-              this.value = value;
-          }
-      }
-  };
-  </script>
-  ```
+<script>
+export default {
+name: 'app',
+	data() {
+		return {
+			value: ""
+		}
+	},
+	methods: {
+		handleChange(value) {
+			this.value = value;
+		}
+	}
+};
+</script>
+```
 
--   **query-change**
-    is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **value-change**
-    is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when range item(s) is/are selected in a "Discounted Price" SingleRange.
+### query-change
+is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This event is handy in cases where you want to generate a side-effect whenever the component's query would change.
+### value-change
+is an event which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This event is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when range item(s) is/are selected in a "Discounted Price" SingleRange.
 
 ## Examples
 

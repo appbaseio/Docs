@@ -246,48 +246,48 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
 ```
 
 ### className `String`
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### style `Object`
-    CSS styles to be applied to the **RangeInput** component.
+CSS styles to be applied to the **RangeInput** component.
 ### customQuery `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **RangeInput** component as long as the component is a part of `react` dependency of at least one other component.
+takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **RangeInput** component as long as the component is a part of `react` dependency of at least one other component.
 ### beforeValueChange `Function`
-    is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
-    > Note:
-    >
-    > If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+> Note:
+>
+> If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
 
-    ```js
-    beforeValueChange = value => {
-        // The update is accepted by default
-    	if (value.start > 3000) {
-    		// To reject the update, throw an error
-    		throw Error('Start value must be less than or equal to 3000.');
-    	}
-    };
-    ```
+```js
+beforeValueChange = value => {
+    // The update is accepted by default
+    if (value.start > 3000) {
+        // To reject the update, throw an error
+        throw Error('Start value must be less than or equal to 3000.');
+    }
+};
+```
 
 ### onValueChange `Function`
-    is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when some range is selected in a "Discounted Price" RangeInput.
+is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when some range is selected in a "Discounted Price" RangeInput.
 ### onQueryChange `Function`
-    is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
+is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 ### react `Object`
-    specify dependent components to reactively update **RangeInput's** data view.
-    -   **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    -   **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+specify dependent components to reactively update **RangeInput's** data view.
+-   **key** `String`
+    one of `and`, `or`, `not` defines the combining clause.
+    -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+    -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+    -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+-   **value** `String or Array or Object`
+    -   `String` is used for specifying a single component by its `componentId`.
+    -   `Array` is used for specifying multiple components by their `componentId`.
+    -   `Object` is used for nesting other key clauses.
 ### index `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Examples
 

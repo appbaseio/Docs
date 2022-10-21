@@ -82,36 +82,36 @@ Example uses:
 ## Props
 
 ### componentId `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
+unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint `Object` [optional] 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+	URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+	set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+	set method of the API request.
+-   **body** `Object` [optional]    
+	request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
 
 ### dataField `String`
-    DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
+DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
 ### range `Object`
-    an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
+an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
 ### nestedField `String` [optional]
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
 ### title `String or JSX` [optional]
-    title of the component to be shown in the UI.
+title of the component to be shown in the UI.
 ### defaultValue `Object` [optional]
-    selects a initial range values using `start` and `end` key values from one of the data elements.
+selects a initial range values using `start` and `end` key values from one of the data elements.
 ### value `Object` [optional]
-    controls the current value of the component.It selects the data from the range (on mount and on update). Use this prop in conjunction with `change` event.
+controls the current value of the component.It selects the data from the range (on mount and on update). Use this prop in conjunction with `change` event.
 ### validateRange `function` [optional]
-    is a callback function that can be used to validate the range input values before applying it. This function accepts an array of numbers where first element represents the `start` range and second element represents the `end` range. The following example prevents the users to type negative value for start range input.
+is a callback function that can be used to validate the range input values before applying it. This function accepts an array of numbers where first element represents the `start` range and second element represents the `end` range. The following example prevents the users to type negative value for start range input.
 
 ```html
 <template>
