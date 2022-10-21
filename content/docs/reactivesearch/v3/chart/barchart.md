@@ -71,91 +71,91 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 
 ### **componentId** `String`
 
-    unique identifier of the component, can be referenced in other components' `react` prop.
-    <br />
+unique identifier of the component, can be referenced in other components' `react` prop.
+<br />
 
 ### **dataField** `String`
 
-    data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
+data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
 ### **chartType** `String`
 
-    Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
+Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
 ### **title** `String or JSX` [optional]
 
-    title of the component to be shown in the UI.
+title of the component to be shown in the UI.
 
 ### **loader** `String or JSX` [optional]
 
-    to display an optional loader while fetching the options.
+to display an optional loader while fetching the options.
 
 ### **size** `Number` [optional]
-    number of items to be displayed.
+number of items to be displayed.
 
-    > Note: 
-    > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
-    > 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
+> Note: 
+> 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
+> 2. We recommend Appbase users to not use the `size` prop unless they are using `hits` because it can impact the query performance.
 
 ### **aggregationSize**
-    To set the number of buckets to be returned by aggregations.
+To set the number of buckets to be returned by aggregations.
 
-    > Note: This prop is only applicable when `enableAppbase` is set to `true`.
+> Note: This prop is only applicable when `enableAppbase` is set to `true`.
 
 ### **sortBy** `String` [optional]
 
-    sort the items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the by the frequency of count value, most first.
+sort the items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the by the frequency of count value, most first.
 
 ### **showMissing** `Boolean` [optional]
 
-    defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
+defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
 
 ### **missingLabel** `String` [optional]
 
-    defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
+defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
 
 ### **showFilter** `Boolean` [optional]
 
-    show as filter when a value is selected in a global selected filters view. Defaults to `true`.
+show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 
 ### **filterLabel** `String` [optional]
 
-    An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
+An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 
 ### **URLParams** `Boolean` [optional]
 
-    enable creating a URL query string parameter based on the selected value of the chart. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string parameter based on the selected value of the chart. This is useful for sharing URLs with the component state. Defaults to `false`.
 
 ### **renderError** `String or JSX or Function` [optional]
-    can be used to render an error message in case of any error.
-    ```jsx
-        renderError={(error) => (
-                <div>
-                    Something went wrong!<br/>Error details<br/>{error}
-                </div>
-            )
-        }
-    ```
+can be used to render an error message in case of any error.
+```jsx
+    renderError={(error) => (
+            <div>
+                Something went wrong!<br/>Error details<br/>{error}
+            </div>
+        )
+    }
+```
 ### **value** `string` [optional]
-    controls the current value of the component. It selects the item from the chart UI (on mount and on update). Use this prop in conjunction with `onChange` function.
+controls the current value of the component. It selects the item from the chart UI (on mount and on update). Use this prop in conjunction with `onChange` function.
 
 ### **onChange** `function` [optional]
-    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
+is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
 
 ### **onError** `Function` [optional]
-    gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
+gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 
 ### **index** `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ### **xAxisName** `String` [optional]
-    Label for x axis line
+Label for x axis line
 ### **yAxisName** `String` [optional]
-    Label for y axis line
+Label for y axis line
 ### **useAsFilter** `Boolean` [optional]
-    If set to `false` then data selection on chart UI would not filter the results. Defaults to `true`.
+If set to `false` then data selection on chart UI would not filter the results. Defaults to `true`.
 ## Demo
 
 <br />
@@ -227,58 +227,58 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 ```
 
 ### **customQuery** `Function`
-    is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **ReactiveChart** component as long as the component is a part of `react` dependency of at least one other component.
+is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **ReactiveChart** component as long as the component is a part of `react` dependency of at least one other component.
 ### **defaultQuery** `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
-    Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
+Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 ### **setOption** `Function`
-    `ReactiveChart` uses the [Echarts](https://echarts.apache.org/) library to render the UI. `ReactiveChart` component connects the search backend to retrieve the chart data. The `setOption` prop allows you to define the custom chart option support by [Echarts](https://echarts.apache.org/) to render any kind of chart UI. It accepts the an object containing the following properties:
-    - `aggregationData` An array of aggregation buckets
-    - `data` An array of search hits
-    - `rawData` Search backend data in raw form
-    - `value` Current selected value in chart UI
-    For example,
-    ```js
-        setOption={({ data, aggregationData, rawData, value }) => ({
-            title: {
-                text: "Languages"
-            },
-            tooltip: {
-                trigger: 'item',
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-            },
-            series: [
-                {
-                    name: 'Access From',
-                    type: 'pie',
-                    radius: '50%',
-                    data: aggregationData.map(item => ({
-                        value: item.doc_count,
-                        name: item.key,
-                    })),
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)',
-                        },
+`ReactiveChart` uses the [Echarts](https://echarts.apache.org/) library to render the UI. `ReactiveChart` component connects the search backend to retrieve the chart data. The `setOption` prop allows you to define the custom chart option support by [Echarts](https://echarts.apache.org/) to render any kind of chart UI. It accepts the an object containing the following properties:
+- `aggregationData` An array of aggregation buckets
+- `data` An array of search hits
+- `rawData` Search backend data in raw form
+- `value` Current selected value in chart UI
+For example,
+```js
+    setOption={({ data, aggregationData, rawData, value }) => ({
+        title: {
+            text: "Languages"
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: aggregationData.map(item => ({
+                    value: item.doc_count,
+                    name: item.key,
+                })),
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
                     },
                 },
-            ],
-        })}
-    ```
+            },
+        ],
+    })}
+```
 ### **react** `Object`
-    specify dependent components to reactively update **ReactiveChart's** options.
-    ### **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        ### **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        ### **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        ### **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    ### **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+specify dependent components to reactively update **ReactiveChart's** options.
+- **key** `String`
+    one of `and`, `or`, `not` defines the combining clause.
+    - **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+    - **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+    - **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+- **value** `String or Array or Object`
+    -   `String` is used for specifying a single component by its `componentId`.
+    -   `Array` is used for specifying multiple components by their `componentId`.
+    -   `Object` is used for nesting other key clauses.
