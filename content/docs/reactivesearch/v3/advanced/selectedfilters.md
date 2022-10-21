@@ -37,35 +37,35 @@ Example uses:
 ### Props
 
 ### showClearAll `enum` `('never', 'always', 'default', true, false)` [optional] (defaults to `true`).
-    It behaves according to the following scenarios: <br />
-    - `never`: Clear All button is never shown.
-    - `always`: Clear All button is shown based on values set by components.
-    - `default`: Clear All button is shown for components which have selected values and `showFilter={true}`
-    - `true`: Identical behavior to `always`.
-    - `false`: Identical behavior to `never`.
+It behaves according to the following scenarios: <br />
+- `never`: Clear All button is never shown.
+- `always`: Clear All button is shown based on values set by components.
+- `default`: Clear All button is shown for components which have selected values and `showFilter={true}`
+- `true`: Identical behavior to `always`.
+- `false`: Identical behavior to `never`.
 
-    > Note: **showFilter** prop doesn't affect Clear All behavior when **showClearAll="always"**.
+> Note: **showFilter** prop doesn't affect Clear All behavior when **showClearAll="always"**.
 ### clearAllLabel `string` [optional] (defaults to `'Clear All'`)
-    Sets the label for the clear all button.
+Sets the label for the clear all button.
 ### onChange `function` [optional]
-    Provides access to the current selected values. This enables you to retrieve the selected filters and current search state in a convenient way.
+Provides access to the current selected values. This enables you to retrieve the selected filters and current search state in a convenient way.
 ### onClear `function` [optional]
-    a callback function which will be called when a particular filter(value) has been removed from the selected filters, provides the `component` and `value`. <br/><br/>
-    Example:
+a callback function which will be called when a particular filter(value) has been removed from the selected filters, provides the `component` and `value`. <br/><br/>
+Example:
 
 ```jsx
 <SelectedFilters
-	onClear={(component, value) => {
-		console.log(`${component} has been removed with value as ${value}`);
-	}}
+onClear={(component, value) => {
+    console.log(`${component} has been removed with value as ${value}`);
+}}
 />
 ```
 ### resetToDefault `boolean` [optional]
-    When set to true and clearAll functionality is utilised, then it would set the filter's value to its default set value(the `defaultValue` prop) instead of null/ undefined. 
-    Defaults to `false`.
+When set to true and clearAll functionality is utilised, then it would set the filter's value to its default set value(the `defaultValue` prop) instead of null/ undefined. 
+Defaults to `false`.
 
 ### resetToValues `Object` [optional]
-    It is a map of `componentId` to the component's value which would be used to set the component's value when `clearAll` action gets called. For example, the following configuration would reset the `AuthorFilter` to `Nora Roberts` on `clearAll` action.
+It is a map of `componentId` to the component's value which would be used to set the component's value when `clearAll` action gets called. For example, the following configuration would reset the `AuthorFilter` to `Nora Roberts` on `clearAll` action.
 
 ```jsx
 <SelectedFilters
@@ -75,9 +75,9 @@ Example uses:
 />
 ```
 ### clearAllBlacklistComponents `Array` [optional] allows defining a list of 
-    component IDs, which would reset their values when `clearAll` action gets triggered.
+component IDs, which would reset their values when `clearAll` action gets triggered.
 
-    The following example instructs the `SelectedFilters` component to not reset the `searchbox` component's value when `clearAll` button is clicked by the user.
+The following example instructs the `SelectedFilters` component to not reset the `searchbox` component's value when `clearAll` button is clicked by the user.
 
 ```jsx
 <SelectedFilters
@@ -118,25 +118,25 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 ```
 
 ### className `String`
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### style `Object`
-    CSS styles to be applied to the **SelectedFilters** component.
+CSS styles to be applied to the **SelectedFilters** component.
 ### render `Function`
-    Enables custom rendering for **SelectedFilters** component. It provides an object as a param which contains all the props needed to render the custom selected-filters, including the functions to clear and update the component values. [Check the usage here](https://github.com/appbaseio/reactivesearch/blob/dev/packages/web/examples/CustomSelectedFilters/src/index.js).
+Enables custom rendering for **SelectedFilters** component. It provides an object as a param which contains all the props needed to render the custom selected-filters, including the functions to clear and update the component values. [Check the usage here](https://github.com/appbaseio/reactivesearch/blob/dev/packages/web/examples/CustomSelectedFilters/src/index.js).
 
-    It accepts an object with these properties:
-    - **`components`**: `Array<String>`
-        array of `componentId`s which have got `showFilter` set to `true`.
-    - **`selectedValues`**: `Object`
-        map of components' Ids and their updated values.
-    - **`clearValues`**: `Function - () => void` 
-        function to clear all selected filters.
-    - **`clearValue`**: `Function - (String) => void` 
-        function to clear a selected filter's value. It takes the `componentId` as a param.
-    - **`setValue`**: `Function - (String, Any) => void` 
-        function to set a component's value. It takes the `componentId` and `value`(to set) as parameters.
-    - **`resetValuesToDefault`**: `Function - (Array<String>) => void`
-        function to reset values of the selected filters to their default values. It accepts an Array of componentIds to avoid resetting their values.
+It accepts an object with these properties:
+- **`components`**: `Array<String>`
+    array of `componentId`s which have got `showFilter` set to `true`.
+- **`selectedValues`**: `Object`
+    map of components' Ids and their updated values.
+- **`clearValues`**: `Function - () => void` 
+    function to clear all selected filters.
+- **`clearValue`**: `Function - (String) => void` 
+    function to clear a selected filter's value. It takes the `componentId` as a param.
+- **`setValue`**: `Function - (String, Any) => void` 
+    function to set a component's value. It takes the `componentId` and `value`(to set) as parameters.
+- **`resetValuesToDefault`**: `Function - (Array<String>) => void`
+    function to reset values of the selected filters to their default values. It accepts an Array of componentIds to avoid resetting their values.
         
 ### Examples
 
