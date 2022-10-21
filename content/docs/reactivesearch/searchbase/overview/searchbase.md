@@ -40,34 +40,37 @@ const searchbase = new SearchBase(properties);
 
 The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
 
--   **index** `string` [Required]
-    Refers to an index of Elasticsearch cluster.
+### **index** `string` [Required] 
 
-    `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
+Refers to an index of Elasticsearch cluster.
 
--   **url** `string` [Required]
-    URL for the Elasticsearch cluster
+`Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
--   **credentials** `string` [Required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
+### **url** `string` [Required] 
 
--   **appbaseConfig** `Object` [optional]
-    allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+URL for the Elasticsearch cluster
 
-    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
-    -   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
-    -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
-    -   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
-    -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
-    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
+### **credentials** `string` [Required] 
+
+Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
+
+### **appbaseConfig** `Object` [optional] 
+allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+-   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+-   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+-   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
+-   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+-   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
+-   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+-   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 #### To customize the query execution
 
 The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
--   **headers** `Object`
-    set custom headers to be sent with each server request as key/value pairs. For example:
+### **headers** `Object` 
+
+set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```ts
 const searchbase = new SearchBase({
@@ -80,24 +83,26 @@ const searchbase = new SearchBase({
 });
 ```
 
--   **transformRequest** `(requestOptions: Object) => Promise<Object>`
-    Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br/>
-    For example, we will add the `credentials` property in the request using `transformRequest`.
-    ```js
-    const searchbase = new SearchBase({
-    	index: 'gitxplore-app',
-    	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
-    	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
-    	transformRequest: request =>
-    		Promise.resolve({
-    			...request,
-    			credentials: include,
-    		}),
-    });
-    ```
--   **transformResponse** `(response: any) => Promise<any>`
-    Enables transformation of search network response before rendering it. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
-    For example:
+### **transformRequest** `(requestOptions: Object) => Promise<Object>` 
+
+Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br/>
+For example, we will add the `credentials` property in the request using `transformRequest`.
+```js
+const searchbase = new SearchBase({
+    index: 'gitxplore-app',
+    url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+    credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
+    transformRequest: request =>
+        Promise.resolve({
+            ...request,
+            credentials: include,
+        }),
+});
+```
+### **transformResponse** `(response: any) => Promise<any>` 
+
+Enables transformation of search network response before rendering it. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
+For example:
 
 ```js
 const searchbase = new SearchBase({
@@ -132,7 +137,7 @@ const searchbase = new SearchBase({
 >
 > `transformResponse` function is expected to return data in the following structure.
 
-```json
+```js
     {
         // Elasticsearch hits response
         hits: {
@@ -185,7 +190,7 @@ const searchbase = new SearchBase({
             ]
         }
     }),
-)}
+})
 ```
 
 ### Methods
