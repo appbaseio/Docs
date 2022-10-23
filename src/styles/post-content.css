@@ -370,12 +370,9 @@ Usage (In Ghost editor):
 }
 
 /* Fixing in-page anchors for headings */
-.post-content h2:before,
-.post-content h3:before {
-	content: '';
-	display: block;
-	height: 80px;
-	margin-top: -80px;
+.post-content h2,
+.post-content h3 {
+	margin-top: 80px;
 }
 
 .post-content h2 {
