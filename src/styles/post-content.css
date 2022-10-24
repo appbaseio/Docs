@@ -248,6 +248,7 @@ Usage (In Ghost editor):
 .post-content h6 {
 	color: inherit;
 	outline: none;
+	scroll-margin-top: 100px;
 }
 
 .post-content h1 .anchor,
@@ -372,7 +373,7 @@ Usage (In Ghost editor):
 /* Fixing in-page anchors for headings */
 .post-content h2,
 .post-content h3 {
-	margin-top: 80px;
+	margin-top: 2em;
 }
 
 .post-content h2 {
