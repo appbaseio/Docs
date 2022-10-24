@@ -9,6 +9,8 @@
         link: /docs/reactivesearch/ui-builder/how-to/ui-with-elasticsearch/
       - title: 'Create a Search UI with Solr'
         link: /docs/reactivesearch/ui-builder/how-to/ui-with-solr/
+      - title: 'Add pivot facets to a Search UI'
+        link: /docs/reactivesearch/ui-builder/how-to/add-pivot-facets/        
   - group: Searchboxes
     items:
       - title: Searchbox UI
