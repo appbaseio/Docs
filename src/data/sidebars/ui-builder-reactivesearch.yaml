@@ -11,6 +11,8 @@
         link: /docs/reactivesearch/ui-builder/how-to/ui-with-solr/
       - title: 'Add pivot facets to a Search UI'
         link: /docs/reactivesearch/ui-builder/how-to/add-pivot-facets/        
+      - title: 'Add a new page to Search UI'
+        link: /docs/reactivesearch/ui-builder/how-to/add-new-route/            
   - group: Searchboxes
     items:
       - title: Searchbox UI

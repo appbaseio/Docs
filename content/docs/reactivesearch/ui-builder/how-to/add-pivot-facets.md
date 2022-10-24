@@ -1,7 +1,7 @@
 ---
 title: 'Add pivot facets to Search UIs'
 meta_title: 'Add pivot facets to Search UIs'
-meta_description: 'Add pivot facets to a search UI with NoCode.'
+meta_description: 'Add pivot facets to a search UI.'
 keywords:
   - ui-builder
   - ui-integrations
