@@ -193,5 +193,19 @@ For example in the following code, we're setting up two custom events that will 
 >
 </ReactiveBase>
 ```
+- **queryParams** `Object` Query params in the object format to be passed to ReactiveSearch API (or search endpoint if using pipeline).
+<br/>
+For example in the following code, we're setting the `preference` value to `local`.
+
+```js
+<ReactiveBase
+    appbaseConfig={{
+        queryParams: {
+            preference: "local",
+        }
+    }}
+>
+</ReactiveBase>
+```
 
 - **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.

@@ -90,7 +90,7 @@ This property can be used to enable the highlighting in the returned results. If
 | `bool` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/AjkyDj8zGt32xV2QcOcu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/D78cJ8naiP4eFwey7fkH"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### queryFormat
 
@@ -110,7 +110,7 @@ Sets the query format, can be `or`, `and` and [date format](https://www.elastic.
 | `string` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/9NwNk4QRJxdbX0zQviNE"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/BrZJZmtQ8rysDwNFkwSZ"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### dataField
 
@@ -177,7 +177,7 @@ For examples,
 > Multiple `dataFields` are not applicable for `term` and `geo` queries.
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/FTOsW5jSBOzeNWEZy6FL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/OEsNqfreC5r618rPj3O1"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### from
 
@@ -191,7 +191,7 @@ Starting document offset. Defaults to `0`.
 | `int` | `search`,`suggestion`,`geo`,`range`      | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/vvurxeUDndDYLBfg0qNx"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/CkDIWMFkB1xA1lr6fExm"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### size
 
@@ -205,7 +205,7 @@ To set the number of results to be returned by a query.
 | `int` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/O1BdUDaqk2aVkU4J0qOL"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/OEsNqfreC5r618rPj3O1"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### aggregationSize
 
@@ -223,7 +223,7 @@ To set the number of buckets to be returned by aggregations.
 > 2. This is a new feature and only available for appbase versions >= 7.41.0.
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/apAMBqEVwmgUJv2j7Y6C"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/zVafjHpSZS2Vngji6cCu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### sortBy
 
@@ -254,7 +254,7 @@ The `sortBy` value by default is set according to the following criterion:
 ````asc````, ````desc````, ````count````
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/O8i1jMI5xlXM78rqxULu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/zbxzsh9ZJRBarHUAzd0t"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### sortField
 
@@ -330,15 +330,88 @@ Represents the value for a particular query [type](/docs/search/reactivesearch-a
 
 You can check the `value` format for different `type` of queries:
 
-#### format for search type
-The value can be a `string` or an `Array<string>`. The `Array<string>` format is interpreted as multiple values to be searched on.
+#### format for `search` and `suggestion` type
 
-**Example Playground**:
+The value can be a `string` or `int`.
+**Example Playground**: 
 <iframe src="https://play.reactivesearch.io/embed/FX3oGSB8xhqnyXyKsPYe"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"   title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
+#### format for `term` type
 
-**Example Playground (multi-value search)**:
-<iframe src=https://play.reactivesearch.io/embed/e4RjjbQpQlFw7h61RKyz     style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;"     title=rs-playground-e4RjjbQpQlFw7h61RKyz   ></iframe>
+The value can be a `string` or `Array<string>`.
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/OEiBYUiTYHNZC47ndlFM"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
+
+#### format for `range` type
+
+The value should be an `Object` in the following shape:
+
+```js
+{
+   "start": int | double | date, // optional
+   "end": int | double | date, // optional
+   "boost": int
+}
+```
+
+> Note:
+>
+> Either `start` or `end` property must present in the value.
+
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/b3fCyKzTzhlh4TPxtd0s"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP">
+</iframe>
+
+#### format for `geo` type
+
+The value should be an `Object` in the following shape:
+
+```js
+{
+   // The following properties can be used to get the results within a particular distance and location.
+   "distance": int,
+   "location": string, // must be in `{lat}, {lon}` format
+   "unit": string,
+   // The following properties can be used to get the results for a particular geo bounding box.
+   "geoBoundingBox": {
+       topLeft: string, // required, must be in `{lat}, {lon}` format
+       bottomRight: string, // required, must be in `{lat}, {lon}` format
+   }
+}
+```
+> Note: The `geoBoundingBox` property can not be used with `location` property, if both are defined than `geoBoundingBox` value will be ignored.
+
+The below example represents a **geo distance** query:
+
+```js
+    {
+        "id": "distance_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "distance":10,
+            "location":"22.3184816, 73.17065699999999",
+            "unit": "mi/yd/ft/km/m/cm/mm/nmi"
+        }
+    }
+```
+
+The below example represents a **geo bounding box** query:
+```js
+    {
+        "id": "bounding_box_filter",
+        "type": "geo",
+        "dataField": ["location"],
+        "value":  {
+            "geoBoundingBox": {
+                "topLeft": "40.73, -74.1",
+                "bottomRight": "40.01, -71.12",
+            }
+        }
+    }
+```
+**Example Playground**: 
+<iframe src="https://play.reactivesearch.io/embed/G8LuoEsyaSGqbOIAUnnX"  style="width:100%; height:100%; border:1px solid;  overflow:hidden;min-height:400px;" title="rs-playground-Nbpi1vkkywun82Z8aqFP"></iframe>
 
 ### includeNullValues
 
@@ -352,7 +425,7 @@ If you have sparse data or documents or items not having the value in the specif
 | `bool` | `range`                     | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/WN0V4iEgY80vRe9UQSvm"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/v9CSJs1tuzjSte1fX85y"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### includeFields
 
@@ -366,7 +439,7 @@ Data fields to be included in search results. Defaults to `[*]` which means all 
 | `Array<string>` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/i0wVmWCvfJJLJAWAEn0F"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/BiSDVAIW9LX3nnCFbcbs"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### excludeFields
 
@@ -378,9 +451,6 @@ Data fields to be excluded in search results.
 | <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p>e | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
-
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/MXpPbR2OGdAQPbN2ox2H"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### highlight
 
@@ -394,7 +464,7 @@ This property can be used to enable the highlighting in the returned results. If
 | `bool` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/AjkyDj8zGt32xV2QcOcu"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/SJS4477ORrmJMI7bFhg4"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### highlightField
 
@@ -406,9 +476,6 @@ When highlighting is `enabled`, this property allows specifying the fields which
 | <p style="margin: 0px;" class="table-header-text">Type</p>            | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | --------------- | --------------------------- | -------- |
 | `Array<string>` | `all`                       | false    |
-
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/GcO9cz4HSDeYh6xBzlrq"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### highlightConfig
 
@@ -422,7 +489,7 @@ It can be used to set the custom highlight settings. You can read the `Elasticse
 | `Object` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/ycCvpsb6ZiWFrEIEPxMX"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/wwXjDm82AYjTDwmXy3Wj"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### interval
 
@@ -434,9 +501,6 @@ To set the histogram bar interval, applicable when [aggregations](/docs/search/r
 | <p style="margin: 0px;" class="table-header-text">Type</p>  | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ----- | --------------------------- | -------- |
 | `int` | `range`                     | false    |
-
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/k5MeCmPeELaWvTYeqoGl"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### aggregations
 
@@ -454,23 +518,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 | `Array<string>` | `range`                     | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/cnHhcTQ4nSiMzyaNtA4y"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
-
-### missingLabel
-
-**Supported Engines**
-elasticsearch, mongodb, solr, opensearch
-
-Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
-
-| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
-| -------- | --------------------------- | -------- |
-| `string` | `term`                      | false    |
-
-> Note: This property doesn\'t work when [pagination](/docs/search/reactivesearch-api/reference/#pagination) is set to `true`.
-
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/QoFtxI5RCI5c4BWnCfRH"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/18dGWITtMwz7IqsEQiEU"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### showMissing
 
@@ -484,7 +532,7 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 | `bool` | `term`                      | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/Ht0aHbUljvjjFVny2X2Y"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/6EDzwDFK1NAAaWXTnG1N"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### defaultQuery
 
@@ -500,7 +548,7 @@ You can read more about the `defaultQuery` usage over [here](/docs/reactivesearc
 | `Object` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/DxQUolzQZnhas6Hma15A"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/2nSqDGicQ4nm0Kiwt2WT"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### customQuery
 
@@ -518,7 +566,7 @@ Custom query property will be applied to the dependent queries by `react` proper
 | `Object` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/IIPiPFpXbPbhKtL3IoPt"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/5GWsnFaRK8TUeG9uxiFD"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### execute
 
@@ -533,7 +581,7 @@ For example, consider a scenario where we want to filter the search query by som
 | `bool` | `all`                       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/NSUbJjAEdAERswHFV6lv"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/5GWsnFaRK8TUeG9uxiFD"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### enableSynonyms
 
@@ -547,7 +595,7 @@ This property can be used to control (enable/disable) the synonyms behavior for 
 | `bool` | `search`,`suggestion`       | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/FLwTmwBpcLZezTW3Wg5D"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/Y6ofCAWpEE02zlkZKKgj"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### enablePopularSuggestions
 
@@ -596,9 +644,6 @@ For example,
 | ------   | --------------------------- | -------- |
 | `Object` | `suggestion`                | false    |
 
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
-
 ### showDistinctSuggestions
 
 **Supported Engines**
@@ -638,7 +683,7 @@ Data field whose value contains a URL. This is a convenience prop that allows re
 | `string` | `suggestion`                | false    |
 
 **Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/2YaNeEx4AEF4PHeJrSdw"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
+<iframe src="https://play.reactivesearch.io/embed/41RHlvv68haiY9tN5JLY"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
 ### applyStopwords
 
@@ -744,6 +789,11 @@ This property can be used to disable the index suggestions. If set the `false`, 
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
+
+### enableEndpointSuggestions
+
+**Supported Engines**
+elasticsearch, solr, opensearch
 
 ### indexSuggestionsConfig
 
@@ -863,33 +913,6 @@ For ElasticSearch this maps to the `include` field inside the `term` query.
 
 For Solr, this maps to the `facet.contains` field.
 
-### excludeValues
-
-**Supported Engines**
-elasticsearch, solr, opensearch
-
-This fields indicates which values should not be included in the terms aggregation (if done so). Only applied for `term` type of queries.
-
-This should be of type array of strings:
-
-```json
-{
-    "query": [{
-        "excludeValues": ["someterm"]
-    }]
-}
-```
-
-> NOTE: The string can be a regex as well but only for ElasticSearch backend, not Solr.
-
-#### ElasticSearch
-
-For ElasticSearch this maps to the `exclude` field inside the `term` query.
-
-#### Solr
-
-For Solr, this maps to the `facet.excludeTerms` field.
-
 ## settings
 
 **Supported Engines**
@@ -898,69 +921,14 @@ Not dependent on engine, works for all.
 ### recordAnalytics
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, solr, opensearch
 
 `bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
-
-### userId
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
-`String` It allows you to define the user id which will be used to record the Appbase.io analytics.
-
-### customEvents
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
-`Object` It allows you to set the custom events which can be used to build your own analytics on top of the Appbase.io analytics. Further, these events can be used to filter the analytics stats from the Appbase.io dashboard. In the below example, we\'re setting up two custom events that will be recorded with each search request.
-
-```js
-{
-    query: [...],
-    settings: {
-        customEvents: {
-            platform: "android",
-            user_segment: "paid"
-        }
-    }
-}
-```
-
-### enableQueryRules
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
-`bool` defaults to `true`. It allows you to configure whether to apply the query rules for a particular query or not.
-
-### enableSearchRelevancy
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
-`bool` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.
-
-### useCache
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
-`Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard.
-
-**Try out an example in ReactiveSearch Playground**
-<iframe src="https://play.reactivesearch.io/embed/LfmsZDWgTw5Zf2Z3WTR9"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
-
-### queryRule
-
-**Supported Engines**
-Not dependent on engine, works for all.
 
 ### backend
 
 **Supported Engines**
-Not dependent on engine, works for all.
+elasticsearch, solr, opensearch
 
 This field indicates the backend of ReactiveSearch. Backend implies the search service being used to store the data.
 
@@ -992,7 +960,7 @@ Following example indicates how to use this field to use kNN reordering with Ope
 
 **Following values are supported for this field**
 
-````elasticsearch````, ````opensearch````, ````mongodb````, ````solr````
+```elasticsearch```, ```opensearch```, ```mongodb```, ```solr```
 
 ## metadata
 

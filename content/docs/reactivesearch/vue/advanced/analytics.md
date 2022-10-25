@@ -130,3 +130,29 @@ For example in the following code, we're setting up two custom events that will 
 ```
 
 - **enableTelemetry** `Boolean` When set to false, disables recording of appbase.io telemetry. Defaults to `true`.
+
+- **queryParams** `Object` Query params in the object format to be passed to ReactiveSearch API (or search endpoint if using pipeline).
+<br/>
+For example in the following code, we're setting the `preference` value to `local`.
+
+```html
+<template>
+	<reactive-base :appbaseConfig="appbaseConfig" />
+</template>
+<script>
+	export default {
+		name: 'app',
+		methods: {
+			computed: {
+				appbaseConfig() {
+					return {
+						queryParams: {
+                            preference: "local",
+                        }
+					};
+				},
+			},
+		},
+	};
+</script>
+```
