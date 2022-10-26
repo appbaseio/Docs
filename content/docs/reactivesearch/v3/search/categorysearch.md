@@ -118,7 +118,7 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `string | Array<string | DataField*>`  |    No    |
+|  `string \| Array<string \| DataField*>`  |    No    |
 
 index field(s) to be connected to the component’s UI view. CategorySearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
 Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
