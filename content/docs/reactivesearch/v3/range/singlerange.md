@@ -27,7 +27,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```js
 <SingleRange
 	componentId="PriceSensor"
@@ -43,7 +42,6 @@ Example uses:
 ```
 
 ### Usage With All Props
-
 ```js
 <SingleRange
     componentId="PriceSensor"
@@ -73,9 +71,20 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object`  |    No    |
+
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -89,30 +98,91 @@ Accepts the following properties:
 
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
+
         
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 data field to be connected to the component's UI view. The range items are filtered by a database query on this field.
-### data `Object Array`
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
 collection of UI `labels` with associated `start` and `end` range values.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 title of the component to be shown in the UI.
-### defaultValue `String` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 select initial item from the data array on mount.
-### value `String` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 controls the current value of the component. It selects the item from the data (on mount and on update). Use this prop in conjunction with `onChange` function.
-### onChange `function` [optional]
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
-### showRadio `Boolean` [optional]
+### showRadio
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show radio button icon for each range item. Defaults to `true`.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show the selected item as a filter in the selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string parameter based on the selected value of the range. This is useful for sharing URLs with the component state. Defaults to `false`.
-### includeNullValues `Boolean` [optional]
+### includeNullValues
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
 
 ## Demo
@@ -184,14 +254,34 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **SingleRange** component.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **SingleRange** component as long as the component is a part of `react` dependency of at least one other component.
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
 > Note:
@@ -208,11 +298,26 @@ beforeValueChange = value => {
 };
 ```
 
-### onValueChange `Function`
+### onValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a range item is selected in a "Prices" SingleRange.
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
