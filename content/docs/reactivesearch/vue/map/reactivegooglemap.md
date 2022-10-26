@@ -23,7 +23,6 @@ Example uses:
 -   displaying restaurants filtered by a nearby distance query on a map.
 
 ### Usage
-
 #### Installation
 `<reactive-google-map />` uses Google Maps JS library to render the google map and access the necessary geo-location services. To configure the google maps you have to install the `ReactiveGoogleMap` plugin with google maps key. For example,
 
@@ -57,7 +56,6 @@ transpile: [/^gmap-vue($|\/)/, /^@appbaseio\/reactivesearch-vue($|\/)/],
 You can also check this [example](https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-nuxt?file=/pages/index.vue) with Nuxt.js.
 
 #### Basic Usage
-
 ```html
     <reactive-google-map
         componentId="MapUI" 
@@ -66,7 +64,6 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
 ```
 
 #### Usage With All Props
-
 ```html
 <reactive-google-map
 	componentId="MapUI"
@@ -88,15 +85,33 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
 ```
 
 ### Props
+### componentId
 
-### componentId `String`
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 DB data field to be connected to the component's UI view, usually of a [geopoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) (i.e. location) data type and used for rendering the markers on the map.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of results to show in the map view, can be a number in the range [1, 1000]. Defaults to 10.
-### calculateMarkers `Function` [optional] The `ReactiveGoogleMap` component uses the 
-ElasticSearch `hits` to render the markers, if you wish to override the default markers then `calculateMarkers` prop is the way.
+### calculateMarkers
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+The `ReactiveGoogleMap` component uses the ElasticSearch `hits` to render the markers, if you wish to override the default markers then `calculateMarkers` prop is the way.
 The `calculateMarkers` function accepts an object with following properties:
 - `data`, parsed hits data
 - `rawData`, Elasticsearch raw response
@@ -117,8 +132,13 @@ The function must return an array of markers where each marker must have the fol
 ```
 You can check the following example that uses the Elasticsearch aggregations to render the markers.
 https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-aggregations?file=/src/App.vue
-### clusterProps `Object` [optional] can be used to bind the properties to the Google 
-Maps Cluster object. It supports the following properties:
+### clusterProps
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+can be used to bind the properties to the Google Maps Cluster object. It supports the following properties:
 - *maxZoom* `Number`
 - *batchSizeIE* `Number`
 - *calculator* `Function`
@@ -133,29 +153,74 @@ Maps Cluster object. It supports the following properties:
 - *clusterClass* `String`
 - *styles* `Array`
 - *zoomOnClick* `Boolean` 
-### defaultZoom `Number` [optional]
+### defaultZoom
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 preset map's zoom level, accepts integer values between [0, 20]. 0 is the minimum zoom level, where you can see the entire globe. 20 is the maximum zoom level. Defaults to 13.
-### defaultCenter `Object` [optional]
+### defaultCenter
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 preset map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
-### defaultQuery `Function` [optional]
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 applies a default query to the map component. This query will be run when no other components are being watched (via React prop), as well as in conjunction with the query generated from the React prop. The function should return a query.
 Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
 The following example uses the `defaultQuery` with `calculateMarkers` to display the markers using Elasticsearch `aggregations` instead of `hits`.
 https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-aggregations?from-embed=&file=/src/App.vue
 The following example changes the `defaultQuery` whenever the zoom value changes.
 https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-default-query?from-embed=&file=/src/App.vue
-### center `Object` [optional]
+### center
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 set map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
-### defaultRadius `Number` [optional]
+### defaultRadius
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 used as distance value for the geo-distance query when `defaultCenter` or `center` is set. It accepts all positive integers.
-### unit `String` [optional]
+### unit
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 unit for distance measurement, uses `mi` (for miles) by default. Distance units can be specified from the following:
 ![screenshot](https://i.imgur.com/STbeagk.png)
-### showMarkers `Boolean` [optional]
+### showMarkers
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show the markers on the map, defaults to `true`. Sometimes, it doesn't make sense to display markers (when building a heatmap or weather map or a directions navigation map)
-### defaultPin `String` [optional]
+### defaultPin
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 URL of the default marker pin image to be shown. It comes with a default image. Should only be set if you wish to use a custom marker.
-### showMarkerClusters `Boolean` [optional]
+### showMarkerClusters
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to aggregate and form a cluster of nearby markers. Defaults to `true`.
 
 > Note
@@ -163,34 +228,84 @@ whether to aggregate and form a cluster of nearby markers. Defaults to `true`.
 > 1. It requires `showMarkers` prop enabled.
 > 2. You have to define the [m1-m5] cluster images at `public/images` folder. Please check this [example](https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map?from-embed=&file=/src/main.js).
 
-### showSearchAsMove `Boolean` [optional]
+### showSearchAsMove
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show the _Search As I Move_ checkbox in the UI. Defaults to `true`.
-### searchAsMove `Boolean` [optional]
+### searchAsMove
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to set the _Search As I Move_ checkbox. Defaults to `false`.
-### searchAsMoveLabel `String` [optional]
+### searchAsMoveLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 allows to customize the default text for search as move button
-### autoClosePopover `Boolean` [optional]
+### autoClosePopover
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 automatically closes the existing open popovers when a new marker is clicked. Defaults to `false`.
-### react `Object` [optional]
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **ReactiveGoogleMap's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
     -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
     -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
     -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-### value `String or Array or Object`
+- **value** `String or Array or Object`
     -   `String` is used for specifying a single component by its `componentId`.
     -   `Array` is used for specifying multiple components by their `componentId`.
     -   `Object` is used for nesting other key clauses.
-### autoCenter `Boolean` [optional]
+### autoCenter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to auto center the map based on the geometric center of all the location markers. Defaults to `false`.
-### className `String` [optional]
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object` [optional]
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS style object to be applied to the `ReactiveGoogleMap` component.
-### pagination `Boolean` [optional]
+### pagination
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 When set to `true`, a pagination based list view with page numbers will appear.
-### renderItem `Function|slot-scope` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 useful to customize the markers. It can be defined as a `Function` or slot.
 The following example would render the marker with a label.
 
@@ -203,7 +318,7 @@ The following example would render the marker with a label.
 ```
 
 The following example would render the marker with an icon.
-    ```html
+```html
 <reactive-google-map
     :renderItem="result => ({
         icon: 'https://i.imgur.com/NHR2tYL.png',
@@ -219,11 +334,16 @@ The following example uses the `slot` to customize the marker.
     </div>
 </reactive-google-map>
 ```
-### renderPopover `slot-scope` [optional]
+### renderPopover
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
 It is useful to render the popover content when a marker is clicked. The slot data would be an object with the following properties:
-### item 
+### item
 represents the marker data
-### handleClose 
+### handleClose
 useful to close the popover programmatically
 
 
@@ -237,13 +357,18 @@ The following example displays the `title` and `description` in popover.
     </div>
 </reactive-google-map>
 ```
-### renderClusterPopover `slot-scope` [optional]
+### renderClusterPopover
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
 It is useful to render the popover content when a cluster is clicked. The slot data would be an object with the following properties:
-### markers 
+### markers
 An array of markers for the selected cluster
-### cluster 
+### cluster
 Cluster reference object
-### handleClose 
+### handleClose
 useful to close the popover programmatically
 
 The following example displays the `markers` information for a particular cluster.
@@ -256,7 +381,12 @@ The following example displays the `markers` information for a particular cluste
 </reactive-google-map>
 ```
 ![alt cluster](https://i.imgur.com/e1JwXOi.jpg)
-### render `slot-scope` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
 The `render` slot can be used to render the results in a list based UI.
 
 It accepts an object with these properties:
@@ -312,7 +442,12 @@ It accepts an object with these properties:
     </div>
 </reactive-google-map>
 ```
-### renderError `String|Function|slot-scope` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String\|Function\|slot-scope` |   Yes   |
+
 can be used to render an error message in case of any error.
 
 ```html
@@ -343,7 +478,12 @@ is an event which accepts component's **prevQuery** and **nextQuery** as paramet
 ### pageClick
 accepts a function which is invoked with the updated page value when a pagination button is clicked. For example if 'Next' is clicked with the current page number as '1', you would receive the value '2' as the function parameter.
 
-### data `Function` [optional]
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered after data changes, which returns an object with these properties: `data`,`promotedData`, `rawData`, `customData` & `resultStats`.
 
 ### error
