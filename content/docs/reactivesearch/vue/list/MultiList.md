@@ -23,7 +23,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```html
 <template>
 	<multi-list componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
@@ -31,7 +30,6 @@ Example uses:
 ```
 
 ### Usage With All Props
-
 ```html
 <template>
     <multi-list
@@ -64,9 +62,19 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -81,13 +89,33 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 title of the component to be shown in the UI. Defaults to no title being shown.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of list items to be displayed.
 
 > Note: 
@@ -98,27 +126,77 @@ number of list items to be displayed.
 To set the number of buckets to be returned by aggregations.
 
 > Note: This prop is only applicable when `enableAppbase` is set to `true`.
-### sortBy `String` [optional]
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 sort the list items by one of `count`, `asc`, or `desc`. Defaults to `count`, which sorts the list by the frequency of count value, most first.
-### defaultValue `Array` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `Array` |   Yes   |
+
 pre-select one or more list items. Accepts an `Array` object containing the items that should be selected. It is important for the passed value(s) to exactly match the field value(s) as stored in the DB.
-### value `Array<String>` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `Array<String>` |   Yes   |
+
 sets the current value of the component. It sets the value (on mount and on update). Use this prop in conjunction with the `change` event.	
-### queryFormat `String` [optional]
+### queryFormat
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 queries the selected items from the list in one of two modes: `or`, `and`.
 -   Defaults to `or` which queries for results where any of the selected list items are present.
 -   In `and` mode, the applied query filters results where all of the selected items are present.
-### selectAllLabel `String` [optional]
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 add an extra `Select all` item to the list with the provided label string.
-### showCheckbox `Boolean` [optional]
+### showCheckbox
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show checkbox icon for each list item. Defaults to `true`.
-### showCount `Boolean` [optional]
+### showCount
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show a count of the number of occurences besides each list item. Defaults to `true`.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### renderItem `Function|slot-scope` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 customize the rendered list via a function or slot-scope which receives the item label, count and isChecked & expects a JSX or String back. For example:
 
 <!-- prettier-ignore -->
@@ -136,7 +214,12 @@ customize the rendered list via a function or slot-scope which receives the item
 </multi-list>
 ```
 
-### render `Function|slot-scope` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 It accepts an object with these properties:
@@ -182,7 +265,12 @@ You can use render as a slot as shown below:
 </multi-list>
 ```
 
-### renderError `String|Function|slot-scope` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String\|Function\|slot-scope` |   Yes   |
+
 can be used to render an error message in case of any error.
 
 <!-- prettier-ignore -->
@@ -195,7 +283,12 @@ can be used to render an error message in case of any error.
 </template>
 ```
 
-### renderNoResults `String|Function|slot-scope` [optional]
+### renderNoResults
+
+| Type | Optional |
+|------|----------|
+|  `String\|Function\|slot-scope` |   Yes   |
+
 show custom message or component when no results found.
 
 <!-- prettier-ignore -->
@@ -224,17 +317,47 @@ export default {
 
 ```
 
-### transformData `Function` [optional]
+### transformData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 allows transforming the data to render inside the list. You can change the order, remove, or add items, transform their values with this method. It provides the data as param which is an array of objects of shape { key: <string>, doc_count: <number> } and expects you to return the array of objects of same shape.
-### showMissing `Boolean` [optional]
+### showMissing
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
-### missingLabel `String` [optional]
+### missingLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
-### showSearch `Boolean` [optional]
+### showSearch
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show a searchbox to filter the list items locally. Defaults to true.
-### placeholder `String` [optional]
+### placeholder
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 placeholder to be displayed in the searchbox, only applicable when the `showSearch` prop is set to `true`. When applicable, the default placeholder value is set to "Search".
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 
 ## Demo
@@ -321,16 +444,36 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **MultiList** component as long as the component is a part of `react` dependency of at least one other component.
 `Note:` When extending with customQuery, the `queryFormat` prop has no affect.
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL.
 `Note:` defaultQuery doesn't get leaked to other components.
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called every time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
 > Note:
@@ -347,7 +490,12 @@ beforeValueChange = values => {
 };
 ```
 
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **MultiList's** options.
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
@@ -358,7 +506,12 @@ specify dependent components to reactively update **MultiList's** options.
     -   `String` is used for specifying a single component by its `componentId`.
     -   `Array` is used for specifying multiple components by their `componentId`.
     -   `Object` is used for nesting other key clauses.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
