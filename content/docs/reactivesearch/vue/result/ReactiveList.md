@@ -22,7 +22,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```html
 <template>
 	<reactive-list :react="{ and: ['CitySensor', 'SearchSensor']}">
@@ -34,7 +33,6 @@ Example uses:
 ```
 
 ### Usage With All Props
-
 ```html
 <reactive-list
     componentId="SearchResult"
@@ -61,9 +59,19 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -78,9 +86,19 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 data field to be connected to the component's UI view. It is useful for providing a **sorting** context i.e. results would be sorted based on the `dataField`.
-### aggregationField `String` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` slot as shown:
 
@@ -107,48 +125,148 @@ To set the number of buckets to be returned by aggregations.
 
 > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
-### excludeFields `String Array` [optional]
+### excludeFields
+
+| Type | Optional |
+|------|----------|
+|  `String Array` |   Yes   |
+
 fields to be excluded in search results.
-### includeFields `String Array` [optional]
+### includeFields
+
+| Type | Optional |
+|------|----------|
+|  `String Array` |   Yes   |
+
 fields to be included in search results.
-### pagination `Boolean` [optional]
+### pagination
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 pagination <> infinite scroll switcher. Defaults to `false`, i.e. an infinite scroll based view. When set to `true`, a pagination based list view with page numbers will appear.
-### infiniteScroll `Boolean` [optional]
+### infiniteScroll
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `true`, When set to `true`, an infinite scroll based view will appear.
-### paginationAt `String` [optional]
+### paginationAt
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Determines the position where to show the pagination, only applicable when **pagination** prop is set to `true`. Accepts one of `top`, `bottom` or `both` as valid values. Defaults to `bottom`.
-### pages `Number` [optional]
+### pages
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of user selectable pages to be displayed when pagination is enabled. Defaults to 5.
-### currentPage `Number` [optional]
+### currentPage
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 can be used to set the default page number for initial render.
-### scrollOnChange `Boolean` [optional]
+### scrollOnChange
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 can be used to control the scroll to top behavior when new results found. Defaults to `true`.
-### sortBy `String` [optional]
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 sort the results by either `asc` or `desc` order. It is an alternative to `sortOptions`, both can't be used together.
-### sortOptions `Object Array` [optional]
+### sortOptions
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
 an alternative to the `sortBy` prop, `sortOptions` creates a sorting view in the ReactiveList component's UI. Each array element is an object that takes three keys:
 -   `label` - label to be displayed in the UI.
 -   `dataField` - data field to use for applying the sorting criteria on.
 -   `sortBy` - specified as either `asc` or `desc`.
-### defaultSortOption `String` [optional]
+### defaultSortOption
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 accepts the label of the desired sort option to set default sort value from given `sortOptions` array.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of results to show per view. Defaults to 10.
-### loader `String|slot-scope` [optional]
+### loader
+
+| Type | Optional |
+|------|----------|
+|  `String\|slot-scope` |   Yes   |
+
 display to show the user while the data is loading, accepts `String` or `JSX` markup.
-### prevLabel `String` [optional]
+### prevLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Pagination previous button text. Defaults to `Prev`.
-### nextLabel `String` [optional]
+### nextLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Pagination next button text. Defaults to `Next`.
-### showResultStats `Boolean` [optional]
+### showResultStats
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show result stats in the form of results found and time taken. Defaults to `true`.
-### showEndPage `Boolean` [optional]
+### showEndPage
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show end pages in pagination. Defaults to `false`.
-### react `Object` [optional]
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 a dependency object defining how this component should react based on the state changes in the sensor components.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 when set adds the current page number to the url. Only works when `pagination` is enabled.
-### renderItem `Function|slot-scope` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 returns a list element object to be rendered based on the `res` data object. This callback function prop or slot is called for each data item rendered in the **ReactiveList** component's view. For example,
 
 ```html
@@ -171,7 +289,12 @@ returns a list element object to be rendered based on the `res` data object. Thi
 </div>
 ```
 
-### render `Function|slot-scope` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 A function or slot returning the UI you want to render based on your results. This function receives a list of parameters and expects to return a `JSX`.
 Read more about it [here](#extending).
 
@@ -179,7 +302,12 @@ Read more about it [here](#extending).
 >
 > Either `renderItem` or `render` is required in ReactiveList for rendering the data.
 
-### renderResultStats `Function|slot-scope` [optional]
+### renderResultStats
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 renders custom result stats using a callback function that takes `stats` object as parameter and expects it to return a string or html. `stats` object contains following properties
 
 -   **`numberOfResults`**: `number`
@@ -203,7 +331,12 @@ renders custom result stats using a callback function that takes `stats` object 
 </div>
 ```
 
-### renderError `String|Function|slot-scope` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String\|Function\|slot-scope` |   Yes   |
+
 can be used to render an error message in case of any error.
 
 ```html
@@ -212,18 +345,43 @@ can be used to render an error message in case of any error.
 </template>
 ```
 
-### renderNoResults `String|Function|slot-scope` [optional]
+### renderNoResults
+
+| Type | Optional |
+|------|----------|
+|  `String\|Function\|slot-scope` |   Yes   |
+
 show custom message or component when no results found.
-### defaultQuery `Function` [optional]
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 applies a default query to the result component. This query will be run when no other components are being watched (via React prop), as well as in conjunction with the query generated from the React prop. The function should return a query.
 
-### distinctField `String` [optional]
+### distinctField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-### distinctFieldConfig `Object` [optional]
+### distinctFieldConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -303,11 +461,26 @@ export default {
 </script>
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### renderItem `Function|slot-scope` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function\|slot-scope` |   Yes   |
+
 a callback function or slot-scope where user can define how to render the view based on the data changes.
-### render `Function` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 an alternative callback function or slot to `renderItem`, where user can define how to render the view based on all the data changes.
 It accepts an object with these properties:
 -   **`loading`**: `boolean`
@@ -375,7 +548,12 @@ It accepts an object with these properties:
 ### page-click
     accepts a function which is invoked with the updated page value when a pagination button is clicked. For example if 'Next' is clicked with the current page number as '1', you would receive the value '2' as the function parameter.
 
-### data `Function` [optional]
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
     gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `rawData`, `customData` & `resultStats`.
 
 ### error
