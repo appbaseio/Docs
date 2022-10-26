@@ -240,6 +240,15 @@ Usage (In Ghost editor):
 	margin: 1.5em 0 3em;
 }
 
+.announcement-banner-active .post-content h1,
+.announcement-banner-active .post-content h2,
+.announcement-banner-active .post-content h3,
+.announcement-banner-active .post-content h4,
+.announcement-banner-active .post-content h5,
+.announcement-banner-active .post-content h6 {
+	scroll-margin-top: 120px;
+}
+
 .post-content h1,
 .post-content h2,
 .post-content h3,

@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from 'emotion';
 
 const AnnouncementBanner = ({ showBanner, setShowBanner }) => {
+	useEffect(() => {
+		const bodyElement = document.querySelector('body');
+		if (showBanner) {
+			bodyElement.classList.add('announcement-banner-active');
+		} else {
+			bodyElement.classList.remove('announcement-banner-active');
+		}
+	}, [showBanner]);
 	return (
 		<div>
 			{showBanner ? (
