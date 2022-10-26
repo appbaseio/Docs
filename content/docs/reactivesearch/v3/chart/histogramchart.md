@@ -20,7 +20,6 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 ## Usage
 
 ### Basic Usage
-
 ```jsx
     <ReactiveChart
         // pre-built chart type
@@ -44,7 +43,6 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 ```
 
 ### Usage With All Props
-
 ```jsx
     <ReactiveChart
         componentId="Language"
@@ -92,28 +90,55 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 <br />
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
 
 data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
-### chartType `String`
+### chartType
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
 
 Pre-built chart types supported by `ReactiveChart`. Valid options are: `pie`, `line`, `bar`, `histogram`, `scatter` and `custom` (default).
 
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 
 title of the component to be shown in the UI.
 
-### loader `String or JSX` [optional]
+### loader
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 
 to display an optional loader while fetching the options.
 
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of items to be displayed.
 
 > Note: 
@@ -125,31 +150,66 @@ To set the number of buckets to be returned by aggregations.
 
 > Note: This prop is only applicable when `enableAppbase` is set to `true`.
 
-### sortBy `String` [optional]
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 
 sort the items by one of `count`, `asc`, `desc`. Defaults to `count`, which sorts the by the frequency of count value, most first.
 
-### showMissing `Boolean` [optional]
+### showMissing
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 
 defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
 
-### missingLabel `String` [optional]
+### missingLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 
 defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
 
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
 
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 
 enable creating a URL query string parameter based on the selected value of the chart. This is useful for sharing URLs with the component state. Defaults to `false`.
 
-### renderError `String or JSX or Function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
 can be used to render an error message in case of any error.
 ```jsx
     renderError={(error) => (
@@ -159,34 +219,84 @@ can be used to render an error message in case of any error.
         )
     }
 ```
-### value `string` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 controls the current value of the component. It selects the item from the chart UI (on mount and on update). Use this prop in conjunction with `onChange` function.
 
-### onChange `function` [optional]
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
 
-### onError `Function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
-### xAxisName `String` [optional]
+### xAxisName
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Label for x axis line
-### yAxisName `String` [optional]
+### yAxisName
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Label for y axis line
-### xAxisField `String` [optional]
+### xAxisField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Field name to extract the x axis data for scatter chart
-### yAxisField `String` [optional]
+### yAxisField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Field name to extract the y axis data for scatter chart
-### labelFormatter `Function` [optional]
+### labelFormatter
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 To customize the range labels, for example:
 ```js
 labelFormatter=(value)=>`${value} USD`
 ```
-### range `Object`
+### range
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
 
 `range` prop accepts `Date` objects as values corresponding to `start` and `end` keys when date-types are dealt with.
@@ -204,12 +314,27 @@ an object with `start` and `end` keys and corresponding numeric values denoting 
         queryFormat="date"            
     />
 ```
-### interval `Number` [optional]
+### interval
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 set the histogram bar interval, applicable when _showHistogram_ is `true`. Defaults to `Math.ceil((props.range.end - props.range.start) / 100) || 1`.
 
-### includeNullValues `Boolean` [optional]
+### includeNullValues
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
-### useAsFilter `Boolean` [optional]
+### useAsFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 If set to `false` then data selection on chart UI would not filter the results. Defaults to `true`.
 ## Demo
 
@@ -281,13 +406,28 @@ If set to `false` then data selection on chart UI would not filter the results. 
     />
 ```
 
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **ReactiveChart** component as long as the component is a part of `react` dependency of at least one other component.
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
 Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
-### setOption `Function`
+### setOption
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 `ReactiveChart` uses the [Echarts](https://echarts.apache.org/) library to render the UI. `ReactiveChart` component connects the search backend to retrieve the chart data. The `setOption` prop allows you to define the custom chart option support by [Echarts](https://echarts.apache.org/) to render any kind of chart UI. It accepts the an object containing the following properties:
 - `aggregationData` An array of aggregation buckets
 - `data` An array of search hits
@@ -326,7 +466,12 @@ For example,
         ],
     })}
 ```
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **ReactiveChart's** options.
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
