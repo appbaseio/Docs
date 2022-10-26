@@ -82,7 +82,7 @@ The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/re
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 <br />

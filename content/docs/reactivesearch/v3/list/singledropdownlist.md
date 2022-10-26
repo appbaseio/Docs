@@ -70,7 +70,7 @@ With All Props
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint
@@ -97,7 +97,7 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
 ### nestedField

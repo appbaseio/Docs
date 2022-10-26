@@ -123,7 +123,7 @@ function Index(props) {
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint

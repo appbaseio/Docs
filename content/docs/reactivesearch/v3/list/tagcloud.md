@@ -65,7 +65,7 @@ With All Props
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint
@@ -92,7 +92,7 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 data field(s) to be mapped with the component's UI view.
 ### nestedField

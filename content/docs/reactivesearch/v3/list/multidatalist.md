@@ -133,7 +133,7 @@ function Index(props) {
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 ### endpoint
@@ -161,7 +161,7 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 data field to be connected to the component's UI view.
 ### data

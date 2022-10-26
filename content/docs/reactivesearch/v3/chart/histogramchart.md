@@ -94,7 +94,7 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/r
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
 <br />
@@ -103,7 +103,7 @@ unique identifier of the component, can be referenced in other components' `reac
 
 | Type | Optional |
 |------|----------|
-|  `String` |   Yes   |
+|  `String` |   No   |
 
 data field to be connected to the component's UI view. The chart data is filtered by a database query on this field. This field is used for doing an aggregation and returns the result.
 
