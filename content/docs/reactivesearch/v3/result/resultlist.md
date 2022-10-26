@@ -27,7 +27,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```js
 import {
     ReactiveList,
@@ -77,13 +76,33 @@ const { ResultListWrapper } = ReactiveList;
 
 ## Props
 
-### id `string|number` [optional]
+### id
+
+| Type | Optional |
+|------|----------|
+|  `string|number` |   Yes   |
+
 The `_id` property of the elasticsearch hit object. This prop is required to track the impressions for search results. [Read More](docs/reactivesearch/v3/advanced/analytics#track-impressions-for-search-results)
-### target `string` [optional]
+### target
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
-### href `string` [optional]
+### href
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 can be used to specify the URL of the page the link goes to
-### as  `string` [optional]
+### as
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 The html element tag which the component should use. Defaults to `a`(anchor tag).
 
 > Note

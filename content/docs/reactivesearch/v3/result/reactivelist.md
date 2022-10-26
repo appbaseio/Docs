@@ -23,7 +23,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```jsx
 <ReactiveList
 	componentId="SearchResult"
@@ -35,7 +34,6 @@ Example uses:
 ```
 
 ### Usage With All Props
-
 ```jsx
 <ReactiveList
     componentId="SearchResult"
@@ -78,9 +76,19 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint 
+
+| Type | Optional |
+|------|----------|
+|  `Object`  |    Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -95,9 +103,19 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 data field to be connected to the component's UI view. It is useful for providing a sorting context.
-### aggregationField `String` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using render prop as shown:
 
@@ -118,52 +136,157 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 To set the number of buckets to be returned by aggregations.
 
 > Note: This prop is only applicable when `enableAppbase` is set to `true`.
-### excludeFields `String Array` [optional]
+### excludeFields
+
+| Type | Optional |
+|------|----------|
+|  `String Array` |   Yes   |
+
 fields to be excluded in search results.
-### includeFields `String Array` [optional]
+### includeFields
+
+| Type | Optional |
+|------|----------|
+|  `String Array` |   Yes   |
+
 fields to be included in search results.
-### scrollTarget `String` or `Object` [optional]
+### scrollTarget
+
+| Type | Optional |
+|------|----------|
+|  `String` or `Object` |   Yes   |
+
 accepts `id` or the dom node of the container you wish to apply infinite loading on. **Note:** The container should be scrollable.
-### scrollOnChange `Boolean` [optional]
+### scrollOnChange
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Enables you to customise the window scrolling experience on query change. Defaults to `true` i.e. The window will scroll to top in case of the query change, which can be triggered by change in pagination, change in filters or search value, etc. When set to `false`, scroll position will stay intact.
-### pagination `Boolean` [optional]
+### pagination
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `false`, When set to `true`, a pagination based list view with page numbers will appear.
-### infiniteScroll `Boolean` [optional]
+### infiniteScroll
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `true`, When set to `true`, an infinite scroll based view will appear.
-### paginationAt `String` [optional]
+### paginationAt
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 Determines the position where to show the pagination, only applicable when **pagination** prop is set to `true`. Accepts one of `top`, `bottom` or `both` as valid values. Defaults to `bottom`.
-### pages `Number` [optional]
+### pages
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of user selectable pages to be displayed when pagination is enabled. Defaults to 5.
-### currentPage `Number` [optional]
+### currentPage
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 can be used to set the default page number for initial render.
-### sortBy `String` [optional]
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 sort the results by either `asc` or `desc` order. It is an alternative to `sortOptions`, both can't be used together.
-### sortOptions `Object Array` [optional]
+### sortOptions
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
 an alternative to the `sortBy` prop, `sortOptions` creates a sorting view in the ReactiveList component's UI. Each array element is an object that takes three keys:
 -   `label` - label to be displayed in the UI.
 -   `dataField` - data field to use for applying the sorting criteria on.
 -   `sortBy` - specified as either `asc` or `desc`.
-### defaultSortOption `String` [optional]
+### defaultSortOption
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 accepts the label of the desired sort option to set default sort value from given `sortOptions` array.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of results to show per view. Defaults to 10.
-### loader `String or JSX` [optional]
+### loader
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 display to show the user while the data is loading, accepts `String` or `JSX` markup.
-### showLoader `Boolean` [optional]
+### showLoader
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 defaults to `true`, if set to `false` then the ReactiveList will not display the default loader.
-### showResultStats `Boolean` [optional]
+### showResultStats
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show result stats in the form of results found and time taken. Defaults to `true`.
-### showExport `Boolean` [optional]
+### showExport
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 renders UI that lets exporting data into a CSV and JSON document. Defaults to `true`. 
 The export options' UI can be styled by passing `export` key in `innerClass` prop.
-### react `Object` [optional]
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 a dependency object defining how this component should react based on the state changes in the sensor components.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 when set adds the current page number to the url. Only works when `pagination` is enabled.
-### defaultQuery `Function` [optional]
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 applies a default query to the result component. This query will be run when no other components are being watched (via React prop), as well as in conjunction with the query generated from the React prop. The function should return a query.
 Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
-### renderItem `Function` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 returns a list element object to be rendered based on the `res` data object. This callback function prop is called for each data item rendered in the **ReactiveList** component's view. For example,
 ```jsx
 renderItem = {
@@ -188,13 +311,23 @@ renderItem = {
     },
 };
 ```
-### render `Function` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 A function returning the UI you want to render based on your results. This function receives a list of parameters and expects to return a `JSX`.
 Read more about it [here](#extending).
 > Note:
 >
 > Either `renderItem` or `render` is required in ReactiveList for rendering the data.
-### renderError `String or JSX or Function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
 can be used to render an error message in case of any error.
 ```jsx
 renderError={(error) => (
@@ -204,7 +337,12 @@ renderError={(error) => (
     )
 }
 ```
-### renderResultStats `Function` [optional]
+### renderResultStats
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 renders custom result stats using a callback function that takes `stats` object as parameter and expects it to return a string or JSX. `stats` object contains following properties
 -   **`numberOfResults`**: `number`
     Total number of results found
@@ -229,9 +367,19 @@ renderResultStats = {
     },
 };
 ```
-### renderNoResults `Function` [optional]
+### renderNoResults
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 show custom message or component when no results found.
-### renderPagination `String or JSX or Function` [optional]
+### renderPagination
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
 can be used to render custom pagination.
 
 -   **`pages`**: `number`
@@ -264,7 +412,12 @@ renderPagination={({ pages, totalPages, currentPage, setPage, setSize }) => {
         return selectPage;
 }
 ```
-### renderExport `Function` [optional]
+### renderExport
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 renders custom export options UI using a callback function that takes a object parameter as parameter and expects it to return a string or JSX. The parameter object contains following properties
 -   **`triggerExportCSV`**: `function`
     callback to trigger export of data to a CSV document.
@@ -281,24 +434,54 @@ renderExport={
             </div>)
     }
 ```
-### onData `Function` [optional]
+### onData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData`, `settings` & `resultStats`.
-### onError `Function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
-### onPageChange `Function` [optional]
+### onPageChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 executes when the current page is changed. If not defined, `window` will be scrolled to the top of the page.
-### onPageClick `Function` [optional]
+### onPageClick
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 accepts a function which is invoked with the updated page value when a pagination button is clicked. For example if 'Next' is clicked with the current page number as '1', you would receive the value '2' as the function parameter.
 
 > Note:
 >
 > The fundamental difference between `onPageChange` and `onPageClick` is that `onPageClick` is only called on a manual interaction with the pagination buttons, whereas, `onPageChange` would also be invoked if some other side effects caused the results to update which includes updating filters, queries or changing pages. The behaviour of these two may change in the future versions as we come up with a better API.
 
-### distinctField `String` [optional]
+### distinctField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 
-### distinctFieldConfig `Object` [optional]
+### distinctFieldConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```jsx
@@ -318,9 +501,19 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 
 > Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
-### highlight `Boolean` [optional]
+### highlight
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Whether highlighting should be enabled in the returned results. Defaults to `false`.
-### highlightConfig `Object` [optional]
+### highlightConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 a function which returns the custom [highlight settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html). For example,
 
 ```jsx
@@ -404,13 +597,33 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS Styles to be applied to the **ReactiveList** component.
-### renderItem `Function` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 a callback function where user can define how to render the view based on the data changes.
-### render `Function` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 
@@ -505,9 +718,19 @@ Or you can also use render function as children
 ```
 
 
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
