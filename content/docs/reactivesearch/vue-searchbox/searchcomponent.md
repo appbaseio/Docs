@@ -23,21 +23,40 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 ## Props
 
 ### Configure appbase.io environment
-
 The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
-### index `string` [required]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Refers to an index of the Elasticsearch cluster.
 
 `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
-### url `string` [required]
+### url
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 URL for the Elasticsearch cluster
 
-### credentials `string` [required]
+### credentials
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
-### appbaseConfig `Object`
+### appbaseConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
 -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
@@ -49,16 +68,30 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To configure the ReactiveSearch API
-
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
-### id `string` [required]
+### id
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
 
-### type `string`
+### type
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 This property represents the type of the query which is defaults to `search`, valid values are `search`, `term`, `range` & `geo`. You can read more [here](/docs/search/reactivesearch-api/implement/#type-of-queries).
 
-### dataField `string | Array<string | DataField>`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `string \| Array<string \| DataField>`  |    No    |
+
 index field(s) to be connected to the component’s UI view. DataSearch accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
 Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
 You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
@@ -70,16 +103,31 @@ type DataField = {
     weight: number;
 };
 ```
-### value `any`
+### value
+
+| Type | Optional |
+|------|----------|
+|  `any` |   Yes   |
+
 Represents the value for a particular query [type](/docs/search/reactivesearch-api/reference/#type). Depending on the query type, the value format would differ. You can refer to the different value formats over [here](/docs/search/reactivesearch-api/reference/#value).
 
-### queryFormat `string`
+### queryFormat
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Sets the query format, can be **or** or **and**. Defaults to **or**.
 
 -   **or** returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
 -   On the other hand with **and**, only results matching both "bat" and "man" will be returned. It returns the results matching **all** of the search query text's parameters.
 
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `react` prop is useful for components whose data view should reactively update when on or more dependent components change their states, e.g. a component to display the results can depend on the search component to filter the results.
 -   **key** `string`
     one of `and`, `or`, `not` defines the combining clause.
@@ -110,22 +158,52 @@ An example of a `react` clause where all three clauses are used and values are `
 
 Here, we are specifying that the results should update whenever one of the blacklist items is not present and simultaneously any one of the city or topics matches.
 
-### size `number`
+### size
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 Number of suggestions and results to fetch per request.
 
-### from `number`
+### from
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 To define from which page to start the results, it is important to implement pagination.
 
-### includeFields `Array<string>`
+### includeFields
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
 fields to be included in search results.
 
-### excludeFields `Array<string>`
+### excludeFields
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
 fields to be excluded in search results.
 
-### sortBy `string`
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 sort the results by either `asc` or `desc` order.
 
-### aggregationField `string` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events, and logs type data).
 It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
@@ -155,74 +233,179 @@ export default App {
 To set the number of buckets to be returned by aggregations.
 
 > Note: This is a new feature and only available for appbase versions >= 7.41.0.
-### highlight `boolean` [optional]
+### highlight
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 whether highlighting should be enabled in the returned results.
 
-### highlightField `string or Array` [optional]
+### highlightField
+
+| Type | Optional |
+|------|----------|
+|  `string or Array` |   Yes   |
+
 when highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
 
-### customHighlight `Object` [optional]
+### customHighlight
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
-### categoryField `string` [optional]
+### categoryField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Data field which has the category values mapped.
 
-### categoryValue `string` [optional]
+### categoryValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 This is the selected category value. It is used for informing the search result.
 
-### nestedField `string`
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 set the `nested` field path that allows an array of objects to be indexed in a way that can be queried independently of each other. Applicable only when dataField's mapping is of `nested` type.
 
-### fuzziness `string | number`
+### fuzziness
+
+| Type | Optional |
+|------|----------|
+|  `string \| number` |   Yes   |
+
 Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
 Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
-### enableSynonyms: `boolean`
+### enableSynonyms:
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
-### searchOperators `boolean`
+### searchOperators
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`. If set to `true`, then you can use special characters in the search query to enable the advanced search.<br/>
 Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
-### queryString `boolean` [optional]
+### queryString
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`. If set to `true` then it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
-### clearOnQueryChange `boolean` [optional]
+### clearOnQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`, i.e. the component's input selection isn't cleared when the query of its dependent component changes (which is set via react prop). When set to `true`, the component's input selection is cleared.
 
-### pagination: `boolean`
+### pagination:
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
 
-### after: `Object`
+### after:
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This property can be used to implement the pagination for `aggregations`. We use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of `Elasticsearch` to execute the aggregations' query, the response of composite aggregations includes a key named `after_key` which can be used to fetch the next set of aggregations for the same query. You can read more about the pagination for composite aggregations at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#_pagination).
 
 You need to define the `after` property in the next request to retrieve the next set of aggregations.
 
-### showMissing: `boolean`
+### showMissing:
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`. When set to `true` then it also retrieves the aggregations for missing fields.
 
-### missingLabel: `string`
+### missingLabel:
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
-### includeNullValues: `boolean`
+### includeNullValues:
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 If you have sparse data or documents or items not having the value in the specified field or mapping, then this prop enables you to show that data.
 
-### interval: `number`
+### interval:
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
-### aggregations: `Array<string>`
+### aggregations:
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
 It helps you to utilize the built-in aggregations for `range` type of queries directly, valid values are:
 -   `max`: to retrieve the maximum value for a `dataField`,
 -   `min`: to retrieve the minimum value for a `dataField`,
 -   `histogram`: to retrieve the histogram aggregations for a particular `interval`
 
-### selectAllLabel: `string`
+### selectAllLabel:
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
 
-### distinctField `String` [optional]
+### distinctField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-### distinctFieldConfig `Object` [optional]
+### distinctFieldConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```html
@@ -241,11 +424,20 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 ```
 
 #### To customize the AutoSuggestions
+### enablePopularSuggestions
 
-### enablePopularSuggestions `boolean` [optional]
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
-### showDistinctSuggestions `boolean` [optional]
+### showDistinctSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as the searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
 <br/> <br/>
 **Example** if you have `showDistinctSuggestions` is set to `false` and have the following configurations
@@ -274,8 +466,12 @@ Washington
 
 
 ### To customize the query execution
+### headers
 
-### headers `Object`
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```html
@@ -288,7 +484,12 @@ set custom headers to be sent with each server request as key/value pairs. For e
 />
 ```
 
-### transformRequest `(requestOptions: Object) => Promise<Object>`
+### transformRequest
+
+| Type | Optional |
+|------|----------|
+|  `(requestOptions: Object) => Promise<Object>` |   Yes   |
+
 Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br
 >
 For example, we will add the `credentials` property in the request using `transformRequest`.
@@ -317,7 +518,12 @@ export default {
 </script>
 ```
 
-### transformResponse `(response: any) => Promise<any>`
+### transformResponse
+
+| Type | Optional |
+|------|----------|
+|  `(response: any) => Promise<any>` |   Yes   |
+
 Enables transformation of search network response before rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
 For example:
 
@@ -378,7 +584,12 @@ For example:
 }
 ```
 
-### defaultQuery: `(component: SearchComponent) => Object`
+### defaultQuery:
+
+| Type | Optional |
+|------|----------|
+|  `(component: SearchComponent) => Object` |   Yes   |
+
 is a callback function that takes the `SearchComponent` instance as parameter and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` is used with data-driven components to impact their own data. It is meant to modify the default query which is used by a component to render the UI.
 
 Some of the valid use-cases are:
@@ -415,7 +626,12 @@ For example, in a `term` type of component showing a list of cities, you may onl
 </script>
 ```
 
-### customQuery: `(component: SearchComponent) => Object`
+### customQuery:
+
+| Type | Optional |
+|------|----------|
+|  `(component: SearchComponent) => Object` |   Yes   |
+
 takes `SearchComponent` instance as parameter and **returns** the query to be applied to the dependent components by `react` prop, as defined in Elasticsearch Query DSL.
 
 For example, the following example has two components `search-component`(to render the suggestions) and `result-component`(to render the results). The `result-component` depends on the `search-component` to update the results based on the selected suggestion. The `search-component` has the `customQuery` prop defined that will not affect the query for suggestions(that is how `customQuery` is different from `defaultQuery`) but it'll affect the query for `result-component` because of the `react` dependency on `search-component`.
@@ -464,7 +680,6 @@ For example, the following example has two components `search-component`(to rend
 ```
 
 ### Miscellaneous
-
 -  **beforeValueChange** `Function`
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called every-time before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 For example:
@@ -546,22 +761,43 @@ These are the properties that can be subscribed to:
 You can use the default `scoped-slot` to render your custom UI. The following properties are available in the slot.
 
 ### Getters
--   **loading**: `boolean`
-    indicates that the query is still in progress.
--   **error**: `Object`
-    An object containing the error info.
--   **results** `Results`
+### loading: `boolean`
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
+indicates that the query is still in progress.
+### error: `Object`
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+An object containing the error info.
+### results `Results`
+
+| Type | Optional |
+|------|----------|
+|  `Results` |   Yes   |
+
 It is an object which contains the following details of `suggestions` query response.
-    -   **`data`**: `Array<Object>` contains the (promoted data + parsed hits)
-    -   **`raw`**: `Object` Response returned by ES query in the raw form.
-    -   **`numberOfResults`**: `number` Total number of results found
-    -   **`time`**: `number` Total time taken by request (in ms)
-    -   **`hidden`**: `number` Total number of hidden results found
-    -   **`promoted`**: `number` Total number of promoted results found
-    -   **`promotedData`**: `Array<Object>` An array of promoted results obtained from the applied query.
-    -   **`customData`**: `Object` An object of custom data obtained from the ReactiveSearch API.
-    -   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
--   **suggestions** `() => Array<Object>`
+-   **`data`**: `Array<Object>` contains the (promoted data + parsed hits)
+-   **`raw`**: `Object` Response returned by ES query in the raw form.
+-   **`numberOfResults`**: `number` Total number of results found
+-   **`time`**: `number` Total time taken by request (in ms)
+-   **`hidden`**: `number` Total number of hidden results found
+-   **`promoted`**: `number` Total number of promoted results found
+-   **`promotedData`**: `Array<Object>` An array of promoted results obtained from the applied query.
+-   **`customData`**: `Object` An object of custom data obtained from the ReactiveSearch API.
+-   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
+
+### suggestions 
+
+| Type | Optional |
+|------|----------|
+|  `()=> Array<Object>` |   Yes   |
+
     This method can be used to get the parsed suggestions from the `results`. If `enablePopularSuggestions` property is set to `true` then the popular suggestions will get appended at the top with a top-level property named `_popular_suggestion` as `true`. The `suggestion` object will have the following shape:
 
 ```ts
@@ -571,86 +807,211 @@ It is an object which contains the following details of `suggestions` query resp
     source: Object;
 }
 ```
--   **aggregationData** `Aggregations` It is an object which contains the following details of `aggregations` query response.
-    -   **`data`**: `Array<Object>` contains the parsed aggregations
-    -   **`raw`**: `Object` Response returned by ES `composite aggs` query in the raw form.
-    -   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
-    -   **`afterKey`**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the `afterKey` parameter to retrieve the next results. This property will only be present for `composite` aggregations.
+### aggregationData `Aggregations` 
 
--   **value**
+| Type | Optional |
+|------|----------|
+|  `Aggregations` |   Yes   |
+
+It is an object which contains the following details of `aggregations` query response.
+-   **`data`**: `Array<Object>` contains the parsed aggregations
+-   **`raw`**: `Object` Response returned by ES `composite aggs` query in the raw form.
+-   **`rawData`**: `Object` An object of raw response as-is from elasticsearch query.
+-   **`afterKey`**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the `afterKey` parameter to retrieve the next results. This property will only be present for `composite` aggregations.
+
+### value
 Represents the current value of the component
 
--   **query** `Object`
+### query `Object`
+
 The last query that has been executed by the component
 
--   **micStatus** `MicStatusField`
+### micStatus `MicStatusField`
 Returns the current status of the mic. Can be `INACTIVE`, `ACTIVE` or `DENIED`
 
--   **micActive** `boolean`
+### micActive `boolean`
 Returns `true` if mic is active
 
--   **micInactive** `boolean`
+### micInactive `boolean`
 Returns `true` if mic is inactive
 
--   **micDenied** `boolean`
+### micDenied `boolean`
 Returns `true` if it doesn't have access to the mic
 
--   **micInstance** `Object`
+### micInstance `Object`
 Returns the current mic instance. Can be used to set mic language and other properties of mic
 
-### id `string` 
+### id
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### react `Object` 
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
  `react` as defined in props
-### queryFormat `string` 
+### queryFormat
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### dataField `string | Array<string | DataField>` 
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `string \| Array<string \| DataField>`  |    No    |
+
  as defined in props
-### categoryField `string` 
+### categoryField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### categoryValue `string` 
+### categoryValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  represents the current value of the selected category
-### nestedField `string` 
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### from `number` 
+### from
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
  represents the current state of the `from` value. This property is useful to implement pagination.
-### size `number` 
+### size
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
  represents the current state of the `size` of results to be returned by query
-### sortBy `string` 
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  current state of the `sortBy` value
-### aggregationField `string` 
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### includeFields `Array<string>` 
+### includeFields
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
  represents the current value of `includeFields` property
--   **excludeFields** represents the current value of `excludeFields` property
-### fuzziness `string|number` 
+### excludeFields 
+represents the current value of `excludeFields` property
+### fuzziness
+
+| Type | Optional |
+|------|----------|
+|  `string\|number` |   Yes   |
+
  represents the current value of `fuzziness` property
-### searchOperators `boolean` 
+### searchOperators
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
  as defined in props
-### highlight `boolean` 
+### highlight
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
  as defined in props
-### highlightField `string|Array<string>` 
+### highlightField
+
+| Type | Optional |
+|------|----------|
+|  `string\|Array<string>` |   Yes   |
+
  as defined in props
-### customHighlight `Object` 
+### customHighlight
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
  as defined in props
-### enableSynonyms `boolean` 
+### enableSynonyms
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
  as defined in props
-### queryString `string` 
+### queryString
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  as defined in props
-### enablePopularSuggestions `boolean` 
+### enablePopularSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
  as defined in props
-### showDistinctSuggestions `boolean` 
+### showDistinctSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
  as defined in props
--   **defaultQuery** represents the current value of `defaultQuery` property
--   **customQuery**  represents the current value of `customQuery` property
--   **requestStatus** represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
-### appbaseConfig `Object` 
+### defaultQuery 
+represents the current value of `defaultQuery` property
+### customQuery  
+represents the current value of `customQuery` property
+### requestStatus 
+represents the current state of the request, can have values as `INACTIVE`, `PENDING` or `ERROR`.
+### appbaseConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
  as defined in props
-### queryId `string` 
+### queryId
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
  to get the query id returned by appbase.io search to track the analytics
 
 ### Setters
-
 > Note:
 > All of the methods accept `options` as the second parameter which has the following shape:
 
@@ -662,47 +1023,112 @@ Returns the current mic instance. Can be used to set mic language and other prop
 };
 ```
 
--   **triggerDefaultQuery**
+### triggerDefaultQuery
 `true` executes the query for a particular component
--   **triggerCustomQuery**
+### triggerCustomQuery
 `true` executes the query for the dependent components (dependencies defined in the `react` property)
--   **stateChanges**
+### stateChanges
 `true` invokes the subscribed functions to `subscribeToStateChanges` method, i.e trigger the re-render after making changes
 
 The following methods can be used to set or update the properties in the search state:
 
-### setValue `( value: any, options?: Options ) => void` 
-  can be used to set the `value` property
-### setCategoryValue `(categoryValue: string, options?: Options) => void` 
-  can be used to set the `categoryValue` property.
-### setSize `( size: number, options?: Options ) => void` 
-  can be used to set the `size` property
-### setFrom `( from: number, options?: Options ) => void` 
- can be used to set the `from` property. Useful to implement pagination.
-### setAfter `(after: object, options?: Options) => void` 
+### setValue
 
-    can be used to set the `after` property, which is useful while implementing pagination when the `type` of the component is `term`. The `after` key is a a property of `aggregationData`.
-### setFuzziness `( fuzziness: string|number, options?: Options ) => void` 
- can be used to set the `fuzziness` property.
-### setIncludeFields `( includeFields: Array<string>, options?: Options ) => void` can be used to set the `includeFields` property.
-### setExcludeFields `( excludeFields: Array<string>, options?: Options ) => void` 
- can be used to set the `excludeFields` property.
-### setSortBy `( sortBy: string, options?: Options ) => void` 
- can be used to set the sortBy` property.
-### setReact `( react: Object, options?: Options ) => void` 
- can be used to set the `react` property.
-### setDefaultQuery `( defaultQuery: function, options?: Options ) => void` 
- can be used to set the `defaultQuery` property.
-### setCustomQuery `( customQuery: function, options?: Options ) => void` 
- can be used to set the `customQuery` property.
-### handleMicClick `(micOptions: Object, options: Options): Promise<any>` 
+| Type | Optional |
+|------|----------|
+|  `( value: any, options?: Options ) => void` |   Yes   |
+
+can be used to set the `value` property
+### setCategoryValue
+
+| Type | Optional |
+|------|----------|
+|  `(categoryValue: string, options?: Options) => void` |   Yes   |
+
+can be used to set the `categoryValue` property.
+### setSize
+
+| Type | Optional |
+|------|----------|
+|  `( size: number, options?: Options ) => void` |   Yes   |
+can be used to set the `size` property
+### setFrom
+
+| Type | Optional |
+|------|----------|
+|  `( from: number, options?: Options ) => void` |   Yes   |
+
+can be used to set the `from` property. Useful to implement pagination.
+### setAfter
+
+| Type | Optional |
+|------|----------|
+|  `(after: object, options?: Options) => void` |   Yes   |
+
+can be used to set the `after` property, which is useful while implementing pagination when the `type` of the component is `term`. The `after` key is a a property of `aggregationData`.
+### setFuzziness
+
+| Type | Optional |
+|------|----------|
+|  `( fuzziness: string\|number, options?: Options ) => void` |   Yes   |
+
+can be used to set the `fuzziness` property.
+### setIncludeFields 
+| Type | Optional |
+|------|----------|
+|  `( includeFields: Array<string>, options?: Options ) => void` |   Yes   |
+
+can be used to set the `includeFields` property.
+### setExcludeFields
+
+| Type | Optional |
+|------|----------|
+|  `( excludeFields: Array<string>, options?: Options ) => void` |   Yes   |
+
+can be used to set the `excludeFields` property.
+### setSortBy
+
+| Type | Optional |
+|------|----------|
+|  `( sortBy: string, options?: Options ) => void` |   Yes   |
+
+can be used to set the sortBy` property.
+### setReact
+
+| Type | Optional |
+|------|----------|
+|  `( react: Object, options?: Options ) => void` |   Yes   |
+
+can be used to set the `react` property.
+### setDefaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `( defaultQuery: function, options?: Options ) => void` |   Yes   |
+
+can be used to set the `defaultQuery` property.
+### setCustomQuery
+
+| Type | Optional |
+|------|----------|
+|  `( customQuery: function, options?: Options ) => void` |   Yes   |
+
+can be used to set the `customQuery` property.
+### handleMicClick
+
+| Type | Optional |
+|------|----------|
+|  `(micOptions: Object, options: Options): Promise<any>` |   Yes   |
+
  can be used to handle the custom voice search implementation
 
-### setDataField `( dataField: string | Array<string | DataField>, options?: Options ) => void` 
+### setDataField
 
+| Type | Optional |
+|------|----------|
+|  `( dataField: string \| Array<string \| DataField>, options?: Options ) => void` |   Yes   |
 
 ### Methods to trigger queries programmatically
-
 > Note:
 > All of the methods accept `options` as the second parameter which has the following shape:
 
@@ -711,24 +1137,54 @@ The following methods can be used to set or update the properties in the search 
     stateChanges?: boolean // defaults to `true`
 };
 ```
--   **stateChanges**
+### stateChanges
 `true` invokes the subscribed functions to `subscribeToStateChanges` method, i.e trigger the re-render after making changes
 
 The following methods can be used to execute the component's queries programmatically.
 
-### triggerDefaultQuery `(options): Promise<any>` 
+### triggerDefaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `(options): Promise<any>` |   Yes   |
+
  can be used to trigger the `customQuery` programmatically
-### triggerCustomQuery `(options): Promise<any>` 
+### triggerCustomQuery
+
+| Type | Optional |
+|------|----------|
+|  `(options): Promise<any>` |   Yes   |
+
  can be used to trigger the `defaultQuery` programmatically
 
-### Methods to subscribe to state changes
-### subscribeToStateChanges `function` 
+## Methods to subscribe to state changes
+### subscribeToStateChanges
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
  can be used to subscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
-### unsubscribeToStateChanges `function` 
+### unsubscribeToStateChanges
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
  can be used to unsubscribe to the changes for the properties. Read more at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#subscribe-to-the-properties-changes).
 
 ### Record Analytics
-### recordClick `function` 
+### recordClick
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
  enables recording click analytics of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
-### recordConversions `function` 
+### recordConversions
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
  enables recording conversions of a search request. Please check the usage at [here](/docs/reactivesearch/searchbase/overview/searchcomponent/#record-analytics).
