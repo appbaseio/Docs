@@ -22,13 +22,15 @@ Example uses:
 
 ## Usage
 
-### Basic Usage
+### Basic
+Usage
 
 ```js
 <TagCloud componentId="TagCloud01" dataField="cities" />
 ```
 
-### Usage With All Props
+### Usage
+With All Props
 
 ```js
 <TagCloud
@@ -59,9 +61,20 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+ 
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -75,15 +88,44 @@ Accepts the following properties:
  > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
   
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 data field(s) to be mapped with the component's UI view.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
+
 title of the component to be shown in the UI.
-### loader `String or JSX` [optional]
+### loader
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
+
 to display an optional loader while fetching the options.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+
 number of list items to be displayed.
  > Note: 
 > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
@@ -92,30 +134,102 @@ number of list items to be displayed.
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
  > Note: This prop is only applicable when `enableAppbase` is set to `true`.
-### showCount `Boolean` [optional]
+### showCount
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show a count of the number of occurrences besides each list item. Defaults to `true`.
-### multiSelect `Boolean` [optional]
+### multiSelect
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 whether to support multiple tag selections. Defaults to `false`.
-### defaultValue `StringArray` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `StringArray` |   Yes   |
+
+
 pre-select tag(s) from the tag cloud. An Array is accepted when _multiSelect_ mode is enabled.
-### value `String Array` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `String Array` |   Yes   |
+
+
 controls the current value of the component. It selects the tag from the available tags (on mount and on update). Use this prop in conjunction with `onChange` function.
-### queryFormat `String` [optional]
+### queryFormat
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 sets whether to show results as a union with `"or"` (default) or an intersection with `"and"`. For example, if two tags are selected, say "Guitars" and "Electric Guitars" then with a `queryFormat` of "or" you would get results for both the tags. With a `queryFormat` of "and" you would get more specific results for guitars which satisfy both the tags.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 enable creating a URL query string parameter based on the selected value of the tag(s). This is useful for sharing URLs with the component state. Defaults to `false`.
-### renderError `String or JSX or Function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
+
 can be used to render an error message in case of any error.
 `js renderError={(error) => <div> Something went wrong!<br/>Error details<br/>{error} </div> }`
-### onChange `function` [optional]
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
-### onError `Function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
  > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
@@ -191,14 +305,34 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **TagCloud** component.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **TagCloud** component as long as the component is a part of `react` dependency of at least one other component.
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
  > Note:
 >
@@ -213,11 +347,26 @@ beforeValueChange = values => {
 };
 ```
 
-### onValueChange `Function`
+### onValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user picks a category in a TagCloud.
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **TagCloud's** data view.
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.

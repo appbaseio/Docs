@@ -26,13 +26,15 @@ Example uses:
 
 ## Usage
 
-### Basic Usage
+### Basic
+Usage
 
 ```js
 <SingleDropdownList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
-### Usage With All Props
+### Usage
+With All Props
 
 ```js
 <SingleDropdownList
@@ -64,9 +66,20 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+ 
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -80,15 +93,44 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
         
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 data field to be connected to the component's UI view. This field is used for doing an aggregation and returns the result. We're using a `.raw` multifield here. You can use a field of type `keyword` or `not_analyzed` depending on your Elasticsearch cluster.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
+
 title of the component to be shown in the UI.
-### loader `String or JSX` [optional]
+### loader
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
+
 to display an optional loader while fetching the options.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+
 number of list items to be displayed.
 > Note: 
 > 1. Appbase users should use the `aggregationSize` prop instead. The `size` prop would only set the size for `hits` not the `aggregations`.
@@ -97,41 +139,137 @@ number of list items to be displayed.
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
 > Note: This prop is only applicable when `enableAppbase` is set to `true`.
-### sortBy `String` [optional]
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 property that decides on how to sort the list items, accepts one of `count`, `asc` or `desc` as valid values. `count` sorts the list based on the count occurences, with highest value at the top. `asc` sorts the list in the ascending order of the list item (Alphabetical). `desc` sorts the list in the descending order of the term. Defaults to `count`.
-### defaultValue `string` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
 selects intial option from the dropdown list on mount.
-### value `string` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
 controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
-### showCount `Boolean` [optional]
+### showCount
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show count of number of occurences besides an item. Defaults to `true`.
-### showSearch `Boolean` [optional]
+### showSearch
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 whether to show a searchbox to filter the list items locally. Defaults to `false`.
-### showClear `Boolean` [optional]
+### showClear
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 whether to show a clear button to clear the entered text in the searchbox. Defaults to `false`.    
-### showMissing `Boolean` [optional]
+### showMissing
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 defaults to `false`. When set to `true` it also retrives the aggregations for missing fields under the label specified by `missingLabel`.
-### missingLabel `String` [optional]
+### missingLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 defaults to `N/A`. Specify a custom label to show when `showMissing` is set to `true`.
-### placeholder `String` [optional]
+### placeholder
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 placeholder to be displayed in the select box. It'll be only applicable when no value is selected.
-### searchPlaceholder `String` [optional]
+### searchPlaceholder
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 placeholder to be displayed in the search box. Defaults to `Type here to search...`.
-### selectAllLabel `String` [optional]
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 if provided, shows an extra option to select all the options in the list with the provided string value.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
-### showLoadMore `Boolean` [optional]
+### showLoadMore
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 defaults to `false` and works only with elasticsearch >= 6 since it uses [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation/). This adds a "Load More" button to load the aggs on demand combined with the `size` prop. Composite aggregations are in beta and this is an experimental API which might change in a future release.
 > Note:
 >
 > Composite aggregations do not support sorting by `count`. Hence with `showLoadMore`, you can only sort by: `asc` or `desc` order. `sortBy` prop defaults to `asc` when `showLoadMore` prop is used.
 
-### renderItem `Function` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
 ```js
 renderItem={(label, count, isSelected) => (
@@ -145,7 +283,13 @@ renderItem={(label, count, isSelected) => (
     </div>
 )}
 ```
-### render `Function` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 It accepts an object with these properties:
@@ -203,7 +347,13 @@ Or you can also use render function as children
 </SingleDropdownList>
 ```
 
-### renderError `String or JSX or Function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
+
 can be used to render an error message in case of any error.
 ```jsx
 renderError={(error) => (
@@ -213,13 +363,25 @@ renderError={(error) => (
     )
 }
 ```
-### renderNoResults `Function` [optional]
+### renderNoResults
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 can be used to render a message in case of no list items.
  ```jsx
 renderNoResults={() => <p>No Results Found!</p>}
 ```
 
-### renderLabel `Function` [optional]
+### renderLabel
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 can be used to change the label of the dropdown. Useful for adding highlighting/styling to or translating the label.
 ```jsx
 renderLabel={(items) => Object.values(items).map((item) => (
@@ -228,14 +390,38 @@ renderLabel={(items) => Object.values(items).map((item) => (
   </div>
 ))}
 ```
-### onChange `function` [optional]
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` props and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms/#controlled-components) behavior.
-### onError `Function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
-### isOpen `boolean` [optional] When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
+### isOpen
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
+ When set to `true` the dropdown is displayed on the initial render. Defaults to `false`.
 
 
 ## Demo
@@ -321,17 +507,42 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **SingleDropdownList** component.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **SingleDropdownList** component as long as the component is a part of `react` dependency of at least one other component.
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
 Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 > Note:
 >
@@ -346,13 +557,34 @@ beforeValueChange = value => {
 };
 ```
 
-### onValueChange `Function`
+### onValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a list item is selected in a "Discounted Price" SingleDropdownList.
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### transformData `Function` [optional]
+### transformData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 allows transforming the data to render inside the list. You can change the order, remove, or add items, tranform their values with this method. It provides the data as param which is an array of objects of shape `{ key: <string>, doc_count: <number> }` and expects you to return the array of objects of same shape.
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **SingleDropdownList's** options.
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.

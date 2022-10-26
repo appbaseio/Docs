@@ -22,7 +22,8 @@ Example uses:
 
 ## Usage
 
-### Basic Usage
+### Basic
+Usage
 
 ```js
 <TabDataList
@@ -46,7 +47,8 @@ Example uses:
 />
 ```
 
-### Render as a vertical list
+### Render
+as a vertical list
 We can pass the `displayAsVertical` to be true to render the list vertically.
 
 ```jsx
@@ -56,7 +58,8 @@ We can pass the `displayAsVertical` to be true to render the list vertically.
 />
 ```
 
-### Show no. of documents
+### Show
+no. of documents
 When we want to show the no. of documents for each category(tab) then we can pass `showCount` prop.
 
 ```jsx
@@ -66,7 +69,8 @@ When we want to show the no. of documents for each category(tab) then we can pas
 />
 ```
 
-### Usage With All Props
+### Usage
+With All Props
 
 ```js
 <TabDataList
@@ -108,9 +112,20 @@ When we want to show the no. of documents for each category(tab) then we can pas
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+ 
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -124,33 +139,115 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
   
-### dataField `string`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 data field to be connected to the component's UI view.
-### data `Object Array`
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
 collection of UI `labels` with associated `value` to be matched against the database field.
-### title `string or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `string or JSX` |   Yes   |
+
+
 title of the component to be shown in the UI.
-### placeholder `string` [optional]
+### placeholder
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
 placeholder to be displayed in the searchbox. Defaults to "Search". Applicable only when `showSearch` is true.
-### defaultValue `string` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
 selects an initial item from the list on mount.
-### value `string` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
 controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
-### selectAllLabel `String` [optional]
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 if provided displays an additional option to select all list values.
-### showCount `Boolean` [optional]
+### showCount
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show a count of the number of occurences besides each list item. Defaults to `false`.
-### displayAsVertical `Boolean` [optional]
+### displayAsVertical
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 layout tabs vertically. Defaults to `false`.
-### showSearch `Boolean` [optional]
+### showSearch
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 filter tabs using a search bar
-### showRadio `Boolean` [optional]
+### showRadio
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 show radio buttons just as we are using a `SingleDataList`
-### selectAllLabel `string` [optional] 
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+ 
 	If set, an additional option to select all the values is displayed
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
-### renderItem `Function` [optional]
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
 ```js
 renderItem={(label, count, isSelected) => (
@@ -164,7 +261,13 @@ renderItem={(label, count, isSelected) => (
     </div>
 )}
 ```
-### render `Function` [optional]
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 
@@ -245,17 +348,43 @@ Or you can also use render function as children
 />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **TabDataList** component.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **TabDataList** component as long as the component is a part of `react` dependency of at least one other component.
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
 Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
