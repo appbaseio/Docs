@@ -18,7 +18,6 @@ ReactiveComponent lets you connect any React UI component with an Elasticsearch 
 > `ReactiveComponent` supports a defaultQuery prop, which can take any Elasticsearch Query DSL object, and provides a callback onData prop which is called on successful query execution by Elasticsearch and can be used to create a side-effect in your app. There is also a render prop which can be used to render any React UI component of your choice which will have access to the hits and aggregations from the defaultQuery.
 
 ### Usage
-
 Let's suppose - we are building an e-commerce store for cars which displays a list of cars and 5 popular car brands in tabs UI as the user selects a tab the result gets updated with the cars of selected brand. Now if the user wants to select other brand from tab, the results should be updated to new selected brand. In this case, `ReactiveComponent` can be used with `defaultQuery` to achieve the desired behavior easily.
 
 After selecting value from `ReactiveComponent` we will need to update result component with items satisfying the value, to achieve this we can take use of `react` prop. You can read more about the prop [here](/docs/reactivesearch/v3/advanced/reactprop/).
@@ -50,9 +49,19 @@ Check demo [here](https://codesandbox.io/s/7zrj740oj6).
 
 Here `TabComponent` is responsible to render the Tabs UI and handle the switching between tabs and displaying selected filters. We are using `render` prop to display the component which provides an object with different parameters that can be used in rendering the UI and dispatching a new query. Fow switching the tab we will use `onClick` event to fire a new query. We will make use of the following paramateres provided by `render` method:
 
-### aggregations `Object`
+### aggregations
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `aggregations` prop contains the results from `aggs` Elasticsearch query of the component.
-### setQuery `function`
+### setQuery
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 `setQuery` function sets the query of the component. It takes an object param of shape:
 
 ```javascript
@@ -62,7 +71,12 @@ Here `TabComponent` is responsible to render the Tabs UI and handle the switchin
 }
 ```
 
-### value `any`
+### value
+
+| Type | Optional |
+|------|----------|
+|  `any` |   Yes   |
+
 `value` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
 
 **SelectedFilters with ReactiveComponent**
@@ -96,12 +110,26 @@ You can also take advantage of various ReactiveSearch components static method f
 ```
 
 ### Props
+### className
 
-### className `String`
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **DataSearch** component.
-### aggregationField `String` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` or `onData` prop as shown:
 
@@ -122,20 +150,55 @@ To set the number of buckets to be returned by aggregations.
 
 > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 **returns** the default query to be applied to the component, as defined in Elasticsearch Query DSL.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 **returns** the custom query to be applied to the component, as defined in Elasticsearch Query DSL.
 Custom query can be used to change the component's behavior for its subscribers.
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### onData `Function`
+### onData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 callback function which provides `data`, `rawData`, `aggregationData` and `aggregations` as function params.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveMap`](/docs/reactivesearch/v3/map/reactivegooglemap/), [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist/).
 
 -   **key** `String`
@@ -148,14 +211,29 @@ An optional label to display for the component in the global selected filters vi
     -   `Array` is used for specifying multiple components by their `componentId`.
     -   `Object` is used for nesting other key clauses.
 
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 - url `String` [Required]
@@ -172,7 +250,6 @@ Accepts the following properties:
     
 
 ### Demo
-
 **ReactiveComponent with defaultQuery**
 <br/>
 
