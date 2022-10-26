@@ -23,7 +23,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```html
 <template>
 	<dynamic-range-slider
@@ -37,7 +36,6 @@ Example uses:
 While `DynamicRangeSlider` only requires the above props to be used, it comes with many additional props for pre-setting default range values, setting the step value of the range slider, specifying labels for the range endpoints, etc.
 
 ### Usage With All Props
-
 ```html
 <template>
 	<dynamic-range-slider
@@ -71,9 +69,19 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -88,23 +96,68 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 title of the component to be shown in the UI.
-### defaultValue `Function` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 a function that accepts `min` and `max` range values as parameters and returns an object representing current selection from the range with `start` and `end` keys.
-### value `Object` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 sets the current value of the component. It sets the value(an object with `start` and `end` keys), on mount and on update. Use this prop in conjunction with the `change` event.
-### rangeLabels `Function` [optional]
+### rangeLabels
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 a function that accepts `min` and `max` range values as parameters and returns an object representing labels with `start` and `end` keys.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show the selected item as a filter in the selected filters view. Defaults to `true`.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
-### index `String` [optional]
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
@@ -186,12 +239,27 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 </script>
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 `Note:` customQuery is called on value changes in the **DynamicRangeSlider** component as long as the component is a part of `react` dependency of at least one other component.
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
 
 > Note:

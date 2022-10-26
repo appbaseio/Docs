@@ -24,7 +24,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```html
 <template>
 	<range-input
@@ -42,7 +41,6 @@ Example uses:
 `RangeInput` provides all the props supported by [RangeSlider](/docs/reactivesearch/vue/range/RangeSlider/).
 
 ### Usage With All Props
-
 ```html
 <template>
 	<range-input
@@ -81,9 +79,19 @@ Example uses:
 
 ## Props
 
-### componentId `String`
+### componentId
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -98,19 +106,54 @@ Accepts the following properties:
 > - Overrides the endpoint property defined in ReactiveBase.
 > - If required, use `transformResponse` prop to transform response in component-consumable format.
 
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 DB data field to be mapped with the component's UI view. The selected range creates a database query on this field.
-### range `Object`
+### range
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 an object with `start` and `end` keys and corresponding numeric values denoting the minimum and maximum possible slider values.
-### nestedField `String` [optional]
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
-### title `String or JSX` [optional]
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
 title of the component to be shown in the UI.
-### defaultValue `Object` [optional]
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 selects a initial range values using `start` and `end` key values from one of the data elements.
-### value `Object` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 controls the current value of the component.It selects the data from the range (on mount and on update). Use this prop in conjunction with `change` event.
-### validateRange `function` [optional]
+### validateRange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 is a callback function that can be used to validate the range input values before applying it. This function accepts an array of numbers where first element represents the `start` range and second element represents the `end` range. The following example prevents the users to type negative value for start range input.
 
 ```html
@@ -126,17 +169,47 @@ is a callback function that can be used to validate the range input values befor
 </template>
 ```
 
-### rangeLabels `Object` [optional]
+### rangeLabels
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
     an object with `start` and `end` keys and corresponding `String` labels to show labels near the ends of the `RangeInput` component.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
     show the selected item as a filter in the selected filters view. Defaults to `true`.
-### snap `Boolean` [optional]
+### snap
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
     makes the slider snap on to points depending on the `stepValue` when the slider is released. Defaults to `true`. When set to `false`, `stepValue` is ignored.
-### stepValue `Number` [optional]
+### stepValue
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
     step value specifies the slider stepper. Value should be an integer greater than or equal to `1` and less than `Math.floor((range.end - range.start) / 2)`. Defaults to 1.
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
     enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
-### includeNullValues `Boolean` [optional]
+### includeNullValues
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
     If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
 
 ## Demo
@@ -219,16 +292,31 @@ The other `innerClass` properties are the same as supported by [RangeSlider](/do
 </script>
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
     CSS class to be injected on the component container.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
     takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
 
 	> Note:
 	> customQuery is called on value changes in the **RangeInput** component as long as the component is a part of
     >`react` dependency of at least one other component.
 
-### beforeValueChange `Function`
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
     is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved. For example,
 
     ```js
