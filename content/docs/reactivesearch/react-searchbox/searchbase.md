@@ -18,19 +18,38 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 ## Props
 
 ### To configure the Appbase environments
+### **index**
 
-### **index** `string` [Required] 
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Refers to an index of the Elasticsearch cluster.
 
 `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
-### **url** `string` [Required] 
+### **url**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 URL for the Elasticsearch cluster
 
-### **credentials** `string` [Required] 
+### **credentials**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
-### **appbaseConfig** `Object` 
+### **appbaseConfig**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 
 -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
@@ -42,11 +61,20 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To customize the query execution
+### **headers**
 
-### **headers** `Object` [optional] 
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 set custom headers to be sent with each server request as key/value pairs.
 
-### **transformRequest** `Function` 
+### **transformRequest**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 Enables transformation of network request before
 execution. This function will give you the request object as the param and expect an updated request in return, for execution.
 
@@ -63,7 +91,12 @@ execution. This function will give you the request object as the param and expec
 />
 ```
 
-### **transformResponse** `Function` 
+### **transformResponse**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
  Enables transformation of search network response before  
     rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.
 

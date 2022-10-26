@@ -18,21 +18,40 @@ SearchBox offers a lightweight and performance focused searchbox UI component to
 ## Props
 
 ### Configure appbase.io environment
-
 The below props are only needed if you're not using the `SearchBox` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
-### **index** `string` [Required]
+### **index**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Refers to an index of the Elasticsearch cluster.
 
 `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
-### **url** `string` [Required]
+### **url**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 URL for the Elasticsearch cluster
 
-### **credentials** `string` [Required]
+### **credentials**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
-### **appbaseConfig** `Object` 
+### **appbaseConfig**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
 -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
@@ -43,13 +62,22 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ### To configure the ReactiveSearch API
-
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
-### **id** `string` [Required]
+### **id**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
 
-### **index** `string` [Optional]
+### **index**
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the `index` is set to the index prop defined in the SearchBase component. You can check out the full example [here](/docs/reactivesearch/react-searchbox/examples/).
 
 ```jsx
@@ -59,7 +87,12 @@ The index prop can be used to explicitly specify an index to query against for t
 />
 ```
 
-### **dataField** `string | Array<string | DataField>`
+### **dataField**
+
+| Type | Optional |
+|------|----------|
+|  `string \| Array<string \| DataField>`  |    No    |
+
 index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
 Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
 You can define the `dataField` property as an array of objects of the `DataField` type to set the field weights.<br/>
@@ -72,14 +105,24 @@ type DataField = {
 };
 ```
 
-### queryFormat `string`
+### queryFormat
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Sets the query format, can be **or** or **and**. Defaults to **or**.
 
-### or 
+### or
 returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
 -   On the other hand with **and**, only results matching both "bat" and "man" will be returned. It returns the results matching **all** of the search query text's parameters.
 
-### react `Object` 
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `react` prop is useful for components whose data view should reactively update when on or more dependent components change their states, e.g. a component to display the results can depend on the search component to filter the results.
 -   **key** `string`
     one of `and`, `or`, `not` defines the combining clause.
@@ -108,22 +151,52 @@ An example of a `react` clause where all three clauses are used and values are `
 
 Here, we are specifying that the suggestions should update whenever one of the blacklist items is not present and simultaneously any one of the city or topics matches.
 
-### size `number`
+### size
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 Number of suggestions and results to fetch per request.
 
-### from `number`
+### from
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 To define from which page to start the results, it is important to implement pagination.
 
-### includeFields `Array<string>`
+### includeFields
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
 fields to be included in search results.
 
-### excludeFields `Array<string>`
+### excludeFields
+
+| Type | Optional |
+|------|----------|
+|  `Array<string>` |   Yes   |
+
 fields to be excluded in search results.
 
-### sortBy `string`
+### sortBy
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 sort the results by either `asc` or `desc` order.
 
-### aggregationField `string` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events, and logs type data).
 It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
@@ -143,36 +216,81 @@ To set the number of buckets to be returned by aggregations.
 
 > Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
-### highlight `Boolean` [optional]
+### highlight
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether highlighting should be enabled in the returned results.
 
-### highlightField `string or Array` [optional]
+### highlightField
+
+| Type | Optional |
+|------|----------|
+|  `string or Array` |   Yes   |
+
 when highlighting is enabled, this prop allows specifying the fields which should be returned with the matching highlights. When not specified, it defaults to applying highlights on the field(s) specified in the **dataField** prop.
 
-### customHighlight `Object` [optional]
+### customHighlight
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 It can be used to set the custom highlight settings. You can read the `Elasticsearch` docs for the highlight options at [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-highlighting.html).
 
-### categoryField `string` [optional]
+### categoryField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Data field whose values are used to provide category specific suggestions.
 
-### categoryValue `string` [optional]
+### categoryValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 This is the selected category value. It is used for informing the search result.
 
-### nestedField `string`
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 set the `nested` field path that allows an array of objects to be indexed in a way that can be queried independently of each other. Applicable only when dataField's mapping is of `nested` type.
 
-### fuzziness `string | number`
+### fuzziness
+
+| Type | Optional |
+|------|----------|
+|  `string \| number` |   Yes   |
+
 Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
 Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
-### enableSynonyms `Boolean`
+### enableSynonyms
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
-### rankFeature `Object`
+### rankFeature
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This property allows you to define the [Elasticsearch rank feature query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rank-feature-query.html#query-dsl-rank-feature-query) to boost the relevance score of documents based on the `rank_feature` fields. Read more about it [here](https://docs.appbase.io/docs/search/reactivesearch-api/reference/#rankfeature).
 
 The `rankFeature` object must be in the following shape:
-<br/>
+
 ```ts
     {
         "field_name": {
@@ -258,20 +376,45 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 }
 ```
 
-### searchOperators `Boolean`
+### searchOperators
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `false`. If set to `true`, then you can use special characters in the search query to enable the advanced search.<br/>
 Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html).
 
-### queryString `Boolean` [optional]
+### queryString
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `false`. If set to `true` then it allows you to create a complex search that includes wildcard characters, searches across multiple fields, and more. Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html).
 
-### clearOnQueryChange `Boolean` [optional]
+### clearOnQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `true`, i.e. clear the component's input selection when the query of its dependent component changes (which is set via react prop). When set to `false`, the component's input selection isn't cleared.
 
-### distinctField `String` [optional]
+### distinctField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-### distinctFieldConfig `Object` [optional]
+### distinctFieldConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```jsx
@@ -289,10 +432,20 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 />
 ```
 
-### value `string` [optional]
+### value
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
 
-### onChange `Function` [optional]
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
 
 ```js
@@ -316,8 +469,12 @@ is a callback function which accepts component's current **value** as a paramete
 ```
 
 ### To customize the AutoSuggestions
+### enablePopularSuggestions
 
-### enablePopularSuggestions `Boolean`
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
 It can accept the following keys:
@@ -339,13 +496,22 @@ It can accept the following keys:
         }}
     />
 ```
-### enableRecentSuggestions `Boolean` 
+### enableRecentSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
 
 Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane)
 
 > Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
 
-### recentSuggestionsConfig `Object` 
+### recentSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 Specify additional options for fetching recent suggestions.
 
 It can accept the following keys:
@@ -366,24 +532,49 @@ It can accept the following keys:
     />
 ```
 
-### enablePredictiveSuggestions `Boolean` [optional]
+### enablePredictiveSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Defaults to `false`. When set to `true`, it predicts the next relevant words from a field's value based on the search query typed by the user. When set to false (default), the matching document field's value would be displayed.
 
 ```ts
 // pass this prop as true in searchComponent to enable predictive suggestions
 enablePredictiveSuggestions: true,
 ```
-### **maxPredictedWords** `number` 
+### **maxPredictedWords**
+
+| Type | Optional |
+|------|----------|
+|  `number` |   Yes   |
+
 Defaults to `2`. This property allows configuring the maximum number of relevant words that are predicted. Valid values are between **[1, 5]**.
 <br/>
 
-### **applyStopwords** `Boolean` 
+### **applyStopwords**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 When set to true, it would not predict a suggestion which starts or ends with a stopword. You can find the list of stopwords used by Appbase at [here](https://github.com/appbaseio/reactivesearch-api/blob/dev/plugins/querytranslate/stopwords.go).
 
-### **stopwords** `Array[String]` 
+### **stopwords**
+
+| Type | Optional |
+|------|----------|
+|  `Array[String]` |   Yes   |
+
 It allows you to define a list of custom stopwords. You can also set it through `Index` settings in the control plane.
 
-### **showDistinctSuggestions** `Boolean` 
+### **showDistinctSuggestions**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Show 1 suggestion per document. If set to `false` multiple suggestions may show up for the same document as
 searched value might appear in multiple fields of the same document, this is true only if you have configured multiple fields in `dataField` prop. Defaults to `true`.
 <br/> 
@@ -410,43 +601,102 @@ Warn
 Washington
 ```
 
-### **urlField** `string` 
+### **urlField**
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 It is the `dataField` whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
 
 ### To customize the SearchBox UI
+### **title**
 
-### **title** `string|JSX` 
+| Type | Optional |
+|------|----------|
+|  `string\|JSX` |   Yes   |
+
 set the title of the component to be shown in the UI.
 
-### **loader** `string|JSX` 
+### **loader**
+
+| Type | Optional |
+|------|----------|
+|  `string\|JSX` |   Yes   |
+
 Display an optional loader while fetching the options
 
-### **placeholder** `string` 
+### **placeholder**
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 set placeholder text to be shown in the component's input field. Defaults to "Search".
 
-### **showIcon** `Boolean` 
+### **showIcon**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to display a search or custom icon in the input box. Defaults to `true`.
 
-### **iconPosition** `string` 
+### **iconPosition**
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 sets the position of the search icon. Can be set to either `left` or `right`. Defaults to `right`.
 
-### **icon** `JSX` 
+### **icon**
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
+
 set a custom search icon instead of the default 🔍
 
-### **showClear** `Boolean` 
+### **showClear**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show a clear text `X` icon. Defaults to `false`.
 
-### **clearIcon** `any` 
+### **clearIcon**
+
+| Type | Optional |
+|------|----------|
+|  `any` |   Yes   |
+
 sets custom clear icon for the search input box
 
-### **autosuggest** `Boolean` 
+### **autosuggest**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`.
 
-### **strictSelection** `Boolean` 
+### **strictSelection**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 defaults to `false`. When set to `true`, the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared
 on selection. This is only relevant with `autosuggest`.
 
-### **defaultSuggestions** `suggestionsDef` 
+### **defaultSuggestions**
+
+| Type | Optional |
+|------|----------|
+|  `suggestionsDef` |   Yes   |
+
 preset search suggestions to be shown on focus when the SearchBox does not have any search query text set. Accepts an array of objects each having a **label** and **value** property. The label can contain either String or an HTML element. For an example
 
 ```jsx
@@ -464,16 +714,36 @@ preset search suggestions to be shown on focus when the SearchBox does not have 
 >
 ```
 
-### **downShiftProps** `Object` 
+### **downShiftProps**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 are the props to be passed to `DownShift` for typeahead configurations
 
-### **debounce** `wholeNumber` 
+### **debounce**
+
+| Type | Optional |
+|------|----------|
+|  `wholeNumber` |   Yes   |
+
 delays executing the query by the specified time in **ms** while the user is typing. Defaults to `0`, i.e. no debounce. Useful if you want to save on the number of requests sent.
 
-### **showVoiceSearch** `Boolean` 
+### **showVoiceSearch**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 Enable voice search for searchbox
 
-### **render** `Function` 
+### **render**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 You can render suggestions in a custom layout by using the `render` prop.
 <br/>
 It accepts an object with these properties:
@@ -602,7 +872,12 @@ can be used to set the `after` property, which is useful while implementing pagi
 -   **`setCustomQuery`** `( customQuery: function, options?: Options ) => void` can be used to set the `customQuery` property.
 <br/>
 
-### **renderError** `Function`
+### **renderError**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 can be used to render an error message in case of any error.
 
 ```jsx
@@ -619,13 +894,27 @@ can be used to render an error message in case of any error.
 />
 ```
 
-### **renderNoSuggestion** `string|JSX`
+### **renderNoSuggestion**
+
+| Type | Optional |
+|------|----------|
+|  `string\|JSX` |   Yes   |
+
 can be used to render a message in case of no list items.
 
-### **renderMic** `Function`
+### **renderMic**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 can be used to render the custom mic option
 
-### **recentSearchesIcon** `JSX` [optional] 
+### **recentSearchesIcon**
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
 
 You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-icon` key in the `innerClass` prop.
 
@@ -640,7 +929,11 @@ You can use a custom icon in place of the default icon for the recent search ite
     />
 ```
 
-### **popularSearchesIcon** `JSX` [optional] 
+### **popularSearchesIcon**
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
 
 You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-icon` key in the `innerClass` prop.
 
@@ -655,18 +948,33 @@ You can use a custom icon in place of the default icon for the popular searches 
     />
 ```
 
-### **focusShortcuts** `Array<string | number>` [optional]
+### **focusShortcuts**
+
+| Type | Optional |
+|------|----------|
+|  `Array<string \| number>` |   Yes   |
+
 A list of keyboard shortcuts that focus the search box. Accepts key names and key codes. Compatible with key combinations separated using '+'. Defaults to `['/']`.
 > Note
 >1. By default, pressing `'/'` would focus the search box.
 >2. The `hotkeys-js` library needs to be installed manually when using combinations in `focusShortcuts` prop, eg: 'cmd+b', 'ctrl+q', etc, without which only single key shortcuts would work if passed in the prop, eg: From among ['/', 'b', '#', 'ctrl+r'], only '/', 'b', '#' would work without hotkey-js installation.
 
 
-### **autoFocus** `Boolean` [optional] 
+### **autoFocus**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 When set to true, search box is auto-focused on page load. Defaults to `false`.
 
 
-### **addonBefore** `string|JSX` [optional] 
+### **addonBefore**
+
+| Type | Optional |
+|------|----------|
+|  `string\|JSX` |   Yes   |
+
 The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
 
@@ -685,8 +993,13 @@ The HTML markup displayed before (on the left side of) the searchbox input field
 ```
 
 
-### **addonAfter** `string|JSX` [optional] The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+### **addonAfter** `string|JSX` [optional] 
 
+| Type | Optional |
+|------|----------|
+|  `string\|JSX` |   Yes   |
+
+The HTML markup displayed after (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
 
 ```jsx
@@ -703,7 +1016,12 @@ The HTML markup displayed before (on the left side of) the searchbox input field
 />
 ```
 
-### **expandSuggestionsContainer** `Boolean` [optional] 
+### **expandSuggestionsContainer**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
  When set to false the width of suggestions dropdown container is limited to the width of searchbox input field. Defaults to `true`.
 <img src="https://i.imgur.com/x3jF23m.png"/>
 
@@ -721,7 +1039,12 @@ The HTML markup displayed before (on the left side of) the searchbox input field
 />
 ```
 
-### **enterButton** `boolean` [optional] 
+### **enterButton**
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 When set to `true`, the results would only be updated on press of the  button. Defaults to `false`. You can also provide styles using the `enter-button` key in the `innerClass` prop.
 
 <img src="https://i.imgur.com/8ZoA42b.png" style="margin:0 auto;display:block;"/>
@@ -732,7 +1055,12 @@ When set to `true`, the results would only be updated on press of the  button. D
         enterButton={true}
     />
 ```
-### **renderEnterButton** `Function` [optional] 
+### **renderEnterButton**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 renders a custom jsx markup for the enter button. Use in conjunction with `enterButton` prop set to `true`.
 
 <img src="https://i.imgur.com/dRykMOg.png" style="margin:0 auto;display:block;"/>
@@ -759,8 +1087,12 @@ renders a custom jsx markup for the enter button. Use in conjunction with `enter
 
 
 ### Customize style
+### **innerClass**
 
-### **innerClass** `Object`  
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `SearchBox` component supports an `innerClass` prop to provide styles to the sub-components of `SearchBox`. These are the supported keys:
 
 -   `title`
@@ -770,56 +1102,134 @@ renders a custom jsx markup for the enter button. Use in conjunction with `enter
 -   `popular-search-icon`
 -   `enter-button`
 
-### **className** `String`
+### **className**
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
 
-### **style** `Object`
+### **style**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **SearchBox** component.
 
 ### Controlled behavior
+### **defaultValue**
 
-### **defaultValue** `string`  
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 set the initial search query text on mount.
 
-### **value** `string` [optional]
+### **value**
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop.
 
-### **onChange** `Function`  
+### **onChange**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes.
 
 ### Callbacks for change events
+### **onValueChange**
 
-### **onValueChange** `Function`  
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's current **value** as a parameter. It is called every-time the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product in a SearchBox.
 
-### **onValueSelected** `Function`  
+### **onValueSelected**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 A function callback which executes on selecting a value from result set
 
-### **onError** `Function`  
+### **onError**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered in case of an error while fetching results
 
-### **onResults** `Function`  
+### **onResults**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 can be used to listen for the suggestions changes
 
-### **onQueryChange** `Function`
+### **onQueryChange**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 
-### **onBlur** `Function`  
+### **onBlur**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback handler for input blur event
 
-### **onKeyPress** `Function`  
+### **onKeyPress**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback handler for keypress event
 
-### **onKeyUp** `Function`  
+### **onKeyUp**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback handler for keyup event
 
-### **onFocus** `Function`  
+### **onFocus**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback handler for input focus event
 
-### **onKeyDown** `Function`  
+### **onKeyDown**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback handler for keydown event
 
-### **onAggregationData** `Function`  
+### **onAggregationData**
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 can be used to listen for the `aggregationData` property changes
 -   **data**: `Array<Object>` contains the parsed aggregations
 -   **raw**: `Object` Response returned by ES composite aggs query in the raw form.
@@ -827,7 +1237,6 @@ can be used to listen for the `aggregationData` property changes
 -   **afterKey**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the afterKey parameter to retrieve the next
 
 ### To customize the query execution
-
 -   **headers** `Object`
     set custom headers to be sent with each server request as key/value pairs. For example:
 
@@ -956,8 +1365,12 @@ can be used to listen for the `aggregationData` property changes
 ```
 
 ### Miscellaneous
+### **getMicInstance**
 
-### **getMicInstance** `Function`  
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 You can pass a callback function to get the instance of `SpeechRecognition` object, which can be used to override the default configurations for voice search.
 
 -   **beforeValueChange** `Function`
@@ -980,7 +1393,12 @@ You can pass a callback function to get the instance of `SpeechRecognition` obje
 />
 ```
 
-### **URLParams** `Boolean`  
+### **URLParams**
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string param based on the search query text value. This is useful for sharing URLs with the component state. Defaults to `false`.
 
 -   **subscribeTo** `Array<string>` lets you subscribe to various Searchbox properties to render UI (or to create a side-effect) based on changes to the properties.
