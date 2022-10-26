@@ -21,15 +21,12 @@ Example uses:
 -   displaying restaurants filtered by a nearby distance query on a map.
 
 ### Usage
-
 #### Basic Usage
-
 ```jsx
 <ReactiveGoogleMap componentId="MapUI" dataField="location" title="Venue Location Map" />
 ```
 
 #### Usage With All Props
-
 ```jsx
 <ReactiveGoogleMap
 	componentId="MapUI"
@@ -56,48 +53,137 @@ Example uses:
 ```
 
 ### Props
+### componentId
 
-### componentId `String`
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 unique identifier of the component, can be referenced in other components' `react` prop.
-### dataField `String`
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
 DB data field to be connected to the component's UI view, usually of a geopoint (i.e. location) data type and used for rendering the markers on the map.
-### size `Number` [optional]
+### size
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 number of results to show in the map view, can be a number in the range [1, 1000]. Defaults to 10.
-### defaultZoom `Number` [optional]
+### defaultZoom
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 preset map's zoom level, accepts integer values between [0, 20]. 0 is the minimum zoom level, where you can see the entire globe. 20 is the maximum zoom level. Defaults to 13.
-### defaultCenter `Object` [optional]
+### defaultCenter
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 preset map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
-### center `Object` [optional]
+### center
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 set map's center position by specifying an object with valid `lat` and `lng` values. This prop, when set, will cause the component to run a geo-distance query with a distance of 10mi (Refer: `defaultRadius` and `unit` prop to configure the distance).
-### defaultRadius `Number` [optional]
+### defaultRadius
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 used as distance value for the geo-distance query when `defaultCenter` or `center` is set. It accepts all positive integers.
-### unit `String` [optional]
+### unit
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 unit for distance measurement, uses `mi` (for miles) by default. Distance units can be specified from the following:
 ![screenshot](https://i.imgur.com/STbeagk.png)
-### showMapStyles `Boolean` [optional]
+### showMapStyles
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show map styles dropdown picker in the map UI. Defaults to `true`.
-### defaultMapStyle `String` [optional]
+### defaultMapStyle
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 preset a map style for the map UI. Available options include "Standard", "Blue Essence", "Blue Water", "Flat Map", "Light Monochrome", "Midnight Commander", "Unsaturated Browns".
-### showMarkers `Boolean` [optional]
+### showMarkers
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show the markers on the map, defaults to `true`. Sometimes, it doesn't make sense to display markers (when building a heatmap or weather map or a directions navigation map)
-### defaultPin `String` [optional]
+### defaultPin
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 URL of the default marker pin image to be shown. It comes with a default image. Should only be set if you wish to use a custom marker.
-### showMarkerClusters `Boolean` [optional]
+### showMarkerClusters
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to aggregate and form a cluster of nearby markers. Defaults to `true`.
 
 > Note
 >
 > It requires `showMarkers` prop enabled.
 
-### showSearchAsMove `Boolean` [optional]
+### showSearchAsMove
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to show the _Search As I Move_ checkbox in the UI. Defaults to `true`.
-### searchAsMove `Boolean` [optional]
+### searchAsMove
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to set the _Search As I Move_ checkbox. Defaults to `false`.
-### onPopoverClick `function` [optional]
+### onPopoverClick
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 a function that takes one argument for getting a marker's data and returns an HTML markup to be displayed in the popover box.
-### autoClosePopover `Boolean` [optional]
+### autoClosePopover
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 automatically closes the exisiting open popovers when `onPopoverClick` gets fired. Defaults to `false`.
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
     - **key** `String`
         one of `and`, `or`, `not` defines the combining clause.
@@ -108,13 +194,33 @@ specify dependent components to reactively update **GeoDistanceDropdown's** opti
         -   `String` is used for specifying a single component by its `componentId`.
         -   `Array` is used for specifying multiple components by their `componentId`.
         -   `Object` is used for nesting other key clauses.
-### autoCenter `Boolean` [optional]
+### autoCenter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 whether to auto center the map based on the geometric center of all the location markers. Defaults to `false`.
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS style object to be applied to the `ReactiveGoogleMap` component.
-### renderItem `function`
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 event fired when one or more markers are indexed, updated or removed from the map. It takes an object with the following formats (`label`, `icon`, `custom`):
 
 ```jsx
@@ -134,7 +240,12 @@ renderItem={result => ({
 })}
 ```
 
-### render `function`
+### render
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
 <br/>
 It accepts an object with these properties:
@@ -232,7 +343,12 @@ Or you can also use render function as children
 </ReactiveGoogleMap>
 ```
 
-### renderError `String or JSX or Function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX or Function` |   Yes   |
+
 can be used to render an error message in case of any error.
 
 ```jsx
@@ -244,9 +360,19 @@ renderError={(error) => (
 }
 ```
 
-### onError `Function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
-### onData `Function` [optional]
+### onData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 gets triggered after data changes, which returns an object with these properties: `data`, `promotedData`, `customData`, `rawData` & `resultStats`.
 
 
