@@ -16,7 +16,6 @@ nestedSidebar: 'web-reactivesearch'
 ## Usage
 
 ### Basic Usage
-
 ```js
 <ReactiveBase
 	{...configuration}
@@ -28,18 +27,31 @@ nestedSidebar: 'web-reactivesearch'
 ```
 
 ### Props
+### componentIds
 
-### componentIds `string|string[]` [optional]
+| Type | Optional |
+|------|----------|
+|  `string\|string[]` |   Yes   |
+
 By default `ErrorBoundary` watches for network request errors in all components and runtime errors in all it's descendants. If we want to restrict the components for getting network request errors then we can use `componentIds`.
 
-### renderError `function` [optional]
+### renderError
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 A function for customizing the error message. This passes two parameters, `error` and `componentId`, and returns a JSX component that would be shown on recieving error.
 
-### onError `function` [optional]
+### onError
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 A function called for performing side-effects such as logging errors. It is passed the same parameters as `renderError`, `error` and `componentId`.
 
 ### Example
-
 Below is an example using `ErrorBoundary`. We simulate an error which causes a failed network request using `dataField` as empty. However this would not break the whole UI and just be contained to the part enclosed by the `ErrorBoundary`. 
 
 ```js

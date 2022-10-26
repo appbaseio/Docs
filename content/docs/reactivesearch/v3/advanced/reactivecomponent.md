@@ -20,7 +20,6 @@ With `ReactiveComponent`, you can convert any React Component into a Reactivesea
 > `ReactiveComponent` is a wrapper component that allows you to connect custom component(s) (passed as children) with the Reactivesearch ecosystem.
 
 ### Usage with defaultQuery
-
 For example, let's suppose that we are building an e-commerce store where we have a react component called `ColorPicker` which renders the `colors` passed to it as tiles, allowing us to filter the products by their colors.
 
 ![ColorPicker](https://i.imgur.com/wuKhCTT.png)
@@ -144,7 +143,6 @@ class ColorPickerWrapper extends React.Component {
 Now, the components which will have `myColorPicker` present in their `react` prop can react to the changes in the ColorPicker component based on the query passed to the setQuery method. You can check a [similar example implementation here](https://github.com/appbaseio/reactivesearch/blob/dev/packages/web/examples/ReactiveComponent/src/index.js).
 
 ### Usage with customQuery
-
 Let's suppose - we are building an e-commerce store for cars which displays a list of cars of a particular brand on their separate page as `example.com/cars/nissan`. Now, we want all the filters on that page (like pricing, type of car, model, year, etc) to only show the data relevant to the given brand (i.e. `nissan`). In this case, `ReactiveComponent` can be used with `customQuery` to achieve the desired behavior easily.
 
 We can then use the given ReactiveComponent to be watched by all the filters (via `react` prop) to avail the desired brand based filtering for all the filters.
@@ -152,18 +150,47 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 Check demo [here](https://codesandbox.io/s/3ylrrr0r5q).
 
 #### Parameters available in render prop function
+### loading
 
-### loading `boolean`
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 indicates that the query is still in progress
-### error: `object`
+### error:
+
+| Type | Optional |
+|------|----------|
+|  `object` |   Yes   |
+
 An object containing the error info
-### data `Array`
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Array` |   Yes   |
+
 `data` prop is an array of parsed results(promoted + hits) from the Elasticsearch query of the component.
-### rawData `Object`
+### rawData
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 An object of raw response as-is from elasticsearch query.
-### promotedData: `array`
+### promotedData:
+
+| Type | Optional |
+|------|----------|
+|  `array` |   Yes   |
+
 An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/).
-### resultStats: `object`
+### resultStats:
+
+| Type | Optional |
+|------|----------|
+|  `object` |   Yes   |
+
 An object with the following properties which can be helpful to render custom stats:
 -   **`numberOfResults`**: `number`
 	Total number of results found
@@ -173,9 +200,19 @@ An object with the following properties which can be helpful to render custom st
 	Total number of hidden results found
 -   **`promoted`**: `number`
 	Total number of promoted results found
-### aggregations `Object`
+### aggregations
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `aggregations` prop contains the results from `aggs` Elasticsearch query of the component.
-### setQuery `function`
+### setQuery
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 `setQuery` function sets the query of the component. It takes an object param of shape:
 
 ```javascript
@@ -186,16 +223,35 @@ An object with the following properties which can be helpful to render custom st
 }
 ```
 
-### value `any`
+### value
+
+| Type | Optional |
+|------|----------|
+|  `any` |   Yes   |
+
 `value` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
 
 ### Props
+### className
 
-### className `String`
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
-### style `Object`
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 CSS styles to be applied to the **DataSearch** component.
-### aggregationField `String` [optional]
+### aggregationField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
 You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` or `onData` prop as shown:
 
@@ -217,20 +273,55 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 To set the number of buckets to be returned by aggregations.
 
 > Note: This is a new feature and only available for appbase versions >= 7.41.0.
-### defaultQuery `Function`
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 **returns** the default query to be applied to the component, as defined in Elasticsearch Query DSL.
-### customQuery `Function`
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 **returns** the custom query to be applied to the component, as defined in Elasticsearch Query DSL.
 Custom query can be used to change the component's behavior for its subscribers.
-### onQueryChange `Function`
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
-### onData `Function`
+### onData
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 callback function which provides `data`, `rawData`, `promotedData`, `aggregationData`, `resultStats` and `aggregations` as function params.
-### showFilter `Boolean` [optional]
+### showFilter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 show as filter when a value is selected in a global selected filters view. Defaults to `true`.
-### filterLabel `String` [optional]
+### filterLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
-### react `Object`
+### react
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 `react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveMap`](/docs/reactivesearch/v3/map/reactivegooglemap/), [`ReactiveList`](/docs/reactivesearch/v3/result/reactivelist/).
 
 -   **key** `String`
@@ -243,14 +334,29 @@ An optional label to display for the component in the global selected filters vi
 	-   `Array` is used for specifying multiple components by their `componentId`.
 	-   `Object` is used for nesting other key clauses.
 
-### URLParams `Boolean` [optional]
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
 enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 
-### distinctField `String` [optional]
+### distinctField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 
-### distinctFieldConfig `Object` [optional]
+### distinctFieldConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL.  You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```jsx
@@ -270,7 +376,12 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 
 > Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -287,7 +398,6 @@ Accepts the following properties:
 	
 
 ### Examples
-
 **ReactiveComponent with defaultQuery**
 <br/>
 
