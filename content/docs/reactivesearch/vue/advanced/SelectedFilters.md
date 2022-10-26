@@ -23,7 +23,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```js
 <template>
 	<selected-filters />
@@ -31,7 +30,6 @@ Example uses:
 ```
 
 ### Usage with All Props
-
 ```js
 <selected-filters
     clearAllLabel="Clear filters"
@@ -40,17 +38,39 @@ Example uses:
 ```
 
 ### Props
+### showClearAll 
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
 
-### showClearAll `boolean` [optional] (defaults to `true`)
-When set to `true`, displays an additional button to clear all the filters
-### clearAllLabel `string` [optional] (defaults to `'Clear All'`)
-Sets the label for the clear all button.
-### title `string` [optional]
+Defaults to `true`. When set to `true`, displays an additional button to clear all the filters
+### clearAllLabel 
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+ 
+Defaults to `'Clear All'`. Sets the label for the clear all button.
+### title
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
 Can be used to set a title
-### resetToDefault `boolean` [optional]
+### resetToDefault
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 When set to true and clearAll functionality is utilised, then it would set the filter's value to its default set value(the `defaultValue` prop) instead of null/ undefined.
 Defaults to `false`.
-### resetToValues `Object` [optional]
+### resetToValues
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 It is a map of `componentId` to the component's value which would be used to set the component's value when `clearAll` action gets called. For example, the following configuration would reset the `AuthorFilter` to `Nora Roberts` on `clearAll` action.
 ```html
 <selected-filters
@@ -59,8 +79,13 @@ It is a map of `componentId` to the component's value which would be used to set
     }"
 >
 ```
-### clearAllBlacklistComponents `Array` [optional] allows defining a list of 
-component IDs, which would reset their values when `clearAll` action gets triggered.
+### clearAllBlacklistComponents
+
+| Type | Optional |
+|------|----------|
+|  `Array` |   Yes   |
+
+allows defining a list of component IDs, which would reset their values when `clearAll` action gets triggered.
 
 The following example instructs the `SelectedFilters` component to not reset the `searchbox` component's value when `clearAll` button is clicked by the user.
 
@@ -81,14 +106,22 @@ Most ReactiveSearch filter components have a prop `showFilter` (defaults to `tru
 As an example, check [MultiList usage](/docs/reactivesearch/vue/list/MultiList/#usage) to see how `showFilter` and `filterLabel` can be used.
 
 ### Events
+### change
 
-### change `function` [optional]
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 Provides access to the current selected values. This enables you to retrieve the selected filters and current search state in a convenient way.
-### clear `function` [optional]
+### clear
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
 a callback function which will be called when a particular filter(value) has been removed from the selected filters, provides the `component` and `value`.
 
 ### Styles
-
 `SelectedFilters` component supports `innerClass` prop with the following keys:
 
 -   `button`
@@ -103,7 +136,12 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 <selected-filters className="custom-class" />
 ```
 
-### className `String`
+### className
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 CSS class to be injected on the component container.
 -   **slot-scope** ( Default Slot )
 Enables custom rendering for **SelectedFilters** component. It provides an object as a param which contains all the props needed to render the custom selected-filters, including the functions to clear and update the component values. You can find the example at [here](https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/selected-filters-custom).
