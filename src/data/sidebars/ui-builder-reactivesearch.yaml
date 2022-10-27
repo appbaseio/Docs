@@ -12,7 +12,9 @@
       - title: 'Add pivot facets to a Search UI'
         link: /docs/reactivesearch/ui-builder/how-to/add-pivot-facets/        
       - title: 'Add a new page to Search UI'
-        link: /docs/reactivesearch/ui-builder/how-to/add-new-route/            
+        link: /docs/reactivesearch/ui-builder/how-to/add-new-route/ 
+      - title: 'Add arbitrary facet to Search UI'
+        link: /docs/reactivesearch/ui-builder/how-to/add-arbitrary-facet/           
   - group: Searchboxes
     items:
       - title: Searchbox UI
