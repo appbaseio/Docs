@@ -240,6 +240,19 @@ Usage (In Ghost editor):
 	margin: 1.5em 0 3em;
 }
 
+/**
+	Scroll offset for anchor links to headings
+	* This needs to match with tocbot headingOffset and scrollSmoothOffset in src/components/common/TOC.js
+	* We have an announcement banner on top of navbar then we need more scroll offset
+*/
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+	scroll-margin-top: 100px;
+}
 .announcement-banner-active .post-content h1,
 .announcement-banner-active .post-content h2,
 .announcement-banner-active .post-content h3,
@@ -257,7 +270,6 @@ Usage (In Ghost editor):
 .post-content h6 {
 	color: inherit;
 	outline: none;
-	scroll-margin-top: 100px;
 }
 
 .post-content h1 .anchor,
