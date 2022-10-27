@@ -35,26 +35,41 @@ const searchbase = new SearchBase(properties);
 ```
 
 ### Properties
-
 #### Configure appbase.io environment
-
 The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
 
-### **index** `string` [Required] 
+### **index**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
 Refers to an index of Elasticsearch cluster.
 
 `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
-### **url** `string` [Required] 
+### **url**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
 URL for the Elasticsearch cluster
 
-### **credentials** `string` [Required] 
+### **credentials**
+
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
 Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
 
-### **appbaseConfig** `Object` [optional] 
+### **appbaseConfig**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
 -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
@@ -65,10 +80,13 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 #### To customize the query execution
-
 The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
-### **headers** `Object` 
+### **headers**
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
 
 set custom headers to be sent with each server request as key/value pairs. For example:
 
@@ -83,7 +101,11 @@ const searchbase = new SearchBase({
 });
 ```
 
-### **transformRequest** `(requestOptions: Object) => Promise<Object>` 
+### **transformRequest**
+
+| Type | Optional |
+|------|----------|
+|  `(requestOptions: Object) => Promise<Object>` |   Yes   |
 
 Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution.<br/>
 For example, we will add the `credentials` property in the request using `transformRequest`.
@@ -99,7 +121,11 @@ const searchbase = new SearchBase({
         }),
 });
 ```
-### **transformResponse** `(response: any) => Promise<any>` 
+### **transformResponse**
+
+| Type | Optional |
+|------|----------|
+|  `(response: any) => Promise<any>` |   Yes   |
 
 Enables transformation of search network response before rendering it. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.<br/>
 For example:
@@ -153,7 +179,6 @@ const searchbase = new SearchBase({
 ```
 
 ### An example with all properties
-
 ```js
 const searchbase = new SearchBase({
     index: "gitxplore-app",
@@ -194,9 +219,7 @@ const searchbase = new SearchBase({
 ```
 
 ### Methods
-
 #### register
-
 ```ts
 register(id: string, component: SearchComponent | Object): SearchComponent
 ```
@@ -256,7 +279,6 @@ searchBase.register('search-component', {
 ```
 
 #### unregister
-
 ```ts
 unregister(id: string): void
 ```
@@ -264,7 +286,6 @@ unregister(id: string): void
 This method is useful to unregister a component by `id`. It is a good practice to unregister (remove) an unmounted/unused component to avoid any side-effects.
 
 #### getComponent
-
 ```ts
 getComponent(id: string): SearchComponent
 ```
@@ -272,7 +293,6 @@ getComponent(id: string): SearchComponent
 This method can be used to retrieve the instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class for a particular component by `id`.
 
 #### getComponents
-
 ```ts
 getComponents(): { [key: string]: SearchComponent }
 ```
