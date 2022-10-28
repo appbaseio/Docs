@@ -15,7 +15,7 @@ nestedSidebar: 'web-reactivesearch'
 
 This is the first component you will need to add when using `ReactiveSearch`.
 
-### Usage
+## Usage
 ```js
 <ReactiveBase
   app="appname"
@@ -26,7 +26,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 </ReactiveBase>
 ```
 
-### Props
+## Props
 ### app
 
 | Type | Optional |
@@ -74,7 +74,7 @@ Defaults to `false`. You can set this to `true` when you're using appbase.io alo
 
 set custom headers to be sent with each server request as key/value pairs. For example:
 
-```js{4-6}
+```js
 <ReactiveBase
   app="appname"
   credentials="abcdef123:abcdef12-ab12-ab12-ab12-abcdef123456"
@@ -106,7 +106,7 @@ Accepts the following properties:
 
 > Top level props - `url`, `app` and `credentials` are optional and overridden in the final request when `endpoint` prop is defined.
 
-```js{4-6}
+```js
 <ReactiveBase
     enableAppbase
     endpoint={{
@@ -130,16 +130,21 @@ Accepts the following properties:
 
 allows you to customize the analytics experience when appbase.io is used as a backend.
 Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
+
+
 ### analytics
 
 | Type | Optional |
 |------|----------|
 |  `Boolean` |   Yes   |
 
-allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.<br/>
+allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+
 Check the [analytics recipe](/docs/reactivesearch/v3/advanced/analytics/) for click analytics implementation.
+
 > Note:
 > This prop has been marked as deprecated. Please use the `recordAnalytics` property in the `appbaseConfig` prop instead.
+
 ### analyticsConfig
 
 | Type | Optional |
@@ -148,8 +153,10 @@ Check the [analytics recipe](/docs/reactivesearch/v3/advanced/analytics/) for cl
 
 allows you to customize the analytics experience when appbase.io is used as a backend.
 Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#configure-the-analytics-experience).
+
 > Note:
 > This prop has been marked as deprecated. Please use the `appbaseConfig` prop instead.
+
 ### initialQueriesSyncTime
 
 | Type | Optional |
@@ -157,6 +164,7 @@ Read more about it over [here](/docs/reactivesearch/v3/advanced/analytics/#confi
 |  `Number` |   Yes   |
 
 allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
+
 ### as
 
 | Type | Optional |
@@ -164,6 +172,7 @@ allows you to define a wait time in milliseconds. We wait for `initialQueriesSyn
 |  `String` |   Yes   |
 
 allows to use the custom html element tag, defaults to `div`.
+
 ### theme
 
 | Type | Optional |
@@ -171,6 +180,7 @@ allows to use the custom html element tag, defaults to `div`.
 |  `Object` |   Yes   |
 
 allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/v3/theming/overview/)
+
 ### themePreset
 
 | Type | Optional |
@@ -178,6 +188,7 @@ allows over-writing of default styles by providing the respective key/values. Yo
 |  `String` |   Yes   |
 
 allows over-writing of default styles by providing a preset value. Supported values are `light` (default) and `dark`. You can read more about its usage [here](/docs/reactivesearch/v3/theming/overview/)
+
 ### getSearchParams
 
 | Type | Optional |
@@ -185,6 +196,7 @@ allows over-writing of default styles by providing a preset value. Supported val
 |  `Function` |   Yes   |
 
 Enables you to customize the evaluation of query-params-string from the url (or) any other source. If this function is not set, the library will use `window.location.search` as the search query-params-string for parsing selected-values. This can come handy if the URL is using hash values.
+
 ### setSearchParams
 
 | Type | Optional |
@@ -192,6 +204,7 @@ Enables you to customize the evaluation of query-params-string from the url (or)
 |  `Function` |   Yes   |
 
 Enables you to customize setting of the query params string in the url by providing the updated query-params-string as the function parameter. If this function is not set, the library will set the `window.history` via `pushState` method.
+
 ### transformRequest
 
 | Type | Optional |
@@ -205,7 +218,7 @@ Enables transformation of network request before execution. This function will g
 
 If you need to include credentials (credentials are cookies, authorization headers or TLS client certificates), you can do it this way:
 
-```js{3-6}
+```js
 <ReactiveBase
   app="appname"
   transformRequest={props => ({
@@ -220,7 +233,7 @@ If you need to include credentials (credentials are cookies, authorization heade
 
 You can also modify the request `URL` in that way:
 
-```js{3-6}
+```js
 <ReactiveBase
   app="appname"
   transformRequest={props => ({
@@ -429,7 +442,7 @@ Additionally, the ReactiveSearch components support `preferencesPath` prop which
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/Preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-### Connect to Elasticsearch
+## Connect to Elasticsearch
 > Note
 >
 > An **app** within ReactiveSearch's context refers to an **index** in Elasticsearch.
