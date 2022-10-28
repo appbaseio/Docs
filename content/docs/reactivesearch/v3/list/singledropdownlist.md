@@ -26,15 +26,13 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <SingleDropdownList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
 <SingleDropdownList

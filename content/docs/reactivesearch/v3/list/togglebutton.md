@@ -23,8 +23,7 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <ToggleButton
@@ -38,8 +37,7 @@ Usage
 />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
 <ToggleButton

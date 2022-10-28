@@ -26,8 +26,7 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```jsx
 <SingleDataList
@@ -51,8 +50,7 @@ Usage
 />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```jsx
 <SingleDataList

@@ -22,8 +22,7 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <TabDataList
@@ -69,8 +68,7 @@ When we want to show the no. of documents for each category(tab) then we can pas
 />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
 <TabDataList

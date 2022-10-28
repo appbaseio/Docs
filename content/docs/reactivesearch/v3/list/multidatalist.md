@@ -26,8 +26,7 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <MultiDataList
@@ -51,8 +50,7 @@ Usage
 />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
 <MultiDataList
@@ -91,8 +89,7 @@ With All Props
 />
 ```
 
-### Usage
-as a controlled component
+### Usage (as a controlled component)
 
 ```js
 function Index(props) {

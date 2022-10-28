@@ -26,15 +26,13 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```jsx
 <MultiDropdownList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```jsx
 <MultiDropdownList
@@ -63,8 +61,7 @@ With All Props
 />
 ```
 
-### Usage
-as a controlled component
+### Usage (as a controlled component)
 
 ```jsx
 function Index(props) {

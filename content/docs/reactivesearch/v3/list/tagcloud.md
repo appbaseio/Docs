@@ -22,15 +22,13 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <TagCloud componentId="TagCloud01" dataField="cities" />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
 <TagCloud

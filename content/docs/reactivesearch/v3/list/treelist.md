@@ -22,8 +22,7 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
     <TreeList 
@@ -33,8 +32,7 @@ Usage
     />
 ```
 
-### Usage
-With All Props
+### Usage (with all props)
 
 ```js
     <TreeList
@@ -94,8 +92,7 @@ With All Props
     />
 ```
 
-### Usage
-as a controlled component
+### Usage (as a controlled component)
 
 ```js
 function Index(props) {

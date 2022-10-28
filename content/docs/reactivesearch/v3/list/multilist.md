@@ -22,15 +22,13 @@ Example uses:
 
 ## Usage
 
-### Basic
-Usage
+### Basic Usage
 
 ```js
 <MultiList componentId="CitySensor" dataField="group_city.raw" title="Cities" />
 ```
 
-### Usage
-With All Props
+### Usage (With All Props)
 
 ```js
 <MultiList
@@ -63,8 +61,7 @@ With All Props
 />
 ```
 
-### Usage
-as a controlled component
+### Usage (as a controlled component)
 
 ```js
 function Index(props) {
