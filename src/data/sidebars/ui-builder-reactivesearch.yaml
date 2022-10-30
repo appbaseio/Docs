@@ -1,25 +1,27 @@
 - groups:
-  - group: Search UIs
-    items:
-      - title: 'Search UI: Overview'
-        link: /docs/reactivesearch/ui-builder/search/
-  - group: 'How To Guides'
-    items:
-      - title: 'Create a Search UI with Elasticsearch'
-        link: /docs/reactivesearch/ui-builder/how-to/ui-with-elasticsearch/
-      - title: 'Create a Search UI with Solr'
-        link: /docs/reactivesearch/ui-builder/how-to/ui-with-solr/
-      - title: 'Add pivot facets to a Search UI'
-        link: /docs/reactivesearch/ui-builder/how-to/add-pivot-facets/        
-      - title: 'Add a new page to Search UI'
-        link: /docs/reactivesearch/ui-builder/how-to/add-new-route/ 
-      - title: 'Add arbitrary facet to Search UI'
-        link: /docs/reactivesearch/ui-builder/how-to/add-arbitrary-facet/           
-  - group: Searchboxes
-    items:
-      - title: Searchbox UI
-        link: /docs/reactivesearch/ui-builder/searchbox-ui/
-  - group: Recommendations
-    items:
-      - title: Recommendations
-        link: /docs/reactivesearch/ui-builder/recommendations/
+      - group: Search UIs
+        items:
+            - title: 'Search UI: Overview'
+              link: /docs/reactivesearch/ui-builder/search/
+      - group: 'How To Guides'
+        items:
+            - title: 'Create a Search UI with Elasticsearch'
+              link: /docs/reactivesearch/ui-builder/how-to/ui-with-elasticsearch/
+            - title: 'Create a Search UI with Solr'
+              link: /docs/reactivesearch/ui-builder/how-to/ui-with-solr/
+            - title: 'Add pivot facets to a Search UI'
+              link: /docs/reactivesearch/ui-builder/how-to/add-pivot-facets/
+            - title: 'Add a new page to Search UI'
+              link: /docs/reactivesearch/ui-builder/how-to/add-new-route/
+            - title: 'Add arbitrary facet to Search UI'
+              link: /docs/reactivesearch/ui-builder/how-to/add-arbitrary-facet/
+            - title: 'Programmatically modifying a query'
+              link: /docs/reactivesearch/ui-builder/how-to/modify-query-programatically/
+      - group: Searchboxes
+        items:
+            - title: Searchbox UI
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/
+      - group: Recommendations
+        items:
+            - title: Recommendations
+              link: /docs/reactivesearch/ui-builder/recommendations/
