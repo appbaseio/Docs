@@ -16,7 +16,8 @@ nestedSidebar: 'web-reactivesearch'
 ## Usage
 
 ### Basic Usage
-```js
+
+```jsx
 <ReactiveBase
 	{...configuration}
 >
