@@ -26,7 +26,7 @@ nestedSidebar: 'web-reactivesearch'
 </ReactiveBase>
 ```
 
-### Props
+## Props
 ### componentIds
 
 | Type | Optional |

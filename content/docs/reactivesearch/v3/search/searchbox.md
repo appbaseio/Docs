@@ -434,7 +434,10 @@ Defaults to `false`. When set to `true`, it predicts the next relevant words fro
 |  `Object` |   Yes   |
 
 allow passing props directly to the underlying `Downshift` component. You can read more about Downshift props [here](https://github.com/paypal/downshift#--downshift-------).
-### fieldWeights `Array` [optional] <mark color="yellow">[deprecated]</mark>
+### fieldWeights <mark color="yellow">[deprecated]</mark>
+| Type | Optional |
+|------|----------|
+|  `Array` |   Yes   |
 set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 > Note: The `fieldWeights` property has been marked as deprecated in <b>v3.21.0</b> of ReactiveSearch and <b>v7.47.0</b> of Appbase and would be removed in the next major release. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
 

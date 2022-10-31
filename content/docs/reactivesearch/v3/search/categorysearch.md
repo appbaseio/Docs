@@ -287,7 +287,10 @@ Defaults to `false`. When set to `true`, it predicts the next relevant words fro
 
 allow passing props directly to the underlying `Downshift` component. You can read more about Downshift props [here](https://github.com/paypal/downshift#--downshift-------).
 
-### fieldWeights `Array` [optional] <mark color="yellow">[deprecated]</mark>
+### fieldWeights <mark color="yellow">[deprecated]</mark>
+| Type | Optional |
+|------|----------|
+|  `Array` |   Yes   |
 set the search weight for the database fields, useful when dataField is an Array of more than one field. This prop accepts an array of numbers. A higher number implies a higher relevance weight for the corresponding field in the search results.
 
 > Note: The `fieldWeights` property has been marked as deprecated in <b>v3.21.0</b> of ReactiveSearch and <b>v7.47.0</b> of appbase.io and would be removed in the next major release. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
@@ -434,7 +437,7 @@ a function which returns the custom [highlight settings](https://www.elastic.co/
 |  `String` |   Yes   |
 
 Sets the query format, can be **or** or **and**. Defaults to **or**.
-### or returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
+- **or** returns all the results matching **any** of the search query text's parameters. For example, searching for "bat man" with **or** will return all the results matching either "bat" or "man".
 -   On the other hand with **and**, only results matching both "bat" and "man" will be returned. It returns the results matching **all** of the search query text's parameters.
 ### fuzziness
 

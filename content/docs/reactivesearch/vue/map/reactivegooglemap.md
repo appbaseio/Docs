@@ -84,7 +84,7 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
 />
 ```
 
-### Props
+## Props
 ### componentId
 
 | Type | Optional |

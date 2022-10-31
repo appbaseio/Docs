@@ -52,7 +52,7 @@ Example uses:
 />
 ```
 
-### Props
+## Props
 ### componentId
 
 | Type | Optional |

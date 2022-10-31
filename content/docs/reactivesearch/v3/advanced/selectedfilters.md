@@ -32,7 +32,7 @@ Example uses:
 <SelectedFilters showClearAll={true} clearAllLabel="Clear filters" />
 ```
 
-### Props
+## Props
 ### showClearAll 
 
 | Type | Optional |

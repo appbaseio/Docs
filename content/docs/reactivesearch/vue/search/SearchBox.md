@@ -835,7 +835,11 @@ You can use a custom icon in place of the default icon for the popular searches 
       </search-box>
   ```
 
-### addonBefore `slot-scope` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+### addonBefore 
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   | 
+The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
 
   ```html
