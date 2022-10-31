@@ -94,7 +94,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |  `Object` |   Yes   |
 
  
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.

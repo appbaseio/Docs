@@ -231,7 +231,7 @@ An object with the following properties which can be helpful to render custom st
 
 `value` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
 
-### Props
+## Props
 ### className
 
 | Type | Optional |
@@ -383,6 +383,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 |  `Object` |   Yes   |
 
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+
 Accepts the following properties:
 -   **url** `String` [Required]
 	URL where the data cluster is hosted.

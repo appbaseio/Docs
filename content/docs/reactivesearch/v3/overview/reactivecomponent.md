@@ -109,7 +109,7 @@ You can also take advantage of various ReactiveSearch components static method f
 />
 ```
 
-### Props
+## Props
 ### className
 
 | Type | Optional |
@@ -235,6 +235,7 @@ The index prop can be used to explicitly specify an index to query against for t
 |  `Object` |   Yes   |
 
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+
 Accepts the following properties:
 - url `String` [Required]
     URL where the data cluster is hosted.
