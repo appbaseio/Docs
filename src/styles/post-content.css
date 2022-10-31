@@ -259,7 +259,7 @@ Usage (In Ghost editor):
 .announcement-banner-active .post-content h4,
 .announcement-banner-active .post-content h5,
 .announcement-banner-active .post-content h6 {
-	scroll-margin-top: 100px;
+	scroll-margin-top: 110px;
 }
 
 .post-content h1,

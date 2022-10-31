@@ -5,7 +5,7 @@ import tocbot from 'tocbot';
 class TOC extends React.Component {
 	componentDidMount() {
 		const hasAnnouncementBanner = localStorage.getItem('announcementBanner') === 'true';
-		const offset = hasAnnouncementBanner ? 100 : 80;
+		const offset = hasAnnouncementBanner ? 110 : 80;
 		tocbot.init({
 			// Where to render the table of contents.
 			tocSelector: `.toc-list-container`,
