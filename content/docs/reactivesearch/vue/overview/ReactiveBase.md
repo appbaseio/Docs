@@ -16,7 +16,6 @@ nestedSidebar: 'vue-reactivesearch'
 This is the first component you will need to add when using `ReactiveSearch`.
 
 ### Usage
-
 ```html
 <template>
 	<reactive-base app="appname" credentials="abcdef123:abcdef12-ab12-ab12-ab12-abcdef123456">
@@ -27,22 +26,51 @@ This is the first component you will need to add when using `ReactiveSearch`.
 ```
 
 ### Props
+### app
 
-### app `String`
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 app name as it appears on the dashboard. Refers to an index if you're using your own Elasticsearch cluster. (Multiple indexes can be connected to by specifiying comma separated index names)
-### type `String` [optional]
+### type
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 types on which the queries should run on. Multiple types can be passed as comma separated values. The default behavior here is to search on all the app types.
-### credentials `String` [optional]
+### credentials
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 app credentials as they appear on the dashboard. It should be a string of the format "username:password" and is used for authenticating the app. If you are not using an appbase.io app, credentials may not be necessary - although having an open-access Elasticsearch cluster is not recommended.
-### url `String` [optional]
+### url
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 URL where Elasticsearch cluster is hosted, only needed if your app uses a non appbase.io URL.
-### enableAppbase `boolean` [optional]
+### enableAppbase
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 Defaults to `false`. You can set this to `true` when you're using appbase.io alongside `Elasticsearch`. It enables the following features:
 -   Recording of analytics events - search and clicks. [Read more](/docs/reactivesearch/vue/advanced/analytics/).
 -   Query generation happens on server side - protecting against security concerns around query injection.
 -   Apply query rules and functions for search queries. [Read more](/docs/search/rules/).
 -   Apply additional security controls to requests: authenticate via RBAC (via JWTs) or Basic Auth, ACL based access control, IP based rate limits, IP/HTTP Referers whitelisting, fields filtering. [Read more](/docs/security/role/).
-### headers `Object` [optional]
+### headers
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 set custom headers to be sent with each server request as key/value pairs. For example:
 
 ```html
@@ -57,7 +85,12 @@ set custom headers to be sent with each server request as key/value pairs. For e
 	</reactive-base>
 </template>
 ```
-### endpoint `Object` [optional] 
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 endpoint prop provides the ability to query a user-defined backend service for ReactiveBase and its children components. This service is typically a ReactiveSearch backend pipeline or any other API handler that works with the ReactiveSearch API references. This property works only when `enableAppbase` is set to `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
@@ -89,20 +122,55 @@ Accepts the following properties:
 </template>
 ```
 
-### appbaseConfig `Object` [optional]
+### appbaseConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows you to customize the analytics experience when appbase.io is used as a backend.
 Read more about it over [here](/docs/reactivesearch/vue/advanced/analytics/#configure-the-analytics-experience).
-### initialQueriesSyncTime `Number` [optional]
+### initialQueriesSyncTime
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
 allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
-### as `String` [optional]
+### as
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
 allows to use a custom html element tag, defaults to `div`.
-### getSearchParams `Function` [optional]
+### getSearchParams
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 Enables you to customize the evaluation of query-params-string from the url (or) any other source. If this function is not set, the library will use `window.location.search` as the search query-params-string for parsing selected-values. This can come handy if the URL is using hash values.
-### setSearchParams `Function` [optional]
+### setSearchParams
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 Enables you to customize setting of the query params string in the url by providing the updated query-params-string as the function parameter. If this function is not set, the library will set the `window.history` via `pushState` method.
-### theme `Object` [optional]
+### theme
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
 allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/vue/theming/Overview/)
-### transformRequest `Function` [optional]
+### transformRequest
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 Enables transformation of network request before execution. This function will give you the request object as the param and expect an updated request in return, for execution. Note that this is an experimental API and will likely change in the future.
 > Note:
 >
@@ -144,7 +212,12 @@ You can also modify the request `URL` in that way:
 
 The above example will change the default `_msearch` request to `_search` request.
 
-### tranformResponse `Function` [optional]
+### tranformResponse
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
 Enables transformation of search network response before rendering them. This asynchronous function will give you elasticsearch response object and componentId as params and expects an updated response in return in the similar structure of elasticsearch. You can use `componentId` to conditionally transform response for a particular reactivesearch component only.
 
 ```html
@@ -216,7 +289,6 @@ Enables transformation of search network response before rendering them. This as
 ```
 
 ### Connect to Elasticsearch
-
 > Note
 >
 > An **app** within ReactiveSearch's context refers to an **index** in Elasticsearch.
@@ -253,7 +325,6 @@ http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-L
 > If you are using Elasticsearch on AWS, then the recommended approach is to connect via the middleware proxy as they don't allow setting the Elasticsearch configurations.
 
 ### Next Steps
-
 Once you have added the **ReactiveBase** component, you can get started with adding other components as its children.
 
 -   List specific components can be found [here](/docs/reactivesearch/vue/list/SingleList/).
