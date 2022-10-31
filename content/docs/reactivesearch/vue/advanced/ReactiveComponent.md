@@ -233,64 +233,64 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `boolean` |   Yes   |
 
-    indicates that the query is still in progress
+indicates that the query is still in progress
 ### error:
 
 | Type | Optional |
 |------|----------|
 |  `object` |   Yes   |
 
-    An object containing the error info
+An object containing the error info
 ### data
 
 | Type | Optional |
 |------|----------|
 |  `Array` |   Yes   |
 
-    `data` prop is an array of parsed results(hits) from the Elasticsearch query of the component.
+`data` prop is an array of parsed results(hits) from the Elasticsearch query of the component.
 ### rawData
 
 | Type | Optional |
 |------|----------|
 |  `object` |   Yes   |
 
-    An object of raw response as-is from elasticsearch query.
+An object of raw response as-is from elasticsearch query.
 ### promotedData:
 
 | Type | Optional |
 |------|----------|
 |  `array` |   Yes   |
 
-    An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
+An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
 ### resultStats:
 
 | Type | Optional |
 |------|----------|
 |  `object` |   Yes   |
 
-    An object with the following properties which can be helpful to render custom stats:
-    -   **`numberOfResults`**: `number`
-        Total number of results found
-    -   **`time`**: `number`
-        Time taken to find total results (in ms)
-    -   **`hidden`**: `number`
-        Total number of hidden results found
-    -   **`promoted`**: `number`
-        Total number of promoted results found
+An object with the following properties which can be helpful to render custom stats:
+-   **`numberOfResults`**: `number`
+	Total number of results found
+-   **`time`**: `number`
+	Time taken to find total results (in ms)
+-   **`hidden`**: `number`
+	Total number of hidden results found
+-   **`promoted`**: `number`
+	Total number of promoted results found
 ### aggregations
 
 | Type | Optional |
 |------|----------|
 |  `Object` |   Yes   |
 
-    `aggregations` prop contains the results from `aggs` Elasticsearch query of the component.
+`aggregations` prop contains the results from `aggs` Elasticsearch query of the component.
 ### setQuery
 
 | Type | Optional |
 |------|----------|
 |  `function` |   Yes   |
 
-    `setQuery` function sets the query of the component. It takes an object param of shape:
+`setQuery` function sets the query of the component. It takes an object param of shape:
 
 ```javascript
     {
@@ -300,27 +300,27 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
     }
 ```
 
-### selectedValue
+### value
 
 | Type | Optional |
 |------|----------|
 |  `any` |   Yes   |
 
-    `selectedValue` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
+`value` contains the current value of the component (which can be set via `setQuery()` function). This is used for URLParams and SelectedFilters.
 ### isLoading
 
 | Type | Optional |
 |------|----------|
 |  `Boolean` |   Yes   |
 
-    `true` means the query is in the execution state.
+`true` means the query is in the execution state.
 ### error
 
 | Type | Optional |
 |------|----------|
 |  `any` |   Yes   |
 
-    contains the error details in case of any error.
+contains the error details in case of any error.
 
 #### ReactiveComponent
 ### className
@@ -329,42 +329,42 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `String` |   Yes   |
 
-    CSS class to be injected on the component container.
+CSS class to be injected on the component container.
 ### aggregationField
 
 | Type | Optional |
 |------|----------|
 |  `String` |   Yes   |
 
-    One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
-    You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `slot-scope` as shown:
+One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
+You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `slot-scope` as shown:
 
-    <!-- prettier-ignore -->
-    ```html
-    <reactive-component
-        componentId="myColorPicker"
-        aggregationField="color"
-    >
-    	<div slot-scope="{ aggregationData, ...rest }">
-    		<color-picker-wrapper
-    			:aggregationData="aggregationData"
-    			:hits="hits"
-    			:setQuery="setQuery"
-    		/>
-    	</div>
-    </reactive-component>
-    ```
+<!-- prettier-ignore -->
+```html
+<reactive-component
+	componentId="myColorPicker"
+	aggregationField="color"
+>
+	<div slot-scope="{ aggregationData, ...rest }">
+		<color-picker-wrapper
+			:aggregationData="aggregationData"
+			:hits="hits"
+			:setQuery="setQuery"
+		/>
+	</div>
+</reactive-component>
+```
 
-    > If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to catch this error using **error** event.
+> If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to catch this error using **error** event.
 
-    > It is possible to override this query by providing `defaultQuery`.
+> It is possible to override this query by providing `defaultQuery`.
 
-    > Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
+> Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
-    To set the number of buckets to be returned by aggregations.
+To set the number of buckets to be returned by aggregations.
 
-    > Note: This is a new feature and only available for appbase versions >= 7.41.0.
+> Note: This is a new feature and only available for appbase versions >= 7.41.0.
 
 ### defaultQuery
 
@@ -372,24 +372,24 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `Function` |   Yes   |
 
-    **returns** the default query to be applied to the component, as defined in Elasticsearch Query DSL.
+**returns** the default query to be applied to the component, as defined in Elasticsearch Query DSL.
 ### react
 
 | Type | Optional |
 |------|----------|
 |  `Object` |   Yes   |
 
-    `react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/result/ReactiveList/).
+`react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/result/ReactiveList/).
 
-    -   **key** `String`
-        one of `and`, `or`, `not` defines the combining clause.
-        -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
-        -   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
-        -   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
-    - **value** `String or Array or Object`
-        -   `String` is used for specifying a single component by its `componentId`.
-        -   `Array` is used for specifying multiple components by their `componentId`.
-        -   `Object` is used for nesting other key clauses.
+-   **key** `String`
+	one of `and`, `or`, `not` defines the combining clause.
+	-   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.
+	-   **or** clause implies that the results will be filtered by matches from **at least one** of the associated component states.
+	-   **not** clause implies that the results will be filtered by an **inverse** match of the associated component states.
+- **value** `String or Array or Object`
+	-   `String` is used for specifying a single component by its `componentId`.
+	-   `Array` is used for specifying multiple components by their `componentId`.
+	-   `Object` is used for nesting other key clauses.
 
 ### URLParams
 
@@ -397,7 +397,7 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `Boolean` |   Yes   |
 
-    enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
+enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
 
 ### distinctField
 
@@ -405,27 +405,27 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `String` |   Yes   |
 
-    This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 *   **distinctFieldConfig** `Object` [optional]
-    This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
+This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
 ```html
 <reactive-component
-	....
-	distinctField="authors.keyword"
-	:distinctFieldConfig="{
-		inner_hits: {
-			name: 'most_recent',
-			size: 5,
-			sort: [{ timestamp: 'asc' }],
-		},
-		max_concurrent_group_searches: 4,
-	}"
+....
+distinctField="authors.keyword"
+:distinctFieldConfig="{
+	inner_hits: {
+		name: 'most_recent',
+		size: 5,
+		sort: [{ timestamp: 'asc' }],
+	},
+	max_concurrent_group_searches: 4,
+}"
 />
 ```
 
-    > Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
+> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
 ### index
 
@@ -433,9 +433,9 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `String` |   Yes   |
 
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ### endpoint
 
