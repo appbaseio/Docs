@@ -78,7 +78,11 @@ Example uses:
 |  `String`  |    No    |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
-### endpoint `Object` [optional]
+### endpoint 
+
+| Type | Optional |
+|------|----------|
+|  `Object`  |    No    |
 endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
 Accepts the following properties:
 -   **url** `String` [Required]
