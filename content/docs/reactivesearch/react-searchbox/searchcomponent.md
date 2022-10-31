@@ -665,7 +665,7 @@ For example, the following example has two components `search-component`(to rend
     />
 ```
 
-### Miscellaneous
+## Miscellaneous
 ### **beforeValueChange**
 
 | Type | Optional |

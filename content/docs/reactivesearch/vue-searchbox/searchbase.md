@@ -186,7 +186,7 @@ Another use can be to create a saved query feature where it's important persist 
  </script>
  ```
 
-**Properties**
+## **Properties**
 
 ### getComponents
 

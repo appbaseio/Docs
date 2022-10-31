@@ -34,7 +34,8 @@ The constructor of `SearchBase` is called with the following properties:
 const searchbase = new SearchBase(properties);
 ```
 
-### Properties
+## Properties
+
 #### Configure appbase.io environment
 The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
 

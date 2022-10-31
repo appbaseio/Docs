@@ -25,7 +25,7 @@ This is the first component you will need to add when using `ReactiveSearch`.
 </template>
 ```
 
-### Props
+## Props
 ### app
 
 | Type | Optional |

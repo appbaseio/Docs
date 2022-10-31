@@ -122,8 +122,10 @@ But we also need to be able to filter the products by a color tile when selected
 
 where,
 
-### query - is the query of the component,
-### value - can be an array, string or number (This will be shown in selected filters and URLParams if active. In our case, this is the hex-code of the selected color tile)
+### query
+is the query of the component,
+### value
+can be an array, string or number (This will be shown in selected filters and URLParams if active. In our case, this is the hex-code of the selected color tile)
 In our current example, we would simply have to call `this.$props.setQuery()` with the updated query and value of the component:
 
 <!-- prettier-ignore -->
@@ -175,7 +177,8 @@ In our current example, we would simply have to call `this.$props.setQuery()` wi
 </script>
 ```
 
-###Usage with customQuery
+### Usage with customQuery
+
 Let's suppose - we are building an e-commerce store for cars which displays a list of cars of a particular brand on their separate page as `example.com/cars/Ford`. Now, we want all the filters on that page (like pricing, type of car, model, year, etc) to only show the data relevant to the given brand (i.e. `Ford`). In this case, `ReactiveComponent` can be used with `customQuery` to achieve the desired behavior easily.
 
 We can then use the given ReactiveComponent to be watched by all the filters (via `react` prop) to avail the desired brand based filtering for all the filters.
@@ -223,8 +226,7 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 </script>
 ```
 
-### Props
-#### Scope Data Object
+## Props
 ### loading
 
 | Type | Optional |
@@ -441,19 +443,19 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |------|----------|
 |  `Object` |   Yes   |
 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+	URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+	set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+	set method of the API request.
+-   **body** `Object` [optional]    
+	request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
 
 
 ## Demo
@@ -469,36 +471,36 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 ## Events
 
 ### query-change
-    is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
+is an event which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
 ### data
 
 | Type | Optional |
 |------|----------|
 |  `Function` |   Yes   |
 
-    is an event which provides `data`, `rawData`, `promotedData`, `aggregationData`, `resultStats` and `aggregations` as function params.
+is an event which provides `data`, `rawData`, `promotedData`, `aggregationData`, `resultStats` and `aggregations` as function params.
 ### error
-    gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
+gets triggered in case of an error and provides the `error` object, which can be used for debugging or giving feedback to the user if needed.
 
 ## Examples
 
-###With defaultQuery
+### With defaultQuery
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/reactive-component?fontsize=14&hidenavigation=1&theme=light"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactive-component"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+	title="reactive-component"
+	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
-###With customQuery
+### With customQuery
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/reactive-component-with-custom-query?fontsize=14&hidenavigation=1&theme=light"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactive-component-with-custom-query"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+	title="reactive-component-with-custom-query"
+	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 See storybook for ReactiveComponent on playground.
 

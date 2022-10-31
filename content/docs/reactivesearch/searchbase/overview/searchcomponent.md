@@ -29,7 +29,8 @@ The constructor of the `SearchComponent` class is called with the following prop
 const searchComponent = new SearchComponent(properties);
 ```
 
-### Properties
+## Properties
+
 #### Configure appbase.io environment
 ### **index**
 
