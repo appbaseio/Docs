@@ -250,7 +250,8 @@ renderTooltipData={data => (
 |  `Object` |   Yes   |
 
 give your own geocoder tool to mimic Google Map's one. Usefull if using ReactiveOpenStreetMap only and you want to search arround your positionned data. For example:
-```
+
+```jsx
 geocoder={{geocode: function (data, todo) {
     if (data.location) {
         todo([{formatted_address: data.location.lat + ',' + data.location.lng}],'OK');
