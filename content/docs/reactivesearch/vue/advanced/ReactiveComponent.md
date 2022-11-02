@@ -255,14 +255,14 @@ An object containing the error info
 |  `object` |   Yes   |
 
 An object of raw response as-is from elasticsearch query.
-### promotedData:
+
 
 | Type | Optional |
 |------|----------|
 |  `array` |   Yes   |
 
 An array of promoted results obtained from the applied query. [Read More](/docs/search/rules/)
-### resultStats:
+
 
 | Type | Optional |
 |------|----------|

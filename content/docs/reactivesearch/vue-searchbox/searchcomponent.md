@@ -290,7 +290,7 @@ set the `nested` field path that allows an array of objects to be indexed in a w
 Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
 Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
-### enableSynonyms:
+
 
 | Type | Optional |
 |------|----------|
@@ -323,7 +323,7 @@ Defaults to `false`. If set to `true` then it allows you to create a complex sea
 
 Defaults to `false`, i.e. the component's input selection isn't cleared when the query of its dependent component changes (which is set via react prop). When set to `true`, the component's input selection is cleared.
 
-### pagination:
+
 
 | Type | Optional |
 |------|----------|
@@ -331,7 +331,7 @@ Defaults to `false`, i.e. the component's input selection isn't cleared when the
 
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
 
-### after:
+
 
 | Type | Optional |
 |------|----------|
@@ -341,7 +341,7 @@ This property can be used to implement the pagination for `aggregations`. We use
 
 You need to define the `after` property in the next request to retrieve the next set of aggregations.
 
-### showMissing:
+
 
 | Type | Optional |
 |------|----------|
@@ -349,7 +349,7 @@ You need to define the `after` property in the next request to retrieve the next
 
 Defaults to `false`. When set to `true` then it also retrieves the aggregations for missing fields.
 
-### missingLabel:
+
 
 | Type | Optional |
 |------|----------|
@@ -357,7 +357,7 @@ Defaults to `false`. When set to `true` then it also retrieves the aggregations 
 
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
-### includeNullValues:
+
 
 | Type | Optional |
 |------|----------|
@@ -365,7 +365,7 @@ Defaults to `N/A`. It allows you to specify a custom label to show when [showMis
 
 If you have sparse data or documents or items not having the value in the specified field or mapping, then this prop enables you to show that data.
 
-### interval:
+
 
 | Type | Optional |
 |------|----------|
@@ -373,7 +373,7 @@ If you have sparse data or documents or items not having the value in the specif
 
 To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
-### aggregations:
+
 
 | Type | Optional |
 |------|----------|
@@ -384,7 +384,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 -   `min`: to retrieve the minimum value for a `dataField`,
 -   `histogram`: to retrieve the histogram aggregations for a particular `interval`
 
-### selectAllLabel:
+
 
 | Type | Optional |
 |------|----------|
@@ -584,7 +584,7 @@ For example:
 }
 ```
 
-### defaultQuery:
+
 
 | Type | Optional |
 |------|----------|
@@ -626,7 +626,7 @@ For example, in a `term` type of component showing a list of cities, you may onl
 </script>
 ```
 
-### customQuery:
+
 
 | Type | Optional |
 |------|----------|
@@ -761,14 +761,14 @@ These are the properties that can be subscribed to:
 You can use the default `scoped-slot` to render your custom UI. The following properties are available in the slot.
 
 ### Getters
-### loading: `boolean`
+ `boolean`
 
 | Type | Optional |
 |------|----------|
 |  `boolean` |   Yes   |
 
 indicates that the query is still in progress.
-### error: `Object`
+ `Object`
 
 | Type | Optional |
 |------|----------|

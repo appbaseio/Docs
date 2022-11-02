@@ -265,21 +265,21 @@ Defaults to `true`. When set to `false`, index suggestions are not returned from
 Specify additional options for fetching featured suggestions.
 
 It can accept the following keys:
-### sectionLabel:
+### sectionLabel
 
 | Type | Optional |
 |------|----------|
 |  `string` |   Yes   |
 
 custom html markup for section title.
-### size:
+
 
 | Type | Optional |
 |------|----------|
 |  `number` |   Yes   |
 
 Maximum number of popular suggestions to return. Defaults to 5.
-### index:
+
 
 | Type | Optional |
 |------|----------|

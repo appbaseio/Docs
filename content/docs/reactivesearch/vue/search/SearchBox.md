@@ -667,7 +667,7 @@ It accepts an object with these properties:
     Returns the events you should apply to any menu item elements you render.
   - **highlightedIndex** `number`
     The index that should be highlighted.
-### triggerClickAnalytics:
+
 
 | Type | Optional |
 |------|----------|
