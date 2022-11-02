@@ -273,7 +273,12 @@ set the `nested` field path that allows an array of objects to be indexed in a w
 Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
 Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
-### **enableSynonyms**: boolean
+### **enableSynonyms**
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
 ### **searchOperators**
@@ -301,14 +306,14 @@ Defaults to `false`. If set to `true` then it allows you to create a complex sea
 
 Defaults to `false`, i.e. the component's input selection isn't cleared when the query of its dependent component changes (which is set via react prop). When set to `true`, the component's input selection is cleared.
 
-### **pagination**: 
+### **pagination** 
 | Type | Optional |
 |------|----------|
 |  `boolean` |   Yes   |
 
 This property allows you to implement the `pagination` for `term` type of queries. If `pagination` is set to `true` then appbase will use the [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html) of Elasticsearch instead of [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html).
 
-### **after**: 
+### **after** 
 | Type | Optional |
 |------|----------|
 |  `Object` |   Yes   |
@@ -317,35 +322,35 @@ This property can be used to implement the pagination for `aggregations`. We use
 
 You need to define the `after` property in the next request to retrieve the next set of aggregations.
 
-### **showMissing**: 
+### **showMissing** 
 | Type | Optional |
 |------|----------|
 |  `boolean` |   Yes   |
 
 Defaults to `false`. When set to `true` then it also retrieves the aggregations for missing fields.
 
-### **missingLabel**: 
+### **missingLabel** 
 | Type | Optional |
 |------|----------|
 |  `string` |   Yes   |
 
 Defaults to `N/A`. It allows you to specify a custom label to show when [showMissing](/docs/search/reactivesearch-api/reference/#showmissing) is set to `true`.
 
-### **includeNullValues**: 
+### **includeNullValues** 
 | Type | Optional |
 |------|----------|
 |  `boolean` |   Yes   |
 
 If you have sparse data or documents or items not having the value in the specified field or mapping, then this prop enables you to show that data.
 
-### **interval**: 
+### **interval** 
 | Type | Optional |
 |------|----------|
 |  `number` |   Yes   |
 
 To set the histogram bar interval, applicable when [aggregations](/docs/search/reactivesearch-api/reference/#aggregations) value is set to `["histogram"]`. Defaults to `Math.ceil((range.end - range.start) / 100) || 1`.
 
-### **aggregations**: 
+### **aggregations** 
 | Type | Optional |
 |------|----------|
 |  `Array<string>` |   Yes   |
@@ -355,7 +360,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 -   `min`: to retrieve the minimum value for a `dataField`,
 -   `histogram`: to retrieve the histogram aggregations for a particular `interval`
 
-### **selectAllLabel**: 
+### **selectAllLabel** 
 | Type | Optional |
 |------|----------|
 |  `string` |   Yes   |
@@ -591,7 +596,7 @@ For example:
     }
 ```
 
-### **defaultQuery**:
+### **defaultQuery**
 
 | Type | Optional |
 |------|----------|
@@ -623,7 +628,7 @@ For example, in a `term` type of component showing a list of cities, you may onl
 />
 ```
 
-### **customQuery**:
+### **customQuery**
 
 | Type | Optional |
 |------|----------|
@@ -732,14 +737,14 @@ These are the properties that can be subscribed to:
 You can use the `render` prop (or child) as function  to render your custom UI. The following properties are available in the `render` function.
 
 ### Getters
-### **loading**:
+### **loading**
 
 | Type | Optional |
 |------|----------|
 |  `boolean` |   Yes   |
 
 indicates that the query is still in progress.
-### **error**:
+### **error**
 
 | Type | Optional |
 |------|----------|
