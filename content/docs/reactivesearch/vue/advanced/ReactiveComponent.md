@@ -234,7 +234,7 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 |  `boolean` |   Yes   |
 
 indicates that the query is still in progress
-### error:
+### error
 
 | Type | Optional |
 |------|----------|

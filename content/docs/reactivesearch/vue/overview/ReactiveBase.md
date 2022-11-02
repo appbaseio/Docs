@@ -288,7 +288,7 @@ Enables transformation of search network response before rendering them. This as
 }
 ```
 
-### Connect to Elasticsearch
+## Connect to Elasticsearch
 > Note
 >
 > An **app** within ReactiveSearch's context refers to an **index** in Elasticsearch.
@@ -324,7 +324,7 @@ http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-L
 >
 > If you are using Elasticsearch on AWS, then the recommended approach is to connect via the middleware proxy as they don't allow setting the Elasticsearch configurations.
 
-### Next Steps
+## Next Steps
 Once you have added the **ReactiveBase** component, you can get started with adding other components as its children.
 
 -   List specific components can be found [here](/docs/reactivesearch/vue/list/SingleList/).

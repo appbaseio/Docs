@@ -15,9 +15,9 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.
 
-## Props
+# Props
 
-### Configure appbase.io environment
+## Configure appbase.io environment
 The below props are only needed if you're not using the `SearchBox` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 ### index
@@ -61,7 +61,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-### To configure the ReactiveSearch API
+## To configure the ReactiveSearch API
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
 ### id
@@ -283,7 +283,13 @@ set the `nested` field path that allows an array of objects to be indexed in a w
 Set a maximum edit distance on the search parameters, which can be 0, 1, 2, or "AUTO". This is useful for showing the correct results for an incorrect search parameter by taking the fuzziness into account. For example, with a substitution of one character, the fox can become a box.
 Read more about it in the elastic search [docs](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzziness.html)
 
-### enableSynonyms: Boolean
+### enableSynonyms
+
+| Type | Optional |
+|------|----------|
+|  `boolean` |   Yes   |
+
+
 This property can be used to control (enable/disable) the synonyms behavior for a particular query. Defaults to `true`, if set to `false` then fields having `.synonyms` suffix will not affect the query.
 
 ### rankFeature
@@ -383,6 +389,7 @@ The following example uses all three functions (`saturation`, `log` and `sigmoid
 ```
 
 ### searchOperators
+
 Defaults to `false`. If set to `true`, then you can use special characters in the search query to enable the advanced search.<br/>
 Read more about it [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-String-query.html).
 
@@ -440,7 +447,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 sets the current value of the component. It sets the search query text (on mount and on update). Use this prop in conjunction with the `onChange` prop to take the control of search input value.
 
 
-### To customize the AutoSuggestions
+## To customize the AutoSuggestions
 ### enablePopularSuggestions
 
 | Type | Optional |
@@ -582,7 +589,7 @@ Washington
 |  `string` |   Yes   |
 
  It is the `dataField` whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
-### To customize the SearchBox UI
+## To customize the SearchBox UI
 -   **title** `String|JSX` set the title of the component to be shown in the UI.
 
 -   **loader** `String|JSX` Display an optional loader while fetching the options
@@ -780,7 +787,7 @@ CSS class to be injected on the component container.
 
 CSS styles to be applied to the **SearchBox** component.
 
-### To customize the query execution
+## To customize the query execution
 ### headers
 
 | Type | Optional |
@@ -897,7 +904,7 @@ For example:
     }
 ```
 
-### defaultQuery:
+### defaultQuery
 
 | Type | Optional |
 |------|----------|
@@ -929,7 +936,7 @@ For example, set the `timeout` to `1s` for suggestion query.
 </script>
 ```
 
-### customQuery:
+### customQuery
 
 | Type | Optional |
 |------|----------|

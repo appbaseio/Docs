@@ -15,9 +15,9 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 `SearchBase` is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
-## Props
+# Props
 
-### To configure the Appbase environments
+## To configure the Appbase environments
 ### index
 
 | Type | Optional |
@@ -60,8 +60,15 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-### To customize the query execution
--   **headers** `Object` [optional] set custom headers to be sent with each server request as key/value pairs.
+## To customize the query execution
+
+### headers 
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+set custom headers to be sent with each server request as key/value pairs.
 
 ### transformRequest
 

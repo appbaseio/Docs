@@ -34,9 +34,9 @@ The constructor of `SearchBase` is called with the following properties:
 const searchbase = new SearchBase(properties);
 ```
 
-## Properties
+# Properties
 
-#### Configure appbase.io environment
+## Configure appbase.io environment
 The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
 
 ### **index**
@@ -80,7 +80,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-#### To customize the query execution
+## To configure the query execution
 The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
 ### **headers**
@@ -179,7 +179,7 @@ const searchbase = new SearchBase({
     }
 ```
 
-### An example with all properties
+## An example with all properties
 ```js
 const searchbase = new SearchBase({
     index: "gitxplore-app",
@@ -219,7 +219,7 @@ const searchbase = new SearchBase({
 })
 ```
 
-### Methods
+## Methods
 #### register
 ```ts
 register(id: string, component: SearchComponent | Object): SearchComponent

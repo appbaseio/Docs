@@ -20,9 +20,9 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 -   a location filter component,
 -   a component to render the search results.
 
-## Props
+# Props
 
-### Configure appbase.io environment
+## Configure appbase.io environment
 The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 ### **index**
@@ -67,7 +67,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-### To configure the ReactiveSearch API
+## To configure the ReactiveSearch API
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
 ### **id**
@@ -398,7 +398,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 />
 ```
 
-#### To customize the AutoSuggestions
+## To customize the AutoSuggestions
 ### **enablePopularSuggestions**
 
 | Type | Optional |
@@ -438,7 +438,7 @@ Warn
 Washington
 ```
 
-### Callbacks for change events
+## Callbacks for change events
 ### **onValueChange**
 
 | Type | Optional |
@@ -499,7 +499,7 @@ Washington
 
  can be used to listen for the mic status changes
 
-### To customize the query execution
+## To customize the query execution
 ### **headers**
 
 | Type | Optional |
@@ -581,19 +581,19 @@ For example:
 >
 > `transformResponse` function is expected to return data in the following structure.
 
-```json
-    {
-        // Elasticsearch hits response
-        hits: {
-            hits: [...],
-            total: 100
-        },
-        // Elasticsearch aggregations response
-        aggregations: {
+```js
+{
+    // Elasticsearch hits response
+    hits: {
+        hits: [...],
+        total: 100
+    },
+    // Elasticsearch aggregations response
+    aggregations: {
 
-        }
-        took: 1
     }
+    took: 1
+}
 ```
 
 ### **defaultQuery**
@@ -1134,7 +1134,7 @@ The following methods can be used to set or update the properties in the search 
 |------|----------|
 |  `( dataField: string \| Array<string \| DataField>, options?: Options ) => void` |   Yes   |
 
-### Methods to trigger queries programmatically
+## Methods to trigger queries programmatically
 > Note:
 > All of the methods accept `options` as the second parameter which has the following shape:
 
@@ -1163,7 +1163,7 @@ The following methods can be used to execute the component's queries programmati
 
  can be used to trigger the `defaultQuery` programmatically
 
-### Methods to subscribe to state changes
+## Methods to subscribe to state changes
 ### **subscribeToStateChanges**
 
 | Type | Optional |

@@ -15,9 +15,9 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 
 SearchBox offers a lightweight and performance focused searchbox UI component to query and display results from your Elasticsearch cluster.
 
-## Props
+# Props
 
-### Configure appbase.io environment
+## Configure appbase.io environment
 The below props are only needed if you're not using the `SearchBox` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 ### **index**
@@ -61,7 +61,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-### To configure the ReactiveSearch API
+## To configure the ReactiveSearch API
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
 ### **id**
@@ -468,7 +468,7 @@ is a callback function which accepts component's current **value** as a paramete
 />
 ```
 
-### To customize the AutoSuggestions
+## To customize the AutoSuggestions
 ### enablePopularSuggestions
 
 | Type | Optional |
@@ -609,7 +609,7 @@ Washington
 
 It is the `dataField` whose value contains a URL. This is a convenience prop that allows returning the URL value in the suggestion's response.
 
-### To customize the SearchBox UI
+## To customize the SearchBox UI
 ### **title**
 
 | Type | Optional |
@@ -993,7 +993,7 @@ The HTML markup displayed before (on the left side of) the searchbox input field
 ```
 
 
-### **addonAfter** `string|JSX` [optional] 
+### **addonAfter** 
 
 | Type | Optional |
 |------|----------|
@@ -1086,7 +1086,7 @@ renders a custom jsx markup for the enter button. Use in conjunction with `enter
 ```
 
 
-### Customize style
+## Customize style
 ### **innerClass**
 
 | Type | Optional |
@@ -1118,7 +1118,7 @@ CSS class to be injected on the component container.
 
 CSS styles to be applied to the **SearchBox** component.
 
-### Controlled behavior
+## Controlled behavior
 ### **defaultValue**
 
 | Type | Optional |
@@ -1143,7 +1143,7 @@ sets the current value of the component. It sets the search query text (on mount
 
 is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes.
 
-### Callbacks for change events
+## Callbacks for change events
 ### **onValueChange**
 
 | Type | Optional |
@@ -1236,7 +1236,7 @@ can be used to listen for the `aggregationData` property changes
 -   **rawData**: `Object` An object of raw response as-is from elasticsearch query.
 -   **afterKey**: `Object` If the number of composite buckets is too high (or unknown) to be returned in a single response use the afterKey parameter to retrieve the next
 
-### To customize the query execution
+## To customize the query execution
 -   **headers** `Object`
     set custom headers to be sent with each server request as key/value pairs. For example:
 
@@ -1364,7 +1364,7 @@ can be used to listen for the `aggregationData` property changes
     />
 ```
 
-### Miscellaneous
+## Miscellaneous
 ### **getMicInstance**
 
 | Type | Optional |

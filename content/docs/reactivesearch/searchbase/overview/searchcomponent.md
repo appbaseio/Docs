@@ -29,9 +29,9 @@ The constructor of the `SearchComponent` class is called with the following prop
 const searchComponent = new SearchComponent(properties);
 ```
 
-## Properties
+# Properties
 
-#### Configure appbase.io environment
+## Configure appbase.io environment
 ### **index**
 
 | Type | Optional |
@@ -73,7 +73,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-#### To configure the ReactiveSearch API
+## To configure the ReactiveSearch API
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
 ### **id**
@@ -399,7 +399,7 @@ It helps you to utilize the built-in aggregations for `range` type of queries di
 
 This property allows you to add a new property in the list with a particular value in such a way that when selected i.e `value` is similar/contains to that label(`selectAllLabel`) then `term` query will make sure that the `field` exists in the `results`.
 
-#### To customize the AutoSuggestions
+## To configure the AutoSuggestions
 ### **enablePopularSuggestions**
 
 | Type | Optional |
@@ -439,7 +439,7 @@ Warn
 Washington
 ```
 
-#### To customize the query execution
+## To configure the query execution
 ### **headers**
 
 | Type | Optional |
@@ -604,7 +604,7 @@ searchBase.register('result-component', {
 });
 ```
 
-#### Miscellaneous
+## Miscellaneous
 ### **beforeValueChange**
 
 | Type | Optional |
@@ -690,7 +690,7 @@ const component = new SearchComponent({
             reject('Special characters not allowed.')
         }
     }),
-)}
+})
 ```
 
 ## Getter properties
@@ -974,10 +974,10 @@ component.onValueChange = (nextValue, prevValue) => {
 };
 ```
 
-### **onResults** `(next: string, prev: string) => void`;
+### **onResults**
 can be used to listen for the `results` property changes
 
-### **onAggregationData** `(next: string, prev: string) => void`;
+### **onAggregationData**
 can be used to listen for the `aggregationData` property changes
 
 ```javascript
@@ -992,16 +992,37 @@ const component = new SearchComponent({
 component.onAggregationData(next, prev) {}
 ```
 
-### **onError** `(error: any) => void`;
+### **onError** 
+
+| Type | Optional |
+|------|----------|
+|  `(error: any) => void` |   Yes   |
+
 called when there is an error while fetching results
 
-### **onRequestStatusChange** `(next: string, prev: string) => void`;
+### **onRequestStatusChange**
+
+| Type | Optional |
+|------|----------|
+|  `(next: string, prev: string) => void` |   Yes   |
+
 called when request status changes
 
-### **onQueryChange** `(next: string, prev: string) => void`;
+### **onQueryChange**
+
+| Type | Optional |
+|------|----------|
+|  `(next: string, prev: string) => void` |   Yes   |
+
+
 called when query changes
 
-### **onMicStatusChange** `(next: string, prev: string) => void`;
+### **onMicStatusChange**
+
+| Type | Optional |
+|------|----------|
+|  `(next: string, prev: string) => void` |   Yes   |
+
 called when mic status changes
 
 ## Execute queries

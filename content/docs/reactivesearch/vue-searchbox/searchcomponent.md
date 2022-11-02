@@ -20,9 +20,9 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 -   a location filter component,
 -   a component to render the search results.
 
-## Props
+# Props
 
-### Configure appbase.io environment
+## Configure appbase.io environment
 The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 ### index
@@ -67,7 +67,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
-### To configure the ReactiveSearch API
+## To configure the ReactiveSearch API
 The following properties can be used to configure the appbase.io [ReactiveSearch API](/docs/search/reactivesearch-api/):
 
 ### id
@@ -423,7 +423,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 />
 ```
 
-#### To customize the AutoSuggestions
+## To customize the AutoSuggestions
 ### enablePopularSuggestions
 
 | Type | Optional |
@@ -465,7 +465,7 @@ Washington
 
 
 
-### To customize the query execution
+## To customize the query execution
 ### headers
 
 | Type | Optional |
@@ -1128,7 +1128,7 @@ can be used to set the `customQuery` property.
 |------|----------|
 |  `( dataField: string \| Array<string \| DataField>, options?: Options ) => void` |   Yes   |
 
-### Methods to trigger queries programmatically
+## Methods to trigger queries programmatically
 > Note:
 > All of the methods accept `options` as the second parameter which has the following shape:
 
