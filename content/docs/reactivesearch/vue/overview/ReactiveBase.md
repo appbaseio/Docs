@@ -203,17 +203,101 @@ The above example will change the default `_msearch` request to `_search` reques
 
 ```json
 {
-    response: [
+    "response": [
         {
-            hits: {
-                hits: [...],
-                total: 100
+            "hits": {
+                "hits": "[...]",
+                "total": 100
             },
-            took: 1
+            "took": 1
         }
     ]
 }
 ```
+-   **preferences** `Object` [optional]
+    accepts an object to configure the search settings for components. The `preferences` property allows configuring the search settings for your components in one place. The `preferences` object must follow the following structure:
+
+```ts
+{
+    componentSettings: {
+        [componentId]: {
+            // If disabled, the component would not get rendered and would not constitute the search query
+            enabled: true,
+            rsConfig: {
+                // props supported by reactivesearch components
+            }
+            // can have additional keys to store meta data for components
+            // the preference object for a component can be accessed using the 
+            // `SearchPreferencesContext` context.
+            // For e.g custom property to control the collapsible property for a facet
+            isCollapsible: true,
+        }
+    }
+}
+```
+To connect a ReactiveSearch component to a preference, use the `componentId` prop. The following example has defined the `preferences` object for `bookSearch` component, the `DataSearch` component is using the same componentId (`bookSearch`).
+
+```jsx
+    <reactive-base 
+		:preferences="{
+			componentSettings: {
+				bookSearch: {
+					rsConfig: {
+						dataField: 'original_title',
+						title: 'Search for Books',
+						size: 5,
+					}
+				}
+			}
+		}"
+    >
+        <data-search component-id="bookSearch" />
+    </reactive-base>
+```
+Additionally, the ReactiveSearch components support `preferencesPath` prop which is useful to define the path of preference object for a component. It is helpful when you have to use conflicting component Ids. The following example defines the preferences for `home` and `search` pages, components have defined the `preferencesPath` prop to connect to preferences.
+
+```jsx
+    <reactive-base 
+		:preferences="{
+			pages: {
+				home: {
+					bookSearch: {
+						rsConfig: {
+							dataField: 'original_title',
+							title: 'Search for Books',
+							size: 5,
+						}
+					}
+				},
+				search: {
+					bookSearch: {
+						rsConfig: {
+							dataField: ['original_title', 'authors', 'publishers'],
+							title: 'Search for Books, Authors, Publishers',
+							size: 10,
+						}
+					}
+				}
+			}
+    	}"
+	>
+        {/** home page */}
+        <data-search 
+            preferences-path="pages.home.bookSearch" 
+            component-id="bookSearch" 
+        />
+         {/** search page */}
+        <data-search 
+            preferences-path="pages.search.bookSearch" 
+            component-id="bookSearch" 
+        />
+    </reactive-base>
+```
+> Note:
+>
+> Preferences is meant to be a one time configuration for components. We don't recommend to mutate it as it can cause performance issues.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ### Connect to Elasticsearch
 
