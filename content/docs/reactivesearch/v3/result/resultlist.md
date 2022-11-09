@@ -27,7 +27,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```js
 import {
     ReactiveList,
@@ -77,14 +76,34 @@ const { ResultListWrapper } = ReactiveList;
 
 ## Props
 
--   **id** `string|number` [optional]
+### id
+
+| Type | Optional |
+|------|----------|
+|  `string|number` |   Yes   |
+
 The `_id` property of the elasticsearch hit object. This prop is required to track the impressions for search results. [Read More](docs/reactivesearch/v3/advanced/analytics#track-impressions-for-search-results)
--   **target** `string` [optional]
-    This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
--   **href** `string` [optional]
-    can be used to specify the URL of the page the link goes to
--   **as**  `string` [optional]
-    The html element tag which the component should use. Defaults to `a`(anchor tag).
+### target
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
+### href
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+can be used to specify the URL of the page the link goes to
+### as
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+The html element tag which the component should use. Defaults to `a`(anchor tag).
 
 > Note
 >
@@ -92,20 +111,22 @@ The `_id` property of the elasticsearch hit object. This prop is required to tra
 
 ## Sub Components
 
--   **Image**
-    use it to render the result list image.
-    <br/>
-    The `ResultList.Image` accepts the following properties:
-    -   **`src`**: `string`
-        source url of the image
-    -   **`small`**: `boolean`
-        defaults to `false`, if `true` then renders an image of small size.
--   **Content**
-    use it to wrap the result list content other than image.
--   **Title**
-    renders the title of the result list.
--   **Description**
-    can be used to render the result list description UI.
+### Image
+use it to render the result list image.
+<br/>
+
+The `ResultList.Image` accepts the following properties:
+-   **`src`**: `string`
+    source url of the image
+-   **`small`**: `boolean`
+    defaults to `false`, if `true` then renders an image of small size.
+
+### Content
+use it to wrap the result list content other than image.
+### Title
+renders the title of the result list.
+### Description
+can be used to render the result list description UI.
 
 ## Demo
 

@@ -15,38 +15,69 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 `SearchBase` is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
-## Props
+# Props
 
-### To configure the Appbase environments
+## To configure the Appbase environments
+### index
 
--   **index** `string` [required]
-    Refers to an index of the Elasticsearch cluster.
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
-    `Note:` Multiple indexes can be connected to by specifying comma-separated index names.
+Refers to an index of the Elasticsearch cluster.
 
--   **url** `string` [required]
-    URL for the Elasticsearch cluster
+`Note:` Multiple indexes can be connected to by specifying comma-separated index names.
 
--   **credentials** `string` [required]
-    Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
+### url
 
--   **appbaseConfig** `Object`
-    allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
-    -   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-    -   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
-    -   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
-    -   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
-    -   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
-    -   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
-    -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
+URL for the Elasticsearch cluster
 
-### To customize the query execution
+### credentials
 
--   **headers** `Object` [optional] set custom headers to be sent with each server request as key/value pairs.
+| Type | Optional |
+|------|----------|
+|  `string`  |    No    |
 
--   **transformRequest** `Function` Enables transformation of network request before
-    execution. This function will give you the request object as the param and expect an updated request in return, for execution.
+Basic Auth credentials if required for authentication purposes. It should be a string of the format `username:password`. If you are using an appbase.io cluster, you will find credentials under the `Security > API credentials` section of the appbase.io dashboard.
+
+### appbaseConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+allows you to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+
+-   **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+-   **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
+-   **enableSearchRelevancy** `Boolean` defaults to `true`. It allows you to configure whether to apply the search relevancy or not.   
+-   **userId** `string` It allows you to define the user id to be used to record the appbase.io analytics. Defaults to the client's IP address.
+-   **useCache** `Boolean` This property when set allows you to cache the current search query. The `useCache` property takes precedence irrespective of whether caching is enabled or disabled via the dashboard. 
+-   **customEvents** `Object` It allows you to set the custom events which can be used to build your own analytics on top of appbase.io analytics. Further, these events can be used to filter the analytics stats from the appbase.io dashboard.
+-   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
+
+## To customize the query execution
+
+### headers 
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+set custom headers to be sent with each server request as key/value pairs.
+
+### transformRequest
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+Enables transformation of network request before
+execution. This function will give you the request object as the param and expect an updated request in return, for execution.
 
 ```html
 <template>
@@ -72,8 +103,14 @@ export default {
 </script>
 ```
 
--   **transformResponse** `Function` Enables transformation of search network response before  
-    rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.
+### transformResponse
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+Enables transformation of search network response before  
+rendering them. It is an asynchronous function which will accept an Elasticsearch response object as param and is expected to return an updated response as the return value.
 
 ```html
 <template>
@@ -156,11 +193,23 @@ Another use can be to create a saved query feature where it's important persist 
  </script>
  ```
 
-**Properties**
+## **Properties**
 
-- **getComponents** `Function: () => Object<string, Object>` returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
+### getComponents
 
-- **getComponent** `Function: (String) => Object` returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the provided component `id`.
+| Type | Optional |
+|------|----------|
+|  `Function: () => Object<string, Object>` |   Yes   |
+
+returns an object, which is a list of all `SearchComponent` instances contained within the `SearchBase` Context as key-value pairs with `key` as component ids.
+
+### getComponent
+
+| Type | Optional |
+|------|----------|
+|  `Function: (String) => Object` |   Yes   |
+
+returns an object contained within the `SearchBase` Context, which is the `SearchComponent` instance for the provided component `id`.
 
 
 **Example**

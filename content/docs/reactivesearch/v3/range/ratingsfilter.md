@@ -23,7 +23,6 @@ Example uses:
 ## Usage
 
 ### Basic Usage
-
 ```js
 <RatingsFilter
 	componentId="ratingsSensor"
@@ -37,7 +36,6 @@ Example uses:
 ```
 
 ### Usage With All Props
-
 ```js
 <RatingsFilter
     componentId="CarCategorySensor"
@@ -65,7 +63,6 @@ Example uses:
 ```
 
 ### Usage With Custom Icons
-
 ```js
 <RatingsFilter
 	componentId="RatingsSensor"
@@ -83,7 +80,6 @@ Example uses:
 ```
 
 ### Usage with Custom Data
-
 Let's say you want data for `ratings with 4 stars and up` and also include `unrated results`
 
 ```js
@@ -104,45 +100,112 @@ Let's say you want data for `ratings with 4 stars and up` and also include `unra
 
 ## Props
 
--   **componentId** `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+### componentId
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
-      
--   **dataField** `String`
-    data field to be mapped with the component's UI view.
--   **data** `Object Array`
-    collection of UI `label` with associated with `start` and `end` ratings values.
--   **nestedField** `String` [optional]
-    use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
--   **title** `String or JSX` [optional]
-    title of the component to be shown in the UI.
--   **icon** `JSX` [optional]
-    to render custom active icon.
--   **dimmedIcon** `JSX` [optional]
-    to render custom inactive icon.
--   **defaultValue** `Object` [optional]
-    selects a initial ratings value using `start` and `end` key values from one of the data elements.
--   **value** `Object` [optional]
-    controls the current value of the component. It selects the item from the data (on mount and on update). Use this prop in conjunction with `onChange` function.
--   **onChange** `function` [optional]
-    is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
--   **URLParams** `Boolean` [optional]
-    enable creating a URL query string parameter based on the selected rating. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **includeNullValues** `Boolean` [optional]
-    If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
+unique identifier of the component, can be referenced in other components' `react` prop.
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object`  |    No    |
+
+
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+    URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+    set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+    set method of the API request.
+-   **body** `Object` [optional]    
+    request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
+
+    
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    No    |
+
+data field to be mapped with the component's UI view.
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
+collection of UI `label` with associated with `start` and `end` ratings values.
+### nestedField
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+use to set the `nested` mapping field that allows arrays of objects to be indexed in a way that they can be queried independently of each other. Applicable only when dataField is a part of `nested` type.
+### title
+
+| Type | Optional |
+|------|----------|
+|  `String or JSX` |   Yes   |
+
+title of the component to be shown in the UI.
+### icon
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
+
+to render custom active icon.
+### dimmedIcon
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
+
+to render custom inactive icon.
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+selects a initial ratings value using `start` and `end` key values from one of the data elements.
+### value
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+controls the current value of the component. It selects the item from the data (on mount and on update). Use this prop in conjunction with `onChange` function.
+### onChange
+
+| Type | Optional |
+|------|----------|
+|  `function` |   Yes   |
+
+is a callback function which accepts component's current **value** as a parameter. It is called when you are using the `value` prop and the component's value changes. This prop is used to implement the [controlled component](https://reactjs.org/docs/forms.html/#controlled-components) behavior.
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+enable creating a URL query string parameter based on the selected rating. This is useful for sharing URLs with the component state. Defaults to `false`.
+### includeNullValues
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+If you have sparse data or document or items not having the value in the specified field or mapping, then this prop enables you to show that data. Defaults to `false`.
 
 ## Demo
 
@@ -210,38 +273,73 @@ Read more about it [here](/docs/reactivesearch/v3/theming/classnameinjection/).
 />
 ```
 
--   **className** `String`
-    CSS class to be injected on the component container.
--   **style** `Object`
-    CSS styles to be applied to the **RatingsFilter** component.
--   **customQuery** `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **RangeFilter** component as long as the component is a part of `react` dependency of at least one other component.
--   **beforeValueChange** `Function`
-    is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+### className
 
-    > Note:
-    >
-    > If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
 
-    ```js
-    beforeValueChange = values => {
-        // The update is accepted by default
-    	if (values[0] < 4) {
-    		// To reject the update, throw an error
-    		throw Error('Rating must be greater than or equal to 4.');
-    	}
-    };
-    ```
+CSS class to be injected on the component container.
+### style
 
--   **onValueChange** `Function`
-    is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product with a specific rating in a RatingsFilter.
--   **onQueryChange** `Function`
-    is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
--   **index** `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+CSS styles to be applied to the **RatingsFilter** component.
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **RangeFilter** component as long as the component is a part of `react` dependency of at least one other component.
+### beforeValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+is a callback function which accepts component's future **value** as a parameter and **returns** a promise. It is called everytime before a component's value changes. The promise, if and when resolved, triggers the execution of the component's query and if rejected, kills the query execution. This method can act as a gatekeeper for query execution, since it only executes the query after the provided promise has been resolved.
+
+> Note:
+>
+> If you're using Reactivesearch version >= `3.3.7`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example:
+
+```js
+beforeValueChange = values => {
+    // The update is accepted by default
+    if (values[0] < 4) {
+        // To reject the update, throw an error
+        throw Error('Rating must be greater than or equal to 4.');
+    }
+};
+```
+
+### onValueChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+is a callback function which accepts component's current **value** as a parameter. It is called everytime the component's value changes. This prop is handy in cases where you want to generate a side-effect on value selection. For example: You want to show a pop-up modal with the valid discount coupon code when a user searches for a product with a specific rating in a RatingsFilter.
+### onQueryChange
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+is a callback function which accepts component's **prevQuery** and **nextQuery** as parameters. It is called everytime the component's query changes. This prop is handy in cases where you want to generate a side-effect whenever the component's query would change.
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Examples
 
