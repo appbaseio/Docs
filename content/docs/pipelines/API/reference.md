@@ -253,6 +253,10 @@ Custom trigger expression. You can read more at [here](https://docs.appbase.io/d
 
 Use a pre-built stage from Appbase.
 
+**Following values are supported for this field**
+
+`authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`, `recordClick`, `recordConversion`, `recordFavorite`, `recordSaveSearch`, `searchboxPreferences`, `boost`
+
 ## Trigger Expression
 
 Trigger expression is to define the condition of Pipeline invocation. For example, only execute pipeline if query is \'mobile phone\'. Check the documentation at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
@@ -282,4 +286,8 @@ To define the valid timeframe for trigger expression.
 ### Trigger Type
 
 Type of trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
+
+**Following values are supported for this field**
+
+`always`, `filter`, `index`, `query`, `cron`
 
