@@ -17,6 +17,8 @@
               link: /docs/reactivesearch/ui-builder/how-to/add-arbitrary-facet/
             - title: 'Programmatically modifying a query'
               link: /docs/reactivesearch/ui-builder/how-to/modify-query-programatically/
+            - title: 'Export a component to vanilla JS'
+              link: /docs/reactivesearch/ui-builder/how-to/export-component-to-vanilla-js/
       - group: Searchboxes
         items:
             - title: Searchbox UI
