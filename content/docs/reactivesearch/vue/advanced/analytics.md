@@ -99,7 +99,7 @@ We can use the **@appbaseio/analytics** library without installing it or any con
 
 For example, if we want to track conversions for when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. 
 
-We make a new file **VisitStoreButton.vue** using the [SFC format](https://vuejs.org/guide/scaling-up/sfc.htm) from Vue. The analytics instance is provided as **$analytics** prop. Note`queryID` is required property and we can populate automatically by calling a method on the same instance.
+We make a new file **VisitStoreButton.vue** using the [SFC format](https://vuejs.org/guide/scaling-up/sfc.htm) from Vue. The analytics instance is provided as `$analytics` prop. Note`queryID` is required property and we can populate automatically by calling a method on the same instance.
 
 
 ```html
