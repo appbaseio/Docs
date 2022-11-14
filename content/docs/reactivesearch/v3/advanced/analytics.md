@@ -169,6 +169,43 @@ For an example,
 </ReactiveList>
 ```
 
+## Configure with **useAnalytics** hook
+
+We can import `useAnalytics` hook directly from the **@appbaseio/reactivesearch** package. When used, it returns an instance of the [analytics library](https://github.com/appbaseio/analytics.js). It uses the **url** and **credentials** provided to the parent `ReactiveBase` component.
+
+For example, if we want to track conversions for when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. Note`queryID` is required property and we can populate automatically by calling a method on the same instance.
+
+```jsx
+import { useAnalytics } from '@appbaseio/reactivesearch'
+
+const VisitStoreButton = () => {
+	const aaInstance = useAnalytics();
+	const handleVisitStore = () => {
+		aaInstance.conversion({
+			queryID: aaInstance.getQueryID(),
+			objects: ['Harry Potter', 'Frankenstein'],
+		});
+	};
+	return (
+		<button
+			onClick={handleVisitStore}
+		>
+			Visit Store
+		</button>
+	);
+};
+```
+
+You can also view the complete demo as a codesanbox example below. 
+
+<iframe src="https://codesandbox.io/embed/github/appbasio/reactivesearch/tree/next/packages/web/examples/AnalyticsWithHook?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="analytics-with-hook"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+
 ## Configure the analytics experience
 You can define the `appbaseConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 ### recordAnalytics
