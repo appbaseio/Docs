@@ -28,7 +28,6 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
     }
 }
 ```
-
 ## query
 
 **This is a required field**
@@ -1658,7 +1657,7 @@ Following example indicates how to use this field to use kNN reordering with Ope
 
 **Following values are supported for this field**
 
-`elasticsearch`, `opensearch`, `mongodb`, `solr`
+`elasticsearch`, `opensearch`, `mongodb`, `solr`, `zinc`
 
 ## metadata
 

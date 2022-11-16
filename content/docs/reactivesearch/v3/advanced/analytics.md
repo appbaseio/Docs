@@ -241,7 +241,12 @@ For example in the following code, we're setting up two custom events that will 
 >
 </ReactiveBase>
 ```
-- **queryParams** `Object` Query params in the object format to be passed to ReactiveSearch API (or search endpoint if using pipeline).
+### queryParams
+| Type | Optional |
+|------|----------|
+|  `Object` | Yes |
+
+Query params in the object format to be passed to ReactiveSearch API (or search endpoint if using pipeline).
 <br/>
 For example in the following code, we're setting the `preference` value to `local`.
 

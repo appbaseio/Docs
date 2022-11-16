@@ -31,6 +31,12 @@ This guide is specific to the keys supported for the **OpenSearch** engine.
     }
 }
 ```
+## Query parameters
+
+Reactivesearch API for `elasticsearch` supports all the [query parameters supported by `_msearch` requests](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html#search-multi-search-api-query-params).
+Additionally, it supports following parameters:  
+### preference
+Node or shard used to perform the search. Defaults to a combination of [query Id](/docs/search/reactivesearch-api/reference/elasticsearch#id) & user's IP address.
 
 ## query
 
@@ -1661,7 +1667,7 @@ Following example indicates how to use this field to use kNN reordering with Ope
 
 **Following values are supported for this field**
 
-````elasticsearch````, ````opensearch````, ````mongodb````, ````solr````
+````elasticsearch````, ````opensearch````, ````mongodb````, ````solr````, ````zinc````
 
 ## metadata
 
