@@ -28,6 +28,7 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
     }
 }
 ```
+
 ## query
 
 **This is a required field**
