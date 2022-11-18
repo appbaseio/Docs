@@ -135,8 +135,10 @@
               link: /docs/reactivesearch/v3/advanced/ssr/
             - title: Components Usage
               link: /docs/reactivesearch/v3/advanced/usage/
-            - title: Migration Guide
+            - title: Migration Guide (v3)
               link: /docs/reactivesearch/v3/advanced/migration/
+            - title: Migration Guide (v4)
+              link: /docs/reactivesearch/v3/advanced/migration-v4/
             - title: Advanced Guides
               link: /docs/reactivesearch/v3/advanced/guides/
             - title: Search and Click Analytics
