@@ -31,3 +31,7 @@ This guide only contains the fields supported for the **Solr** search engine.
     }
 }
 ```
+
+## Query parameters
+
+Reactivesearch API supports all the [query parameters supported by solr search API](https://solr.apache.org/guide/8_11/common-query-parameters.html).
