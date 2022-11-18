@@ -106,6 +106,7 @@
 		"gatsby-transformer-yaml": "4.9.0",
 		"hotkeys-js": "^3.8.7",
 		"js-search": "^1.4.2",
+		"lodash": "^4.17.21",
 		"moment": "^2.29.4",
 		"prismjs": "1.27.0",
 		"react": "16.8.4",
