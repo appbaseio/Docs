@@ -1,25 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, Link } from 'gatsby';
-import * as JsSearch from 'js-search';
+// import * as JsSearch from 'js-search';
+import Fuse from 'fuse.js';
 import Autosuggest from 'react-autosuggest';
 import hotkeys from 'hotkeys-js';
 import groupBy from 'lodash/groupBy';
+import orderBy from 'lodash/orderBy';
 import data from '../../../data/search.index.json';
 import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
 import sidebar from '../../../data/sidebars/all-sidebar';
 import '../../../styles/custom.css';
-const search = new JsSearch.Search('url');
-search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
+// const search = new JsSearch.Search('url');
+// search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
 
-search.addIndex('title');
-search.addIndex('heading');
-search.addIndex('meta_description');
-search.addIndex('meta_title');
-search.addIndex('tokens');
+// search.addIndex('title');
+// search.addIndex('heading');
+// search.addIndex('meta_description');
+// search.addIndex('meta_title');
+// search.addIndex('tokens');
 
-search.addDocuments(data);
+// search.addDocuments(data);
+
+const options = {
+	isCaseSensitive: false,
+	includeScore: true,
+	includeMatches: true,
+	distance: 100,
+	threshold: -0.1,
+	ignoreLocation: true,
+	tokenize: true,
+	matchAllTokens: true,
+	useExtendedSearch: true,
+	keys: [
+		{ name: 'title', weight: 0.55 },
+		{ name: 'heading', weight: 0.05 },
+		{ name: 'meta_description', weight: 0.05 },
+		{ name: 'meta_title', weight: 0.05 },
+		{ name: 'tokens[0]', weight: 0.2 },
+	],
+};
 
 const getSection = url => {
 	const isHavingHash = url.indexOf('#');
@@ -208,12 +229,19 @@ class AutoComplete extends React.Component {
 		const noOfSuggestions = isMobile ? 5 : 20;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
-		const searchValue = search
+		const fuse = new Fuse(data, options);
+		const searchValue = fuse
 			.search(inputValue)
+			.map(res => ({ ...res, ...res.item }))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
 			.filter(item => item.url !== '/data-schema/');
-		let topResults = searchValue.filter(item => !item.heading).slice(0, noOfSuggestions);
-		const withHeading = searchValue.filter(item => item.heading);
+		const orderedArray = orderBy(searchValue, o => o.score, 'desc');
+		// const searchValue = search
+		// 	.search(inputValue)
+		// 	.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
+		// 	.filter(item => item.url !== '/data-schema/');
+		let topResults = orderedArray.filter(item => !item.heading).slice(0, noOfSuggestions);
+		const withHeading = orderedArray.filter(item => item.heading);
 		if (topResults.length < 8) {
 			topResults = [
 				...topResults,
@@ -230,21 +258,28 @@ class AutoComplete extends React.Component {
 				...topResults.slice(exactMatchIndex + 1),
 			];
 		}
+
 		const newTopResults = topResults.map(res => {
 			return {
 				...res,
 				section: this.getSectionsMapper(res.url),
 			};
 		});
-		const grouped = groupBy(newTopResults, res => res.section);
-		const transformedHits = [
-			...(grouped['v3'] || []),
-			...(grouped['native'] || []),
-			...(grouped['vue'] || []),
-			...(grouped['relevancy'] || []),
-			...(grouped['default'] || []),
-		];
 
+		const groupedByScore = groupBy(newTopResults, res => res.score);
+		let transformedHits = [];
+		Object.keys(groupedByScore).forEach(score => {
+			const grouped = groupBy(groupedByScore[score], res => res.section);
+			const newHits = [
+				...(grouped['v3'] || []),
+				...(grouped['vue'] || []),
+				...(grouped['native'] || []),
+				...(grouped['relevancy'] || []),
+				...(grouped['default'] || []),
+			];
+			transformedHits = [...transformedHits, ...newHits];
+		});
+		console.log(transformedHits);
 		return inputLength === 0
 			? JSON.parse(
 					typeof window !== 'undefined'
