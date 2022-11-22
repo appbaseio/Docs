@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, Link } from 'gatsby';
-// import * as JsSearch from 'js-search';
 import Fuse from 'fuse.js';
 import Autosuggest from 'react-autosuggest';
 import hotkeys from 'hotkeys-js';
@@ -12,16 +11,6 @@ import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
 import sidebar from '../../../data/sidebars/all-sidebar';
 import '../../../styles/custom.css';
-// const search = new JsSearch.Search('url');
-// search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
-
-// search.addIndex('title');
-// search.addIndex('heading');
-// search.addIndex('meta_description');
-// search.addIndex('meta_title');
-// search.addIndex('tokens');
-
-// search.addDocuments(data);
 
 const options = {
 	isCaseSensitive: false,
@@ -224,22 +213,27 @@ class AutoComplete extends React.Component {
 		return 'default';
 	};
 
+	searchWithFuse = (inputValue, options) => {
+		const fuse = new Fuse(data, options);
+		const searchValue = fuse.search(inputValue);
+		if (!searchValue.length && options.threshold !== 0.3) {
+			const newOptions = { ...options, threshold: 0.3 };
+			return this.searchWithFuse(inputValue, newOptions);
+		}
+		return searchValue;
+	};
+
 	getSuggestions = value => {
 		const { isMobile } = this.props;
 		const noOfSuggestions = isMobile ? 5 : 20;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
-		const fuse = new Fuse(data, options);
-		const searchValue = fuse
-			.search(inputValue)
+
+		const searchValue = this.searchWithFuse(inputValue, options)
 			.map(res => ({ ...res, ...res.item }))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
 			.filter(item => item.url !== '/data-schema/');
 		const orderedArray = orderBy(searchValue, o => o.score, 'desc');
-		// const searchValue = search
-		// 	.search(inputValue)
-		// 	.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
-		// 	.filter(item => item.url !== '/data-schema/');
 		let topResults = orderedArray.filter(item => !item.heading).slice(0, noOfSuggestions);
 		const withHeading = orderedArray.filter(item => item.heading);
 		if (topResults.length < 8) {
@@ -279,7 +273,7 @@ class AutoComplete extends React.Component {
 			];
 			transformedHits = [...transformedHits, ...newHits];
 		});
-		console.log(transformedHits);
+
 		return inputLength === 0
 			? JSON.parse(
 					typeof window !== 'undefined'
