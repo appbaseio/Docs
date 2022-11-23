@@ -1,7 +1,7 @@
 ---
-title: 'Extract values from raw response to custom render UI element'
-meta_title: 'Extract values from raw response to custom render UI element'
-meta_description: 'Extract values from raw response to custom render UI element'
+title: 'Extract values from raw response'
+meta_title: 'Extract values from raw response'
+meta_description: 'Extract values from raw response'
 keywords:
   - ui-builder
   - ui-integrations
@@ -147,7 +147,7 @@ We are rendering the custom UI for the extracted result(s) right over the top of
    ></iframe>
 
 
-#### Important Links
+### Important Links
 
 - Starter CodeSandbox 
 
