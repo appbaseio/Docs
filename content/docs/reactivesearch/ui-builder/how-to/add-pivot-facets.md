@@ -129,3 +129,11 @@ Let's take a look and try to understand the snippet we pasted to add the TreeLis
   ```
 
 
+### Example preview
+
+<iframe src="https://codesandbox.io/embed/enterprise-search-ui-template-forked-oj4czz?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Adding Treelist facet to a Search UI"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
