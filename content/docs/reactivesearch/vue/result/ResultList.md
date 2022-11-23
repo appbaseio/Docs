@@ -66,10 +66,20 @@ Example uses:
 
 ## Props
 
--   **target** `string` [optional]
-    This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
--   **href** `string` [optional]
-    can be used to specify the URL of the page the link goes to
+### target
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+This prop is equivalent to the `target` attribute of html `a` tags. It defaults to `_blank`.
+### href
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+can be used to specify the URL of the page the link goes to
 
 > Note
 >
@@ -77,20 +87,19 @@ Example uses:
 
 ## Sub Components
 
--   **ResultListImage**
-    use it to render the result list image.
-    <br/>
-    It accepts the following props:
-    -   **`src`**: `string`
-        source url of the image
-    -   **`small`**: `boolean`
-        defaults to `false`, if `true` then renders an image of small size.
--   **ResultListContent**
-    use it to wrap the result list content other than image.
--   **ResultListTitle**
-    renders the title of the result list.
--   **ResultListDescription**
-    can be used to render the result list description UI.
+### ResultListImage
+use it to render the result list image.
+It accepts the following props:
+-   **`src`**: `string`
+    source url of the image
+-   **`small`**: `boolean`
+    defaults to `false`, if `true` then renders an image of small size.
+### ResultListContent
+use it to wrap the result list content other than image.
+### ResultListTitle
+renders the title of the result list.
+### ResultListDescription
+can be used to render the result list description UI.
 
 ## Demo
 

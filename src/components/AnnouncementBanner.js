@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from 'emotion';
 
 const AnnouncementBanner = ({ showBanner, setShowBanner }) => {
+	useEffect(() => {
+		const bodyElement = document.querySelector('body');
+		// Change styles/post-content.css if changing class below
+		if (showBanner) {
+			// Class used by heading anchor tags
+			bodyElement.classList.add('announcement-banner-active');
+		} else {
+			// Class used by heading anchor tags
+			bodyElement.classList.remove('announcement-banner-active');
+		}
+	}, [showBanner]);
 	return (
 		<div>
 			{showBanner ? (

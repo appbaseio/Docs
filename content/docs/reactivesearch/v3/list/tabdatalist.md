@@ -46,7 +46,8 @@ Example uses:
 />
 ```
 
-### Render as a vertical list
+### Render
+as a vertical list
 We can pass the `displayAsVertical` to be true to render the list vertically.
 
 ```jsx
@@ -56,7 +57,8 @@ We can pass the `displayAsVertical` to be true to render the list vertically.
 />
 ```
 
-### Show no. of documents
+### Show
+no. of documents
 When we want to show the no. of documents for each category(tab) then we can pass `showCount` prop.
 
 ```jsx
@@ -66,7 +68,7 @@ When we want to show the no. of documents for each category(tab) then we can pas
 />
 ```
 
-### Usage With All Props
+### Usage (with all props)
 
 ```js
 <TabDataList
@@ -108,75 +110,174 @@ When we want to show the no. of documents for each category(tab) then we can pas
 
 ## Props
 
--   **componentId** `String`
-    unique identifier of the component, can be referenced in other components' `react` prop.
--   **endpoint** `Object` [optional] 
-    endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
-    Accepts the following properties:
-    -   **url** `String` [Required]
-        URL where the data cluster is hosted.
-    -   **headers** `Object` [optional]        
-        set custom headers to be sent with each server request as key/value pairs.
-    -   **method** `String` [optional]    
-        set method of the API request.
-    -   **body** `Object` [optional]    
-        request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+### componentId
 
-    > - Overrides the endpoint property defined in ReactiveBase.
-    > - If required, use `transformResponse` prop to transform response in component-consumable format.
-      
--   **dataField** `string`
-    data field to be connected to the component's UI view.
--   **data** `Object Array`
-    collection of UI `labels` with associated `value` to be matched against the database field.
--   **title** `string or JSX` [optional]
-    title of the component to be shown in the UI.
--   **placeholder** `string` [optional]
-    placeholder to be displayed in the searchbox. Defaults to "Search". Applicable only when `showSearch` is true.
--   **defaultValue** `string` [optional]
-    selects an initial item from the list on mount.
--   **value** `string` [optional]
-    controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
--   **selectAllLabel** `String` [optional]
-    if provided displays an additional option to select all list values.
--   **showCount** `Boolean` [optional]
-    show a count of the number of occurences besides each list item. Defaults to `false`.
--   **displayAsVertical** `Boolean` [optional]
-    layout tabs vertically. Defaults to `false`.
--   **showSearch** `Boolean` [optional]
-    filter tabs using a search bar
--   **showRadio** `Boolean` [optional]
-    show radio buttons just as we are using a `SingleDataList`
--   **selectAllLabel** `string` [optional] 
+| Type | Optional |
+|------|----------|
+|  `String` |   No   |
+
+unique identifier of the component, can be referenced in other components' `react` prop.
+### endpoint
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+ 
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+Accepts the following properties:
+-   **url** `String` [Required]
+    URL where the data cluster is hosted.
+-   **headers** `Object` [optional]        
+    set custom headers to be sent with each server request as key/value pairs.
+-   **method** `String` [optional]    
+    set method of the API request.
+-   **body** `Object` [optional]    
+    request body of the API request. When body isn't set and method is POST, the request body is set based on the component's configured props.
+> - Overrides the endpoint property defined in ReactiveBase.
+> - If required, use `transformResponse` prop to transform response in component-consumable format.
+  
+### dataField
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+data field to be connected to the component's UI view.
+### data
+
+| Type | Optional |
+|------|----------|
+|  `Object Array` |   Yes   |
+
+collection of UI `labels` with associated `value` to be matched against the database field.
+### title
+
+| Type | Optional |
+|------|----------|
+|  `string or JSX` |   Yes   |
+
+
+title of the component to be shown in the UI.
+### placeholder
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
+placeholder to be displayed in the searchbox. Defaults to "Search". Applicable only when `showSearch` is true.
+### defaultValue
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
+selects an initial item from the list on mount.
+### value
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+
+controls the current value of the component. It selects the item from the list (on mount and on update). Use this prop in conjunction with `onChange` function.
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
+if provided displays an additional option to select all list values.
+### showCount
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
+show a count of the number of occurences besides each list item. Defaults to `false`.
+### displayAsVertical
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
+layout tabs vertically. Defaults to `false`.
+### showSearch
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
+filter tabs using a search bar
+### showRadio
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
+show radio buttons just as we are using a `SingleDataList`
+### selectAllLabel
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+ 
 	If set, an additional option to select all the values is displayed
--   **URLParams** `Boolean` [optional]
-    enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
--   **renderItem** `Function` [optional]
-    customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
-    ```js
-    renderItem={(label, count, isSelected) => (
-        <div>
-            {label}
-            <span style={{
-                marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
-            }}>
-                {count}
-            </span>
-        </div>
-    )}
-    ```
--   **render** `Function` [optional]
-    an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
-    <br/>
-    It accepts an object with these properties:
-    -   **`data`**: `array`
-        An array of results obtained from the applied query.
-    -   **`rawData`** `object`
-        An object of raw response as-is from elasticsearch query.
-    -   **`value`**: `string`
-        current selected value.
-    -   **`handleChange`**: `function`
-        A callback function can be used to mark the list value as selected.
+### URLParams
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+
+enable creating a URL query string parameter based on the selected value of the list. This is useful for sharing URLs with the component state. Defaults to `false`.
+### renderItem
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
+customize the rendered list via a function which receives the item label, count & isSelected and expects a JSX or String back. For example:
+```js
+renderItem={(label, count, isSelected) => (
+    <div>
+        {label}
+        <span style={{
+            marginLeft: 5, color: isSelected ? 'red' : 'dodgerblue'
+        }}>
+            {count}
+        </span>
+    </div>
+)}
+```
+### render
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+
+an alternative callback function to `renderItem`, where user can define how to render the view based on all the data changes.
+<br/>
+
+It accepts an object with these properties:
+-   **`data`**: `array`
+    An array of results obtained from the applied query.
+-   **`rawData`** `object`
+    An object of raw response as-is from elasticsearch query.
+-   **`value`**: `string`
+    current selected value.
+-   **`handleChange`**: `function`
+    A callback function can be used to mark the list value as selected.
 
 ```js
 <TabDataList
@@ -245,18 +346,43 @@ Or you can also use render function as children
 />
 ```
 
--   **className** `String`
-    CSS class to be injected on the component container.
--   **style** `Object`
-    CSS styles to be applied to the **TabDataList** component.
--   **customQuery** `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
-    `Note:` customQuery is called on value changes in the **TabDataList** component as long as the component is a part of `react` dependency of at least one other component.
--   **defaultQuery** `Function`
-    takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
-    Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
--   **index** `String` [optional]
-    The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+### className
 
-    > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+CSS class to be injected on the component container.
+### style
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+CSS styles to be applied to the **TabDataList** component.
+### customQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
+`Note:` customQuery is called on value changes in the **TabDataList** component as long as the component is a part of `react` dependency of at least one other component.
+### defaultQuery
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components.
+Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+### index
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+
+The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
+> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
