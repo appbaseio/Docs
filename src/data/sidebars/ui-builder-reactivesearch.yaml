@@ -19,6 +19,8 @@
               link: /docs/reactivesearch/ui-builder/how-to/modify-query-programatically/
             - title: 'Export a component to vanilla JS'
               link: /docs/reactivesearch/ui-builder/how-to/export-component-to-vanilla-js/
+            - title: 'Extract out values from response to custom render'
+              link: /docs/reactivesearch/ui-builder/how-to/extract-values-from-raw-response/
       - group: Searchboxes
         items:
             - title: Searchbox UI
