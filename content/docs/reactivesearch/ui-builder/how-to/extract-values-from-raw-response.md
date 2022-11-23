@@ -88,6 +88,7 @@ const Main = () => {
 }
 ```
 
+> Read more about `transformResponse` prop [here](https://docs.reactivesearch.io/docs/reactivesearch/v3/overview/reactivebase/#transformresponse)
 
 
 #### Render the extracted data as a separate UI element
@@ -132,6 +133,9 @@ We are rendering the custom UI for the extracted result(s) right over the top of
   )}
 </ReactiveBase>
 ```
+
+
+> For styles, refer to `index.css` in the Final App sandbox.
 
 ### Final App
 
