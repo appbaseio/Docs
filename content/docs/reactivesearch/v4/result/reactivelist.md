@@ -110,7 +110,7 @@ Accepts the following properties:
 |  `String`  |    No    |
 
 data field to be connected to the component's UI view. It is useful for providing a sorting context.
-### aggregationField
+### distinctField
 
 | Type | Optional |
 |------|----------|
@@ -121,7 +121,7 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 
 ```jsx
 <ReactiveList
-    aggregationField="original_title.keyword"
+    distinctField="original_title.keyword"
     render={({aggregationData}) => {...}}
 />
 ```

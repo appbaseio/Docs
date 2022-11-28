@@ -177,7 +177,7 @@ database field(s) to be queried against. Accepts an Array in addition to String,
 |  `Number` |   Yes   |
 
 number of suggestions to show. Defaults to `10`.
-### aggregationField
+### distinctField
 
 | Type | Optional |
 |------|----------|
@@ -188,7 +188,7 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 
 ```jsx
 <SearchBox
-    aggregationField="original_title.keyword"
+    distinctField="original_title.keyword"
     render={({aggregationData}) => {...}}
 />
 ```

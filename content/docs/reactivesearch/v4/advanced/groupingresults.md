@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-Read more about `aggregationField` prop for different components:
+Read more about `distinctField` prop for different components:
 
 -   [**DataSearch**](/docs/reactivesearch/v4/search/datasearch/#props)
 -   [**CategorySearch**](/docs/reactivesearch/v4/search/categorysearch/#props)
@@ -29,15 +29,15 @@ Grouping records usually refers to the process of combining multiple records int
 ## How?
 
 Let's take example of [carstore-dataset](https://dejavu.appbase.io/?appname=carstore-dataset-latest&url=https://B86d2y2OE:4fecb2c5-5c5f-49e5-9e0b-0faba74597c6@scalr.api.appbase.io&mode=view). We have different brands of cars, but we only want to show distinct brands.
-This can be achieved by defining `aggregationField` prop in `ReactiveList` as `brand.keyword`.
+This can be achieved by defining `distinctField` prop in `ReactiveList` as `brand.keyword`.
 
-###Without aggregationField
+###Without distinctField
 
 <br />
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/DataSearchWithAggregation" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-###With aggregationField
+###With distinctField
 
 <br />
 

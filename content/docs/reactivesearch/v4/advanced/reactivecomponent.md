@@ -246,7 +246,7 @@ CSS class to be injected on the component container.
 |  `Object` |   Yes   |
 
 CSS styles to be applied to the **DataSearch** component.
-### aggregationField
+### distinctField
 
 | Type | Optional |
 |------|----------|
@@ -257,7 +257,7 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 
 ```javascript
 <ReactiveComponent
-	aggregationField="original_title.keyword"
+	distinctField="original_title.keyword"
 	render={({aggregationData}) => {...}}
 	onData={({aggregationData}) => {...}}
 />
