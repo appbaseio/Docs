@@ -122,31 +122,6 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 Read more about it over [here](/docs/reactivesearch/v4/advanced/analytics/#configure-the-analytics-experience).
 
 
-### analytics
-
-| Type | Optional |
-|------|----------|
-|  `Boolean` |   Yes   |
-
-allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
-
-Check the [analytics recipe](/docs/reactivesearch/v4/advanced/analytics/) for click analytics implementation.
-
-> Note:
-> This prop has been marked as deprecated. Please use the `recordAnalytics` property in the `reactivesearchAPIConfig` prop instead.
-
-### analyticsConfig
-
-| Type | Optional |
-|------|----------|
-|  `Object` |   Yes   |
-
-allows you to customize the analytics experience when appbase.io is used as a backend.
-Read more about it over [here](/docs/reactivesearch/v4/advanced/analytics/#configure-the-analytics-experience).
-
-> Note:
-> This prop has been marked as deprecated. Please use the `reactivesearchAPIConfig` prop instead.
-
 ### initialQueriesSyncTime
 
 | Type | Optional |
