@@ -118,7 +118,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.
@@ -168,8 +168,8 @@ type DataField = {
 database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields. Check examples at [here](/docs/search/reactivesearch-api/reference/#datafield).
 
 > Note:
-> 1. This prop is optional only when `enableAppbase` prop is set to `true` in `ReactiveBase` component.
-> 2. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.21.0` and Appbase version `v7.47.0`.
+The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.21.0` and Appbase version `v7.47.0`.
+
 ### size
 
 | Type | Optional |
@@ -244,9 +244,6 @@ sets the current value of the component. It sets the search query text (on mount
 |  `bool` |   Yes   |
 
 Defaults to `true`, can be used to `disable/enable` the synonyms behavior for the search query. Read more about it [here](/docs/search/reactivesearch-api/reference/#enablesynonyms)
-> Note:
->
-> This property only works with [ReactiveSearch API](/docs/search/reactivesearch-api/) i.e when `enableAppbase` is set to `true` in `ReactiveBase` component.
 
 ### enableIndexSuggestions
 
@@ -309,9 +306,6 @@ Index(es) from which to return the popular suggestions from. Defaults to the ent
 
     Defaults to `false`. When set to `true`, popular searches are returned as suggestions as per the popular suggestions config (either defaults, or as set through `popularSuggestionsConfig` or via Popular Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
 
-    > Note:
-    >
-    > Popular Suggestions only work when `enableAppbase` prop is `true`.
 
 ### popularSuggestionsConfig
 
@@ -351,7 +345,8 @@ It can accept the following keys:
 
 Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane).
 
-> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `reactivesearchAPIConfig`.
+
 ### recentSuggestionsConfig
 
 | Type | Optional |
@@ -955,7 +950,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
     />
 ```
 
-> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
+
 
 ### renderItem
 
@@ -1208,7 +1203,6 @@ specify dependent components to reactively update **SearchBox's** suggestions.
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 ### focusShortcuts
 
 | Type | Optional |

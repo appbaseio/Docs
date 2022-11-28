@@ -374,7 +374,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 />
 ```
 
-> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
+
 
 ### endpoint
 
@@ -382,7 +382,7 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 
 Accepts the following properties:
 -   **url** `String` [Required]

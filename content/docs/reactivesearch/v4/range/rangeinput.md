@@ -90,7 +90,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |  `Object`  |    No    |
 
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.
@@ -424,7 +424,6 @@ specify dependent components to reactively update **RangeInput's** data view.
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ## Examples
 

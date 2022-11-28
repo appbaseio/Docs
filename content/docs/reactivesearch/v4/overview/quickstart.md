@@ -78,7 +78,6 @@ function App() {
       url="https://appbase-demo-ansible-abxiydt-arc.searchbase.io"
       app="good-books-ds"
       credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
-      enableAppbase
     >
       {/* Our components will go over here */}
       Hello from ReactiveSearch 👋
@@ -88,8 +87,6 @@ function App() {
 
 export default App;
 ```
-
-**Note:** You can set `enableAppbase={false}` if you are directly connecting to an Elasticsearch service without using the appbase.io API gateway. However, we **now offer an open-source and free** version of appbase.io service and highly recommend using it over querying your Elasticsearch cluster directly. appbase.io as an API gateway provides access control for search and prevents script injection attacks that are possible if you query Elasticsearch directly from frontend.
 
 This is how the app should look after running the `yarn start` command.
 

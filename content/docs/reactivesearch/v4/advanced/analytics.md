@@ -170,7 +170,9 @@ For an example,
 ```
 
 ## Configure the analytics experience
-You can define the `appbaseConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+
+You can define the `reactivesearchAPIConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+
 ### recordAnalytics
 
 | Type | Optional |
@@ -232,7 +234,7 @@ For example in the following code, we're setting up two custom events that will 
 
 ```js
 <ReactiveBase
-    appbaseConfig={{
+    reactivesearchAPIConfig={{
             customEvents: {
                 platform: "ios",
                 device: "iphoneX"
@@ -252,7 +254,7 @@ For example in the following code, we're setting the `preference` value to `loca
 
 ```js
 <ReactiveBase
-    appbaseConfig={{
+    reactivesearchAPIConfig={{
         queryParams: {
             preference: "local",
         }

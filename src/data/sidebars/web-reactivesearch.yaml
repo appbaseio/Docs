@@ -13,8 +13,6 @@
               link: /docs/reactivesearch/v4/overview/reactivecomponent/
             - title: Components Overview
               link: /docs/reactivesearch/v4/overview/components/
-            - title: Showcase
-              link: /docs/reactivesearch/v4/overview/Showcase/
       - group: List Components
         items:
             - title: SingleList
@@ -65,10 +63,6 @@
         items:
             - title: SearchBox
               link: /docs/reactivesearch/v4/search/searchbox/
-            - title: DataSearch
-              link: /docs/reactivesearch/v4/search/datasearch/
-            - title: CategorySearch
-              link: /docs/reactivesearch/v4/search/categorysearch/
       - group: Result Components
         items:
             - title: ReactiveList
