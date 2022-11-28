@@ -164,7 +164,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Search Relevancy
 															</Link>
 															<Link
-																to="/docs/reactivesearch/v3/overview/quickstart/"
+																to="/docs/reactivesearch/v4/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
@@ -290,7 +290,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																ReactiveSearch UI Kit
 															</h3>
 															<Link
-																to="/docs/reactivesearch/v3/overview/quickstart/"
+																to="/docs/reactivesearch/v4/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon

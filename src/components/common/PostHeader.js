@@ -17,7 +17,13 @@ const PostHeader = ({ location }) => {
 				window.location.href = `${window.location.origin}/reactivesearch/native`;
 			} else if (value.value === 'v1 - Vue') {
 				window.location.href = `${window.location.origin}/reactivesearch/vue`;
-			} else if (value.value === 'v3 - Web') {
+			} 
+			else if(value.value === 'v4 - Web'){
+				window.location.href = `${
+					window.location.origin
+				}/reactivesearch/v4/overview/quickstart`;
+			}
+			else if (value.value === 'v3 - Web') {
 				window.location.href = `${
 					window.location.origin
 				}/reactivesearch/v3/overview/quickstart`;
@@ -33,6 +39,12 @@ const PostHeader = ({ location }) => {
 		if (location.pathname.startsWith('/reactivesearch/v2')) {
 			return 'v2 - Web';
 		}
+		if (location.pathname.startsWith('/reactivesearch/v3')) {
+			return 'v3 - Web';
+		}
+		if (location.pathname.startsWith('/reactivesearch/v4')) {
+			return 'v4 - Web';
+		}
 		if (location.pathname.startsWith('/reactivesearch/vue')) {
 			return 'v1 - Vue';
 		}
@@ -40,7 +52,7 @@ const PostHeader = ({ location }) => {
 			return 'v0.12 - Native';
 		}
 
-		return 'v3 - Web';
+		return 'v4 - Web';
 	};
 
 	if (title) {
@@ -68,7 +80,7 @@ const PostHeader = ({ location }) => {
 						) : null}
 					</h1>
 					<Dropdown
-						options={['v3 - Web', 'v2 - Web', 'v0.10 - Native', 'v1 - Vue']}
+						options={['v4 - Web','v3 - Web', 'v2 - Web', 'v0.10 - Native', 'v1 - Vue']}
 						value={getValue()}
 						onChange={switchDocs}
 					/>

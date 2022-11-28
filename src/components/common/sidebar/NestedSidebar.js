@@ -20,6 +20,8 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
 		} else if (value.value === 'Algolia Autocomplete') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/autocomplete-plugin/quickstart/`;
+		} else if (value.value === 'React - v4') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/v4/overview/quickstart/`;
 		} else if (value.value === 'React - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
@@ -48,6 +50,12 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 	const getValue = () => {
 		if (location.pathname.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/v3')) {
+			return 'React - v3';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/v4')) {
+			return 'React - v4';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
@@ -89,7 +97,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			return 'UI Builder';
 		}
 
-		return 'React - v3';
+		return 'React - v4';
 	};
 
 	const renderSideBar = () => {
@@ -157,6 +165,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		<Fragment>
 			<Dropdown
 				options={[
+					'React - v4',
 					'React - v3',
 					'Vue',
 					'UI Builder',

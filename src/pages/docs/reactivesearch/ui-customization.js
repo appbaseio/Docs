@@ -31,7 +31,7 @@ const Customization = props => {
 				</p>
 				<ul>
 					<li>
-						<a href="/docs/reactivesearch/v3/theming/overview/">
+						<a href="/docs/reactivesearch/v4/theming/overview/">
 							ReactiveSearch (React)
 						</a>
 					</li>
@@ -51,7 +51,7 @@ const Customization = props => {
 				<p>Follow the docs for your library.</p>
 				<ul>
 					<li>
-						<a href="/docs/reactivesearch/v3/theming/classnameinjection/">
+						<a href="/docs/reactivesearch/v4/theming/classnameinjection/">
 							ReactiveSearch (React)
 						</a>
 					</li>
@@ -77,7 +77,7 @@ const Customization = props => {
 					feel of the components, then customizing the CSS could be cumbersome. For
 					example, If you're using <b>ant-design</b> components and want to replace the{' '}
 					<b>CheckList</b> component in{' '}
-					<a href="/docs/reactivesearch/v3/list/multilist/">
+					<a href="/docs/reactivesearch/v4/list/multilist/">
 						MultiList
 					</a>{' '}
 					to the <b>CheckList</b> component from <b>ant-design</b>.
@@ -91,7 +91,7 @@ const Customization = props => {
 					To customize the UI for sub-components we provide <b>render{'X'}</b> props or
 					slots specific to the sub-component. For example, to change the UI for list
 					options in the{' '}
-					<a href="/docs/reactivesearch/v3/list/multilist/">
+					<a href="/docs/reactivesearch/v4/list/multilist/">
 						MultiList
 					</a>{' '}
 					component we can use the <b>renderItem</b> method like below.
@@ -137,7 +137,7 @@ const Customization = props => {
 				<p>Learn more about it by following the below links:</p>
 				<ul>
 					<li>
-						<a	href="/docs/reactivesearch/v3/advanced/reactivecomponent/">
+						<a	href="/docs/reactivesearch/v4/advanced/reactivecomponent/">
 							ReactiveComponent in ReactiveSearch (React)
 						</a>
 					</li>

@@ -221,7 +221,7 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'ReactiveSearch QuickStart',
 												link:
-													'/docs/reactivesearch/v3/overview/quickstart/',
+													'/docs/reactivesearch/v4/overview/quickstart/',
 												description: 'Get started with the React version of ReactiveSearch',
 												duration: 6,
 											},
@@ -392,7 +392,7 @@ const HomePage = ({ data, location }) => {
 						</p>
 						<div className="grid-integrations-index mt4 mt6-l f8">
 							<Box
-								to="/docs/reactivesearch/v3/overview/quickstart/"
+								to="/docs/reactivesearch/v4/overview/quickstart/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc"
 								elevation="2"
 								radius="4"

@@ -270,7 +270,7 @@ class Showcase extends React.Component {
 							<div className="w-100">
 								<ShowcaseComponent
 									title="SearchBox"
-									link="/docs/reactivesearch/v3/search/searchbox/"
+									link="/docs/reactivesearch/v4/search/searchbox/"
 								>
 									<SearchBox {...searchBoxProps} />
 								</ShowcaseComponent>
@@ -278,14 +278,14 @@ class Showcase extends React.Component {
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
 									title="MultiList - Accommodates"
-									link="/docs/reactivesearch/v3/list/multilist/"
+									link="/docs/reactivesearch/v4/list/multilist/"
 								>
 									<MultiList {...multilistProps} />
 								</ShowcaseComponent>
 
 								<ShowcaseComponent
 									title="SingleList - Property Type"
-									link="/docs/reactivesearch/v3/list/singlelist/"
+									link="/docs/reactivesearch/v4/list/singlelist/"
 								>
 									<SingleList {...singleListProps} />
 								</ShowcaseComponent>
@@ -294,14 +294,14 @@ class Showcase extends React.Component {
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
 									title="DynamicRangeSlider - Price"
-									link="/docs/reactivesearch/v3/range/dynamicrangeslider/"
+									link="/docs/reactivesearch/v4/range/dynamicrangeslider/"
 								>
 									<DynamicRangeSlider {...rangeSliderProps} />
 								</ShowcaseComponent>
 
 								<ShowcaseComponent
 									title="RatingsFilter - Beds"
-									link="/docs/reactivesearch/v3/range/ratingsfilter/"
+									link="/docs/reactivesearch/v4/range/ratingsfilter/"
 								>
 									<RatingsFilter {...ratingsFilterProps} />
 								</ShowcaseComponent>
@@ -310,7 +310,7 @@ class Showcase extends React.Component {
 							<div className="showcase-grid">
 								<ShowcaseComponent
 									title="DateRange - Date From"
-									link="/docs/reactivesearch/v3/range/daterange/"
+									link="/docs/reactivesearch/v4/range/daterange/"
 								>
 									<DateRange {...dateRangeProps} />
 								</ShowcaseComponent>
@@ -319,13 +319,13 @@ class Showcase extends React.Component {
 							<div className="showcase-grid grid-2">
 								<ShowcaseComponent
 									title="SingleDropdownList - Property Type"
-									link="/docs/reactivesearch/v3/list/singledropdownlist/"
+									link="/docs/reactivesearch/v4/list/singledropdownlist/"
 								>
 									<SingleDropdownList {...singleDropdownProps} />
 								</ShowcaseComponent>
 								<ShowcaseComponent
 									title="ToggleButton - Room Type"
-									link="/docs/reactivesearch/v3/list/togglebutton/"
+									link="/docs/reactivesearch/v4/list/togglebutton/"
 								>
 									<ToggleButton {...toggleButtonProps} />
 								</ShowcaseComponent>
@@ -333,7 +333,7 @@ class Showcase extends React.Component {
 							<div className="showcase-grid">
 								<ShowcaseComponent
 									title="ReactiveList"
-									link="/docs/reactivesearch/v3/result/reactivelist/"
+									link="/docs/reactivesearch/v4/result/reactivelist/"
 								>
 									<ReactiveList {...reactiveListProps} />
 								</ShowcaseComponent>
@@ -342,7 +342,7 @@ class Showcase extends React.Component {
 							<div className="showcase-grid">
 								<ShowcaseComponent
 									title="ReactiveMaps"
-									link="/docs/reactivesearch/v3/map/reactivegooglemap/"
+									link="/docs/reactivesearch/v4/map/reactivegooglemap/"
 								>
 									<ReactiveGoogleMap {...reactiveMapProps} />
 								</ShowcaseComponent>

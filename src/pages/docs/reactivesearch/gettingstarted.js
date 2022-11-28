@@ -32,7 +32,7 @@ const GettingStarted = props => {
 					<div className="content">
 						<h2>React</h2>
 						<p>React UI components for building data-driven search experiences</p>
-						<a className="btn" href="/docs/reactivesearch/v3/overview/quickstart/">
+						<a className="btn" href="/docs/reactivesearch/v4/overview/quickstart/">
 							Start with React
 						</a>
 					</div>
