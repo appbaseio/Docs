@@ -13,8 +13,6 @@ nestedSidebar: 'web-reactivesearch'
 
 Read more about `distinctField` prop for different components:
 
--   [**DataSearch**](/docs/reactivesearch/v4/search/datasearch/#props)
--   [**CategorySearch**](/docs/reactivesearch/v4/search/categorysearch/#props)
 -   [**ReactiveList**](/docs/reactivesearch/v4/result/reactivelist/#props)
 -   [**ReactiveComponent**](/docs/reactivesearch/v4/advanced/reactivecomponent/#props)
 

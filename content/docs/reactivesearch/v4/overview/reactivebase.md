@@ -361,7 +361,7 @@ To connect a ReactiveSearch component to a preference, use the `componentId` pro
             }
         }
     }}>
-        <DataSearch componentId="bookSearch" />
+        SearchBox componentId="bookSearch" />
     </ReactiveBase>
 ```
 Additionally, the ReactiveSearch components support `preferencesPath` prop which is helpful to define the path of preference object for a component. It is helpful when you have to use conflicting component Ids. The following example defines the preferences for `home` and `search` pages, components have defined the `preferencesPath` prop to connect to preferences.
@@ -390,12 +390,12 @@ Additionally, the ReactiveSearch components support `preferencesPath` prop which
         }
     }}>
         {/** home page */}
-        <DataSearch 
+        SearchBox 
             preferencesPath="pages.home.bookSearch" 
             componentId="bookSearch" 
         />
          {/** search page */}
-        <DataSearch 
+        SearchBox 
             preferencesPath="pages.search.bookSearch" 
             componentId="bookSearch" 
         />
@@ -449,7 +449,7 @@ Once you have added the **ReactiveBase** component, you can get started with add
 
 -   List specific components can be found [here](/docs/reactivesearch/v4/list/singlelist/).
 -   Range specific components can be found [here](/docs/reactivesearch/v4/range/singlerange/).
--   Search specific components can be found [here](/docs/reactivesearch/v4/search/datasearch/).
+-   Search specific components can be found [here](/docs/reactivesearch/v4/search/searchbox/).
 -   Result specific components can be found
     [here](/docs/reactivesearch/v4/result/reactivelist/).
 

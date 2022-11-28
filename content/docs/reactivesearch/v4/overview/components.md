@@ -188,19 +188,11 @@ The following are all the possible UI components for a numeric datatype field in
 
 The following are UI components that represent searchbar UIs. The datatype for the `dataField` in these components should be a `Text` (or `String`) or `Keyword`, along with custom analyzer (like ngrams) based mappings defined in sub-fields.
 
-### DataSearch
+### SearchBox
 
 <p>
 
-**[DataSearch](/docs/reactivesearch/v4/search/datasearch/)** displays a search input box. It supports autosuggestions, highlighting of results and querying against more than one fields via props.
-
-</p>
-
-### CategorySearch
-
-<p>
-
-**[CategorySearch](/docs/reactivesearch/v4/search/categorysearch/)** is a more specific version of the [DataSearch](/docs/reactivesearch/v4/search/datasearch/) component. The main difference is that it can show suggestions within specific categories besides the general auto-suggestions that appear in the search dropdown.
+**[SearchBox](/docs/reactivesearch/v4/search/searchbox/)** displays a search input box. It supports autosuggestions, highlighting of results and querying against more than one fields via props.
 
 </p>
 

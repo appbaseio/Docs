@@ -35,7 +35,7 @@ Alternatively, you can also add a `className` to any component which gets applie
 ### Using the style prop
 
 ```jsx{3-6}
-<DataSearch
+SearchBox
     ...
     style={{
         border: '1px dashed coral',
@@ -47,7 +47,7 @@ Alternatively, you can also add a `className` to any component which gets applie
 ### Using the className prop
 
 ```jsx{3}
-<DataSearch
+SearchBox
     ...
     className="search-box"
 />

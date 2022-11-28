@@ -168,7 +168,7 @@ export default class Main extends Component {
 			<ReactiveBase {...settings} initialState={this.props.store}>
 				<div className="row">
 					<div className="col">
-						<DataSearch {...dataSearchProps} />
+						SearchBox {...dataSearchProps} />
 					</div>
 
 					<div className="col">

@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/v4/list/singlelist/) component can update its data based on the search term in a [DataSearch](/docs/reactivesearch/v4/search/datasearch/) component.
+One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/v4/list/singlelist/) component can update its data based on the search term in a [DataSearch](/docs/reactivesearch/v4/search/searchbox/) component.
 
 ### Usage
 

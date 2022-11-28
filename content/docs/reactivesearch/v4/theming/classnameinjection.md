@@ -19,12 +19,12 @@ The `innerClass` prop accepts an object with keys as defined in the **Styles** s
 
 ## Examples
 
-Here's an example of how to use `innerClass` with a [DataSearch](/docs/reactivesearch/v4/search/datasearch/) component:
+Here's an example of how to use `innerClass` with a [DataSearch](/docs/reactivesearch/v4/search/searchbox/) component:
 
 ![DataSearch annotated image](https://imgur.com/f20AvrZ.png)
 
 ```js
-<DataSearch
+SearchBox
     ...
     innerClass={{
         title: 'search-title',
@@ -54,7 +54,7 @@ While writing styles using `innerClass`, it's important to keep [CSS specificity
 In order for your classes to overwrite the default classes of ReactiveSearch components we recommend combining the `innerClass` classes with a container class. This will also give the correct results without depending on the order of loading of the stylesheets in production. For example:
 
 ```js
-<DataSearch
+SearchBox
     ...
     innerClass={{
         title: 'search-title',

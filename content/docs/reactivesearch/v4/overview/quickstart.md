@@ -101,14 +101,14 @@ This is how the app should look after running the `yarn start` command.
 
 ### Step 3: Adding Search and Aggregation components
 
-For this app, we will be using [DataSearch](/docs/reactivesearch/v4/search/datasearch/), [MultiList](/docs/reactivesearch/v4/list/multilist/) and [SingleRange](/docs/reactivesearch/v4/range/singlerange/) components for searching and filtering on the index. And [ResultCard](/docs/reactivesearch/v4/result/resultcard/) component for showing the search results.
+For this app, we will be using [DataSearch](/docs/reactivesearch/v4/search/searchbox/), [MultiList](/docs/reactivesearch/v4/list/multilist/) and [SingleRange](/docs/reactivesearch/v4/range/singlerange/) components for searching and filtering on the index. And [ResultCard](/docs/reactivesearch/v4/result/resultcard/) component for showing the search results.
 
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
 #### DataSearch
 
 ```jsx
-<DataSearch
+SearchBox
 	componentId="searchbox"
 	dataField={[
 		{
@@ -132,7 +132,7 @@ Lets add them within the ReactiveBase component. But before we do that, we will 
 />
 ```
 
-The [**DataSearch**](/docs/reactivesearch/v4/search/datasearch/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
+The [**DataSearch**](/docs/reactivesearch/v4/search/searchbox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
 
 At this point, you should see the following:
 
@@ -258,7 +258,7 @@ With ~6 more lines, our final app layout looks as follows.
 			<SingleRange/>
 		</div>
 		<div style={{ display: "flex", flexDirection: "column", width: "66%" }}>
-			<DataSearch/>
+			SearchBox/>
 			<ReactiveList/>
 		</div>
 	</div>

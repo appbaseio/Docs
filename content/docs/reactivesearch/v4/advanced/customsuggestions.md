@@ -18,7 +18,7 @@ ReactiveSearch uses the wonderful [downshift](https://github.com/paypal/downshif
 ## Custom Suggestions for DataSearch
 
 ```js
-<DataSearch
+SearchBox
     ...
     render={
         ({
@@ -73,7 +73,7 @@ All the parameters received are very similar to the `DataSearch` besides `catego
 It's also possible to customize the individual suggestions by using `parseSuggestion` prop.
 
 ```js
-<DataSearch
+SearchBox
   ...
   parseSuggestion={(suggestion) => ({
     title: suggestion.source.original_title,

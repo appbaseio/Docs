@@ -136,7 +136,7 @@ We have changed the usage of `ResultList` and `ResultCard` to be more flexible i
 We have added the support for `renderError` in all the data driven components which can be used to display error message whenever there is an error while fetching the data for that particular component.
 
 ```jsx
-<DataSearch
+SearchBox
 	componentId="SearchSensor"
 	dataField={['group_venue', 'group_city']}
 	renderError={error => (
@@ -160,7 +160,7 @@ In **v3**, we have added support for `parseSuggestion` & `render` to customise t
 **v2.x:**
 
 ```jsx
-<DataSearch
+SearchBox
 	onSuggestion={suggestion => ({
 		label: (
 			<div>
@@ -179,7 +179,7 @@ In **v3**, we have added support for `parseSuggestion` & `render` to customise t
 **v3.x:**
 
 ```jsx
-<DataSearch
+SearchBox
 	parseSuggestion={suggestion => ({
 		label: (
 			<div>
