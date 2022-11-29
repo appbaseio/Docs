@@ -97,7 +97,7 @@ For an example,
 
 We can use the **@appbaseio/analytics** library without installing it or any configuration by using the [**inject** API](https://vuejs.org/guide/components/provide-inject.html). When used, it returns an instance of the [analytics library](https://github.com/appbaseio/analytics.js). It uses the **url** and **credentials** provided to the parent `ReactiveBase` component.
 
-For example, if we want to track conversions for when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. 
+For example, if we want to track conversions when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. 
 
 We make a new file **VisitStoreButton.vue** using the [SFC format](https://vuejs.org/guide/scaling-up/sfc.htm) from Vue. The analytics instance is provided as `$analytics` prop. Note `queryID` is required property and we can populate it automatically by calling a method on the same instance.
 
