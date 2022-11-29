@@ -196,7 +196,7 @@ const VisitStoreButton = () => {
 };
 ```
 
-You can also view the complete demo as a codesanbox example below. 
+You can also view the complete demo as a codesandbox example below. 
 
 <iframe src="https://codesandbox.io/embed/github/appbasio/reactivesearch/tree/next/packages/web/examples/AnalyticsWithHook?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
