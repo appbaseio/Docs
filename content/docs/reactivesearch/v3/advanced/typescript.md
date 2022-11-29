@@ -7,7 +7,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 Add static typing to JavaScript to improve developer productivity and code quality with <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>.

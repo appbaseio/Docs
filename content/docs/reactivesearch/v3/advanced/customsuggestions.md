@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 Recipe for rendering custom suggestions with `DataSearch` and `CategorySearch` components using the `render` prop.

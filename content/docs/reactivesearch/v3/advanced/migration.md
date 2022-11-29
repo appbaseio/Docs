@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ReactiveSearch and ReactiveMaps are fully compatible with React 16.6 and above with the 3.x releases. This release comes after the feedback we have gathered from the iterative deployment of reactivesearch in production for the dozens of our clients over the last year. In this version, we have changed the way certain props behave, and included new components. This guide will give you a brief about all the changes.

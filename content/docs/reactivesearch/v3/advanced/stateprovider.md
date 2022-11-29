@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 `StateProvider` component allows you to access the current state of your components along with the search results. For instance, you can use this component to create results/no results or query/no query pages.

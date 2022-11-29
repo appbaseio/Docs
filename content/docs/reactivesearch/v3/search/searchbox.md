@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ![Searchbox image](https://i.imgur.com/EGQTmNY.png)

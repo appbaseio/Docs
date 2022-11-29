@@ -14,7 +14,7 @@ keywords:
     - histogram
     - chart
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ![Image to be displayed](https://i.imgur.com/4TxrKmi.png)
