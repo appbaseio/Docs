@@ -55,7 +55,6 @@ const plugins = [
 				},
 				`gatsby-remark-autolink-headers`,
 				`gatsby-remark-code-titles`,
-				`gatsby-remark-check-links`,
 				`gatsby-remark-external-links`,
 			],
 		},
