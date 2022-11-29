@@ -171,7 +171,7 @@ For an example,
 
 ## Configure with **useAnalytics** hook
 
-We can import `useAnalytics` hook directly from the **@appbaseio/reactivesearch** package. When used, it returns an instance of the [analytics library](https://github.com/appbaseio/analytics.js). It uses the **url** and **credentials** provided to the parent `ReactiveBase` component.
+We can import `useAnalytics` hook directly from the **@appbaseio/reactivesearch** library. When used, it returns an instance of the [analytics library](https://github.com/appbaseio/analytics.js) which uses the **url** and **credentials** provided to the parent `ReactiveBase` component.
 
 For example, if we want to track conversions for when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. Note `queryID` is required property and we can populate it automatically by calling a method on the same instance.
 
