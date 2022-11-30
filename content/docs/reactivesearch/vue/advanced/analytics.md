@@ -93,6 +93,44 @@ For an example,
 </reactive-list>
 ```
 
+## Configure with **inject** API
+
+We can use the **@appbaseio/analytics** library without installing it or any configuration by using the [**inject** API](https://vuejs.org/guide/components/provide-inject.html). When used, it returns an instance of the [analytics library](https://github.com/appbaseio/analytics.js). It uses the **url** and **credentials** provided to the parent `ReactiveBase` component.
+
+For example, if we want to track conversions when a user clicks on **"Visit Store"** button then we can make a button as shown in snippet below. 
+
+We make a new file **VisitStoreButton.vue** using the [SFC format](https://vuejs.org/guide/scaling-up/sfc.htm) from Vue. The analytics instance is provided as `$analytics` prop. Note `queryID` is required property and we can populate it automatically by calling a method on the same instance.
+
+
+```html
+<template>
+	<button class="visit-store-btn" @click="handleVisitStore">Visit Store</button>
+</template>
+<script>
+export default {
+    name: 'VisitStoreButton',
+    inject: {
+		$analytics: {
+			default: null
+        }
+	},
+    methods: {
+        handleVisitStore() {
+            this.$analytics.conversion({
+                queryID: this.$analytics.getQueryID(),
+                objects: ['Harry Potter', 'Frankenstein'],
+            })
+		}
+	}
+}
+</script>
+```
+
+You can also view the complete demo as a codesandbox example below. 
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/analytics-with-hook" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+
 ## Configure the analytics experience
 You can define the `appbaseConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 - **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
