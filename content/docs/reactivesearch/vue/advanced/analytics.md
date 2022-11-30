@@ -126,7 +126,7 @@ export default {
 </script>
 ```
 
-You can also view the complete demo as a codesanbox example below. 
+You can also view the complete demo as a codesandbox example below. 
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/analytics-with-hook" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
