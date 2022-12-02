@@ -13,21 +13,13 @@ import sidebar from '../../../data/sidebars/all-sidebar';
 import '../../../styles/custom.css';
 
 const options = {
-	isCaseSensitive: false,
 	includeScore: true,
 	includeMatches: true,
-	distance: 100,
-	threshold: -0.1,
 	ignoreLocation: true,
-	tokenize: true,
-	matchAllTokens: true,
-	useExtendedSearch: true,
 	keys: [
-		{ name: 'title', weight: 0.55 },
+		{ name: 'title', weight: 0.65 },
+		{ name: 'tokens[0]', weight: 0.3 },
 		{ name: 'heading', weight: 0.05 },
-		{ name: 'meta_description', weight: 0.05 },
-		{ name: 'meta_title', weight: 0.05 },
-		{ name: 'tokens[0]', weight: 0.2 },
 	],
 };
 
@@ -213,35 +205,47 @@ class AutoComplete extends React.Component {
 		return 'default';
 	};
 
-	searchWithFuse = (inputValue, options) => {
+	searchWithFuse = inputValue => {
 		const fuse = new Fuse(data, options);
 		const searchValue = fuse.search(inputValue);
-		if (!searchValue.length && options.threshold !== 0.3) {
-			const newOptions = { ...options, threshold: 0.3 };
-			return this.searchWithFuse(inputValue, newOptions);
-		}
+
 		return searchValue;
+	};
+
+	filterPageSepecificResults = pageSpecificResults => {
+		let arr = [];
+		Object.keys(pageSpecificResults).forEach(url => {
+			arr = [...arr, ...pageSpecificResults[url].slice(0, 2)];
+		});
+
+		return arr;
 	};
 
 	getSuggestions = value => {
 		const { isMobile } = this.props;
-		const noOfSuggestions = isMobile ? 5 : 20;
+		const noOfSuggestions = 40;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
 
-		const searchValue = this.searchWithFuse(inputValue, options)
-			.map(res => ({ ...res, ...res.item }))
+		const searchValue = this.searchWithFuse(inputValue)
+			.map(res => ({
+				...res,
+				...res.item,
+				baseURL: res?.item?.url.split('#')[0] || '',
+				section: this.getSectionsMapper(res?.item?.url),
+			}))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
 			.filter(item => item.url !== '/data-schema/');
-		const orderedArray = orderBy(searchValue, o => o.score, 'desc');
-		let topResults = orderedArray.filter(item => !item.heading).slice(0, noOfSuggestions);
-		const withHeading = orderedArray.filter(item => item.heading);
-		if (topResults.length < 8) {
+		let topResults = searchValue.filter(item => !item.heading).slice(0, noOfSuggestions);
+		const withHeading = searchValue.filter(item => item.heading);
+
+		if (topResults.length <= 8) {
 			topResults = [
 				...topResults,
 				...withHeading.slice(0, noOfSuggestions - topResults.length),
 			];
 		}
+
 		const exactMatchIndex = topResults.findIndex(
 			item => item.title.toLowerCase() === inputValue && !item.heading,
 		);
@@ -253,17 +257,17 @@ class AutoComplete extends React.Component {
 			];
 		}
 
-		const newTopResults = topResults.map(res => {
-			return {
-				...res,
-				section: this.getSectionsMapper(res.url),
-			};
-		});
-
+		const newTopResults = orderBy(topResults, res => res.score);
+		console.log({ topResults, newTopResults });
 		const groupedByScore = groupBy(newTopResults, res => res.score);
 		let transformedHits = [];
 		Object.keys(groupedByScore).forEach(score => {
-			const grouped = groupBy(groupedByScore[score], res => res.section);
+			const pageSpecificResults = groupBy(groupedByScore[score], res => res.baseURL);
+
+			const grouped = groupBy(
+				this.filterPageSepecificResults(pageSpecificResults),
+				res => res.section,
+			);
 			const newHits = [
 				...(grouped['v3'] || []),
 				...(grouped['vue'] || []),
@@ -280,7 +284,7 @@ class AutoComplete extends React.Component {
 						? localStorage.getItem('recentSuggestions') || '[]'
 						: '[]',
 			  )
-			: transformedHits;
+			: transformedHits.slice(0, isMobile ? 5 : 20);
 	};
 
 	onChange(event, { newValue, method }) {
