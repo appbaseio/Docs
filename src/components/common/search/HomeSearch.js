@@ -212,10 +212,11 @@ class AutoComplete extends React.Component {
 		return searchValue;
 	};
 
-	filterPageSepecificResults = pageSpecificResults => {
+	filterPageSepecificResults = (pageSpecificResults, visitedPages = []) => {
 		let arr = [];
 		Object.keys(pageSpecificResults).forEach(url => {
-			arr = [...arr, ...pageSpecificResults[url].slice(0, 2)];
+			if (!visitedPages.includes(url))
+				arr = [...arr, ...pageSpecificResults[url].slice(0, 2)];
 		});
 
 		return arr;
@@ -258,14 +259,14 @@ class AutoComplete extends React.Component {
 		}
 
 		const newTopResults = orderBy(topResults, res => res.score);
-		console.log({ topResults, newTopResults });
+		let visitedPages = [];
 		const groupedByScore = groupBy(newTopResults, res => res.score);
 		let transformedHits = [];
 		Object.keys(groupedByScore).forEach(score => {
 			const pageSpecificResults = groupBy(groupedByScore[score], res => res.baseURL);
 
 			const grouped = groupBy(
-				this.filterPageSepecificResults(pageSpecificResults),
+				this.filterPageSepecificResults(pageSpecificResults, visitedPages),
 				res => res.section,
 			);
 			const newHits = [
@@ -276,6 +277,7 @@ class AutoComplete extends React.Component {
 				...(grouped['default'] || []),
 			];
 			transformedHits = [...transformedHits, ...newHits];
+			visitedPages = [...visitedPages, ...Object.keys(pageSpecificResults)];
 		});
 
 		return inputLength === 0
