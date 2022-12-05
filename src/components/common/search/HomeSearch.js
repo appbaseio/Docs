@@ -30,7 +30,7 @@ const getSection = url => {
 	if (isHavingHash) {
 		link = url.split('#')[0];
 		subSection = url.split('#')[1];
-		if (subSection && subSection.includes('">')) subSection = url.split('">')[0];
+		if (subSection && subSection.includes('">')) subSection = subSection.split('">')[0];
 	}
 	if (link.startsWith('/docs/reactivesearch')) {
 		const linkTags = link.split('/');
