@@ -30,6 +30,7 @@ const getSection = url => {
 	if (isHavingHash) {
 		link = url.split('#')[0];
 		subSection = url.split('#')[1];
+		if (subSection && subSection.includes('">')) subSection = url.split('">')[0];
 	}
 	if (link.startsWith('/docs/reactivesearch')) {
 		const linkTags = link.split('/');
@@ -46,7 +47,23 @@ const getSection = url => {
 			default:
 		}
 
-		if (['components', 'advanced', 'overview'].indexOf(sectionName.toLowerCase()) !== -1) {
+		if (
+			[
+				'components',
+				'advanced',
+				'overview',
+				'ui-builder',
+				'vue-searchbox',
+				'react-searchbox',
+				'react-native-searchbox',
+				'flutter-searchbox',
+				'flutter-searchbox-ui',
+				'searchbase',
+				'searchbase-dart',
+				'atlas-search',
+				'autocomplete-plugin',
+			].indexOf(sectionName.toLowerCase()) !== -1
+		) {
 			return subSection
 				? `${techName} > ${sectionName} > ${subSection}`
 				: `${techName} > ${sectionName}`;
