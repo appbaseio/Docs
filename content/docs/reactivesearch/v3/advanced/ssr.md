@@ -228,6 +228,11 @@ export default class MyDocument extends Document {
 
 Finally, you can now run the dev server and catch the SSR in action.
 
+### Demo
+
+<br />
+<iframe src="https://codesandbox.io/embed/github/appbaseio-apps/MovieSearch-app/tree/step-5" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
 ## Using with react-dom
 
 You can also use ReactiveSearch with [react-dom/server](https://reactjs.org/docs/react-dom-server.html). Check out the [example app](https://github.com/appbaseio/reactivesearch/tree/dev/packages/web/examples/ssr-with-react-dom) for a detailed setup.
@@ -253,5 +258,5 @@ We'll send this markup along with the computed `store` object so that it can be 
 
 We've covered all the existing components as an example app here:
 
--   [Components SSR demo with Next.js](https://github.com/appbaseio/reactivesearch/tree/dev/packages/web/examples/ssr)
--   [SSR demo with react-dom](https://github.com/appbaseio/reactivesearch/tree/dev/packages/web/examples/ssr-with-react-dom)
+-   [Components SSR demo with Next.js](https://github.com/appbaseio/reactivesearch/tree/next/packages/web/examples/ssr)
+-   [SSR demo with react-dom](https://github.com/appbaseio/reactivesearch/tree/next/packages/web/examples/ssr-with-react-dom)
