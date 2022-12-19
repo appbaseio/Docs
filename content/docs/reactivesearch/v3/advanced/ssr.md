@@ -231,7 +231,7 @@ Finally, you can now run the dev server and catch the SSR in action.
 ### Demo
 
 <br />
-<iframe src="https://codesandbox.io/embed/github/appbaseio-apps/MovieSearch-app/tree/step-5" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/ssr" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## Using with react-dom
 
