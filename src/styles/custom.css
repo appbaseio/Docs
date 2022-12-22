@@ -1956,7 +1956,7 @@ tbody tr td:nth-child(-n + 3) {
 
 .autosuggest-content {
 	overflow: scroll;
-	max-height: 600px;
+	max-height: 510px;
 }
 
 .autosuggest-footer-container {
