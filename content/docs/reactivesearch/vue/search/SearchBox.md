@@ -397,8 +397,7 @@ set whether the autosuggest functionality should be enabled or disabled. Default
 |------|----------|
 |  `Boolean` |   Yes   |
 
- defaults to `false`. When set to `true`, the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared
-    on selection. This is only relevant with `autosuggest`.
+ defaults to `false`. When set to `true`, the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared on selection. This is only relevant with `autosuggest`.
 ### showIcon
 
 | Type | Optional |
