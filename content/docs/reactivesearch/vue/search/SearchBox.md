@@ -391,6 +391,13 @@ set placeholder text to be shown in the component's input field. Defaults to "Se
 |  `Boolean` |   Yes   |
 
 set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`. When set to `false`, it searches as user types, unless `debounce` is also set.
+### strictSelection
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+ defaults to `false`. When set to `true`, the component will only set its value and fire the query if the value was selected from the suggestion. Otherwise the value will be cleared on selection. This is only relevant with `autosuggest`.
 ### showIcon
 
 | Type | Optional |
