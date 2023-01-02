@@ -48,6 +48,12 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 	};
 
 	const getValue = () => {
+		if (location.pathname.startsWith('/docs/reactivesearch/react-searchbox')) {
+			return 'React Searchbox';
+		}
+		if (location.pathname.startsWith('/docs/reactivesearch/react-native-searchbox')) {
+			return 'React Native Searchbox';
+		}
 		if (location.pathname.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
@@ -74,12 +80,6 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/native')) {
 			return 'React Native';
-		}
-		if (location.pathname.startsWith('/docs/reactivesearch/react-searchbox')) {
-			return 'React Searchbox';
-		}
-		if (location.pathname.startsWith('/docs/reactivesearch/react-native-searchbox')) {
-			return 'React Native Searchbox';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/searchbase-dart')) {
 			return 'Searchbase Dart';

@@ -10,6 +10,12 @@ import ThemeSwitch from './themeSwitch';
 const getValue = () => {
 	if (globalHistory) {
 		const path = globalHistory.location && globalHistory.location.pathname;
+		if (path && path.startsWith('/docs/reactivesearch/react-searchbox')) {
+			return 'React SearchBox';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/react-native-searchbox')) {
+			return 'React Native SearchBox';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
@@ -39,12 +45,6 @@ const getValue = () => {
 		}
 		if (path && path.startsWith('/docs/reactivesearch/native')) {
 			return 'Native';
-		}
-		if (path && path.startsWith('/docs/reactivesearch/react-searchbox')) {
-			return 'React SearchBox';
-		}
-		if (path && path.startsWith('/docs/reactivesearch/react-native-searchbox')) {
-			return 'React Native SearchBox';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/searchbox')) {
 			return 'Searchbox';
