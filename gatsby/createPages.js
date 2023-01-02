@@ -28,8 +28,7 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 
 				return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
 					const DocTemplate = path.resolve(`./src/templates/markdown/post.js`);
-
-					createPage({
+					const options = {
 						path: node.fields.slug,
 						component: DocTemplate,
 						context: {
@@ -38,7 +37,14 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 							slug: node.fields.slug,
 							section: node.fields.section,
 						},
-					});
+					}
+					if(node && node.fields && node.fields.slug && node.fields.slug.includes('/docs/reactivesearch/v4')){
+						// Create a page with /v4 and one with /react
+						createPage({...options, path: node.fields.slug.replace('/v4', '/react')})
+						createPage(options)
+					}else{
+						createPage(options);
+					}
 					return resolve();
 				});
 			});

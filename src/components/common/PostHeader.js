@@ -21,7 +21,7 @@ const PostHeader = ({ location }) => {
 			else if(value.value === 'v4 - Web'){
 				window.location.href = `${
 					window.location.origin
-				}/reactivesearch/v4/overview/quickstart`;
+				}/reactivesearch/react/overview/quickstart`;
 			}
 			else if (value.value === 'v3 - Web') {
 				window.location.href = `${
@@ -43,6 +43,9 @@ const PostHeader = ({ location }) => {
 			return 'v3 - Web';
 		}
 		if (location.pathname.startsWith('/reactivesearch/v4')) {
+			return 'v4 - Web';
+		}
+		if (location.pathname.startsWith('/reactivesearch/react')) {
 			return 'v4 - Web';
 		}
 		if (location.pathname.startsWith('/reactivesearch/vue')) {

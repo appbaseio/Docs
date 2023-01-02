@@ -16,6 +16,9 @@ const getLink = url => {
 	if (url.startsWith('/docs/reactivesearch/v4')) {
 		return '/docs/reactivesearch/v4/overview/quickstart/';
 	}
+	if (url.startsWith('/docs/reactivesearch/react')) {
+		return '/docs/reactivesearch/react/overview/quickstart/';
+	}
 	if (url.startsWith('/docs/reactivesearch/vue')) {
 		return '/docs/reactivesearch/vue/overview/quickstart/';
 	}
@@ -23,7 +26,7 @@ const getLink = url => {
 		return '/docs/reactivesearch/native/overview/quickstart/';
 	}
 
-	return '/docs/reactivesearch/v4/overview/quickstart/';
+	return '/docs/reactivesearch/react/overview/quickstart/';
 };
 
 const SidebarNav = ({ sidebar, nestedSidebar, location, style }) => {

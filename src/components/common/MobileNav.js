@@ -19,6 +19,9 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/v4')) {
 			return 'React - v4';
 		}
+		if (path && path.startsWith('/docs/reactivesearch/react')) {
+			return 'React - v4';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
 		}

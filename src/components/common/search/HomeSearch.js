@@ -75,6 +75,9 @@ const getValue = url => {
 	if (url.startsWith('/docs/reactivesearch/v4')) {
 		return 'react-bw';
 	}
+	if (url.startsWith('/docs/reactivesearch/react')) {
+		return 'react-bw';
+	}
 	if (url.startsWith('/docs/reactivesearch/vue')) {
 		return 'vue-bw';
 	}
