@@ -169,7 +169,6 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			<Dropdown
 				options={[
 					'React - v4',
-					'React - v3',
 					'Vue',
 					'UI Builder',
 					'React Searchbox',
@@ -181,6 +180,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Searchbase Dart',
 					'Atlas Search',
 					'Algolia Autocomplete',
+					'React - v3',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

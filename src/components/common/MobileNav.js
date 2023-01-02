@@ -210,10 +210,9 @@ class MobileNav extends React.Component {
 						<ReactDropdown
 							options={[
 								'React - v4',
-								'React - v3',
+								'Vue',
 								'UI Builder',
 								'Native',
-								'Vue',
 								'SearchBase',
 								'React SearchBox',
 								'React Native SearchBox',
@@ -222,6 +221,7 @@ class MobileNav extends React.Component {
 								'Flutter Searchbox',
 								'Flutter Searchbox UI',
 								'Algolia Autocomplete',
+								'React - v3',
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"
