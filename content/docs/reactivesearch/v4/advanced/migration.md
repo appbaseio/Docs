@@ -1,6 +1,6 @@
 ---
-title: 'ReactiveSearch: Migration Guide (v4)'
-meta_title: 'ReactiveSearch: Migration Guide (v4)'
+title: 'ReactiveSearch: Migration Guide'
+meta_title: 'ReactiveSearch: Migration Guide'
 meta_description: 'This guide will give you a brief about all the changes in the 4.x release of ReactiveSearch.'
 keywords:
     - reactivesearch
