@@ -254,15 +254,7 @@ class AutoComplete extends React.Component {
 			}))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
 			.filter(item => item.url !== '/data-schema/');
-		let topResults = searchValue.filter(item => !item.heading).slice(0, noOfSuggestions);
-		const withHeading = searchValue.filter(item => item.heading);
-
-		if (topResults.length <= 8) {
-			topResults = [
-				...topResults,
-				...withHeading.slice(0, noOfSuggestions - topResults.length),
-			];
-		}
+		let topResults = searchValue.slice(0, noOfSuggestions);
 
 		const exactMatchIndex = topResults.findIndex(
 			item => item.title.toLowerCase() === inputValue && !item.heading,
