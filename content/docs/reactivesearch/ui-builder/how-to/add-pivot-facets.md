@@ -14,7 +14,7 @@ nestedSidebar: 'ui-builder-reactivesearch'
 
 ## Overview
 
-The How-to guide enumerates steps to add a pivot facet to your Search UI. We would be adding a `TreeList` facet to a search app.
+This how-to guide shares the steps to add a pivot facet to your Search UI. We would be adding a `TreeList` component to the search UI.
 
 ### Pre-requisite: Create a Search UI 
 

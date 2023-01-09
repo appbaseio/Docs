@@ -15,15 +15,15 @@ nestedSidebar: 'ui-builder-reactivesearch'
 ## Overview
 
 
-[ReactiveSearch.io](http://reactivesearch.io)'s **UI Builder** is a built-in visual search UI builder that enables citizen developers to author search UIs with point and click, extend or export the resulting codebase. It comes with version control support and each version can be deployed on the global edge with your domain in a single click.
+[ReactiveSearch.io](http://reactivesearch.io)'s **UI Builder** enables citizen developers to author search UIs with no-code, extend them with low-code with a cloud IDE and publish search UIs at the global edge on your domain.
 
-You can following this Arcade to see how the UI builder works.
+You can follow this interactive tutorial to see how the UI builder works in action.
 
 <div style="position: relative; padding-bottom: calc(52.135416666666664% + 40px); height: 0;"><iframe src="https://demo.arcade.software/eA33UmiqidtjfcaNrhi2?embed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 <br/>
 
-> Note: **UI Builder** feature is available for all ReactiveSearch plans.
+> Note: **UI Builder** feature is now available for all ReactiveSearch plans.
 
 
 ### Pick A Template
@@ -43,7 +43,7 @@ The templates are divided into three categories:
 
 ### UI components
 
-The search UI builder allows adding all the major components of the ReactiveSearch UI components.
+The search UI builder allows adding all the major components of the ReactiveSearch UI library.
 
 In this interactive demo, we will show how you can add UI components with the search UI builder across multiple pages, tweak results, add end-user authentication and deploy the search UI on your own custom domain 🪄
 
@@ -57,11 +57,11 @@ You can configure end-user authentication with Username / Password and OAuth wit
 
 When configuring username/password authentication, you can optionally choose to enable user sign-ups or manage your end-users with the User Management Portal from within the dashboard.
 
-> Note: This feature is only available for Production and Enterprise plan users
+> Note: This feature is available for Production and Enterprise plan users
 
 You can configure end-user authentication with Enterprise providers like SAML or AD.
 
-> Note: This feature is only available for Enterprise plan users
+> Note: This feature is available for Enterprise plan users
 
 ### Custom Domain
 
@@ -183,11 +183,10 @@ The IDE provides a live transpilation where you can edit the code and see live r
 
 The IDE changes are reflected back to the no-code panel and any changes done via no-code are also reflected into the IDE. This happens as every change you save is version controled. You can commit your changes, and each version gets deployed to its own domain.
 
-You can also export the resulting code by first exporting it to Code.
+### Export Code And More
 
+It is possible to export the code for your search UI natively. You can develop with your favorite IDE such as Visual Studio Code (VSCode) and then choose to re-import the project back to the UI builder.
 
-### Export Code And Native Development
+![Re-import code](https://i.imgur.com/IWQnSoc.png)
 
-For production and enterprise plan users, we support exporting of the code functionality. You can go to the code editor first, then go to export to CodeSandbox and from there, you can download the ZIPs.
-
-You can develop with your favorite IDE such as Visual Studio Code (VSCode) and then choose to re-import the project back to the UI builder as well.
+> Note: Exporting and re-importing is available for production and enterprise plan users.

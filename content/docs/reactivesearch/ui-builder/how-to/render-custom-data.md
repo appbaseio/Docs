@@ -1,12 +1,15 @@
 ---
-title: 'Extract values from raw response'
-meta_title: 'Extract values from raw response'
-meta_description: 'Extract values from raw response'
+title: 'Render custom data'
+meta_title: 'Render custom data in your search UI'
+meta_description: 'Render custom data in your search UI using Pipelines and UI builder'
 keywords:
   - ui-builder
   - ui-integrations
-  - how-to-guides
-  - extract-value-from-raw-response
+  - how-to
+  - react
+  - vue
+  - elasticsearch
+  - solr
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
@@ -88,7 +91,7 @@ const Main = () => {
 }
 ```
 
-> Read more about `transformResponse` prop [here](https://docs.reactivesearch.io/docs/reactivesearch/v3/overview/reactivebase/#transformresponse)
+> Read more about the `transformResponse` prop [here](https://docs.reactivesearch.io/docs/reactivesearch/v3/overview/reactivebase/#transformresponse)
 
 
 #### Render the extracted data as a separate UI element

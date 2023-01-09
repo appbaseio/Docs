@@ -14,13 +14,13 @@ nestedSidebar: 'ui-builder-reactivesearch'
 
 ## Overview
 
-The How-to guide enumerates steps to add a new page/ route to an existing Search UI.
+In this guide, we will see how to add a new page to a search UI created through the UI builder.
 
 ### Pre-requisite: Create a Search UI 
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Lucidworks_Fusion__x1WkxtpJTZqQrYx728_AJw" width="100%" height="640" allowfullscreen frameborder="0" style="margin: auto;"></iframe>
+<iframe src="https://scribehow.com/embed/Connecting_the_search_UI_to_Elasticsearch__qmxLBZk6TAarxuNwWDK9IA" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 

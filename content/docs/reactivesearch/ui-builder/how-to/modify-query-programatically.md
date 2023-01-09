@@ -5,9 +5,11 @@ meta_description: 'Modify the query programatically'
 keywords:
   - ui-builder
   - ui-integrations
-  - how-to-guides
-  - add-custom-query-param
-  - modify-query
+  - how-to
+  - react
+  - vue
+  - elasticsearch
+  - solr
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
@@ -20,7 +22,7 @@ The How-to guide enumerates steps to programatically modify the query before hit
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Lucidworks_Fusion__x1WkxtpJTZqQrYx728_AJw" width="100%" height="640" allowfullscreen frameborder="0" style="margin: auto;"></iframe>
+<iframe src="https://scribehow.com/embed/Connecting_the_search_UI_to_Elasticsearch__qmxLBZk6TAarxuNwWDK9IA" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
