@@ -20,7 +20,7 @@ The How-to guide enumerates steps to add a pivot facet to your Search UI. We wou
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Lucidworks_Fusion__x1WkxtpJTZqQrYx728_AJw" width="100%" height="640" allowfullscreen frameborder="0" style="margin: auto;"></iframe>
+<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Elasticsearch__YNtZ8O-pTyCkyHwDJkP2Pw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
@@ -131,9 +131,9 @@ Let's take a look and try to understand the snippet we pasted to add the TreeLis
 
 ### Example preview
 
-<iframe src="https://codesandbox.io/embed/enterprise-search-ui-template-forked-oj4czz?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/reactivesearch-shopify-plugin-forked-9khp40?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Adding Treelist facet to a Search UI"
+     title="reactivesearch-shopify-plugin (forked)"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
