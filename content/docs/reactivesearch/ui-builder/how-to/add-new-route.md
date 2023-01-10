@@ -20,7 +20,7 @@ The How-to guide enumerates steps to add a new page/ route to an existing Search
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Lucidworks_Fusion__x1WkxtpJTZqQrYx728_AJw" width="100%" height="640" allowfullscreen frameborder="0" style="margin: auto;"></iframe>
+<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Elasticsearch__YNtZ8O-pTyCkyHwDJkP2Pw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
@@ -110,39 +110,12 @@ const HelloWorld = () => {
     {}
   );
 
-  const backend = get(preferences, "backend", "");
-  const isFusion = backend === "fusion";
-
-  const globalFusionSettings = get(preferences, "fusionSettings", {});
-  const pageFusionSettings = get(
-    pageSettings,
-    `pages.${pageSettings.currentPage}.indexSettings.fusionSettings`
-  );
-  const fusionSettings = {
-    ...globalFusionSettings,
-    ...pageFusionSettings
-  };
   const resultSettings = get(
     componentSettings,
     "result",
     get(preferences, "resultSettings", {})
   );
-  const transformRequest = isFusion
-    ? (props) => {
-        if (Object.keys(fusionSettings).length) {
-          const newBody = JSON.parse(props.body);
-          newBody.metadata = {
-            app: fusionSettings.app,
-            profile: fusionSettings.profile,
-            suggestion_profile: fusionSettings.searchProfile,
-            sponsored_profile: get(fusionSettings, "meta.sponsoredProfile", "")
-          };
-          // eslint-disable-next-line
-          props.body = JSON.stringify(newBody);
-        }
-        return props;
-      }
-    : undefined;
+
   let newProps = {};
   const sortOptionSelector = get(resultSettings, "sortOptionSelector", []);
   if (sortOptionSelector && sortOptionSelector.length) {
@@ -234,7 +207,6 @@ const HelloWorld = () => {
       }}
       preferences={getSearchPreferences()}
       initialQueriesSyncTime={100}
-      transformRequest={transformRequest}
     >
       <SearchBox
         preferencesPath={`pageSettings.pages.${pageSettings.currentPage}.componentSettings.search`}
