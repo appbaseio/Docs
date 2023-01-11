@@ -33,6 +33,10 @@ const plugins = [
 		resolve: `gatsby-transformer-remark`,
 		options: {
 			plugins: [
+				`gatsby-remark-autolink-headers`,
+				`gatsby-remark-code-titles`,
+				`gatsby-remark-check-links`,
+				`gatsby-remark-external-links`,
 				{
 					resolve: `gatsby-remark-images`,
 					options: {
@@ -41,6 +45,7 @@ const plugins = [
 					},
 				},
 				`gatsby-remark-prismjs-copy-button`,
+				// Keep all the plugins before prismjs, which may affect the content due to code transformations
 				{
 					resolve: `gatsby-remark-prismjs`,
 					options: {
@@ -53,10 +58,6 @@ const plugins = [
 						}
 					}
 				},
-				`gatsby-remark-autolink-headers`,
-				`gatsby-remark-code-titles`,
-				`gatsby-remark-check-links`,
-				`gatsby-remark-external-links`,
 			],
 		},
 	},

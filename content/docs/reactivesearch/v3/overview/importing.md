@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 The first step in getting started with building a custom project for **ReactiveSearch** is to add your own data. In this guide, we explain how you can import your data with the correct schema.

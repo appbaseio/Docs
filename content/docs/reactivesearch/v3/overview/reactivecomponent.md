@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ReactiveComponent lets you connect any React UI component with an Elasticsearch query or an aggregation seamlessly. It can be used as a standalone component to integrate Elasticsearch queries into your frontend UI declaratively. It can also be used in conjunction with other ReactiveSearch components. Read more [here](/docs/reactivesearch/v3/advanced/reactivecomponent/).

@@ -44,6 +44,9 @@ const getSection = url => {
 			case 'v3':
 				techName = 'React v3';
 				break;
+			case 'v4':
+				techName = "React v4";
+				break;
 			default:
 		}
 
@@ -87,6 +90,12 @@ const getValue = url => {
 		return 'react-bw';
 	}
 	if (url.startsWith('/docs/reactivesearch/v3')) {
+		return 'react-bw';
+	}
+	if (url.startsWith('/docs/reactivesearch/v4')) {
+		return 'react-bw';
+	}
+	if (url.startsWith('/docs/reactivesearch/react')) {
 		return 'react-bw';
 	}
 	if (url.startsWith('/docs/reactivesearch/vue')) {
