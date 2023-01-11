@@ -101,7 +101,7 @@
 		"gatsby-remark-prismjs-copy-button": "^0.3.1",
 		"gatsby-source-filesystem": "4.9.0",
 		"gatsby-source-ghost": "4.2.4",
-		"gatsby-transformer-remark": "5.9.0",
+		"gatsby-transformer-remark": "5.25.1",
 		"gatsby-transformer-sharp": "^4.9.0",
 		"gatsby-transformer-yaml": "4.9.0",
 		"hotkeys-js": "^3.8.7",
