@@ -147,6 +147,10 @@ It a sub-category of category.
 
 This can be thought of as narrowing down the type of route. For eg, if category is the type of fruits, sub category can be type of a particular fruit. So Apple can be considered a category and Red or Green apples can be considered ACL's of Apple.
 
+**Following values are supported for this field**
+
+`cat`, `bulk`, `cluster`, `search`, `remote`, `create`, `count`, `scripts`, `delete`, `doc`, `source`, `field_caps`, `close`, `analyze`, `exists`, `get`, `template`, `explain`, `indices`, `alias`, `aliases`, `delete_by_query`, `cache`, `index`, `mapping`, `flush`, `forcemerge`, `upgrade`, `settings`, `open`, `recovery`, `mappings`, `rollover`, `refresh`, `segments`, `shrink`, `split`, `shard_stores`, `stats`, `ingest`, `validate`, `msearch`, `mget`, `nodes`, `mtermvectors`, `reindex`, `update_by_query`, `render`, `rank_eval`, `search_shards`, `snapshot`, `tasks`, `termvectors`, `update`
+
 #### Category
 
 **This is a required field**
@@ -154,6 +158,10 @@ This can be thought of as narrowing down the type of route. For eg, if category 
 Route category.
 
 This indicates the category of the route. This is useful for the internal functioning of the pipeline.
+
+**Following values are supported for this field**
+
+`docs`, `search`, `indices`, `cat`, `clusters`, `misc`, `user`, `permission`, `analytics`, `streams`, `rules`, `suggestions`, `auth`, `reactivesearch`, `searchrelevancy`, `synonyms`, `searchgrader`, `uibuilder`, `logs`, `cache`, `storedquery`, `sync`, `pipelines`
 
 ### Method
 

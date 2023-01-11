@@ -34,7 +34,7 @@ Example uses:
         :from="0"
         :size="5"
     >
-        <div slot="render" slot-scope="{ data }">
+        <template #render="{ data }">
             <result-cards-wrapper>
                 <result-card
                     v-bind:key="result._id"
@@ -57,7 +57,7 @@ Example uses:
                     </result-card-description>
                 </result-card>
             </result-cards-wrapper>
-        </div>
+        </template>
     </reactive-list>
 </template>
 ```

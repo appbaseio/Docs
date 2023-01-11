@@ -40,8 +40,11 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/ui-builder')) {
 			return 'UI Builder';
 		}
+		if (path && path.startsWith('/docs/reactivesearch/vue/v1')) {
+			return 'Vue - v1';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/vue')) {
-			return 'Vue';
+			return 'Vue - v3';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/native')) {
 			return 'Native';
@@ -70,8 +73,10 @@ const getFileName = value => {
 	switch (value) {
 		case 'Native':
 			return 'native-reactivesearch';
-		case 'Vue':
+		case 'Vue - v3':
 			return 'vue-reactivesearch';
+		case 'Vue - v2':
+			return 'vue-v1-reactivesearch';
 		case 'React - v2':
 			return 'web-v2-reactivesearch';
 		case 'SearchBase':
@@ -105,6 +110,8 @@ const getVersionName = value => {
 			return 'Native';
 		case 'Vue':
 			return 'Vue';
+		case 'Vue - v1':
+			return 'v1';
 		case 'React - v2':
 			return 'v2';
 		case 'React - v3':
@@ -210,7 +217,7 @@ class MobileNav extends React.Component {
 						<ReactDropdown
 							options={[
 								'React - v4',
-								'Vue',
+								'Vue - v3',
 								'UI Builder',
 								'Native',
 								'SearchBase',
@@ -222,6 +229,7 @@ class MobileNav extends React.Component {
 								'Flutter Searchbox UI',
 								'Algolia Autocomplete',
 								'React - v3',
+								'Vue - v1'
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"

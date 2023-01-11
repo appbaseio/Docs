@@ -16,13 +16,13 @@ nestedSidebar: 'vue-reactivesearch'
 ## Usage
 
 ```html
-<template>
-    <state-provider>
-        <div slot-scope="{ searchState }">
-           Search State: {{ JSON.stringify(searchState) }}
+<state-provider>
+    <template #default="{ searchState }">
+        <div>
+            Search State: {{ JSON.stringify(searchState) }}
         </div>
-    </state-provider>
-</template>
+    </template>
+</state-provider>
 ```
 
 Search state is an object with component id as key and state as value.<br/>
@@ -53,11 +53,11 @@ For example:
 `setSearchState()` is a function which can be used to set custom search state of the app, takes one argument which is a custom state object.
 
 ```html
-<template>
+<template #default="{ setSearchState }">
     <state-provider>
-        <div slot-scope="{ setSearchState }">
+        <template #default="{ setSearchState }">
            <button @click="() => setSearchState(this.searchState)">Replay Search</button>
-        </div>
+        </template>
     </state-provider>
 </template>
 <script>

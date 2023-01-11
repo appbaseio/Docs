@@ -15,13 +15,13 @@ You can take advantage of search and click analytics when using [Appbase.io](htt
 
 ## Click Analytics
 
-Click analytics have to be wired into the result components. Its supported in `ReactiveList`.When using `ReactiveList`, the `renderItem` or `render` prop|slot-scope receives an extra property to make click analytics work which you have to invoke with `onClick`. This method also supports the document id(optional) as the second param. If document id is not set then ReactiveSearch will calculate it based on the click position.
+Click analytics have to be wired into the result components. Its supported in `ReactiveList`.When using `ReactiveList`, the `renderItem` or `render` slot receives an extra property to make click analytics work which you have to invoke with `onClick`. This method also supports the document id(optional) as the second param. If document id is not set then ReactiveSearch will calculate it based on the click position.
 
 ```html
 <reactive-list>
-    <div slot="renderItem" slot-scope="{ item,  triggerClickAnalytics}">
-        <div onClick="triggerClickAnalytics">{{ item.title }}</div>
-    </div>
+    <template #renderItem="{ item,  triggerClickAnalytics}">
+        <div @click="triggerClickAnalytics">{{ item.title }}</div>
+    </template>
 </reactive-list>
 ```
 
@@ -30,14 +30,14 @@ When rendering your component using `render` you have to call the `triggerClickA
 
 ```html
 <reactive-list>
-    <div slot="render" slot-scope="{ data, triggerClickAnalytics }">
+    <template #render="{ data, triggerClickAnalytics }">
         <div
             v-for="(item, index) in data"
             @click="triggerClickAnalytics(item._click_id)"
         >
             {{ item.title }}
         </div>
-    </div>
+    </template>
 </reactive-list>
 ```
 
@@ -50,9 +50,9 @@ Impressions tracking is tied to the result components. You may have to do some e
 For an example, the following example uses the `renderItem` slot
 ```html
 <reactive-list>
-    <div slot="renderItem" slot-scope="{ hit }">
-        <div :id="hit._id" :key="hit._id">{{ hit.title }}</div>
-    </div>
+    <template #renderItem="{ item }">
+        <div :id="hit._id" :key="hit._id">{{ item.title }}</div>
+    </template>
 </reactive-list>
 ```
 
@@ -60,7 +60,7 @@ Check this example with the `render` slot
 
 ```html
 <reactive-list>
-    <div slot="render" slot-scope="{ data }">
+    <template #render="{ data }">
         <div
             v-for="(hit, index) in data"
             :id="hit._id"
@@ -68,7 +68,7 @@ Check this example with the `render` slot
         >
             {{ hit.title }}
         </div>
-    </div>
+    </template>
 </reactive-list>
 ```
 
@@ -78,7 +78,7 @@ For an example,
 
 ```html
 <reactive-list componentId="SearchResult">
-    <div slot="render" slot-scope="{ data }">
+    <template #render="{ data }">
         <result-cards-wrapper>
             <result-card
                 v-for="(hit, index) in data"
@@ -89,7 +89,7 @@ For an example,
                 <result-card-description>by {{ item.authors }}</result-card-description>
             </result-card>
         </result-cards-wrapper>
-    </div>
+    </template>
 </reactive-list>
 ```
 
@@ -132,7 +132,7 @@ You can also view the complete demo as a codesandbox example below.
 
 
 ## Configure the analytics experience
-You can define the `appbaseConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
+You can define the `reactivesearchAPIConfig` prop in the `ReactiveBase` component to customize the analytics experience when appbase.io is used as a backend. It accepts an object which has the following properties:
 - **recordAnalytics** `Boolean` allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
 - **emptyQuery** `Boolean` If `false`, then appbase.io will not record the analytics for the empty queries i.e `match_all` queries. Defaults to `true`.
 - **enableQueryRules** `Boolean` If `false`, then appbase.io will not apply the query rules on the search requests. Defaults to `true`.
@@ -146,14 +146,14 @@ For example in the following code, we're setting up two custom events that will 
 
 ```html
 <template>
-	<reactive-base :appbaseConfig="appbaseConfig" />
+	<reactive-base :reactivesearchAPIConfig="reactivesearchAPIConfig" />
 </template>
 <script>
 	export default {
 		name: 'app',
 		methods: {
 			computed: {
-				appbaseConfig() {
+				reactivesearchAPIConfig() {
 					return {
 						customEvents: {
 							platform: 'ios',
@@ -175,14 +175,14 @@ For example in the following code, we're setting the `preference` value to `loca
 
 ```html
 <template>
-	<reactive-base :appbaseConfig="appbaseConfig" />
+	<reactive-base :reactivesearchAPIConfig="reactivesearchAPIConfig" />
 </template>
 <script>
 	export default {
 		name: 'app',
 		methods: {
 			computed: {
-				appbaseConfig() {
+				reactivesearchAPIConfig() {
 					return {
 						queryParams: {
                             preference: "local",

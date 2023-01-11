@@ -758,7 +758,7 @@ These are the properties that can be subscribed to:
 - **micStatusChange** can be used to listen for the mic status changes
 
 ## Render UI
-You can use the default `scoped-slot` to render your custom UI. The following properties are available in the slot.
+You can use the default `slot` to render your custom UI. The following properties are available in the slot.
 
 ### Getters
  `boolean`

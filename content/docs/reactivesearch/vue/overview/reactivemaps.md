@@ -174,21 +174,21 @@ Now, we would like to customize the markers. Instead of using the default pin we
 	}"
     :defaultZoom="3"
 >
-    <div
-        slot="renderItem"
-        slot-scope="{ magnitude }"
-        :style="{
-            background: 'dodgerblue',
-            color: '#fff',
-            paddingLeft: '5px',
-            paddingRight: '5px',
-            borderRadius: '3px',
-            padding: '10px',
-        }"
-    >
+	<template #renderItem="{ magnitude }">
+		<div
+			:style="{
+				background: 'dodgerblue',
+				color: '#fff',
+				paddingLeft: '5px',
+				paddingRight: '5px',
+				borderRadius: '3px',
+				padding: '10px',
+			}"
+    	>
         <i class="fas fa-globe-europe" />
-        &nbsp;{{ magnitude }}
-    </div>
+			&nbsp;{{ magnitude }}
+		</div>
+	</template>
 </reactive-google-map>
 ```
 
@@ -230,21 +230,21 @@ Now, we will put both components together to create the UI view.
 						:react="{ and: 'places' }"
 						:defaultZoom="3"
 					>
-						<div
-							slot="renderItem"
-							slot-scope="{ magnitude }"
-							:style="{
-								background: 'dodgerblue',
-								color: '#fff',
-								paddingLeft: '5px',
-								paddingRight: '5px',
-								borderRadius: '3px',
-								padding: '10px',
-							}"
-						>
-							<i class="fas fa-globe-europe" />
-							&nbsp;{{ magnitude }}
-						</div>
+						<template #renderItem="{ magnitude }">
+							<div
+								:style="{
+									background: 'dodgerblue',
+									color: '#fff',
+									paddingLeft: '5px',
+									paddingRight: '5px',
+									borderRadius: '3px',
+									padding: '10px',
+								}"
+							>
+								<i class="fas fa-globe-europe" />
+								&nbsp;{{ magnitude }}
+							</div>
+						</template>
 					</reactive-google-map>
 				</div>
 			</div>

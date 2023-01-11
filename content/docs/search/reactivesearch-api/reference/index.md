@@ -29,6 +29,16 @@ This guide helps you to learn more about the each property of `ReactiveSearch` A
 }
 ```
 
+## Query parameters
+
+**Supported Engines**
+elasticsearch, opensearch & solr
+
+Reactivesearch API for `elasticsearch/opensearch` supports all the [query parameters supported by `_msearch` requests](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html#search-multi-search-api-query-params).
+Additionally, it supports following parameters:  
+### preference
+Node or shard used to perform the search. Defaults to a combination of [query Id](/docs/search/reactivesearch-api/reference/elasticsearch#id) & user's IP address.
+
 ## query
 
 **This is a required field**
@@ -1552,6 +1562,11 @@ For ElasticSearch this maps to the `exclude` field inside the `term` query.
 For Solr, this maps to the `facet.excludeTerms` field.
 
 ### searchboxId
+
+**Supported Engines**
+elasticsearch, opensearch
+
+### range
 
 **Supported Engines**
 elasticsearch, opensearch

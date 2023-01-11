@@ -135,7 +135,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.
@@ -174,7 +174,7 @@ SearchBox component offers two modes of usage, `select` & `tag`. When mode is se
 
 | Type | Optional |
 |------|----------|
-|  `string \| Array<string \| DataField*>`  |    No    |
+|  `string \| Array<string \| DataField*>`  |   Yes    |
 
 index field(s) to be connected to the component’s UI view. SearchBox accepts an `Array` in addition to `string`, which is useful for searching across multiple fields with or without field weights.<br/>
 Field weights allow weighted search for the index fields. A higher number implies a higher relevance weight for the corresponding field in the search results.<br/>
@@ -190,8 +190,7 @@ type DataField = {
 database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields. Check examples at [here](/docs/search/reactivesearch-api/reference/#datafield).
 
 > Note:
-> 1. This prop is optional only when `enableAppbase` prop is set to `true` in `ReactiveBase` component.
-> 2. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.21.0` and Appbase version `v7.47.0`.
+> 1. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.0.0` and Appbase version `v7.47.0`.
 
 ### size
 
@@ -221,10 +220,6 @@ fields to be included in the suggestion's query when `autoSuggest` is true.
 |  `bool` |   Yes   |
 
 Defaults to `false`. When enabled, it can be useful to curate search suggestions based on actual search queries that your users are making. Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
-
-> Note:
->
-> Popular Suggestions only work when `enableAppbase` prop is `true`.
 
 ### popularSuggestionsConfig
 
@@ -269,9 +264,9 @@ Defaults to `false`. When set to `true`, it predicts the next relevant words fro
 |------|----------|
 |  `Boolean` |   Yes   |
 
-Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane). Appbase.io recommends defining a unique id(`userId` property) in `appbaseConfig` prop for each user to personalize the recent searches.
+Defaults to `false`. When set to `true`, recent searches are returned as suggestions as per the recent suggestions config (either defaults, or as set through `recentSuggestionsConfig` or via Recent Suggestions settings in the control plane). Appbase.io recommends defining a unique id(`userId` property) in `reactivesearchAPIConfig` prop for each user to personalize the recent searches.
 
-> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `appbaseConfig`.
+> Note: Please note that this feature only works when `recordAnalytics` is set to `true` in `reactivesearchAPIConfig`.
 
 ### recentSuggestionsConfig
 
@@ -303,34 +298,6 @@ Index(es) from which to return the recent suggestions from. Defaults to the enti
         }"
     />
 ```
-
-
-### aggregationField
-
-| Type | Optional |
-|------|----------|
-|  `String` |   Yes   |
-
-One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
-You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` slot as shown:
-
-```html
-<template
-  slot="render"
-  slot-scope="{
-        ...
-        aggregationData
-    }"
->
-  ...
-</template>
-```
-
-> If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** slot.
-
-> It is possible to override this query by providing `customQuery`.
-
-> Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
@@ -575,8 +542,12 @@ When set to false the width of suggestions dropdown container is limited to the 
       expandSuggestionsContainer={false}
       ...
   >
-      <img slot="addonBefore" src="..." />
-      <img slot="addonAfter" src="..." />
+    <template #addonBefore>
+      <img src="..." />
+    </template>
+    <template #addonAfter>
+      <img src="..." />
+    </template>
   </search-box>
 ```
 
@@ -692,30 +663,29 @@ You can use `SearchBox` with `render slot` as shown:
 	:dataField="['original_title', 'original_title.search']"
 	:URLParams="true"
 >
-  <div
-		class="suggestions"
-		slot="render"
-		slot-scope="{
+  <template #render="{
 			error,
 			loading,
 			downshiftProps: { isOpen, highlightedIndex, getItemProps, getItemEvents },
 			data: suggestions,
 		}"
-	>
-		<div v-if="loading">loading...</div>
-		<ul v-if="isOpen">
-			<template v-for="suggestion in suggestions">
-				<li
-					style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
-					v-bind="getItemProps({ item: suggestion })"
-					v-on="getItemEvents({ item: suggestion })"
-					:key="suggestion._id"
-				>
-					{{ suggestion.label }}
-				</li>
-			</template>
-		</ul>
-	</div>
+  >
+    <div class="suggestions">
+      <div v-if="loading">loading...</div>
+        <ul v-if="isOpen">
+          <template v-for="suggestion in suggestions">
+            <li
+              style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
+              v-bind="getItemProps({ item: suggestion })"
+              v-on="getItemEvents({ item: suggestion })"
+              :key="suggestion._id"
+            >
+              {{ suggestion.label }}
+            </li>
+          </template>
+        </ul>
+	  </div>
+  </template>
 </search-box>
 ```
 
@@ -756,8 +726,8 @@ can be used to render a message when there are no suggestions found.
 can be used to render an error message in case of any error.
 
 ```html
-<template slot="renderError" slot-scope="error">
-<div>Something went wrong!<br />Error details<br />{{ error }}</div>
+<template #renderError="error">
+  <div>Something went wrong!<br />Error details<br />{{ error }}</div>
 </template>
 ```
 ### getMicInstance
@@ -786,7 +756,7 @@ is a constant which can have one of these values:<br/>
 `DENIED` - permission is not allowed<br/>
 
 ```html
-  <template slot="renderMic" slot-scope="{ handleClick, status }">
+  <template #renderMic="{ handleClick, status }">
       <div v-if="status === `ACTIVE`">
           <img src="/active_mic.png" onClick={handleClick} />
       </div>
@@ -818,7 +788,7 @@ You can use a custom icon in place of the default icon for the recent search ite
               'recent-search-icon': '...',
           }"
       >
-          <recent-icon slot="recentSearchesIcon" />
+          <recent-icon #recentSearchesIcon />
       </search-box>
   ```
 
@@ -838,7 +808,7 @@ You can use a custom icon in place of the default icon for the popular searches 
               'popular-search-icon': '...'
           }"
       >
-          <popular-icon slot="popularSearchesIcon" />
+        <popular-icon #popularSearchesIcon />
       </search-box>
   ```
 
@@ -857,11 +827,12 @@ The HTML markup displayed before (on the left side of) the searchbox input field
           'popular-search-icon': '...'
         }"
     >
-        <img 
-          slot="addonBefore"
-          src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-          height="30px"
-        />
+      <template #addonBefore>
+          <img 
+            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+            height="30px"
+          />
+      </template>
     </search-box>
   ```
 
@@ -869,7 +840,7 @@ The HTML markup displayed before (on the left side of) the searchbox input field
 
 | Type | Optional |
 |------|----------|
-|  `slot-scope` |   Yes   |
+|  `slot` |   Yes   |
 
 The HTML markup displayed before (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
@@ -882,11 +853,12 @@ The HTML markup displayed before (on the right side of) the searchbox input fiel
           'popular-search-icon': '...'
         }"
     >
+      <template #addonAfter>
         <img 
-          slot="addonBefore"
           src="https://img.icons8.com/cute-clipart/64/000000/search.png"
           height="30px"
         />
+      </template>
     </search-box>
   ```
 
@@ -921,8 +893,6 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
   />
   ```
 
-> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
-
 ### index
 
 | Type | Optional |
@@ -930,8 +900,6 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 |  `String` |   Yes   |
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
-
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
 
 ### renderItem
 
@@ -947,9 +915,11 @@ The index prop can be used to explicitly specify an index to query against for t
         componentId="BookSensor"
         // ...
       >
-        <div class="suggestions" slot="renderItem" slot-scope="item">
-          👋 &nbsp; {{ item.label }}
-        </div>
+        <template #renderItem="item">
+          <div class="suggestions">
+            👋 &nbsp; {{ item.label }}
+          </div>
+        </template>
     </search-box>
 ```
 
@@ -1009,18 +979,18 @@ The custom HTML markup displayed for enterButton. Use in conjunction with `enter
       ...
       :enterButton="true"
 >
-    <div
-        slot="renderEnterButton"
-        slot-scope="onClick"
-        :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }"
+    <template
+        #renderEnterButton="onClick"
     >
-        <button
+      <div :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }">
+         <button
             :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
             v-on:click="onClick"
         >
             🔍 Search
         </button>
-    </div>
+      </div>
+    </template>
 </search-box>
 ```
 
@@ -1048,7 +1018,7 @@ It accepts an object with these properties:
          'selected-tag': '...'
       }"
   >
-		<div slot="renderSelectedTags" slot-scope="{ values, handleClear, handleClearAll }">
+		<template #renderSelectedTags="{ values, handleClear, handleClearAll }">
 			<button
 				style="{ background-color: highlightedIndex ? 'grey' : 'transparent'color: 'green' }"
 				v-for="tagValue in values"
@@ -1057,7 +1027,7 @@ It accepts an object with these properties:
 			>
 				{{ tagValue }}
 			</button>
-		</div>
+		</template>
   </search-box>
 ```
 

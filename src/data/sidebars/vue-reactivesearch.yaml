@@ -39,8 +39,6 @@
               link: /docs/reactivesearch/vue/range/RangeInput/
       - group: Search Components
         items:
-            - title: DataSearch
-              link: /docs/reactivesearch/vue/search/DataSearch/
             - title: SearchBox
               link: /docs/reactivesearch/vue/search/SearchBox/              
       - group: Result Components
@@ -71,8 +69,6 @@
               link: /docs/reactivesearch/vue/advanced/StateProvider/
             - title: Custom Queries
               link: /docs/reactivesearch/vue/advanced/CustomQueries/
-            - title: Grouping Results
-              link: /docs/reactivesearch/vue/advanced/groupingresults/
             - title: React Prop
               link: /docs/reactivesearch/vue/advanced/ReactProp/
             - title: Reactive Component
@@ -85,3 +81,5 @@
               link: /docs/reactivesearch/vue/advanced/analytics/
             - title: Writing and Editing Data
               link: /docs/reactivesearch/vue/advanced/Data/
+            - title: Migration Guide
+              link: /docs/reactivesearch/vue/advanced/migration/

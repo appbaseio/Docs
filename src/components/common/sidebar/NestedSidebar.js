@@ -14,8 +14,10 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 	const switchDocs = value => {
 		if (value.value === 'React Native') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/native/overview/QuickStart/`;
-		} else if (value.value === 'Vue') {
+		} else if (value.value === 'Vue - v3') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
+		} else if (value.value === 'Vue - v1') {
+			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/v1/overview/QuickStart/`;
 		} else if (value.value === 'Atlas Search') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/atlas-search/overview/`;
 		} else if (value.value === 'Algolia Autocomplete') {
@@ -75,8 +77,11 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		if (location.pathname.startsWith('/docs/reactivesearch/vue-searchbox')) {
 			return 'Vue Searchbox';
 		}
+		if (location.pathname.startsWith('/docs/reactivesearch/vue/v1')) {
+			return 'Vue - v1';
+		}
 		if (location.pathname.startsWith('/docs/reactivesearch/vue')) {
-			return 'Vue';
+			return 'Vue - v3';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/native')) {
 			return 'React Native';
@@ -169,7 +174,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 			<Dropdown
 				options={[
 					'React - v4',
-					'Vue',
+					'Vue - v3',
 					'UI Builder',
 					'React Searchbox',
 					'Vue Searchbox',
@@ -181,6 +186,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Atlas Search',
 					'Algolia Autocomplete',
 					'React - v3',
+					'Vue - v1'
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

@@ -74,7 +74,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.
@@ -124,7 +124,6 @@ number of list items to be displayed.
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
 
-> Note: This prop is only applicable when `enableAppbase` is set to `true`.
 ### sortBy
 
 | Type | Optional |
@@ -227,15 +226,14 @@ customize the rendered list via a function or slot-scope which receives the item
 <!-- prettier-ignore -->
 ```html
 <single-list>
-	<div
-        slot="renderItem"
-        slot-scope="{ label, count }"
-    >
-		{{label}}
-		<span :style="{ marginLeft: 5, color: 'dodgerblue' }">
-			{{count}}
-		</span>
-	</div>
+    <template #renderItem="{ label, count }">
+        <div>
+            {{label}}
+            <span :style="{ marginLeft: 5, color: 'dodgerblue' }">
+                {{count}}
+            </span>
+        </div>
+    </template>
 </single-list>
 ```
 
@@ -271,22 +269,20 @@ You can use render as a slot as shown below:
     componentId="BookSensor"
     data-field="original_series.raw"
 >
-	<div
-        class="suggestions"
-        slot="render"
-        slot-scope="{ data, handleChange }"
-    >
-		<ul>
-			<li
-				style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
-				v-for="suggestion in (data || [])"
-				:key="suggestion._id"
-				v-on:click="handleChange(suggestion.key)"
-			>
-				{{ suggestion.key }}
-			</li>
-		</ul>
-	</div>
+    <template #render="{ data, handleChange }">
+        <div class="suggestions">
+            <ul>
+                <li
+                    style="{ background-color: highlightedIndex ? 'grey' : 'transparent' }"
+                    v-for="suggestion in (data || [])"
+                    :key="suggestion._id"
+                    v-on:click="handleChange(suggestion.key)"
+                >
+                    {{ suggestion.key }}
+                </li>
+            </ul>
+        </div>
+    </template>
 </single-list>
 ```
 
@@ -300,12 +296,9 @@ can be used to render an error message in case of any error.
 
 <!-- prettier-ignore -->
 ```html
-<template
-    slot="renderError"
-    slot-scope="error"
->
-	<div>Something went wrong!<br />Error details<br />{{ error }}</div>
-</template>
+    <template #renderError="error">
+        <div>Something went wrong!<br />Error details<br />{{ error }}</div>
+    </template>
 ```
 
 ### renderNoResults
@@ -318,9 +311,7 @@ show custom message or component when no results found.
 
 <!-- prettier-ignore -->
 ```html
-<template
-    slot="renderNoResults"
->
+<template #renderNoResults>
 	<h4>No Results Found!</h4>
 </template>
 
@@ -511,7 +502,7 @@ specify dependent components to reactively update **SingleList's** options.
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+
 
 ## Events
 
