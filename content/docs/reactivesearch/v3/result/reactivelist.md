@@ -671,6 +671,31 @@ It accepts an object with these properties:
     callback to trigger export of data to a CSV document.
 -   **`triggerExportJSON`**: `function`
     callback to trigger export of data to a JSON document.  
+-   **`setPage`**: `function`
+    A function which will allow to dispatch a page change event when using custom pagination. It accepts `pageNumber` as its parameter.
+    ```jsx
+        <ReactiveList            
+            render={({ loading, error, setPage, resultStats }) => {
+                if (loading) {
+                    return <div>Fetching Results.</div>;
+                }
+                if (error) {
+                    return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+                }
+                const { numberOfPages, currentPage} = resultStats;
+                return (
+                        <select
+                            value={currentPage + 1}
+                            onChange={e => setPage(parseInt(e.target.value, 10))}
+                        >
+                            {new Array(numberOfPages).fill(0).map((_, i) => (
+                            <option value={i}>{i + 1}</option>
+                            ))}
+                        </select>
+                );
+            }}
+        />
+    ```
 
 ```jsx
 <ReactiveList
