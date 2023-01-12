@@ -24,9 +24,9 @@
       - group: Searchboxes
         items:
             - title: 'Create a SearchBox with Elasticsearch'
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-elasticsearch/
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-with-elasticsearch/
             - title: 'Create a SearchBox with Opensearch'
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-opensearch/
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-with-opensearch/
             - title: 'Create a SearchBox with Solr'
               link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-solr/
             - title: 'Create a SearchBox with Zinc'
