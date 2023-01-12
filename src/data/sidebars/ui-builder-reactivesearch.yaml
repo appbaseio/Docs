@@ -23,12 +23,10 @@
               link: /docs/reactivesearch/ui-builder/how-to/extract-values-from-raw-response/
       - group: Searchboxes
         items:
-            - title: Searchbox UI
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/
-      - group: 'How To Guides'
-        items:
-            - title: 'Create a SearchBox with Elasticsearch/Opensearch'
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-es/
+            - title: 'Create a SearchBox with Elasticsearch'
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-elasticsearch/
+            - title: 'Create a SearchBox with Opensearch'
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-opensearch/
             - title: 'Create a SearchBox with Solr'
               link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-solr/
             - title: 'Create a SearchBox with Zinc'
