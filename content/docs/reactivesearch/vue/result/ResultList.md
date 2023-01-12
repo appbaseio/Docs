@@ -34,32 +34,34 @@ Example uses:
         :from="0"
         :size="5"
     >
-        <div slot="render" slot-scope="{ data }">
-            <result-list-wrapper>
-                <result-list
-                    v-bind:key="result._id"
-                    v-for="result in data"
-                >
-                    <result-list-image :small="true" :src="result.image" />
-                    <result-list-content>
-                        <result-list-title>
-                            {{result.original_title}}
-                        </result-list-title>
-                        <result-list-description>
-                            <div>
-                                <p>
-                                    <em>by {{result.authors}}</em>
-                                </p>
-                                <p>
-                                    <b>{{result.average_rating}}</b> ⭐
-                                </p>
-                                <span>Pub {{result.original_publication_year}}</span>
-                            </div>
-                        </result-list-description>
-                    </result-list-content>
-                </result-list>
-            </result-list-wrapper>
-        </div>
+        <template #render="{ data }">
+            <div>
+                <result-list-wrapper>
+                    <result-list
+                        v-bind:key="result._id"
+                        v-for="result in data"
+                    >
+                        <result-list-image :small="true" :src="result.image" />
+                        <result-list-content>
+                            <result-list-title>
+                                {{result.original_title}}
+                            </result-list-title>
+                            <result-list-description>
+                                <div>
+                                    <p>
+                                        <em>by {{result.authors}}</em>
+                                    </p>
+                                    <p>
+                                        <b>{{result.average_rating}}</b> ⭐
+                                    </p>
+                                    <span>Pub {{result.original_publication_year}}</span>
+                                </div>
+                            </result-list-description>
+                        </result-list-content>
+                    </result-list>
+                </result-list-wrapper>
+            </div>
+        </template>
     </reactive-list>
 </template>
 ```

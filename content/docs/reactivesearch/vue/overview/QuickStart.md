@@ -75,16 +75,12 @@ To use ReactiveSearch components you need to register them in your app, you can 
 import Vue from 'vue';
 import ReactiveSearch from '@appbaseio/reactivesearch-vue';
 import App from './App';
-Vue.config.productionTip = false;
 
-Vue.use(ReactiveSearch);
+const app = createApp(App);
 
-/* eslint-disable no-new */
-new Vue({
-	el: '#app',
-	components: { App },
-	template: '<App/>',
-});
+app.use(ReactiveSearch);
+
+app.mount('#app');
 ```
 
 The above imports ReactiveSearch entirely.
@@ -96,15 +92,11 @@ import Vue from 'vue';
 import { ReactiveBase } from '@appbaseio/reactivesearch-vue';
 import App from './App';
 
-Vue.config.productionTip = false;
+const app = createApp(App);
 
-Vue.use(ReactiveBase);
+app.use(ReactiveBase);
 
-new Vue({
-	el: '#app',
-	components: { App },
-	template: '<App/>',
-});
+app.mount('#app');
 ```
 
 ---
@@ -132,17 +124,12 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 			url="https://appbase-demo-ansible-abxiydt-arc.searchbase.io"
 			app="good-books-ds"
 			credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
-			enableAppbase
 		>
 			<h1>Hello from ReactiveBase 👋</h1>
 		</reactive-base>
 	</div>
 </template>
 ```
-
-**Note:** You can set `enableAppbase={false}` if you are directly connecting to an Elasticsearch service without using the appbase.io API gateway. However, we **now offer an open-source and free version** of appbase.io service and highly recommend using it over querying your Elasticsearch cluster directly. appbase.io as an API gateway provides access control for search and prevents script injection attacks that are possible if you query Elasticsearch directly from frontend.
-
-
 
 This is how the app should look after running the `yarn run serve` command.
 
@@ -259,7 +246,7 @@ Finally, we need a component to show the matching results. [**reactive-list**](/
 	:size="5"
 	:react="{ and: ['Ratings', 'Authors', 'SearchBox'] }"
 	>
-	<div slot="renderItem" slot-scope="{ item }">
+	<template #renderItem="{ item }">
 		<div key="item._id">
 			<img
 				:src="item.image"
@@ -270,7 +257,7 @@ Finally, we need a component to show the matching results. [**reactive-list**](/
 			<div>({{ item.average_rating }} avg)</div>                    
 			<div>Pub {{ item.original_publication_year }}</div>
 		</div>
-	</div>
+	</template>
 </reactive-list>
 ```
 
@@ -285,7 +272,6 @@ Now, we will put all three components together to create the UI view.
       url="https://appbase-demo-ansible-abxiydt-arc.searchbase.io"
       app="good-books-ds"
       credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
-      enableAppbase
     >
       <data-search
         componentId="SearchBox"
@@ -337,7 +323,7 @@ Now, we will put all three components together to create the UI view.
         :size="5"
         :react="{ and: ['Ratings', 'Authors', 'SearchBox'] }"
       >
-        <div slot="renderItem" slot-scope="{ item }">
+        <template #renderItem="{ item }">
           <div key="item._id">
             <img :src="item.image" alt="Book Cover" />
             <div>{{ item.original_title }}</div>
@@ -345,7 +331,7 @@ Now, we will put all three components together to create the UI view.
             <div>({{ item.average_rating }} avg)</div>
             <div>Pub {{ item.original_publication_year }}</div>
           </div>
-        </div>
+        </template>
       </reactive-list>
     </reactive-base>
   </div>
@@ -416,7 +402,7 @@ To make the cards look aligned, add styles to the wrapper `div` within the react
 	:size="5"
 	:react="{ and: ['Ratings', 'Authors', 'SearchBox'] }"
 	>
-	<div slot="renderItem" slot-scope="{ item }">
+	<template #renderItem="{ item }">
 		<div
 		key="item._id"
 		v-bind:style="{
@@ -456,7 +442,7 @@ To make the cards look aligned, add styles to the wrapper `div` within the react
 				</div>
 			</div>
 		</div>
-	</div>
+	</template>
 </reactive-list>
 ```
 

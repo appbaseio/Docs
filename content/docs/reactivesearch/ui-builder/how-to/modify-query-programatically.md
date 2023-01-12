@@ -38,41 +38,34 @@ You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, inc
 ##### Step 9: Modifying the query using transformRequest prop
 
 ```javascript
-const transformRequest = isFusion
-  ? (props) => {
-      if (Object.keys(fusionSettings).length) {
-        const newBody = JSON.parse(props.body);
-        newBody.metadata = {
-          app: fusionSettings.app,
-          profile: fusionSettings.profile,
-          suggestion_profile: fusionSettings.searchProfile,
-          sponsored_profile: get(
-            fusionSettings,
-            "meta.sponsoredProfile",
-            ""
-          )
-        };
-        // eslint-disable-next-line
-        props.body = JSON.stringify(newBody);
-      }
-      let newUrl = props.url + "?queryString=";
-      let queryString = "";
+const transformRequest = (props) => {
+  const newBody = JSON.parse(props.body);
 
-      queryString += `hl=true&hl.fl=title_t`;
-      newUrl += encodeURIComponent(queryString);
-      props.url = newUrl;
-      return props;
+  newBody.query = newBody.query.map((query) => {
+    if (query.id === "search" && query.type === "search") {
+      if (!query.value) {
+        //assign a default value
+        query.value = "batman returns";
+      }
     }
-  : undefined;
+    return query;
+  });
+
+  // eslint-disable-next-line
+  props.body = JSON.stringify(newBody);
+
+  return props;
+};
 ```
 
 #### Important Links
 
 - Starter CodeSandbox 
 
-  https://codesandbox.io/s/cf7oiu?file=%2Fpublic%2Findex.html&from-sandpack=true
+  https://codesandbox.io/s/starter-modify-a-query-programmatically-y6i14x
 
 - Final CodeSandbox 
-  https://codesandbox.io/s/reactivesearch-shopify-plugin-forked-lpczgm?file=/src/components/Search.js:12805-13022
+
+  https://codesandbox.io/s/modify-a-query-programmatically-final-jf6u01
 
 

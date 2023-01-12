@@ -7,7 +7,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 With the release of version 3.x.x of reactivesearch, we have changed the way certain props behaved in the earlier versions. To enable effective control over the components, we now support `defaultValue` and `value` props. These new props enable better controlled and uncontrolled usage for all the reactivesearch components.

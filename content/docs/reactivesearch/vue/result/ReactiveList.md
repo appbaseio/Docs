@@ -25,9 +25,11 @@ Example uses:
 ```html
 <template>
 	<reactive-list :react="{ and: ['CitySensor', 'SearchSensor']}">
-		<div slot="renderItem" slot-scope="{ item }">
-			{{ item.title }}
-		</div>
+        <template #renderItem="{ item }">
+            <div>
+                {{ item.title }}
+            </div>
+        </template>
 	</reactive-list>
 </template>
 ```
@@ -72,7 +74,7 @@ unique identifier of the component, can be referenced in other components' `reac
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. 
 Accepts the following properties:
 -   **url** `String` [Required]
     URL where the data cluster is hosted.
@@ -93,32 +95,6 @@ Accepts the following properties:
 |  `String`  |    No    |
 
 data field to be connected to the component's UI view. It is useful for providing a **sorting** context i.e. results would be sorted based on the `dataField`.
-### aggregationField
-
-| Type | Optional |
-|------|----------|
-|  `String` |   Yes   |
-
-One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
-You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `render` slot as shown:
-
-```html
-<template
-    slot="render"
-    slot-scope="{
-        ...
-        aggregationData
-    }"
->
-    ...
-</template>
-```
-
-> If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to handle it manually using **renderError** slot.
-
-> It is possible to override this query by providing `defaultQuery`.
-
-> Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
@@ -270,23 +246,25 @@ when set adds the current page number to the url. Only works when `pagination` i
 returns a list element object to be rendered based on the `res` data object. This callback function prop or slot is called for each data item rendered in the **ReactiveList** component's view. For example,
 
 ```html
-<div slot="renderItem" slot-scope="{ item }">
-    <a class="full_row single-record single_record_for_clone" key="item._id">
-        <div class="text-container full_row" :style="{ paddingLeft: '10px' }">
-            <div class="text-head text-overflow full_row">
-                <span class="text-head-info text-overflow">
-                    {{ item.name ? item.name : "" }} - {{ item.brand ? item.brand : "" }}
-                </span>
-                <span class="text-head-city">{{ item.brand ? item.brand : "" }}</span>
+<template #renderItem="{ item }">
+    <div>
+        <a class="full_row single-record single_record_for_clone" key="item._id">
+            <div class="text-container full_row" :style="{ paddingLeft: '10px' }">
+                <div class="text-head text-overflow full_row">
+                    <span class="text-head-info text-overflow">
+                        {{ item.name ? item.name : "" }} - {{ item.brand ? item.brand : "" }}
+                    </span>
+                    <span class="text-head-city">{{ item.brand ? item.brand : "" }}</span>
+                </div>
+                <div class="text-description text-overflow full_row">
+                    <ul class="highlight_tags">
+                        {{ item.price ? `Priced at $${{ item.price }}` : "Free Test Drive" }}
+                    </ul>
+                </div>
             </div>
-            <div class="text-description text-overflow full_row">
-                <ul class="highlight_tags">
-                    {{ item.price ? `Priced at $${{ item.price }}` : "Free Test Drive" }}
-                </ul>
-            </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
+</template>
 ```
 
 ### render
@@ -326,9 +304,11 @@ renders custom result stats using a callback function that takes `stats` object 
     Total number of promoted results found
 
 ```html
-<div slot="renderResultStats" slot-scope="{ numberOfResults, time, displayedResults }">
-    Showing {{displayedResults}} of total {{numberOfResults}} in {{time}} ms
-</div>
+<template #renderResultStats="{ numberOfResults, time, displayedResults }">
+    <div>
+        Showing {{displayedResults}} of total {{numberOfResults}} in {{time}} ms
+    </div>
+</template>
 ```
 
 ### renderError
@@ -340,8 +320,8 @@ renders custom result stats using a callback function that takes `stats` object 
 can be used to render an error message in case of any error.
 
 ```html
-<template slot="renderError" slot-scope="error">
-<div>Something went wrong!<br />Error details<br />{{ error }}</div>
+<template #renderError="error">
+    <div>Something went wrong!<br />Error details<br />{{ error }}</div>
 </template>
 ```
 
@@ -384,8 +364,6 @@ This prop allows specifying additional options to the `distinctField` prop. Usin
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
-
 ```html
 <reactive-list
 	....
@@ -400,8 +378,6 @@ The index prop can be used to explicitly specify an index to query against for t
 	}"
 />
 ```
-
-> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
 
 ## Sub Components
 
@@ -525,16 +501,18 @@ It accepts an object with these properties:
 
 ```html
 <reactive-list>
-	<div slot="render" slot-scope="{ loading, error, data }">
-		<div v-if="loading">Fetching Results.</div>
-		<div v-if="Boolean(error)">Something went wrong! Error details {{JSON.stringify(error)}}</div>
-		<ul v-bind:key="result._id" v-for="result in data">
-			<li>
-				{{result.title}}
-				<!-- Render UI -->
-			</li>
-		</ul>
-	</div>
+    <template #render="{ loading, error, data }">
+        <div>
+            <div v-if="loading">Fetching Results.</div>
+            <div v-if="Boolean(error)">Something went wrong! Error details {{JSON.stringify(error)}}</div>
+            <ul v-bind:key="result._id" v-for="result in data">
+                <li>
+                    {{result.title}}
+                    <!-- Render UI -->
+                </li>
+            </ul>
+        </div>
+    </template>
 </reactive-list>
 ```
 

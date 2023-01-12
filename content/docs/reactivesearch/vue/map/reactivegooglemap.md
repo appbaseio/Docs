@@ -329,9 +329,11 @@ The following example would render the marker with an icon.
 The following example uses the `slot` to customize the marker.
 ```html
 <reactive-google-map>
-    <div slot="renderItem" slot-scope="{ magnitude }">
-        {{result.mag}}
-    </div>
+    <template #renderItem="item">
+        <div>
+            {{item.magnitude}}
+        </div>
+    </template>
 </reactive-google-map>
 ```
 ### renderPopover
@@ -351,10 +353,12 @@ The following example displays the `title` and `description` in popover.
 
 ```html
 <reactive-google-map>
-    <div slot="renderPopover" slot-scope="{ item }">
-        <div>{{ item.title }}</div>
-        <p>{{ item.description }}</p>
-    </div>
+    <template #renderPopover="{ item }">
+        <div>
+            <div>{{ item.title }}</div>
+            <p>{{ item.description }}</p>
+        </div>
+    </template>
 </reactive-google-map>
 ```
 ### renderClusterPopover
@@ -375,9 +379,9 @@ The following example displays the `markers` information for a particular cluste
 
 ```html
 <reactive-google-map>
-    <div slot="renderClusterPopover" slot-scope="{ markers, cluster }">
+    <template #renderClusterPopover="{ markers, cluster }">
         <pre>{{ JSON.stringify(markers, null, 2) }}</pre>
-    </div>
+    </template>
 </reactive-google-map>
 ```
 ![alt cluster](https://i.imgur.com/e1JwXOi.jpg)
@@ -430,16 +434,18 @@ It accepts an object with these properties:
 
 ```html
 <reactive-google-map>
-    <div slot="render" slot-scope="{ loading, error, data }">
-        <div v-if="loading">Fetching Results.</div>
-        <div v-if="Boolean(error)">Something went wrong! Error details {{JSON.stringify(error)}}</div>
-        <ul v-bind:key="result._id" v-for="result in data">
-            <li>
-                {{result.title}}
-                <!-- Render UI -->
-            </li>
-        </ul>
-    </div>
+    <template #render="{ loading, error, data }">
+        <div>
+            <div v-if="loading">Fetching Results.</div>
+            <div v-if="Boolean(error)">Something went wrong! Error details {{JSON.stringify(error)}}</div>
+            <ul v-bind:key="result._id" v-for="result in data">
+                <li>
+                    {{result.title}}
+                    <!-- Render UI -->
+                </li>
+            </ul>
+        </div>
+    </template>
 </reactive-google-map>
 ```
 ### renderError
@@ -451,7 +457,7 @@ It accepts an object with these properties:
 can be used to render an error message in case of any error.
 
 ```html
-<template slot="renderError" slot-scope="error">
+<template #renderError="error">
     <div>Something went wrong!<br />Error details<br />{{ error }}</div>
 </template>
 ```

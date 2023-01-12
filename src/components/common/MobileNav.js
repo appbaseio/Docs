@@ -10,8 +10,23 @@ import ThemeSwitch from './themeSwitch';
 const getValue = () => {
 	if (globalHistory) {
 		const path = globalHistory.location && globalHistory.location.pathname;
+		if (path && path.startsWith('/docs/reactivesearch/react-searchbox')) {
+			return 'React SearchBox';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/react-native-searchbox')) {
+			return 'React Native SearchBox';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/v3')) {
+			return 'React - v3';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/v4')) {
+			return 'React - v4';
+		}
+		if (path && path.startsWith('/docs/reactivesearch/react')) {
+			return 'React - v4';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/atlas-search')) {
 			return 'Atlas Search';
@@ -25,17 +40,14 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/ui-builder')) {
 			return 'UI Builder';
 		}
+		if (path && path.startsWith('/docs/reactivesearch/vue/v1')) {
+			return 'Vue - v1';
+		}
 		if (path && path.startsWith('/docs/reactivesearch/vue')) {
-			return 'Vue';
+			return 'Vue - v3';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/native')) {
 			return 'Native';
-		}
-		if (path && path.startsWith('/docs/reactivesearch/react-searchbox')) {
-			return 'React SearchBox';
-		}
-		if (path && path.startsWith('/docs/reactivesearch/react-native-searchbox')) {
-			return 'React Native SearchBox';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/searchbox')) {
 			return 'Searchbox';
@@ -54,15 +66,17 @@ const getValue = () => {
 		}
 	}
 
-	return 'React - v3';
+	return 'React - v4';
 };
 
 const getFileName = value => {
 	switch (value) {
 		case 'Native':
 			return 'native-reactivesearch';
-		case 'Vue':
+		case 'Vue - v3':
 			return 'vue-reactivesearch';
+		case 'Vue - v2':
+			return 'vue-v1-reactivesearch';
 		case 'React - v2':
 			return 'web-v2-reactivesearch';
 		case 'SearchBase':
@@ -96,8 +110,12 @@ const getVersionName = value => {
 			return 'Native';
 		case 'Vue':
 			return 'Vue';
+		case 'Vue - v1':
+			return 'v1';
 		case 'React - v2':
 			return 'v2';
+		case 'React - v3':
+			return 'v3'
 		case 'SearchBase':
 			return 'SearchBase';
 		case 'React SearchBox':
@@ -105,7 +123,7 @@ const getVersionName = value => {
 		case 'UI Builder':
 			return 'UI Builder';
 		default:
-			return 'v3';
+			return 'v4';
 	}
 };
 
@@ -198,10 +216,10 @@ class MobileNav extends React.Component {
 						</p>
 						<ReactDropdown
 							options={[
-								'React - v3',
+								'React - v4',
+								'Vue - v3',
 								'UI Builder',
 								'Native',
-								'Vue',
 								'SearchBase',
 								'React SearchBox',
 								'React Native SearchBox',
@@ -210,6 +228,8 @@ class MobileNav extends React.Component {
 								'Flutter Searchbox',
 								'Flutter Searchbox UI',
 								'Algolia Autocomplete',
+								'React - v3',
+								'Vue - v1'
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"

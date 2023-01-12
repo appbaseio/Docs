@@ -1565,6 +1565,11 @@ For Solr, this maps to the `facet.excludeTerms` field.
 **Supported Engines**
 elasticsearch, opensearch
 
+### range
+
+**Supported Engines**
+elasticsearch, opensearch
+
 ## settings
 
 **Supported Engines**

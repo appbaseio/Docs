@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, Link } from 'gatsby';
-import * as JsSearch from 'js-search';
+import Fuse from 'fuse.js';
 import Autosuggest from 'react-autosuggest';
 import hotkeys from 'hotkeys-js';
+import groupBy from 'lodash/groupBy';
+import orderBy from 'lodash/orderBy';
 import data from '../../../data/search.index.json';
 import { Spirit } from '../../../styles/spirit-styles';
 import Icon from '../Icon';
 import sidebar from '../../../data/sidebars/all-sidebar';
 import '../../../styles/custom.css';
-const search = new JsSearch.Search('url');
-search.tokenizer = new JsSearch.StopWordsTokenizer(new JsSearch.SimpleTokenizer());
 
-search.addIndex('title');
-search.addIndex('heading');
-search.addIndex('meta_description');
-search.addIndex('meta_title');
-search.addIndex('tokens');
-
-search.addDocuments(data);
+const options = {
+	includeScore: true,
+	includeMatches: true,
+	ignoreLocation: true,
+	keys: [
+		{ name: 'title', weight: 0.65 },
+		{ name: 'tokens[0]', weight: 0.3 },
+		{ name: 'heading', weight: 0.05 },
+	],
+};
 
 const getSection = url => {
 	const isHavingHash = url.indexOf('#');
@@ -27,6 +30,7 @@ const getSection = url => {
 	if (isHavingHash) {
 		link = url.split('#')[0];
 		subSection = url.split('#')[1];
+		if (subSection && subSection.includes('">')) subSection = subSection.split('">')[0];
 	}
 	if (link.startsWith('/docs/reactivesearch')) {
 		const linkTags = link.split('/');
@@ -40,10 +44,29 @@ const getSection = url => {
 			case 'v3':
 				techName = 'React v3';
 				break;
+			case 'v4':
+				techName = "React v4";
+				break;
 			default:
 		}
 
-		if (['components', 'advanced', 'overview'].indexOf(sectionName.toLowerCase()) !== -1) {
+		if (
+			[
+				'components',
+				'advanced',
+				'overview',
+				'ui-builder',
+				'vue-searchbox',
+				'react-searchbox',
+				'react-native-searchbox',
+				'flutter-searchbox',
+				'flutter-searchbox-ui',
+				'searchbase',
+				'searchbase-dart',
+				'atlas-search',
+				'autocomplete-plugin',
+			].indexOf(sectionName.toLowerCase()) !== -1
+		) {
 			return subSection
 				? `${techName} > ${sectionName} > ${subSection}`
 				: `${techName} > ${sectionName}`;
@@ -67,6 +90,12 @@ const getValue = url => {
 		return 'react-bw';
 	}
 	if (url.startsWith('/docs/reactivesearch/v3')) {
+		return 'react-bw';
+	}
+	if (url.startsWith('/docs/reactivesearch/v4')) {
+		return 'react-bw';
+	}
+	if (url.startsWith('/docs/reactivesearch/react')) {
 		return 'react-bw';
 	}
 	if (url.startsWith('/docs/reactivesearch/vue')) {
@@ -150,11 +179,11 @@ const HitTemplate = ({ hit, currentValue }) => {
 						xmlns="http://www.w3.org/2000/svg"
 						alt="Recent Search"
 						viewBox="0 0 24 24"
-						>
+					>
 						<path d="M0 0h24v24H0z" fill="none" />
 						<path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
 					</svg>
-				) : null }
+				) : null}
 			</div>
 		</Link>
 	);
@@ -173,37 +202,69 @@ class AutoComplete extends React.Component {
 
 		this.onChange = this.onChange.bind(this);
 		this.onSuggestionsUpdateRequested = this.onSuggestionsUpdateRequested.bind(this);
-    	this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
+		this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
 		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
 		this.renderSuggestion = this.renderSuggestion.bind(this);
 		this.getSuggestionValue = this.getSuggestionValue.bind(this);
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.setState({
 			hasMounted: true,
 		});
-		hotkeys('/', function(event, handler){
+		hotkeys('/', function(event, handler) {
 			// Prevent the default refresh event under WINDOWS system
-			event.preventDefault() 
-			document.querySelector("[data-cy='search-input']").focus(); 
+			event.preventDefault();
+			document.querySelector("[data-cy='search-input']").focus();
 		});
 	}
 
+	getSectionsMapper = url => {
+		if (url.includes('v3')) return 'v3';
+
+		if (url.includes('native')) return 'native';
+
+		if (url.includes('vue')) return 'vue';
+
+		if (url.includes('relevancy')) return 'relevancy';
+
+		return 'default';
+	};
+
+	searchWithFuse = inputValue => {
+		const fuse = new Fuse(data, options);
+		const searchValue = fuse.search(inputValue);
+
+		return searchValue;
+	};
+
+	filterPageSepecificResults = (pageSpecificResults, visitedPages = []) => {
+		let arr = [];
+		Object.keys(pageSpecificResults).forEach(url => {
+			if (!visitedPages.includes(url))
+				arr = [...arr, ...pageSpecificResults[url].slice(0, 2)];
+		});
+
+		return arr;
+	};
+
 	getSuggestions = value => {
-		const {isMobile} = this.props;
-		const noOfSuggestions = isMobile ? 5 : 20;
+		const { isMobile } = this.props;
+		const noOfSuggestions = 40;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
-		const searchValue = search
-			.search(inputValue)
+
+		const searchValue = this.searchWithFuse(inputValue)
+			.map(res => ({
+				...res,
+				...res.item,
+				baseURL: res?.item?.url.split('#')[0] || '',
+				section: this.getSectionsMapper(res?.item?.url),
+			}))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
 			.filter(item => item.url !== '/data-schema/');
-		let topResults = searchValue.filter(item => !item.heading).slice(0, noOfSuggestions);
-		const withHeading = searchValue.filter(item => item.heading);
-		if (topResults.length < 8) {
-			topResults = [...topResults, ...withHeading.slice(0, noOfSuggestions - topResults.length)];
-		}
+		let topResults = searchValue.slice(0, noOfSuggestions);
+
 		const exactMatchIndex = topResults.findIndex(
 			item => item.title.toLowerCase() === inputValue && !item.heading,
 		);
@@ -214,12 +275,41 @@ class AutoComplete extends React.Component {
 				...topResults.slice(exactMatchIndex + 1),
 			];
 		}
-		return inputLength === 0 ? JSON.parse(typeof window !== 'undefined' ? localStorage.getItem('recentSuggestions')  || '[]' : '[]') : topResults;
+
+		const newTopResults = orderBy(topResults, res => res.score);
+		let visitedPages = [];
+		const groupedByScore = groupBy(newTopResults, res => res.score);
+		let transformedHits = [];
+		Object.keys(groupedByScore).forEach(score => {
+			const pageSpecificResults = groupBy(groupedByScore[score], res => res.baseURL);
+
+			const grouped = groupBy(
+				this.filterPageSepecificResults(pageSpecificResults, visitedPages),
+				res => res.section,
+			);
+			const newHits = [
+				...(grouped['v3'] || []),
+				...(grouped['vue'] || []),
+				...(grouped['native'] || []),
+				...(grouped['relevancy'] || []),
+				...(grouped['default'] || []),
+			];
+			transformedHits = [...transformedHits, ...newHits];
+			visitedPages = [...visitedPages, ...Object.keys(pageSpecificResults)];
+		});
+
+		return inputLength === 0
+			? JSON.parse(
+					typeof window !== 'undefined'
+						? localStorage.getItem('recentSuggestions') || '[]'
+						: '[]',
+			  )
+			: transformedHits.slice(0, isMobile ? 5 : 20);
 	};
 
 	onChange(event, { newValue, method }) {
 		this.setState({
-		  value: newValue
+			value: newValue,
 		});
 	}
 
@@ -237,7 +327,7 @@ class AutoComplete extends React.Component {
 		});
 	}
 
-	shouldRenderSuggestions() {		
+	shouldRenderSuggestions() {
 		return true;
 	}
 
@@ -259,39 +349,39 @@ class AutoComplete extends React.Component {
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
 		const { value, showContainer } = this.state;
 		return (
-			<div {...containerProps} style={{position: 'absolute', right: 0, left: 0}} >
-				<div className='autosuggest-content'>{children}</div>
+			<div {...containerProps} style={{ position: 'absolute', right: 0, left: 0 }}>
+				<div className="autosuggest-content">{children}</div>
 				{showContainer ? (
-					<div className='autosuggest-footer-container'>
+					<div className="autosuggest-footer-container">
 						<div>↑↓ Navigate</div>
 						<div>↩ Go</div>
 					</div>
 				) : null}
 			</div>
-		)
-	}
+		);
+	};
 
 	enableFocus = () => {
 		document.querySelector("[data-cy='search-input']").focus();
-	}
+	};
 
 	onFocus = () => {
 		this.setState({
 			showContainer: true,
-		})
-	}
+		});
+	};
 
 	onBlur = () => {
 		this.setState({
 			showContainer: false,
-		})
-	}
+		});
+	};
 
-	onKeyDown = (e) => {
-		if(e.keyCode === 27) {
-			document.querySelector("[data-cy='search-input']").blur(); 
+	onKeyDown = e => {
+		if (e.keyCode === 27) {
+			document.querySelector("[data-cy='search-input']").blur();
 		}
-	}
+	};
 
 	render() {
 		// Don't show sections with no results
@@ -317,7 +407,6 @@ class AutoComplete extends React.Component {
 			suggestionsList: `list pa0 ma0 pt1 flex-auto`,
 			sectionContainer: `pb4 mb4`,
 			sectionTitle: `f8 lh-h4 fw5 midgrey w30 tr mt2 sticky top-2 pr2`,
-
 		};
 
 		if (!hasMounted) {
@@ -326,20 +415,25 @@ class AutoComplete extends React.Component {
 
 		return (
 			<>
-				<Icon name="search" className="w3 absolute top-3 left-3" />
+				<Icon name="search" className="w3 absolute top-3 left-3 search-icon" />
 				<Autosuggest
 					suggestions={hits}
 					onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-        			shouldRenderSuggestions={this.shouldRenderSuggestions}
+					shouldRenderSuggestions={this.shouldRenderSuggestions}
 					onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
 					getSuggestionValue={this.getSuggestionValue}
 					onSuggestionSelected={this.suggestionSelected}
 					renderSuggestion={this.renderSuggestion}
 					inputProps={inputProps}
-					renderSuggestionsContainer={this.renderSuggestionsContainer}					
+					renderSuggestionsContainer={this.renderSuggestionsContainer}
 					theme={theme}
 				/>
-				<button className='w3 absolute top-3 right-3 search-shorcut-button' onClick={() => this.enableFocus()}>/</button>
+				<button
+					className="w3 absolute top-3 right-3 search-shorcut-button"
+					onClick={() => this.enableFocus()}
+				>
+					/
+				</button>
 			</>
 		);
 	}

@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 `ErrorBoundary` helps to catch errors in reactivesearch components using a declarative API. When we want to safeguard the other parts of the UI from a error prone part then we can wrap it with a `ErrorBoundary`. All the `ErrorBoundary` must live inside the `ReactiveBase` component.

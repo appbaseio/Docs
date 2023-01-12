@@ -4,10 +4,11 @@ meta_title: 'Add a new route to a Search UI'
 meta_description: 'Add a new route to a Search UI'
 keywords:
   - ui-builder
-  - ui-integrations
-  - how-to-guides
+  - how-to
   - add-new-route
   - add-new-page
+  - elasticsearch
+  - react
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---

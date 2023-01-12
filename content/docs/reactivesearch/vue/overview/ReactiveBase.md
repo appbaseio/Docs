@@ -54,17 +54,7 @@ app credentials as they appear on the dashboard. It should be a string of the fo
 |  `String` |   Yes   |
 
 URL where Elasticsearch cluster is hosted, only needed if your app uses a non appbase.io URL.
-### enableAppbase
 
-| Type | Optional |
-|------|----------|
-|  `boolean` |   Yes   |
-
-Defaults to `false`. You can set this to `true` when you're using appbase.io alongside `Elasticsearch`. It enables the following features:
--   Recording of analytics events - search and clicks. [Read more](/docs/reactivesearch/vue/advanced/analytics/).
--   Query generation happens on server side - protecting against security concerns around query injection.
--   Apply query rules and functions for search queries. [Read more](/docs/search/rules/).
--   Apply additional security controls to requests: authenticate via RBAC (via JWTs) or Basic Auth, ACL based access control, IP based rate limits, IP/HTTP Referers whitelisting, fields filtering. [Read more](/docs/security/role/).
 ### headers
 
 | Type | Optional |
@@ -91,7 +81,7 @@ set custom headers to be sent with each server request as key/value pairs. For e
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for ReactiveBase and its children components. This service is typically a ReactiveSearch backend pipeline or any other API handler that works with the ReactiveSearch API references. This property works only when `enableAppbase` is set to `true`.
+endpoint prop provides the ability to query a user-defined backend service for ReactiveBase and its children components. This service is typically a ReactiveSearch backend pipeline or any other API handler that works with the ReactiveSearch API references.
 Accepts the following properties:
 -   **url** `String` [Required]
 	URL where the data cluster is hosted.
@@ -107,7 +97,6 @@ Accepts the following properties:
 ```html
 <template>
 	<reactive-base
-		:enableAppbase="true"
 		:endpoint="{
 			url: 'https://appbase-demo-ansible-abxiydt-arc	searchbase.io/recipes-demo/_reactivesearch.v3',
 			headers: {
@@ -122,7 +111,7 @@ Accepts the following properties:
 </template>
 ```
 
-### appbaseConfig
+### reactivesearchAPIConfig
 
 | Type | Optional |
 |------|----------|

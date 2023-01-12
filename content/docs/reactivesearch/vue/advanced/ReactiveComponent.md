@@ -41,13 +41,13 @@ Now, let's assume that we have all these hex-codes stored as `keywords` in an El
         componentId="myColorPicker"
         :defaultQuery="defaultQuery"
     >
-		<div slot-scope="{ aggregations, hits, setQuery }">
+		<template #default="{ aggregations, hits, setQuery }">
 			<color-picker-wrapper
                 :aggregations="aggregations"
                 :hits="hits"
                 :setQuery="setQuery"
             />
-		</div>
+		</template>
 	</reactive-component>
 </template>
 <script>
@@ -191,12 +191,12 @@ We can then use the given ReactiveComponent to be watched by all the filters (vi
 		:defaultQuery="defaultQuery"
 		:customQuery="customQuery"
 	>
-		<div slot-scope="{ aggregations, setQuery }">
-			<CustomComponent
+		<template #default="{ aggregations, setQuery }">
+			<custom-component
                 :aggregations="aggregations"
                 :setQuery="setQuery"
             />
-		</div>
+		</template>
 	</reactive-component>
 </template>
 <script>
@@ -330,36 +330,6 @@ contains the error details in case of any error.
 |  `String` |   Yes   |
 
 CSS class to be injected on the component container.
-### aggregationField
-
-| Type | Optional |
-|------|----------|
-|  `String` |   Yes   |
-
-One of the most important use-cases this enables is showing `DISTINCT` results (useful when you are dealing with sessions, events and logs type data). It utilizes `composite aggregations` which are newly introduced in ES v6 and offer vast performance benefits over a traditional terms aggregation.
-You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html). You can access `aggregationData` using `slot-scope` as shown:
-
-<!-- prettier-ignore -->
-```html
-<reactive-component
-	componentId="myColorPicker"
-	aggregationField="color"
->
-	<div slot-scope="{ aggregationData, ...rest }">
-		<color-picker-wrapper
-			:aggregationData="aggregationData"
-			:hits="hits"
-			:setQuery="setQuery"
-		/>
-	</div>
-</reactive-component>
-```
-
-> If you are using an app with elastic search version less than 6, then defining this prop will result in error and you need to catch this error using **error** event.
-
-> It is possible to override this query by providing `defaultQuery`.
-
-> Note: This prop has been marked as deprecated starting v1.14.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
@@ -407,26 +377,6 @@ enable creating a URL query string parameter based on the selected value of the 
 
 This prop returns only the distinct value documents for the specified field. It is equivalent to the `DISTINCT` clause in SQL. It internally uses the collapse feature of Elasticsearch. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
 
-*   **distinctFieldConfig** `Object` [optional]
-This prop allows specifying additional options to the `distinctField` prop. Using the allowed DSL, one can specify how to return K distinct values (default value of K=1), sort them by a specific order, or return a second level of distinct values. `distinctFieldConfig` object corresponds to the `inner_hits` key's DSL. You can read more about it over [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html).
-
-```html
-<reactive-component
-....
-distinctField="authors.keyword"
-:distinctFieldConfig="{
-	inner_hits: {
-		name: 'most_recent',
-		size: 5,
-		sort: [{ timestamp: 'asc' }],
-	},
-	max_concurrent_group_searches: 4,
-}"
-/>
-```
-
-> Note: In order to use the `distinctField` and `distinctFieldConfig` props, the `enableAppbase` prop must be set to true in `ReactiveBase`.
-
 ### index
 
 | Type | Optional |
@@ -435,15 +385,13 @@ distinctField="authors.keyword"
 
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
-> Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
-
 ### endpoint
 
 | Type | Optional |
 |------|----------|
 |  `Object` |   Yes   |
 
-endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component. Works only when `enableAppbase` is `true`.
+endpoint prop provides the ability to query a user-defined backend service for this component, overriding the data endpoint configured in the ReactiveBase component.
 Accepts the following properties:
 -   **url** `String` [Required]
 	URL where the data cluster is hosted.

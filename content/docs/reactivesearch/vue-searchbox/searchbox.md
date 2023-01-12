@@ -734,8 +734,12 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
         expandSuggestionsContainer={false}
         ...
   >
-    <img slot="addonBefore" src="..." />
-    <img slot="addonAfter" src="..." />
+    <template #addonBefore>
+        <img src="..." />
+    </template>
+    <template #addonAfter>
+        <img src="..." />
+    </template>
  </search-box>
 ```
 
@@ -1257,10 +1261,12 @@ can be used to set the `categoryValue` property.
 can be used to render an error message in case of any error.
 
 ```jsx
-<search-box slot="renderError" slot-scope="error">
-    <div>
-        Something went wrong!<br/>Error details<br/>{JSON.Stringify(error)}
-    </div>
+<search-box>
+    <template #renderError="error">
+        <div>
+            Something went wrong!<br/>Error details<br/>{JSON.Stringify(error)}
+        </div>
+    </template>
 </search-box>
 ```
 
@@ -1284,7 +1290,7 @@ can be used to render the custom mic option
 
 | Type | Optional |
 |------|----------|
-|  `slot-scope` |   Yes   |
+|  `slot` |   Yes   |
 
 You can use a custom icon in place of the default icon for the recent search items that are shown when `enableRecentSearches` prop is set to true. You can also provide styles using the `recent-search-icon` key in the `innerClass` prop.
 
@@ -1296,7 +1302,9 @@ You can use a custom icon in place of the default icon for the recent search ite
             'recent-search-icon': '...',
         }"
     >
-        <recent-icon slot="recentSearchesIcon" />
+        <template #recentSearchesIcon>
+            <recent-icon />
+        </template>
     </search-box>
 ```
 
@@ -1304,7 +1312,7 @@ You can use a custom icon in place of the default icon for the recent search ite
 
 | Type | Optional |
 |------|----------|
-|  `slot-scope` |   Yes   |
+|  `slot` |   Yes   |
 
 You can use a custom icon in place of the default icon for the popular searches that are shown when `enablePopularSuggestions` prop is set to true. You can also provide styles using the `popular-search-icon` key in the `innerClass` prop.
 
@@ -1316,11 +1324,13 @@ You can use a custom icon in place of the default icon for the popular searches 
         'popular-search-icon': '...'
     }"
 >
-    <popular-icon slot="popularSearchesIcon" />
+    <template #popularSearchesIcon>
+        <popular-icon />
+    </template>
 </search-box>
 ```
 
--   **addonBefore** `slot-scope` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+-   **addonBefore** `slot` [optional] The HTML markup displayed before (on the left side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/Lhm8PgV.png" style="margin:0 auto;display:block;"/>
 
 ```jsx
@@ -1331,15 +1341,16 @@ You can use a custom icon in place of the default icon for the popular searches 
          'popular-search-icon': '...'
       }"
 >
-      <img 
-        slot="addonBefore"
-        src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-        height="30px"
-      />
+    <template #addonBefore>
+        <img 
+            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+            height="30px"
+        />
+    </template>
 </search-box>
 ```
 
--   **addonAfter** `slot-scope` [optional] The HTML markup displayed before (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
+-   **addonAfter** `slot` [optional] The HTML markup displayed before (on the right side of) the searchbox input field. Users can use it to render additional actions/ markup, eg: a custom search icon hiding the default.
 <img src="https://i.imgur.com/upZRx9K.png" style="margin:0 auto;display:block;"/>
 
 ```jsx
@@ -1350,11 +1361,12 @@ You can use a custom icon in place of the default icon for the popular searches 
          'popular-search-icon': '...'
       }"
 >
-      <img 
-        slot="addonAfter"
-        src="https://img.icons8.com/cute-clipart/64/000000/search.png"
-        height="30px"
-      />
+    <template #addonAfter>
+        <img 
+            src="https://img.icons8.com/cute-clipart/64/000000/search.png"
+            height="30px"
+        />
+    </template>
 </search-box>
 ```
 
@@ -1366,17 +1378,17 @@ You can use a custom icon in place of the default icon for the popular searches 
       ...
       :enterButton="true"
 >
-    <div
-        slot="renderEnterButton"
-        slot-scope="onClick"
-        :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }"
-    >
-        <button
-            :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
-            v-on:click="onClick"
+    <template #renderEnterButton="onClick">
+        <div
+            :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }"
         >
-            🔍 Search
-        </button>
-    </div>
+            <button
+                :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
+                v-on:click="onClick"
+            >
+                🔍 Search
+            </button>
+        </div>
+    </template>
 </search-box>
 ```

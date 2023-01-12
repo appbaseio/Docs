@@ -8,7 +8,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ReactiveSearch components can also be styled using inline-styles. Each component supports a `style` prop which accepts an object. Find more info on the [react docs](https://reactjs.org/docs/dom-elements.html/#style).

@@ -9,7 +9,7 @@ keywords:
     - appbase
     - elasticsearch
 sidebar: 'docs'
-nestedSidebar: 'web-reactivesearch'
+nestedSidebar: 'web-v3-reactivesearch'
 ---
 
 ![TreeList image](https://i.imgur.com/AwUfFJ7.png)
