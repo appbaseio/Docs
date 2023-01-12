@@ -34,7 +34,7 @@ We split the concerns into:
 - client: the main browser entry (ultimately gets compiled to bundle.js).
 <br/>
 
-- **Client-side**
+### Client-side
 
 The user needs to provide just two props to the `<SearchBase />` component.
 
@@ -94,7 +94,7 @@ export default App;
 
 ``` 
 
-- **Server-Side**
+### Server Side
 
 On the server-side code, the user imports a util method `getServerResults()(..., ...)` to compute the initial state of the App and passes this initial state back to the client-side.
 
@@ -121,7 +121,7 @@ export async function getServerSideProps(context) {
 
 ### Using Next.js
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat%2Fssr-support/packages/react-searchbox/examples/next-ssr?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/next/packages/react-searchbox/examples/next-ssr?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/searchbox"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -130,7 +130,7 @@ export async function getServerSideProps(context) {
 
 ### Using Express.js
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/feat%2Fssr-support/packages/react-searchbox/examples/with-ssr?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/next/packages/react-searchbox/examples/with-ssr?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/searchbox"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -139,4 +139,4 @@ export async function getServerSideProps(context) {
 
 ## Blog   
 
-Consider reading the blog [**here**](https://hashnode.com/preview/6263a659d82f4558aff88d84) we published for SSR support integration in `@appbaseio/react-seasrchbox`.
+Consider reading the blog post showing a SSR rendered search UI built with `@appbaseio/react-searchbox` over [here](https://blog.reactivesearch.io/preview/6263a659d82f4558aff88d84).
