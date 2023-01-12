@@ -121,7 +121,7 @@ export async function getServerSideProps(context) {
 
 ### Using Next.js
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/next/packages/react-searchbox/examples/next-ssr?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/next-ssr?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/searchbox"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -130,7 +130,7 @@ export async function getServerSideProps(context) {
 
 ### Using Express.js
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/next/packages/react-searchbox/examples/with-ssr?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/searchbox/tree/master/packages/react-searchbox/examples/with-ssr?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/searchbox"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
