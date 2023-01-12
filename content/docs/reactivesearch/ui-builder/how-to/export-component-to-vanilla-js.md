@@ -5,8 +5,11 @@ meta_description: 'Export a component to Vanilla JS'
 keywords:
   - ui-builder
   - ui-integrations
-  - how-to-guides
-  - export-component
+  - how-to
+  - react
+  - vue
+  - elasticsearch
+  - solr
   - vanilla-js
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
@@ -14,7 +17,7 @@ nestedSidebar: 'ui-builder-reactivesearch'
 
 ## Overview
 
-The How-to guide enumerates steps to export a component(React basaed) to a vanilla-js project.
+The How-to guide enumerates steps to export a component (React basaed) to a vanilla-js project.
 
 ### Pre-requisite: Create a Search UI 
 

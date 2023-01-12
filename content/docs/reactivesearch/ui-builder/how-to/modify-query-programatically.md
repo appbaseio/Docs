@@ -5,9 +5,11 @@ meta_description: 'Modify the query programatically'
 keywords:
   - ui-builder
   - ui-integrations
-  - how-to-guides
-  - add-custom-query-param
-  - modify-query
+  - how-to
+  - react
+  - vue
+  - elasticsearch
+  - solr
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
@@ -20,7 +22,7 @@ The How-to guide enumerates steps to programatically modify the query before hit
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Elasticsearch__YNtZ8O-pTyCkyHwDJkP2Pw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+<iframe src="https://scribehow.com/embed/Connecting_the_search_UI_to_Elasticsearch__qmxLBZk6TAarxuNwWDK9IA" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
@@ -63,6 +65,7 @@ const transformRequest = (props) => {
   https://codesandbox.io/s/starter-modify-a-query-programmatically-y6i14x
 
 - Final CodeSandbox 
+
   https://codesandbox.io/s/modify-a-query-programmatically-final-jf6u01
 
 
