@@ -10,7 +10,8 @@ keywords:
 sidebar: 'docs'
 ---
 
-##Setting Up Google Analytics
+## Setting Up Google Analytics
+
 Even though ReactiveSearch provides analytics tailored to your search, you might want to integrate your search into your existing analytics tools.
 The base library components don't provide a built-in widget to implement analytics with other providers.
 
@@ -23,10 +24,10 @@ To set up Google Analytics, the best way is to [follow the reference guide](http
 
 Once the GA library is installed on your website, follow the steps below on how Google Analytics can be integrated with different libraries.
 
-##Setup The Search State Change Listener
+## Setup The Search State Change Listener
 Setting the search state change listener depends on how your search app is setup. If you are using one of the appbase.io libraries, you can refer to the sections below on how you can do this.
 
-###ReactiveSearch
+### ReactiveSearch
 Track any component's state using `StateProvider` component as below. Read more about `StateProvider` over [here](https://docs.appbase.io/docs/reactivesearch/v3/advanced/stateprovider/):
 
 ```js
@@ -55,7 +56,7 @@ If you only want to track your searchbox and you are using the [DataSearch](http
 </ReactiveBase>
 ```
 
-###ReactiveSearch Vue
+### ReactiveSearch Vue
 If you want to track your searchbox and you are using the [data-search](https://docs.appbase.io/docs/reactivesearch/vue/search/DataSearch/) component for it, you can do the following.
 
 ```vue
