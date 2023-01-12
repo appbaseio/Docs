@@ -8,8 +8,14 @@ const Tutorial = () => {
 		<>
 			<Helmet>
 				<html lang="en" className="fs-base" />
-				<title>ReactiveSearch.io Docs - Interactive tutorial to build a search UI in under a minute</title>
-                <meta name="description" content="Follow this interactive tutorial to learn how to build a SaaS, E-Commerce and Geo search UI in under a minute. Import data, configure search, facets and export code." />
+				<title>
+					ReactiveSearch.io Docs - Interactive tutorial to build a search UI in under a
+					minute
+				</title>
+				<meta
+					name="description"
+					content="Follow this interactive tutorial to learn how to build a SaaS, E-Commerce and Geo search UI in under a minute. Import data, configure search, facets and export code."
+				/>
 				<body />
 			</Helmet>
 			<div>
@@ -23,7 +29,7 @@ const Tutorial = () => {
 				</div>
 				<iframe
 					title="Interactive Tutorial"
-					src="https://dashboard-tutorial.netlify.app/"
+					src="https://reactivesearch-tutorial.vercel.app/"
 					frameBorder="0"
 					width="100%"
 					height="100vh"
