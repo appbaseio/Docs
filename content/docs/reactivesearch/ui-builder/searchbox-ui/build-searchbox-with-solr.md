@@ -8,6 +8,7 @@ keywords:
   - how-to-guides
   - searchbox
   - auto-suggestions
+  - solr
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
@@ -47,7 +48,8 @@ Use cases for using the searchbox component in your application:
 
 - User productivity with actions: When actions like toggling between light mode or dark mode of your app can be done directly from the search bar, it can further enhance the search user experience.
 
-## The Guide
-Step-by-step guide to create a document search experience with featured, popular, recent and popular suggestions using ReactiveSearch dashboard with Solr as search backend.
+## No-code Builder
+
+Follow this step-by-step guide to create a search experience using featured, popular, recent and popular suggestions with ReactiveSearch dashboard using Solr as the search engine backend.
 
 <iframe src="https://scribehow.com/embed/SearchBoxSolr_as_search_backend_workflow__crD_YXeKQuK-uXEnRW6oYQ" width="640" height="640" allowfullscreen frameborder="0"></iframe>

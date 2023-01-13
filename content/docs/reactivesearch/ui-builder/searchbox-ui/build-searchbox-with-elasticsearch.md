@@ -48,7 +48,8 @@ Use cases for using the searchbox component in your application:
 
 - User productivity with actions: When actions like toggling between light mode or dark mode of your app can be done directly from the search bar, it can further enhance the search user experience.
 
-## The Guide 
+## No-code Builder
 
-Step-by-step guide to create a document search experience with featured, popular, recent and popular suggestions using ReactiveSearch dashboard with Elasticsearch as search backend.
+Follow this step-by-step guide to create a search experience using featured, popular, recent and popular suggestions with ReactiveSearch dashboard using Solr as the search engine backend.
+
 <iframe src="https://scribehow.com/embed/SearchBoxESOpenSearch_workflow__67pssprZSv6hOEdWj2eoIg" width="640" height="640" allowfullscreen frameborder="0"></iframe>

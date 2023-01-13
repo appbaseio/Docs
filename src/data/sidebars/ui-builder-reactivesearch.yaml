@@ -28,9 +28,9 @@
             - title: 'Create a SearchBox with Opensearch'
               link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-with-opensearch/
             - title: 'Create a SearchBox with Solr'
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-solr/
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-with-solr/
             - title: 'Create a SearchBox with Zinc'
-              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-zinc/
+              link: /docs/reactivesearch/ui-builder/searchbox-ui/build-searchbox-with-zinc/
       - group: Recommendations
         items:
             - title: Recommendations
