@@ -202,7 +202,9 @@ A sitemap is an XML file that tells search engine crawlers which pages are centr
 
 When deciding which pages to put in your sitemap, a good rule is to include only your canonical pages.
 
-If you’re not using a content management system (CMS) that automatically generates a sitemap for you, you can generate one based on your ReactiveSearch indices.
+## Your canonical pages have unique titles and descriptions
+
+The `title` and `description` meta tags give search engine users important insight into the content of a search result and its relevance. This information often determines which search engine result a person clicks on, so it’s crucial to use high-quality titles and descriptions in your web pages.
 
 ## Your site is using a pre-rendering technique
 
