@@ -195,6 +195,15 @@ If your pagination occurs on scroll (as is the case with the ReactiveList compon
 
 Some search engines use the HTML `link` elements with attributes `rel="next"` and `rel="prev"` in the `<head>` of your page to infer the relationship between component URLs in a paginated series. These elements can be helpful, but they’re [not an indexing signal](https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html) for all search engines.
 
+
+## Your category URLs are referenced in a sitemap
+
+A sitemap is an XML file that tells search engine crawlers which pages are central to your site. Having a sitemap is particularly recommended for large websites with many unrelated pages.
+
+When deciding which pages to put in your sitemap, a good rule is to include only your canonical pages.
+
+If you’re not using a content management system (CMS) that automatically generates a sitemap for you, you can generate one based on your ReactiveSearch indices.
+
 ## Your site is using a pre-rendering technique
 
 The first question is, "Why do we even need to pre-render an HTML page"?
