@@ -206,6 +206,39 @@ When deciding which pages to put in your sitemap, a good rule is to include only
 
 The `title` and `description` meta tags give search engine users important insight into the content of a search result and its relevance. This information often determines which search engine result a person clicks on, so it’s crucial to use high-quality titles and descriptions in your web pages.
 
+## Your component’s markup is semantic
+
+ReactiveSearch components provide a default semantic markup that should cover most cases, but if you are using props to customize your UI, make sure to properly use markup according to its meaning and purpose.
+
+For example, use heading elements (h1 to h6) for headings, paragraph elements (p) for paragraphs, list elements (ul, ol, or dl) for lists, tables (table) for data tables. Semantic markup helps search engines identify and categorize your content with minimal effort.
+
+### Do’s and don’ts
+
+✅ Dos
+
+```html
+<h1>foo</h1>
+<p>foo bar.</p>
+<p>baz scribble.</p>
+
+```
+
+🚫 Don'ts
+
+```html
+<p class"heading">foo</p>
+foo bar.<br><br>
+baz scribble.
+
+
+```
+
+## Your website is mobile-friendly
+
+Due to the increasing number of users who browse the web on mobile, [more search engines value mobile-friendly websites](https://developers.google.com/search/mobile-sites/mobile-first-indexing) and only index content visible on a mobile device.
+
+Therefore, your mobile and desktop sites must share the same content, structured data, title, and description meta tags.
+
 ## Your site is using a pre-rendering technique
 
 The first question is, "Why do we even need to pre-render an HTML page"?
