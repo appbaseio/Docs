@@ -168,6 +168,33 @@ You can also reference the mobile page from the primary page with the following 
 </head>
 ```
 
+## Handling paginated content
+
+If you’re using the `pagination` widget or the “show more” button of the `MultiList` facet, make sure that:
+
+1. Your widget uses `<a>` tags with an href attribute,
+
+```html
+<!-- Pagination -->
+<ul>
+  <li><a href="https://mywebsite.com/Women-Clothing/T-Shirts/?page=1">1</a></li>
+  <li><a href="https://mywebsite.com/Women-Clothing/T-Shirts/?page=2">2</a></li>
+  <!-- ... -->
+</ul>
+
+<!-- "Show more" button -->
+<a href="https://mywebsite.com/Women-Clothing/T-Shirts/?page=2">Show more</a>
+
+```
+
+2. Each page can be accessed directly through a URL.
+
+3. Each page URL has a canonical link to its primary page.
+
+If your pagination occurs on scroll (as is the case with the ReactiveList component when `infiniteScroll` prop is set to `true`), make sure you still provide a “show more” link that uses plain URLs.
+
+Some search engines use the HTML `link` elements with attributes `rel="next"` and `rel="prev"` in the `<head>` of your page to infer the relationship between component URLs in a paginated series. These elements can be helpful, but they’re [not an indexing signal](https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html) for all search engines.
+
 ## Your site is using a pre-rendering technique
 
 The first question is, "Why do we even need to pre-render an HTML page"?
