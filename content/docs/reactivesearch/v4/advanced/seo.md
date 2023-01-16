@@ -131,6 +131,42 @@ For example, if a website has categories and sub-categories, each category shoul
 - `https://mywebsite.com/search?categorylvl1=Clothing&categoryLvl2=T-shirts`
 
 
+## Your robots.txt file
+
+A robots.txt file tells search engine crawlers which URLs the crawler can access on your site. This is used mainly to avoid overloading your site with requests. [Know more](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
+
+If you use canonical URLs and a sitemap, there is no need to change your [robots.txt](https://www.robotstxt.org/).
+
+## You use canonical URLs to indicate primary content
+
+A canonical URL is [the most representative page from a set of duplicate pages](https://support.google.com/webmasters/answer/139066) on your site.
+
+When users search for "iphones” in a search engine, you want them to find https://mywebsite.com/Mobiles/Apple/ rather than:
+
+`https://mywebsite.com/Mobiles/?query=iphone&free-shipping=true&page=4
+`
+
+Here, all three pages have similar content. As a result, you need to tell search engine bots which URL to reference as the primary page (canonical URL).
+
+To do this, add a `rel="canonical"` link that points to the canonical URL on all possible duplicate pages. In the following example, all links need to have a `link` element pointing to the primary page.
+
+- `https://mywebsite.com/Women-Clothing/T-Shirts/?page=42`
+- `https://mywebsite.com/Women-Clothing/T-Shirts/?brand=lacoste`
+- `https://mywebsite.com/Women-Clothing/T-Shirts/?query=round%20Collar`
+
+```html
+### Are mobile pages duplicates?
+
+Yes, the mobile version of a page counts as duplicate content. Make sure your mobile pages have a canonical link in their `head`, indicating the desktop page as the primary page.
+
+You can also reference the mobile page from the primary page with the following tag:
+
+```html
+<head>
+  <!-- ... -->
+  <link rel="alternate" media="only screen and (max-width: 640px)">
+</head>
+```
 
 ## Your site is using a pre-rendering technique
 
