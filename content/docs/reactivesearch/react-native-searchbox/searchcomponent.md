@@ -12,7 +12,7 @@ nestedSidebar: 'react-native-searchbox-reactivesearch'
 
 ## How does it work?
 
-`SearchComponent` component represents a search component that can be used to build different kinds of search components. It uses the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](docs/reactivesearch/searchbase/overview/QuickStart/) to integrate the UI components with Elasticsearch. Some of the use-cases are:
+`SearchComponent` component represents a search component that can be used to build different kinds of search components. It uses the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) to integrate the UI components with Elasticsearch. Some of the use-cases are:
 
 -   a category filter component,
 -   a search bar component,
@@ -24,7 +24,7 @@ nestedSidebar: 'react-native-searchbox-reactivesearch'
 
 ### Configure appbase.io environment
 
-The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
+The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 -   **index** `string` [Required]
     Refers to an index of the Elasticsearch cluster.

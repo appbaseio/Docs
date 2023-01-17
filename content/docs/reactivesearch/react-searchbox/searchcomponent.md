@@ -23,7 +23,7 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 # Props
 
 ## Configure appbase.io environment
-The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
+The below props are only needed if you're not using the `SearchComponent` component under [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 ### **index**
 

@@ -304,7 +304,7 @@ It accepts an object with these properties:
 -   **`loadMore`**: `function`
     A callback function to be called to load the next page of results into the view. The callback function is only applicable in the case of infinite loading view (i.e. `infiniteScroll` prop set to `true`).
 -   **`triggerClickAnalytics`**: `function`
-    A function which can be called to register a click analytics. [Read More](docs/reactivesearch/v4/advanced/analytics/)
+    A function which can be called to register a click analytics. [Read More](/docs/reactivesearch/v4/advanced/analytics/)
 ```jsx
 render={(props) => { 
     const 

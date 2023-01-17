@@ -80,7 +80,7 @@ const { ResultCardsWrapper } = ReactiveList;
 |------|----------|
 |  `string|number` |   Yes   |
 
-The `_id` property of the elasticsearch hit object. This prop is required to track the impressions for search results. [Read More](docs/reactivesearch/v4/advanced/analytics#track-impressions-for-search-results)
+The `_id` property of the elasticsearch hit object. This prop is required to track the impressions for search results. [Read More](/docs/reactivesearch/v4/advanced/analytics#track-impressions-for-search-results)
 
 ### target
 

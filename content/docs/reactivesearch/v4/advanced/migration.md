@@ -17,10 +17,10 @@ ReactiveSearch and ReactiveMaps are fully compatible with React 18.x and above w
 
 ### Removal of FE query generation
 In this release we have removed the front-end query generation, we discourage the use of front-end queries to search backend which is a security risk.
-We're using the declarative [Reactivesearch API](docs/search/reactivesearch-api/) to query the search backend. You can either self-host the OSS version of [Reactivesearch API Server](https://github.com/appbaseio/reactivesearch-api) or use the Appbase services.
+We're using the declarative [Reactivesearch API](/docs/search/reactivesearch-api/) to query the search backend. You can either self-host the OSS version of [Reactivesearch API Server](https://github.com/appbaseio/reactivesearch-api) or use the Appbase services.
 
 ### Removal of `DataSearch` & `CategorySearch` components
-In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearch` (to display category suggestions). In 4.x we have only one component named [SearchBox](docs/reactivesearch/v3/search/searchbox/) to implement auto-suggestions UI.
+In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearch` (to display category suggestions). In 4.x we have only one component named [SearchBox](/docs/reactivesearch/v3/search/searchbox/) to implement auto-suggestions UI.
 
 **v3.x:**
 

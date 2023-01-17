@@ -111,7 +111,7 @@ nestedSidebar: 'react-native-searchbox-reactivesearch'
 ```
 
 ## Advanced Usage
- Although, `react-native-searchbox` API should be enough to build a powerful searchbox UI, if you need to access the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases, then you can access it with the help of the react `context` API.
+ Although, `react-native-searchbox` API should be enough to build a powerful searchbox UI, if you need to access the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) instance for a particular component id for more advanced use-cases, then you can access it with the help of the react `context` API.
 
  ```jsx
  import { SearchContext } from '@appbaseio/react-native-searchbox';

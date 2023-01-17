@@ -19,7 +19,7 @@ SearchBox offers a lightweight and performance focused searchbox UI component to
 
 ### Configure appbase.io environment
 
-The below props are only needed if you're not using the `SearchBox` component under [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](docs/reactivesearch/searchbase/overview/searchbase/) component.
+The below props are only needed if you're not using the `SearchBox` component under [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) provider. These props can also be used to override the global environment defined in the [SearchBase](/docs/reactivesearch/searchbase/overview/searchbase/) component.
 
 -   **index** `string` [Required]
     Refers to an index of the Elasticsearch cluster.
@@ -452,7 +452,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`value`**: `string`
         current search input value i.e the search query being used to obtain suggestions.
     -   **`triggerClickAnalytics`**: `function`
-        A function which can be called to register suggestions click analytics. [Read More](docs/reactivesearch/v3/advanced/analytics/)
+        A function which can be called to register suggestions click analytics. [Read More](/docs/reactivesearch/v3/advanced/analytics/)
 
 -   **renderError** `Function`
     can be used to render an error message in case of any error.
@@ -648,7 +648,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 ```
 
 -   **defaultQuery**: `(component: SearchComponent) => Object`
-    is a callback function that takes [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance as parameter and **returns** the data query to be applied to the suggestions, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` is used with data-driven components to impact their own data.
+    is a callback function that takes [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) instance as parameter and **returns** the data query to be applied to the suggestions, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` is used with data-driven components to impact their own data.
 
     For example, set the `timeout` to `1s` for suggestion query.
 
@@ -663,7 +663,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
 ```
 
 -   **customQuery**: `(component: SearchComponent) => Object`
-    takes [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) instance as parameter and **returns** the query to be applied to the dependent components by `react` prop, as defined in Elasticsearch Query DSL.
+    takes [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) instance as parameter and **returns** the query to be applied to the dependent components by `react` prop, as defined in Elasticsearch Query DSL.
 
     For example, the following example has two components `search-component`(to render the suggestions) and `result-component`(to render the results). The `result-component` depends on the `search-component` to update the results based on the selected suggestion. The `search-component` has the `customQuery` prop defined that will not affect the query for suggestions(that is how `customQuery` is different from `defaultQuery`) but it'll affect the query for `result-component` because of the `react` dependency on `search-component`.
 

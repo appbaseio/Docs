@@ -24,7 +24,7 @@ The `SearchBase` class holds the state for all the active components and can be 
 >
 > 1. The `id` property is a unique identifier to each search component.
 > 2. The `SearchBase` class is useful when you're using multiple components that depend on each other. For example, a filter component (to display the category options) depends on the search query (search component).
->    If you're only using a single component then [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class should work well.
+>    If you're only using a single component then [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class should work well.
 
 ## Constructor
 
@@ -37,7 +37,7 @@ const searchbase = new SearchBase(properties);
 # Properties
 
 ## Configure appbase.io environment
-The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](docs/reactivesearch/searchbase/overview/component/) as well.
+The following properties can be used to configure appbase.io environment globally, i.e. for all registered components. You can also configure these properties for each [Component](/docs/reactivesearch/searchbase/overview/component/) as well.
 
 ### **index**
 
@@ -81,7 +81,7 @@ allows you to customize the analytics experience when appbase.io is used as a ba
 -   **enableTelemetry** `Boolean` When set to `false`, disable the telemetry. Defaults to `true`.
 
 ## To configure the query execution
-The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) too.
+The following properties can be used to customize the query execution globally. It is also possible to configure those properties for each [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) too.
 
 ### **headers**
 
@@ -225,7 +225,7 @@ const searchbase = new SearchBase({
 register(id: string, component: SearchComponent | Object): SearchComponent
 ```
 
-This method can be used to register a search component with a unique `id`. It returns the instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class for that particular search component. The second param can be an instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class or an object to configure the properties of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class.
+This method can be used to register a search component with a unique `id`. It returns the instance of the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class for that particular search component. The second param can be an instance of the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class or an object to configure the properties of the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class.
 
 The following example registers a component with the second param as an object
 
@@ -242,7 +242,7 @@ searchBase.register('search-component', {
 });
 ```
 
-The following example registers a component with second param as an instance of [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class.
+The following example registers a component with second param as an instance of [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class.
 
 ```ts
 const searchBase = new SearchBase({
@@ -291,7 +291,7 @@ This method is useful to unregister a component by `id`. It is a good practice t
 getComponent(id: string): SearchComponent
 ```
 
-This method can be used to retrieve the instance of the [SearchComponent](docs/reactivesearch/searchbase/overview/searchcomponent/) class for a particular component by `id`.
+This method can be used to retrieve the instance of the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class for a particular component by `id`.
 
 #### getComponents
 ```ts

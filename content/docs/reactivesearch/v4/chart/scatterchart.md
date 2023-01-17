@@ -15,7 +15,7 @@ nestedSidebar: 'web-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/sKkohVC.png)
 
-The following guide explains the [ReactiveChart](docs/reactivesearch/v4/chart/reactivechart) usage with scatter chart.
+The following guide explains the [ReactiveChart](/docs/reactivesearch/v4/chart/reactivechart) usage with scatter chart.
 
 ## Usage
 

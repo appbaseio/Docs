@@ -76,10 +76,10 @@ ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usag
 
 ### Removal of FE query generation
 In this release we have removed the front-end query generation, we discourage the use of front-end queries to search backend which is a security risk.
-We're using the declarative [Reactivesearch API](docs/search/reactivesearch-api/) to query the search backend. You can either self-host the OSS version of [Reactivesearch API Server](https://github.com/appbaseio/reactivesearch-api) or use the Appbase services.
+We're using the declarative [Reactivesearch API](/docs/search/reactivesearch-api/) to query the search backend. You can either self-host the OSS version of [Reactivesearch API Server](https://github.com/appbaseio/reactivesearch-api) or use the Appbase services.
 
 ### Removal of `DataSearch` component
-In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have only one component named [SearchBox](docs/reactivesearch/vue/search/searchbox/) to implement auto-suggestions UI.
+In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have only one component named [SearchBox](/docs/reactivesearch/vue/search/searchbox/) to implement auto-suggestions UI.
 
 **v1.x:**
 

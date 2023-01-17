@@ -15,7 +15,7 @@ nestedSidebar: 'web-v3-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/DQvhVov.png)
 
-The following guide explains the [ReactiveChart](docs/reactivesearch/v3/chart/reactivechart) usage with line chart.
+The following guide explains the [ReactiveChart](/docs/reactivesearch/v3/chart/reactivechart) usage with line chart.
 
 ## Usage
 

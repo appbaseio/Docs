@@ -17,7 +17,7 @@ ReactiveSearch and ReactiveMaps are fully compatible with React 16.6 and above w
 
 ### Controlled and Uncontrolled component behaviors
 
-To enable effective control over the components, we now support `defaultValue`, `value` & `onChange` props. These new props enable better controlled and uncontrolled usage for all the reactivesearch components. You can read all about it [here](docs/reactivesearch/v3/advanced/usage).
+To enable effective control over the components, we now support `defaultValue`, `value` & `onChange` props. These new props enable better controlled and uncontrolled usage for all the reactivesearch components. You can read all about it [here](/docs/reactivesearch/v3/advanced/usage).
 
 > We don't support `defaultSelected` prop anywhere.
 
