@@ -5,9 +5,10 @@ meta_description: 'Add an arbitrary facet to the Search UI'
 keywords:
   - ui-builder
   - ui-integrations
-  - how-to-guides
-  - add-arbitrary-facet
-  - add-custom-filter
+  - how-to
+  - react
+  - elasticsearch
+  - solr
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
@@ -20,7 +21,7 @@ The How-to guide enumerates steps to programatically add an arbitrary facet filt
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Lucidworks_Fusion__x1WkxtpJTZqQrYx728_AJw" width="100%" height="640" allowfullscreen frameborder="0" style="margin: auto;"></iframe>
+<iframe src="https://scribehow.com/embed/Connecting_the_search_UI_to_Elasticsearch__qmxLBZk6TAarxuNwWDK9IA" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
@@ -109,10 +110,6 @@ react={{
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
 
-
-### With `FUSION` as backend 
-
-<iframe src="https://scribehow.com/embed/Programatically_adding_an_arbitrary_facet_filter__FUSION__i2WLnHfcSCObC57Ca5nxgQ" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 #### Code Snippets
 

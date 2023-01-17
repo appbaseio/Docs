@@ -4,23 +4,24 @@ meta_title: 'Add a new route to a Search UI'
 meta_description: 'Add a new route to a Search UI'
 keywords:
   - ui-builder
-  - ui-integrations
-  - how-to-guides
+  - how-to
   - add-new-route
   - add-new-page
+  - elasticsearch
+  - react
 sidebar: 'docs'
 nestedSidebar: 'ui-builder-reactivesearch'
 ---
 
 ## Overview
 
-The How-to guide enumerates steps to add a new page/ route to an existing Search UI.
+In this guide, we will see how to add a new page to a search UI created through the UI builder.
 
 ### Pre-requisite: Create a Search UI 
 
 You can follow this 👇🏻 step-by-step tutorial to build a new Search UI, incase you already don't have one.
 
-<iframe src="https://scribehow.com/page-embed/Publishing_Search_UIs_with_Elasticsearch__YNtZ8O-pTyCkyHwDJkP2Pw" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+<iframe src="https://scribehow.com/embed/Connecting_the_search_UI_to_Elasticsearch__qmxLBZk6TAarxuNwWDK9IA" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br /> <br /> 
 
@@ -110,12 +111,39 @@ const HelloWorld = () => {
     {}
   );
 
+  const backend = get(preferences, "backend", "");
+  const isFusion = backend === "fusion";
+
+  const globalFusionSettings = get(preferences, "fusionSettings", {});
+  const pageFusionSettings = get(
+    pageSettings,
+    `pages.${pageSettings.currentPage}.indexSettings.fusionSettings`
+  );
+  const fusionSettings = {
+    ...globalFusionSettings,
+    ...pageFusionSettings
+  };
   const resultSettings = get(
     componentSettings,
     "result",
     get(preferences, "resultSettings", {})
   );
-
+  const transformRequest = isFusion
+    ? (props) => {
+        if (Object.keys(fusionSettings).length) {
+          const newBody = JSON.parse(props.body);
+          newBody.metadata = {
+            app: fusionSettings.app,
+            profile: fusionSettings.profile,
+            suggestion_profile: fusionSettings.searchProfile,
+            sponsored_profile: get(fusionSettings, "meta.sponsoredProfile", "")
+          };
+          // eslint-disable-next-line
+          props.body = JSON.stringify(newBody);
+        }
+        return props;
+      }
+    : undefined;
   let newProps = {};
   const sortOptionSelector = get(resultSettings, "sortOptionSelector", []);
   if (sortOptionSelector && sortOptionSelector.length) {
@@ -207,6 +235,7 @@ const HelloWorld = () => {
       }}
       preferences={getSearchPreferences()}
       initialQueriesSyncTime={100}
+      transformRequest={transformRequest}
     >
       <SearchBox
         preferencesPath={`pageSettings.pages.${pageSettings.currentPage}.componentSettings.search`}
