@@ -19,11 +19,8 @@ const getValue = () => {
 		if (path && path.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
-		if (path && path.startsWith('/docs/reactivesearch/v3')) {
+		if (path && path.startsWith('/docs/reactivesearch/react/v3')) {
 			return 'React - v3';
-		}
-		if (path && path.startsWith('/docs/reactivesearch/v4')) {
-			return 'React - v4';
 		}
 		if (path && path.startsWith('/docs/reactivesearch/react')) {
 			return 'React - v4';
@@ -115,7 +112,7 @@ const getVersionName = value => {
 		case 'React - v2':
 			return 'v2';
 		case 'React - v3':
-			return 'v3'
+			return 'v3';
 		case 'SearchBase':
 			return 'SearchBase';
 		case 'React SearchBox':

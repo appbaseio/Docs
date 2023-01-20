@@ -13,6 +13,10 @@
               link: /docs/reactivesearch/react/overview/reactivecomponent/
             - title: Components Overview
               link: /docs/reactivesearch/react/overview/components/
+            - title: Showcase
+              link: /docs/reactivesearch/react/overview/Showcase/
+            - title: Migration Guide
+              link: /docs/reactivesearch/react/advanced/migration/
       - group: List Components
         items:
             - title: SingleList
@@ -129,8 +133,6 @@
               link: /docs/reactivesearch/react/advanced/ssr/
             - title: Components Usage
               link: /docs/reactivesearch/react/advanced/usage/
-            - title: Migration Guide
-              link: /docs/reactivesearch/react/advanced/migration/
             - title: Advanced Guides
               link: /docs/reactivesearch/react/advanced/guides/
             - title: Search and Click Analytics

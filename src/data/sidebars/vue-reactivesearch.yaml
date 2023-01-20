@@ -13,6 +13,8 @@
               link: /docs/reactivesearch/vue/overview/Components/
             - title: Showcase
               link: /docs/reactivesearch/vue/overview/Showcase/
+            - title: Migration Guide
+              link: /docs/reactivesearch/vue/advanced/migration/
       - group: List Components
         items:
             - title: SingleList
@@ -81,5 +83,3 @@
               link: /docs/reactivesearch/vue/advanced/analytics/
             - title: Writing and Editing Data
               link: /docs/reactivesearch/vue/advanced/Data/
-            - title: Migration Guide
-              link: /docs/reactivesearch/vue/advanced/migration/

@@ -26,7 +26,7 @@ const PostHeader = ({ location }) => {
 			else if (value.value === 'v3 - Web') {
 				window.location.href = `${
 					window.location.origin
-				}/reactivesearch/v3/overview/quickstart`;
+				}/reactivesearch/react/v3/overview/quickstart`;
 			} else if (value.value === 'v2 - Web') {
 				window.location.href = `${
 					window.location.origin
@@ -39,11 +39,8 @@ const PostHeader = ({ location }) => {
 		if (location.pathname.startsWith('/reactivesearch/v2')) {
 			return 'v2 - Web';
 		}
-		if (location.pathname.startsWith('/reactivesearch/v3')) {
+		if (location.pathname.startsWith('/reactivesearch/react/v3')) {
 			return 'v3 - Web';
-		}
-		if (location.pathname.startsWith('/reactivesearch/v4')) {
-			return 'v4 - Web';
 		}
 		if (location.pathname.startsWith('/reactivesearch/react')) {
 			return 'v4 - Web';

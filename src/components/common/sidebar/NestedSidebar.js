@@ -25,7 +25,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		} else if (value.value === 'React - v4') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/react/overview/quickstart/`;
 		} else if (value.value === 'React - v3') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/v3/overview/quickstart/`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/react/v3/overview/quickstart/`;
 		} else if (value.value === 'React - v2') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/v2/overview/QuickStart/`;
 		} else if (value.value === 'Searchbase') {
@@ -59,11 +59,8 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		if (location.pathname.startsWith('/docs/reactivesearch/v2')) {
 			return 'React - v2';
 		}
-		if (location.pathname.startsWith('/docs/reactivesearch/v3')) {
+		if (location.pathname.startsWith('/docs/reactivesearch/react/v3')) {
 			return 'React - v3';
-		}
-		if (location.pathname.startsWith('/docs/reactivesearch/v4')) {
-			return 'React - v4';
 		}
 		if (location.pathname.startsWith('/docs/reactivesearch/react')) {
 			return 'React - v4';

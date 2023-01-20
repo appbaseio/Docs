@@ -28,7 +28,7 @@ Once the GA library is installed on your website, follow the steps below on how 
 Setting the search state change listener depends on how your search app is setup. If you are using one of the appbase.io libraries, you can refer to the sections below on how you can do this.
 
 ### ReactiveSearch
-Track any component's state using `StateProvider` component as below. Read more about `StateProvider` over [here](https://docs.appbase.io/docs/reactivesearch/v3/advanced/stateprovider/):
+Track any component's state using `StateProvider` component as below. Read more about `StateProvider` over [here](https://docs.appbase.io/docs/reactivesearch/react/v3/advanced/stateprovider/):
 
 ```js
 <ReactiveBase>
@@ -43,7 +43,7 @@ Track any component's state using `StateProvider` component as below. Read more 
 </ReactiveBase>
 ```
 
-If you only want to track your searchbox and you are using the [DataSearch](https://docs.appbase.io/docs/reactivesearch/v3/search/datasearch/) component for it, you can do the following.
+If you only want to track your searchbox and you are using the [DataSearch](https://docs.appbase.io/docs/reactivesearch/react/v3/search/datasearch/) component for it, you can do the following.
 
 ```js
 <ReactiveBase>

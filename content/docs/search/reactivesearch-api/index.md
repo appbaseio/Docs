@@ -29,3 +29,5 @@ Elasticsearch's query DSL is imperative in nature. Enabling the whole DSL to be 
 - Composable: Easily composes with Elasticsearch's query DSL for advanced use-cases
 - Encapsulate business logic: Don't want to expose sensitive fields to web and mobile clients? Set the fields to return with ReactiveSearch dashboard once and avoid declaring them as part of the network requests.
 - If you're an existing user of ReactiveSearch UI libraries, you can switch to using ReactiveSearch API with no code changes. Simply set `enableAppbase` prop to true. Searchbox libraries already come with a native support for the ReactiveSearch API.
+
+> **Note**: Starting ReactiveSearch React v4.x (latest) release, and ReactiveSearch Vue v3.x (latest) release, setting this prop isn’t needed. These frontend UI kits only use the ReactiveSearch API.

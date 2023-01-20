@@ -452,7 +452,7 @@ Here, we are specifying that the suggestions should update whenever one of the b
     -   **`value`**: `string`
         current search input value i.e the search query being used to obtain suggestions.
     -   **`triggerClickAnalytics`**: `function`
-        A function which can be called to register suggestions click analytics. [Read More](/docs/reactivesearch/v3/advanced/analytics/)
+        A function which can be called to register suggestions click analytics. [Read More](/docs/reactivesearch/react/v3/advanced/analytics/)
 
 -   **renderError** `Function`
     can be used to render an error message in case of any error.

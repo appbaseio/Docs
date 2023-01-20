@@ -174,7 +174,7 @@ preset map's center position by specifying an object with valid `lat` and `lng` 
 |  `Function` |   Yes   |
 
 applies a default query to the map component. This query will be run when no other components are being watched (via React prop), as well as in conjunction with the query generated from the React prop. The function should return a query.
-Read more about it [here](/docs/reactivesearch/v3/advanced/customqueries/#when-to-use-default-query).
+Read more about it [here](/docs/reactivesearch/react/v3/advanced/customqueries/#when-to-use-default-query).
 The following example uses the `defaultQuery` with `calculateMarkers` to display the markers using Elasticsearch `aggregations` instead of `hits`.
 https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-aggregations?from-embed=&file=/src/App.vue
 The following example changes the `defaultQuery` whenever the zoom value changes.
@@ -262,7 +262,7 @@ automatically closes the existing open popovers when a new marker is clicked. De
 |------|----------|
 |  `Object` |   Yes   |
 
-specify dependent components to reactively update **ReactiveGoogleMap's** options. Read more about it [here](/docs/reactivesearch/v3/advanced/reactprop/).
+specify dependent components to reactively update **ReactiveGoogleMap's** options. Read more about it [here](/docs/reactivesearch/react/v3/advanced/reactprop/).
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
     -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.

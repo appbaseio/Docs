@@ -10,11 +10,11 @@ const getLink = url => {
 	if (url.startsWith('/docs/reactivesearch/v2')) {
 		return '/docs/reactivesearch/v2/overview/quickstart/';
 	}
-	if (url.startsWith('/docs/reactivesearch/v3')) {
-		return '/docs/reactivesearch/v3/overview/quickstart/';
+	if (url.startsWith('/docs/reactivesearch/react/v3')) {
+		return '/docs/reactivesearch/react/v3/overview/quickstart/';
 	}
-	if (url.startsWith('/docs/reactivesearch/v4')) {
-		return '/docs/reactivesearch/v4/overview/quickstart/';
+	if (url.startsWith('/docs/reactivesearch/react')) {
+		return '/docs/reactivesearch/react/overview/quickstart/';
 	}
 	if (url.startsWith('/docs/reactivesearch/react')) {
 		return '/docs/reactivesearch/react/overview/quickstart/';

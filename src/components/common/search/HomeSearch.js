@@ -89,10 +89,10 @@ const getValue = url => {
 	if (url.startsWith('/docs/reactivesearch/v2')) {
 		return 'react-bw';
 	}
-	if (url.startsWith('/docs/reactivesearch/v3')) {
+	if (url.startsWith('/docs/reactivesearch/react/v3')) {
 		return 'react-bw';
 	}
-	if (url.startsWith('/docs/reactivesearch/v4')) {
+	if (url.startsWith('/docs/reactivesearch/react')) {
 		return 'react-bw';
 	}
 	if (url.startsWith('/docs/reactivesearch/react')) {
@@ -220,11 +220,11 @@ class AutoComplete extends React.Component {
 	}
 
 	getSectionsMapper = url => {
-		if (url.includes('v3')) return 'v3';
-
-		if (url.includes('native')) return 'native';
+		if (url.includes('react')) return 'react';
 
 		if (url.includes('vue')) return 'vue';
+
+		if (url.includes('native')) return 'native';
 
 		if (url.includes('relevancy')) return 'relevancy';
 
