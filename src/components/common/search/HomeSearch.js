@@ -253,7 +253,6 @@ class AutoComplete extends React.Component {
 		const noOfSuggestions = 40;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
-
 		const searchValue = this.searchWithFuse(inputValue)
 			.map(res => ({
 				...res,
@@ -262,6 +261,8 @@ class AutoComplete extends React.Component {
 				section: this.getSectionsMapper(res?.item?.url),
 			}))
 			.filter(item => !item.url.startsWith('/docs/reactivesearch/v2'))
+			.filter(item => !item.url.startsWith('/docs/reactivesearch/react/v3'))
+			.filter(item => !item.url.startsWith('/docs/reactivesearch/vue/v1'))
 			.filter(item => item.url !== '/data-schema/');
 		let topResults = searchValue.slice(0, noOfSuggestions);
 
@@ -288,7 +289,7 @@ class AutoComplete extends React.Component {
 				res => res.section,
 			);
 			const newHits = [
-				...(grouped['v3'] || []),
+				...(grouped['react'] || []),
 				...(grouped['vue'] || []),
 				...(grouped['native'] || []),
 				...(grouped['relevancy'] || []),
