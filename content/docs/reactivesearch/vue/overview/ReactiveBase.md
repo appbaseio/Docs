@@ -297,7 +297,7 @@ Enables transformation of search network response before rendering them. This as
     }
 }
 ```
-To connect a ReactiveSearch component to a preference, use the `componentId` prop. The following example has defined the `preferences` object for `bookSearch` component, the `DataSearch` component is using the same componentId (`bookSearch`).
+To connect a ReactiveSearch component to a preference, use the `componentId` prop. The following example has defined the `preferences` object for `bookSearch` component, the `SearchBox` component is using the same componentId (`bookSearch`).
 
 ```jsx
     <reactive-base 
@@ -313,7 +313,7 @@ To connect a ReactiveSearch component to a preference, use the `componentId` pro
 			}
 		}"
     >
-        <data-search component-id="bookSearch" />
+        <search-box component-id="bookSearch" />
     </reactive-base>
 ```
 Additionally, the ReactiveSearch components support `preferencesPath` prop which is useful to define the path of preference object for a component. It is helpful when you have to use conflicting component Ids. The following example defines the preferences for `home` and `search` pages, components have defined the `preferencesPath` prop to connect to preferences.
@@ -344,12 +344,12 @@ Additionally, the ReactiveSearch components support `preferencesPath` prop which
     	}"
 	>
         {/** home page */}
-        <data-search 
+        <search-box 
             preferences-path="pages.home.bookSearch" 
             component-id="bookSearch" 
         />
          {/** search page */}
-        <data-search 
+        <search-box 
             preferences-path="pages.search.bookSearch" 
             component-id="bookSearch" 
         />
@@ -402,7 +402,7 @@ Once you have added the **ReactiveBase** component, you can get started with add
 
 -   List specific components can be found [here](/docs/reactivesearch/vue/list/SingleList/).
 -   Range specific components can be found [here](/docs/reactivesearch/vue/range/SingleRange/).
--   Search specific components can be found [here](/docs/reactivesearch/vue/search/DataSearch/).
+-   Search specific components can be found [here](/docs/reactivesearch/vue/search/SearchBox/).
 -   Result specific components can be found
     [here](/docs/reactivesearch/vue/result/ResultList/).
 

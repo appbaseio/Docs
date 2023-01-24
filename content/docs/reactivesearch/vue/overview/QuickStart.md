@@ -17,12 +17,7 @@ In this quickstart guide, we will create a books based search engine based on a 
 
 This is how your final app will look like at the end of following this tutorial, in just 10 minutes 🚀.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-vue-final-app-2ru69?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-vue-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-5?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We can either add ReactiveSearch to an existing app or create a boilerplate app with [Vue Cli](https://cli.vuejs.org/guide/installation.html). For this quick start guide, we will use the Vue CLI.
 
@@ -133,25 +128,19 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 
 This is how the app should look after running the `yarn run serve` command.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-helloapp-l0mf0?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart-helloApp"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
-
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-1?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 ---
 
 ### Step 4: Adding Search and Aggregation components
 
-For this app, we will be using [data-search](/docs/reactivesearch/vue/search/DataSearch/), [multi-list](/docs/reactivesearch/vue/list/MultiList/) and [single-range](/docs/reactivesearch/vue/range/SingleRange/) components for searching and filtering on the index. And [reactive-list](/docs/reactivesearch/vue/result/ReactiveList/) component for showing the search results.
+For this app, we will be using [search-box](/docs/reactivesearch/vue/search/SearchBox/), [multi-list](/docs/reactivesearch/vue/list/MultiList/) and [single-range](/docs/reactivesearch/vue/range/SingleRange/) components for searching and filtering on the index. And [reactive-list](/docs/reactivesearch/vue/result/ReactiveList/) component for showing the search results.
 
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
-#### DataSearch
+#### SearchBox
 
 ```html
-<data-search
+<search-box
 	componentId="SearchBox"
 	placeholder="Search for books or authors"
 	:dataField="[
@@ -174,16 +163,11 @@ Lets add them within the ReactiveBase component. But before we do that, we will 
 	]"
 />
 ```
-The [data-search](/docs/reactivesearch/vue/search/DataSearch/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
+The [search-box](/docs/reactivesearch/vue/search/SearchBox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
 
 At this point, you should see the following:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-g1kqq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart-dataSearch"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-2?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 #### MultiList
 
@@ -202,7 +186,7 @@ Aggregation components like MultiList fire a term type query. You can think of a
 
 The `aggregationSize` prop is used to specify the total aggregations (think buckets) that you want returned based on the dataField value.
 
-**Note:** The `dataField` value in MultiList is of string type, since an aggregation is always performed on a single field. In contrast, you may want to search on multiple fields in different ways, so the DataSearch component uses an array of fields instead.
+**Note:** The `dataField` value in MultiList is of string type, since an aggregation is always performed on a single field. In contrast, you may want to search on multiple fields in different ways, so the SearchBox component uses an array of fields instead.
 
 #### SingleRange
 
@@ -226,12 +210,7 @@ The SingleRange operates on a numeric datatype field and fires a range query. Th
 
 At this point, this is how our app should be looking:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-aggregatedcomponents-tl12t?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart-aggregatedComponents"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-3?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ### Step 5: Adding Results Component
 
@@ -273,7 +252,7 @@ Now, we will put all three components together to create the UI view.
       app="good-books-ds"
       credentials="04717bb076f7:be54685e-db84-4243-975b-5b32ee241d31"
     >
-      <data-search
+      <search-box
         componentId="SearchBox"
         placeholder="Search for books or authors"
         :dataField="[
@@ -341,12 +320,7 @@ Now, we will put all three components together to create the UI view.
 
 At this point, you should be seeing our entire app functionally (minus the layouting and styles):
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-results-t2mip?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactiveSearch-quickStart-results"
-	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-4?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We have built our entire search UI in just 80 lines!
 
@@ -364,7 +338,6 @@ ReactiveSearch doesn't use a layout system internally. For example, if you are u
         <div
           v-bind:style="{
             'width': '30%',
-            'display': 'flex',
             'flex-direction': 'column',
             'text-align': 'left',
             'padding': '10px',
@@ -379,11 +352,10 @@ ReactiveSearch doesn't use a layout system internally. For example, if you are u
             'display': 'flex',
             'flex-direction': 'column',
             'padding': '10px',
-            'margin-top': '25px',
             'width': '66%',
           }"
         >
-            <data-search/>
+            <search-box/>
             <reactive-list/>
         </div>
     </div>
@@ -448,11 +420,6 @@ To make the cards look aligned, add styles to the wrapper `div` within the react
 
 If you have followed along, this is how our app should look now.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-vue-final-app-2ru69?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-vue-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/vue-quick-start/tree/step-5?from-embed=&file=/src/App.vue" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/demos/good-books.
+For convenience, you can check out the final code from the ReactiveSearch demos - https://github.com/appbaseio/vue-quick-start/tree/step-5.

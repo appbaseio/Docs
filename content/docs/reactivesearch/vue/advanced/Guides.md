@@ -17,7 +17,7 @@ Most components in ReactiveSearch provides a `beforeValueChange` prop. It is a c
 
 > Note:
 >
-> If you're using Reactivesearch version >= `1.1.0`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example with data-search:
+> If you're using Reactivesearch version >= `1.1.0`, `beforeValueChange` can also be defined as a synchronous function. `value` is updated by default, unless you throw an `Error` to reject the update. For example with search-box:
 
 ```js
 beforeValueChange = value => {

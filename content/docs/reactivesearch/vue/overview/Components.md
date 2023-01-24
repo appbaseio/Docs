@@ -59,12 +59,12 @@ The following are all the possible UI components for a numeric datatype field in
 
 The following are UI components that represent searchbar UIs. The datatype for the `dataField` in these components should be a `Text` (or `String`) or `Keyword`, along with custom analyzer (like ngrams) based mappings defined in sub-fields.
 
-### DataSearch
+### SearchBox
 
 <p>
 <img src="https://imgur.com/kbnVVkZ.png" style="float:left">
 
-**[DataSearch](/docs/reactivesearch/vue/search/DataSearch/)** displays a search input box.
+**[SearchBox](/docs/reactivesearch/vue/search/SearchBox/)** displays a search input box.
 
 </p>
 

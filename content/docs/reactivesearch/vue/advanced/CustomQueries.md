@@ -45,7 +45,7 @@ Each component has a `customQuery` prop that accepts a function. The function ca
 
 ```javascript
 <template>
-  <data-search
+  <search-box
    :customQuery="customQuery"
    ...
   />
@@ -70,7 +70,7 @@ Here is another example that applies a `match_phrase_prefix` query.
 
 ```javascript
 <template>
-  <data-search
+  <search-box
    :customQuery="customQuery"
    ...
   />
@@ -100,7 +100,7 @@ You can also define the query options in custom query:
 
 ```javascript
 <template>
-  <data-search
+  <search-box
    :customQuery="customQuery"
    ...
   />

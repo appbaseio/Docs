@@ -77,7 +77,7 @@ and we will also import the other relevant component from the reactivesearch lib
 <script>
 	import {
 		ReactiveBase,
-		DataSearch,
+		SearchBox,
 		SelectedFilters,
 		ReactiveList,
 } from '@appbaseio/reactivesearch';
@@ -93,7 +93,7 @@ Set the props for all the components we are going to use:
 		credentials: 'nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d',
 	};
 
-	const dataSearchProps = {
+	const searchBoxProps = {
 		dataField: ['original_title', 'original_title.search'],
 		categoryField: 'authors.raw',
 		componentId: 'BookSensor',
@@ -120,7 +120,7 @@ Next step is to evaluate the initial state in the `asyncData` lifecycle method:
 	<reactive-base v-bind="settings" :initialState="initialState">
 			<div className="row">
 				<div className="col">
-					<data-search v-bind="dataSearchProps" />
+					<search-box v-bind="searchBoxProps" />
 				</div>
 
 				<div className="col">
@@ -136,7 +136,7 @@ Next step is to evaluate the initial state in the `asyncData` lifecycle method:
 		data: function() {
 			return {
 				settings,
-				dataSearchProps,
+				searchBoxProps,
 				reactiveListProps
 			};
 		},
@@ -145,8 +145,8 @@ Next step is to evaluate the initial state in the `asyncData` lifecycle method:
 				const initialState = await initReactivesearch(
 					[
 						{
-							...dataSearchProps,
-							source: DataSearch,
+							...searchBoxProps,
+							source: SearchBox,
 						},
 						{
 							...reactiveListProps,

@@ -18,7 +18,7 @@ You can add a `className` to any component which gets applied to the component a
 ### Using the className prop
 
 ```js{3}
-<data-search
+<search-box
     ...
     className="search-box"
 />

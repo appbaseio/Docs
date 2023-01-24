@@ -11,12 +11,12 @@ sidebar: 'docs'
 nestedSidebar: 'vue-reactivesearch'
 ---
 
-One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/vue/list/SingleList/) component can update its data based on the search term in a [DataSearch](/docs/reactivesearch/vue/search/DataSearch/) component.
+One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/vue/list/SingleList/) component can update its data based on the search term in a [SearchBox](/docs/reactivesearch/vue/search/SearchBox/) component.
 
 ### Usage
 
 ```js
-<data-search
+<search-box
     ...
     :react=`{
       "and": "citySensor",
@@ -42,7 +42,7 @@ One of the key ideas behind Reactive Search and Reactive Maps is the reactive de
 An example of a `react` clause where all three clauses are used and values are `Object`, `Array` and `String`.
 
 ```js
-<data-search
+<search-box
   ...
   :react=`{
     "and": {
