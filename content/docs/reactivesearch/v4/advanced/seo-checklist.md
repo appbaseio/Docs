@@ -308,12 +308,6 @@ Not all search engine crawlers can process JavaScript successfully or immediatel
 
 This technique fetches your data and renders a JavaScript website on the server before sending it to the browser. This process is commonly implemented through modern frameworks such as `React`, `Angular`, and `Vue`.
 
-**Dynamic rendering**
-
-Like server-side rendering, dynamic rendering fetches your data and renders a JavaScript website on the server. The difference is that this only happens when a search engine crawls the site (which can be detected with a user agent). Humans still get a client-side-rendered website.
-
-**Dynamic rendering provides the SEO benefits of server-side rendering** when implementing server-side rendering is either too costly or impossible.
-
 **Let's help you out 🤝**
 
 `Reactivesearch` internally runs on a redux store. With Server Side Rendering, you can handle the initial render when a user (or search engine crawler) first requests your app. To achieve the relevant results on an initial render, we need to pre-populate the redux store of ReactiveSearch.
