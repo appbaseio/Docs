@@ -105,6 +105,58 @@ https://fwmwo.csb.app/?BookName=Paradise
 	`https://www.example.com/index.php?id_sezione=360&sid=3a5ebc944f41daa6f849f730f1`
 
 
+Although ReactiveSearch by default uses on query-strings for the Search UIs, but also provides support for customisation to switch to path based routing.
+
+ReactiveBase supports two props to allow users control how the URL of the search UI behaves.
+
+- getSearchParams
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+Enables you to customize the evaluation of query-params-string from the url (or) any other source. If this function is not set, the library will use `window.location.search` as the search query-params-string for parsing selected-values. This can come handy if the URL is using hash values.
+
+- setSearchParams
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+Enables you to customize setting of the query params string in the url by providing the updated query-params-string as the function parameter. If this function is not set, the library will set the `window.history` via `pushState` method.
+
+In our example attached below,
+
+We leverage `setSearchParams` to receive a URL decorated with query params and manipulate the query params to generate a human-friendly route, finally applying it using [`window.history.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState) method.
+
+```js
+setSearchParams = (urlWithQueryParams) => {
+  // build URL with category and sub-category path
+  window.history.pushState({ path: urlWithPath }, '', urlWithPath);
+}
+```
+
+On the other hand `getSearchParams` callback is used to parse the path based URL and turn into library supported URL with query params.
+
+```js
+getSearchParams = () => {
+  // extract query params from the path
+  // path $host/Best%20%Buy/Mobile?color=red&page=2
+  // Extract query params: category=Best%2-Buy&sub-category=Mobile&color=red&page=2
+  return newURLwithAllParams
+}
+```
+
+Voila 🎊 Try selecting the category and the subcategory in the example to see the route's path changing.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/PathBasedRouting?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="path-based-routing"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+
 ## Your URLs reflect the structure of your website
 
 Some search engines use your [URL structure](https://en.wikipedia.org/wiki/Query_string) to infer the architecture of your website, understand the context of a page, and enhance its relevance to a particular search query.
