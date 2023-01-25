@@ -290,6 +290,8 @@ Due to the increasing number of users who browse the web on mobile, [more search
 
 Therefore, your mobile and desktop sites must share the same content, structured data, title, and description meta tags.
 
+ReactiveSearch components are mobile friendly out-of-the-box 😎🤝, if the user chooses to render custom UI then it is the responsibility of the user to handle the responsiveness of the components.
+
 ## Your site is using a pre-rendering technique
 
 The first question is, "Why do we even need to pre-render an HTML page"?
