@@ -80,7 +80,7 @@ On the server-side code, the user imports a util method `getServerState(..., ...
 > Assuming [Next.js](https://nextjs.org/) used for SSR here.
 
 ```javascript
-import getServerState from '@appbaseio/reactivesearch/lib/server';
+import { getServerState } from '@appbaseio/reactivesearch';
 
 // getServerSideProps method is run on server-side by Next.js
 export async function getServerSideProps(context) {
