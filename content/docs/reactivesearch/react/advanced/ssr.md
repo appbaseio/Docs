@@ -253,5 +253,5 @@ We'll send this markup along with the computed `store` object so that it can be 
 
 We've covered all the existing components as an example app here:
 
--   [Components SSR demo with Next.js](https://github.com/appbaseio/reactivesearch/tree/dev/packages/web/examples/ssr)
--   [SSR demo with react-dom](https://github.com/appbaseio/reactivesearch/tree/dev/packages/web/examples/ssr-with-react-dom)
+-   [Components SSR demo with Next.js](https://github.com/appbaseio/reactivesearch/tree/next/packages/web/examples/ssr)
+-   [SSR demo with react-dom](https://github.com/appbaseio/reactivesearch/tree/next/packages/web/examples/ssr-with-react-dom)
