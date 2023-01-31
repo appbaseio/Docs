@@ -1209,13 +1209,18 @@ specify dependent components to reactively update **SearchBox's** suggestions.
 The index prop can be used to explicitly specify an index to query against for this component. It is suitable for use-cases where you want to fetch results from more than one index in a single ReactiveSearch API request. The default value for the index is set to the `app` prop defined in the ReactiveBase component.
 
 > Note: This only works when `enableAppbase` prop is set to true in `ReactiveBase`.
+
 ### focusShortcuts
 
 | Type | Optional |
 |------|----------|
-|  `Array<string | number>` |   Yes   |
+|  `Array<string \| number>` |   Yes   |
 
 A list of keyboard shortcuts that focus the search box. Accepts key names and key codes. Compatible with key combinations separated using '+'. Defaults to `['/']`.
+
+For example, if you want to focus the searchbox when pressing `Shift` and `A` together then you can pass `["SHIFT + A"]`. The string is case-insensitive and space in-between is optional. You can also pass several shortcuts `["SHIFT+A", "SHIFT+B"]`.
+
+
 ### autoFocus
 
 | Type | Optional |
