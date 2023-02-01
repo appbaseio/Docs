@@ -26,7 +26,7 @@ ReactiveSearch provides an API that works with any SSR solution:
 
 ## How does it work?
 
-The basic idea of SSR support for ReactiveSearch is to perform any necessary API calls to the search client and compute the initial state of App, then redyhrate the client side with the initialState computed on the server-side.
+The basic idea of SSR support for ReactiveSearch is to perform any necessary API calls to the search client and compute the initial state of App, then rehydrate the client side with the initialState computed on the server-side.
 
 We split the concerns into:
 
