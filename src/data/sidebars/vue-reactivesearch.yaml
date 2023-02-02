@@ -21,6 +21,8 @@
               link: /docs/reactivesearch/vue/list/SingleList/
             - title: MultiList
               link: /docs/reactivesearch/vue/list/MultiList/
+            - title: TreeList
+              link: /docs/reactivesearch/vue/list/TreeList/
             - title: SingleDropdownList
               link: /docs/reactivesearch/vue/list/SingleDropdownList/
             - title: MultiDropdownList
@@ -42,7 +44,7 @@
       - group: Search Components
         items:
             - title: SearchBox
-              link: /docs/reactivesearch/vue/search/SearchBox/              
+              link: /docs/reactivesearch/vue/search/SearchBox/
       - group: Result Components
         items:
             - title: ReactiveList
