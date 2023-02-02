@@ -11,170 +11,173 @@ sidebar: 'docs'
 nestedSidebar: 'vue-reactivesearch'
 ---
 
-Server Side Rendering enables us to pre-render the results on the server enabling better SEO for the app, and faster delivery of relevant results on an initial render to the users.
+Server-side rendering (SSR), is the ability of an application to contribute by displaying the web page on the server instead of rendering it in the browser. The Server-side sends a fully rendered page to the client
 
-Reactivesearch internally runs on a redux store. With Server Side Rendering, you can handle the intial render when a user (or search engine crawler) first requests your app. To achieve the relevant results on an initial render, we need to pre-populate the redux store of ReactiveSearch.
+Some benefits offered by SSR technique:
 
-ReactiveSearch offers SSR via `initReactivesearch()` method which takes three params:
+- The initial page of the website load is faster as there are fewer codes to render.
+- Good for minimal and static sites.
+- Search engines can crawl the site for better SEO.
 
--   an array of all components (with their set of props) we wish to render at the server side
--   url params
--   base component (reactivebase) props
 
-## Usage
+Reactivesearch internally runs on a redux store. With Server Side Rendering, you can handle the initial render when a user (or search engine crawler) first requests your app. To achieve the relevant results on an initial render, we need to pre-populate the redux store of ReactiveSearch.
 
-This is a three-steps process:
+ReactiveSearch provides an API that works out of the box with any SSR solution:
 
-First, import `initReactivesearch`:
+## How does it work?
 
-```js
-<script>import {initReactivesearch} from '@appbaseio/reactivesearch-vue';</script>
-```
+The basic idea of SSR support for ReactiveSearch is to perform any necessary API calls to the search client and compute the initial state of App, then rehydrate the client side with the initialState computed on the server-side.
 
-Then, evaluate the initial state:
+We split the concerns into:
 
-```js
-const initialState = await initReactivesearch(...);
-```
+- **server**: the main server entry to serve requested pages.
+- **client**: the main browser entry (ultimately gets compiled to bundle.js).
 
-and finally, pass the computed initial state to `ReactiveBase` component.
+### Client-side
 
-```js
+The user needs to provide just two props to the `<reactive-base />` component.
+
+- **contextCollector**: used by our library internally to compute the initial state at the server side. _(injected automatically by the server-side code)._
+
+- **initialState**: the initial state of the app that is calculated at the server-side for hydration at client side.
+
+Create a new component (Search.vue) which renders the ReactiveSearch components.
+The `Search.vue` component must accept the `context-collector` and `initial-state` props.
+```html
 <template>
-	<reactive-base v-bind="settings" :initialState="initialState">
-    ...
+	<reactive-base			
+		app="good-books-ds"
+		url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+		:context-collector="contextCollector"
+		:initial-state="initialState"
+	>
+		<nav class="nav">
+			<div class="title">Books Search</div>
+			<search-box
+				:autosuggest="false"
+				:highlight="true"
+				:URLParams="true"
+				:data-field="['original_title', 'original_title.search']"
+				component-id="SearchSensor"
+				placeholder="Search by books names"
+				icon-position="left"
+				class-name="search"
+			/>
+		</nav>
+		<reactive-list
+			:size="12"
+			:pagination="true"
+			:URLParams="true"
+			:react="{
+				and: ['SearchSensor', 'Authors'],
+			}"
+			:inner-class="{
+				resultStats: 'result-stats',
+				list: 'list',
+				listItem: 'list-item',
+				image: 'image',
+			}"
+			component-id="SearchResult"
+			data-field="original_title"
+		>
+			<template #renderItem="{ item }">
+				<div :id="item._id" :key="item._id" class="flex book-content">
+					<img :src="item.image" alt="Book Cover" class="book-image" />
+					<div class="flex column justify-center ml20">
+						<div class="book-header" inner-html="item.original_title"></div>
+						<div class="flex column justify-space-between">
+							<div>
+								<div>
+									by
+									<span class="authors-list">{{ item.authors }}</span>
+								</div>
+								<div class="ratings-list flex align-center">
+									<span class="stars">
+										<i
+											v-for="(item, index) in Array(
+												item.average_rating_rounded,
+											).fill('x')"
+											:key="index"
+											class="fas fa-star"
+										/>
+									</span>
+									<span class="avg-rating"
+										>({{ item.average_rating }} avg)</span
+									>
+								</div>
+							</div>
+							<span class="pub-year"
+								>Pub {{ item.original_publication_year }}</span
+							>
+						</div>
+					</div>
+				</div>
+			</template>
+		</reactive-list>
 	</reactive-base>
 </template>
-```
 
-## Example
-
-We will build a simple booksearch app with `nuxt.js` as an example to get started with:
-
-### Pre-requisites
-
-Set up `nuxt.js` - [Refer docs here](https://nuxtjs.org/guide/installation)
-
-### Installation
-
-Use the package manager of your choice to install `reactivesearch`:
-
-```
-yarn add @appbaseio/reactivesearch-vue
-```
-
-### Setup
-
-Create an `index.js` file in the `pages` directory, and import `initReactivesearch`:
-
-```js
-<script>import {initReactivesearch} from '@appbaseio/reactivesearch-vue';</script>
-```
-
-and we will also import the other relevant component from the reactivesearch library:
-
-```js
 <script>
-	import {
+import {
+	ReactiveBase,
+	ReactiveList,
+	SearchBox
+} from '@appbaseio/reactivesearch-vue';
+
+export default {
+	name: 'Search',
+	components: {
 		ReactiveBase,
-		SearchBox,
-		SelectedFilters,
 		ReactiveList,
-} from '@appbaseio/reactivesearch';
-</script>
-```
-
-Set the props for all the components we are going to use:
-
-```js
-<script>
-	const settings = {
-		app: 'good-books-ds',
-		credentials: 'nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d',
-	};
-
-	const searchBoxProps = {
-		dataField: ['original_title', 'original_title.search'],
-		categoryField: 'authors.raw',
-		componentId: 'BookSensor',
-		defaultSelected: 'Harry',
-	};
-
-	const reactiveListProps = {
-		componentId: 'SearchResult',
-		dataField: 'original_title.raw',
-		from: 0,
-		size: 5,
-		renderItem: ({ data }) => `<div>${data.original_title}</div>`,
-		react: {
-			and: ['BookSensor'],
+		SearchBox,
+	},
+	props: {
+		initialState: {
+			type: Object,
+			default: null,
 		},
-	};
+		contextCollector: {
+			type: Function,
+			default: null,
+		},
+	},
+};
 </script>
-```
+``` 
 
-Next step is to evaluate the initial state in the `asyncData` lifecycle method:
+### Server Side
 
-```js
+On the server-side code, the user imports a util method `getServerState(..., ...)` to compute the initial state of the App and passes this initial state back to the client-side.
+
+   **getServerState(SearchComponent, pageURL)**: the first param of the function receives the `SearchComponent` component ref and the second param *[optional]* receives the URL string or query param object(should be parsed) to respect the URL query string.
+
+> Assuming [Nuxt.js](https://nuxt.com/) used for SSR here.
+
+```html
+<script setup>
+import { getServerState } from "@appbaseio/reactivesearch-vue";
+import Search from "../components/search.vue";
+const route = useRoute();
+// Fetch server state at server-side and inject `initial-state` at client-side
+const { data, pending, error, refresh } = await useAsyncData(() =>
+  getServerState(Search, route.query)
+);
+const initialState = data.value;
+</script>
+
 <template>
-	<reactive-base v-bind="settings" :initialState="initialState">
-			<div className="row">
-				<div className="col">
-					<search-box v-bind="searchBoxProps" />
-				</div>
-
-				<div className="col">
-					<selected-filters />
-					<reactive-list v-bind="reactiveListProps" />
-				</div>
-			</div>
-	</reactive-base>
+  <div>
+    <search :initial-state="initialState" />
+  </div>
 </template>
-<script>
-	export default {
-		name: 'app',
-		data: function() {
-			return {
-				settings,
-				searchBoxProps,
-				reactiveListProps
-			};
-		},
-		async asyncData() {
-			try {
-				const initialState = await initReactivesearch(
-					[
-						{
-							...searchBoxProps,
-							source: SearchBox,
-						},
-						{
-							...reactiveListProps,
-							source: ReactiveList,
-						},
-					],
-					null,
-					settings,
-				);
-				return {
-					initialState,
-					error: null,
-				};
-			} catch (error) {
-				return {
-					initialState: null,
-					error,
-				};
-			}
-		},
-	};
-</script>
-```
+``` 
 
-Finally, you can now run the dev server and catch the SSR in action.
+### Example Using Nuxt.js
 
-## Example apps
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/dev/packages/vue/examples/with-ssr?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="appbaseio/searchbox"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
-You can check an example app here:
-
--   [Components SSR demo with Nuxt.js](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr)

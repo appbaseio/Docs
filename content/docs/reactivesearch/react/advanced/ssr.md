@@ -13,16 +13,16 @@ nestedSidebar: 'web-reactivesearch'
 
 Server-side rendering (SSR), is the ability of an application to contribute by displaying the web page on the server instead of rendering it in the browser. The Server-side sends a fully rendered page to the client
 
-Some benefits offered by SSR technique
+Some benefits offered by SSR technique:
 
-The initial page of the website load is faster as there are fewer codes to render.
-Good for minimal and static sites.
-Search engines can crawl the site for better SEO.
+- The initial page of the website load is faster as there are fewer codes to render.
+- Good for minimal and static sites.
+- Search engines can crawl the site for better SEO.
 
 
-Reactivesearch internally runs on a redux store. With Server Side Rendering, you can handle the intial render when a user (or search engine crawler) first requests your app. To achieve the relevant results on an initial render, we need to pre-populate the redux store of ReactiveSearch.
+Reactivesearch internally runs on a redux store. With Server Side Rendering, you can handle the initial render when a user (or search engine crawler) first requests your app. To achieve the relevant results on an initial render, we need to pre-populate the redux store of ReactiveSearch.
 
-ReactiveSearch provides an API that works with any SSR solution:
+ReactiveSearch provides an API that works out of the box with any SSR solution:
 
 ## How does it work?
 
@@ -30,12 +30,12 @@ The basic idea of SSR support for ReactiveSearch is to perform any necessary API
 
 We split the concerns into:
 
-server: the main server entry to serve requested pages.
-client: the main browser entry (ultimately gets compiled to bundle.js).
+- **server**: the main server entry to serve requested pages.
+- **client**: the main browser entry (ultimately gets compiled to bundle.js).
 
 ### Client-side
 
-The user needs to provide just two props to the `<SearchBase />` component.
+The user needs to provide just two props to the `<ReactiveBase />` component.
 
 - **contextCollector**: used by our library internally to compute the initial state at the server side. _(injected automatically by the server-side code)._
 
