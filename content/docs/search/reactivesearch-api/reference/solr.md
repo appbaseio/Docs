@@ -964,7 +964,7 @@ Following example indicates how to use this field to use kNN reordering with Ope
 
 **Following values are supported for this field**
 
-```elasticsearch```, ```opensearch```, ```mongodb```, ```solr```, ```zinc```, ```marklogic```
+```elasticsearch```, ```opensearch```, ```mongodb```, ```solr```, ```zinc```
 
 ## metadata
 

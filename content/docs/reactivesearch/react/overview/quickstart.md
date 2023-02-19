@@ -17,12 +17,7 @@ In this quickstart guide, we will create a books based search engine based on a 
 
 This is how your final app will look like at the end of following this tutorial, in just 10 minutes 🚀
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-final-app-0yn05?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep5?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We can either add ReactiveSearch to an existing app or create a boilerplate app with [Create React App (CRA)](https://github.com/facebookincubator/create-react-app). For this quickstart guide, we will use the CRA.
 
@@ -70,7 +65,7 @@ We will update our `src/App.js` file to add ReactiveBase component.
 
 ```jsx
 import React from "react";
-import { ReactiveBase, DataSearch } from "@appbaseio/reactivesearch";
+import { ReactiveBase } from "@appbaseio/reactivesearch";
 
 function App() {
   return (
@@ -90,25 +85,20 @@ export default App;
 
 This is how the app should look after running the `yarn start` command.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-reactivebase-5z60n?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-reactivebase"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep1?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ---
 
 ### Step 3: Adding Search and Aggregation components
 
-For this app, we will be using [DataSearch](/docs/reactivesearch/react/search/searchbox/), [MultiList](/docs/reactivesearch/react/list/multilist/) and [SingleRange](/docs/reactivesearch/react/range/singlerange/) components for searching and filtering on the index. And [ResultCard](/docs/reactivesearch/react/result/resultcard/) component for showing the search results.
+For this app, we will be using [SearchBox](/docs/reactivesearch/react/search/searchbox/), [MultiList](/docs/reactivesearch/react/list/multilist/) and [SingleRange](/docs/reactivesearch/react/range/singlerange/) components for searching and filtering on the index. And [ResultCard](/docs/reactivesearch/react/result/resultcard/) component for showing the search results.
 
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
-#### DataSearch
+#### SearchBox
 
 ```jsx
-SearchBox
+<SearchBox
 	componentId="searchbox"
 	dataField={[
 		{
@@ -132,16 +122,11 @@ SearchBox
 />
 ```
 
-The [**DataSearch**](/docs/reactivesearch/react/search/searchbox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
+The [**SearchBox**](/docs/reactivesearch/react/search/searchbox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
 
 At this point, you should see the following:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-y2d5v?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-datasearch"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep2?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 #### MultiList
 
@@ -160,7 +145,7 @@ Aggregation components like MultiList fire a term type query. You can think of a
 
 The `aggregationSize` prop is used to specify the total aggregations (think buckets) that you want returned based on the dataField value.
 
-**Note:** The `dataField` value in MultiList is of string type, since an aggregation is always performed on a single field. In contrast, you may want to search on multiple fields in different ways, so the DataSearch component uses an array of fields instead.
+**Note:** The `dataField` value in MultiList is of string type, since an aggregation is always performed on a single field. In contrast, you may want to search on multiple fields in different ways, so the SearchBox component uses an array of fields instead.
 
 #### SingleRange
 
@@ -183,12 +168,7 @@ The SingleRange operates on a numeric datatype field and fires a range query. Th
 
 At this point, this is how our app should be looking:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-forked-t9qgq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-datasearch+aggregations"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep3?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We just added completely functional search and aggregation components!
 
@@ -231,12 +211,7 @@ In the `render` method, we are using the ResultCard preset to iterate over each 
 
 At this point, you should be seeing our entire app functionally (minus the layouting and styles):
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-results-ku4z3?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-results"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep4?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We have built our entire search UI in just 60 lines of code!
 
@@ -258,7 +233,7 @@ With ~6 more lines, our final app layout looks as follows.
 			<SingleRange/>
 		</div>
 		<div style={{ display: "flex", flexDirection: "column", width: "66%" }}>
-			SearchBox/>
+			<SearchBox />
 			<ReactiveList/>
 		</div>
 	</div>
@@ -267,11 +242,6 @@ With ~6 more lines, our final app layout looks as follows.
 
 Add some margins between the search and result component, and voila! Our final app is ready:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-final-app-0yn05?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/MyAwesomeSearchStep5?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 If you like to run this setup locally, clone the [ReactiveSearch starter app](https://github.com/appbaseio-apps/reactivesearch-starter-app).

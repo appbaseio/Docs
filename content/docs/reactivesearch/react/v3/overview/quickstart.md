@@ -17,12 +17,7 @@ In this quickstart guide, we will create a books based search engine based on a 
 
 This is how your final app will look like at the end of following this tutorial, in just 10 minutes 🚀
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-final-app-0yn05?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep5?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We can either add ReactiveSearch to an existing app or create a boilerplate app with [Create React App (CRA)](https://github.com/facebookincubator/create-react-app). For this quickstart guide, we will use the CRA.
 
@@ -93,12 +88,7 @@ export default App;
 
 This is how the app should look after running the `yarn start` command.
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-reactivebase-5z60n?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-reactivebase"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep1?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ---
 
@@ -139,12 +129,7 @@ The [**DataSearch**](/docs/reactivesearch/react/v3/search/datasearch/) component
 
 At this point, you should see the following:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-y2d5v?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-datasearch"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep2?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 #### MultiList
 
@@ -186,12 +171,7 @@ The SingleRange operates on a numeric datatype field and fires a range query. Th
 
 At this point, this is how our app should be looking:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-datasearch-forked-t9qgq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-datasearch+aggregations"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep3?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We just added completely functional search and aggregation components!
 
@@ -234,12 +214,7 @@ In the `render` method, we are using the ResultCard preset to iterate over each 
 
 At this point, you should be seeing our entire app functionally (minus the layouting and styles):
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-results-ku4z3?fontsize=14&hidenavigation=1&theme=dark&view=preview"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-results"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep4?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 We have built our entire search UI in just 60 lines of code!
 
@@ -270,11 +245,6 @@ With ~6 more lines, our final app layout looks as follows.
 
 Add some margins between the search and result component, and voila! Our final app is ready:
 
-<iframe src="https://codesandbox.io/embed/reactivesearch-quickstart-final-app-0yn05?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="reactivesearch-quickstart-final-app"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/v3/packages/web/examples/MyAwesomeSearchStep5?from-embed=&file=/src/App.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 If you like to run this setup locally, clone the [ReactiveSearch starter app](https://github.com/appbaseio-apps/reactivesearch-starter-app).

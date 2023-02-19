@@ -263,7 +263,7 @@ Use a pre-built stage from Appbase.
 
 **Following values are supported for this field**
 
-`authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`, `zincQuery`, `recordClick`, `recordConversion`, `recordFavorite`, `recordSaveSearch`, `searchboxPreferences`, `boost`, `marklogicQuery`
+`authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`, `zincQuery`, `recordClick`, `recordConversion`, `recordFavorite`, `recordSaveSearch`, `searchboxPreferences`, `boost`
 
 ## Trigger Expression
 
