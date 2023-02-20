@@ -473,6 +473,16 @@ sets the position of the search icon. Can be set to either `left` or `right`. De
 |  `JSX` |   Yes   |
 
 set a custom search icon instead of the default 🔍
+
+### iconURL
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+Customize search icon by providing a URL. Takes precedence over `icon` prop.  
+
+
 ### showClear
 
 | Type | Optional |
