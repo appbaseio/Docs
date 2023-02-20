@@ -1213,6 +1213,39 @@ A list of keyboard shortcuts that focus the search box. Accepts key names and ke
 
 For example, if you want to focus the searchbox when pressing `Shift` and `A` together then you can pass `["SHIFT + A"]`. The string is case-insensitive and space in-between is optional. You can also pass several shortcuts `["SHIFT+A", "SHIFT+B"]`.
 
+### showFocusShortcutsIcon
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Whether to display the information of focus shortcut inside the searchbox. Defaults to `true`.
+
+### showSuggestionsFooter
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Whether to display a footer with additional information at the bottom of suggestions. Defaults to `true` and shows information regarding navigation keys for the searchbox.
+
+### renderSuggestionsFooter
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+customize the footer displayed at the bottom of the suggestions using this render function. 
+
+```jsx
+<SearchBox
+    {...otherProps}
+    renderSuggestionsFooter={()=>(<div>Custom suggestion footer!</div>)}
+>
+```
+
+
+
 ### autoFocus
 
 | Type | Optional |
