@@ -288,7 +288,7 @@ For convenience, you can checkout the final code from the [CodeSandbox above](ht
 It is also possible to run ReactiveMaps without relying on a Node.JS environment tooling for the build setup.
 
 ```html
-<script src="https://cdn.rawgit.com/appbaseio/reactivesearch/dev/packages/maps/umd/reactivemaps.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@appbaseio/reactivemaps@4.0.0-alpha.1/umd/reactivemaps.js"></script>
 ```
 
-A GZip version is also available at https://cdn.rawgit.com/appbaseio/reactivesearch/dev/packages/maps/umd/reactivemaps.js.gzip.
+A GZip version is also available at https://cdn.jsdelivr.net/npm/@appbaseio/reactivemaps@4.0.0-alpha.1/umd/reactivemaps.js.gzip.
