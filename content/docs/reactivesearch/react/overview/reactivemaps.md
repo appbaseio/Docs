@@ -87,20 +87,19 @@ We will demonstrate creating an index using [appbase.io](https://appbase.io) ser
 We will update our `src/App.js` file to add ReactiveBase component.
 
 ```jsx
-import React, { Component } from 'react';
+// ... other imports
 import { ReactiveBase } from '@appbaseio/reactivesearch';
 
 class App extends Component {
 	render() {
 		return (
 			<ReactiveBase
-				app="earthquake"
-				url="https://@appbase-demo-ansible-abxiydt-arc.searchbase.io"
-				credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
-				type="places"
-				mapKey="<ADD YOUR GOOGLE MAPS KEY HERE>"
+				app="earthquakes"
+				url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+				enableAppbase
+				mapKey="AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU"
 			>
-				// other components will go here.
+				{/* // other components will go here. */}
 				<div>Hello ReactiveSearch!</div>
 			</ReactiveBase>
 		);
@@ -110,7 +109,12 @@ class App extends Component {
 
 This is how the app should look after running the `yarn start` command.
 
-![](https://i.imgur.com/M7AAhTh.png)
+<iframe src="https://codesandbox.io/embed/reactivemaps-quickstart-step-1-v42g1j?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Reactivemaps - Quickstart - step 1"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ---
 
@@ -120,7 +124,13 @@ For this app, we will be using [SingleList](/docs/reactivesearch/react/list/sing
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
 ```jsx
-<SingleList title="Places" componentId="places" dataField="place.raw" size={50} showSearch={true} />
+	<SingleList
+		title="Places"
+		componentId="places"
+		dataField="place.keyword"
+		size={50}
+		showSearch
+	/>
 ```
 
 **SingleList** creates a radio-buttons list UI component that is connected to the database field passed as `dataField` prop to the SingleList component.
@@ -129,14 +139,35 @@ Next, we will look at the [**ReactiveGoogleMap**](/docs/reactivesearch/react/map
 
 ```jsx
 <ReactiveGoogleMap
-	componentId="map"
-	dataField="location"
-	react={{
-		and: 'places',
-	}}
-	renderItem={result => ({
-		label: result.mag,
-	})}
+  style={{ height: "90vh" }}
+  componentId="googleMap"
+  dataField="location"
+  defaultMapStyle="Light Monochrome"
+  title="Reactive Maps"
+  defaultZoom={3}
+  size={50}
+  react={{
+    and: "GeoDistanceSlider"
+  }}
+  onPopoverClick={(item) => <div>{item.venue.venue_name}</div>}
+  showMapStyles={true}
+  renderItem={(result) => ({
+    custom: (
+      <div
+        style={{
+          background: "dodgerblue",
+          color: "#fff",
+          paddingLeft: 5,
+          paddingRight: 5,
+          borderRadius: 3,
+          padding: 10
+        }}
+      >
+        <i className="fas fa-globe-europe" />
+        &nbsp;{result.magnitude}
+      </div>
+    )
+  })}
 />
 ```
 
@@ -144,11 +175,25 @@ The `react` prop here specifies that it should construct a query based on the cu
 
 ![](https://i.imgur.com/QwFq2CP.png)
 
-This is how the map component's UI would look like. Notice how it is rendering the magnitude values of the earthquake in place of the marker pins. We achieved this via `renderData` prop in the ReactiveGoogleMap component:
+This is how the map component's UI would look like. Notice how it is rendering the magnitude values of the earthquake in place of the marker pins. We achieved this via `renderItem` prop in the ReactiveGoogleMap component:
 
 ```jsx
-renderData={(result) => ({
-	label: result.mag
+renderItem={(result) => ({
+  custom: (
+    <div
+      style={{
+        background: "dodgerblue",
+        color: "#fff",
+        paddingLeft: 5,
+        paddingRight: 5,
+        borderRadius: 3,
+        padding: 10
+      }}
+    >
+      <i className="fas fa-globe-europe" />
+      &nbsp;{result.magnitude}
+    </div>
+  )
 })}
 ```
 
@@ -157,73 +202,84 @@ You can also customise it to render any kind of marker pins. Refer [ReactiveGoog
 Now, we will put all three components together to create the UI view.
 
 ```jsx
-import React, { Component } from 'react';
-import { ReactiveBase, SingleList } from '@appbaseio/reactivesearch';
-import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
-
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import { Component } from "react";
+import { ReactiveBase, SingleList } from "@appbaseio/reactivesearch";
+import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 class App extends Component {
-	render() {
-		return (
-			<ReactiveBase
-				url="https://@appbase-demo-ansible-abxiydt-arc.searchbase.io"
-				app="earthquake"
-				credentials="a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61"
-				type="places"
-				mapKey="<ADD YOUR GOOGLE MAPS KEY HERE>"
-			>
-				<div
-					style={{
-						width: '100%',
-						display: 'flex',
-						flexDirection: 'row',
-						justifyContent: 'space-between',
-					}}
-				>
-					<SingleList
-						title="Places"
-						componentId="places"
-						dataField="place.raw"
-						size={50}
-						showSearch={true}
-					/>
-
-					<ReactiveGoogleMap
-						componentId="map"
-						dataField="location"
-						react={{
-							and: 'places',
-						}}
-						renderItem={result => ({
-							label: result.mag,
-						})}
-					/>
-				</div>
-			</ReactiveBase>
-		);
-	}
+  render() {
+    return (
+      <ReactiveBase
+        app="earthquakes"
+        url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+        enableAppbase
+        mapKey="AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU"
+      >
+        <div>
+          <SingleList
+            title="Places"
+            componentId="places"
+            dataField="place.keyword"
+            size={50}
+            showSearch
+          />
+          <hr />
+          <div style={{ padding: "2rem" }}>
+            <ReactiveGoogleMap
+              style={{ height: "90vh" }}
+              componentId="googleMap"
+              dataField="location"
+              defaultMapStyle="Light Monochrome"
+              title="Reactive Maps"
+              defaultZoom={3}
+              size={50}
+              react={{
+                and: "GeoDistanceSlider"
+              }}
+              onPopoverClick={(item) => <div>{item.venue.venue_name}</div>}
+              showMapStyles={true}
+              renderItem={(result) => ({
+                custom: (
+                  <div
+                    style={{
+                      background: "dodgerblue",
+                      color: "#fff",
+                      paddingLeft: 5,
+                      paddingRight: 5,
+                      borderRadius: 3,
+                      padding: 10
+                    }}
+                  >
+                    <i className="fas fa-globe-europe" />
+                    &nbsp;{result.magnitude}
+                  </div>
+                )
+              })}
+            />
+          </div>
+        </div>
+      </ReactiveBase>
+    );
+  }
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
 ```
 
 If you have followed along, this is how our app should look now.
 
-![Image](https://i.imgur.com/LR4qyZU.png)
+<iframe src="https://codesandbox.io/embed/reactivemaps-quickstart-step-2-6erc2o?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Reactivemaps - Quickstart - step 1"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
-For convenience, you can checkout the final code from the ReactiveMap starter [GitHub repo](https://github.com/appbaseio-apps/reactivemaps-starter) and [live codepen](https://codesandbox.io/s/ovq0m97qy6) demo.
+For convenience, you can checkout the final code from the [CodeSandbox above](https://codesandbox.io/s/reactivemaps-quickstart-step-3-6erc2o?file=/src/index.js).
 
-You can run it with the following commands:
-
-```bash
-git clone https://github.com/appbaseio-apps/reactivemaps-starter
-cd reactivemaps-starter
-yarn && yarn start
-# open http://localhost:3000 and you should see the app.
-# The magic sauce is inside **src/App.js** file.
-```
 
 ---
 
