@@ -59,16 +59,34 @@ ReactiveMaps supports [**OpenStreet Map**](https://www.openstreetmap.org) and [*
 
 #### Google Maps
 
-`<ReactiveGoogleMap />` uses Google Maps JS library to render the google map and access the necessary geo-location services. For including Google Maps, add the following `<script>` tag in the `<head>` element of `public/index.html`.
+`<ReactiveGoogleMap />` uses Google Maps JS library to render the google map and access the necessary geo-location services. Pass the secret google key to the `ReactiveBase` wrapper component using `mapKey` prop and that's it. 
 
-```html
-<script
-	type="text/javascript"
-	src="https://maps.google.com/maps/api/js?v=4.0&key=YOUR_MAPS_KEY_HERE"
-></script>
+
+```jsx
+	<ReactiveBase
+    // ...
+		mapKey="<YOUR_MAP_KEY>"
+	>
+	</ReactiveBase>
 ```
 
-> Note that you will need places library from google maps if you are using GeoDistance components. You can add it by appending `&libraries=places` in the above URL. This will be required in case of OpenStreetMaps as well.
+Additionally, pass the `mapLibraries` prop to load additional google libraries like `places`, `visualization`, etc.
+The following are available according to [Google Docs](https://developers.google.com/maps/documentation/javascript/libraries):
+    - `drawing`
+    - `geometry`
+    - `localContext`
+    - `places`
+    - `visualization`
+
+```jsx
+<ReactiveBase
+	mapKey="<YOUR_MAP_KEY>"
+	mapLibraries={['visualization', 'places']}
+    // ...other props
+/>
+```
+
+> Mandatorily pass ***`mapLibraries={['places']}`*** when using either or both of GeoDistanceDropdown/ GeoDistanceSlider components from [ReactiveMaps 🗺️ ](https://docs.appbase.io/docs/reactivesearch/v3/overview/reactivemaps/).
 
 ---
 
