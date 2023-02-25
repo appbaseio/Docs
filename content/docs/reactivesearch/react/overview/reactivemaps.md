@@ -64,7 +64,7 @@ ReactiveMaps supports [**OpenStreet Map**](https://www.openstreetmap.org) and [*
 ```html
 <script
 	type="text/javascript"
-	src="https://maps.google.com/maps/api/js?v=3.31&key=YOUR_MAPS_KEY_HERE"
+	src="https://maps.google.com/maps/api/js?v=4.0&key=YOUR_MAPS_KEY_HERE"
 ></script>
 ```
 
@@ -80,7 +80,7 @@ We will demonstrate creating an index using [appbase.io](https://appbase.io) ser
 
 ![create an appbase.io app](https://i.imgur.com/r6hWKAG.gif)
 
-**Caption:** For the example that we will build, the app is called **earthquake** and the associated read-only credentials are **e54485dd7244:385c84ea-41df-4e40-a22d-339a2224ecd7**. You can browse and clone the dataset into your own app from [here](https://dejavu.appbase.io/?appname=earthquakes&url=https://e54485dd7244:385c84ea-41df-4e40-a22d-339a2224ecd7@appbase-demo-ansible-abxiydt-arc.searchbase.io&mode=edit).
+**Caption:** For the example that we will build, the app is called **earthquakes** and the associated read-only credentials are **a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61**. You can browse and clone the dataset into your own app from [here](https://dejavu.appbase.io/?appname=earthquakes&url=https://e54485dd7244:385c84ea-41df-4e40-a22d-339a2224ecd7@appbase-demo-ansible-abxiydt-arc.searchbase.io&mode=edit).
 
 ![Dataset](https://i.imgur.com/J91nj8r.png)
 
@@ -111,7 +111,7 @@ This is how the app should look after running the `yarn start` command.
 
 <iframe src="https://codesandbox.io/embed/reactivemaps-quickstart-step-1-v42g1j?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Reactivemaps - Quickstart - step 1"
+     title="Reactivemaps - Quickstart - step 2"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
