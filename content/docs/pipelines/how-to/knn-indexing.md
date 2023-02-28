@@ -24,7 +24,7 @@ The question is why is a vector even necessary? Well, a vector can help us build
 
 This how-to guide uses OpenSearch for the demo. In order for the data to be stored in the index, the index should know that the `vector_data` field will be of type vector. Not just that, the dimensions of the vector field also needs to be specified.
 
-The dimensions can differ for the vector field. It depends on the utility that converts the string (or any other type) of data to vector. In this example, we will use [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings) and their dimensions are `1536`. So in this example, we need to set the dimension of the vector field as that.
+The dimensions can differ for the vector field. It depends on the utility that converts the string (or any other type) of data to vector. In this example, we will use [OpenAI's Embeddings](https://platform.openai.com/docs/guides/embeddings) and their dimensions are `1536`. So in this example, we need to set the dimension of the vector field as that.
 
 It can be set by sending the following request to OpenSearch when creating the index:
 
@@ -114,7 +114,7 @@ We will have the following stages defined:
 
 1. authorization
 2. fetch embeddings
-5. index data
+3. index data
 
 ### Authorization
 
