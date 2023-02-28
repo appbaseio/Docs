@@ -34,14 +34,14 @@
                   - link: /docs/search/reactivesearch-api/reference/
                     title: 'API Reference'
                     items:
-                      - link: /docs/search/reactivesearch-api/reference/elasticsearch
-                        title: 'Elasticsearch'
-                      - link: /docs/search/reactivesearch-api/reference/opensearch
-                        title: 'OpenSearch'
-                      - link: /docs/search/reactivesearch-api/reference/solr
-                        title: 'Solr'
-                      - link: /docs/search/reactivesearch-api/reference/mongodb
-                        title: 'MongoDB'
+                        - link: /docs/search/reactivesearch-api/reference/elasticsearch
+                          title: 'Elasticsearch'
+                        - link: /docs/search/reactivesearch-api/reference/opensearch
+                          title: 'OpenSearch'
+                        - link: /docs/search/reactivesearch-api/reference/solr
+                          title: 'Solr'
+                        - link: /docs/search/reactivesearch-api/reference/mongodb
+                          title: 'MongoDB'
             - link: /docs/search/rules/
               title: 'Query Rules'
             - link: /docs/search/scripts/
@@ -54,6 +54,11 @@
       - group: 'ReactiveSearch Pipelines'
         icon: search
         items:
+            - link: /docs/pipelines/integrations/
+              title: Integrations with ReactiveSearch
+              items:
+                  - link: /docs/pipelines/integrations/open-ai
+                    title: OpenAI Integration with ReactiveSearch
             - link: /docs/pipelines/concepts/
               title: Pipeline Concepts
               items:
