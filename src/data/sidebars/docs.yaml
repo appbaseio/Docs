@@ -55,10 +55,10 @@
         icon: search
         items:
             - link: /docs/pipelines/integrations/
-              title: Integrations with ReactiveSearch
+              title: Integrations
               items:
                   - link: /docs/pipelines/integrations/open-ai
-                    title: OpenAI Integration with ReactiveSearch
+                    title: OpenAI
             - link: /docs/pipelines/concepts/
               title: Pipeline Concepts
               items:
