@@ -37,4 +37,4 @@ Searching the data is done in:
 - Take the resulting vector and send it to OpenSearch/ElasticSearch
 - Return the response received from OpenSearch/ElasticSearch back to the user
 
-![OpenAI Integration Flow](/images/concepts/open-ai.png "OpenAI Integration Visualized")
+![OpenAI Integration Flow](../../../images/concepts/open-ai.png "OpenAI Integration Visualized")
