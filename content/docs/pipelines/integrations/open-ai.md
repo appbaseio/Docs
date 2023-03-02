@@ -176,6 +176,10 @@ Now that we have the vector data ready and merged in the request body, we can se
 
 The complete pipeline can be deployed by [using this link](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/openai_indexing/pipeline_oneclick.yaml)
 
+### Utility Script
+
+In order to make it easier to index the data into OpenSearch, we have provided an utility script that can be run once to index all the data from the desired dataset. [Read more about this utility script here](https://github.com/appbaseio-apps/knn-search-ui/blob/master/backend/index/util)
+
 ## Query Pipeline
 
 Querying the vector data is another aspect of ReactiveSearch that can be done easily using OpenAI. For this as well, a pipeline will be required to be created. This pipeline will have a custom stage that will take care of injecting the request body with the vector representation of the query sent by the user.
