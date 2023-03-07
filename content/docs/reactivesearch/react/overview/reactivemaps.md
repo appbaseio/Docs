@@ -127,9 +127,9 @@ class App extends Component {
 
 This is how the app should look after running the `yarn start` command.
 
-<iframe src="https://codesandbox.io/embed/reactivemaps-quickstart-step-1-v42g1j?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/QuickStartStep1?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Reactivemaps - Quickstart - step 2"
+     title="quickstart-step-1"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
@@ -165,9 +165,9 @@ Next, we will look at the [**ReactiveGoogleMap**](/docs/reactivesearch/react/map
   defaultZoom={3}
   size={50}
   react={{
-    and: "GeoDistanceSlider"
+    and: "places"
   }}
-  onPopoverClick={(item) => <div>{item.venue.venue_name}</div>}
+  onPopoverClick={(item) => <div>{item.place}</div>}
   showMapStyles={true}
   renderItem={(result) => ({
     custom: (
@@ -253,9 +253,9 @@ class App extends Component {
               defaultZoom={3}
               size={50}
               react={{
-                and: "GeoDistanceSlider"
+                and: "places"
               }}
-              onPopoverClick={(item) => <div>{item.venue.venue_name}</div>}
+              onPopoverClick={(item) => <div>{item.place}</div>}
               showMapStyles={true}
               renderItem={(result) => ({
                 custom: (
@@ -289,9 +289,9 @@ root.render(<App />);
 
 If you have followed along, this is how our app should look now.
 
-<iframe src="https://codesandbox.io/embed/reactivemaps-quickstart-step-2-6erc2o?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/QuickStartStep2?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Reactivemaps - Quickstart - step 1"
+     title="quickstart-step-2"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
