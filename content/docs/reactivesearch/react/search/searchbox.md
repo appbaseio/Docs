@@ -1425,3 +1425,10 @@ Inside your css file ->
 }
 
 ```
+
+
+### SearchBox with Pill-based UI
+
+Combining Instant Search with Pill-based Suggestions can help users easily navigate through large datasets by providing a structured and intuitive way to explore data. The Pill-based Suggestions allow users to filter results based on specific criteria, such as category, location, date, etc. This can be particularly useful when dealing with complex data structures, where searching through large amounts of data can be time-consuming and overwhelming.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithPillSuggestions?fontsize=14&hidenavigation=1&theme=dark" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
