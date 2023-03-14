@@ -144,10 +144,10 @@ The `react` prop here specifies that it should construct a query based on the cu
 
 ![](https://i.imgur.com/QwFq2CP.png)
 
-This is how the map component's UI would look like. Notice how it is rendering the magnitude values of the earthquake in place of the marker pins. We achieved this via `renderData` prop in the ReactiveGoogleMap component:
+This is how the map component's UI would look like. Notice how it is rendering the magnitude values of the earthquake in place of the marker pins. We achieved this via `renderItem` prop in the ReactiveGoogleMap component:
 
 ```jsx
-renderData={(result) => ({
+renderItem={(result) => ({
 	label: result.mag
 })}
 ```
