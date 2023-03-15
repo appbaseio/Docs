@@ -1380,15 +1380,25 @@ When set to `true`, featured searches are returned as suggestions as per the fea
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
+### searchboxId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+**Supported Engines**
+elasticsearch, solr, opensearch
+
+The featured suggestions group id is required to apply the featured suggestions. A featured suggestion group is a collection of featured suggestions.
+Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508
+
+
 ### featuredSuggestionsConfig
 
 **Supported Engines**
 elasticsearch, solr, opensearch
 
 To define options to apply featured suggestions. It can accept the following keys:
-
-- **featuredSuggestionsGroupId**: `string` The featured suggestions group id is required to apply the featured suggestions. A featured suggestion group is a collection of featured suggestions.
-Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508
 
 - **maxSuggestionsPerSection**: `int` To restrict the number of featured suggestions per section.
 

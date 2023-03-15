@@ -392,6 +392,15 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 
 > Featured suggestions allow creating autocomplete experiences with user-defined suggestions. They're specified using the [Featured Suggestions API](https://api.reactivesearch.io/#337cdab6-d06c-4319-8c51-51e9ff0c1266), introduced in 8.1.0. This is a beta API and subject to change.
 
+### searchboxId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+unique id for featured suggestions' group created using [control plane](https://dash.reactivesearch.io/).
+
+
 ### featuredSuggestionsConfig
 
 | Type | Optional |
@@ -401,7 +410,6 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 Specify additional options for fetching featured suggestions.
 
 It can accept the following keys:
-- featuredSuggestionsGroupId: `string` [Required] unique id for featured suggestions' group.
 - maxSuggestionsPerSection: `number` maximum number of featured suggestions fetched per section.
 - sectionsOrder: `Array<String>` accepts an array of section id(s). The order in which section id(s) are defined in the array describes the order in which the sections appear in the UI.
 
@@ -410,8 +418,8 @@ It can accept the following keys:
 ```jsx
     <SearchBox
         enableFeaturedSuggestions={true}
+        searchboxId="document-search"
         featuredSuggestionsConfig={{
-            featuredSuggestionsGroupId: 'document-search', // # mandatory
             maxSuggestionsPerSection: 10,    
             sectionsOrder: ['document', 'pages', 'help'], 
         }}
