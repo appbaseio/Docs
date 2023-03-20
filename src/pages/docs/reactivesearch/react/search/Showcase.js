@@ -1,8 +1,9 @@
 import React from 'react';
-
-import SearchboxShowcase from 'searchbox-showcase';
+import loadable from '@loadable/component';
 
 import ShowcaseLayout from './ShowcaseLayout';
+
+const SearchboxShowcase = loadable(() => import('searchbox-showcase'));
 
 class Showcase extends React.Component {
 	state = {
