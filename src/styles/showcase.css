@@ -1,4 +1,4 @@
-@import "colors.css";
+@import 'colors.css';
 
 .showcase {
 	margin: 10px 0;
@@ -8,7 +8,7 @@
 	padding: 10px;
 	border: 4px double var(--whitegrey);
 	border-radius: 4px;
-	transition: all ease .2s;
+	transition: all ease 0.2s;
 }
 
 .showcase-component:hover {
@@ -28,7 +28,7 @@
 }
 
 .showcase-component .link {
-	transition: all ease .2s;
+	transition: all ease 0.2s;
 	text-decoration: none;
 	color: var(--midlightgrey);
 	border: 0;
@@ -39,7 +39,8 @@
 	color: var(--blue);
 }
 
-.showcase input, .showcase button {
+.showcase input,
+.showcase button {
 	font-size: 1.5rem !important;
 }
 
@@ -80,7 +81,7 @@
 	color: white;
 }
 
-.showcase-search > div > div >div {
+.showcase-search > div > div > div {
 	top: calc(50% - 13px);
 }
 
@@ -96,8 +97,12 @@
 	padding: 5px 0px;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
 	.grid-2 {
 		grid-template-columns: auto;
 	}
+}
+
+.popover-header {
+	color: black !important;
 }

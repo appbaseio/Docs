@@ -19,7 +19,12 @@ class Showcase extends React.Component {
 		const { mounted } = this.state;
 		const { location } = this.props;
 		return (
-			<ShowcaseLayout sidebar="docs" nestedSidebar="web-reactivesearch" location={location}>
+			<ShowcaseLayout
+				post={{ title: 'Searchbox showcase' }}
+				sidebar="docs"
+				nestedSidebar="web-reactivesearch"
+				location={location}
+			>
 				<div className="bootstrap">{mounted ? <SearchboxShowcase /> : 'Loading'}</div>
 			</ShowcaseLayout>
 		);
