@@ -102,7 +102,23 @@
 		grid-template-columns: auto;
 	}
 }
+.popover-body {
+	font-size: 1.25rem;
+}
+.bootstrap .dropdown-item {
+	font-size: 1.5rem;
+}
 
 .popover-header {
 	color: black !important;
+	font-size: 1.5rem;
+}
+.popover-body code {
+	background: gray;
+	padding: 0.25rem;
+	font-size: 1rem;
+	color: white;
+}
+.popover-body a {
+	color: blue;
 }
