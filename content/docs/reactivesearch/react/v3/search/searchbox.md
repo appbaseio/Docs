@@ -398,7 +398,7 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 |------|----------|
 |  `String` |   Yes   |
 
-When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508)
+When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
 
 
 ### featuredSuggestionsConfig
