@@ -262,7 +262,7 @@ Defaults to `true`. When set to `false`, index suggestions are not returned from
 Specify additional options for fetching featured suggestions.
 
 It can accept the following keys:
-### sectionLabel
+#### sectionLabel
 
 | Type | Optional |
 |------|----------|
@@ -270,19 +270,21 @@ It can accept the following keys:
 
 custom html markup for section title.
 
+#### size
 
 | Type | Optional |
 |------|----------|
 |  `number` |   Yes   |
 
-Maximum number of popular suggestions to return. Defaults to 5.
+Maximum number of index suggestions to return. Defaults to 5.
 
+#### index
 
 | Type | Optional |
 |------|----------|
 |  `string` |   Yes   |
 
-Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
+Index(es) from which to return the index suggestions from. Defaults to the entire cluster.
 
 <br/>
 
@@ -1468,3 +1470,10 @@ Inside your css file ->
 }
 
 ```
+
+
+### SearchBox with Pill-based UI
+
+Combining Instant Search with Pill-based Suggestions can help users easily navigate through large datasets by providing a structured and intuitive way to explore data. The Pill-based Suggestions allow users to filter results based on specific criteria, such as category, location, date, etc. This can be particularly useful when dealing with complex data structures, where searching through large amounts of data can be time-consuming and overwhelming.
+
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithPillSuggestions?fontsize=14&hidenavigation=1&theme=dark" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>

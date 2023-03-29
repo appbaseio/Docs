@@ -141,7 +141,7 @@ If you are using appbase.io apps (legacy), you can implement analytics in the fo
 
 When using the REST API to make a search query, you can pass along the following headers:
 
-`X-Search-Query` -> The value here represents the search query term (the input value in DataSearch, CategorySearch if you are using ReactiveSearch).
+`X-Search-Query` -> The value here represents the search query term (the input value in SearchBox if you are using ReactiveSearch).
 
 Whenever an `X-Search-Query` header is passed, the API returns a response header for the search Id called as `X-Search-Id`. This can be passed further as a request header to associate other search attributes (filters, clicks) with the same original query. Think of `X-Search-Id` as a search session.
 

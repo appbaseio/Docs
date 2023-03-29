@@ -1,39 +1,75 @@
 ---
 title: 'CustomSuggestions'
 meta_title: 'CustomSuggestions'
-meta_description: 'Recipe for rendering custom suggestions with `DataSearch` and `CategorySearch` components using the `render` prop.'
+meta_description: 'Recipe for rendering custom suggestions with SearchBox component using the render and renderItem props.'
 keywords:
-    - reactivesearch
-    - customsuggestions
-    - appbase
-    - elasticsearch
+- reactivesearch
+- customsuggestions
+- appbase
+- elasticsearch
 sidebar: 'docs'
 nestedSidebar: 'web-reactivesearch'
 ---
 
-Recipe for rendering custom suggestions with `DataSearch` and `CategorySearch` components using the `render` prop.
+Recipe for rendering custom suggestions with `SearchBox` component using the `render` prop.
 
 ReactiveSearch uses the wonderful [downshift](https://github.com/paypal/downshift) for rendering dropdowns and `render` prop provides great extensibility for custom suggestions rendering. `render` is a [render function](https://reactjs.org/docs/render-props.html) which receives some parameters which you may use to build your own custom suggestions rendering
 
-## Custom Suggestions for DataSearch
+## Custom Suggestions for SearchBox
 
-```js
-SearchBox
-    ...
-    render={
-        ({
-            loading,            // `true` means the query is still in progress
-            error,              // error info
-            data,               // parsed suggestions by Reactivesearch
-            rawData,            // unmodified suggestions from Elasticsearch
-            value,              // the current value in the search
-            downshiftProps      // downshift props
-        }) => JSX
-    }
-/>
+```jsx
+    <SearchBox
+        render={({ 
+            loading, 
+            error, 
+            data, 
+            value, 
+            downshiftProps: { isOpen, getItemProps } 
+            }) => {
+                if (loading) {
+                    return <div>Fetching Suggestions.</div>;
+                }
+                if (error) {
+                    return <div>Something went wrong! Error details {JSON.stringify(error)}</div>;
+                }
+                return isOpen && Boolean(value.length) ? (
+                    <div>
+                        {data.map((suggestion, index) => (
+                            <div key={suggestion.value} {...getItemProps({ item: suggestion })}>
+                                {suggestion.value}
+                            </div>
+                        ))}
+                        {Boolean(value.length) && (
+                            <div {...getItemProps({ item: { label: value, value: value } })}>
+                                Show all results for "{value}"
+                            </div>
+                        )}
+                    </div>
+                ) : null;
+        }}
+    />
 ```
 
-Check out the [example](https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FDataSearch&selectedStory=With%20custom%20renderer&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs) on playground.
+Or you can also use render function as children
+
+```jsx
+    <SearchBox>
+        {
+            ({
+                loading,
+                error,
+                data,
+                rawData,
+                value,
+                downshiftProps
+            }) => (
+                // return UI to be rendered
+            )
+        }
+    </SearchBox>
+```
+
+Check out the [example](https://opensource.appbase.io/playground/?path=/story/search-components-searchbox--with-custom-renderer) on playground.
 
 The `getItemProps` provides some props that you should pass to your suggestions for them to work properly with downshift. The paramter should be an object with key `item` which should have a `value` field. For example:
 
@@ -43,46 +79,20 @@ The `getItemProps` provides some props that you should pass to your suggestions 
 
 The `rawData` parameter receives all the unparsed suggestions from elasticsearch, however `data` are also passed which can also be used for suggestions rendering.
 
-## Custom Suggestions for CategorySearch
-
-```js
-<CategorySearch
-    ...
-    render={
-        ({
-            loading,         // `true` means the query is still in progress
-            error,           // error info
-            data,            // suggestions + category suggestions
-            categories,      // all parsed categories for the suggestions
-            rawCategories,   // all categories for the suggestions
-            suggestions,     // suggestions parsed by ReactiveSearch
-            rawSuggestions   // unmodified suggestions from Elasticsearch
-            value,           // the current value in the search
-            downshiftProps   // downshift props
-        }) => JSX
-    }
-/>
-```
-
-Check out the [example](https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FCategorySearch&selectedStory=With%20custom%20renderer&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs) on playground.
-
-All the parameters received are very similar to the `DataSearch` besides `categories` which receives all the categories for the current query as an array of objects having the `key` attribute and the `doc_count` so you can compose a custom UI accordingly.
 
 ## Customizing individual suggestions
 
-It's also possible to customize the individual suggestions by using `parseSuggestion` prop.
+It's also possible to customize the individual suggestions by using the `renderItem` prop.
 
-```js
-SearchBox
-  ...
-  parseSuggestion={(suggestion) => ({
-    title: suggestion.source.original_title,
-    description: suggestion.source.authors,
-    image: suggestion.source.image,
-    value: suggestion.source.original_title,  // required
-    // optionally render the entire JSX using label
-    label: <JSX>,  // has higher precedence over title, description, image
-    source: suggestion.source  // for onValueSelected to work with parseSuggestion
-  })}
-/>
+```jsx
+    <SearchBox
+        {...props}
+        componentId="BookSensor"
+        renderItem={
+            (suggestion)=>{
+                // custom render every suggestion item in dropdown
+                return <span>{suggestion.label}</span> 
+            }
+        }
+    />
 ```
