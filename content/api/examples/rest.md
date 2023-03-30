@@ -89,4 +89,4 @@ In this example, we see usage of advanced search settings that show how to recor
 
 In this example, we see usage of `AI Answer` functionality to get answer to the search query based on the top hits.
 
-<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/4g1XbWYN98YoWIxWf43V"></iframe>
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/N8KEoJopnwHkstDpnS6y"></iframe>
