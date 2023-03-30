@@ -288,8 +288,6 @@ Or you can also use render function as children
                 error,
                 data,
                 rawData,
-                value,
-                downshiftProps
             }) => (
                 // return UI to be rendered
             )
