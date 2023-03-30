@@ -108,45 +108,6 @@ Accepts the following properties:
     A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
 
 
-It can accept the following keys:
-#### sectionLabel
-
-| Type | Optional |
-|------|----------|
-|  `string` |   Yes   |
-
-custom html markup for section title.
-
-#### size
-
-| Type | Optional |
-|------|----------|
-|  `number` |   Yes   |
-
-Maximum number of index suggestions to return. Defaults to 5.
-
-#### index
-
-| Type | Optional |
-|------|----------|
-|  `string` |   Yes   |
-
-Index(es) from which to return the index suggestions from. Defaults to the entire cluster.
-
-<br/>
-
-```jsx
-    <AIAnswer
-        enableIndexSuggestions={true}
-        indexSuggestionsConfig={{
-            sectionLabel: '<h3>Index suggestions</h3>',
-            size: 5,
-            index: "good-books-ds",  // further restrict the index to search on
-        }}
-    />
-```
-
-
 ### placeholder
 
 | Type | Optional |
