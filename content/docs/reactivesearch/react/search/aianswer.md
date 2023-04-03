@@ -49,7 +49,7 @@ Example uses:
         }) =>{
             // perform side effects
         }
-        renderError={(error) => <pre>{JSON.stringify(error)}</pre>}    
+        renderError={(error, handleRetry) => <div><pre>{JSON.stringify(error)}</pre><button onClick={handleRetry}>Try Again</button></div>}    
         showVoiceInput={true}
         showIcon={true}
         icon={<span>🚀</span>}
@@ -304,9 +304,10 @@ Or you can also use render function as children
 can be used to render an error message in case of any error.
 
 ```jsx
-    renderError={(error) => (
+    renderError={(error, handleRetry) => (
             <div>
                 Something went wrong!<br/>Error details<br/>{error}
+                <button onClick={handleRetry}>Regenerate response</button>
             </div>
         )
     }
