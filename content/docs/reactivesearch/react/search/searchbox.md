@@ -513,6 +513,78 @@ allows setting a custom icon for clearing text instead of the default cross.
 |  `Boolean` |   Yes   |
 
 set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`.
+
+### enableAI
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+enables the AI q-n-a screen displaying AI generated answers to the entered query. Defaults to `false`.
+
+### AIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configruing AI responses.
+
+Accepts the following properties:
+-   **systemPrompt** `String` [optional]
+    The system prompt to send as the first message to ChatGPT. Defaults to `You are a helpful assistant`.
+-   **docTemplate** `String` [optional]
+    Template to use for building the message sent to ChatGPT for every hit of the response. The `docTemplate` string supports dynamic values using the special syntax `${}`. These values are resolved while the ChatGPT request body is built. It supports keys that are present in the `_source` field in the response hits. As an example, `source.title` will resolve to `_source.title`. If values are not found, defaults to an empty string.
+-   **queryTemplate** `String` [optional]
+    Template to use for building the message that is sent to ChatGPT as the final question. Defaults to `Can you tell me about ${value}` where `value` is the `query.value`. The querytemplate string supports a dynamic value of `value` which is the query.value of the query.
+-   **topDocsForContext** `number` [optional]
+    Number of docs to use to build the context. Defaults to 3. This has an upper limit as the total number of hits returned.  
+-   **maxTokens** `number` [optional]
+    The maximum tokens that can be used for the output. Deafults to being dynamically calculated. Accepts a value between [1, 8000].
+-   **temperatue** `number` [optional]
+    A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
+
+### AIUIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configruing AI screen.
+
+Accepts the following properties:
+-   **loaderMessage** `String | JSX` [optional]
+    Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`
+-   **showSourceDocuments** `Boolean` [optional]
+    Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
+-   **sourceDocumentLabel** `String` [optional]
+    Set the label using the string literal syntax: e.g. `${source.field}` will set the label to the field’s resolved value, you can also combine more than one field value to display the label. Defaults to `_id`.
+-   **onSourceClick** `Function` [optional]
+    callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
+-   **askButton** `Boolean` [optional]
+    When set to `true`, the AI screen would only be displayed on press of the  button. Defaults to `false`. You can also provide styles using the `ask-button` key in the `innerClass` prop.
+-   **renderAskButton** `number` [optional]
+    renders a custom jsx markup for the enter button. Use in conjunction with `askButton` prop set to `true`.
+    ```jsx
+    <SearchBox
+        id="search-component"
+        enterButton
+        renderAskButton={clickHandler => (
+            <div
+                style={{
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'stretch',
+                }}
+            >
+                <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                    🔍 Ask!
+                </button>
+            </div>
+        )}
+    />
+    ```
+
 ### strictSelection
 
 | Type | Optional |
