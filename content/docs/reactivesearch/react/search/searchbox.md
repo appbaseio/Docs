@@ -1064,6 +1064,34 @@ You can render each suggestion in a custom layout by using the `renderItem` prop
     />
 ```
 
+
+### renderAIAnswer
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+You can render the AI screen content in a custom layout by using the `renderAIAnswer` prop.
+
+```jsx
+    <SearchBox
+        {...props}
+        componentId="BookSensor"
+        renderAIAnswer={
+            ({
+            	question,
+            	answer,
+            	documentIds,
+            	loading,
+            	sources,
+            })=>{
+                // custom render AI screen
+                return <span>...</span> 
+            }
+        }
+    />
+```
+
 ### applyStopwords
 
 | Type | Optional |
@@ -1110,6 +1138,8 @@ Data field whose values are used to provide category specific suggestions.
 -   `suggestion-item`
 -   `enter-button`
 -   `selected-tag`
+-   `ask-button`
+-   `ai-source-tag`
 
 Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
