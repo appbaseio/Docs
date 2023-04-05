@@ -787,6 +787,21 @@ It accepts an object with these properties:
 -   **`downshiftProps`**: `object`
     provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
     Read more about it [here](https://github.com/downshift-js/downshift#children-function).
+-   **`AIData`**: `Object`
+    A wrapper object to provide access to AI screen properties. Use in conjunction with `enableAI` set to true.
+        It contains the following keys:
+    -   **`question`**: `String`
+            The current asked question.
+    -   **`answer`**: `String`
+            Answer returned by the AI.   
+    -   **`documentIds`**: `Array<String>`
+            The documents' ids used for curating the AI answer.
+    -   **`loading`**: `Boolean`
+            Loading status for the AI response.
+    -   **`sources`**: `Array<Object>`
+            The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+    -   **`showAIScreen`**: `Boolean`
+            Boolean value to indicate when to show the AI screen.            
 
 ```jsx
     <SearchBox
@@ -795,7 +810,15 @@ It accepts an object with these properties:
             error, 
             data, 
             value, 
-            downshiftProps: { isOpen, getItemProps } 
+            downshiftProps: { isOpen, getItemProps },
+            AIData: {
+            	question,
+            	answer,
+            	documentIds,
+            	loading,
+            	sources,
+                showAIScreen
+            }
             }) => {
                 if (loading) {
                     return <div>Fetching Suggestions.</div>;
@@ -1072,6 +1095,19 @@ You can render each suggestion in a custom layout by using the `renderItem` prop
 |  `Function` |   Yes   |
 
 You can render the AI screen content in a custom layout by using the `renderAIAnswer` prop.
+
+The callback accepts an object with following keys:
+
+-   **`question`**: `String`
+    The current asked question.
+-   **`answer`**: `String`
+    Answer returned by the AI.   
+-   **`documentIds`**: `Array<String>`
+    The documents' ids used for curating the AI answer.
+-   **`loading`**: `Boolean`
+    Loading status for the AI response.
+-   **`sources`**: `Array<Object>`
+    The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
 
 ```jsx
     <SearchBox
