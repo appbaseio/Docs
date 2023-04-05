@@ -61,7 +61,7 @@ Example uses:
             queryTemplate: 'Answer the following: ${value}',
             topDocsForContext: 7,
             maxTokens: 4000,
-            systemPrompt: "This is great!"
+            systemPrompt: "You're a helpful assistant."
         }}
     />
 ```
