@@ -92,7 +92,7 @@ class PostLayout extends React.Component {
 								{sideBarLayout.leftSidebar}
 							</div>
 						) : null}
-						<div className="w-100">
+						<div className="w-75">
 							<div
 								className={`w-100 shadow-2 br4 ${
 									this.state.isToggleOn ? `` : ` br--bottom`
