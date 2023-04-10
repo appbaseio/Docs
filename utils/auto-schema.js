@@ -135,6 +135,12 @@ function parsePropertiesFromLevel(propertyContainer, level, markdownStr, key, en
     var enginesSupported = propertyContainer.engine
     var requiredProps = propertyContainer.required
 
+    // Sometimes if only one engine is supported, the enginesSupported value
+    // will be a string, we will need to make it an array of one item
+    if (typeof enginesSupported === "string") {
+        enginesSupported = [enginesSupported]
+    }
+
     // Set the previous required props to empty if it's undefined
     if (previousReqProps == undefined || previousReqProps == null) {
         previousReqProps = []
