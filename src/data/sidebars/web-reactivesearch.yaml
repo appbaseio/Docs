@@ -65,10 +65,10 @@
               link: /docs/reactivesearch/react/range/ratingsfilter/
       - group: Search Components
         items:
-            - title: AIAnswer
-              link: /docs/reactivesearch/react/search/aianswer/
             - title: SearchBox
               link: /docs/reactivesearch/react/search/searchbox/
+            - title: AIAnswer
+              link: /docs/reactivesearch/react/search/aianswer/
       - group: Result Components
         items:
             - title: ReactiveList
