@@ -60,7 +60,7 @@ In order to get started with importing data, go over here: https://dash.reactive
 
 ### abc CLI
 
-`abc` is a commandline utility that tries to provide the functionalities of `ReactiveSearch` in the commandline. It is an open-source project and more can be found about it [here](https://github.com/appbaseio/abc).
+`abc` is a command-line utility that tries to provide the functionalities of `ReactiveSearch` in the commandline. It is an open-source project and more can be found about it [here](https://github.com/appbaseio/abc).
 
 Simply put, `abc` takes care of the data import and runs on the users machine.
 
