@@ -1,10 +1,10 @@
 ---
 title: 'Indexing data to use with AI Answer'
-meta_title: 'Index data to use AI Answer effectively | Introduction to Appbase.io'
+meta_title: 'Index data to use AI Answer effectively | Introduction to ReactiveSearch'
 meta_description: 'Learn how to index data into ReactiveSearch in various ways and use it with AI Answer'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch.io
     - indexing
     - pipelines
     - ai-answer
