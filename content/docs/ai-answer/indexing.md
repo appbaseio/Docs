@@ -40,6 +40,38 @@ There are multiple ways to index data without storing vector data and as explain
 
 ![Indexing Without Vector Data](../../../content/images/concepts/normal_indexing.png "Indexing Without Vector Data Vizualized")
 
+### Ways to index without vector data
+
+ReactiveSearch supports a number of ways for indexing data. Easiest one is using the reactivesearch dashboard and the one with most control will be the REST API.
+
+The supported ways for indexing data as of now are:
+
+- ReactiveSearch dashboard
+- abc CLI
+- ReactiveSearch API
+
+### ReactiveSearch Dashboard
+
+This is the easiest and simplest way to index data into ReactiveSearch. The dashboard is located at `https://dash.reactivesearch.io`. Dashboard supports importing data from various types like `JSON`, `CSV`. It even supports importing from `SQL` or `Shopify`.
+
+In order to get started with importing data, go over here: https://dash.reactivesearch.io/app/adverts/import
+
+![Data import UI from dashboard](https://i.imgur.com/nT9RtKx.png "Data import UI from dashboard")
+
+### abc CLI
+
+`abc` is a commandline utility that tries to provide the functionalities of `ReactiveSearch` in the commandline. It is an open-source project and more can be found about it [here](https://github.com/appbaseio/abc).
+
+Simply put, `abc` takes care of the data import and runs on the users machine.
+
+Following is an example command to import data from ElasticSearch through `abc` into ReactiveSearch:
+
+```sh
+abc import --src_type=elasticsearch --src_uri="http://USER:PASS@HOST:PORT/INDEX" "https://USER:PASS@CLUSTER_URL/APPNAME"
+```
+
+[More details about `abc`'s import functionality can be found here](https://github.com/appbaseio/abc/blob/dev/docs/appbase/import.md)
+
 
 ## Indexing with vector data
 
