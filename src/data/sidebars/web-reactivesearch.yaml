@@ -67,8 +67,9 @@
         items:
             - title: SearchBox
               link: /docs/reactivesearch/react/search/searchbox/
-
-            - title: Showcase
+            - title: AIAnswer
+              link: /docs/reactivesearch/react/search/aianswer/
+            - title: Search Showcase
               link: /docs/reactivesearch/react/search/Showcase/
       - group: Result Components
         items:
