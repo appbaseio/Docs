@@ -72,6 +72,23 @@ abc import --src_type=elasticsearch --src_uri="http://USER:PASS@HOST:PORT/INDEX"
 
 [More details about `abc`'s import functionality can be found here](https://github.com/appbaseio/abc/blob/dev/docs/appbase/import.md)
 
+### ReactiveSearch API
+
+ReactiveSearch API allows access to various ElasticSearch functionalities and thus can be used to access ElasticSearch (or any other search engine's) API. This means, a `_doc` request can be used here in order to index one document.
+
+> NOTE: A `_bulk` request is also supported. All endpoints are exposed for the search engine through ReactiveSearch.
+
+Following example shows usage of the `_doc` endpoint to index a document into the search engine by using ReactiveSearch:
+
+```sh
+curl --location 'https://USER:PASS@CLUSTER_URL/APPNAME/_doc' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": 1,
+    "doc_id": "doc1",
+    "title": "Just a test title"
+}'
+```
 
 ## Indexing with vector data
 
