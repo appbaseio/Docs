@@ -94,7 +94,7 @@ curl --location 'https://USER:PASS@CLUSTER_URL/APPNAME/_doc' \
 
 As explained above, while indexing with vector data, a vector representation of certain fields are generated and stored. These vector representation can be later on used while searching to get more relatable search results.
 
-![Indexing With Vector Data](../../../content/images/concepts/vectir_indexing.png "Indexing With Vector Data Vizualized")
+![Indexing With Vector Data](../../../content/images/concepts/vector_indexing.png "Indexing With Vector Data Vizualized")
 
 ### What are vectors
 
