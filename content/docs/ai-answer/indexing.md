@@ -39,3 +39,10 @@ AI Answer can work with both kNN based search as well as text based search and i
 There are multiple ways to index data without storing vector data and as explained before, this is a very simple and straightforward task.
 
 ![Indexing Without Vector Data](../../../content/images/concepts/normal_indexing.png "Indexing Without Vector Data Vizualized")
+
+
+## Indexing with vector data
+
+As explained above, while indexing with vector data, a vector representation of certain fields are generated and stored. These vector representation can be later on used while searching to get more relatable search results.
+
+![Indexing With Vector Data](../../../content/images/concepts/vectir_indexing.png "Indexing With Vector Data Vizualized")
