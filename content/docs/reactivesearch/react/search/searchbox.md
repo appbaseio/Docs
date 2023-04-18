@@ -553,6 +553,9 @@ Accepts the following properties:
 Specify additional options for configruing AI screen.
 
 Accepts the following properties:
+-   **showFeedback** `Boolean` [optional]
+    Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+    > Use in conjunction with `reactivesearchAPIConfig.recordAnalytics` set to true in ReactiveBase.
 -   **loaderMessage** `String | JSX` [optional]
     Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`
 -   **showSourceDocuments** `Boolean` [optional]
@@ -568,20 +571,24 @@ Accepts the following properties:
     ```jsx
     <SearchBox
         id="search-component"
+        AIUIConfig={{
+            askButton: true,
+            renderAskButton: function (clickHandler){
+                return (
+                    <div
+                        style={{
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'stretch',
+                        }}
+                    >
+                        <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                            🔍 Ask!
+                        </button>
+                    </div>
+            )}
+        }}
         enterButton
-        renderAskButton={clickHandler => (
-            <div
-                style={{
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'stretch',
-                }}
-            >
-                <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
-                    🔍 Ask!
-                </button>
-            </div>
-        )}
     />
     ```
 
@@ -1176,6 +1183,7 @@ Data field whose values are used to provide category specific suggestions.
 -   `selected-tag`
 -   `ask-button`
 -   `ai-source-tag`
+-   `ai-feedback`
 
 Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
