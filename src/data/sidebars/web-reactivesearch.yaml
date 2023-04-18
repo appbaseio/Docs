@@ -70,7 +70,7 @@
             - title: AIAnswer
               link: /docs/reactivesearch/react/search/aianswer/
             - title: Search Showcase
-              link: /docs/reactivesearch/react/search/Showcase/
+              link: /docs/reactivesearch/react/search/showcase/
       - group: Result Components
         items:
             - title: ReactiveList
