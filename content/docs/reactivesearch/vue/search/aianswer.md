@@ -183,6 +183,14 @@ When set to `true`, the results would only be updated on press of the  button. D
 
 show a voice icon in the AIAnswer to enable users to set voice input. Defaults to `false`.
 
+### showFeedback
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+
 
 ### getMicInstance
 
@@ -401,6 +409,7 @@ renders a custom jsx markup for the enter button. Use in conjunction with `enter
 -   `ai-error`
 -   `ai-message`
 -   `ai-input`
+-   `ai-feedback`
 
 Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
