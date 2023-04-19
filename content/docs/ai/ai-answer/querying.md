@@ -21,6 +21,8 @@ From a top-level perspective, there are three main ways to query the data:
 - Through ReactiveSearch API
 - Through ReactiveSearch Pipelines
 
+![Querying with AI Answer enabled](../../../../content/images/concepts/querying_ai.png "Querying with AI Answer Vizualized")
+
 ## Through UI Components
 
 ReactiveSearch provides a state-of-the art library that uses ReactiveSearch API under the hood and makes development experience much faster. With the UI library, a search UI can be built and brought up within a few minutes.
