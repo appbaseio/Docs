@@ -14,15 +14,15 @@ sidebar: 'docs'
 
 AI Answer adds the ability of AI alongside the good old search. ReactiveSearch supports integrating AI into search UIs to make the end-users experience much more streamlined and conversational.
 
-AI Answer brings the following things:
+**AI Answer brings the following things**:
 
-- AI Search → Answer your user’s intent along side a faceted search
-- Improved precision and recall → By relying on both the keyword search (or KNN) passed to the LLM context window, the answer is always coming from the search index
-- Human-in-the-loop → By reviewing sessions and the feedback from your end-users,
+- **AI Search** → Answer your user’s intent along side a faceted search
+- **Improved precision and recall** → By relying on both the keyword search (or KNN) passed to the LLM context window, the answer is always coming from the search index
+- **Human-in-the-loop** → By reviewing sessions and the feedback from your end-users,
     - Serve the user intent with a human-in-the-loop,
     - Iterate on the analytics to update prompt
-- Ready-to-go UI components → Supported with ReactiveSearch, the industry-leading UI components library for React and Vue, you can ship and AI search in an hour
-- No-code AI search → (Coming soon) Directly ship an AI search solution with Studio - no-code required! You still get the code (with ReactiveSearch kit) that can be built upon.
+- **Ready-to-go UI components** → Supported with ReactiveSearch, the industry-leading UI components library for React and Vue, you can ship and AI search in an hour
+- **No-code AI search** → (Coming soon) Directly ship an AI search solution with Studio - no-code required! You still get the code (with ReactiveSearch kit) that can be built upon.
 
 ## Under the hood
 
