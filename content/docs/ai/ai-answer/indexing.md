@@ -17,7 +17,7 @@ Indexing data into ReactiveSearch is probably the first step in order to start u
 
 ReactiveSearch supports multiple ways to index data. On it's core, ReactiveSearch sits on top of a search engine and all search engines support indexing. For this example, we will use `OpenSearch`.
 
-## Indexing with vectors
+### Indexing with vectors
 
 In this indexing, vectors are generated from the data that is passed and stored along with the normal text data. These vectors can be thought of as arrays that contain various details about the input data (the text data in this case). The vectors can be used during the query (search) phase in order to get search results that are more relative.
 
