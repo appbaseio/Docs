@@ -34,63 +34,15 @@ This is just a normal indexing of data. This can be thought of as taking the raw
 AI Answer can work with both kNN based search as well as text based search and is independent of what type of search is used. AI Answer can be thought of as an extra layer on top of search.
 
 
-## Indexing without vector data
+## Indexing the data
 
 There are multiple ways to index data without storing vector data and as explained before, this is a very simple and straightforward task.
 
 ![Indexing Without Vector Data](../../../../content/images/concepts/normal_indexing.png "Indexing Without Vector Data Vizualized")
 
-### Ways to index without vector data
+[Check this doc to get started with indexing the data](https://docs.reactivesearch.io/docs/data/import/)
 
-ReactiveSearch supports a number of ways for indexing data. Easiest one is using the reactivesearch dashboard and the one with most control will be the REST API.
-
-The supported ways for indexing data as of now are:
-
-- ReactiveSearch dashboard
-- abc CLI
-- ReactiveSearch API
-
-### ReactiveSearch Dashboard
-
-This is the easiest and simplest way to index data into ReactiveSearch. The dashboard is located at `https://dash.reactivesearch.io`. Dashboard supports importing data from various types like `JSON`, `CSV`. It even supports importing from `SQL` or `Shopify`.
-
-In order to get started with importing data, go over here: https://dash.reactivesearch.io/app/adverts/import
-
-![Data import UI from dashboard](https://i.imgur.com/nT9RtKx.png "Data import UI from dashboard")
-
-### abc CLI
-
-`abc` is a command-line utility that tries to provide the functionalities of `ReactiveSearch` in the command-line. It is an open-source project and more can be found about it [here](https://github.com/appbaseio/abc).
-
-Simply put, `abc` takes care of the data import and runs on the users machine.
-
-Following is an example command to import data from ElasticSearch through `abc` into ReactiveSearch:
-
-```sh
-abc import --src_type=elasticsearch --src_uri="http://USER:PASS@HOST:PORT/INDEX" "https://USER:PASS@CLUSTER_URL/APPNAME"
-```
-
-[More details about `abc`'s import functionality can be found here](https://github.com/appbaseio/abc/blob/dev/docs/appbase/import.md)
-
-### ReactiveSearch API
-
-ReactiveSearch API allows access to various ElasticSearch functionalities and thus can be used to access ElasticSearch (or any other search engine's) API. This means, a `_doc` request can be used here in order to index one document.
-
-> NOTE: A `_bulk` request is also supported. All endpoints are exposed for the search engine through ReactiveSearch.
-
-Following example shows usage of the `_doc` endpoint to index a document into the search engine by using ReactiveSearch:
-
-```sh
-curl --location 'https://USER:PASS@CLUSTER_URL/APPNAME/_doc' \
---header 'Content-Type: application/json' \
---data '{
-    "id": 1,
-    "doc_id": "doc1",
-    "title": "Just a test title"
-}'
-```
-
-## Indexing with vector data
+## Enriching with vector data
 
 As explained above, while indexing with vector data, a vector representation of certain fields are generated and stored. These vector representation can be later on used while searching to get more relatable search results.
 
