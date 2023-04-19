@@ -32,3 +32,9 @@ ReactiveSearch provides a state-of-the art library that uses ReactiveSearch API 
 ReactiveSearch API acts as the gateway for accessing the data. It's an easy-to-use API that can be as simple as a search query and get as complex as multiple faceted queries with various query dependencies.
 
 Following is an example ReactiveSearch call that enables the **AI Answer** feature by using the `enableAI` flag in the call. Once the request resolves, the `AISessionId` can be then used to fetch the answers, ask follow-up questions, get analytics etc.
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/VvDdd6uvjFUYwVSelYQJ"></iframe>
+
+From the above request, find the `AISessionId` and put it in the following embed to fetch the AI Answer response.
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/fp5e52TLUckcPSPTEyty"></iframe>
