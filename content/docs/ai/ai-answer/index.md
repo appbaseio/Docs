@@ -43,4 +43,12 @@ For indexing, we support two main ways:
 - If you don't have any data indexed at all: [start by indexing some data]()
 - If you already have some data indexed: [re-index the data to add vector representation and use kNN search with it]()
 
+### Querying
+
+Once indexing the data is done, querying is the next step. This is where AI Answer comes in. In order to query data, there are multiple ways to do it.
+
+ReactiveSearch provides an UI library that can be leveraged to build AI Answer much easily. ReactiveSearch API can also be used in order to get the data. ReactiveSearch Pipelines are also an option if you want to get your hands dirty and customize various features of AI Answer or anything else regarding ReactiveSearch Query.
+
+[Read more about querying with ReactiveSearch with AI Answer support]()
+
 
