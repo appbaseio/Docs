@@ -40,3 +40,9 @@ Following is an example ReactiveSearch call that enables the **AI Answer** featu
 From the above request, find the `AISessionId` and put it in the following embed to fetch the AI Answer response.
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/fp5e52TLUckcPSPTEyty"></iframe>
+
+## Through pipelines
+
+ReactiveSearch Pipelines pack a lot of features and functionalities that makes it possible to alter the behaviour of the ReactiveSearch call as well as add extra steps in the flow.
+
+[Learn more about using pipelines to get AI Answers with ReactiveSearch](https://docs.reactivesearch.io/docs/pipelines/how-to/ai-answer)
