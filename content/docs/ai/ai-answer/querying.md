@@ -1,6 +1,6 @@
 ---
-title: 'Querying data with AI Answer'
-meta_title: 'Querying data with AI Answer effectively | Introduction to ReactiveSearch'
+title: 'Querying AI Answer'
+meta_title: 'Querying AI Answer effectively | Introduction to ReactiveSearch'
 meta_description: 'Learn how to query data with ReactiveSearch in various ways and use it with AI Answer'
 keywords:
     - concepts
@@ -11,7 +11,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-Querying the indexed data with AI Answer can be done in various ways. ReactiveSearch provides various ways to query the data along with various levels of access. ReactiveSearch even provides support for modifying the way the query endpoints behave by using pipelines (more on this later on in this doc).
+Querying the indexed data with AI Answer can be done in various ways. ReactiveSearch provides three ways to query the data along with various levels of access. ReactiveSearch even provides support for modifying the way the query endpoints behave by using pipelines (more on this later on in this doc).
 
 ## Ways to query
 
@@ -48,5 +48,21 @@ In the following, a `GET /_ai/{AISessionId}` is being made to fetch the answer f
 ## Through pipelines
 
 ReactiveSearch Pipelines pack a lot of features and functionalities that makes it possible to alter the behaviour of the ReactiveSearch call as well as add extra steps in the flow.
+
+AI Answer is provided as a pre-built stage for use in a pipeline, following is how AI Answer stage can be used with ReactiveSearch stage:
+
+```yaml
+- id: reactivesearch
+  use: reactivesearchQuery
+  continueOnError: false
+- id: elastic search
+  use: elasticsearchQuery
+  continueOnError: false
+- id: ai answer
+  use: AIAnswer
+  inputs:
+    docTemplate: "${source.title} is ${source.overview} with url: ${source.backdrop_path}"
+    apiKey: "{{openAIApiKey}}"
+```
 
 [Learn more about using pipelines to get AI Answers with ReactiveSearch](https://docs.reactivesearch.io/docs/pipelines/how-to/ai-answer)
