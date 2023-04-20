@@ -40,9 +40,9 @@ Getting started with AI Answer is a piece of cake. Just index the data and start
 
 ### Before you start
 
-If you don't have any data indexed in the cluster, we suggest taking a look at [this indexing doc to get started](./indexing.md)
+If you don't have any data indexed in the cluster, we suggest taking a look at [this indexing doc to get started](./indexing)
 
-Optionally, if you already have data and want to enrich it with vector representations, [take a look at the vector section of this doc](./indexing.md#enriching-with-vector-data)
+Optionally, if you already have data and want to enrich it with vector representations, [take a look at the vector section of this doc](./indexing#enriching-with-vector-data)
 
 ### Querying
 
@@ -54,6 +54,6 @@ Once your cluster is connected to ReactiveSearch, a simple POST call can be made
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/VvDdd6uvjFUYwVSelYQJ"></iframe>
 
-[Read more about querying with ReactiveSearch with AI Answer support](./querying.md)
+[Read more about querying with ReactiveSearch with AI Answer support](./querying)
 
 
