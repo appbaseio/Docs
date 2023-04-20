@@ -125,6 +125,8 @@
                     title: Querying
             - link: /docs/ai/knn/
               title: kNN Search
+            - link: /docs/ai/metadata/
+              title: Metadata Enrichment
       - group: 'Building Search UI'
       - group: 'Actionable Analytics'
         icon: analytics
