@@ -38,6 +38,8 @@ If you have an indexed dataset that does not have vector representation, Reactiv
 
 ## Querying with kNN
 
+![Querying visualized with kNN](../../../images/concepts/knn_search_querying.png "Querying visualized with kNN")
+
 ReactiveSearch makes it very easy to query data with kNN. kNN based searching is supported out of the box so a simple query like following will do the job:
 
 ```json
