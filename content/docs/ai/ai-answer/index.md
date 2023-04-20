@@ -46,10 +46,14 @@ Optionally, if you already have data and want to enrich it with vector represent
 
 ### Querying
 
-Once indexing the data is done, querying is the next step. This is where AI Answer comes in. In order to query data, there are multiple ways to do it.
+This is where AI Answer comes in. In order to query data, there are multiple ways to do it.
 
 ReactiveSearch provides an UI library that can be leveraged to build AI Answer much easily. ReactiveSearch API can also be used in order to get the data. ReactiveSearch Pipelines are also an option if you want to get your hands dirty and customize various features of AI Answer or anything else regarding ReactiveSearch Query.
 
-[Read more about querying with ReactiveSearch with AI Answer support]()
+Once your cluster is connected to ReactiveSearch, a simple POST call can be made to get the search data along with AI enabled:
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/VvDdd6uvjFUYwVSelYQJ"></iframe>
+
+[Read more about querying with ReactiveSearch with AI Answer support](./querying.md)
 
 
