@@ -23,3 +23,23 @@ Let's say we want to be able to search on this field but we want to provide sear
 This is where metadata enrichment comes in. This script will take the word `happy`, generate synonyms for it and store it in a different field. Later on the search can be made on the field that contains the synonyms.
 
 This works perfectly with the above example since getting synonyms for `sad` will probably contain `unhappy` or something similar and searching in the list of synonyms will give us a match leading to `sad` being one of the results and `happy` not being in the results
+
+## How it works
+
+![Metadata enrichment visualized](../../../images/concepts/metadata_enrichment.png "Metadata enrichment visualized")
+
+Metadata enrichment script uses OpenAI in order to fetch the synonyms. It iterates through all the existing data, generates the synonyms and injects them into the index. It also takes care of managing the mappings of the index.
+
+## Metadata Script
+
+![Metadata Script in action]()
+
+[Check out the script over here](https://github.com/appbaseio/ai-scripts/tree/master/metadata)
+
+To get started with the script, `python3` should be installed.
+
+Once `python3` is installed and available, run the following command and the script will take care of the rest:
+
+```sh
+curl -s https://raw.githubusercontent.com/appbaseio/ai-scripts/master/get-ai-script.py --output get-ai.py && python3 get-ai.py metadata
+```
