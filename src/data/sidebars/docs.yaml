@@ -123,6 +123,8 @@
                     title: Indexing
                   - link: /docs/ai/ai-answer/querying
                     title: Querying
+            - link: /docs/ai/knn/
+              title: kNN Search
       - group: 'Building Search UI'
       - group: 'Actionable Analytics'
         icon: analytics
