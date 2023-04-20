@@ -1380,19 +1380,6 @@ When set to `true`, featured searches are returned as suggestions as per the fea
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
-### searchboxId
-
-| Type | Optional |
-|------|----------|
-|  `String` |   Yes   |
-
-**Supported Engines**
-elasticsearch, solr, opensearch
-
-The `searchboxID` is required to apply the featured suggestions. A featured suggestion group is a collection of featured suggestions.
-Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508
-
-
 ### featuredSuggestionsConfig
 
 **Supported Engines**
@@ -1408,7 +1395,6 @@ To define options to apply featured suggestions. It can accept the following key
 | <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | ------   | --------------------------- | -------- |
 | `Object`   | `suggestion`                | false    |
-
 
 ### enableIndexSuggestions
 
@@ -1576,10 +1562,46 @@ For Solr, this maps to the `facet.excludeTerms` field.
 **Supported Engines**
 elasticsearch, opensearch
 
+When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via ReactiveSearch dashboard and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `string`   | `suggestion`                | true*    |
+
 ### range
 
 **Supported Engines**
 elasticsearch, opensearch
+
+### enableAI
+
+**Supported Engines**
+opensearch
+
+This field indicates whether the query should use AIAnswer functionality to inject an answer response to the value
+
+### AI Config
+
+**Supported Engines**
+opensearch
+
+This field adds support for passing various details for the AIAnswer functionality. There are multiple fields accepted in this object. Following is an example body:
+
+```json
+{
+    'docTemplate': '${source.title} is ${source.overview} with url ${source.backdrop_path}',
+    'queryTemplate': 'Can you tell me about ${value}'
+}
+```
+
+The fields supported by the AIConfig object are: 
+
+- **docTemplate**: Template to use for building the message sent to ChatGPT for every hit of the response. The `docTemplate` string supports dynamic values using the special syntax `${}`. These values are resolved while the ChatGPT request body is built. It supports keys that are present in the `_source` field in the response hits. As an example, `source.title` will resolve to `_source.title`. If values are not found, defaults to an empty string. 
+- **queryTemplate**: Template to use for building the message that is sent to ChatGPT as the final question. Defaults to `Can you tell me about ${value}` where `value` is the `query.value`. The querytemplate string supports a dynamic value of `value` which is the query.value of the query. 
+- **topDocsForContext**: Number of docs to use to build the context. Defaults to 3. This has an upper limit as the total number of hits returned. 
+- **systemPrompt**: The system prompt to send as the first message to ChatGPT. Defaults to `You are a helpful assistant`.
+- **maxTokens**: The maximum tokens that can be used for the output. Deafults to being dynamically calculated. Accepts a value between [1, 8000]. 
+- **temperature**: A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
 
 ## settings
 

@@ -161,7 +161,7 @@ This indicates the category of the route. This is useful for the internal functi
 
 **Following values are supported for this field**
 
-`docs`, `search`, `indices`, `cat`, `clusters`, `misc`, `user`, `permission`, `analytics`, `streams`, `rules`, `suggestions`, `auth`, `reactivesearch`, `searchrelevancy`, `synonyms`, `searchgrader`, `uibuilder`, `logs`, `cache`, `storedquery`, `sync`, `pipelines`
+`docs`, `search`, `indices`, `cat`, `clusters`, `misc`, `user`, `permission`, `analytics`, `streams`, `rules`, `suggestions`, `auth`, `reactivesearch`, `searchrelevancy`, `synonyms`, `searchgrader`, `uibuilder`, `logs`, `cache`, `storedquery`, `sync`, `pipelines`, `ai`
 
 ### Method
 
@@ -263,7 +263,7 @@ Use a pre-built stage from Appbase.
 
 **Following values are supported for this field**
 
-`authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`, `zincQuery`, `recordClick`, `recordConversion`, `recordFavorite`, `recordSaveSearch`, `searchboxPreferences`, `boost`
+`authorization`, `elasticsearchQuery`, `reactivesearchQuery`, `useCache`, `recordAnalytics`, `promoteResults`, `hideResults`, `customData`, `replaceSearchTerm`, `addFilter`, `removeWords`, `replaceWords`, `searchRelevancy`, `kNN`, `httpRequest`, `mongoDBQuery`, `solrQuery`, `zincQuery`, `recordClick`, `recordConversion`, `recordFavorite`, `recordSaveSearch`, `searchboxPreferences`, `boost`, `openAIEmbeddings`, `openAIEmbeddingsIndex`, `AIAnswer`
 
 ## Trigger Expression
 

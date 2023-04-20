@@ -50,6 +50,8 @@ However, if we do a vector search, we will find the vector representation of `jo
 
 This is why vectors are useful.
 
+![Vector search visulaized](https://cdn.hashnode.com/res/hashnode/image/upload/v1679920183365/979801f9-8d2c-4998-ba19-0ddcdc6f094f.png "Vector search visualized")
+
 ### How is vector indexing done
 
 In kNN indexing, we follow all the steps of a normal indexing, except there is an extra step just before the data goes for indexing. This step takes a few values from the passed data as input, uses an AI model, and generates the vector embedding of these inputs. These vector embeddings are then injected into the data body and finally it is sent for indexing.
