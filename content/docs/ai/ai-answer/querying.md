@@ -39,6 +39,8 @@ Following is an example ReactiveSearch call that enables the **AI Answer** featu
 
 From the above request, find the `AISessionId` and put it in the following embed to fetch the AI Answer response.
 
+In the following, a `GET /_ai/{AISessionId}` is being made to fetch the answer for the session ID returned in the ReactiveSearch call
+
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/fp5e52TLUckcPSPTEyty"></iframe>
 
 [Learn more about the endpoints ReactiveSearch provides for interacting with AI](https://api.reactivesearch.io/#44009fda-61f7-4d1b-81b5-9f495d3111a3)
