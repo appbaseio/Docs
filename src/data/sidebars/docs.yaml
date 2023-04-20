@@ -114,7 +114,7 @@
                   - link: /docs/pipelines/how-to/mongodb-pipeline
                     title: MongoDB Pipeline
       - group: 'AI'
-        icon: ai
+        icon: search
         items:
             - link: /docs/ai/ai-answer/
               title: AI Answer
