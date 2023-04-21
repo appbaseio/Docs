@@ -520,7 +520,7 @@ set whether the autosuggest functionality should be enabled or disabled. Default
 |------|----------|
 |  `Boolean` |   Yes   |
 
-enables the AI q-n-a screen displaying AI generated answers to the entered query. Defaults to `false`.
+enables the ability to ask questions with SearchBox and display AI generated answers from within SearchBox component itself. Defaults to `false`.
 
 ### AIConfig
 
