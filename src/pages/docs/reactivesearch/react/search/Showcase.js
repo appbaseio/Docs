@@ -1,7 +1,7 @@
 import React from 'react';
 import loadable from '@loadable/component';
 
-import ShowcaseLayout from './ShowcaseLayout';
+import ShowcaseLayout from '../../../../../components/SearchShowcaseLayout';
 
 const SearchboxShowcase = loadable(() => import('searchbox-showcase'));
 
