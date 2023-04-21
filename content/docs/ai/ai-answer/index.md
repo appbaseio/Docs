@@ -50,6 +50,15 @@ In order to start using AI, the feature needs to be enabled by going over to the
 
 ![AI Preferences](https://i.imgur.com/wBzEW2o.jpg "AI preferences")
 
+In the above, the following things need to be configured in order to get started with AI:
+
+- **Enable**: Enable/Disable AI functionality.
+- **OpenAI API key**: Your OpenAI API key in order to access OpenAI's API. Can be found at [API key section of OpenAI dashboard](https://platform.openai.com/account/api-keys).
+- **Default Model**: Default model to use, in case it's not specified in the ReactiveSearch request. As of now `gpt-3.5-turbo` and `gpt-4` are supported.
+- **Default System Prompt**: Default system prompt to use, in case it's not specified in the ReactiveSearch request. System prompt can be thought of as the first message that the system sends to ChatGPT while initiating a conversation.
+- **Enabled Indices**: Indices where ChatGPT is enabled. **Only indexes that are present in this list will be allowed to be used with AI Answer**.
+
+
 ### Querying
 
 This is where AI Answer comes in. In order to query data, there are two ways to do it.
