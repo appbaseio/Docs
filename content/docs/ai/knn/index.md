@@ -40,6 +40,8 @@ While indexing with vector data, a vector representation of certain fields are g
 
 ![Indexing With Vector Data](../../../../content/images/concepts/vector_indexing.png "Indexing With Vector Data Vizualized")
 
+> NOTE: As of now ElasticSearch is not supported due to limitations on vector dimensions. ElasticSearch can only support up-to 1k dimensions but OpenAI's embed model returns data of 1536 dimension.
+
 ### What are vectors
 
 Vectors are representation of features of data in a mathematical way. The vectors are generated based on the passed input by passing it through an AI model. These models are previously trained so that it can find out unique features about the passed data and accordingly return a vector representation.
