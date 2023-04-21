@@ -210,6 +210,14 @@ renders a custom jsx markup for the enter button. Use in conjunction with `enter
 
 show a voice icon in the AIAnswer to enable users to set voice input. Defaults to `false`.
 
+### showFeedback
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+
 ### render
 
 | Type | Optional |
@@ -402,6 +410,7 @@ You can pass a callback function that gets triggered in case of an error and pro
 -   `ai-error`
 -   `ai-message`
 -   `ai-input`
+-   `ai-feedback`
 
 Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
