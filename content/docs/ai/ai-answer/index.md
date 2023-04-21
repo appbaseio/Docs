@@ -46,13 +46,49 @@ Optionally, if you already have data and want to enrich it with vector represent
 
 ### Querying
 
-This is where AI Answer comes in. In order to query data, there are multiple ways to do it.
+This is where AI Answer comes in. In order to query data, there are two ways to do it.
 
 ReactiveSearch provides an UI library that can be leveraged to build AI Answer much easily. ReactiveSearch API can also be used in order to get the data. ReactiveSearch Pipelines are also an option if you want to get your hands dirty and customize various features of AI Answer or anything else regarding ReactiveSearch Query.
 
-Once your cluster is connected to ReactiveSearch, a simple POST call can be made to get the search data along with AI enabled:
+#### With UI Components
+
+<iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/q-n-a-search-ui/tree/main/?fontsize=14&hidenavigation=1&theme=light"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="q-n-a-search-ui"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+With UI components that ReactiveSearch provides, it's easy to quickly get started with using AI Answer.
+
+[Check out documentation for Searchbox with AI Answer](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#aiconfig)
+
+[Check out documentation for AI Answer component](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/)
+
+#### With API
+
+Once your cluster is connected to ReactiveSearch, a simple POST call can be made to get the search data along with AI enabled, `enableAI` field should be specified as shown in the following JSON:
+
+```json
+{
+    "query": [
+        {
+            "id": "test",
+            "dataField": ["title"],
+            "value": "free guy",
+            "enableAI": true
+        }
+    ]
+}
+```
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/VvDdd6uvjFUYwVSelYQJ"></iframe>
+
+The above response contains an `AISessionId` that can be used to fetch the answer from AI as well as ask follow-up questions:
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/fp5e52TLUckcPSPTEyty"></iframe>
+
+[Learn more about the endpoints ReactiveSearch provides for interacting with AI](https://api.reactivesearch.io/#44009fda-61f7-4d1b-81b5-9f495d3111a3)
 
 [Read more about querying with ReactiveSearch with AI Answer support](./querying)
 
