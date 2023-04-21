@@ -528,7 +528,7 @@ enables the ability to ask questions with SearchBox and display AI generated ans
 |------|----------|
 |  `Object` |   Yes   |
 
-Specify additional options for configruing AI responses.
+Specify additional options for configuring the LLM context + prompt for AI answer.
 
 Accepts the following properties:
 -   **systemPrompt** `String` [optional]
