@@ -90,6 +90,6 @@ The above response contains an `AISessionId` that can be used to fetch the answe
 
 [Learn more about the endpoints ReactiveSearch provides for interacting with AI](https://api.reactivesearch.io/#44009fda-61f7-4d1b-81b5-9f495d3111a3)
 
-[Read more about querying with ReactiveSearch with AI Answer support](./querying)
+[Read more about querying with AI Answer support](./querying)
 
 
