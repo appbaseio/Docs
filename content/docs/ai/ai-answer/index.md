@@ -40,9 +40,15 @@ Getting started with AI Answer is a piece of cake. Just index the data and start
 
 ### Before you start
 
-If you don't have any data indexed in the cluster, we suggest taking a look at [this indexing doc to get started](./indexing)
+If you don't have any data indexed in the cluster, we suggest taking a look at [this indexing doc to get started](./indexing).
 
-Optionally, if you already have data and want to enrich it with vector representations, [take a look at the vector section of this doc](./indexing#enriching-with-vector-data)
+Optionally, if you already have data and want to enrich it with vector representations, [take a look at the vector section of this doc](./indexing#enriching-with-vector-data).
+
+#### Set AI preferences
+
+In order to start using AI, the feature needs to be enabled by going over to the dashboard [here](https://dash.reactivesearch.io/cluster/ai-preferences).
+
+![AI Preferences](https://i.imgur.com/wBzEW2o.jpg "AI preferences")
 
 ### Querying
 
