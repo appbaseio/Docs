@@ -565,7 +565,7 @@ Accepts the following properties:
 -   **onSourceClick** `Function` [optional]
     callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
 -   **askButton** `Boolean` [optional]
-    When set to `true`, the AI screen would only be displayed on press of the  button. Defaults to `false`. You can also provide styles using the `ask-button` key in the `innerClass` prop.
+    When set to `true`, the AI answer action and the corresponding display of AIAnswer would be triggered when user presses the Ask button. Defaults to `false`. You can provide styles with `ask-button` key for the `innerClass` prop.
 -   **renderAskButton** `number` [optional]
     renders a custom jsx markup for the enter button. Use in conjunction with `askButton` prop set to `true`.
     ```jsx
