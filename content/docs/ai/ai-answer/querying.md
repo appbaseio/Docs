@@ -17,19 +17,32 @@ Querying the indexed data with AI Answer can be done in various ways. ReactiveSe
 
 From a top-level perspective, there are three main ways to query the data:
 
-- Through ReactiveSearch UI components
-- Through ReactiveSearch API
-- Through ReactiveSearch Pipelines
+- With ReactiveSearch UI components
+- With ReactiveSearch API
+- With ReactiveSearch Pipelines
 
 ![Querying with AI Answer enabled](../../../../content/images/concepts/querying_ai.png "Querying with AI Answer Vizualized")
 
-## Through UI Components
+## With UI Components
 
 ReactiveSearch provides a state-of-the art library that uses ReactiveSearch API under the hood and makes development experience much faster. With the UI library, a search UI can be built and brought up within a few minutes.
 
-[Check out this demo to understand more about using AI Answer with ReactiveSearch Components](https://codesandbox.io/s/github/awesome-reactivesearch/q-n-a-search-ui/tree/main/?from-embed)
+<iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/q-n-a-search-ui/tree/main/?fontsize=14&hidenavigation=1&theme=light"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="q-n-a-search-ui"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
-## Through API
+[Check out more demos of using ReactiveSearch](https://codesandbox.io/s/github/awesome-reactivesearch/q-n-a-search-ui/tree/main/?from-embed)
+
+With UI components that ReactiveSearch provides, it's easy to quickly get started with using AI Answer.
+
+[Check out documentation for Searchbox with AI Answer](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#aiconfig)
+
+[Check out documentation for AI Answer component](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/)
+
+## With API
 
 ReactiveSearch API acts as the gateway for accessing the data. It's an easy-to-use API that can be as simple as a search query and get as complex as multiple faceted queries with various query dependencies.
 
@@ -45,7 +58,7 @@ In the following, a `GET /_ai/{AISessionId}` is being made to fetch the answer f
 
 [Learn more about the endpoints ReactiveSearch provides for interacting with AI](https://api.reactivesearch.io/#44009fda-61f7-4d1b-81b5-9f495d3111a3)
 
-## Through pipelines
+## With pipelines
 
 ReactiveSearch Pipelines pack a lot of features and functionalities that makes it possible to alter the behaviour of the ReactiveSearch call as well as add extra steps in the flow.
 
