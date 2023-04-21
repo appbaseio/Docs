@@ -32,7 +32,7 @@ Metadata enrichment script uses OpenAI in order to fetch the synonyms. It iterat
 
 ## Metadata Script
 
-![Metadata Script in action]()
+![Metadata Script in action](https://i.imgur.com/bHm3DTr.png "Metadata script in action")
 
 [Check out the script over here](https://github.com/appbaseio/ai-scripts/tree/master/metadata)
 
