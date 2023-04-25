@@ -25,4 +25,4 @@ There are multiple ways to index data and is a very simple and straightforward t
 
 ReactiveSearch provides a script to index the and enrich the already existing data by injecting vector representations.
 
-[Read more about enriching with vector data](../knn/index#enriching-with-vector-data)
+[Read more about enriching with vector data](../knn/#enriching-with-vector-data)
