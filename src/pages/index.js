@@ -285,7 +285,13 @@ const HomePage = ({ data, location }) => {
 												link: "/docs/pipelines/developing/",
 												description: "Learn how to develop and debug pipelines before deploying them",
 												duration: 12
-											}
+											},
+											{
+												title: "Pipeline Integrations",
+												link: "/docs/pipelines/integrations/open-ai",
+												description: "Learn about integrations that work with pipelines",
+												duration: 10,
+											},
 										]
 									},
 									'7': {
