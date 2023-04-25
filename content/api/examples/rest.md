@@ -84,3 +84,9 @@ In this example, we show how to use Elasticsearch's query DSL for writing a term
 In this example, we see usage of advanced search settings that show how to record custom analytics events, enable query rules, and enable cache (per request).
 
 <iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/K8NH1CvyQQPkFKh4WvR5"></iframe>
+
+### Use AI Answer to get answers for the search query using ChatGPT
+
+In this example, we see usage of `AI Answer` functionality to get answer to the search query based on the top hits.
+
+<iframe frameborder="1px" width="100%" height="400px" src="https://play.reactivesearch.io/embed/N8KEoJopnwHkstDpnS6y"></iframe>
