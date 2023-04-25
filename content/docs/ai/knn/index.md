@@ -34,7 +34,7 @@ Again, while searching, the search query will have to be converted into vector r
 
 ## Enriching with vector data
 
-> TL;DR: If your data already contains vector representation, you can skip this part and [head to querying](#querying-with-knn)
+> NOTE: If your data already contains vector representation, you can skip this part and [head to querying](#querying-with-knn)
 
 If you have an indexed dataset that does not have vector representation, ReactiveSearch provides a script to convert that dataset with vector representation.
 
@@ -88,11 +88,11 @@ We suggest a simple way to index all the vector data. This is by using a script 
 1. Index the data using the normal way (without vector data)
 2. Use our script to automatically inject the vector representation
 
-#### Index the data
+### Index the data
 
 This is pretty straightforward. [Refer to the indexing data section](#indexing-the-data) to get started and finish this step. There's nothing more to it other than that.
 
-#### Inject vector representation
+### Inject vector representation
 
 We provide a python script that takes care of going through all the data and injecting the vector representation of the data. It also takes care of setting up the appropriate mappings and settings in order to make the index properly store the vector data.
 
