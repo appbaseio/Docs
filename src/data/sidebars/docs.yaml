@@ -69,7 +69,7 @@
       - group: 'ReactiveSearch Pipelines'
         icon: pipeline
         items:
-            - link: /docs/pipelines/integrations/
+            - link: /docs/pipelines/integrations/open-ai
               title: Integrations
               items:
                   - link: /docs/pipelines/integrations/open-ai
