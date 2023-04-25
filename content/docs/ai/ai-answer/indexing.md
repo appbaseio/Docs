@@ -17,7 +17,7 @@ Indexing data into ReactiveSearch is probably the first step in order to start u
 
 There are multiple ways to index data and is a very simple and straightforward task.
 
-![Indexing Without Vector Data](../../../../content/images/concepts/normal_indexing.png "Indexing Without Vector Data Vizualized")
+![Indexing Without Vector Data](/images/concepts/normal_indexing.png "Indexing Without Vector Data Vizualized")
 
 [Check this doc to get started with indexing the data](https://docs.reactivesearch.io/docs/data/import/)
 

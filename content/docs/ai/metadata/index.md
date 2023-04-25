@@ -26,7 +26,7 @@ This works perfectly with the above example since getting synonyms for `sad` wil
 
 ## How it works
 
-![Metadata enrichment visualized](../../../images/concepts/metadata_enrichment.png "Metadata enrichment visualized")
+![Metadata enrichment visualized](/images/concepts/metadata_enrichment.png "Metadata enrichment visualized")
 
 Metadata enrichment script uses OpenAI in order to fetch the synonyms. It iterates through all the existing data, generates the synonyms and injects them into the index. It also takes care of managing the mappings of the index.
 
