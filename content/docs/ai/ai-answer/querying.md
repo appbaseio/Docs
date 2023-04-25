@@ -38,9 +38,10 @@ ReactiveSearch provides a state-of-the art library that uses ReactiveSearch API 
 
 With UI components that ReactiveSearch provides, it's easy to quickly get started with using AI Answer.
 
-[Check out documentation for Searchbox with AI Answer](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#aiconfig)
-
-[Check out documentation for AI Answer component](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/)
+| Name | Link |
+| -- | -- |
+| Searchbox with AI Answer | [Read more](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#aiconfig) |
+| ReactiveSearch with AI Answer | [Read more](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/) |
 
 ## With API
 
