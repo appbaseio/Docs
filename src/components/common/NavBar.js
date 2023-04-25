@@ -193,8 +193,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																/>
 																Actionable Analytics
 															</Link>
-														</div>
-														<div>
 															<Link
 																to="/docs/speed/cache-management/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
@@ -205,6 +203,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																/>
 																Speed
 															</Link>
+														</div>
+														<div>
 															<Link
 																to="/docs/security/credentials/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
