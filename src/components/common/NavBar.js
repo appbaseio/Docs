@@ -156,7 +156,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
-																	name="heart"
+																	name="ai"
 																	className="dropdown-content-icon mr2"
 																/>
 																AI
