@@ -52,7 +52,7 @@
                   - link: /docs/search/scripts/examples
                     title: 'Code Examples'
       - group: 'ReactiveSearch Pipelines'
-        icon: search
+        icon: pipeline
         items:
             - link: /docs/pipelines/concepts/
               title: Pipeline Concepts
@@ -114,7 +114,7 @@
                   - link: /docs/pipelines/how-to/mongodb-pipeline
                     title: MongoDB Pipeline
       - group: 'AI'
-        icon: search
+        icon: ai
         items:
             - link: /docs/ai/ai-answer/
               title: AI Answer
