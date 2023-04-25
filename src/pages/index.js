@@ -229,7 +229,7 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'5': {
-										title: 'AI',
+										title: 'AI Search',
 										subtitle: 'Use AI to supercharge search with one-to-one interaction, vector search with the power of ChatGPT',
 										icon: (
 											<Icon

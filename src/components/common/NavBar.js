@@ -171,7 +171,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																	name="ai"
 																	className="dropdown-content-icon mr2"
 																/>
-																AI
+																AI Search
 															</Link>
 															<Link
 																to="/docs/pipelines/concepts/"

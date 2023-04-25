@@ -52,7 +52,7 @@
                     title: 'Getting Started'
                   - link: /docs/search/scripts/examples
                     title: 'Code Examples'
-      - group: 'AI'
+      - group: 'AI Search'
         icon: ai
         items:
             - link: /docs/ai/ai-answer/
