@@ -40,7 +40,7 @@ If you have an indexed dataset that does not have vector representation, Reactiv
 
 While indexing with vector data, a vector representation of certain fields are generated and stored. These vector representation can be later on used while searching to get more relatable search results.
 
-![Indexing With Vector Data](/images/concepts/vector_indexing.png "Indexing With Vector Data Vizualized")
+![Indexing With Vector Data](/content/images/concepts/vector_indexing.png "Indexing With Vector Data Vizualized")
 
 > NOTE: As of now ElasticSearch is not supported due to limitations on vector dimensions. ElasticSearch can only support up-to 1k dimensions but OpenAI's embed model returns data of 1536 dimension.
 
@@ -112,7 +112,7 @@ curl -s https://raw.githubusercontent.com/appbaseio/ai-scripts/master/get-ai-scr
 
 ## Querying with kNN
 
-![Querying visualized with kNN](/images/concepts/knn_search_querying.png "Querying visualized with kNN")
+![Querying visualized with kNN](/content/images/concepts/knn_search_querying.png "Querying visualized with kNN")
 
 ReactiveSearch makes it very easy to query data with kNN. kNN based searching is supported out of the box so a simple query like following will do the job:
 
