@@ -216,6 +216,18 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Access Control
 															</Link>
 														</div>
+														<div>
+															<Link
+																to="/docs/ai/"
+																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+															>
+																<Icon
+																	name="heart"
+																	className="dropdown-content-icon mr2"
+																/>
+																AI
+															</Link>
+														</div>
 													</div>
 												</div>
 											) : null}
