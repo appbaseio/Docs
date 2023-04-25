@@ -133,6 +133,8 @@
                     title: Solr Pipeline
                   - link: /docs/pipelines/how-to/mongodb-pipeline
                     title: MongoDB Pipeline
+                  - link: /docs/pipelines/how-to/ai-answer
+                    title: AI Answer
       - group: 'Actionable Analytics'
         icon: analytics
         items:
