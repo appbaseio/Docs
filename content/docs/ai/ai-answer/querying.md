@@ -58,7 +58,9 @@ In the following, a `GET /_ai/{AISessionId}` is being made to fetch the answer f
 
 [Learn more about the endpoints ReactiveSearch provides for interacting with AI](https://api.reactivesearch.io/#44009fda-61f7-4d1b-81b5-9f495d3111a3)
 
-## With pipelines
+## With Pipeline
+
+> NOTE: This is aimed at developers only who want to modify the behavior of the ReactiveSearch endpoint (or any other endpoint) to suit their needs.
 
 ReactiveSearch Pipelines pack a lot of features and functionalities that makes it possible to alter the behaviour of the ReactiveSearch call as well as add extra steps in the flow.
 
