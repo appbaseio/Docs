@@ -30,6 +30,8 @@ This works perfectly with the above example since getting synonyms for `sad` wil
 
 Metadata enrichment script uses OpenAI in order to fetch the synonyms. It iterates through all the existing data, generates the synonyms and injects them into the index. It also takes care of managing the mappings of the index.
 
+<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/407e6f84db364785ae1fb5e391867f55" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Metadata Script
 
 ![Metadata Script in action](https://i.imgur.com/bHm3DTr.png "Metadata script in action")
