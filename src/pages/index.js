@@ -127,76 +127,6 @@ const HomePage = ({ data, location }) => {
 										],
 									},
 									'3': {
-										title: 'Search Relevancy',
-										subtitle:
-											'Visually create, update and manage results for your Search.',
-										icon: (
-											<Icon
-												name="searchRelevancy"
-												className="dropdown-content-icon"
-											/>
-										),
-										chapters: [
-											{
-												title: 'Search Relevancy',
-												description: 'Controls for search relevancy.',
-												link: '/docs/search/relevancy/',
-												duration: 16,
-											},
-											{
-												title: 'ReactiveSearch API',
-												description:
-													'A declarative API based on ReactiveSearch library to query Elasticsearch securely by protecting against security concerns around query injection.',
-												link: '/docs/search/reactivesearch-api/',
-												duration: 10,
-											},
-											{
-												title: 'Query Rules',
-												description:
-													'Query Rules are If-This-Then-That kind of rules that can be tailored to your business use-case.',
-												link: '/docs/search/rules/',
-												duration: 7,
-											},
-											{
-												title: 'ReactiveSearch Scripts',
-												description:
-													'User defined JavaScript functions to tailor search relevance, transform indexing documents or apply security trimming',
-												link: '/docs/search/scripts/',
-												duration: 10,
-											},
-										],
-									},
-									'4': {
-										title: 'ReactiveSearch Pipelines',
-										subtitle: 'Configure search and indexing routes, and author data processing stages with JavaScript',
-										icon: (
-											<Icon
-												name="pipeline"
-												className="dropdown-content-icon"
-											/>
-										),
-										chapters: [
-											{
-												title: "ReactiveSearch Pipelines: Concepts",
-												link: "/docs/pipelines/concepts/",
-												description: "Learn about core concepts of ReactiveSearch pipelines and how to use them",
-												duration: 12,
-											},
-											{
-												title: 'How to guides',
-												link: '/docs/pipelines/how-to/',
-												description: 'See actionable guides for building search with ReactiveSearch pipelines',
-												duration: 1,
-											},
-											{
-												title: "Developing/Debugging Pipelines",
-												link: "/docs/pipelines/developing/",
-												description: "Learn how to develop and debug pipelines before deploying them",
-												duration: 12
-											}
-										]
-									},
-									'5': {
 										title: 'Building Search UI',
 										subtitle: 'UI Components for making your Search Experience',
 										icon: (
@@ -258,7 +188,107 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
+									'4': {
+										title: 'Search Relevancy',
+										subtitle:
+											'Visually create, update and manage results for your Search.',
+										icon: (
+											<Icon
+												name="searchRelevancy"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: 'Search Relevancy',
+												description: 'Controls for search relevancy.',
+												link: '/docs/search/relevancy/',
+												duration: 16,
+											},
+											{
+												title: 'ReactiveSearch API',
+												description:
+													'A declarative API based on ReactiveSearch library to query Elasticsearch securely by protecting against security concerns around query injection.',
+												link: '/docs/search/reactivesearch-api/',
+												duration: 10,
+											},
+											{
+												title: 'Query Rules',
+												description:
+													'Query Rules are If-This-Then-That kind of rules that can be tailored to your business use-case.',
+												link: '/docs/search/rules/',
+												duration: 7,
+											},
+											{
+												title: 'ReactiveSearch Scripts',
+												description:
+													'User defined JavaScript functions to tailor search relevance, transform indexing documents or apply security trimming',
+												link: '/docs/search/scripts/',
+												duration: 10,
+											},
+										],
+									},
+									'5': {
+										title: 'AI',
+										subtitle: 'Use AI to supercharge search with one-to-one interaction, vector search with the power of ChatGPT',
+										icon: (
+											<Icon
+												name="ai"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: "AI Answer",
+												link: "/docs/ai/ai-answer/",
+												description: "Learn how to use AI Answer to support 1-1 interaction with users and keep the user in the loop",
+												duration: 4,
+											},
+											{
+												title: "kNN",
+												link: "/docs/ai/knn/",
+												description: "Learn how to index vectors and use them for vector searching",
+												duration: 4,
+											},
+											{
+												title: "Metadata Enrichment",
+												link: "/docs/ai/metadata/",
+												description: "Learn how to enrich metadata for already existing data to improve search reliability",
+												duration: 3,
+											},
+										],
+									},
 									'6': {
+										title: 'ReactiveSearch Pipelines',
+										subtitle: 'Configure search and indexing routes, and author data processing stages with JavaScript',
+										icon: (
+											<Icon
+												name="pipeline"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: "ReactiveSearch Pipelines: Concepts",
+												link: "/docs/pipelines/concepts/",
+												description: "Learn about core concepts of ReactiveSearch pipelines and how to use them",
+												duration: 12,
+											},
+											{
+												title: 'How to guides',
+												link: '/docs/pipelines/how-to/',
+												description: 'See actionable guides for building search with ReactiveSearch pipelines',
+												duration: 1,
+											},
+											{
+												title: "Developing/Debugging Pipelines",
+												link: "/docs/pipelines/developing/",
+												description: "Learn how to develop and debug pipelines before deploying them",
+												duration: 12
+											}
+										]
+									},
+									'7': {
 										title: 'Actionable Analytics',
 										subtitle:
 											'Analytics offers actionable insights into how your search is performing.',
@@ -301,7 +331,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'7': {
+									'8': {
 										title: 'Speed',
 										subtitle: 'Blazing ⚡️ fast search performance',
 										icon: <Icon name="zap" className="dropdown-content-icon" />,
@@ -315,7 +345,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'8': {
+									'9': {
 										title: 'Access Control',
 										subtitle: 'Out-of-the-box access control for search',
 										icon: (
@@ -345,7 +375,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'9': {
+									'10': {
 										title: 'Hosting',
 										icon: (
 											<Icon name="rocket" className="dropdown-content-icon" />
