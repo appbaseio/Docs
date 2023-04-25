@@ -21,6 +21,7 @@
               title: 'Search Preview'
             - link: /docs/data/stored-queries/
               title: 'Stored Queries'
+      - group: 'Building Search UI'
       - group: 'Search Relevancy'
         icon: search
         items:
@@ -51,6 +52,20 @@
                     title: 'Getting Started'
                   - link: /docs/search/scripts/examples
                     title: 'Code Examples'
+      - group: 'AI'
+        icon: ai
+        items:
+            - link: /docs/ai/ai-answer/
+              title: AI Answer
+              items:
+                  - link: /docs/ai/ai-answer/indexing
+                    title: Indexing
+                  - link: /docs/ai/ai-answer/querying
+                    title: Querying
+            - link: /docs/ai/knn/
+              title: kNN Search
+            - link: /docs/ai/metadata/
+              title: Metadata Enrichment
       - group: 'ReactiveSearch Pipelines'
         icon: pipeline
         items:
@@ -113,21 +128,6 @@
                     title: Solr Pipeline
                   - link: /docs/pipelines/how-to/mongodb-pipeline
                     title: MongoDB Pipeline
-      - group: 'AI'
-        icon: ai
-        items:
-            - link: /docs/ai/ai-answer/
-              title: AI Answer
-              items:
-                  - link: /docs/ai/ai-answer/indexing
-                    title: Indexing
-                  - link: /docs/ai/ai-answer/querying
-                    title: Querying
-            - link: /docs/ai/knn/
-              title: kNN Search
-            - link: /docs/ai/metadata/
-              title: Metadata Enrichment
-      - group: 'Building Search UI'
       - group: 'Actionable Analytics'
         icon: analytics
         items:
