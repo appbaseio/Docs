@@ -30,6 +30,8 @@ Again, while searching, the search query will have to be converted into vector r
 
 > NOTE that the model used to convert the text into vector should be the same while indexing and searching.
 
+<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/154cf34ce3e14c7799afac0d1c93b09b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## Enriching with vector data
 
 > TL;DR: If your data already contains vector representation, you can skip this part and [head to querying](#querying-with-knn)
