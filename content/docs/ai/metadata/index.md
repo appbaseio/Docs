@@ -1,10 +1,10 @@
 ---
-title: 'Metadata Enrichment'
-meta_title: 'Metadata Enrichment'
+title: 'Data Enrichment'
+meta_title: 'Data Enrichment'
 meta_description: 'Learn how to enrich metadata in already existing indexes'
 keywords:
     - reactivesearch.io
-    - metadata enrichment
+    - data enrichment
     - chatgpt
     - search engine
     - opensearch
@@ -12,7 +12,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-Metadata enrichment is a way to enrich the already existing data and cover synonyms of that. It is most useful when used with single word fields.
+Data enrichment is a way to enrich the already existing data and cover synonyms of that. It is most useful when used with single word fields.
 
 ## Example Scenario
 
@@ -26,15 +26,15 @@ This works perfectly with the above example since getting synonyms for `sad` wil
 
 ## How it works
 
-![Metadata enrichment visualized](/images/concepts/metadata_enrichment.png "Metadata enrichment visualized")
+![Data enrichment visualized](/images/concepts/metadata_enrichment.png "Data enrichment visualized")
 
-Metadata enrichment script uses OpenAI in order to fetch the synonyms. It iterates through all the existing data, generates the synonyms and injects them into the index. It also takes care of managing the mappings of the index.
+Data enrichment script uses OpenAI in order to fetch the synonyms. It iterates through all the existing data, generates the synonyms and injects them into the index. It also takes care of managing the mappings of the index.
 
 <div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/407e6f84db364785ae1fb5e391867f55" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-## Metadata Script
+## Data Enrichment Script
 
-![Metadata Script in action](https://i.imgur.com/bHm3DTr.png "Metadata script in action")
+![Data Enrichment Script in action](https://i.imgur.com/bHm3DTr.png "Data enrichment script in action")
 
 [Check out the script over here](https://github.com/appbaseio/ai-scripts/tree/master/metadata)
 
