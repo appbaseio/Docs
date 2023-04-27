@@ -54,18 +54,19 @@
                     title: 'Code Examples'
       - group: 'AI Search'
         icon: ai
+        link: /docs/ai-search/
         items:
-            - link: /docs/ai/ai-answer/
+            - link: /docs/ai-search/ai-answer/
               title: AI Answer
               items:
-                  - link: /docs/ai/ai-answer/indexing
+                  - link: /docs/ai-search/ai-answer/indexing
                     title: Indexing
-                  - link: /docs/ai/ai-answer/querying
+                  - link: /docs/ai-search/ai-answer/querying
                     title: Querying
-            - link: /docs/ai/knn/
+            - link: /docs/ai-search/knn/
               title: kNN Search
-            - link: /docs/ai/metadata/
-              title: Metadata Enrichment
+            - link: /docs/ai-search/metadata/
+              title: Data Enrichment
       - group: 'ReactiveSearch Pipelines'
         icon: pipeline
         items:

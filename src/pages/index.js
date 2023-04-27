@@ -240,19 +240,19 @@ const HomePage = ({ data, location }) => {
 										chapters: [
 											{
 												title: "AI Answer",
-												link: "/docs/ai/ai-answer/",
+												link: "/docs/ai-search/ai-answer/",
 												description: "Learn how to use AI Answer to support 1-1 interaction with users and keep the user in the loop",
 												duration: 4,
 											},
 											{
 												title: "kNN",
-												link: "/docs/ai/knn/",
+												link: "/docs/ai-search/knn/",
 												description: "Learn how to index vectors and use them for vector searching",
 												duration: 4,
 											},
 											{
 												title: "Metadata Enrichment",
-												link: "/docs/ai/metadata/",
+												link: "/docs/ai-search/metadata/",
 												description: "Learn how to enrich metadata for already existing data to improve search reliability",
 												duration: 3,
 											},
