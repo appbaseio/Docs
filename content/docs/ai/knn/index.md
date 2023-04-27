@@ -90,7 +90,7 @@ We suggest a simple way to index all the vector data. This is by using a script 
 
 ### Index the data
 
-This is pretty straightforward. [Refer to the indexing data section](#indexing-the-data) to get started and finish this step. There's nothing more to it other than that.
+This is pretty straightforward. [Refer to the indexing data section](../ai-answer/indexing#indexing-the-data) to get started and finish this step. There's nothing more to it other than that.
 
 ### Inject vector representation
 
