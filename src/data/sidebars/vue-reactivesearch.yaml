@@ -45,6 +45,8 @@
         items:
             - title: SearchBox
               link: /docs/reactivesearch/vue/search/SearchBox/
+            - title: Search Showcase
+              link: /docs/reactivesearch/vue/search/showcase/
       - group: Result Components
         items:
             - title: ReactiveList
