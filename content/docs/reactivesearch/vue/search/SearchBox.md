@@ -402,8 +402,8 @@ Accepts the following properties:
 -   **showFeedback** `Boolean` [optional]
     Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
     > Use in conjunction with `reactivesearchAPIConfig.recordAnalytics` set to true in ReactiveBase.
--   **loaderMessage** `String | JSX` [optional]
-    Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`
+-   **loaderMessage** `String` [optional]
+    Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`. User `#AILoaderMessage` slot-scope for custom html markup.
 -   **showSourceDocuments** `Boolean` [optional]
     Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
 -   **sourceDocumentLabel** `String` [optional]
@@ -412,31 +412,6 @@ Accepts the following properties:
     callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
 -   **askButton** `Boolean` [optional]
     When set to `true`, the AI answer action and the corresponding display of AIAnswer would be triggered when user presses the Ask button. Defaults to `false`. You can provide styles with `ask-button` key for the `innerClass` prop.
--   **renderAskButton** `number` [optional]
-    renders a custom jsx markup for the enter button. Use in conjunction with `askButton` prop set to `true`.
-    ```jsx
-    <SearchBox
-        id="search-component"
-        AIUIConfig={{
-            askButton: true,
-            renderAskButton: function (clickHandler){
-                return (
-                    <div
-                        style={{
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'stretch',
-                        }}
-                    >
-                        <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
-                            🔍 Ask!
-                        </button>
-                    </div>
-            )}
-        }}
-        enterButton
-    />
-    ```
 
 ### strictSelection
 
@@ -1133,6 +1108,95 @@ It accepts an object with these properties:
   </search-box>
 ```
 
+
+
+### renderAIAnswer
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+to custom render tags when mode is set to `tag`.
+Provides 
+It accepts an object with these properties:
+- **`question`**: `String`
+  The current asked question.
+- **`answer`**: `String`
+  Answer returned by the AI.   
+- **`documentIds`**: `Array<String>`
+  The documents' ids used for curating the AI answer.
+- **`loading`**: `Boolean`
+  Loading status for the AI response.
+- **`sources`**: `Array<Object>`
+  The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+
+
+```jsx
+  <search-box
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<template #renderAIAnswer="{ question, answer, documentIds, loading, sources}">
+			// render custom AI screen
+		</template>
+  </search-box>
+```
+
+### AILoaderMessage
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+to custom render the loader message for AI screen
+
+```jsx
+  <search-box
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<template #AILoaderMessage>
+			// render custom AI screen loader message
+      <div> loading AI ... ⏰</div>
+		</template>
+  </search-box>
+```
+
+### renderAskButton
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+The custom HTML markup displayed for enterButton. Use in conjunction with `askButton` prop under `AIUIConfig` prop set to `true`.
+
+```jsx
+<search-box
+      ...
+      :AIUIConfig="{
+        askButton: true
+      }"
+>
+    <template
+        #renderAskButton="onClick"
+    >
+      <div :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }">
+         <button
+            :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
+            v-on:click="onClick"
+        >
+            Ask ❓
+        </button>
+      </div>
+    </template>
+</search-box>
+```
 
 ## Demo
 
