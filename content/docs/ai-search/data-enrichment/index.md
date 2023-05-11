@@ -1,18 +1,19 @@
 ---
 title: 'Data Enrichment'
-meta_title: 'Data Enrichment'
-meta_description: 'Learn how to enrich metadata in already existing indexes'
+meta_title: 'Data Enrichment | ReactiveSearch AI Search'
+meta_description: 'Enrich your search data to add dynamic synonyms and context using OpenAI models with ReactiveSearch's CLI utility'
 keywords:
-    - reactivesearch.io
-    - data enrichment
+    - reactivesearch
+    - data-enrichment
     - chatgpt
     - search engine
     - opensearch
     - elasticsearch
+    - openai
 sidebar: 'docs'
 ---
 
-Data enrichment is a way to enrich the already existing data and cover synonyms of that. It is most useful when used with single word fields.
+Enrich your search data to add dynamic synonyms and context using OpenAI models with ReactiveSearch's CLI utility.
 
 ## Example Scenario
 

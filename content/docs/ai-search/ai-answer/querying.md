@@ -1,13 +1,14 @@
 ---
 title: 'Querying AI Answer'
-meta_title: 'Querying AI Answer effectively | Introduction to ReactiveSearch'
-meta_description: 'Learn how to query data with ReactiveSearch in various ways and use it with AI Answer'
+meta_title: 'Querying AI Answer effectively | ReactiveSearch AI search'
+meta_description: 'Learn how to query data with ReactiveSearch in various ways and use it with AI Answer powered by OpenAI'
 keywords:
     - concepts
-    - reactivesearch.io
+    - reactivesearch
     - querying
     - pipelines
     - ai-answer
+    - openai
 sidebar: 'docs'
 ---
 

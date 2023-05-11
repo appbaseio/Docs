@@ -1,10 +1,12 @@
 ---
 title: 'ReactiveSearch AI Answer'
 meta_title: 'ReactiveSearch AI Answer'
-meta_description: 'Learn about AI Answer and how to use it with ReactiveSearch'
+meta_description: 'AI Answer solutions for React, Vue, REST API - the power of OpenAI\x27s models with answers generated from your search index'
 keywords:
-    - reactivesearch.io
-    - ai answer
+    - reactivesearch
+    - ai-answer
+    - openai
+    - llm
     - chatgpt
     - search engine
     - opensearch
@@ -12,17 +14,17 @@ keywords:
 sidebar: 'docs'
 ---
 
-AI Answer adds the ability of AI alongside the good old search. ReactiveSearch supports integrating AI into search UIs to make the end-users experience much more streamlined and conversational.
+AI Answer leverages OpenAI and your top search hits to provide an answer from your search engine index and can be used standalone, with searchbox or with a faceted search UI solution. With React and Vue based UI components, you can power your entire search stack using ReactiveSearch.
 
 **AI Answer brings the following things**:
 
-- **AI Search**: Answer your user’s intent along side a faceted search
+- **AI Search**: Answer your user’s intent with LLMs - use standalone, with searchbox or with a faceted search UI solution
 - **Improved precision and recall**: By relying on both the keyword search (or KNN) passed to the LLM context window, the answer is always coming from the search index
 - **Human-in-the-loop**: By reviewing sessions and the feedback from your end-users,
-    - Serve the user intent with a human-in-the-loop,
-    - Iterate on the analytics to update prompt
-- **Ready-to-go UI components**: Supported with ReactiveSearch, the industry-leading UI components library for React and Vue, you can ship and AI search in an hour
-- **No-code AI search**: (Coming soon) Directly ship an AI search solution with Studio - no-code required! You still get the code (with ReactiveSearch kit) that can be built upon.
+    - Improve on the AI Answer Ux
+    - Add FAQs as suggested questions
+- **Ready-to-go UI components**: Configure components supported by ReactiveSearch's UI kit, the industry-leading UI components library for React and Vue search UIs
+- **No-code AI search**: Directly ship an AI search solution with UI builder - no-code required!
 
 ## How it works
 

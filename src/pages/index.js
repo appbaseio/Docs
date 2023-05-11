@@ -242,14 +242,14 @@ const HomePage = ({ data, location }) => {
 												title: 'AI Answer',
 												link: '/docs/ai-search/ai-answer/',
 												description:
-													'Add an AI Answer generated with OpenAI from your top search engine hits, React and Vue solutions',
+													'AI answer solutions for React, Vue, REST API - the power of OpenAI\x27s models with answers generated from your search index',
 												duration: 4,
 											},
 											{
 												title: 'kNN',
 												link: '/docs/ai-search/knn/',
 												description:
-													'In-depth guide on vector search with OpenAI embeddings, and use ReactiveSearch\x27s CLI utility to vectorize your search data',
+													'KNN search (vector search) using REST API or ReactiveSearch\x27s React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch\x27s interactive CLI',
 												duration: 4,
 											},
 											{

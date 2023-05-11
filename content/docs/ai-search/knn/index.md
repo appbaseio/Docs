@@ -1,18 +1,21 @@
 ---
 title: 'ReactiveSearch with kNN search'
-meta_title: 'ReactiveSearch with kNN search'
-meta_description: 'Learn about kNN based searching and how to use it with ReactiveSearch'
+meta_title: 'kNN search aka vector search | ReactiveSearch AI Search'
+meta_description: 'KNN search (vector search) using REST API or ReactiveSearch's React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch's interactive CLI'
 keywords:
-    - reactivesearch.io
+    - reactivesearch
     - knn
     - chatgpt
     - search engine
     - opensearch
     - elasticsearch
+    - openai
 sidebar: 'docs'
 ---
 
-Searching through data is one of the most important features of a search engine. The usual way to search data is text search however in order to get more relevant results, other, more sophisticated methods of searching can be used. One of such methods is kNN based searching.
+Vector search using REST API or ReactiveSearch's React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch's interactive CLI.
+
+Discoverability of data is one of the most important features in a search solution. The usual way to search data is text search (based on BM-25), however this assumes familiarity of language between your users and the content. When your users language varies from your content's langaage, vector search (or KNN search) presents itself as an intelligent search solution that works with no curation and synonyms maintenance on your part.
 
 ## What is kNN?
 
