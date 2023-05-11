@@ -65,7 +65,7 @@
                     title: Querying
             - link: /docs/ai-search/knn/
               title: kNN Search
-            - link: /docs/ai-search/metadata/
+            - link: /docs/ai-search/data-enrichment/
               title: Data Enrichment
       - group: 'ReactiveSearch Pipelines'
         icon: pipeline
