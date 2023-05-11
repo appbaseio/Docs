@@ -44,4 +44,4 @@ With ReactiveSearch's AI script, it is very easy to vectorize and already existi
 
 ReactiveSearch provides an AI script that can enrich data of an existing data-set. Just specify the field that needs to be enriched and this script will take care of everything including re-indexing the data.
 
-[Read more about data enrichment here](./metadata/)
+[Read more about data enrichment here](./data-enrichment/)
