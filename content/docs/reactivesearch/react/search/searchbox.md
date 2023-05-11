@@ -513,6 +513,85 @@ allows setting a custom icon for clearing text instead of the default cross.
 |  `Boolean` |   Yes   |
 
 set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`.
+
+### enableAI
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+enables the ability to ask questions with SearchBox and display AI generated answers from within SearchBox component itself. Defaults to `false`.
+
+### AIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configuring the LLM context + prompt for AI answer.
+
+Accepts the following properties:
+-   **systemPrompt** `String` [optional]
+    The system prompt to send as the first message to ChatGPT. Defaults to `You are a helpful assistant`.
+-   **docTemplate** `String` [optional]
+    Template to use for building the message sent to ChatGPT for every hit of the response. The `docTemplate` string supports dynamic values using the special syntax `${}`. These values are resolved while the ChatGPT request body is built. It supports keys that are present in the `_source` field in the response hits. As an example, `source.title` will resolve to `_source.title`. If values are not found, defaults to an empty string.
+-   **queryTemplate** `String` [optional]
+    Template to use for building the message that is sent to ChatGPT as the final question. Defaults to `Can you tell me about ${value}` where `value` is the `query.value`. The querytemplate string supports a dynamic value of `value` which is the query.value of the query.
+-   **topDocsForContext** `number` [optional]
+    Number of docs to use to build the context. Defaults to 3. This has an upper limit as the total number of hits returned.  
+-   **maxTokens** `number` [optional]
+    The maximum tokens that can be used for the output. Deafults to being dynamically calculated. Accepts a value between [1, 8000].
+-   **temperatue** `number` [optional]
+    A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
+
+### AIUIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configruing AI screen.
+
+Accepts the following properties:
+-   **showFeedback** `Boolean` [optional]
+    Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+    > Use in conjunction with `reactivesearchAPIConfig.recordAnalytics` set to true in ReactiveBase.
+-   **loaderMessage** `String | JSX` [optional]
+    Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`
+-   **showSourceDocuments** `Boolean` [optional]
+    Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
+-   **sourceDocumentLabel** `String` [optional]
+    Set the label using the string literal syntax: e.g. `${source.field}` will set the label to the field’s resolved value, you can also combine more than one field value to display the label. Defaults to `_id`.
+-   **onSourceClick** `Function` [optional]
+    callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
+-   **askButton** `Boolean` [optional]
+    When set to `true`, the AI answer action and the corresponding display of AIAnswer would be triggered when user presses the Ask button. Defaults to `false`. You can provide styles with `ask-button` key for the `innerClass` prop.
+-   **renderAskButton** `number` [optional]
+    renders a custom jsx markup for the enter button. Use in conjunction with `askButton` prop set to `true`.
+    ```jsx
+    <SearchBox
+        id="search-component"
+        AIUIConfig={{
+            askButton: true,
+            renderAskButton: function (clickHandler){
+                return (
+                    <div
+                        style={{
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'stretch',
+                        }}
+                    >
+                        <button style={{ border: '1px solid #c3c3c3' }} onClick={clickHandler}>
+                            🔍 Ask!
+                        </button>
+                    </div>
+            )}
+        }}
+        enterButton
+    />
+    ```
+
 ### strictSelection
 
 | Type | Optional |
@@ -715,6 +794,21 @@ It accepts an object with these properties:
 -   **`downshiftProps`**: `object`
     provides all the control props from `downshift` which can be used to bind list items with click/mouse events.
     Read more about it [here](https://github.com/downshift-js/downshift#children-function).
+-   **`AIData`**: `Object`
+    A wrapper object to provide access to AI screen properties. Use in conjunction with `enableAI` set to true.
+        It contains the following keys:
+    -   **`question`**: `String`
+            The current asked question.
+    -   **`answer`**: `String`
+            Answer returned by the AI.   
+    -   **`documentIds`**: `Array<String>`
+            The documents' ids used for curating the AI answer.
+    -   **`loading`**: `Boolean`
+            Loading status for the AI response.
+    -   **`sources`**: `Array<Object>`
+            The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+    -   **`showAIScreen`**: `Boolean`
+            Boolean value to indicate when to show the AI screen.            
 
 ```jsx
     <SearchBox
@@ -723,7 +817,15 @@ It accepts an object with these properties:
             error, 
             data, 
             value, 
-            downshiftProps: { isOpen, getItemProps } 
+            downshiftProps: { isOpen, getItemProps },
+            AIData: {
+            	question,
+            	answer,
+            	documentIds,
+            	loading,
+            	sources,
+                showAIScreen
+            }
             }) => {
                 if (loading) {
                     return <div>Fetching Suggestions.</div>;
@@ -992,6 +1094,47 @@ You can render each suggestion in a custom layout by using the `renderItem` prop
     />
 ```
 
+
+### renderAIAnswer
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+You can render the AI screen content in a custom layout by using the `renderAIAnswer` prop.
+
+The callback accepts an object with following keys:
+
+-   **`question`**: `String`
+    The current asked question.
+-   **`answer`**: `String`
+    Answer returned by the AI.   
+-   **`documentIds`**: `Array<String>`
+    The documents' ids used for curating the AI answer.
+-   **`loading`**: `Boolean`
+    Loading status for the AI response.
+-   **`sources`**: `Array<Object>`
+    The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+
+```jsx
+    <SearchBox
+        {...props}
+        componentId="BookSensor"
+        renderAIAnswer={
+            ({
+            	question,
+            	answer,
+            	documentIds,
+            	loading,
+            	sources,
+            })=>{
+                // custom render AI screen
+                return <span>...</span> 
+            }
+        }
+    />
+```
+
 ### applyStopwords
 
 | Type | Optional |
@@ -1038,6 +1181,9 @@ Data field whose values are used to provide category specific suggestions.
 -   `suggestion-item`
 -   `enter-button`
 -   `selected-tag`
+-   `ask-button`
+-   `ai-source-tag`
+-   `ai-feedback`
 
 Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
