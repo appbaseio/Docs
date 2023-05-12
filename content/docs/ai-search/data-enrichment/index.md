@@ -1,7 +1,7 @@
 ---
 title: 'Data Enrichment'
 meta_title: 'Data Enrichment | ReactiveSearch AI Search'
-meta_description: 'Enrich your search data to add dynamic synonyms and context using OpenAI models with ReactiveSearch's CLI utility'
+meta_description: 'Enrich your search data to add dynamic synonyms and context using OpenAI models with ReactiveSearch CLI utility'
 keywords:
     - reactivesearch
     - data-enrichment
