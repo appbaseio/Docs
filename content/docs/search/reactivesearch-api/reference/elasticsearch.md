@@ -1127,6 +1127,16 @@ For example,
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
+### enableFAQSuggestions
+
+**Supported Engines**
+elasticsearch, opensearch
+
+### FAQSuggestionsConfig
+
+**Supported Engines**
+elasticsearch, opensearch
+
 ### showDistinctSuggestions
 
 **Supported Engines**

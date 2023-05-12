@@ -1,7 +1,7 @@
 ---
 title: 'ReactiveSearch with kNN search'
 meta_title: 'kNN search aka vector search | ReactiveSearch AI Search'
-meta_description: 'KNN search (vector search) using REST API or ReactiveSearch's React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch's interactive CLI'
+meta_description: 'KNN search (vector search) using REST API or ReactiveSearch\x27s React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch\x27s interactive CLI'
 keywords:
     - reactivesearch
     - knn
