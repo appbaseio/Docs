@@ -715,12 +715,11 @@ It accepts an object with these properties:
     The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
   - **`showAIScreen`**: `Boolean`
     Boolean value to indicate when to show the AI screen.     
+  - **`isAILoading`**: `Boolean`
+    Loading status for the AI response.
+  - **`AIError`**: `Object`
+    Error returned while fetching the AI response.
 
-| Type | Optional |
-|------|----------|
-|  `object` |   Yes   |
-
-  method can be used to register click analytics for suggestions. It accepts two arguments, click position and document ID (required only if you're using `rawData` to render suggestions).
 
 You can use `SearchBox` with `render slot` as shown:
 
@@ -743,7 +742,9 @@ You can use `SearchBox` with `render slot` as shown:
         documentIds,
         loading,
         sources,
-        showAIScreen
+        showAIScreen,
+        isAILoading,
+        AIError
       }
 		}"
   >
