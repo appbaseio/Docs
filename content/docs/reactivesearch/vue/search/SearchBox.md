@@ -1262,6 +1262,8 @@ The following events to the underlying `input` element:
 
 ### SearchBox with Q-n-A
 
+Combining Search and the power of AI makes the search experience all the more precise and extensive. The example shows how SearchBox leverages AI capabilities to respond with just the most relevant response for the user's queries.
+	
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fvue-showcase/packages/vue/examples/search-showcase/searchbox-inline-ai-response?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="appbaseio/reactivesearch"
