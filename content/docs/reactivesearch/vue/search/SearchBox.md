@@ -1259,3 +1259,12 @@ The following events to the underlying `input` element:
 ## Examples
 
 <a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
+
+### SearchBox with Q-n-A
+
+<iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/ask-reactivesearch/tree/main/?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="awesome-reactivesearch/ask-reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
