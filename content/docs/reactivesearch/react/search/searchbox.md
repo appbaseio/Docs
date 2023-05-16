@@ -1633,3 +1633,14 @@ Inside your css file ->
 Combining Instant Search with Pill-based Suggestions can help users easily navigate through large datasets by providing a structured and intuitive way to explore data. The Pill-based Suggestions allow users to filter results based on specific criteria, such as category, location, date, etc. This can be particularly useful when dealing with complex data structures, where searching through large amounts of data can be time-consuming and overwhelming.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithPillSuggestions?fontsize=14&hidenavigation=1&theme=dark" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+### SearchBox with AI Q-n-A
+
+Combining Search and the power of AI makes the search experience all the more precise and extensive. The example shows how SearchBox leverages AI capabilities to respond with just the most relevant response for the user's queries.
+
+<iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/ask-reactivesearch/tree/main/?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="awesome-reactivesearch/ask-reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
