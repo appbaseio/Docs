@@ -803,12 +803,14 @@ It accepts an object with these properties:
             Answer returned by the AI.   
     -   **`documentIds`**: `Array<String>`
             The documents' ids used for curating the AI answer.
-    -   **`loading`**: `Boolean`
+    -   **`isAILoading`**: `Boolean`
             Loading status for the AI response.
     -   **`sources`**: `Array<Object>`
             The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
     -   **`showAIScreen`**: `Boolean`
             Boolean value to indicate when to show the AI screen.            
+    -   **`AIError`**: `Object`
+            Error returned while fetching the AI response.   		
 
 ```jsx
     <SearchBox
@@ -822,9 +824,10 @@ It accepts an object with these properties:
             	question,
             	answer,
             	documentIds,
-            	loading,
+            	isAILoading,
             	sources,
-                showAIScreen
+                showAIScreen,
+			    AIError
             }
             }) => {
                 if (loading) {
