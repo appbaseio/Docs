@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'vue-reactivesearch'
 ---
 
-![Image to be displayed](https://i.imgur.com/8UPzgG4.png)
+![Searchbox image](https://i.imgur.com/EGQTmNY.png)
 
 `SearchBox` creates a search box UI component that is connected to one or more database fields. A `SearchBox` queries the appbase.io backend with query type `suggestion` to render different kind of suggestions, read more about the `suggestion` query type [here](https://docs.appbase.io/docs/search/reactivesearch-api/implement/#suggestion).
 
