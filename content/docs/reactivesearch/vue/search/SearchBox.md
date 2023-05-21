@@ -236,7 +236,7 @@ It can accept the following keys:
 - **index**: `string` Index(es) from which to return the popular suggestions from. Defaults to the entire cluster.
 <br/>
 
-```jsx
+```html
     <search-box
         :enablePopularSuggestions="true"
         :popularSuggestionsConfig="{
@@ -244,10 +244,56 @@ It can accept the following keys:
             minCount: 5,
             minChars: 3,
             showGlobal: false,
-            index: "good-books-ds",  // further restrict the index to search on
+            index: 'good-books-ds',  // further restrict the index to search on
         }"
     />
 ```
+
+### enableFeaturedSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `bool` |   Yes   |
+
+Defaults to `false`. When set to `true`, featured suggestions are returned as suggestions as per the featured suggestions config (either defaults, or as set through `featuredSuggestionsConfig` or via Featured Suggestions settings in the control plane). Read more about it over [here](/docs/analytics/popular-recent-suggestions/).
+
+
+> Featured suggestions allow creating autocomplete experiences with user-defined suggestions. They're specified using the [Featured Suggestions API](https://api.reactivesearch.io/#337cdab6-d06c-4319-8c51-51e9ff0c1266), introduced in 8.1.0. This is a beta API and subject to change.
+
+### searchboxId
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+### featuredSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for fetching featured suggestions.
+
+It can accept the following keys:
+- maxSuggestionsPerSection: `number` maximum number of featured suggestions fetched per section.
+- sectionsOrder: `Array<String>` accepts an array of section id(s). The order in which section id(s) are defined in the array describes the order in which the sections appear in the UI.
+
+<br/>
+
+```html
+    <search-box
+        :enable-featured-suggestions="true"
+        searchbox-id="document-search"
+        :featured-suggestions-config="{
+            maxSuggestionsPerSection: 10,    
+            sectionsOrder: ['document', 'pages', 'help'], 
+        }"
+    />
+```
+
+
 
 
 ### enablePredictiveSuggestions
@@ -287,14 +333,14 @@ Return only recent suggestions that have minimum characters, as set in this prop
 Index(es) from which to return the recent suggestions from. Defaults to the entire cluster.
 <br/>
 
-```jsx
+```html
     <search-box
         :enableRecentSuggestions="true"
-        "recentSuggestionsConfig="{
+        :recentSuggestionsConfig="{
             size: 5,
             minHits: 5,
             minChars: 3,
-            index: "good-books-ds",  // further restrict the index to search on
+            index: 'good-books-ds',  // further restrict the index to search on
         }"
     />
 ```
@@ -1042,14 +1088,22 @@ It accepts an object with these properties:
 
 `SearchBox` component supports an `innerClass` prop to provide styles to the sub-components of SearchBox. These are the supported keys:
 
-- `title`
-- `input`
-- `recent-search-icon`
-- `popular-search-icon`
-- `enter-button`
-- `selected-tag`
+-   `title`
+-   `input`
+-   `list`
+-   `recent-search-icon`
+-   `popular-search-icon`
+-   `featured-search-icon`
+-   `section-label`
+-   `active-suggestion-item`
+-   `suggestion-item`
+-   `enter-button`
+-   `selected-tag`
+-   `ask-button`
+-   `ai-source-tag`
+-   `ai-feedback`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/).
 
 ## Extending
 
@@ -1258,4 +1312,49 @@ The following events to the underlying `input` element:
 
 ## Examples
 
+### SearchBox with default props
+
 <a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
+
+
+### Customize suggestions using innerClass
+<img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
+
+```jsx
+	<SearchBox
+	    title="SearchBox"
+	    dataField={['original_title', 'original_title.search']}
+	    componentId="BookSensor"
+	    innerClass={{
+            'section-label': 'section-label',
+	    	'active-suggestion-item': 'active-test-suggestion',
+	    	'suggestion-item': 'test-suggestion',
+	    }}
+	    enableFeaturedSuggestions
+    />
+```
+
+Inside your css file ->
+
+```css
+.section-label {
+	font-weight: 800;
+	font-size: 14px;
+	text-decoration: overline;
+}
+
+.active-test-suggestion {
+	border-left: 6px solid #ffa000;
+	background-color: #6629ea !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+.test-suggestion {
+	background-color: #f0e1e1 !important;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+```
+
