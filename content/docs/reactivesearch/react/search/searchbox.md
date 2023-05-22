@@ -1634,7 +1634,7 @@ Combining Instant Search with Pill-based Suggestions can help users easily navig
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithPillSuggestions?fontsize=14&hidenavigation=1&theme=dark" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-### SearchBox with AI Q-n-A
+### SearchBox with AI Answer
 
 Combining Search and the power of AI makes the search experience all the more precise and extensive. The example shows how SearchBox leverages AI capabilities to respond with just the most relevant response for the user's queries.
 
