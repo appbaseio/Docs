@@ -1260,7 +1260,7 @@ The following events to the underlying `input` element:
 
 <a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
 
-### SearchBox with Q-n-A
+### SearchBox with AI Answer
 
 Combining Search and the power of AI makes the search experience all the more precise and extensive. The example shows how SearchBox leverages AI capabilities to respond with just the most relevant response for the user's queries.
 	
