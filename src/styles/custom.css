@@ -1334,8 +1334,6 @@ to be custom HTML.
 }
 
 .dropdown-link:hover .dropdown-content-icon {
-	stroke: white;
-	fill: white;
 	box-shadow: 0 2px 6px 0 rgba(40, 48, 52, 0.15);
 }
 

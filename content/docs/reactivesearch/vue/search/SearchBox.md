@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'vue-reactivesearch'
 ---
 
-![Image to be displayed](https://i.imgur.com/8UPzgG4.png)
+![Searchbox image](https://i.imgur.com/EGQTmNY.png)
 
 `SearchBox` creates a search box UI component that is connected to one or more database fields. A `SearchBox` queries the appbase.io backend with query type `suggestion` to render different kind of suggestions, read more about the `suggestion` query type [here](https://docs.appbase.io/docs/search/reactivesearch-api/implement/#suggestion).
 
@@ -1259,3 +1259,14 @@ The following events to the underlying `input` element:
 ## Examples
 
 <a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
+
+### SearchBox with AI Answer
+
+Combining Search with the power of AI makes for a high precision and high recall answer. The example shows how `SearchBox` component can be used to display an AI Answer.
+	
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Fvue-showcase/packages/vue/examples/search-showcase/searchbox-inline-ai-response?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="appbaseio/reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
