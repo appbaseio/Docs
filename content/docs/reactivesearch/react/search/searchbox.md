@@ -1636,7 +1636,7 @@ Combining Instant Search with Pill-based Suggestions can help users easily navig
 
 ### SearchBox with AI Answer
 
-Combining Search and the power of AI makes the search experience all the more precise and extensive. The example shows how SearchBox leverages AI capabilities to respond with just the most relevant response for the user's queries.
+Combining Search with the power of AI makes for a high precision and high recall answer. The example shows how `SearchBox` component can be used to display an AI Answer.
 
 <iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/ask-reactivesearch/tree/main/?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
