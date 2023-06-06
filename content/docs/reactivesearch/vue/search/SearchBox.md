@@ -1314,8 +1314,11 @@ The following events to the underlying `input` element:
 
 ### SearchBox with default props
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
 
+### Searchbox Featured suggestions
+
+<a href="https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/feat/vue-showcase/packages/vue/examples/search-showcase/featured-suggestions" target="_blank">Featured suggestions demo in appbaseio/reactivesearch</a>
 
 ### Customize suggestions using innerClass
 <img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
@@ -1331,6 +1334,7 @@ The following events to the underlying `input` element:
 	    	'suggestion-item': 'test-suggestion',
 	    }}
 	    enableFeaturedSuggestions
+      searchboxId="document_search"
     />
 ```
 

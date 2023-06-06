@@ -1585,6 +1585,8 @@ function to clear all selected values.
 ### SearchBox with default props
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
 
+## SearchBox with featured suggestions
+<a href="https://q-n-a-search-ui.vercel.app/" target="_blank">A Question answering app using featured suggestions and AI</a>
 
 ### Customize suggestions using innerClass
 <img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
@@ -1600,6 +1602,7 @@ function to clear all selected values.
 	    	'suggestion-item': 'test-suggestion',
 	    }}
 	    enableFeaturedSuggestions
+        searchboxId="document_search"
     />
 ```
 
