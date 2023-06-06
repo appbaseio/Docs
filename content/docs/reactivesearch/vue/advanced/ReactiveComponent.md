@@ -452,4 +452,4 @@ gets triggered in case of an error and provides the `error` object, which can be
 
 See storybook for ReactiveComponent on playground.
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Base%20components%2FReactiveComponent&selectedStory=A%20custom%20component&full=0&addons=1&stories=1&panelRight=0" target="_blank">ReactiveComponent with default props</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=Base%20components%2FReactiveComponent&selectedStory=A%20custom%20component&full=0&addons=1&stories=1&panelRight=0" target="_blank">ReactiveComponent with default props</a>

@@ -337,4 +337,4 @@ is an event which accepts component's current **value** as a parameter. It is ca
 
 ## Examples
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Range%20Components%2FSingleRange&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SingleRange with default props</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=Range%20Components%2FSingleRange&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SingleRange with default props</a>

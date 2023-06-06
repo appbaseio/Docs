@@ -547,4 +547,4 @@ gets triggered in case of an error and provides the `error` object, which can be
 
 ## Examples
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=List%20Components%2FMulitList&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">MulitList with default props</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=List%20Components%2FMulitList&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">MulitList with default props</a>

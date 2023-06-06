@@ -1188,4 +1188,4 @@ The following events to the underlying `input` element:
 
 ## Examples
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Search%20Components%2FDataSearch&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">DataSearch with default props</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=Search%20Components%2FDataSearch&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">DataSearch with default props</a>
