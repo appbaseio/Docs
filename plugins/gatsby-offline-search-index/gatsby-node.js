@@ -9,9 +9,10 @@ const query = `
       node {
         html
         frontmatter {
-		  title
+          title
           meta_description
           meta_title
+          keywords
         }
         fields {
           slug
