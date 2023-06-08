@@ -152,7 +152,9 @@ module.exports = {
 	siteMetadata: {
 		title: `Reactivesearch.io Docs`,
 		siteUrl: `https://github.com/appbaseio/Docs`,
-		description: `Reactivesearch.io Docs Reference - JavaScript and REST APIs for indexing, querying and streaming data.`,
+		description: `Reactivesearch.io Docs Reference - Supercharge your search .`,
 	},
 	plugins,
+	pathPrefix: '/',
+	trailingSlash: 'never',
 };
