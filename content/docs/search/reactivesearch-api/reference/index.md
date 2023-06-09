@@ -1128,6 +1128,16 @@ For example,
 **Try out an example in ReactiveSearch Playground**
 <iframe src="https://play.reactivesearch.io/embed/3H9Z2lOjp7nQjDqnHDZY"  style="width:100%; height:100%; border:1px solid; overflow:hidden;min-height:400px;"></iframe>
 
+### enableFAQSuggestions
+
+**Supported Engines**
+elasticsearch, opensearch
+
+### FAQSuggestionsConfig
+
+**Supported Engines**
+elasticsearch, opensearch
+
 ### showDistinctSuggestions
 
 **Supported Engines**
@@ -1381,19 +1391,6 @@ When set to `true`, featured searches are returned as suggestions as per the fea
 | ------   | --------------------------- | -------- |
 | `bool`   | `suggestion`                | false    |
 
-### searchboxId
-
-| Type | Optional |
-|------|----------|
-|  `String` |   Yes   |
-
-**Supported Engines**
-elasticsearch, solr, opensearch
-
-When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them.
-Endpoint to create a featured suggestions group: https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508
-
-
 ### featuredSuggestionsConfig
 
 **Supported Engines**
@@ -1575,6 +1572,12 @@ For Solr, this maps to the `facet.excludeTerms` field.
 
 **Supported Engines**
 elasticsearch, opensearch
+
+When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via ReactiveSearch dashboard and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+| <p style="margin: 0px;" class="table-header-text">Type</p>     | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
+| ------   | --------------------------- | -------- |
+| `string`   | `suggestion`                | true*    |
 
 ### range
 

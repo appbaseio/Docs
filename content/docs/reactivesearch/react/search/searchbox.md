@@ -803,12 +803,14 @@ It accepts an object with these properties:
             Answer returned by the AI.   
     -   **`documentIds`**: `Array<String>`
             The documents' ids used for curating the AI answer.
-    -   **`loading`**: `Boolean`
+    -   **`isAILoading`**: `Boolean`
             Loading status for the AI response.
     -   **`sources`**: `Array<Object>`
             The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
     -   **`showAIScreen`**: `Boolean`
             Boolean value to indicate when to show the AI screen.            
+    -   **`AIError`**: `Object`
+            Error returned while fetching the AI response.   		
 
 ```jsx
     <SearchBox
@@ -822,9 +824,10 @@ It accepts an object with these properties:
             	question,
             	answer,
             	documentIds,
-            	loading,
+            	isAILoading,
             	sources,
-                showAIScreen
+                showAIScreen,
+			    AIError
             }
             }) => {
                 if (loading) {
@@ -1630,3 +1633,14 @@ Inside your css file ->
 Combining Instant Search with Pill-based Suggestions can help users easily navigate through large datasets by providing a structured and intuitive way to explore data. The Pill-based Suggestions allow users to filter results based on specific criteria, such as category, location, date, etc. This can be particularly useful when dealing with complex data structures, where searching through large amounts of data can be time-consuming and overwhelming.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithPillSuggestions?fontsize=14&hidenavigation=1&theme=dark" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+### SearchBox with AI Answer
+
+Combining Search with the power of AI makes for a high precision and high recall answer. The example shows how `SearchBox` component can be used to display an AI Answer.
+
+<iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/ask-reactivesearch/tree/main/?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="awesome-reactivesearch/ask-reactivesearch"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
