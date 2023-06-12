@@ -249,6 +249,14 @@ It can accept the following keys:
     />
 ```
 
+### enableFAQSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `bool` |   Yes   |
+
+Defaults to `false`. When set to `true`, shows frequent user queries which on click instantly shows the answer for the query. FAQs are set from the dashboard by creating a Searchbox. Hence they require a `searchboxId` to be passed.
+
 ### enableFeaturedSuggestions
 
 | Type | Optional |
@@ -267,6 +275,33 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 |  `String` |   Yes   |
 
 When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+### FAQSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+
+Specify additional options for fetching featured suggestions.
+
+It can accept the following keys:
+- sectionLabel: `string` Label of the division under which all FAQ suggestions are shown
+- size: `number` maximum number of faq suggestions fetched per section.
+
+<br/>
+
+```html
+    <search-box
+        :enableFAQSuggestions="true"
+        searchboxId="rs_docs"
+        :FAQSuggestionsConfig="{
+          size: 2,
+          sectionLabel: '❓ FAQ Suggestions'
+        }"
+    />
+```
+
 
 ### featuredSuggestionsConfig
 
@@ -1181,6 +1216,7 @@ Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/
 
   takes **value** and **props** as parameters and **returns** the data query to be applied to the component, as defined in Elasticsearch Query DSL.
   `Note:` customQuery is called on value changes in the **SearchBox** component as long as the component is a part of `react` dependency of at least one other component.
+
 ### defaultQuery
 
 | Type | Optional |
@@ -1189,6 +1225,7 @@ Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/
 
   is a callback function that takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` prop allows you to modify the query to render the suggestions when `autoSuggest` is enabled.
   Read more about it [here](/docs/reactivesearch/vue/advanced/CustomQueries/#when-to-use-default-query).
+
 ### beforeValueChange
 
 | Type | Optional |
@@ -1315,6 +1352,15 @@ The following events to the underlying `input` element:
 ### SearchBox with default props
 
 <a href="https://reactivesearch-vue.vercel.app/?selectedKind=Search%20Components%2FSearchBox&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0" target="_blank">SearchBox with default props</a>
+
+
+### SearchBox with FAQ suggestions
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Ffaq-suggestions/packages/vue/examples/search-showcase/faq-suggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="search-showcase-faq-suggestions"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ### Searchbox Featured suggestions
 

@@ -378,6 +378,15 @@ It can accept the following keys:
     />
 ```
 
+
+### enableFAQSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `bool` |   Yes   |
+
+Defaults to `false`. When set to `true`, shows frequent user queries which on click instantly shows the answer for the query. FAQs are set from the dashboard by creating a Searchbox. Hence they require a `searchboxId` to be passed.
+
 ### enableFeaturedSuggestions
 
 | Type | Optional |
@@ -396,6 +405,33 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 |  `String` |   Yes   |
 
 When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+
+### FAQSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+
+Specify additional options for fetching featured suggestions.
+
+It can accept the following keys:
+- sectionLabel: `string` Label of the division under which all FAQ suggestions are shown
+- size: `number` maximum number of faq suggestions fetched per section.
+
+<br/>
+
+```jsx
+    <SearchBox
+        enableFAQSuggestions={true}
+        searchboxId="rs_docs"
+        FAQSuggestionsConfig={{
+          size: 2,
+          sectionLabel: '❓ FAQ Suggestions'
+        }}
+    />
+```
 
 ### featuredSuggestionsConfig
 
@@ -1585,7 +1621,15 @@ function to clear all selected values.
 ### SearchBox with default props
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
 
-## SearchBox with featured suggestions
+### SearchBox with FAQ suggestions
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Ffaq-suggestions/packages/web/examples/SearchBoxWithFAQSuggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="searchbox-with-faq-suggestions"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### SearchBox with featured suggestions
 <a href="https://q-n-a-search-ui.vercel.app/" target="_blank">A Question answering app using featured suggestions and AI</a>
 
 ### Customize suggestions using innerClass
