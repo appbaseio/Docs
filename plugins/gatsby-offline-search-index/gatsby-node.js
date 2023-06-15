@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql }) => {
 	result.data.allMarkdownRemark.edges.forEach(edge => {
 		const { html, headings, tableOfContents } = edge.node;
 		const { slug } = edge.node.fields;
-		const { title, meta_title, meta_description } = edge.node.frontmatter;
+		const { title, meta_title, meta_description, keywords } = edge.node.frontmatter;
 		if (headings.length) {
 			let prevHashIndex = 0;
 			let prevHashId = '';
@@ -102,6 +102,7 @@ exports.createPages = async ({ graphql }) => {
 						const hashPos = html.indexOf(hashId, prevHashIndex);
 						searchData.push({
 							title,
+							keywords,
 							heading: prevHashId === '' ? '' : headings[index - 1].value,
 							tokens: getTokens(html.substring(prevHashIndex, hashPos)),
 							url: slug + prevHashId,
