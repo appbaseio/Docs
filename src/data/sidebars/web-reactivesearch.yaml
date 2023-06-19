@@ -71,6 +71,8 @@
               link: /docs/reactivesearch/react/search/aianswer/
             - title: Search Showcase
               link: /docs/reactivesearch/react/search/showcase/
+            - title: Best Search
+              link: /docs/reactivesearch/react/search/best-search/
       - group: Result Components
         items:
             - title: ReactiveList

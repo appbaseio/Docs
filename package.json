@@ -73,6 +73,7 @@
 		"@typeform/embed-react": "^1.13.0",
 		"add": "^2.0.6",
 		"antd": "^4.19.1",
+		"best-search-reactivesearch": "^0.0.2",
 		"emotion": "9.2.4",
 		"emotion-server": "9.2.4",
 		"gatsby": "^4.25.7",
