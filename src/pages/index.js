@@ -1,39 +1,42 @@
-import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { graphql, navigate } from 'gatsby';
-import loadable from '@loadable/component'
+import loadable from '@loadable/component';
 import PropTypes from 'prop-types';
+import { StaticImage } from 'gatsby-plugin-image';
 import { Icon, Box } from '../components/common';
 import { Layout } from '../components/common/layout';
 import { HomeHeader } from '../components/home';
 import { Spirit } from '../styles/spirit-styles';
-import { StaticImage } from "gatsby-plugin-image"
 
 const TimelineOption = loadable(() => import('@appbaseio/designkit/lib/molecules/TimelineOption'));
 const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
 const Card = loadable(() => import('@appbaseio/designkit/lib/atoms/Card'));
 const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
 
-
 const HomePage = ({ data, location }) => {
-	const [themeType, setThemeType] = useState(typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light');
+	const [themeType, setThemeType] = useState(
+		typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light',
+	);
 
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
-		title: "Reactivesearch.io Docs - Build powerful search apps powered by Elasticsearch",
-		description: "Docs home page"
-	}
+		title: 'Reactivesearch.io Docs - Build powerful search apps powered by Elasticsearch',
+		description: 'Docs home page',
+	};
 
 	if (typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
 		localStorage.setItem('recentSuggestions', JSON.stringify([]));
-
 
 	return (
 		<>
 			<Helmet>
 				<meta charSet="utf-8" />
 				<meta name="title" content="Reactivesearch.io Docs - Home Page" />
-				<meta name="description" content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch." />
+				<meta
+					name="description"
+					content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch."
+				/>
 				<link rel="canonical" href="https://docs.reactivesearch.io" />
 			</Helmet>
 			<Layout
@@ -41,10 +44,7 @@ const HomePage = ({ data, location }) => {
 				bodyClass="bg-white"
 				mainClass="bg-whitegrey-l2 pb-vw6 pb-vw3-ns"
 				header={
-					<HomeHeader
-						setThemeType={(val) => setThemeType(val)}
-						themeType={themeType}
-					/>
+					<HomeHeader setThemeType={val => setThemeType(val)} themeType={themeType} />
 				}
 			>
 				<div className="pt-vw3 ">
@@ -77,7 +77,7 @@ const HomePage = ({ data, location }) => {
 													'Overview and Quickstart with reactivesearch.io',
 												link: '/docs/gettingstarted/quickstart/',
 												duration: 3,
-											}
+											},
 										],
 									},
 									'2': {
@@ -114,19 +114,85 @@ const HomePage = ({ data, location }) => {
 											},
 											{
 												title: 'Search Preview',
-												description: 'Visually create, update and manage results for your Search.',
+												description:
+													'Visually create, update and manage results for your Search.',
 												link: '/docs/data/search-preview/',
 												duration: 3,
 											},
 											{
 												title: 'Stored Queries',
-												description: 'Use stored queries to prevent script injections',
+												description:
+													'Use stored queries to prevent script injections',
 												link: '/docs/data/stored-queries/',
 												duration: 4,
 											},
 										],
 									},
 									'3': {
+										title: 'Building Search UI',
+										subtitle: 'UI Components for making your Search Experience',
+										icon: (
+											<Icon
+												name="buildingUI"
+												className="dropdown-content-icon"
+											/>
+										),
+										chapters: [
+											{
+												title: 'Choose your UI Library',
+												link: '/docs/reactivesearch/gettingstarted',
+												description:
+													'Choose from NoCode, React, Vue, React Native, Flutter, Vanilla JavaScript',
+												duration: 1,
+											},
+											{
+												title: 'UI Customization',
+												link: '/docs/reactivesearch/ui-customization',
+												description: 'Customization guide for UI libraries',
+												duration: 3,
+											},
+											{
+												title: 'ReactiveSearch QuickStart',
+												link:
+													'/docs/reactivesearch/react/overview/quickstart/',
+												description:
+													'Get started with the React version of ReactiveSearch',
+												duration: 6,
+											},
+											{
+												title: 'Vue ReactiveSearch QuickStart',
+												link:
+													'/docs/reactivesearch/vue/overview/QuickStart/',
+												description:
+													'Get started with the Vue version of ReactiveSearch',
+												duration: 8,
+											},
+											{
+												title: 'Searchbox Native QuickStart',
+												link:
+													'/docs/reactivesearch/react-native-searchbox/quickstart/',
+												description:
+													'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
+												duration: 6,
+											},
+											{
+												title: 'Flutter Searchbox QuickStart',
+												link:
+													'/docs/reactivesearch/flutter-searchbox/quickstart/',
+												description:
+													'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
+												duration: 6,
+											},
+											{
+												title: 'No-code Search UI Builder',
+												link: '/docs/reactivesearch/ui-builder/search/',
+												description:
+													'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
+												duration: 6,
+											},
+										],
+									},
+									'4': {
 										title: 'Search Relevancy',
 										subtitle:
 											'Visually create, update and manage results for your Search.',
@@ -166,9 +232,39 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'4': {
+									'5': {
+										title: 'AI Search',
+										subtitle:
+											'Provide an AI Answer, personalize search results, perform KNN search with OpenAI vector embeddings, and enrich data',
+										icon: <Icon name="ai" className="dropdown-content-icon" />,
+										chapters: [
+											{
+												title: 'AI Answer',
+												link: '/docs/ai-search/ai-answer/',
+												description:
+													'AI answer solutions for React, Vue, REST API - the power of OpenAI\x27s models with answers generated from your search index',
+												duration: 4,
+											},
+											{
+												title: 'kNN',
+												link: '/docs/ai-search/knn/',
+												description:
+													'KNN search (vector search) using REST API or ReactiveSearch\x27s React, Vue UI kits. Vectorize your data with OpenAI embeddings effortlessly with ReactiveSearch\x27s interactive CLI',
+												duration: 4,
+											},
+											{
+												title: 'Data Enrichment',
+												link: '/docs/ai-search/data-enrichment/',
+												description:
+													'Enrich your search data to add dynamic synonyms and context using OpenAI models with ReactiveSearch\x27s CLI utility',
+												duration: 3,
+											},
+										],
+									},
+									'6': {
 										title: 'ReactiveSearch Pipelines',
-										subtitle: 'Configure search and indexing routes, and author data processing stages with JavaScript',
+										subtitle:
+											'Configure search and indexing routes, and author data processing stages with JavaScript',
 										icon: (
 											<Icon
 												name="pipeline"
@@ -177,88 +273,36 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
-												title: "ReactiveSearch Pipelines: Concepts",
-												link: "/docs/pipelines/concepts/",
-												description: "Learn about core concepts of ReactiveSearch pipelines and how to use them",
+												title: 'ReactiveSearch Pipelines: Concepts',
+												link: '/docs/pipelines/concepts/',
+												description:
+													'Learn about core concepts of ReactiveSearch pipelines and how to use them',
 												duration: 12,
 											},
 											{
 												title: 'How to guides',
 												link: '/docs/pipelines/how-to/',
-												description: 'See actionable guides for building search with ReactiveSearch pipelines',
+												description:
+													'See actionable guides for building search with ReactiveSearch pipelines',
 												duration: 1,
 											},
 											{
-												title: "Developing/Debugging Pipelines",
-												link: "/docs/pipelines/developing/",
-												description: "Learn how to develop and debug pipelines before deploying them",
-												duration: 12
-											}
-										]
-									},
-									'5': {
-										title: 'Building Search UI',
-										subtitle: 'UI Components for making your Search Experience',
-										icon: (
-											<Icon
-												name="buildingUI"
-												className="dropdown-content-icon"
-											/>
-										),
-										chapters: [
-											{
-												title: 'Choose your UI Library',
-												link: '/docs/reactivesearch/gettingstarted',
-												description: 'Choose from NoCode, React, Vue, React Native, Flutter, Vanilla JavaScript',
-												duration: 1,
+												title: 'Developing/Debugging Pipelines',
+												link: '/docs/pipelines/developing/',
+												description:
+													'Learn how to develop and debug pipelines before deploying them',
+												duration: 12,
 											},
 											{
-												title: 'UI Customization',
-												link: '/docs/reactivesearch/ui-customization',
-												description: 'Customization guide for UI libraries',
-												duration: 3,
-											},
-											{
-												title: 'ReactiveSearch QuickStart',
-												link:
-													'/docs/reactivesearch/react/overview/quickstart/',
-												description: 'Get started with the React version of ReactiveSearch',
-												duration: 6,
-											},
-											{
-												title: 'Vue ReactiveSearch QuickStart',
-												link:
-													'/docs/reactivesearch/vue/overview/QuickStart/',
-												description: 'Get started with the Vue version of ReactiveSearch',
-												duration: 8,
-											},
-											{
-												title: 'Searchbox Native QuickStart',
-												description: '',
-												link:
-													'/docs/reactivesearch/react-native-searchbox/quickstart/',
-												description: 'Get started with the React Native version of Searchbox, a lightweight alternative to ReactiveSearch',
-												duration: 6,
-											},
-											{
-												title: 'Flutter Searchbox QuickStart',
-												description: '',
-												link:
-													'/docs/reactivesearch/flutter-searchbox/quickstart/',
-												description: 'Get started with the Flutter version of Searchbox, a lightweight alternative to ReactiveSearch',
-												duration: 6,
-											},
-											{
-												title: 'No-code Search UI Builder',
-												description: '',
-												link:
-													'/docs/reactivesearch/ui-builder/search/',
-												description: 'Get started with the no-code UI builder for site search, e-commerce search, geo search and recommendations',
-												duration: 6,
+												title: 'Pipeline Integrations',
+												link: '/docs/pipelines/integrations/open-ai',
+												description:
+													'Learn about integrations that work with pipelines',
+												duration: 10,
 											},
 										],
 									},
-									'6': {
+									'7': {
 										title: 'Actionable Analytics',
 										subtitle:
 											'Analytics offers actionable insights into how your search is performing.',
@@ -273,35 +317,40 @@ const HomePage = ({ data, location }) => {
 												title: 'Analytics',
 												link: '/docs/analytics/overview/',
 												duration: 5,
-												description: 'Quick overview of reactivesearch.io analytics'
+												description:
+													'Quick overview of reactivesearch.io analytics',
 											},
 											{
 												title: 'Implement Analytics',
 												link: '/docs/analytics/implement/',
 												duration: 9,
-												description: 'Learn how to implement reactivesearch.io analytics for your stack'
+												description:
+													'Learn how to implement reactivesearch.io analytics for your stack',
 											},
 											{
 												title: 'Querying Analytics',
 												link: '/docs/analytics/querying-analytics/',
 												duration: 1,
-												description: 'Learn how to query reactivesearch.io analytics via REST APIs'
+												description:
+													'Learn how to query reactivesearch.io analytics via REST APIs',
 											},
 											{
 												title: 'Suggestions',
 												link: '/docs/analytics/popular-recent-suggestions/',
 												duration: 4,
-												description: 'Leverage popular, recent suggestions via APIs and UI components'
+												description:
+													'Leverage popular, recent suggestions via APIs and UI components',
 											},
 											{
 												title: 'Analytics Insights',
 												link: '/docs/analytics/insights/',
 												duration: 2,
-												description: 'Get actionable insights to improve your search KPIs'
+												description:
+													'Get actionable insights to improve your search KPIs',
 											},
 										],
 									},
-									'7': {
+									'8': {
 										title: 'Speed',
 										subtitle: 'Blazing ⚡️ fast search performance',
 										icon: <Icon name="zap" className="dropdown-content-icon" />,
@@ -315,7 +364,7 @@ const HomePage = ({ data, location }) => {
 											},
 										],
 									},
-									'8': {
+									'9': {
 										title: 'Access Control',
 										subtitle: 'Out-of-the-box access control for search',
 										icon: (
@@ -329,23 +378,26 @@ const HomePage = ({ data, location }) => {
 												title: 'API Credentials',
 												link: '/docs/security/credentials/',
 												duration: 6,
-												description: 'Build access controled search experiences with API credentials'
+												description:
+													'Build access controled search experiences with API credentials',
 											},
 											{
 												title: 'User Management',
 												link: '/docs/security/user-management/',
 												duration: 2,
-												description: 'Add teammates with scoped access to reactivesearch.io dashboard'
+												description:
+													'Add teammates with scoped access to reactivesearch.io dashboard',
 											},
 											{
 												title: 'Role Based Access',
 												link: '/docs/security/role/',
 												duration: 6,
-												description: 'Build secure and access controled search experiences with RBAC using JWTs'
+												description:
+													'Build secure and access controled search experiences with RBAC using JWTs',
 											},
 										],
 									},
-									'9': {
+									'10': {
 										title: 'Hosting',
 										icon: (
 											<Icon name="rocket" className="dropdown-content-icon" />
@@ -382,9 +434,7 @@ const HomePage = ({ data, location }) => {
 					<section
 						className={`${Spirit.page.xl} col-12 mt8 pt5 home-section integration-home`}
 					>
-						<h3 className={`${Spirit.h3} fw6 link home-title`}>
-							Integrations
-						</h3>
+						<h3 className={`${Spirit.h3} fw6 link home-title`}>Integrations</h3>
 						<p
 							className={`${Spirit.h4} mt2 flex flex-column flex-row-ns justify-between items-center-ns`}
 						>
@@ -518,19 +568,35 @@ const HomePage = ({ data, location }) => {
 							className="mt5 font-classes"
 						>
 							<Card href="https://medium.appbase.io/tagged/appbase" theme={themeType}>
-								<img src={`${imagePrefix}/Tutorials.svg`} alt="Tutorials" width="120px" height="120px" />
+								<img
+									src={`${imagePrefix}/Tutorials.svg`}
+									alt="Tutorials"
+									width="120px"
+									height="120px"
+								/>
 								<h3>Tutorials</h3>
 								<p>Go from scratch to a full app with these tutorial guides</p>
 							</Card>
 							<Card href="https://www.reactivesearch.io/contact/" theme={themeType}>
-								<img src={`${imagePrefix}/Support.png`} alt="Support" width="120px" height="120px" />
+								<img
+									src={`${imagePrefix}/Support.png`}
+									alt="Support"
+									width="120px"
+									height="120px"
+								/>
 								<h3>Support</h3>
-								<p>
-									Get dedicated support from our engineering team
-								</p>
+								<p>Get dedicated support from our engineering team</p>
 							</Card>
-							<Card href="https://github.com/appbaseio/reactivesearch/discussions" theme={themeType}>
-								<img src={`${imagePrefix}/Gitter.svg`} alt="Gitter" width="120px" height="120px" />
+							<Card
+								href="https://github.com/appbaseio/reactivesearch/discussions"
+								theme={themeType}
+							>
+								<img
+									src={`${imagePrefix}/Gitter.svg`}
+									alt="Gitter"
+									width="120px"
+									height="120px"
+								/>
 								<h3>Community</h3>
 								<p>Ask other ReactiveSearch users</p>
 								<div className="community-icons pr-3 pl-3">

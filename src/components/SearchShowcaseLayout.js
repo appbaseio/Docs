@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Layout } from '../../../../../components/common/layout';
-import { Spirit } from '../../../../../styles/spirit-styles';
-import { SidebarNav } from '../../../../../components/common/sidebar';
-import { Icon, TOC } from '../../../../../components/common';
+import { Layout } from './common/layout';
+import { Spirit } from '../styles/spirit-styles';
+import { SidebarNav } from './common/sidebar';
+import { Icon, TOC } from './common';
 
-import '../../../../../styles/showcase.css';
+import '../styles/showcase.css';
 
 class PostLayout extends React.Component {
 	constructor(props) {

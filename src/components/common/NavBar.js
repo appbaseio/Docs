@@ -142,28 +142,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Managing Data
 															</Link>
 															<Link
-																to="/docs/hosting/clusters/"
-																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
-															>
-																<Icon
-																	name="rocket"
-																	className="dropdown-content-icon mr2"
-																/>
-																Hosting
-															</Link>
-														</div>
-														<div>
-															<Link
-																to="/docs/search/relevancy/"
-																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
-															>
-																<Icon
-																	name="searchRelevancy"
-																	className="dropdown-content-icon mr2"
-																/>
-																Search Relevancy
-															</Link>
-															<Link
 																to="/docs/reactivesearch/react/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
@@ -174,17 +152,27 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Building Search UI
 															</Link>
 															<Link
-																to="/docs/speed/cache-management/"
+																to="/docs/search/relevancy/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
-																	name="zap"
+																	name="searchRelevancy"
 																	className="dropdown-content-icon mr2"
 																/>
-																Speed
+																Search Relevancy
 															</Link>
 														</div>
 														<div>
+															<Link
+																to="/docs/ai-search/"
+																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+															>
+																<Icon
+																	name="ai"
+																	className="dropdown-content-icon mr2"
+																/>
+																AI Search
+															</Link>
 															<Link
 																to="/docs/pipelines/concepts/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
@@ -206,6 +194,18 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Actionable Analytics
 															</Link>
 															<Link
+																to="/docs/speed/cache-management/"
+																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+															>
+																<Icon
+																	name="zap"
+																	className="dropdown-content-icon mr2"
+																/>
+																Speed
+															</Link>
+														</div>
+														<div>
+															<Link
 																to="/docs/security/credentials/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
@@ -214,6 +214,16 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																	className="dropdown-content-icon mr2"
 																/>
 																Access Control
+															</Link>
+															<Link
+																to="/docs/hosting/clusters/"
+																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
+															>
+																<Icon
+																	name="rocket"
+																	className="dropdown-content-icon mr2"
+																/>
+																Hosting
 															</Link>
 														</div>
 													</div>
