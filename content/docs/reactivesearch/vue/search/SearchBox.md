@@ -406,8 +406,22 @@ Accepts the following properties:
     Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`. User `#AILoaderMessage` slot-scope for custom html markup.
 -   **showSourceDocuments** `Boolean` [optional]
     Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
--   **sourceDocumentLabel** `String` [optional]
-    Set the label using the string literal syntax: e.g. `${source.field}` will set the label to the field’s resolved value, you can also combine more than one field value to display the label. Defaults to `_id`.
+-   **renderSourceDocument** `Function` [optional]
+    Render a custom label by returning string or JSx. Default label is rendered as the resolved value of `_id` when `showSourceDocument` is set to true.
+
+    ```jsx
+      <search-box
+      	className="result-list-container"
+      	componentId="BookSensor"
+      	:dataField="['original_title', 'original_title.search']"
+      	:enableAI="true"
+      	:AIUIConfig="{
+      		showSourceDocuments: true,
+      		renderSourceDocument: (obj) => '❤️ ' + obj.original_title,
+      	}"
+      />
+    ```
+
 -   **onSourceClick** `Function` [optional]
     callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
 -   **askButton** `Boolean` [optional]
@@ -1198,6 +1212,28 @@ The custom HTML markup displayed for enterButton. Use in conjunction with `askBu
     </template>
 </search-box>
 ```
+
+### renderSourceDocument
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+The custom HTML markup displayed for sourceDocumentLabel. Use in conjunction with `showSourceDocuments` prop under `AIUIConfig` prop set to `true`.
+
+```jsx
+<search-box
+      ...
+      :AIUIConfig="{
+        showSourceDocuments: true
+      }"
+>
+    <template #renderSourceDocument="obj">
+    	<span :title="obj._id">🙌🏻 {{ obj._id }}</span>
+    </template>
+</search-box>
+```
+
 
 ## Demo
 
