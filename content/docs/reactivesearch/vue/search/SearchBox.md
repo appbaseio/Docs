@@ -750,16 +750,16 @@ You can use `SearchBox` with `render slot` as shown:
 			loading,
 			downshiftProps: { isOpen, highlightedIndex, getItemProps, getItemEvents },
 			data: suggestions,
-      AIData: {
-        question,
-        answer,
-        documentIds,
-        loading,
-        sources,
-        showAIScreen,
-        isAILoading,
-        AIError
-      }
+            AIData: {
+                question,
+                answer,
+                documentIds,
+                loading,
+                sources,
+                showAIScreen,
+                isAILoading,
+                AIError
+            }
 		}"
   >
     <div class="suggestions">
