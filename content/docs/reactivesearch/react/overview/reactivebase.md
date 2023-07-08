@@ -130,6 +130,14 @@ Read more about it over [here](/docs/reactivesearch/react/advanced/analytics/#co
 
 allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
 
+### httpRequestTimeout
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+allows you to define a timeout in milliseconds to timeout a fired HTTP request. If the request takes longer than the specified time, an error will be thrown. You can handle this error at the component level using the onError callback prop. Defaults to `30000` ms.
+
 ### as
 
 | Type | Optional |
