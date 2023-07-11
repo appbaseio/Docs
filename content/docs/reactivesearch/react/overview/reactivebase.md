@@ -136,7 +136,7 @@ allows you to define a wait time in milliseconds. We wait for `initialQueriesSyn
 |------|----------|
 |  `Number` |   Yes   |
 
-allows you to define a timeout in milliseconds to timeout a fired HTTP request. If the request takes longer than the specified time, an error will be thrown. You can handle this error at the component level using the onError callback prop. Defaults to `30000` ms.
+allows you to define a timeout in milliseconds to timeout a fired HTTP request. If the request takes longer than the specified time, an error will be thrown. You can handle this error at the component level using the onError callback prop. Defaults to `30` seconds.
 
 ### as
 
