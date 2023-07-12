@@ -89,7 +89,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																	? '#082429'
 																	: 'white'
 																: 'white',
-														top: showBanner ? '105px' : '75px',
+														top: '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -244,7 +244,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															localStorage.getItem('theme') === 'dark'
 																? '#082429'
 																: 'white',
-														top: showBanner ? '105px' : '75px',
+														top: '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
