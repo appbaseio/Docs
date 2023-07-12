@@ -1,22 +1,5 @@
-const path = require(`path`);
-const _ = require(`lodash`);
-const { allMarkdownPosts } = require(`../utils/node-queries`);
-
-module.exports.createRedirects = ({ actions }) => {
-	const { createRedirect } = actions;
-
-	// The /concepts page doesn't exist, we need to redirect to
-	// the first post of this section
-	createRedirect({
-		fromPath: `/concepts`,
-		isPermanent: true,
-		redirectInBrowser: true,
-		toPath: `/concepts/introduction/`,
-	});
-};
-
 module.exports.createMarkdownPages = async ({ graphql, actions }) => {
-	const { createPage } = actions;
+	const { createPage, createRedirect } = actions;
 	const queryPromises = [];
 
 	queryPromises.push(
@@ -28,8 +11,10 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 
 				return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
 					const DocTemplate = path.resolve(`./src/templates/markdown/post.js`);
+					const lowerCaseSlug = node.fields.slug.toLowerCase();
+
 					const options = {
-						path: node.fields.slug,
+						path: lowerCaseSlug,
 						component: DocTemplate,
 						context: {
 							// Data passed to context is available
@@ -38,6 +23,16 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 							section: node.fields.section,
 						},
 					};
+
+					if (node.fields.slug !== lowerCaseSlug) {
+						// Create a redirect from the original (potentially mixed case) slug to the lower-case version
+						createRedirect({
+							fromPath: node.fields.slug,
+							toPath: lowerCaseSlug,
+							isPermanent: true,
+							force: true,  // "force: true" avoids conflict with existing paths
+						});
+					}
 
 					if (
 						node &&
@@ -48,21 +43,20 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 						// Create a page with /v4 and one with /react
 						createPage({
 							...options,
-							path: node.fields.slug.toLowerCase().replace('/v4', '/react'),
+							path: lowerCaseSlug.replace('/v4', '/react'),
 						});
-					} else if (
-						node.fields.slug &&
-						node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch') &&
-						!node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch/react')
-					) {
-						// Create a lower case route for "/docs/reactivesearch/", i.e. Search UI pages
-						createPage({
-							...options,
-							path: node.fields.slug.toLowerCase(),
+
+						// Redirect from the /v4 version to the /react version
+						createRedirect({
+							fromPath: lowerCaseSlug,
+							toPath: lowerCaseSlug.replace('/v4', '/react'),
+							isPermanent: true,
 						});
 					} else {
+						// Create the page with the lower-case slug
 						createPage(options);
 					}
+
 					return resolve();
 				});
 			});
