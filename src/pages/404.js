@@ -12,17 +12,21 @@ const NotFoundPage = () => {
 				<Icon name="four-o-four-icon" className="w15 h-auto stroke-lightgrey" />
 				<h1 className={Spirit.h1}>404</h1>
 				<p className={`${Spirit.p} midgrey`}>
-					You just hit a route that doesn&#39;t exist.
+					"404 Error: It looks like this page has been set to &#39;undefined&#39;.
+					<br />
+					Maybe it was removed because we didn&#39;t &#39;use strict&#39;;
+					<br />
+					In the meantime, let&#39;s get you back to somewhere more familiar."
 				</p>
 				<div className="flex mt5">
 					<Link to="/" className="pa2 dib blue hover-darkgrey link br b--whitegrey">
-						Docs
+						Docs Home 🏡
 					</Link>
 					<a
 						href="https://reactivesearch.io"
 						className="pa2 dib blue hover-darkgrey link"
 					>
-						Reactivesearch.io
+						Reactivesearch.io Website
 					</a>
 				</div>
 			</div>
