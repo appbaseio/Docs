@@ -8,10 +8,6 @@ import { Spirit } from '../../styles/spirit-styles';
 class HomeHeader extends React.Component {
 	state = {
 		open: false,
-		showBanner:
-			typeof window !== 'undefined'
-				? localStorage.getItem('announcementBanner') === 'true'
-				: false,
 	};
 
 	handleModal = () => {
@@ -21,7 +17,7 @@ class HomeHeader extends React.Component {
 	};
 
 	render() {
-		const { open, showBanner } = this.state;
+		const { open } = this.state;
 		const { setThemeType, themeType } = this.props;
 
 		return (
@@ -31,7 +27,7 @@ class HomeHeader extends React.Component {
 				</header>
 				<div
 					className={`${Spirit.page.xl} pb5 pt10 pt15-ns pt30-l pb10-ns pb15-l flex items-between bt bn-ns b--white-10 home-header`}
-					style={{ marginTop: showBanner ? 20 : 0 }}
+					style={{ marginTop: 0 }}
 				>
 					<div className="pr3">
 						<h1 className="ma0 mt0 pt0 pa0 f2 lh-1-65 f1-ns f-headline-l header-heading-shadow header-title">

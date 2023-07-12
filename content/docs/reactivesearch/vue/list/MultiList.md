@@ -13,7 +13,7 @@ nestedSidebar: 'vue-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/2OFmUsk.png)
 
-`MultiList` creates a multiple selection based list UI component that is connected to a database field. It is similar to a [SingleList](/docs/reactivesearch/vue/list/SingleList/) except it can support multiple item selections.
+`MultiList` creates a multiple selection based list UI component that is connected to a database field. It is similar to a [SingleList](/docs/reactivesearch/vue/list/singlelist/) except it can support multiple item selections.
 
 Example uses:
 
@@ -368,7 +368,7 @@ enable creating a URL query string parameter based on the selected value of the 
 -   `label`
 -   `count`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

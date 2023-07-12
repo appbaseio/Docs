@@ -17,7 +17,7 @@ nestedSidebar: 'vue-v1-reactivesearch'
 
 > Note
 >
-> It is similar to a [MultiList](/docs/reactivesearch/vue/v1/list/MultiList/) component but for numeric data fields.
+> It is similar to a [MultiList](/docs/reactivesearch/vue/v1/list/multilist/) component but for numeric data fields.
 
 Example uses:
 
@@ -194,7 +194,7 @@ The index prop can be used to explicitly specify an index to query against for t
 -   `checkbox`
 -   `label`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 

@@ -74,7 +74,7 @@ Example uses:
 -   **filterLabel** `String` [optional]
     An optional label to display for the component in the global selected filters view. This is only applicable if `showFilter` is enabled. Default value used here is `componentId`.
 -   **innerProps** `Object` [optional]
-    specifies additional props for the internal components. Accepts an object with the specified keys. Read more about the usage [here](/docs/reactivesearch/native/advanced/innerProps/)
+    specifies additional props for the internal components. Accepts an object with the specified keys. Read more about the usage [here](/docs/reactivesearch/native/advanced/innerprops/)
 
 <br />
 
@@ -99,7 +99,7 @@ Example uses:
 
 ## Styles
 
-`MultiDropdownRange` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/Style/).
+`MultiDropdownRange` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/style/).
 
 It also supports an `innerStyle` prop with the following keys:
 
@@ -112,7 +112,7 @@ It also supports an `innerStyle` prop with the following keys:
 -   `title`
 -   `checkbox`
 
-Read more about it [here](/docs/reactivesearch/native/advanced/Style/#innerstyle)
+Read more about it [here](/docs/reactivesearch/native/advanced/style/#innerstyle)
 
 ## Extending
 

@@ -11,7 +11,7 @@ sidebar: 'docs'
 nestedSidebar: 'vue-v1-reactivesearch'
 ---
 
-One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/vue/v1/list/SingleList/) component can update its data based on the search term in a [DataSearch](/docs/reactivesearch/vue/v1/search/DataSearch/) component.
+One of the key ideas behind Reactive Search and Reactive Maps is the reactive design pattern, which allows defining how a component reacts to changes in the states of the sensors. This allows almost all ReactiveSearch components to watch each other and update their data reactively. For example, a [SingleList](/docs/reactivesearch/vue/v1/list/singlelist/) component can update its data based on the search term in a [DataSearch](/docs/reactivesearch/vue/v1/search/datasearch/) component.
 
 ### Usage
 
@@ -28,7 +28,7 @@ One of the key ideas behind Reactive Search and Reactive Maps is the reactive de
 ### Props
 
 ### react `Object`
-`react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/v1/result/ReactiveList/).
+`react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/v1/result/reactivelist/).
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
     -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.

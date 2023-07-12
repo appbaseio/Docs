@@ -17,7 +17,7 @@ nestedSidebar: 'vue-reactivesearch'
 
 > Note
 >
-> This component is exactly like the [SingleList](/docs/reactivesearch/vue/list/SingleList/) component except the UI is based on a dropdown, ideal for showing additional UI filters while conserving screen space.
+> This component is exactly like the [SingleList](/docs/reactivesearch/vue/list/singlelist/) component except the UI is based on a dropdown, ideal for showing additional UI filters while conserving screen space.
 
 Example uses:
 
@@ -363,7 +363,7 @@ When set to `true` the dropdown is displayed on the initial render. Defaults to 
 -   `icon`
 -   `count`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

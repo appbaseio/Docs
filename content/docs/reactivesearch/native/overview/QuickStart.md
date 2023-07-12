@@ -62,7 +62,7 @@ yarn add @appbaseio/reactivesearch-native
 
 ### Step 2: Adding the first component
 
-Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/native/overview/ReactiveBase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
+Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/native/overview/reactivebase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
 
 We will demonstrate creating an index using [appbase.io](https://appbase.io) service, although you can use any Elasticsearch backend within ReactiveBase.
 
@@ -107,7 +107,7 @@ This is how the app should look after running the `yarn start` command.
 
 ### Step 3: Adding Filter and Result Components
 
-For this app, we will be using [DataSearch](/docs/reactivesearch/native/components/DataSearch/) component for filtering the dataset and [ReactiveList](/docs/reactivesearch/native/components/ReactiveList/) component for showing the search results.
+For this app, we will be using [DataSearch](/docs/reactivesearch/native/components/datasearch/) component for filtering the dataset and [ReactiveList](/docs/reactivesearch/native/components/reactivelist/) component for showing the search results.
 
 Lets add them within the ReactiveBase component. But before we do that, lets look at the important props for each.
 
@@ -119,9 +119,9 @@ Lets add them within the ReactiveBase component. But before we do that, lets loo
 />
 ```
 
-The [**DataSearch**](/docs/reactivesearch/native/components/DataSearch/) component we describe above creates a searchbox UI component that queries on the specifield `dataField`(s) in the dataset.
+The [**DataSearch**](/docs/reactivesearch/native/components/datasearch/) component we describe above creates a searchbox UI component that queries on the specifield `dataField`(s) in the dataset.
 
-Next, we need a component to show the matching results. [**ReactiveList**](/docs/reactivesearch/native/components/ReactiveList/) does exactly this.
+Next, we need a component to show the matching results. [**ReactiveList**](/docs/reactivesearch/native/components/reactivelist/) does exactly this.
 
 ```js
 <ReactiveList

@@ -19,7 +19,7 @@ The `innerClass` prop accepts an object with keys as defined in the **Styles** s
 
 ## Examples
 
-Here's an example of how to use `innerClass` with a [SearchBox](/docs/reactivesearch/vue/search/SearchBox/) component:
+Here's an example of how to use `innerClass` with a [SearchBox](/docs/reactivesearch/vue/search/searchbox/) component:
 
 ![SearchBox annotated image](https://imgur.com/f20AvrZ.png)
 

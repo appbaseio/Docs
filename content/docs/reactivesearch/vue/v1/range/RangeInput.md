@@ -14,7 +14,7 @@ nestedSidebar: 'vue-v1-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/v03gpDl.png)
 
-`RangeInput` creates a numeric range slider UI component with input fields. It works in the same way as [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/).
+`RangeInput` creates a numeric range slider UI component with input fields. It works in the same way as [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/).
 
 Example uses:
 
@@ -38,7 +38,7 @@ Example uses:
 </template>
 ```
 
-`RangeInput` provides all the props supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/).
+`RangeInput` provides all the props supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/).
 
 ### Usage With All Props
 ```html
@@ -224,7 +224,7 @@ is a callback function that can be used to validate the range input values befor
 -   `slider-container`
 -   `input-container`
 
-The other `innerClass` properties are the same as supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/#styles).
+The other `innerClass` properties are the same as supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/#styles).
 
 ## Extending
 

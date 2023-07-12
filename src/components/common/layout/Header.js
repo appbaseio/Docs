@@ -13,12 +13,6 @@ const Header = ({ dividerStyle }) => {
 	const [themeType, setThemeType] = useState(
 		typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light',
 	);
-	// eslint-disable-next-line
-	const [showBanner, setShowBanner] = useState(
-		typeof window !== 'undefined'
-			? localStorage.getItem('announcementBanner') === 'true'
-			: false,
-	);
 	return (
 		<>
 			<header
@@ -29,7 +23,7 @@ const Header = ({ dividerStyle }) => {
 			<div
 				className="h17"
 				style={{
-					marginTop: showBanner ? 20 : 0,
+					marginTop: 0,
 				}}
 			/>{' '}
 			{/* We need to push down all the content because of the fixed header */}

@@ -171,7 +171,7 @@ The index prop can be used to explicitly specify an index to query against for t
 
 -   `title`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

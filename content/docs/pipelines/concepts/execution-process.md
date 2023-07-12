@@ -18,7 +18,7 @@ This concept guide explains the execution process of pipelines on how the API de
 
 Following whimsical visualizes the execution process of determining which pipeline to execute.
 
-![Pipeline Route Matching](/images/concepts/pipeline_route.png "Pipeline Route Matching Visualized")
+![Pipeline Route Matching](/images/concepts/pipeline_route.png "pipeline route matching visualized")
 
 ## Priority
 

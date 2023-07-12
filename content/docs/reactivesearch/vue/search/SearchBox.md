@@ -1255,7 +1255,7 @@ The custom HTML markup displayed for sourceDocumentLabel. Use in conjunction wit
 - `ai-source-tag`
 - `ai-feedback`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 
@@ -1340,7 +1340,7 @@ Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
 |  `Function` |   Yes   |
 
   is a callback function that takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` prop allows you to modify the query to render the suggestions when `autoSuggest` is enabled.
-  Read more about it [here](/docs/reactivesearch/vue/advanced/CustomQueries/#when-to-use-default-query).
+  Read more about it [here](/docs/reactivesearch/vue/advanced/customqueries/#when-to-use-default-query).
 ### beforeValueChange
 
 | Type | Optional |

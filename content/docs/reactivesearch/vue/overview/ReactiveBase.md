@@ -162,7 +162,7 @@ Enables you to customize setting of the query params string in the url by provid
 |------|----------|
 |  `Object` |   Yes   |
 
-allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/vue/theming/Overview/)
+allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/vue/theming/overview/)
 ### transformRequest
 
 | Type | Optional |
@@ -409,10 +409,10 @@ http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-L
 ## Next Steps
 Once you have added the **ReactiveBase** component, you can get started with adding other components as its children.
 
--   List specific components can be found [here](/docs/reactivesearch/vue/list/SingleList/).
--   Range specific components can be found [here](/docs/reactivesearch/vue/range/SingleRange/).
--   Search specific components can be found [here](/docs/reactivesearch/vue/search/SearchBox/).
+-   List specific components can be found [here](/docs/reactivesearch/vue/list/singlelist/).
+-   Range specific components can be found [here](/docs/reactivesearch/vue/range/singlerange/).
+-   Search specific components can be found [here](/docs/reactivesearch/vue/search/searchbox/).
 -   Result specific components can be found
-    [here](/docs/reactivesearch/vue/result/ResultList/).
+    [here](/docs/reactivesearch/vue/result/resultlist/).
 
-You can read more about when to use which components in the overview guide [here](/docs/reactivesearch/vue/overview/Components/).
+You can read more about when to use which components in the overview guide [here](/docs/reactivesearch/vue/overview/components/).

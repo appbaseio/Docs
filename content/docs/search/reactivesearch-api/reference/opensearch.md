@@ -1610,7 +1610,8 @@ The fields supported by the AIConfig object are:
 - **queryTemplate**: Template to use for building the message that is sent to ChatGPT as the final question. Defaults to `Can you tell me about ${value}` where `value` is the `query.value`. The querytemplate string supports a dynamic value of `value` which is the query.value of the query. 
 - **topDocsForContext**: Number of docs to use to build the context. Defaults to 3. This has an upper limit as the total number of hits returned. 
 - **systemPrompt**: The system prompt to send as the first message to ChatGPT. Defaults to `You are a helpful assistant`.
-- **maxTokens**: The maximum tokens that can be used for the output. Deafults to being dynamically calculated. Accepts a value between [1, 8000]. 
+- **maxTokens**: The maximum tokens that can be used for the output. Defaults to 300. Accepts a value between [1, 2048]. 
+- **minTokens**: Minimum number of tokens to generate in the response. Whenever possible, max tokens is respected, however when the input context + max tokens combined exceed the model limit, the min tokens value is used to calibrate for an optimum output token. Defaults to 100. 
 - **temperature**: A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
 
 ## settings

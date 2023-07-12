@@ -17,7 +17,7 @@ nestedSidebar: 'vue-reactivesearch'
 
 > Note
 >
-> It is similar to a [SingleList](/docs/reactivesearch/vue/list/SingleList/), except it is suited for numeric data.
+> It is similar to a [SingleList](/docs/reactivesearch/vue/list/singlelist/), except it is suited for numeric data.
 
 Example uses:
 
@@ -194,7 +194,7 @@ The index prop can be used to explicitly specify an index to query against for t
 -   `radio`
 -   `label`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

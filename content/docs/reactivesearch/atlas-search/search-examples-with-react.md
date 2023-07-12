@@ -175,7 +175,7 @@ Our next set of examples use [ReactiveSearch](https://opensource.appbase.io/reac
 
 ### Geo example: ReactiveMap
 
-Use [ReactiveGoogleMap](/docs/reactivesearch/react/v3/map/reactivegooglemap/) or [ReactiveOpenStreetMap](/docs/reactivesearch/react/v3/map/reactiveopenstreetmap/) components to power geo use-cases.
+Use [ReactiveGoogleMap](/docs/reactivesearch/react/map/reactivegooglemap/) or [ReactiveOpenStreetMap](/docs/reactivesearch/react/map/reactiveopenstreetmap/) components to power geo use-cases.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/ReactiveMap?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -186,7 +186,7 @@ Use [ReactiveGoogleMap](/docs/reactivesearch/react/v3/map/reactivegooglemap/) or
 
 ### Geo example: GeoDistanceDropdown
 
-Use [GeoDistanceDropdown](/docs/reactivesearch/react/v3/map/geodistancedropdown/) component to power geo use-cases.
+Use [GeoDistanceDropdown](/docs/reactivesearch/react/map/geodistancedropdown/) component to power geo use-cases.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/GeoDistanceDropdown?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -197,7 +197,7 @@ Use [GeoDistanceDropdown](/docs/reactivesearch/react/v3/map/geodistancedropdown/
 
 ### Geo example: GeoDistanceSlider
 
-Use [GeoDistanceSlider](/docs/reactivesearch/react/v3/map/geodistanceslider/) component to power geo use-cases.
+Use [GeoDistanceSlider](/docs/reactivesearch/react/map/geodistanceslider/) component to power geo use-cases.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/maps/examples/mongo-examples/GeoDistanceSlider?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -209,7 +209,7 @@ Use [GeoDistanceSlider](/docs/reactivesearch/react/v3/map/geodistanceslider/) co
 
 ### DataSearch example
 
-Use [DataSearch](/docs/reactivesearch/react/v3/search/datasearch/) component to power full-text search use-cases.
+Use [DataSearch](/docs/reactivesearch/react/search/datasearch/) component to power full-text search use-cases.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/DataSearch?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -220,7 +220,7 @@ Use [DataSearch](/docs/reactivesearch/react/v3/search/datasearch/) component to 
 
 ### MultiList example
 
-Use [MultiList](/docs/reactivesearch/react/v3/list/multilist/) component to build faceted search experiences.
+Use [MultiList](/docs/reactivesearch/react/list/multilist/) component to build faceted search experiences.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/MultiList?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -231,7 +231,7 @@ Use [MultiList](/docs/reactivesearch/react/v3/list/multilist/) component to buil
 
 ### RangeInput example
 
-Use [RangeInput](/docs/reactivesearch/react/v3/range/rangeinput/) component to add numeric facets to your search experience.
+Use [RangeInput](/docs/reactivesearch/react/range/rangeinput/) component to add numeric facets to your search experience.
 
 <iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/mongo-examples/RangeInput?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"

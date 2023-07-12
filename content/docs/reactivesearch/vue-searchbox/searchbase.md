@@ -13,7 +13,7 @@ nestedSidebar: 'vue-searchbox-reactivesearch'
 
 ## How does it work?
 
-`SearchBase` is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
+`SearchBase` is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/quickstart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
 # Props
 

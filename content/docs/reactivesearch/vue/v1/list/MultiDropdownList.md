@@ -17,7 +17,7 @@ nestedSidebar: 'vue-v1-reactivesearch'
 
 > Note
 >
-> This component is exactly like the [MultiList](/docs/reactivesearch/vue/v1/list/MultiList/) component except the UI is based on a dropdown, ideal for showing additional UI filters while conserving screen space.
+> This component is exactly like the [MultiList](/docs/reactivesearch/vue/v1/list/multilist/) component except the UI is based on a dropdown, ideal for showing additional UI filters while conserving screen space.
 
 Example uses:
 
@@ -427,7 +427,7 @@ When set to `true` the dropdown is displayed on the initial render. Defaults to 
 -   `icon`
 -   `count`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 

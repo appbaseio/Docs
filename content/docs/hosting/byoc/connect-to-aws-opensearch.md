@@ -20,7 +20,7 @@ You can use Appbase.io to supercharge your Elasticsearch cluster that is deploye
 
 ### Example
 
-Here is an example how you can use Elasticsearch URL with Basic Authentication, while using [BYOC](/docs/hosting/BYOC/)
+Here is an example how you can use Elasticsearch URL with Basic Authentication, while using [BYOC](/docs/hosting/byoc/)
 
 **Step 1 -** Go to the **[Create Cluster Page](https://dashboard.appbase.io/clusters/new/my-cluster)**.
 
