@@ -1,13 +1,17 @@
-module.exports = (req, res) => {
-	const originalUrl = req.url;
-	const lowercaseUrl = originalUrl.toLowerCase();
+const url = require('url');
 
-	if (originalUrl === lowercaseUrl) {
-		// If the original URL is already lowercase, redirect to the 404 page
-		res.writeHead(302, { Location: '/404' });
+module.exports = (req, res) => {
+	const { pathname, hash } = url.parse(req.url);
+	const lowercasePathname = pathname.toLowerCase();
+	const redirectUrl = hash ? `${lowercasePathname}${hash}` : lowercasePathname;
+
+	// Check if the current pathname is already in lowercase
+	if (pathname === lowercasePathname) {
+		// Send a 404 status if the URL is already in lowercase
+		res.status(404).send('Not Found');
 	} else {
-		// Otherwise, redirect to the lowercase version of the URL
-		res.writeHead(301, { Location: lowercaseUrl });
+		res.writeHead(301, { Location: redirectUrl });
 	}
+
 	res.end();
 };

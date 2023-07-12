@@ -6,6 +6,14 @@ import { Layout } from '../components/common/layout';
 import { Icon } from '../components/common';
 
 const NotFoundPage = () => {
+	useEffect(() => {
+		// Check if the current URL contains any uppercase characters
+		if (window.location.pathname !== window.location.pathname.toLowerCase()) {
+			// If it does, navigate to the lowercase version
+			navigate(window.location.pathname.toLowerCase());
+		}
+	}, []);
+
 	return (
 		<Layout headerDividerStyle="shadow">
 			<div className={`${Spirit.page.m} pt-vw5 pb-vw5 flex flex-column items-center`}>
