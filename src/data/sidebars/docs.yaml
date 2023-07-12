@@ -95,7 +95,7 @@
                     link: /docs/pipelines/concepts/global-envs
                   - title: Conditional Execution of Stages
                     link: /docs/pipelines/concepts/conditional-stages
-            - link: /docs/pipelines/API/reference
+            - link: /docs/pipelines/api/reference
               title: Pipeline API Reference
             - link: /docs/pipelines/developing/
               title: Developing/Debugging Pipelines
