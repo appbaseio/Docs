@@ -37,12 +37,22 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 							slug: node.fields.slug,
 							section: node.fields.section,
 						},
-					}
-					if(node && node.fields && node.fields.slug && node.fields.slug.includes('/docs/reactivesearch/v4')){
-						// Create a page with /v4 and one with /react
-						createPage({...options, path: node.fields.slug.replace('/v4', '/react')})
-						createPage(options)
-					}else{
+					};
+
+					// Convert URLs accessed at "/reactivesearch/vue/SearchBox" -> "/reactivesearch/vue/searchbox"
+					if (
+						node.fields.slug &&
+						node.fields.slug.includes('/docs/reactivesearch/vue/') &&
+						!node.fields.slug.includes('/docs/reactivesearch/vue/v1')
+					) {
+						// Create a duplicate page for "/reactivesearch/vue/searchbox"
+						const optionsForDuplicatePage = {
+							...options,
+							path: node.fields.slug.toLowerCase(),
+						};
+						createPage(optionsForDuplicatePage);
+						createPage(options);
+					} else {
 						createPage(options);
 					}
 					return resolve();
