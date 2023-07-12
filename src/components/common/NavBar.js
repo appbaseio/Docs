@@ -306,7 +306,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Vue
 															</Link>
 															<Link
-																to="/docs/reactivesearch/native/overview/QuickStart/"
+																to="/docs/reactivesearch/native/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
@@ -320,7 +320,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Searchbox
 															</h3>
 															<Link
-																to="/docs/reactivesearch/searchbox/Quickstart/"
+																to="/docs/reactivesearch/searchbox/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
