@@ -379,7 +379,7 @@ To set the number of buckets to be returned by aggregations.
 |------|----------|
 |  `Object` |   Yes   |
 
-`react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/v1/result/ReactiveList/).
+`react` prop is available in components whose data view should reactively update when on or more dependent components change their states, e.g. [`ReactiveList`](/docs/reactivesearch/vue/v1/result/reactivelist/).
 
 -   **key** `String`
 	one of `and`, `or`, `not` defines the combining clause.

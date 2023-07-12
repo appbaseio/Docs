@@ -28,7 +28,7 @@ Example use-cases are:
 
 This library is divided into three components:
 
-[SearchBase](/docs/reactivesearch/react-searchbox/searchbase/) is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
+[SearchBase](/docs/reactivesearch/react-searchbox/searchbase/) is a provider component that provides the [SearchBase](/docs/reactivesearch/searchbase/overview/quickstart/) context to the child components. It binds the backend app (data source) with the UI view components (elements wrapped within SearchBase), allowing a UI component to be reactively updated every time there is a change in the data source or in other UI components.
 
 [SearchBox](/docs/reactivesearch/react-searchbox/searchbox/) offers a ready to use, lightweight, and performance-focused searchbox UI component to query and display results from your Elasticsearch cluster.
 

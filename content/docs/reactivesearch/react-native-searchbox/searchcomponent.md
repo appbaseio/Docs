@@ -12,7 +12,7 @@ nestedSidebar: 'react-native-searchbox-reactivesearch'
 
 ## How does it work?
 
-`SearchComponent` component represents a search component that can be used to build different kinds of search components. It uses the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) to integrate the UI components with Elasticsearch. Some of the use-cases are:
+`SearchComponent` component represents a search component that can be used to build different kinds of search components. It uses the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](/docs/reactivesearch/searchbase/overview/quickstart/) to integrate the UI components with Elasticsearch. Some of the use-cases are:
 
 -   a category filter component,
 -   a search bar component,

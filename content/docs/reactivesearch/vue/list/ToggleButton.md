@@ -193,7 +193,7 @@ When set to `true`, a selected option can't be unselected. Although, it is possi
 -   `title`
 -   `button`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

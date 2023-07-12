@@ -15,7 +15,7 @@ A `ReactiveMap` creates a data-driven map UI component. It is the key component 
 
 > ReactiveMaps is a complimentary library to ReactiveSearch. Map component requires ReactiveSearch architecture and its root component to begin with. If you wish to build anything with reactivemaps-native, you’ll need to install reactivesearch-native along with it.
 
-Reactivemap can be added by installing `@appbaseio/reactivemaps-native`. For more details about the setup and installation, [checkout the reactivemaps-native quickstart guide](/docs/reactivesearch/native/components/ReactiveMap/)
+Reactivemap can be added by installing `@appbaseio/reactivemaps-native`. For more details about the setup and installation, [checkout the reactivemaps-native quickstart guide](/docs/reactivesearch/native/components/reactivemap/)
 
 Example uses:
 
@@ -75,7 +75,7 @@ import ReactiveMap from '@appbaseio/reactivemaps-native';
 -   **onPopoverClick** `function` [optional]
     a function that takes one argument for getting a marker's data and returns an HTML markup to be displayed in the popover box.
 -   **react** `Object`
-    specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/react/v3/advanced/reactprop/).
+    specify dependent components to reactively update **GeoDistanceDropdown's** options. Read more about it [here](/docs/reactivesearch/react/advanced/reactprop/).
     -   **key** `String`
         one of `and`, `or`, `not` defines the combining clause.
         -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.

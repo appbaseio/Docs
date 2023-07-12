@@ -383,10 +383,10 @@ The index prop can be used to explicitly specify an index to query against for t
 
 ### ResultCardsWrapper
 A wrapper component for `ResultCard` components to render a card based layout.
-Read more about the usage [here](/docs/reactivesearch/vue/result/ResultCard/#usage).
+Read more about the usage [here](/docs/reactivesearch/vue/result/resultcard/#usage).
 ### ResultListWrapper
 A wrapper component for `ResultList` components to render a list based layout.
-Read more about the usage [here](/docs/reactivesearch/vue/result/ResultList/#usage).
+Read more about the usage [here](/docs/reactivesearch/vue/result/resultlist/#usage).
 
 ## Demo
 
@@ -408,7 +408,7 @@ Read more about the usage [here](/docs/reactivesearch/vue/result/ResultList/#usa
 -   `list`
 -   `poweredBy`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

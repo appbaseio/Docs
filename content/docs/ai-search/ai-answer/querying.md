@@ -22,7 +22,7 @@ From a top-level perspective, there are three main ways to query the data:
 - With ReactiveSearch API
 - With ReactiveSearch Pipelines
 
-![Querying with AI Answer enabled](/images/concepts/querying_ai.png "Querying with AI Answer Vizualized")
+![Querying with AI Answer enabled](/images/concepts/querying_ai.png "querying with ai answer vizualized")
 
 ## With UI Components
 

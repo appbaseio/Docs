@@ -16,7 +16,7 @@ nestedSidebar: 'searchbox'
 
 ## Installation
 
-`searchbox` requires `searchbase` as dependency. It's a framework agnostic JS library containing common utilities for performing search queries that Searchbox builds upon. You can read more about SearchBase over [here](/docs/reactivesearch/searchbase/overview/QuickStart/).
+`searchbox` requires `searchbase` as dependency. It's a framework agnostic JS library containing common utilities for performing search queries that Searchbox builds upon. You can read more about SearchBase over [here](/docs/reactivesearch/searchbase/overview/quickstart/).
 
 ```js
 npm install @appbaseio/searchbox @appbaseio/searchbase

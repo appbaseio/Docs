@@ -342,8 +342,8 @@ Here is a list of all frontend libraries available for different platforms:
 
 | <p style="margin: 0px;" class="table-header-text">Library</p>                |  <p style="margin: 0px;" class="table-header-text">Variant</p>    | <p style="margin: 0px;" class="table-header-text">Docs</p>                                               |
 | -------------------- | ----------  | -----------------------------------------------------------|
-| **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/react/v3/overview/quickstart/)    |
-| **`ReactiveSearch`** | `Vue`       | [Learn More](/docs/reactivesearch/vue/overview/QuickStart/)  |
+| **`ReactiveSearch`** | `React`     | [Learn More](/docs/reactivesearch/react/overview/quickstart/)    |
+| **`ReactiveSearch`** | `Vue`       | [Learn More](/docs/reactivesearch/vue/overview/quickstart/)  |
 | **`SearchBox`**      | `VanillaJS` | [Learn More](/docs/reactivesearch/searchbox/api/)  |
 | **`SearchBox`**      | `React`     | [Learn More](/docs/reactivesearch/react-searchbox/apireference/)  |
 | **`SearchBox`**      | `Vue`       | [Learn More](/docs/reactivesearch/vue-searchbox/apireference/)  |

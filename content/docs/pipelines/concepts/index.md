@@ -15,7 +15,7 @@ Pipeline Concepts consist of basic concepts that would be useful to understand h
 
 Following is a visualization of how pipelines are executed and how they go from one stage to another.
 
-![Pipeline Concept](/images/concepts/pipeline_concept.png "Pipeline Execution Visualized")
+![Pipeline Concept](/images/concepts/pipeline_concept.png "pipeline execution visualized")
 
 In the above image, the stages can access the global context and modify it. However, the stages with [async] can `get/add` the context which means they cannot modify the already existing values in the context.
 

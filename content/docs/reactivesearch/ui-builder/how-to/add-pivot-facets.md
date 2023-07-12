@@ -111,7 +111,7 @@ Let's take a look and try to understand the snippet we pasted to add the TreeLis
 
 - `rsConfig` This key is responsible for storing all the component props accepted by a ReactiveSearch component. With an exception of `filterType` and `componentType`, all the other keys are props consumed by the ReactiveSearch components. 
 
-  In this how-to guide we have used the `<TreeList />` component whose props definition can be [explored here](/docs/reactivesearch/react/v3/list/treelist/#props) in detail.
+  In this how-to guide we have used the `<TreeList />` component whose props definition can be [explored here](/docs/reactivesearch/react/list/treelist/#props) in detail.
 
     - **filterType** NoCode Search UIs can be incorporated with different types of facets, to categorize them we have the `filterType` key passed in the `rsConfig` JSON which is used internally by the code-logic to render the Search UI. Acceptable values are `date`, `range`, `list`, etc.
 

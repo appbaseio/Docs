@@ -186,7 +186,7 @@ You can disable this behavior in `ReactiveSearch` by defining the `appbaseConfig
 
 An analytics session is driven by the `X-Search-Query` header or `query` field if you're using the REST API. It is the user's responsibility to define the search query to trigger an analytics session. One analytics session can be considered as one search count.
 
-Don't worry! `ReactiveSearch` handles this for you. You just need to set the `analytics` prop as `true` in the `ReactiveBase` component. [Read more about how to configure analytics in ReactiveSearch](/docs/reactivesearch/react/v3/advanced/analytics/).
+Don't worry! `ReactiveSearch` handles this for you. You just need to set the `analytics` prop as `true` in the `ReactiveBase` component. [Read more about how to configure analytics in ReactiveSearch](/docs/reactivesearch/react/advanced/analytics/).
 
 ### How Are Searches Counted
 

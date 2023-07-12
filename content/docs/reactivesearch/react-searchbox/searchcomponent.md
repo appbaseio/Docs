@@ -12,7 +12,7 @@ nestedSidebar: 'react-searchbox-reactivesearch'
 
 ## How does it work?
 
-`SearchComponent` represents a search component that can be used to bind to different kinds of search UI widgets. It uses the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](/docs/reactivesearch/searchbase/overview/QuickStart/) to bind any UI component to be able to query appbase.io declaratively. Some examples of components you can bind this with:
+`SearchComponent` represents a search component that can be used to bind to different kinds of search UI widgets. It uses the [SearchComponent](/docs/reactivesearch/searchbase/overview/searchcomponent/) class from [SearchBase](/docs/reactivesearch/searchbase/overview/quickstart/) to bind any UI component to be able to query appbase.io declaratively. Some examples of components you can bind this with:
 
 -   a category filter component,
 -   a search bar component,

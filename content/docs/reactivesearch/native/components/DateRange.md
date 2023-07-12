@@ -81,7 +81,7 @@ Example uses:
 |        `date_time_no_millis` |                                                                 `yyyy-MM-dd'T'HH:mm:ssZZ`                                                                  |
 
 -   **innerProps** `Object` [optional]
-    specifies additional props for the internal components. Accepts an object with the specified keys. Read more about the usage [here](/docs/reactivesearch/native/advanced/innerProps/)
+    specifies additional props for the internal components. Accepts an object with the specified keys. Read more about the usage [here](/docs/reactivesearch/native/advanced/innerprops/)
 
 <br />
 
@@ -106,7 +106,7 @@ Example uses:
 
 ## Styles
 
-`DateRange` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/Style/).
+`DateRange` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/style/).
 
 It also supports an `innerStyle` prop with the following keys:
 
@@ -119,7 +119,7 @@ It also supports an `innerStyle` prop with the following keys:
 -   `title`
 -   `calendar`
 
-Read more about it [here](/docs/reactivesearch/native/advanced/Style/#innerstyle)
+Read more about it [here](/docs/reactivesearch/native/advanced/style/#innerstyle)
 
 ## Extending
 

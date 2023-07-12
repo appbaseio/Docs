@@ -1079,7 +1079,7 @@ It accepts an object with these properties:
 - `enter-button`
 - `selected-tag`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 
@@ -1164,7 +1164,7 @@ Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection
 |  `Function` |   Yes   |
 
   is a callback function that takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` prop allows you to modify the query to render the suggestions when `autoSuggest` is enabled.
-  Read more about it [here](/docs/reactivesearch/vue/v1/advanced/CustomQueries/#when-to-use-default-query).
+  Read more about it [here](/docs/reactivesearch/vue/v1/advanced/customqueries/#when-to-use-default-query).
 ### beforeValueChange
 
 | Type | Optional |

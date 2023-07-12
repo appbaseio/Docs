@@ -22,7 +22,7 @@ Example uses:
 
 > Note
 >
-> An alternative layout to ResultList is a [**ResultCard**](/docs/reactivesearch/react/v3/result/resultcard/), which displays result data in a card layout.
+> An alternative layout to ResultList is a [**ResultCard**](/docs/reactivesearch/react/result/resultcard/), which displays result data in a card layout.
 
 ## Usage
 

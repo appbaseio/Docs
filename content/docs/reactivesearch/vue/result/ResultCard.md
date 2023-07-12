@@ -22,7 +22,7 @@ Example uses:
 
 > Note
 >
-> An alternative layout to ResultCard is a [**ResultList**](/docs/reactivesearch/vue/result/ResultList/), which displays result data in a list format.
+> An alternative layout to ResultCard is a [**ResultList**](/docs/reactivesearch/vue/result/resultlist/), which displays result data in a list format.
 
 ## Usage
 

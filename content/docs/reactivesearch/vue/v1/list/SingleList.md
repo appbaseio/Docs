@@ -375,7 +375,7 @@ When set to `true`, a selected option can't be unselected. Although, it is possi
 -   `label`
 -   `count`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 

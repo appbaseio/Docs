@@ -77,7 +77,7 @@ new Vue({
 
 ### Step 3: Adding the first component
 
-Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/vue/overview/ReactiveBase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
+Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/vue/overview/reactivebase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
 
 We will demonstrate creating an index using [appbase.io](https://appbase.io) service, although you can use any Elasticsearch backend within ReactiveBase.
 
@@ -130,7 +130,7 @@ This is how the app should look after running the `yarn run serve` command.
 
 ### Step 3: Adding Filters and Map Components
 
-For this app, we will be using [SingleList](/docs/reactivesearch/vue/list/SingleList/) component for filtering the dataset. And [ReactiveGoogleMap](/docs/reactivesearch/vue/map/reactivegooglemap/) component for showing the search results.
+For this app, we will be using [SingleList](/docs/reactivesearch/vue/list/singlelist/) component for filtering the dataset. And [ReactiveGoogleMap](/docs/reactivesearch/vue/map/reactivegooglemap/) component for showing the search results.
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
 ```html
