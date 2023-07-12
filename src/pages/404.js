@@ -6,10 +6,6 @@ import { Layout } from '../components/common/layout';
 import { Icon } from '../components/common';
 
 const NotFoundPage = () => {
-	useEffect(() => {
-		navigate('/');
-	}, []);
-
 	return (
 		<Layout headerDividerStyle="shadow">
 			<div className={`${Spirit.page.m} pt-vw5 pb-vw5 flex flex-column items-center`}>
