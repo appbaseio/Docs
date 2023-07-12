@@ -2,50 +2,50 @@
       - group: Getting Started
         items:
             - title: ReactiveSearch Native QuickStart
-              link: /docs/reactivesearch/native/overview/QuickStart/
+              link: /docs/reactivesearch/native/overview/quickstart/
             - title: Importing Data
-              link: /docs/reactivesearch/native/overview/Importing/
+              link: /docs/reactivesearch/native/overview/importing/
             - title: ReactiveBase
-              link: /docs/reactivesearch/native/overview/ReactiveBase/
+              link: /docs/reactivesearch/native/overview/reactivebase/
             - title: ReactiveMaps Native
-              link: /docs/reactivesearch/native/overview/ReactiveMaps/
+              link: /docs/reactivesearch/native/overview/reactivemaps/
             - title: Components Overview
-              link: /docs/reactivesearch/native/overview/Components/
+              link: /docs/reactivesearch/native/overview/components/
       - group: Components
         items:
             - title: SelectedFilters
-              link: /docs/reactivesearch/native/components/SelectedFilters/
+              link: /docs/reactivesearch/native/components/selectedfilters/
             - title: TextField
-              link: /docs/reactivesearch/native/components/TextField/
+              link: /docs/reactivesearch/native/components/textfield/
             - title: DataSearch
-              link: /docs/reactivesearch/native/components/DataSearch/
+              link: /docs/reactivesearch/native/components/datasearch/
             - title: SingleDropdownList
-              link: /docs/reactivesearch/native/components/SingleDropdownList/
+              link: /docs/reactivesearch/native/components/singledropdownlist/
             - title: MultiDropdownList
-              link: /docs/reactivesearch/native/components/MultiDropdownList/
+              link: /docs/reactivesearch/native/components/multidropdownlist/
             - title: SingleDropdownRange
-              link: /docs/reactivesearch/native/components/SingleDropdownRange/
+              link: /docs/reactivesearch/native/components/singledropdownlist/
             - title: MultiDropdownRange
-              link: /docs/reactivesearch/native/components/MultiDropdownRange/
+              link: /docs/reactivesearch/native/components/multidropdownrange/
             - title: DatePicker
-              link: /docs/reactivesearch/native/components/DatePicker/
+              link: /docs/reactivesearch/native/components/datepicker/
             - title: DateRange
-              link: /docs/reactivesearch/native/components/DateRange/
+              link: /docs/reactivesearch/native/components/daterange/
             - title: ReactiveList
-              link: /docs/reactivesearch/native/components/ReactiveList/
+              link: /docs/reactivesearch/native/components/reactivelist/
             - title: ReactiveMap
-              link: /docs/reactivesearch/native/components/ReactiveMap/
+              link: /docs/reactivesearch/native/components/reactivemap/
       - group: Advanced
         items:
             - title: Performance
-              link: /docs/reactivesearch/native/advanced/Performance/
+              link: /docs/reactivesearch/native/advanced/performance/
             - title: innerProps
-              link: /docs/reactivesearch/native/advanced/innerProps/
+              link: /docs/reactivesearch/native/advanced/innerprops/
             - title: Reactive Component
-              link: /docs/reactivesearch/native/advanced/ReactiveComponent/
+              link: /docs/reactivesearch/native/advanced/reactivecomponent/
             - title: Theming
-              link: /docs/reactivesearch/native/advanced/Theming/
+              link: /docs/reactivesearch/native/advanced/theming/
             - title: Style
-              link: /docs/reactivesearch/native/advanced/Style/
+              link: /docs/reactivesearch/native/advanced/style/
             - title: Advanced Guides
-              link: /docs/reactivesearch/native/advanced/Guides/
+              link: /docs/reactivesearch/native/advanced/guides/

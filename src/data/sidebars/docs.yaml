@@ -70,11 +70,6 @@
       - group: 'ReactiveSearch Pipelines'
         icon: pipeline
         items:
-            - link: /docs/pipelines/integrations/open-ai
-              title: Integrations
-              items:
-                  - link: /docs/pipelines/integrations/open-ai
-                    title: OpenAI
             - link: /docs/pipelines/concepts/
               title: Pipeline Concepts
               items:
@@ -110,6 +105,8 @@
             - link: /docs/pipelines/how-to/
               title: 'How To Guides'
               items:
+                  - link: /docs/pipelines/how-to/open-ai
+                    title: Integrate with OpenAI
                   - link: /docs/pipelines/how-to/add-external-search-results
                     title: Add External Search Results
                   - link: /docs/pipelines/how-to/query-rules

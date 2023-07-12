@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import ThemeSwitch from './themeSwitch';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
+import ThemeSwitch from './themeSwitch';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
-import AnnouncementBanner from '../AnnouncementBanner';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
@@ -31,17 +30,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	};
 
 	const [mockWindow, setMockWindow] = useState();
-	const [showBanner, setShowBanner] = useState(
-		typeof window !== 'undefined'
-			? localStorage.getItem('announcementBanner') === 'true'
-			: false,
-	);
 	const [isMobile, setIsMobile] = useState(false);
-
-	if (typeof window !== 'undefined' && localStorage.getItem('announcementBanner') === null) {
-		localStorage.setItem('announcementBanner', 'true');
-		setShowBanner(true);
-	}
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -58,7 +47,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 
 	return (
 		<div>
-			<AnnouncementBanner showBanner={showBanner} setShowBanner={setShowBanner} />
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
