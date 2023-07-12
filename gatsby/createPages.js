@@ -1,10 +1,7 @@
 const path = require(`path`);
-const _ = require(`lodash`);
 const { allMarkdownPosts } = require(`../utils/node-queries`);
 
-const createRedirects = ({ actions }) => {
-	const { createRedirect } = actions;
-
+const createRedirects = ({ createRedirect }) => {
 	createRedirect({
 		fromPath: `/concepts`,
 		isPermanent: true,
@@ -13,8 +10,7 @@ const createRedirects = ({ actions }) => {
 	});
 };
 
-const createMarkdownPages = async ({ graphql, actions }) => {
-	const { createPage, createRedirect } = actions;
+const createMarkdownPages = async (graphql, { createPage, createRedirect }) => {
 	const queryPromises = [];
 
 	queryPromises.push(
@@ -69,13 +65,13 @@ const createMarkdownPages = async ({ graphql, actions }) => {
 					resolve();
 				});
 			});
-		}),
+		})
 	);
 
 	await Promise.all(queryPromises);
 };
 
 exports.createPages = async ({ graphql, actions }) => {
-	await createRedirects({ actions });
-	await createMarkdownPages({ graphql, actions });
+	await createRedirects(actions);
+	await createMarkdownPages(graphql, actions);
 };
