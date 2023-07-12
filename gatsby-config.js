@@ -156,5 +156,4 @@ module.exports = {
 	},
 	plugins,
 	pathPrefix: '/',
-	trailingSlash: 'never',
 };
