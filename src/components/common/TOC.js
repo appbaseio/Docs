@@ -15,7 +15,6 @@ class TOC extends React.Component {
 			headingSelector: `h2, h3`,
 			headingsOffset: offset,
 			scrollSmoothOffset: -1 * offset,
-			hasInnerContainers: true,
 		});
 	}
 
