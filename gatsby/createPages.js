@@ -39,7 +39,6 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 						},
 					};
 
-					// Convert URLs accessed at "/reactivesearch/vue/SearchBox" -> "/reactivesearch/vue/searchbox"
 					if (
 						node &&
 						node.fields &&
@@ -51,18 +50,16 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 							...options,
 							path: node.fields.slug.toLowerCase().replace('/v4', '/react'),
 						});
-						createPage(options);
-					} else if (
+					}
+					else if (
 						node.fields.slug &&
 						node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch')
 					) {
-						// Create a lower case route for "/docs/reactivesearch/", i.e. Search UI pages
-						const optionsForLowerCaseRoute = {
+                        // Create a lower case route for "/docs/reactivesearch/", i.e. Search UI pages
+						createPage({
 							...options,
 							path: node.fields.slug.toLowerCase(),
-						};
-						createPage(optionsForLowerCaseRoute);
-						createPage(options);
+						});
 					} else {
 						createPage(options);
 					}
