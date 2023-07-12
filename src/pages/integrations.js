@@ -14,16 +14,18 @@ const APIPage = () => {
 
 	return (
 		<>
-			<Layout 
-			// mainClass="bg-whitegrey-l2" 
-			bodyClass="bg-white">
+			<Layout
+				// mainClass="bg-whitegrey-l2"
+				bodyClass="bg-white"
+			>
 				<section className="bg-api-reference">
 					<div className={`${Spirit.page.xl} tc-ns pt-vw6 pt-vw5-ns pb-vw5 white`}>
 						<h1 className={`${Spirit.sectionHeading} gh-integration-header-shadow`}>
 							APIs and Integrations
 						</h1>
 						<p className={Spirit.sectionSubHeading}>
-							UI Libraries, clients and interactive examples for working with reactivesearch.io
+							UI Libraries, clients and interactive examples for working with
+							reactivesearch.io
 						</p>
 					</div>
 				</section>
@@ -91,7 +93,7 @@ const APIPage = () => {
 								React
 							</APICard>
 							<APICard
-								to="/docs/reactivesearch/vue/overview/QuickStart/"
+								to="/docs/reactivesearch/vue/overview/quickstart/"
 								img="https://vuejs.org/images/logo.png"
 							>
 								Vue
@@ -105,7 +107,8 @@ const APIPage = () => {
 								Clients
 							</h2>
 							<p className={`${Spirit.small} midgrey-l2 mt2`}>
-								Client libraries for interacting with the reactivesearch.io API directly
+								Client libraries for interacting with the reactivesearch.io API
+								directly
 							</p>
 						</div>
 						<div className={sectionStyles.cardContainer}>

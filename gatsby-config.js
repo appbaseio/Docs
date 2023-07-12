@@ -26,8 +26,8 @@ const plugins = [
 			name: `images`,
 		},
 	},
-	`gatsby-plugin-image`,
 	`gatsby-plugin-sharp`,
+	`gatsby-plugin-image`,
 	`gatsby-transformer-sharp`,
 	{
 		resolve: `gatsby-transformer-remark`,
@@ -40,7 +40,6 @@ const plugins = [
 				{
 					resolve: `gatsby-remark-images`,
 					options: {
-						sizeByPixelDensity: true,
 						withWebp: true,
 					},
 				},
@@ -49,14 +48,17 @@ const plugins = [
 				{
 					resolve: `gatsby-remark-prismjs`,
 					options: {
-						classPrefix: "language-",
+						classPrefix: 'language-',
 						showLineNumbers: true,
 						aliases: {
-							js: "javascript",
-							sh: "bash",
-							curl: "bash"
-						}
-					}
+							js: 'javascript',
+							javascript: 'javascript',
+							html: 'html',
+							sh: 'bash',
+							curl: 'bash',
+							vue: 'vue',
+						},
+					},
 				},
 			],
 		},
@@ -81,7 +83,7 @@ const plugins = [
 					src: `static/favicon.pngg`,
 					sizes: `192x192`,
 					type: `image/png`,
-					purpose: "any maskable"
+					purpose: 'any maskable',
 				},
 				{
 					src: `static/favicon.png`,
@@ -100,7 +102,7 @@ const plugins = [
 		resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
 		options: {
 			disable: true,
-		}
+		},
 	},
 	// `gatsby-plugin-perf-budgets`,
 	/**
@@ -150,7 +152,9 @@ module.exports = {
 	siteMetadata: {
 		title: `Reactivesearch.io Docs`,
 		siteUrl: `https://github.com/appbaseio/Docs`,
-		description: `Reactivesearch.io Docs Reference - JavaScript and REST APIs for indexing, querying and streaming data.`,
+		description: `Reactivesearch.io Docs Reference - Supercharge your search .`,
 	},
 	plugins,
+	pathPrefix: '/',
+	trailingSlash: 'never',
 };

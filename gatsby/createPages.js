@@ -1,12 +1,7 @@
 const path = require(`path`);
-const _ = require(`lodash`);
 const { allMarkdownPosts } = require(`../utils/node-queries`);
 
-module.exports.createRedirects = ({ actions }) => {
-	const { createRedirect } = actions;
-
-	// The /concepts page doesn't exist, we need to redirect to
-	// the first post of this section
+exports.createRedirects = ({ createRedirect }) => {
 	createRedirect({
 		fromPath: `/concepts`,
 		isPermanent: true,
@@ -15,8 +10,7 @@ module.exports.createRedirects = ({ actions }) => {
 	});
 };
 
-module.exports.createMarkdownPages = async ({ graphql, actions }) => {
-	const { createPage } = actions;
+exports.createMarkdownPages = async (graphql, { createPage, createRedirect }) => {
 	const queryPromises = [];
 
 	queryPromises.push(
@@ -26,30 +20,53 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 					return reject(result.errors);
 				}
 
-				return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+				result.data.allMarkdownRemark.edges.forEach(({ node }) => {
 					const DocTemplate = path.resolve(`./src/templates/markdown/post.js`);
+					const lowerCaseSlug = node.fields.slug.toLowerCase();
+
 					const options = {
-						path: node.fields.slug,
+						path: lowerCaseSlug,
 						component: DocTemplate,
 						context: {
-							// Data passed to context is available
-							// in page queries as GraphQL variables.
 							slug: node.fields.slug,
 							section: node.fields.section,
 						},
+					};
+
+					if (node.fields.slug !== lowerCaseSlug) {
+						createRedirect({
+							fromPath: node.fields.slug,
+							toPath: lowerCaseSlug,
+							isPermanent: true,
+							force: true,
+						});
 					}
-					if(node && node.fields && node.fields.slug && node.fields.slug.includes('/docs/reactivesearch/v4')){
-						// Create a page with /v4 and one with /react
-						createPage({...options, path: node.fields.slug.replace('/v4', '/react')})
-						createPage(options)
-					}else{
+
+					if (
+						node &&
+						node.fields &&
+						node.fields.slug &&
+						node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch/v4')
+					) {
+						createPage({
+							...options,
+							path: lowerCaseSlug.replace('/v4', '/react'),
+						});
+
+						createRedirect({
+							fromPath: lowerCaseSlug,
+							toPath: lowerCaseSlug.replace('/v4', '/react'),
+							isPermanent: true,
+						});
+					} else {
 						createPage(options);
 					}
-					return resolve();
+
+					resolve();
 				});
 			});
-		}),
+		})
 	);
 
-	return Promise.all(queryPromises);
+	await Promise.all(queryPromises);
 };

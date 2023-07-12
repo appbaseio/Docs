@@ -162,7 +162,7 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Vue ReactiveSearch QuickStart',
 												link:
-													'/docs/reactivesearch/vue/overview/QuickStart/',
+													'/docs/reactivesearch/vue/overview/quickstart/',
 												description:
 													'Get started with the Vue version of ReactiveSearch',
 												duration: 8,
@@ -457,7 +457,7 @@ const HomePage = ({ data, location }) => {
 								React
 							</Box>
 							<Box
-								to="/docs/reactivesearch/vue/overview/QuickStart/"
+								to="/docs/reactivesearch/vue/overview/quickstart/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc"
 								elevation="2"
 								radius="4"
