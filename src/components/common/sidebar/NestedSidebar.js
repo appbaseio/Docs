@@ -15,7 +15,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 		if (value.value === 'React Native') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/native/overview/QuickStart/`;
 		} else if (value.value === 'Vue - v3') {
-			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/QuickStart/`;
+			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/overview/quickstart/`;
 		} else if (value.value === 'Vue - v1') {
 			window.location.href = `${window.location.origin}/docs/reactivesearch/vue/v1/overview/QuickStart/`;
 		} else if (value.value === 'Atlas Search') {
@@ -183,7 +183,7 @@ const NestedSidebar = ({ nestedSidebar, location }) => {
 					'Atlas Search',
 					'Algolia Autocomplete',
 					'React - v3',
-					'Vue - v1'
+					'Vue - v1',
 				]}
 				value={getValue()}
 				className="version-switcher shadow-3 br2"

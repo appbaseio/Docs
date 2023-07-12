@@ -256,9 +256,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															localStorage.getItem('theme') === 'dark'
 																? '#082429'
 																: 'white',
-                                                        top: showBanner
-                                                                ? '105px'
-                                                                : '75px',
+														top: showBanner ? '105px' : '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -310,7 +308,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																React
 															</Link>
 															<Link
-																to="/docs/reactivesearch/vue/overview/QuickStart/"
+																to="/docs/reactivesearch/vue/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
