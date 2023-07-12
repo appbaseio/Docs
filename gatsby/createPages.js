@@ -50,12 +50,12 @@ module.exports.createMarkdownPages = async ({ graphql, actions }) => {
 							...options,
 							path: node.fields.slug.toLowerCase().replace('/v4', '/react'),
 						});
-					}
-					else if (
+					} else if (
 						node.fields.slug &&
-						node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch')
+						node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch') &&
+						!node.fields.slug.toLowerCase().startsWith('/docs/reactivesearch/react')
 					) {
-                        // Create a lower case route for "/docs/reactivesearch/", i.e. Search UI pages
+						// Create a lower case route for "/docs/reactivesearch/", i.e. Search UI pages
 						createPage({
 							...options,
 							path: node.fields.slug.toLowerCase(),
