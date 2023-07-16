@@ -51,6 +51,7 @@ Example uses:
     :showIcon="true"
     iconPosition="left"
     :enterButton="true"
+    :showFeedback="true"
     :a-i-config="{
         docTemplate: '${source.text} is ${source.summary} with url as ${source.url}',
         queryTemplate: 'Answer the following: ${value}',

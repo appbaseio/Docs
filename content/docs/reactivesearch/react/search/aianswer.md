@@ -63,6 +63,7 @@ Example uses:
             maxTokens: 4000,
             systemPrompt: "You're a helpful assistant."
         }}
+        showFeedback={true}
     />
 ```
 
