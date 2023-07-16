@@ -426,6 +426,12 @@ Accepts the following properties:
     callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
 -   **askButton** `Boolean` [optional]
     When set to `true`, the AI answer action and the corresponding display of AIAnswer would be triggered when user presses the Ask button. Defaults to `false`. You can provide styles with `ask-button` key for the `innerClass` prop.
+-   **triggerOn** `number` [optional]
+    sets the trigger for fetching the AI answer. Defaults to `manual`, Accepts one of the following three: 
+    - `manual` - AI answer is shown when triggered using the `askButton` or clicking the first suggestion item(`renderTriggerMessage`).
+    - `question` - AI answer is shown when the user searches for a question.
+-   **renderTriggerMessage** `String | JSX` [optional]  
+    custom markup to display as the first suggestion in the dropdown to trigger the AI answer. It should be used along with `enableAI` set to `true`.    
 
 ### strictSelection
 

@@ -606,7 +606,12 @@ Accepts the following properties:
         enterButton
     />
     ```
-
+-   **triggerOn** `number` [optional]
+    sets the trigger for fetching the AI answer. Defaults to `manual`, Accepts one of the following three: 
+    - `manual` - AI answer is shown when triggered using the `askButton` or clicking the first suggestion item(`renderTriggerMessage`).
+    - `question` - AI answer is shown when the user searches for a question.
+-   **renderTriggerMessage** `String | JSX` [optional]  
+    custom markup to display as the first suggestion in the dropdown to trigger the AI answer. It should be used along with `enableAI` set to `true`.
 ### strictSelection
 
 | Type | Optional |
