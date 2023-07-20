@@ -98,7 +98,10 @@ Configure whether the DSL query is generated with the compound clause of `must` 
 
 This property only has an effect when the search engine is either elasticsearch or opensearch.
 
-Supported since 8.16.0 and for all serverless search instances.
+
+> Note: `compoundClause` is supported since 8.16.0 and for all serverless search instances.
+
+
 ### endpoint
 
 | Type | Optional |
