@@ -100,7 +100,93 @@ In the following stage, we are boosting the documents for which `categoryPath.na
     dataField: categoryPath.name
     value: [cell Phones, Prepaid Phones] 
     boostType: score
+    boostFactor: 0
+    boostOp: 'add'
 ```
+
+Above stage will translate to the following ElasticSearch query:
+
+```json
+{
+  "query": {
+    <query from search value...>
+    "match": {
+      "categoryPath.name": {
+        "query": "cell Phones Prepaid Phones",
+        "operator": "or" 
+      }
+    }
+  }
+}
+```
+
+#### Other types of boosting
+
+`boost` stage also supports `geo` and `range` based query boosting. Following is an example on how range based query boosting works:
+
+```yaml
+- id: boostByScore
+  use: boost
+  continueOnError: false
+  inputs:
+    dataField: categoryPath.name
+    value:
+      start: 23
+      end: 45
+    boostType: score
+    boostFactor: 0
+    boostOp: 'add'
+```
+
+Above stage translates to the following ElasticSearch query:
+
+
+```json
+{
+  "query": {
+    <query from search value...>
+    "range": {
+      "categoryPath.name": {
+        "gte": 23,
+        "lte": 45
+      }
+    }
+  }
+}
+```
+
+Following is an example of boosting on a `geo` location field. Note that in order to boost on a geo field, the field type should be a supported location field.
+
+```yaml
+- id: boostByScore
+  use: boost
+  continueOnError: false
+  inputs:
+    dataField: location
+    value:
+      location: "22.3184816, 73.17065699999999"
+      unit: mi
+      distance: 45
+    boostType: score
+    boostFactor: 0
+    boostOp: 'add'
+```
+
+Above stage translates to the following ElasticSearch query:
+
+
+```json
+{
+  "query": {
+    <query from search value...>
+    "geo_distance": {
+      "distance": "45mi",
+      "location": "22.3184816, 73.17065699999999"
+    }
+  }
+}
+```
+
 
 ### Boost Results at Top (Promote Results)
 

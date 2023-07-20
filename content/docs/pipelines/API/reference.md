@@ -299,3 +299,5 @@ Type of trigger expression. You can read more at [here](https://docs.appbase.io/
 
 `always`, `filter`, `index`, `query`, `cron`
 
+## validateContext
+

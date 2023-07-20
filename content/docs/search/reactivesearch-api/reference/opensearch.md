@@ -1614,6 +1614,11 @@ The fields supported by the AIConfig object are:
 - **minTokens**: Minimum number of tokens to generate in the response. Whenever possible, max tokens is respected, however when the input context + max tokens combined exceed the model limit, the min tokens value is used to calibrate for an optimum output token. Defaults to 100. 
 - **temperature**: A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
 
+### Compound Clause
+
+**Supported Engines**
+opensearch
+
 ## settings
 
 **Supported Engines**
