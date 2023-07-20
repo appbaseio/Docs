@@ -55,6 +55,11 @@ PIPELINE_BUILD_CONFIG = [
         enabled: true,
         path: "content/docs/pipelines/API/reference.md",
         mdPrefix: "src/templates/markdown/reference/pipelines.md"
+    },
+    {
+        enabled: true,
+        path: "content/docs/pipelines/API/stage-reference.md",
+        mdPrefix: "src/templates/markdown/reference/stages.md"
     }
 ]
 
