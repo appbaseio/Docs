@@ -63,9 +63,24 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### endpoint
 
 | Type | Optional |
@@ -407,10 +422,10 @@ The index prop can be used to explicitly specify an index to query against for t
 
 ### ResultCardsWrapper
 A wrapper component for `ResultCard` components to render a card based layout.
-Read more about the usage [here](/docs/reactivesearch/vue/v1/result/ResultCard/#usage).
+Read more about the usage [here](/docs/reactivesearch/vue/v1/result/resultcard/#usage).
 ### ResultListWrapper
 A wrapper component for `ResultList` components to render a list based layout.
-Read more about the usage [here](/docs/reactivesearch/vue/v1/result/ResultList/#usage).
+Read more about the usage [here](/docs/reactivesearch/vue/v1/result/resultlist/#usage).
 
 ## Demo
 
@@ -432,7 +447,7 @@ Read more about the usage [here](/docs/reactivesearch/vue/v1/result/ResultList/#
 -   `list`
 -   `poweredBy`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 

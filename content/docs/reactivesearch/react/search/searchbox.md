@@ -596,8 +596,23 @@ Accepts the following properties:
     Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`
 -   **showSourceDocuments** `Boolean` [optional]
     Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
--   **sourceDocumentLabel** `String` [optional]
-    Set the label using the string literal syntax: e.g. `${source.field}` will set the label to the field’s resolved value, you can also combine more than one field value to display the label. Defaults to `_id`.
+-   **renderSourceDocument** `Function` [optional]
+    Render a custom label by returning string or JSx. Default label is rendered as the resolved value of `_id` when `showSourceDocument` is set to true.
+
+    ```jsx
+        <SearchBox
+            id="search-component"
+            AIUIConfig={{
+                showSourceDocuments: true,
+                renderSourceDocument: (obj) => {
+                    return (
+                        <span>❤️ {obj.original_title}
+                        </span>
+                )}
+            }}            
+        />
+    ```
+
 -   **onSourceClick** `Function` [optional]
     callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
 -   **askButton** `Boolean` [optional]

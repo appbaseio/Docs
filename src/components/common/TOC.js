@@ -4,8 +4,7 @@ import tocbot from 'tocbot';
 
 class TOC extends React.Component {
 	componentDidMount() {
-		const hasAnnouncementBanner = localStorage.getItem('announcementBanner') === 'true';
-		const offset = hasAnnouncementBanner ? 110 : 80;
+		const offset = 80;
 		tocbot.init({
 			// Where to render the table of contents.
 			tocSelector: `.toc-list-container`,
@@ -15,33 +14,23 @@ class TOC extends React.Component {
 			headingSelector: `h2, h3`,
 			headingsOffset: offset,
 			scrollSmoothOffset: -1 * offset,
-			hasInnerContainers: true,
 		});
 	}
 
 	render() {
+		const { className, listClasses } = this.props;
 		return (
-			<nav className={`${this.props.className}`} data-cy="toc">
-				{this.props.showHeading ? (
-					<h3 className="f4 measure--0-2 ma0 mb2 pa0 fw4 nudge-bottom--2">
-						On this page
-					</h3>
-				) : null}
-				<div className={`toc-list-container ${this.props.listClasses}`}></div>
+			<nav className={`${className}`} data-cy="toc">
+				<div className={`toc-list-container ${listClasses}`} />
 			</nav>
 		);
 	}
 }
 
-TOC.defaultProps = {
-	showHeading: true,
-};
-
 TOC.propTypes = {
 	headingsOffset: PropTypes.string,
 	className: PropTypes.string,
 	listClasses: PropTypes.string,
-	showHeading: PropTypes.bool,
 };
 
 export default TOC;

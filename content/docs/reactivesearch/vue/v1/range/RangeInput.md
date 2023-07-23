@@ -14,7 +14,7 @@ nestedSidebar: 'vue-v1-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/v03gpDl.png)
 
-`RangeInput` creates a numeric range slider UI component with input fields. It works in the same way as [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/).
+`RangeInput` creates a numeric range slider UI component with input fields. It works in the same way as [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/).
 
 Example uses:
 
@@ -38,7 +38,7 @@ Example uses:
 </template>
 ```
 
-`RangeInput` provides all the props supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/).
+`RangeInput` provides all the props supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/).
 
 ### Usage With All Props
 ```html
@@ -83,9 +83,24 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### endpoint
 
 | Type | Optional |
@@ -224,7 +239,7 @@ is a callback function that can be used to validate the range input values befor
 -   `slider-container`
 -   `input-container`
 
-The other `innerClass` properties are the same as supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/RangeSlider/#styles).
+The other `innerClass` properties are the same as supported by [RangeSlider](/docs/reactivesearch/vue/v1/range/rangeslider/#styles).
 
 ## Extending
 

@@ -9,9 +9,10 @@ const query = `
       node {
         html
         frontmatter {
-		  title
+          title
           meta_description
           meta_title
+          keywords
         }
         fields {
           slug
@@ -87,8 +88,9 @@ exports.createPages = async ({ graphql }) => {
 
 	result.data.allMarkdownRemark.edges.forEach(edge => {
 		const { html, headings, tableOfContents } = edge.node;
-		const { slug } = edge.node.fields;
-		const { title, meta_title, meta_description } = edge.node.frontmatter;
+		let { slug } = edge.node.fields;
+		const { title, metaTitle, metaDescription, keywords } = edge.node.frontmatter;
+		slug = slug.toLowerCase(); // Convert slug to lowercase
 		if (headings.length) {
 			let prevHashIndex = 0;
 			let prevHashId = '';
@@ -101,6 +103,7 @@ exports.createPages = async ({ graphql }) => {
 						const hashPos = html.indexOf(hashId, prevHashIndex);
 						searchData.push({
 							title,
+							keywords,
 							heading: prevHashId === '' ? '' : headings[index - 1].value,
 							tokens: getTokens(html.substring(prevHashIndex, hashPos)),
 							url: slug + prevHashId,
@@ -114,20 +117,20 @@ exports.createPages = async ({ graphql }) => {
 			// push for the last heading
 			searchData.push({
 				title,
-				meta_title,
-				meta_description,
+				meta_title: metaTitle,
+				meta_description: metaDescription,
 				heading: prevHashId === '' ? '' : headings[headings.length - 1].value,
 				tokens: getTokens(html.substring(prevHashIndex)),
-				url: slug + prevHashId,
+				url: slug + prevHashId, // Added slug in lowercase to the search data
 			});
 		} else {
 			searchData.push({
 				title,
-				meta_title,
-				meta_description,
+				meta_title: metaTitle,
+				meta_description: metaDescription,
 				heading: '',
 				tokens: getTokens(html),
-				url: slug, // no hash since result should match the root url
+				url: slug, // Added slug in lowercase to the search data
 			});
 		}
 	});

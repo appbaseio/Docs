@@ -89,9 +89,24 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### dataField
 
 | Type | Optional |
@@ -174,7 +189,7 @@ preset map's center position by specifying an object with valid `lat` and `lng` 
 |  `Function` |   Yes   |
 
 applies a default query to the map component. This query will be run when no other components are being watched (via React prop), as well as in conjunction with the query generated from the React prop. The function should return a query.
-Read more about it [here](/docs/reactivesearch/react/v3/advanced/customqueries/#when-to-use-default-query).
+Read more about it [here](/docs/reactivesearch/react/advanced/customqueries/#when-to-use-default-query).
 The following example uses the `defaultQuery` with `calculateMarkers` to display the markers using Elasticsearch `aggregations` instead of `hits`.
 https://codesandbox.io/s/github/appbaseio/reactivesearch/tree/vue-maps/packages/vue/examples/reactive-google-map-aggregations?from-embed=&file=/src/App.vue
 The following example changes the `defaultQuery` whenever the zoom value changes.
@@ -262,7 +277,7 @@ automatically closes the existing open popovers when a new marker is clicked. De
 |------|----------|
 |  `Object` |   Yes   |
 
-specify dependent components to reactively update **ReactiveGoogleMap's** options. Read more about it [here](/docs/reactivesearch/react/v3/advanced/reactprop/).
+specify dependent components to reactively update **ReactiveGoogleMap's** options. Read more about it [here](/docs/reactivesearch/react/advanced/reactprop/).
 -   **key** `String`
     one of `and`, `or`, `not` defines the combining clause.
     -   **and** clause implies that the results will be filtered by matches from **all** of the associated component states.

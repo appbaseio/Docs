@@ -35,7 +35,7 @@ The components can also be used with `Numeric` datatype fields.
 <p>
 <img src="https://imgur.com/a1be47e.png" style="float:left">
 
-**[SingleDropdownList](/docs/reactivesearch/native/components/SingleDropdownList/)** displays a dropdown list UI where only one item can be selected at a time. It is similar to SingleList but is presented in a dropdown format to save space.
+**[SingleDropdownList](/docs/reactivesearch/native/components/singledropdownlist/)** displays a dropdown list UI where only one item can be selected at a time. It is similar to SingleList but is presented in a dropdown format to save space.
 
 </p>
 <br>
@@ -43,7 +43,7 @@ The components can also be used with `Numeric` datatype fields.
 <p>
 <img src="https://imgur.com/UVymwfo.png" style="float:left">
 
-**[MultiDropdownList](/docs/reactivesearch/native/components/MultiDropdownList/)** displays a dropdown list UI where multiple items can be selected at a time. It is similar to MultiList.
+**[MultiDropdownList](/docs/reactivesearch/native/components/multidropdownlist/)** displays a dropdown list UI where multiple items can be selected at a time. It is similar to MultiList.
 
 </p>
 <br>
@@ -59,14 +59,14 @@ The following are all the possible UI components for a numeric datatype field in
 <p>
 <img src="https://imgur.com/2xxBIUg.png" style="float:left">
 
-**[SingleDropdownRange](/docs/reactivesearch/native/components/SingleDropdownRange/)** displays a dropdown list UI where only one item can be selected at a time. Each item in this dropdown list represents a range, specified in the **data** prop of the component.
+**[SingleDropdownRange](/docs/reactivesearch/native/components/singledropdownrange/)** displays a dropdown list UI where only one item can be selected at a time. Each item in this dropdown list represents a range, specified in the **data** prop of the component.
 
 </p>
 
 <p>
 <img src="https://imgur.com/MrTth88.png" style="float:left">
 
-**[MultiDropdownRange](/docs/reactivesearch/native/components/MultiDropdownRange/)** displays a dropdown list UI where only multiple items can be selected at a time. Each item in this dropdown list represents a range, specified in the **data** prop of the component.
+**[MultiDropdownRange](/docs/reactivesearch/native/components/multidropdownrange/)** displays a dropdown list UI where only multiple items can be selected at a time. Each item in this dropdown list represents a range, specified in the **data** prop of the component.
 
 </p>
 
@@ -75,7 +75,7 @@ The following are all the possible UI components for a numeric datatype field in
 <p>
 <img src="https://imgur.com/rJsL0mK.png" style="float:left"><img src="https://imgur.com/7dKLsNO.png" style="float:left">
 
-**[DatePicker](/docs/reactivesearch/native/components/DatePicker/)** and **[DateRange](/docs/reactivesearch/native/components/DateRange/)** components are useful for showing selectable date fields. They apply to Date datatype field, and internally apply a date range query on the database.
+**[DatePicker](/docs/reactivesearch/native/components/datepicker/)** and **[DateRange](/docs/reactivesearch/native/components/daterange/)** components are useful for showing selectable date fields. They apply to Date datatype field, and internally apply a date range query on the database.
 
 </p>
 
@@ -88,7 +88,7 @@ The following are UI components that represent searchbar UIs. The datatype for t
 <p>
 <img src="https://imgur.com/kbnVVkZ.png" style="float:left">
 
-**[DataSearch](/docs/reactivesearch/native/components/DataSearch/)** displays a search input box. It supports autosuggestions, highlighting of results and querying against more than one fields via props.
+**[DataSearch](/docs/reactivesearch/native/components/datasearch/)** displays a search input box. It supports autosuggestions, highlighting of results and querying against more than one fields via props.
 
 </p>
 
@@ -102,14 +102,14 @@ Result components are used for displaying the results (aka hits).
 
 > How do result components fetch results by combining queries from multiple components?
 >
-> They do this via [**react**](/docs/reactivesearch/react/v3/advanced/reactprop/) prop, which allows each component to specify their dependent components using a DSL that mirrors Elasticsearch's compound query DSL for bool clause.
+> They do this via [**react**](/docs/reactivesearch/react/advanced/reactprop/) prop, which allows each component to specify their dependent components using a DSL that mirrors Elasticsearch's compound query DSL for bool clause.
 
 ### ReactiveList
 
 <p>
 <img src="https://imgur.com/PCBwK7t.png" style="float:left">
 
-**[ReactiveList](/docs/reactivesearch/native/components/ReactiveList/)** displays the results in a configurable list layout.
+**[ReactiveList](/docs/reactivesearch/native/components/reactivelist/)** displays the results in a configurable list layout.
 
 </p>
 
@@ -120,7 +120,7 @@ Result components are used for displaying the results (aka hits).
 <p>
 <img src="https://imgur.com/PgOi2QY.png" style="float:left">
 
-**[TextField](/docs/reactivesearch/native/components/TextField/)** displays a text input field. It applies a **match** database query on the entered text.
+**[TextField](/docs/reactivesearch/native/components/textfield/)** displays a text input field. It applies a **match** database query on the entered text.
 
 </p>
 
@@ -129,6 +129,6 @@ Result components are used for displaying the results (aka hits).
 <p>
 <img src="https://imgur.com/QgjzJv5.png" style="float:left">
 
-**[ReactiveComponent](/docs/reactivesearch/native/advanced/ReactiveComponent/)** is a wrapper component that allows you to connect custom component(s) (passed as children) with the Reactivesearch ecosystem, e.g. if we are building an e-commerce store where we have a react component called `ColorPicker` which renders the `colors` passed to it as tiles, allowing us to filter the products by their colors.
+**[ReactiveComponent](/docs/reactivesearch/native/advanced/reactivecomponent/)** is a wrapper component that allows you to connect custom component(s) (passed as children) with the Reactivesearch ecosystem, e.g. if we are building an e-commerce store where we have a react component called `ColorPicker` which renders the `colors` passed to it as tiles, allowing us to filter the products by their colors.
 
 </p>

@@ -11,20 +11,20 @@ sidebar: 'docs'
 nestedSidebar: 'native-reactivesearch'
 ---
 
-ReactiveSearch Native is built on the same philosophy as [ReactiveSearch for web](/docs/reactivesearch/react/v3/overview/quickstart/). It shares the same advanced concepts. A list of guides are mentioned below which are common for both the web and native version.
+ReactiveSearch Native is built on the same philosophy as [ReactiveSearch for web](/docs/reactivesearch/react/overview/quickstart/). It shares the same advanced concepts. A list of guides are mentioned below which are common for both the web and native version.
 
 ### Custom Queries
 
-ReactiveSearch components come with default Elasticsearch queries. In case you wish to use your own custom queries, the filter components provide a `customQuery` prop. Check the detailed guide [here](/docs/reactivesearch/react/v3/advanced/customqueries/).
+ReactiveSearch components come with default Elasticsearch queries. In case you wish to use your own custom queries, the filter components provide a `customQuery` prop. Check the detailed guide [here](/docs/reactivesearch/react/advanced/customqueries/).
 
 ### React prop
 
-One of the key ideas behind ReactiveSearch is the reactive design pattern, which allows defining how a component reacts to changes in the states of other components. This is acheived by the `react` prop supported by ReactiveSearch components. Check the detailed guide [here](/docs/reactivesearch/react/v3/advanced/reactprop/).
+One of the key ideas behind ReactiveSearch is the reactive design pattern, which allows defining how a component reacts to changes in the states of other components. This is acheived by the `react` prop supported by ReactiveSearch components. Check the detailed guide [here](/docs/reactivesearch/react/advanced/reactprop/).
 
 ### Writing and Editing Data
 
-ReactiveSearch components are great for reading data, but at times you might want to create, update or delete your data. [Here](/docs/reactivesearch/react/v3/advanced/data/) is a detailed guide on performing write operations.
+ReactiveSearch components are great for reading data, but at times you might want to create, update or delete your data. [Here](/docs/reactivesearch/react/advanced/data/) is a detailed guide on performing write operations.
 
 ### Comparison with Other Projects
 
-We've a detailed comparison of ReactiveSearch with other projects with similar aims [here](/docs/reactivesearch/react/v3/advanced/comparison/). Contributions are welcome!
+We've a detailed comparison of ReactiveSearch with other projects with similar aims [here](/docs/reactivesearch/react/advanced/comparison/). Contributions are welcome!

@@ -74,9 +74,24 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### endpoint
 
 | Type | Optional |
@@ -179,7 +194,7 @@ The index prop can be used to explicitly specify an index to query against for t
 
 -   `title`
 
-Read more about it [here](/docs/reactivesearch/vue/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/theming/classnameinjection/).
 
 ## Extending
 

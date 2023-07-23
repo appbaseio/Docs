@@ -47,7 +47,7 @@ Most ReactiveSearch filter components have a prop `showFilter` (defaults to `tru
 >
 > The `showFilter` and `filterLabel` prop updates are only reflected if the underlying query of the associated component has changed.
 
-As an example, check [SingleDropdownList usage](/docs/reactivesearch/native/components/SingleDropdownList/#usage-with-all-props) to see how `showFilter` and `filterLabel` can be used.
+As an example, check [SingleDropdownList usage](/docs/reactivesearch/native/components/singledropdownlist/#usage-with-all-props) to see how `showFilter` and `filterLabel` can be used.
 
 ### Demo
 
@@ -59,7 +59,7 @@ As an example, check [SingleDropdownList usage](/docs/reactivesearch/native/comp
 
 ### Styles
 
-`SelectedFilters` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/Style/).
+`SelectedFilters` component supports `style` prop. Read more about it [here](/docs/reactivesearch/native/advanced/style/).
 
 ## Extending
 

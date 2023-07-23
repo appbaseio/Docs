@@ -21,8 +21,8 @@ const HomePage = ({ data, location }) => {
 
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
-		title: 'Reactivesearch.io Docs - Build powerful search apps powered by Elasticsearch',
-		description: 'Docs home page',
+		title: 'Reactivesearch Docs - Developer Guide for building search experiences with API, UI kits and no-code UI builder',
+		description: 'ReactiveSearch Docs - Build search experiences with REST API, industry leading low-code UI kits and no-code UI builder, powered by ElasticSearch, OpenSearch, OpenAI and more',
 	};
 
 	if (typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
@@ -35,7 +35,7 @@ const HomePage = ({ data, location }) => {
 				<meta name="title" content="Reactivesearch.io Docs - Home Page" />
 				<meta
 					name="description"
-					content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript - powered by Elasticsearch."
+					content="Reactivesearch.io Docs Reference - Search APIs and UI components for React, Vue, React Native, Flutter, JavaScript."
 				/>
 				<link rel="canonical" href="https://docs.reactivesearch.io" />
 			</Helmet>
@@ -162,7 +162,7 @@ const HomePage = ({ data, location }) => {
 											{
 												title: 'Vue ReactiveSearch QuickStart',
 												link:
-													'/docs/reactivesearch/vue/overview/QuickStart/',
+													'/docs/reactivesearch/vue/overview/quickstart/',
 												description:
 													'Get started with the Vue version of ReactiveSearch',
 												duration: 8,
@@ -408,14 +408,14 @@ const HomePage = ({ data, location }) => {
 												link: '/docs/hosting/clusters/',
 												duration: 3,
 												description:
-													'Deploy Elasticsearch with reactivesearch.io for all your app search needs',
+													'Deploy Elasticsearch or OpenSearch with ReactiveSearch Cloud',
 											},
 											{
 												title: 'Bring your own Cluster',
 												link: '/docs/hosting/byoc/',
 												duration: 11,
 												description:
-													'Deploy reactivesearch.io with your own Elasticsearch cluster hosted anywhere',
+													'Deploy reactivesearch with your own search cluster, supports Elasticsearch and OpenSearch',
 											},
 											{
 												title: 'Deploy OpenSearch',
@@ -457,7 +457,7 @@ const HomePage = ({ data, location }) => {
 								React
 							</Box>
 							<Box
-								to="/docs/reactivesearch/vue/overview/QuickStart/"
+								to="/docs/reactivesearch/vue/overview/quickstart/"
 								className="flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc"
 								elevation="2"
 								radius="4"

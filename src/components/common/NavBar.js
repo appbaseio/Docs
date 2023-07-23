@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import ThemeSwitch from './themeSwitch';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
+import ThemeSwitch from './themeSwitch';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
-import AnnouncementBanner from '../AnnouncementBanner';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
@@ -31,17 +30,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	};
 
 	const [mockWindow, setMockWindow] = useState();
-	const [showBanner, setShowBanner] = useState(
-		typeof window !== 'undefined'
-			? localStorage.getItem('announcementBanner') === 'true'
-			: false,
-	);
 	const [isMobile, setIsMobile] = useState(false);
-
-	if (typeof window !== 'undefined' && localStorage.getItem('announcementBanner') === null) {
-		localStorage.setItem('announcementBanner', 'true');
-		setShowBanner(true);
-	}
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -58,7 +47,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 
 	return (
 		<div>
-			<AnnouncementBanner showBanner={showBanner} setShowBanner={setShowBanner} />
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
@@ -101,7 +89,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																	? '#082429'
 																	: 'white'
 																: 'white',
-														top: showBanner ? '105px' : '75px',
+														top: '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -256,9 +244,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 															localStorage.getItem('theme') === 'dark'
 																? '#082429'
 																: 'white',
-                                                        top: showBanner
-                                                                ? '105px'
-                                                                : '75px',
+														top: '75px',
 													}}
 													onMouseLeave={() => value.handleKey(null)}
 												>
@@ -310,7 +296,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																React
 															</Link>
 															<Link
-																to="/docs/reactivesearch/vue/overview/QuickStart/"
+																to="/docs/reactivesearch/vue/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
@@ -320,7 +306,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Vue
 															</Link>
 															<Link
-																to="/docs/reactivesearch/native/overview/QuickStart/"
+																to="/docs/reactivesearch/native/overview/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
@@ -334,7 +320,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Searchbox
 															</h3>
 															<Link
-																to="/docs/reactivesearch/searchbox/Quickstart/"
+																to="/docs/reactivesearch/searchbox/quickstart/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon

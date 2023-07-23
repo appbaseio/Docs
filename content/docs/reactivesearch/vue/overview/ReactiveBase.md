@@ -126,6 +126,15 @@ Read more about it over [here](/docs/reactivesearch/vue/advanced/analytics/#conf
 |  `Number` |   Yes   |
 
 allows you to define a wait time in milliseconds. We wait for `initialQueriesSyncTime` time to combine the individual component queries to a single network request at initial load. This prop is helpful to optimize the performance when you have a lot of filters on the search page, using a wait time of `100-200` milliseconds would merge the multiple requests into a single request.
+
+### httpRequestTimeout
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+allows you to define a timeout in milliseconds to timeout a fired HTTP request. If the request takes longer than the specified time, an error will be thrown. You can handle this error at the component level using the onError callback prop. Defaults to `30` seconds.
+
 ### as
 
 | Type | Optional |
@@ -153,7 +162,7 @@ Enables you to customize setting of the query params string in the url by provid
 |------|----------|
 |  `Object` |   Yes   |
 
-allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/vue/theming/Overview/)
+allows over-writing of default styles by providing the respective key/values. You can read more about its usage [here](/docs/reactivesearch/vue/theming/overview/)
 ### transformRequest
 
 | Type | Optional |
@@ -400,10 +409,10 @@ http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-L
 ## Next Steps
 Once you have added the **ReactiveBase** component, you can get started with adding other components as its children.
 
--   List specific components can be found [here](/docs/reactivesearch/vue/list/SingleList/).
--   Range specific components can be found [here](/docs/reactivesearch/vue/range/SingleRange/).
--   Search specific components can be found [here](/docs/reactivesearch/vue/search/SearchBox/).
+-   List specific components can be found [here](/docs/reactivesearch/vue/list/singlelist/).
+-   Range specific components can be found [here](/docs/reactivesearch/vue/range/singlerange/).
+-   Search specific components can be found [here](/docs/reactivesearch/vue/search/searchbox/).
 -   Result specific components can be found
-    [here](/docs/reactivesearch/vue/result/ResultList/).
+    [here](/docs/reactivesearch/vue/result/resultlist/).
 
-You can read more about when to use which components in the overview guide [here](/docs/reactivesearch/vue/overview/Components/).
+You can read more about when to use which components in the overview guide [here](/docs/reactivesearch/vue/overview/components/).

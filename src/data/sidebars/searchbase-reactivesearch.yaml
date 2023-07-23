@@ -2,7 +2,7 @@
       - group: Getting Started
         items:
             - title: QuickStart
-              link: /docs/reactivesearch/searchbase/overview/QuickStart/
+              link: /docs/reactivesearch/searchbase/overview/quickstart/
             - title: API Reference
               link: /docs/reactivesearch/searchbase/overview/apireference/
             - title: SearchBase

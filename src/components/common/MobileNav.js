@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDropdown from 'react-dropdown';
 import { globalHistory } from '@reach/router';
-import Search from './search/HomeSearch';
 import Icon from './Icon';
 
 import MobileLinks from './MobileLinks';
@@ -95,7 +94,7 @@ const getFileName = value => {
 		case 'UI Builder':
 			return 'ui-builder-reactivesearch';
 		case 'Algolia Autocomplete':
-			'autocomplete-plugin';
+			return 'autocomplete-plugin';
 		default:
 			return 'web-reactivesearch';
 	}
@@ -156,33 +155,31 @@ class MobileNav extends React.Component {
 		});
 	};
 
-	handleClick = (val) => {
+	handleClick = val => {
 		const { setThemeType } = this.props;
 		setThemeType(val);
 		this.setState({
 			theme: val,
 		});
-	}
+	};
 
 	render() {
 		const { open, rs, theme } = this.state;
-		
+
 		return (
 			<div className="mobile-nav">
 				<div onClick={this.handleSidebar}>
 					<Icon name="hamburger" className="hamburger" />
 				</div>
-				<div 
+				<div
 					className={`mobile-sidebar pa5 pb10 ${open ? 'open' : ''}`}
-					style={{background: theme === 'dark' ? '#082429' : 'white'}}
+					style={{ background: theme === 'dark' ? '#082429' : 'white' }}
 				>
 					<div className="mobile-nav-container">
 						{/* <div className="relative home-search-container mb5">
 							<Search />
 						</div> */}
-						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">
-							Guides
-						</h2>
+						<h2 className="f4 mb2 lh-h5 lh-h4-l fw6 ma0 pa0  mt0 mt2-ns">Guides</h2>
 						<p className="f5 lh-h5 lh-h4-l fw4 ma0 pa0 mt0 mt2-ns mb2">
 							Step wise guide from making your search app to securing it.
 						</p>
@@ -226,7 +223,7 @@ class MobileNav extends React.Component {
 								'Flutter Searchbox UI',
 								'Algolia Autocomplete',
 								'React - v3',
-								'Vue - v1'
+								'Vue - v1',
 							]}
 							value={rs}
 							className="version-switcher shadow-3 br2"
@@ -243,7 +240,7 @@ class MobileNav extends React.Component {
 							<div className="mobile-links-container">
 								<MobileLinks file={getFileName(rs)} />
 							</div>
-						</div>						
+						</div>
 						<div className="sticky-cta pa3 pl5 pr5">
 							<a
 								target="_blank"
@@ -253,7 +250,9 @@ class MobileNav extends React.Component {
 							>
 								Reactivesearch.io
 							</a>
-							{typeof window !== 'undefined' && window.innerWidth <= 768 ? <ThemeSwitch onClick={val => this.handleClick(val)}/> : null}						
+							{typeof window !== 'undefined' && window.innerWidth <= 768 ? (
+								<ThemeSwitch onClick={val => this.handleClick(val)} />
+							) : null}
 							<a
 								target="_blank"
 								rel="noopener noreferrer"

@@ -39,7 +39,7 @@ Elasticsearch `_msearch` request
 
 ![alt network req v4](https://i.imgur.com/dSNqvlR.png)
 ### Removal of `DataSearch` & `CategorySearch` components
-In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearch` (to display category suggestions). In 4.x we have only one component named [SearchBox](/docs/reactivesearch/react/v3/search/searchbox/) to implement auto-suggestions UI.
+In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearch` (to display category suggestions). In 4.x we have only one component named [SearchBox](/docs/reactivesearch/react/search/searchbox/) to implement auto-suggestions UI.
 
 **v3.x:**
 

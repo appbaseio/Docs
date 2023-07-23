@@ -98,7 +98,7 @@ app.mount('#app');
 
 ### Step 3: Adding the first component
 
-Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/vue/overview/ReactiveBase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
+Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch/vue/overview/reactivebase/), it is a backend connector where we can configure the Elasticsearch index / authorization setup.
 
 We will be using `kebab-case` here. You can read more about component naming convention [here](https://vuejs.org/v2/guide/components-registration.html#Name-Casing).
 
@@ -133,7 +133,7 @@ This is how the app should look after running the `yarn run serve` command.
 
 ### Step 4: Adding Search and Aggregation components
 
-For this app, we will be using [search-box](/docs/reactivesearch/vue/search/SearchBox/), [multi-list](/docs/reactivesearch/vue/list/MultiList/) and [single-range](/docs/reactivesearch/vue/range/SingleRange/) components for searching and filtering on the index. And [reactive-list](/docs/reactivesearch/vue/result/ReactiveList/) component for showing the search results.
+For this app, we will be using [search-box](/docs/reactivesearch/vue/search/searchbox/), [multi-list](/docs/reactivesearch/vue/list/multilist/) and [single-range](/docs/reactivesearch/vue/range/singlerange/) components for searching and filtering on the index. And [reactive-list](/docs/reactivesearch/vue/result/reactivelist/) component for showing the search results.
 
 Lets add them within the ReactiveBase component. But before we do that, we will look at the important props for each.
 
@@ -163,7 +163,7 @@ Lets add them within the ReactiveBase component. But before we do that, we will 
 	]"
 />
 ```
-The [search-box](/docs/reactivesearch/vue/search/SearchBox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
+The [search-box](/docs/reactivesearch/vue/search/searchbox/) component creates a searchbox UI component that queries on the specified fields with weights as specified by `dataField` prop. That's all it takes to create a functional search component.
 
 At this point, you should see the following:
 
@@ -171,7 +171,7 @@ At this point, you should see the following:
 
 #### MultiList
 
-Next, we will add the [multi-list](/docs/reactivesearch/vue/list/MultiList/) component. As the name suggests, it creates a multiple selection aggregation (aka facet) to filter our search results by.
+Next, we will add the [multi-list](/docs/reactivesearch/vue/list/multilist/) component. As the name suggests, it creates a multiple selection aggregation (aka facet) to filter our search results by.
 
 ```html
 <multi-list
@@ -190,7 +190,7 @@ The `aggregationSize` prop is used to specify the total aggregations (think buck
 
 #### SingleRange
 
-Next, we will add the [single-range](/docs/reactivesearch/vue/range/SingleRange/) component for creating a ratings based filter for our book search.
+Next, we will add the [single-range](/docs/reactivesearch/vue/range/singlerange/) component for creating a ratings based filter for our book search.
 
 ```html
 <single-range
@@ -214,7 +214,7 @@ At this point, this is how our app should be looking:
 
 ### Step 5: Adding Results Component
 
-Finally, we need a component to show the matching results. [**reactive-list**](/docs/reactivesearch/vue/result/ReactiveList/) does exactly this.
+Finally, we need a component to show the matching results. [**reactive-list**](/docs/reactivesearch/vue/result/reactivelist/) does exactly this.
 
 ```html
  <reactive-list

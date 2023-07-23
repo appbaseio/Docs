@@ -2,53 +2,53 @@
       - group: Getting Started
         items:
             - title: QuickStart
-              link: /docs/reactivesearch/vue/v1/overview/QuickStart/
+              link: /docs/reactivesearch/vue/v1/overview/quickstart/
             - title: ReactiveMaps QuickStart
               link: /docs/reactivesearch/vue/v1/overview/reactivemaps/
             - title: Importing Data
-              link: /docs/reactivesearch/vue/v1/overview/Importing/
+              link: /docs/reactivesearch/vue/v1/overview/importing/
             - title: ReactiveBase
-              link: /docs/reactivesearch/vue/v1/overview/ReactiveBase/
+              link: /docs/reactivesearch/vue/v1/overview/reactivebase/
             - title: Components Overview
-              link: /docs/reactivesearch/vue/v1/overview/Components/
+              link: /docs/reactivesearch/vue/v1/overview/components/
       - group: List Components
         items:
             - title: SingleList
-              link: /docs/reactivesearch/vue/v1/list/SingleList/
+              link: /docs/reactivesearch/vue/v1/list/singlelist/
             - title: MultiList
-              link: /docs/reactivesearch/vue/v1/list/MultiList/
+              link: /docs/reactivesearch/vue/v1/list/multilist/
             - title: SingleDropdownList
-              link: /docs/reactivesearch/vue/v1/list/SingleDropdownList/
+              link: /docs/reactivesearch/vue/v1/list/singledropdownlist/
             - title: MultiDropdownList
-              link: /docs/reactivesearch/vue/v1/list/MultiDropdownList/
+              link: /docs/reactivesearch/vue/v1/list/multidropdownlist/
             - title: ToggleButton
-              link: /docs/reactivesearch/vue/v1/list/ToggleButton/
+              link: /docs/reactivesearch/vue/v1/list/togglebutton/
       - group: Range Components
         items:
             - title: SingleRange
-              link: /docs/reactivesearch/vue/v1/range/SingleRange/
+              link: /docs/reactivesearch/vue/v1/range/singlerange/
             - title: MultiRange
-              link: /docs/reactivesearch/vue/v1/range/MultiRange/
+              link: /docs/reactivesearch/vue/v1/range/multirange/
             - title: RangeSlider
-              link: /docs/reactivesearch/vue/v1/range/RangeSlider/
+              link: /docs/reactivesearch/vue/v1/range/rangeslider/
             - title: DynamicRangeSlider
-              link: /docs/reactivesearch/vue/v1/range/DynamicRangeSlider/
+              link: /docs/reactivesearch/vue/v1/range/dynamicrangeslider/
             - title: RangeInput
-              link: /docs/reactivesearch/vue/v1/range/RangeInput/
+              link: /docs/reactivesearch/vue/v1/range/rangeinput/
       - group: Search Components
         items:
             - title: DataSearch
-              link: /docs/reactivesearch/vue/v1/search/DataSearch/
+              link: /docs/reactivesearch/vue/v1/search/datasearch/
             - title: SearchBox
-              link: /docs/reactivesearch/vue/v1/search/SearchBox/              
+              link: /docs/reactivesearch/vue/v1/search/searchbox/              
       - group: Result Components
         items:
             - title: ReactiveList
-              link: /docs/reactivesearch/vue/v1/result/ReactiveList/
+              link: /docs/reactivesearch/vue/v1/result/reactivelist/
             - title: ResultList
-              link: /docs/reactivesearch/vue/v1/result/ResultList/
+              link: /docs/reactivesearch/vue/v1/result/resultlist/
             - title: ResultCard
-              link: /docs/reactivesearch/vue/v1/result/ResultCard/
+              link: /docs/reactivesearch/vue/v1/result/resultcard/
       - group: Map Components
         items:
             - title: ReactiveGoogleMap
@@ -56,30 +56,30 @@
       - group: Theming
         items:
             - title: Themes
-              link: /docs/reactivesearch/vue/v1/theming/Overview/
+              link: /docs/reactivesearch/vue/v1/theming/overview/
             - title: Customizing Style
-              link: /docs/reactivesearch/vue/v1/theming/Style/
+              link: /docs/reactivesearch/vue/v1/theming/style/
             - title: Classname Injection
-              link: /docs/reactivesearch/vue/v1/theming/ClassnameInjection/
+              link: /docs/reactivesearch/vue/v1/theming/classnameinjection/
       - group: Advanced
         items:
             - title: SelectedFilters
-              link: /docs/reactivesearch/vue/v1/advanced/SelectedFilters/
+              link: /docs/reactivesearch/vue/v1/advanced/selectedfilters/
             - title: StateProvider
-              link: /docs/reactivesearch/vue/v1/advanced/StateProvider/
+              link: /docs/reactivesearch/vue/v1/advanced/stateprovider/
             - title: Custom Queries
-              link: /docs/reactivesearch/vue/v1/advanced/CustomQueries/
+              link: /docs/reactivesearch/vue/v1/advanced/customqueries/
             - title: Grouping Results
               link: /docs/reactivesearch/vue/v1/advanced/groupingresults/
             - title: React Prop
-              link: /docs/reactivesearch/vue/v1/advanced/ReactProp/
+              link: /docs/reactivesearch/vue/v1/advanced/reactprop/
             - title: Reactive Component
-              link: /docs/reactivesearch/vue/v1/advanced/ReactiveComponent/
+              link: /docs/reactivesearch/vue/v1/advanced/reactivecomponent/
             - title: Server Side Rendering
-              link: /docs/reactivesearch/vue/v1/advanced/SSR/
+              link: /docs/reactivesearch/vue/v1/advanced/ssr/
             - title: Advanced Guides
-              link: /docs/reactivesearch/vue/v1/advanced/Guides/
+              link: /docs/reactivesearch/vue/v1/advanced/guides/
             - title: Search and Click Analytics
               link: /docs/reactivesearch/vue/v1/advanced/analytics/
             - title: Writing and Editing Data
-              link: /docs/reactivesearch/vue/v1/advanced/Data/
+              link: /docs/reactivesearch/vue/v1/advanced/data/

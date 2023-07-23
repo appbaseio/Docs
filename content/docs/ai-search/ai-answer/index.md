@@ -28,7 +28,7 @@ AI Answer leverages OpenAI and your top search hits to provide an answer from yo
 
 ## How it works
 
-![Querying with AI Answer enabled](/images/concepts/querying_ai.png "Querying with AI Answer Vizualized")
+![Querying with AI Answer enabled](/images/concepts/querying_ai.png "querying with ai answer vizualized")
 
 We are using ChatGPT's models in order to power AI Answer. This, along with the various features that ReactiveSearch provides makes AI a viable option to show to the user in order to increase user interaction and make it easier for them to reach the answer they are looking for.
 

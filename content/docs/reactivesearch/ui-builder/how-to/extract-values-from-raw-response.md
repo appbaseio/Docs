@@ -88,7 +88,7 @@ const Main = () => {
 }
 ```
 
-> Read more about `transformResponse` prop [here](https://docs.reactivesearch.io/docs/reactivesearch/react/v3/overview/reactivebase/#transformresponse)
+> Read more about `transformResponse` prop [here](https://docs.reactivesearch.io/docs/reactivesearch/react/overview/reactivebase/#transformresponse)
 
 
 #### Render the extracted data as a separate UI element

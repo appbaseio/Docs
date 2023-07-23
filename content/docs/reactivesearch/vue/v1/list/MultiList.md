@@ -13,7 +13,7 @@ nestedSidebar: 'vue-v1-reactivesearch'
 
 ![Image to be displayed](https://i.imgur.com/2OFmUsk.png)
 
-`MultiList` creates a multiple selection based list UI component that is connected to a database field. It is similar to a [SingleList](/docs/reactivesearch/vue/v1/list/SingleList/) except it can support multiple item selections.
+`MultiList` creates a multiple selection based list UI component that is connected to a database field. It is similar to a [SingleList](/docs/reactivesearch/vue/v1/list/singlelist/) except it can support multiple item selections.
 
 Example uses:
 
@@ -66,9 +66,24 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### endpoint
 
 | Type | Optional |
@@ -377,7 +392,7 @@ enable creating a URL query string parameter based on the selected value of the 
 -   `label`
 -   `count`
 
-Read more about it [here](/docs/reactivesearch/vue/v1/theming/ClassnameInjection/).
+Read more about it [here](/docs/reactivesearch/vue/v1/theming/classnameinjection/).
 
 ## Extending
 

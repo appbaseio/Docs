@@ -126,9 +126,24 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### endpoint
 
 | Type | Optional |
@@ -439,6 +454,75 @@ set placeholder text to be shown in the component's input field. Defaults to "Se
 |  `Boolean` |   Yes   |
 
 set whether the autosuggest functionality should be enabled or disabled. Defaults to `true`. When set to `false`, it searches as user types, unless `debounce` is also set.
+
+
+### enableAI
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+enables the ability to ask questions with SearchBox and display AI generated answers from within SearchBox component itself. Defaults to `false`.
+
+### AIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configuring the LLM context + prompt for AI answer.
+
+Accepts the following properties:
+-   **systemPrompt** `String` [optional]
+    The system prompt to send as the first message to ChatGPT. Defaults to `You are a helpful assistant`.
+-   **docTemplate** `String` [optional]
+    Template to use for building the message sent to ChatGPT for every hit of the response. The `docTemplate` string supports dynamic values using the special syntax `${}`. These values are resolved while the ChatGPT request body is built. It supports keys that are present in the `_source` field in the response hits. As an example, `source.title` will resolve to `_source.title`. If values are not found, defaults to an empty string.
+-   **queryTemplate** `String` [optional]
+    Template to use for building the message that is sent to ChatGPT as the final question. Defaults to `Can you tell me about ${value}` where `value` is the `query.value`. The querytemplate string supports a dynamic value of `value` which is the query.value of the query.
+-   **topDocsForContext** `number` [optional]
+    Number of docs to use to build the context. Defaults to 3. This has an upper limit as the total number of hits returned.  
+-   **maxTokens** `number` [optional]
+    The maximum tokens that can be used for the output. Deafults to being dynamically calculated. Accepts a value between [1, 8000].
+-   **temperatue** `number` [optional]
+    A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
+
+### AIUIConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configruing AI screen.
+
+Accepts the following properties:
+-   **showFeedback** `Boolean` [optional]
+    Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+    > Use in conjunction with `reactivesearchAPIConfig.recordAnalytics` set to true in ReactiveBase.
+-   **loaderMessage** `String` [optional]
+    Loading message to show when the AI Answer response is loading. The default value is: `Computing an answer from the top documents...`. User `#AILoaderMessage` slot-scope for custom html markup.
+-   **showSourceDocuments** `Boolean` [optional]
+    Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
+-   **renderSourceDocument** `Function` [optional]
+    Render a custom label by returning string or JSx. Default label is rendered as the resolved value of `_id` when `showSourceDocument` is set to true.
+
+    ```jsx
+      <search-box
+      	className="result-list-container"
+      	componentId="BookSensor"
+      	:dataField="['original_title', 'original_title.search']"
+      	:enableAI="true"
+      	:AIUIConfig="{
+      		showSourceDocuments: true,
+      		renderSourceDocument: (obj) => '❤️ ' + obj.original_title,
+      	}"
+      />
+    ```
+
+-   **onSourceClick** `Function` [optional]
+    callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
+-   **askButton** `Boolean` [optional]
+    When set to `true`, the AI answer action and the corresponding display of AIAnswer would be triggered when user presses the Ask button. Defaults to `false`. You can provide styles with `ask-button` key for the `innerClass` prop.
+
 ### strictSelection
 
 | Type | Optional |
@@ -726,13 +810,26 @@ It accepts an object with these properties:
     Returns the events you should apply to any menu item elements you render.
   - **highlightedIndex** `number`
     The index that should be highlighted.
+- **`AIData`**: `Object`
+  A wrapper object to provide access to AI screen properties. Use in conjunction with `enableAI` set to true.
+  It contains the following keys:
+  - **`question`**: `String`
+          The current asked question.
+  - **`answer`**: `String`
+    Answer returned by the AI.   
+  - **`documentIds`**: `Array<String>`
+    The documents' ids used for curating the AI answer.
+  - **`loading`**: `Boolean`
+    Loading status for the AI response.
+  - **`sources`**: `Array<Object>`
+    The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+  - **`showAIScreen`**: `Boolean`
+    Boolean value to indicate when to show the AI screen.     
+  - **`isAILoading`**: `Boolean`
+    Loading status for the AI response.
+  - **`AIError`**: `Object`
+    Error returned while fetching the AI response.
 
-
-| Type | Optional |
-|------|----------|
-|  `object` |   Yes   |
-
-  method can be used to register click analytics for suggestions. It accepts two arguments, click position and document ID (required only if you're using `rawData` to render suggestions).
 
 You can use `SearchBox` with `render slot` as shown:
 
@@ -749,6 +846,16 @@ You can use `SearchBox` with `render slot` as shown:
 			loading,
 			downshiftProps: { isOpen, highlightedIndex, getItemProps, getItemEvents },
 			data: suggestions,
+            AIData: {
+                question,
+                answer,
+                documentIds,
+                loading,
+                sources,
+                showAIScreen,
+                isAILoading,
+                AIError
+            }
 		}"
   >
     <div class="suggestions">
@@ -1113,6 +1220,117 @@ It accepts an object with these properties:
 ```
 
 
+
+### renderAIAnswer
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+to custom render tags when mode is set to `tag`.
+Provides 
+It accepts an object with these properties:
+- **`question`**: `String`
+  The current asked question.
+- **`answer`**: `String`
+  Answer returned by the AI.   
+- **`documentIds`**: `Array<String>`
+  The documents' ids used for curating the AI answer.
+- **`loading`**: `Boolean`
+  Loading status for the AI response.
+- **`sources`**: `Array<Object>`
+  The list of document objects corresponding to the `documentIds`, used for curating the AI answer.
+
+
+```jsx
+  <search-box
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<template #renderAIAnswer="{ question, answer, documentIds, loading, sources}">
+			// render custom AI screen
+		</template>
+  </search-box>
+```
+
+### AILoaderMessage
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+to custom render the loader message for AI screen
+
+```jsx
+  <search-box
+      ...
+      :mode="tag"
+      :innerClass="{
+         'selected-tag': '...'
+      }"
+  >
+		<template #AILoaderMessage>
+			// render custom AI screen loader message
+      <div> loading AI ... ⏰</div>
+		</template>
+  </search-box>
+```
+
+### renderAskButton
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+The custom HTML markup displayed for enterButton. Use in conjunction with `askButton` prop under `AIUIConfig` prop set to `true`.
+
+```jsx
+<search-box
+      ...
+      :AIUIConfig="{
+        askButton: true
+      }"
+>
+    <template
+        #renderAskButton="onClick"
+    >
+      <div :style="{ height: '100%', display: 'flex', alignItems: 'stretch' }">
+         <button
+            :style="{ border: '1px solid #c3c3c3', cursor: 'pointer' }"
+            v-on:click="onClick"
+        >
+            Ask ❓
+        </button>
+      </div>
+    </template>
+</search-box>
+```
+
+### renderSourceDocument
+
+| Type | Optional |
+|------|----------|
+|  `slot-scope` |   Yes   |
+
+The custom HTML markup displayed for sourceDocumentLabel. Use in conjunction with `showSourceDocuments` prop under `AIUIConfig` prop set to `true`.
+
+```jsx
+<search-box
+      ...
+      :AIUIConfig="{
+        showSourceDocuments: true
+      }"
+>
+    <template #renderSourceDocument="obj">
+    	<span :title="obj._id">🙌🏻 {{ obj._id }}</span>
+    </template>
+</search-box>
+```
+
+
 ## Demo
 
 <br />
@@ -1224,7 +1442,8 @@ Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/
 |  `Function` |   Yes   |
 
   is a callback function that takes **value** and **props** as parameters and **returns** the data query to be applied to the source component, as defined in Elasticsearch Query DSL, which doesn't get leaked to other components. In simple words, `defaultQuery` prop allows you to modify the query to render the suggestions when `autoSuggest` is enabled.
-  Read more about it [here](/docs/reactivesearch/vue/advanced/CustomQueries/#when-to-use-default-query).
+
+  Read more about it [here](/docs/reactivesearch/vue/advanced/customqueries/#when-to-use-default-query).
 
 ### beforeValueChange
 
