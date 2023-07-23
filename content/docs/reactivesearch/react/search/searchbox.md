@@ -418,7 +418,7 @@ Specify additional options for fetching featured suggestions.
 
 It can accept the following keys:
 - sectionLabel: `string` Label of the division under which all FAQ suggestions are shown
-- size: `number` maximum number of faq suggestions fetched per section.
+- size: `number` maximum number of FAQ suggestions to be fetched per section
 
 <br/>
 
