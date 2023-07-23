@@ -385,7 +385,7 @@ It can accept the following keys:
 |------|----------|
 |  `bool` |   Yes   |
 
-Defaults to `false`. When set to `true`, shows frequent user queries which on click instantly shows the answer for the query. FAQs are set from the dashboard by creating a Searchbox. Hence they require a `searchboxId` to be passed.
+Defaults to `false`. When set to `true`, show frequently asked user questions as configured via the ReactiveSearch dashboard. When this property is set as `true`, `searchboxId` is required to be passed.
 
 ### enableFeaturedSuggestions
 
