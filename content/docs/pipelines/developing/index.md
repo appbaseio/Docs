@@ -106,3 +106,5 @@ At the end of the execution, whatever the value of `response.body` is inside the
 
 **Stage Changes** shows the context through each stage of the pipeline and shows what changes were made by each stage into the context. For eg: some stage inject extra values into the context so that other stages can pick those up and so on.
 
+<div style="position: relative; padding-bottom: calc(52.16480446927374% + 41px); height: 0; width: 100%"><iframe src="https://demo.arcade.software/lRDWOK6OkoIgPZg7Jdlg?embed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;" title="Developing and Debugging Pipelines"></iframe></div>
+
