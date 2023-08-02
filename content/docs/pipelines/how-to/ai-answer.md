@@ -16,6 +16,8 @@ ChatGPT has become very famous in the recent times and rightly so since it is ve
 
 In this how-to doc, a pipeline is built by utilizing the pre-built stage `AIAnswer` provided by ReactiveSearch to change the response and make them more relatable to the user.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/ai_answer/pipeline_oneclick.json)**
+
 ## Example Scenario: Answer queries from users like they are questions
 
 Let's say we have a requirement where we want to consider every search query entered by the user as a question and rather them showing them the old-school UI of multiple results, we will also show them the overall best answer for their query.

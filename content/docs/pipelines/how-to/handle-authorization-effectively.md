@@ -15,6 +15,8 @@ sidebar: 'docs'
 
 Authorization, as pointed out in other how-to guides, is one of the most important stages while defining a pipeline. ReactiveSearch Pipelines provide a pre-built stage to handle authorization.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/basic/pipeline_oneclick.json)**
+
 # Effective Authorization
 
 Handling just authorization to determine if the user is has access by checking the password or username is not enough. At times, it is important to check other details during authorization.

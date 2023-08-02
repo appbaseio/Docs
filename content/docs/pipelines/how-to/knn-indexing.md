@@ -20,6 +20,8 @@ This pipeline is required to index vector data without asking the user for the d
 
 The question is why is a vector even necessary? Well, a vector can help us build pipelines [like the kNN search one](./knn-response-stage) where the search requests use the vector data to find the results.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/vector_indexing/pipeline_oneclick.json)**
+
 ## Index Requirements
 
 This how-to guide uses OpenSearch for the demo. In order for the data to be stored in the index, the index should know that the `vector_data` field will be of type vector. Not just that, the dimensions of the vector field also needs to be specified.
