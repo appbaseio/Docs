@@ -16,6 +16,8 @@ Errors are prone to happen, no matter how much we try to get rid of them. This i
 
 In ReactiveSearch Pipelines, errors might be thrown by the system as well as user-defined stages can throw error and stop execution as well.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/error_handling/pipeline_oneclick.json)**
+
 ## continueOnError: what is it?
 
 For pre-built stages, ReactiveSearch provides a way to handle errors automatically. This is done by the `continueOnError` field.

@@ -22,6 +22,8 @@ We can easily do that through ReactiveSearch pipelines.
 
 We will create a pipeline that overrides the `/{index}/_reactivesearch` endpoint and add a stage to add kNN rearrangement of response data based on our inputs.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/knn_search/pipeline_oneclick.json)**
+
 ## Index Requirements
 
 There are some requirements that need to be satisfied in order to be able to use `kNN` with ElasticSearch or OpenSearch. These include keeping a field or fields in the index that will be of a certain type and contain vector data.
