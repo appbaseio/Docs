@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable eqeqeq */
 const fs = require('fs');
 const https = require('https');
 
@@ -18,7 +16,7 @@ const https = require('https');
  * - mdPrefix: path to markdown file for prefix to be added before the generated schema. (defaults to empty string)
  * - enabled: Whether or not the engine is enabled.
  */
-BUILD_CONFIG = [
+const BUILD_CONFIG = [
 	{
 		engine: 'all',
 		path: 'content/docs/search/reactivesearch-api/reference/index.md',
@@ -51,7 +49,7 @@ BUILD_CONFIG = [
 	},
 ];
 
-PIPELINE_BUILD_CONFIG = [
+const PIPELINE_BUILD_CONFIG = [
 	{
 		enabled: true,
 		path: 'content/docs/pipelines/API/reference.md',
@@ -167,7 +165,7 @@ function parsePropertiesFromLevel(
 	}
 
 	// Set the previous required props to empty if it's undefined
-	if (previousReqProps == undefined || previousReqProps == null) {
+	if (previousReqProps === undefined || previousReqProps == null) {
 		previousReqProps = [];
 	}
 
@@ -179,20 +177,20 @@ function parsePropertiesFromLevel(
 	// Moreover, another check is added to make sure that the engine field of the current
 	// property is present and not of length 0.
 	const shouldFilterOnEngine =
-		engine != 'all' && enginesSupported != undefined && enginesSupported.length != 0;
+		engine !== 'all' && enginesSupported !== undefined && enginesSupported.length !== 0;
 
-	if (properties == undefined && propertyContainer.items != undefined) {
+	if (properties === undefined && propertyContainer.items !== undefined) {
 		properties = propertyContainer.items.properties;
 		preservedOrder = propertyContainer.items.preservedOrder;
 		requiredProps = propertyContainer.items.required;
 	}
 
 	// If pipeline, then preservedOrder would not be present
-	if (isPipeline && properties != undefined) {
+	if (isPipeline && properties !== undefined) {
 		preservedOrder = Object.keys(properties);
 	}
 
-	if (requiredProps == undefined) {
+	if (requiredProps === undefined) {
 		requiredProps = [];
 	}
 
@@ -207,11 +205,11 @@ function parsePropertiesFromLevel(
 	// Add the title in the markdownStr
 	let propTitle = propertyContainer.title;
 
-	if (propTitle == undefined && key != undefined) {
+	if (propTitle === undefined && key !== undefined) {
 		propTitle = key;
 	}
 
-	if (propTitle != undefined) {
+	if (propTitle !== undefined) {
 		let isRequired = false;
 
 		// Handle `required` mark as well.
@@ -230,7 +228,7 @@ function parsePropertiesFromLevel(
 		if (!isPipeline) {
 			markdownStr += '**Supported Engines**\n';
 			markdownStr += `${
-				enginesSupported != undefined
+				enginesSupported !== undefined
 					? enginesSupported.join(', ')
 					: 'Not dependent on engine, works for all.'
 			}\n\n`;
@@ -239,7 +237,7 @@ function parsePropertiesFromLevel(
 		// Else, parse the property fields accordingly.
 		const propMarkdownDesc = propertyContainer.markdownDescription;
 
-		if (propMarkdownDesc != undefined) {
+		if (propMarkdownDesc !== undefined) {
 			markdownStr += `${propMarkdownDesc}\n\n`;
 		} else if (isPipeline) {
 			// Try to parse the description into markdown
@@ -251,7 +249,7 @@ function parsePropertiesFromLevel(
 
 		// If property has `enum`, add that in the list of supported values.
 		propertyEnum = propertyContainer.enum;
-		if (propertyEnum != undefined) {
+		if (propertyEnum !== undefined) {
 			markdownStr += '**Following values are supported for this field**\n\n';
 
 			supportedValues = '';
@@ -364,8 +362,8 @@ function parsePipelineReference() {
 							);
 						} else {
 							// Parse stage reference
-                            // Set the original string
-                            markdownStr += originalString;
+							// Set the original string
+							markdownStr += originalString;
 
 							const stagesToParse =
 								json.properties?.stages?.items?.properties?.use?.stages;
@@ -381,11 +379,11 @@ function parsePipelineReference() {
 
 								const { inputs } = value;
 
-                                markdownStr += '\n\n## Inputs\n\n';
+								markdownStr += '\n\n## Inputs\n\n';
 
 								if (!inputs) {
-									markdownStr += "No inputs are required\n\n";
-                                    continue
+									markdownStr += 'No inputs are required\n\n';
+									continue;
 								}
 
 								let requiredInputs = inputs.required;

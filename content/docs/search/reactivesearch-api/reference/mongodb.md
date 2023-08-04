@@ -33,6 +33,11 @@ This guide is specific to the keys supported for the **MongoDB Atlas Search** en
 }
 ```
 
+# null
+
+**Supported Engines**
+Not dependent on engine, works for all.
+
 ## query
 
 **This is a required field**

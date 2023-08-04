@@ -39,6 +39,11 @@ Additionally, it supports following parameters:
 ### preference
 Node or shard used to perform the search. Defaults to a combination of [query Id](/docs/search/reactivesearch-api/reference/elasticsearch#id) & user's IP address.
 
+# null
+
+**Supported Engines**
+Not dependent on engine, works for all.
+
 ## query
 
 **This is a required field**
