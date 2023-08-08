@@ -36,6 +36,7 @@ Example uses:
 ```js
 <NumberBox
     componentId="NumberBoxSensor"
+    compoundClause="filter"
     dataField="guests"
     data={{ label: 'Guests', start: 0, end: 5 }}
     title="NumberBox component"

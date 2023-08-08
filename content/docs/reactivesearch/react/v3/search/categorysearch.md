@@ -35,6 +35,7 @@ Example uses:
 ```js
 <CategorySearch
     componentId="SearchSensor"
+    compoundClause="filter"
     dataField={[
     	{
     		"field": "group_venue",

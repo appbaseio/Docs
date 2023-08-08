@@ -36,6 +36,7 @@ Example uses:
 ```jsx
     <SearchBox
         componentId="SearchBoxSensor"
+        compoundClause="filter"
         dataField={[
             {
                 "field": "group_venue",

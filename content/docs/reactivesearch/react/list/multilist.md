@@ -28,11 +28,12 @@ Example uses:
 <MultiList componentId="CitySensor" dataField="group_city.raw" title="Cities" />
 ```
 
-### Usage (With All Props)
+### Usage (with all props)
 
 ```js
 <MultiList
 	componentId="CitySensor"
+	compoundClause="filter"
 	dataField="group_city.raw"
 	title="Cities"
 	size={100}

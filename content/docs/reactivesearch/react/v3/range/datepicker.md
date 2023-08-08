@@ -31,6 +31,7 @@ Example uses:
 ```js
 <DatePicker
     componentId="DateSensor"
+    compoundClause="filter"
     dataField="mtime"
     title="DatePicker"
     defaultValue="2017-04-01"

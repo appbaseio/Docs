@@ -41,6 +41,7 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 ```js
 <RangeSlider
     componentId="RangeSliderSensor"
+    compoundClause="filter"
     dataField="guests"
     title="Guests"
     range={{

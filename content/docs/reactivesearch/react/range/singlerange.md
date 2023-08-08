@@ -45,6 +45,7 @@ Example uses:
 ```js
 <SingleRange
     componentId="PriceSensor"
+    compoundClause="filter"
     dataField="price"
     data={[
     	{ start: 0, end: 10, label: 'Cheap' },

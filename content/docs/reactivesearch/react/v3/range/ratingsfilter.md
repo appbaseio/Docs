@@ -39,6 +39,7 @@ Example uses:
 ```js
 <RatingsFilter
     componentId="CarCategorySensor"
+    compoundClause="filter"
     dataField="ratings"
     title="Ratings Filter"
     data={[

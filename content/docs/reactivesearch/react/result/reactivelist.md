@@ -37,6 +37,7 @@ Example uses:
 ```jsx
 <ReactiveList
     componentId="SearchResult"
+    compoundClause="filter"
     dataField="ratings"
     pagination={false}
     paginationAt="bottom"

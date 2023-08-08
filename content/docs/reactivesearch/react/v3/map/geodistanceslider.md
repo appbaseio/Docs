@@ -45,6 +45,7 @@ Example uses:
 >
     <GeoDistanceSlider
         componentId="GeoDistanceSensor"
+        compoundClause="filter"
         dataField="location"
         title="Geo Distance Slider"
         range={{

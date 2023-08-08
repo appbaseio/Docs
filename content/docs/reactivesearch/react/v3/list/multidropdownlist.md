@@ -32,11 +32,11 @@ Example uses:
 <MultiDropdownList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
-### Usage (with all props)
-
+### Usage with all props
 ```jsx
 <MultiDropdownList
     componentId="CitySensor"
+    compoundClause="filter"
     dataField="group.group_city.raw"
     title="Cities"
     size={100}

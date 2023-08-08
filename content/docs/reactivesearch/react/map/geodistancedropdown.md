@@ -46,6 +46,7 @@ Example uses:
 >
   <GeoDistanceDropdown
     componentId="locationUI"
+    compoundClause="filter"
     dataField="location"
     title="Location Dropdown Selector"
     data={

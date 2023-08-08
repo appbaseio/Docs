@@ -37,6 +37,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 ```js
 <DynamicRangeSlider
     componentId="DynamicRangeSensor"
+    compoundClause="filter"
     dataField="guests"
     title="Guests"
     defaultValue={(min, max) => ({

@@ -68,8 +68,9 @@ Example uses:
 ### Usage With All Props
 ```jsx
     <ReactiveChart
-        title="Custom Chart"
         componentId="custom_chart"
+        compoundClause="filter"
+        title="Custom Chart"
         useAsFilter={true}
         defaultQuery={() => ({
             aggs: {

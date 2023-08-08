@@ -48,6 +48,7 @@ Example uses:
     componentId="locationUI"
     dataField="location"
     title="Location Dropdown Selector"
+    compoundClause="filter"
     data={
       [
         { "distance": 20, "label": "< 20 miles" },

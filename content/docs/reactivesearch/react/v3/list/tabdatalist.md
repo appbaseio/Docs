@@ -73,6 +73,7 @@ When we want to show the no. of documents for each category(tab) then we can pas
 ```js
 <TabDataList
 	componentId="MeetupTops"
+	compoundClause="filter"
 	dataField="group.group_topics.topic_name_raw.raw"
 	title="Meetups"
 	data={[

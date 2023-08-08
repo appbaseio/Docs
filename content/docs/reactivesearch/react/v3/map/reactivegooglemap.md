@@ -30,6 +30,7 @@ Example uses:
 ```jsx
 <ReactiveGoogleMap
 	componentId="MapUI"
+	compoundClause="filter"
 	dataField="location"
 	title="Venue Location Map"
 	size={10}

@@ -31,6 +31,7 @@ Example uses:
 ```js
 <DateRange
     componentId="DateSensor"
+    compoundClause="filter"
     dataField="mtime"
     title="DateRange"
     defaultValue={{

@@ -55,6 +55,7 @@ Example uses:
 ```js
 <MultiDataList
 	componentId="MeetupTops"
+	compoundClause="filter"
 	dataField="group.group_topics.topic_name_raw.raw"
 	data={[
 		{

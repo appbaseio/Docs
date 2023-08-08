@@ -39,6 +39,7 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/react/char
 ```jsx
     <ReactiveChart
         componentId="Language"
+        compoundClause="filter"
         chartType="scatter"
         xAxisField="ratings_count"
         yAxisField="average_rating"

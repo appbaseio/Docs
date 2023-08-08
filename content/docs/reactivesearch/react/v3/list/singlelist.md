@@ -28,11 +28,11 @@ Example uses:
 <SingleList componentId="CitySensor" dataField="group.group_city.raw" title="Cities" />
 ```
 
-### Usage (with all props)
-
+### Usage with all props
 ```jsx
 <SingleList
 	componentId="CitySensor"
+	compoundClause="filter"
 	dataField="group.group_city.raw"
 	title="Cities"
 	size={100}

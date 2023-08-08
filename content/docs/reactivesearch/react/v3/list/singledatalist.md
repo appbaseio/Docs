@@ -50,11 +50,11 @@ Example uses:
 />
 ```
 
-### Usage (with all props)
-
+### Usage with all props
 ```jsx
 <SingleDataList
 	componentId="MeetupTops"
+	compoundClause="filter"
 	dataField="group.group_topics.topic_name_raw.raw"
 	title="Meetups"
 	data={[

@@ -41,6 +41,7 @@ Example uses:
 ```js
 <RangeInput
     componentId="RangeInputSensor"
+    compoundClause="filter"
     dataField="rating"
     title="Ratings"
     range={{
