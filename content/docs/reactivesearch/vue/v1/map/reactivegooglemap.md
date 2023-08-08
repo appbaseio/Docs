@@ -67,6 +67,7 @@ You can also check this [example](https://codesandbox.io/s/github/appbaseio/reac
 ```html
 <reactive-google-map
 	componentId="MapUI"
+	compoundClause="filter"
 	dataField="location"
 	:size="10"
 	:defaultZoom="13"

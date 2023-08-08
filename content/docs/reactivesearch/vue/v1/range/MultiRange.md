@@ -48,6 +48,7 @@ Example uses:
 <template>
 	<multi-range
 		componentId="PriceSensor"
+		compoundClause="filter"
 		dataField="price"
 		title="Prices"
 		defaultValue="Cheap"

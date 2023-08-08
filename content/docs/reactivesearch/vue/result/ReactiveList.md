@@ -38,6 +38,7 @@ Example uses:
 ```html
 <reactive-list
     componentId="SearchResult"
+    compoundClause="filter"
     dataField="ratings"
     paginationAt="bottom"
     loader="Loading Results.."

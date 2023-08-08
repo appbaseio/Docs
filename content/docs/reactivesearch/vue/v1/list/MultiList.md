@@ -34,6 +34,7 @@ Example uses:
 <template>
     <multi-list
         componentId="CitySensor"
+        compoundClause="filter"
         dataField="group_city.raw"
         title="Cities"
         sortBy="asc"

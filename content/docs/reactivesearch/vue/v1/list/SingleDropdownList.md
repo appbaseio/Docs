@@ -41,6 +41,7 @@ Example uses:
 ```html
 <single-dropdown-list
     componentId="CitySensor"
+    compoundClause="filter"
     dataField="group.group_city.raw"
     title="Cities"
     sortBy="count"

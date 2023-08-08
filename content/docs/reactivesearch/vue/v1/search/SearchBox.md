@@ -34,6 +34,7 @@ Example uses:
 ```html
 <search-box
   componentId="SearchSensor"
+  compoundClause="filter"
   :mode="tag"
   title="Search"
   defaultValue="Songwriting"

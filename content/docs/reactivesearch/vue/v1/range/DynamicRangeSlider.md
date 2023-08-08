@@ -41,6 +41,7 @@ While `DynamicRangeSlider` only requires the above props to be used, it comes wi
 	<dynamic-range-slider
 		dataField="books_count"
 		componentId="BookSensor"
+		compoundClause="filter"
 		title="DynamicRangeSlider: Ratings"
 		:defaultValue="function(min, max){
 		  return {
