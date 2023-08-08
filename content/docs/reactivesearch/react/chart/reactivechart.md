@@ -137,8 +137,6 @@ This property only has an effect when the search engine is either elasticsearch 
 > Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
 
 
-<br />
-
 ### defaultQuery
 
 | Type | Optional |

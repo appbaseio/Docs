@@ -74,7 +74,19 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/react/char
 |  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
-<br />
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
 
 ### dataField
 
