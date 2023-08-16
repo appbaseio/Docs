@@ -366,6 +366,19 @@ FAQ (aka frequently asked questions) suggestions that show up as show frequently
 
 [Doc ref](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#enablefaqsuggestions)
 
+**Basic Usage**
+
+```jsx
+    <SearchBox
+        enableFAQSuggestions={true}
+        searchboxId="rs_docs" // required
+        FAQSuggestionsConfig={{
+          size: 2,
+          sectionLabel: '❓ FAQ Suggestions'
+        }}
+    />
+```
+
 <iframe src="https://reactivesearch-react.vercel.app/iframe.html?args=&id=search-components-searchbox--with-enablefaqsuggestions&viewMode=story"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="searchbox-faq-suggestions"     
