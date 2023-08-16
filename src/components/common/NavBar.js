@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
+import { ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import ThemeSwitch from './themeSwitch';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
-import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
@@ -46,7 +46,13 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, [mockWindow]);
 
 	return (
-		<div>
+		<ReactiveBase
+			app="unified-reactivesearch-web-data"
+			url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+			// transformRequest={transformRequest}
+			// transformResponse={transformResponse}
+			enableAppbase
+		>
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
@@ -495,7 +501,36 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						</div>
 					</div>
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
-						<Search isMobile={isMobile} />
+						<SearchBox
+							dataField={[
+								{
+									field: 'title',
+									weight: 3,
+								},
+								{
+									field: 'tokens.keyword',
+									weight: 6,
+								},
+								{
+									field: 'heading',
+									weight: 6,
+								},
+							]}
+							componentId="SEARCH_COMPONENT_ID"
+							highlight
+							URLParams
+							size={30}
+							showClear
+							enableRecentSuggestions
+							recentSuggestionsConfig={{
+								index: 'unified-reactivesearch-web-data',
+								sectionLabel: 'Recent',
+								minChars: 5,
+								size: 3,
+							}}
+							placeholder="Explore Reactivesearch..."
+							showVoiceSearch
+						/>
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
 						<ThemeSwitch setThemeType={setThemeType} />
@@ -503,7 +538,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 					<MobileNav setThemeType={setThemeType} />
 				</div>
 			</nav>
-		</div>
+		</ReactiveBase>
 	);
 };
 
