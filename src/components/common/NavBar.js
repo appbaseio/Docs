@@ -9,6 +9,11 @@ import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import MobileNav from './MobileNav';
+import { SEARCH_COMPONENT_ID } from './constants';
+
+import * as styles from './NavBar.module.css';
+import { Suggestion } from './search/Suggestion';
+import { DocumentSuggestion } from './search/DocumentSuggestions';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
@@ -51,7 +56,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 			url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
 			// transformRequest={transformRequest}
 			// transformResponse={transformResponse}
-			enableAppbase
 		>
 			<nav className="shadow-3 on-white">
 				<div
@@ -267,7 +271,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																with reactivesearch.io
 															</p>
 															<Link
-																style={{ textDecoration: 'none' }}
+																style={{
+																	textDecoration: 'none',
+																}}
 																to="/integrations"
 															>
 																<Button
@@ -516,7 +522,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 									weight: 6,
 								},
 							]}
-							componentId="SEARCH_COMPONENT_ID"
+							componentId={SEARCH_COMPONENT_ID}
+							className={styles.searchBox}
 							highlight
 							URLParams
 							size={30}
@@ -530,6 +537,15 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 							}}
 							placeholder="Explore Reactivesearch..."
 							showVoiceSearch
+							renderItem={suggestion => {
+								const suggestionType = suggestion._suggestion_type;
+
+								return suggestionType === 'index' ? (
+									<DocumentSuggestion source={suggestion._source} />
+								) : (
+									<Suggestion suggestion={suggestion} />
+								);
+							}}
 						/>
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
