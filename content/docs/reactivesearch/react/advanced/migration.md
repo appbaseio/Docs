@@ -218,7 +218,7 @@ import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
 
 #### ReactiveCharts
        
-![Image to be displayed](https://i.imgur.com/4TxrKmi.png align="center")
+![Image to be displayed](https://i.imgur.com/4TxrKmi.png)
         
 * ReactiveSearch now has chart components(powered by [E-charts](https://echarts.apache.org/)) to build reporting UIs with advanced search capabilities, or to integrate a reporting view into your search UI.
             
