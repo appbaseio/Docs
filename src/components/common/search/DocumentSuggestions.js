@@ -6,6 +6,7 @@ import { URLIcon } from './URLIcon';
 import { getBreadcrumbText } from './getBreadcrumbText';
 
 import * as styles from './DocumentSuggestions.module.css';
+import { CREDENTIAL_FOR_DOCS } from '../constants';
 
 function resolveAbsoluteURL(source) {
 	if (source.source === 'docs') {
@@ -33,15 +34,35 @@ function sanitizeHTMLAndCombineStrings(inputStrings) {
 }
 
 // eslint-disable-next-line
-export const DocumentSuggestion = ({ source }) => {
+export const DocumentSuggestion = ({ source, docId }) => {
 	const breadcrumbText = getBreadcrumbText(source.url);
 	const isMobileWidth = window.innerWidth < 500;
 	return (
+		// eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 		<a
-			href={resolveAbsoluteURL(source) || '#'}
-			rel="noreferrer"
 			className={`search__suggestion ${styles.suggestion}`}
-			target="_self"
+			onClick={async e => {
+				e.stopPropagation();
+				try {
+					await fetch(
+						'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/unified-reactivesearch-web-data/_analytics/document',
+						{
+							method: 'PUT',
+							headers: {
+								'Content-Type': 'application/json',
+								Authorization: `Basic ${btoa(CREDENTIAL_FOR_DOCS)}`,
+							},
+							body: JSON.stringify({
+								document_id: docId,
+								user_id: 'test',
+							}),
+						},
+					);
+				} catch (err) {
+					console.error(`Not able to save recent document suggestion\n${err}`);
+				}
+				window.open(resolveAbsoluteURL(source) || '#', '_self');
+			}}
 		>
 			<div className="row">
 				<div className="flex items-center">

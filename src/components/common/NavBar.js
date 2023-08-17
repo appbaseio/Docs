@@ -9,7 +9,7 @@ import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
 import MobileNav from './MobileNav';
-import { SEARCH_COMPONENT_ID } from './constants';
+import { CREDENTIAL_FOR_DOCS, SEARCH_COMPONENT_ID } from './constants';
 
 import * as styles from './NavBar.module.css';
 import { Suggestion } from './search/Suggestion';
@@ -55,7 +55,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	return (
 		<ReactiveBase
 			app="unified-reactivesearch-web-data"
-			url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+			url={`https://${CREDENTIAL_FOR_DOCS}@appbase-demo-ansible-abxiydt-arc.searchbase.io`}
 			transformRequest={transformRequest}
 			transformResponse={transformResponse}
 			reactivesearchAPIConfig={{
@@ -536,11 +536,19 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 							showClear
 							placeholder="Explore Reactivesearch..."
 							showVoiceSearch
+							enableDocumentSuggestions
+							documentSuggestionsConfig={{
+								sectionLabel: '🕦 Recently Viewed',
+							}}
 							renderItem={suggestion => {
 								const suggestionType = suggestion._suggestion_type;
 
-								return suggestionType === 'index' ? (
-									<DocumentSuggestion source={suggestion._source} />
+								return suggestionType === 'index' ||
+									suggestionType === 'document' ? (
+									<DocumentSuggestion
+										docId={suggestion._id}
+										source={suggestion._source}
+									/>
 								) : (
 									<Suggestion suggestion={suggestion} />
 								);
