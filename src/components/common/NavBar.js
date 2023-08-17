@@ -14,6 +14,8 @@ import { SEARCH_COMPONENT_ID } from './constants';
 import * as styles from './NavBar.module.css';
 import { Suggestion } from './search/Suggestion';
 import { DocumentSuggestion } from './search/DocumentSuggestions';
+import { transformRequest } from './transformRequest';
+import { transformResponse } from './transformResponse';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
@@ -54,8 +56,12 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 		<ReactiveBase
 			app="unified-reactivesearch-web-data"
 			url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
-			// transformRequest={transformRequest}
-			// transformResponse={transformResponse}
+			transformRequest={transformRequest}
+			transformResponse={transformResponse}
+			reactivesearchAPIConfig={{
+				recordAnalytics: true,
+				userId: 'test',
+			}}
 		>
 			<nav className="shadow-3 on-white">
 				<div
@@ -526,15 +532,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 							className={styles.searchBox}
 							highlight
 							URLParams
-							size={30}
+							size={10}
 							showClear
-							enableRecentSuggestions
-							recentSuggestionsConfig={{
-								index: 'unified-reactivesearch-web-data',
-								sectionLabel: 'Recent',
-								minChars: 5,
-								size: 3,
-							}}
 							placeholder="Explore Reactivesearch..."
 							showVoiceSearch
 							renderItem={suggestion => {

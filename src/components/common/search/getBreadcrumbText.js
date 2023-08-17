@@ -20,33 +20,32 @@ export function getBreadcrumbText(url) {
 	let breadcrumbText = '';
 	try {
 		if (url.match('/docs/')) {
-			breadcrumbText = 'Docs';
 			if (url.match('/docs/reactivesearch/')) {
 				if (url.match('/react/v3')) {
-					breadcrumbText += ': React V3';
+					breadcrumbText += 'React V3';
 					breadcrumbText += matchComponents(url);
 				} else if (url.match('/reactivesearch/vue/v1')) {
-					breadcrumbText += ': Vue V1';
+					breadcrumbText += 'Vue V1';
 					breadcrumbText += matchComponents(url);
 				} else if (url.match('/react/')) {
-					breadcrumbText += ': React';
+					breadcrumbText += 'React';
 					breadcrumbText += matchComponents(url);
 				} else if (url.match('/vue/')) {
-					breadcrumbText += ': Vue';
+					breadcrumbText += 'Vue';
 					breadcrumbText += matchComponents(url);
 				}
 			} else if (url.match('/docs/speed')) {
-				breadcrumbText += ': Speed';
+				breadcrumbText += 'Speed';
 			} else if (url.match('/docs/hosting')) {
-				breadcrumbText += ': Hosting';
+				breadcrumbText += 'Hosting';
 			} else if (url.match('/docs/security')) {
-				breadcrumbText += ': Security';
+				breadcrumbText += 'Security';
 			} else if (url.match('/docs/search/')) {
-				breadcrumbText += ': Search';
+				breadcrumbText += 'Search';
 			} else if (url.match('/docs/analytics/')) {
-				breadcrumbText += ': Analytics';
+				breadcrumbText += 'Analytics';
 			} else if (url.match('/docs/pipelines/')) {
-				breadcrumbText += ': Pipelines';
+				breadcrumbText += 'Pipelines';
 			}
 		} else if (url.match('https://www.reactivesearch.io/')) {
 			breadcrumbText = 'Website';
