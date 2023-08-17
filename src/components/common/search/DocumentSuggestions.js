@@ -1,5 +1,6 @@
 import React from 'react';
 import { object } from 'prop-types';
+import { navigate } from 'gatsby';
 
 import './DocumentSuggestions.css';
 import { URLIcon } from './URLIcon';
@@ -41,27 +42,10 @@ export const DocumentSuggestion = ({ source, docId }) => {
 		// eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 		<a
 			className={`search__suggestion ${styles.suggestion}`}
-			onClick={async e => {
+			onClick={e => {
+				// to stop the search from populating value
 				e.stopPropagation();
-				try {
-					await fetch(
-						'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/unified-reactivesearch-web-data/_analytics/document',
-						{
-							method: 'PUT',
-							headers: {
-								'Content-Type': 'application/json',
-								Authorization: `Basic ${btoa(CREDENTIAL_FOR_DOCS)}`,
-							},
-							body: JSON.stringify({
-								document_id: docId,
-								user_id: 'test',
-							}),
-						},
-					);
-				} catch (err) {
-					console.error(`Not able to save recent document suggestion\n${err}`);
-				}
-				window.open(resolveAbsoluteURL(source) || '#', '_self');
+				navigate(`${source.url}` || '#', { state: { docId } });
 			}}
 		>
 			<div className="row">
