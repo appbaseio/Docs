@@ -33,6 +33,7 @@ Example uses:
 ```js
 <TagCloud
 	componentId="CitiesSensor"
+	compoundClause="filter"
 	dataField="cities"
 	title="City Cloud"
 	size={32}

@@ -37,6 +37,7 @@ The following guide explains the [ReactiveChart](/docs/reactivesearch/react/v3/c
 ```jsx
     <ReactiveChart
         componentId="Language"
+        compoundClause="filter"
         dataField="language_code.keyword"
         chartType="bar"
         title="Languages"

@@ -34,6 +34,7 @@ Example uses:
 <template>
     <single-list
         componentId="CitySensor"
+        compoundClause="filter"
         dataField="group.group_city.raw"
         title="Cities"
         sortBy="count"

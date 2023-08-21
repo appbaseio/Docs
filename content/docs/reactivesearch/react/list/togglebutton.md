@@ -42,6 +42,7 @@ Example uses:
 ```js
 <ToggleButton
 	componentId="MeetupTops"
+	compoundClause="filter"
 	dataField="group_topics.topic_name.raw"
 	data={[
 		{ label: 'Social', value: 'Social' },

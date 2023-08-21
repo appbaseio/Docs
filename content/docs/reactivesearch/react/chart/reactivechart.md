@@ -68,8 +68,9 @@ Example uses:
 ### Usage With All Props
 ```jsx
     <ReactiveChart
-        title="Custom Chart"
         componentId="custom_chart"
+        compoundClause="filter"
+        title="Custom Chart"
         useAsFilter={true}
         defaultQuery={() => ({
             aggs: {
@@ -136,8 +137,6 @@ This property only has an effect when the search engine is either elasticsearch 
 
 > Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
 
-
-<br />
 
 ### defaultQuery
 

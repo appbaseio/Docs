@@ -46,6 +46,7 @@ While `RangeSlider` only requires the above props to be used, it comes with many
 	<range-slider
 		dataField="ratings_count"
 		componentId="BookSensor"
+		compoundClause="filter"
 		title="RangeSlider: Ratings"
 		:range="{
 		  start: 3000,

@@ -37,6 +37,7 @@ Example uses:
 ```js
 <SingleDropdownList
 	componentId="CitySensor"
+	compoundClause="filter"
 	dataField="group.group_city.raw"
 	title="Cities"
 	size={100}

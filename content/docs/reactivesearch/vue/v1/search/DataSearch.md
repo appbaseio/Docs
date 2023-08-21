@@ -33,6 +33,7 @@ Example uses:
 ```html
 <data-search
   componentId="SearchSensor"
+  compoundClause="filter"
   title="Search"
   defaultValue="Songwriting"
   placeholder="Search for cities or venues"

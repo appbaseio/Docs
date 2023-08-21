@@ -45,6 +45,7 @@ Example uses:
 <template>
 	<range-input
 		componentId="RatingsSensor"
+		compoundClause="filter"
 		dataField="ratings_count"
 		:range="{
 			start: 3000,

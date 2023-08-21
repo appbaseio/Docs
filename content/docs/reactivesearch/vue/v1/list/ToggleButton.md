@@ -42,6 +42,7 @@ Example uses:
 ```html
 <toggle-button
     componentId="MeetupTops"
+    compoundClause="filter"
     dataField="group_topics.topic_name.raw"
     title="Meetups"
     filterLabel="City"
