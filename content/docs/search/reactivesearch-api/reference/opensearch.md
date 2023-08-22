@@ -241,7 +241,7 @@ For example, the below query has two data fields defined and each field has a di
 | ------------ | --------------------------- | -------- |
 | `Array<int>` | `search`,`suggestion`       | false    |
 
-> Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of appbase.io. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
+> Note: The `fieldWeights` property has been marked as deprecated in <b>v7.47.0</b> and would be removed in the next major version of reactivesearch.io. We recommend you to use the [dataField](/docs/search/reactivesearch-api/reference/#datafield) property to define the weights.
 
 ### nestedField
 
@@ -572,7 +572,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 | <p style="margin: 0px;" class="table-header-text">Type</p>           | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------------- | --------------------------- | -------- |
-| `int | string` | `search`, `suggestion`      | false    |
+| `int, string` | `search`, `suggestion`      | false    |
 
 > Note:
 >
@@ -1614,6 +1614,21 @@ The fields supported by the AIConfig object are:
 - **minTokens**: Minimum number of tokens to generate in the response. Whenever possible, max tokens is respected, however when the input context + max tokens combined exceed the model limit, the min tokens value is used to calibrate for an optimum output token. Defaults to 100. 
 - **temperature**: A control for randomness, a lower value implies a more deterministic output. Defaults to 1, valid values are between [0, 2].
 
+### Compound Clause
+
+**Supported Engines**
+opensearch, elasticsearch
+
+### enableDocumentSuggestions
+
+**Supported Engines**
+elasticsearch, opensearch
+
+### documentSuggestionsConfig
+
+**Supported Engines**
+elasticsearch, opensearch
+
 ## settings
 
 **Supported Engines**
@@ -1624,21 +1639,21 @@ Not dependent on engine, works for all.
 **Supported Engines**
 elasticsearch, solr, opensearch
 
-`bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
+`bool` defaults to `false`. If `true` then it'll enable the recording of ReactiveSearch.io analytics.
 
 ### userId
 
 **Supported Engines**
 elasticsearch, opensearch
 
-`String` It allows you to define the user id which will be used to record the Appbase.io analytics.
+`String` It allows you to define the user id which will be used to record the ReactiveSearch.io analytics.
 
 ### customEvents
 
 **Supported Engines**
 elasticsearch, opensearch
 
-`Object` It allows you to set the custom events which can be used to build your own analytics on top of the Appbase.io analytics. Further, these events can be used to filter the analytics stats from the Appbase.io dashboard. In the below example, we\'re setting up two custom events that will be recorded with each search request.
+`Object` It allows you to set the custom events which can be used to build your own analytics on top of the ReactiveSearch.io analytics. Further, these events can be used to filter the analytics stats from the ReactiveSearch.io dashboard. In the below example, we\'re setting up two custom events that will be recorded with each search request.
 
 ```js
 {

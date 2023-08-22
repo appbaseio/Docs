@@ -56,7 +56,6 @@ const plugins = [
 							html: 'html',
 							sh: 'bash',
 							curl: 'bash',
-							vue: 'vue',
 						},
 					},
 				},
