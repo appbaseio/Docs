@@ -4,7 +4,8 @@ meta_title: 'ReactiveSearch: Migration Guide v3 -> v4'
 meta_description: 'This guide will give you a brief about all the changes in the 4.x release of ReactiveSearch.'
 keywords:
     - reactivesearch
-    - migrationguide
+    - migration-guide
+    - react
     - appbase
     - elasticsearch
 sidebar: 'docs'
@@ -15,16 +16,24 @@ ReactiveSearch and ReactiveMaps are fully compatible with React 18.x and above w
 
 ## ReactiveSearch
 
-### Removal of FE query generation
-In this release we have removed the front-end query generation, we discourage the use of front-end queries to search backend which is a security risk.
+### Connect with ReactiveSearch Cloud
 
-Elasticsearch's query DSL is imperative in nature. Enabling the whole DSL to be accessible from a web or mobile frontend opens a can of security worms. The query DSL's imperative nature also makes it hard to enrich, transform or apply access controls to search requests. We saw these problems as earlier versions of ReactiveSearch UI kit only supported the Elasticsearch query DSL.
+Starting v4, ReactiveSearch has removed support for front-end query generation, we strongly encourage upgrading to v4 for powering a secure search experience with ReactiveSearch.
+
+More on security risks of allowing a search DSL over the network:
+
+- Elasticsearch's query DSL being imperative in nature, allowing the entire DSL to be accessible from a web or mobile frontend creates a DoS vector where expensive queries can be run to deny service to actual users.
+- It also presents a data scraping risk.
+- The query DSL's imperative nature also makes it hard to enrich, transform or apply access controls to search requests.
 
 ### Benefits
 
 - ReactiveSearch Cloud magic: Accelerate, enrich, and transform your search requests using features such as query rules, search relevance, caching, analytics
-- Easy to secure: As ReactiveSearch API doesn't expose Elasticsearch APIs directly, it prevents the possibility of DSL based injection attacks
-- Composable: Easily composes with Elasticsearch's query DSL for advanced use-cases
+  - There are two cloud offerings to cater to your use-case:
+     - Dedicated Search cluster - [Starting at $99/mo](https://www.reactivesearch.io/pricing), a 2 CPU + 8 GB RAM server instance suitable for ML-powered search experiences
+     - Serverless Search (Beta) - [Starting at $29/mo](https://www.reactivesearch.io/pricing/serverless-search), serve a geo-distributed search solution
+- Easy to secure: As ReactiveSearch API doesn't expose Elasticsearch APIs directly, it prevents the possibility of DSL based injection attacks and supports `size` based restrictions to mitigate against data scraping attempts
+- Composable: Compose by extending using search engine's query DSL. Supports Elasticsearch, OpenSearch, Solr and MongoDB engines
 - Encapsulate business logic: Don't want to expose sensitive fields to web and mobile clients? Set the fields to return with ReactiveSearch dashboard once and avoid declaring them as part of the network requests.
 
 **v3.x:**
@@ -35,11 +44,13 @@ Elasticsearch `_msearch` request
 
 **v4.x:**
 
-[ReactiveSearch API](/docs/search/reactivesearch-api/) in action
+ReactiveSearch API in action, read more about it over [here](/docs/search/reactivesearch-api/)
 
 ![alt network req v4](https://i.imgur.com/dSNqvlR.png)
+
 ### Removal of `DataSearch` & `CategorySearch` components
-In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearch` (to display category suggestions). In 4.x we have only one component named [SearchBox](/docs/reactivesearch/react/search/searchbox/) to implement auto-suggestions UI.
+
+In 3.x, ReactiveSearch supported two components for auto-suggestions: `DataSearch` to display search auto-suggestions and `CategorySearch` to display category suggestions. With 4.x, ReactiveSearch only supports one component: [SearchBox](/docs/reactivesearch/react/search/searchbox/) to implement an auto-suggestions UI that can display any of index based suggestions (index, document), analytics based suggestions (recent, popular) and curation based suggestions (featured, FAQs).
 
 **v3.x:**
 
@@ -59,13 +70,15 @@ In 3.x we had two components for auto-suggestions, `DataSearch` & `CategorySearc
     />
 ```
 
+Usage of SearchBox remains identical to DataSearch 
+
 ### SSR Usage
 
-With the release of v4 of Reactivesearch, the SSR functionality is improvised which greatly improves the developer experience and makes sure the config is as less as possible.
+With the release of v4 of Reactivesearch, the SSR usage is simplified.
 
 **v3.x:**
 
-v3 required manual setup of the config object to calculate the store's value on the serverside which was more prone to human errors and impacted the DX.
+v3 requires manual setup of the config object to calculate the store's value on the serverside:
 
 ```jsx
 import initReactivesearch from '@appbaseio/reactivesearch/lib/server';
@@ -137,7 +150,7 @@ export default class Main extends Component {
 
 **v4.x:**
 
-v4 comes with a very basic setup automating the config computation and requires almost nothing from the setup point of view enhancing the DX and reducing chances human errors.
+v4's SSR usage doesn't require component config from the user. It only requires the following 6 lines to setup SSR.
 
 ```jsx
 
@@ -183,6 +196,7 @@ export default App;
 
 
 ### Removal of Deprecated props
+
 We have also removed the following deprecated props:
 
 | <p style="margin: 0px;" class="table-header-text">Prop Name</p>   | <p style="margin: 0px;" class="table-header-text">Component</p> | <p style="margin: 0px;" class="table-header-text">Alternative</p> |
@@ -220,7 +234,7 @@ import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
        
 ![Image to be displayed](https://i.imgur.com/4TxrKmi.png)
         
-* ReactiveSearch now has chart components(powered by [E-charts](https://echarts.apache.org/)) to build reporting UIs with advanced search capabilities, or to integrate a reporting view into your search UI.
+* ReactiveSearch supports adding reactive chart components via [Apache E-charts](https://echarts.apache.org/) for build reporting UIs with advanced search capabilities.
             
     * [**Pie Chart** ↗️](https://docs.reactivesearch.io/docs/reactivesearch/react/chart/piechart/)
                 
@@ -236,7 +250,7 @@ import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
                 
         *Got a custom chart to render?* `ReactiveChart` is a generic component to render any chart UI supported by the Apache [E-charts](https://echarts.apache.org/) library. Additionally, it supports pre-built charts (`pie`, `bar`, `line`, `histogram` and `scatter`) to cover the most common chart use cases that can be configured using declarative props.
 
-        Consider a comprehensive guide [here](https://docs.reactivesearch.io/docs/reactivesearch/react/v3/chart/reactivechart)
+        Consider a comprehensive guide [here](https://docs.reactivesearch.io/docs/reactivesearch/react/chart/reactivechart)
 
         ```jsx
             <ReactiveChart
@@ -281,20 +295,20 @@ Configure whether the DSL query is generated with the compound clause of `must` 
 
 #### AIAnswer
 
-![Alt text](https://i.imgur.com/P6C5kH6.png)
+![AI Answer](https://i.imgur.com/P6C5kH6.png)
 
-AIAnswer is an AI-driven answer UI component that interacts with a dataset to provide context-aware and relevant answers based on user inputs. It employs machine learning to comprehend user questions and retrieve the most pertinent information. The component can be used to supply answers to common questions related to a specific topic, offer support and help by addressing user queries, and create a knowledge base or FAQ section for your website.
+`AIAnswer` is an AI-driven answer UI component that interacts with a dataset to provide context-aware and relevant answers based on user inputs. It employs machine learning to comprehend user questions and retrieve the most pertinent information. The component can be used to supply answers to common questions related to a specific topic, offer support and help by addressing user queries, and create a knowledge base or FAQ section for your website.
 
-Learn more about the AIAnswer component over [here](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/).
+Learn more about the `AIAnswer` component over [here](https://docs.reactivesearch.io/docs/reactivesearch/react/search/aianswer/).
 
 
 #### AIAnswer support in SearchBox
 
-![Alt text](https://i.imgur.com/P6C5kH6.png)
+![AI Answer support in SearchBox](https://i.imgur.com/P6C5kH6.png)
 
-SearchBox now has crossed limits of a basic indexed search component to a smart context aware query answerer with the integration of AI capabilities right within. The queries are answered with context auto-injected and fed to the LLM model.
+`SearchBox` now has crossed limits of a basic indexed search component to a smart context aware query answerer with the integration of AI capabilities right within. The queries are answered with context auto-injected and fed to the LLM model.
 
-A glimpse of usage - 
+Usage for AI Answer with SearchBox looks like below: 
 
 ```jsx
     <SearchBox
@@ -336,7 +350,8 @@ A glimpse of usage -
 
 Learn more about the AI props [here](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#enableai)
 
-Take a look at an example of the AI integration can do - 
+Take a look at an example of the AI integration can do:
+ 
 <iframe src="https://codesandbox.io/embed/github/awesome-reactivesearch/ask-reactivesearch/tree/main/?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="ask-reactivesearch"
@@ -349,11 +364,11 @@ Take a look at an example of the AI integration can do -
 
 #### FeaturedSuggestion in SearchBox
 
-Featured (aka curated) suggestions that show up as default suggestions, and provide for rich interactive behavior such as custom styling, navigate on click and more. One can set featured suggestions using the point-and-click interface of the ReactiveSearch dashboard and then display them alongside auto-suggestions, and popular or recent suggestions.
+Featured suggestions (curated by you) provide for rich interactive behavior such as navigating to a page, section, or a custom behavior through a JavaScript callback function. Setting featured suggestions only requires point-and-click actions in the ReactiveSearch dashboard.
 
 [Doc ref](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#enablefeaturedsuggestions)
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Freact-showcase-examples/packages/web/examples/SearchBoxWithFeaturedSuggestions?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/web/examples/SearchBoxWithFeaturedSuggestions?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="searchbox-featured-suggestions"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -362,7 +377,7 @@ Featured (aka curated) suggestions that show up as default suggestions, and prov
 
 #### FAQ suggestions in SearchBox
 
-FAQ (aka frequently asked questions) suggestions that show up as show frequently asked user questions as configured via the ReactiveSearch dashboard.
+FAQ suggestions show up as show frequently asked user questions in SearchBox as configured via the ReactiveSearch dashboard.
 
 [Doc ref](https://docs.reactivesearch.io/docs/reactivesearch/react/search/searchbox/#enablefaqsuggestions)
 
