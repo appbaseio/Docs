@@ -63,6 +63,18 @@ Example uses:
             maxTokens: 4000,
             systemPrompt: "You're a helpful assistant."
         }}
+        showFeedback={true}
+        showSourceDocuments={true}
+        renderSourceDocument={(obj) => {
+            return (
+                <span>❤️ {obj.original_title}
+                </span>
+        )}}
+	    onSourceClick={(srcObj)=>{
+            // perform any side effects
+        }}
+	    triggerOn="always"      // or "question", "manual" (default is always)
+        renderTriggerMessage={<div>End your query with a question mark (?)</div>} // string or JSX
     />
 ```
 
@@ -217,6 +229,88 @@ show a voice icon in the AIAnswer to enable users to set voice input. Defaults t
 |  `Boolean` |   Yes   |
 
 Toggles displaying the feedback UI component to record AI session's feedback. Defaults to true.
+
+### showSourceDocuments
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Whether to show the documents from which the AIAnswer is generated or not. Defaults to `true`.
+
+### renderSourceDocument
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+Render a custom label by returning string or JSx. Default label is rendered as the resolved value of `_id`when `showSourceDocument` is set to true.
+
+```jsx
+    <AIAnswer
+        id="ai-component"
+        showSourceDocuments={true}
+        renderSourceDocument={(obj) => {
+                return <span>❤️ {obj.original_title}</span>;
+            }
+        }           
+    />
+```
+
+### onSourceClick
+
+| Type | Optional |
+|------|----------|
+|  `Function` |   Yes   |
+
+callback to handle side-effects when a source button is clicked. Accepts a `sourceObj` param associated with the source button clicked.
+
+```jsx
+    <AIAnswer
+        id="ai-component"
+        showSourceDocuments={true}
+        renderSourceDocument={(obj) => {
+                return <span>❤️ {obj.original_title}</span>;
+            }
+        }  
+        onSourceClick={(srcObj)=>{
+            // perform any side effects
+        }}         
+    />
+```
+
+### triggerOn
+
+| Type | Optional |
+|------|----------|
+|  `string` |   Yes   |
+
+sets the trigger for fetching the AI answer. Defaults to `always`, Accepts one of the following three: 
+    - `manual` - AI answer is shown when triggered using the `askButton` or clicking the first suggestion item(`renderTriggerMessage`).
+    - `question` - AI answer is shown when the user searches for a question.
+    - `always` - AI answer is always shown for every query.
+
+```jsx
+    <AIAnswer
+        id="ai-component"
+        triggerOn="manual"      
+    />
+```
+### renderTriggerMessage
+
+| Type | Optional |
+|------|----------|
+|  `JSX` |   Yes   |
+
+custom markup to display as the first suggestion in the dropdown to trigger the AI answer. It should be used along with `enableAI` set to `true`.
+
+```jsx
+    <AIAnswer
+        id="ai-component"
+        triggerOn="manual"     
+        renderTriggerMessage={<div>End your query with a question mark (?)</div>} // string or JSX
+    />
+```
 
 ### render
 

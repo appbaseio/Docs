@@ -23,11 +23,11 @@ class Showcase extends React.Component {
 			<ShowcaseLayout
 				post={{ title: 'Searchbox showcase' }}
 				sidebar="docs"
-				nestedSidebar="web-reactivesearch"
+				nestedSidebar="vue-reactivesearch"
 				location={location}
 			>
 				<div className="bootstrap">
-					{mounted ? <SearchboxShowcase library="react" /> : 'Loading'}
+					{mounted ? <SearchboxShowcase library="vue" /> : 'Loading'}
 				</div>
 			</ShowcaseLayout>
 		);

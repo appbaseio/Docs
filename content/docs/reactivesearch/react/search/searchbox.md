@@ -36,6 +36,7 @@ Example uses:
 ```jsx
     <SearchBox
         componentId="SearchBoxSensor"
+        compoundClause="filter"
         dataField={[
             {
                 "field": "group_venue",
@@ -108,9 +109,23 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
 
 ### endpoint
 
@@ -378,6 +393,15 @@ It can accept the following keys:
     />
 ```
 
+
+### enableFAQSuggestions
+
+| Type | Optional |
+|------|----------|
+|  `bool` |   Yes   |
+
+Defaults to `false`. When set to `true`, show frequently asked user questions as configured via the ReactiveSearch dashboard. When this property is set as `true`, `searchboxId` is required to be passed.
+
 ### enableFeaturedSuggestions
 
 | Type | Optional |
@@ -396,6 +420,33 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 |  `String` |   Yes   |
 
 When featured suggestions are enabled, set the value of the `searchboxId` to use for fetching them. This is configurable via [ReactiveSearch dashboard](https://dash.reactivesearch.io/) and the following [API endpoint](https://api.reactivesearch.io/#bdf8961b-322f-48f9-9562-c3e507fd0508).
+
+
+### FAQSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+
+Specify additional options for fetching featured suggestions.
+
+It can accept the following keys:
+- sectionLabel: `string` Label of the division under which all FAQ suggestions are shown
+- size: `number` maximum number of FAQ suggestions to be fetched per section
+
+<br/>
+
+```jsx
+    <SearchBox
+        enableFAQSuggestions={true}
+        searchboxId="rs_docs"
+        FAQSuggestionsConfig={{
+          size: 2,
+          sectionLabel: '❓ FAQ Suggestions'
+        }}
+    />
+```
 
 ### featuredSuggestionsConfig
 
@@ -606,7 +657,12 @@ Accepts the following properties:
         enterButton
     />
     ```
-
+-   **triggerOn** `string` [optional]
+    sets the trigger for fetching the AI answer. Defaults to `manual`, Accepts one of the following three: 
+    - `manual` - AI answer is shown when triggered using the `askButton` or clicking the first suggestion item(`renderTriggerMessage`).
+    - `question` - AI answer is shown when the user searches for a question.
+-   **renderTriggerMessage** `String | JSX` [optional]  
+    custom markup to display as the first suggestion in the dropdown to trigger the AI answer. It should be used along with `enableAI` set to `true`.
 ### strictSelection
 
 | Type | Optional |
@@ -1600,6 +1656,16 @@ function to clear all selected values.
 ### SearchBox with default props
 <a href="https://opensource.appbase.io/playground/?selectedKind=Search%20components%2FSearchBox" target="_blank">SearchBox with default props</a>
 
+### SearchBox with FAQ suggestions
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat%2Ffaq-suggestions/packages/web/examples/SearchBoxWithFAQSuggestions?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="searchbox-with-faq-suggestions"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+### SearchBox with featured suggestions
+<a href="https://q-n-a-search-ui.vercel.app/" target="_blank">A Question answering app using featured suggestions and AI</a>
 
 ### Customize suggestions using innerClass
 <img src="https://i.imgur.com/nmFY3Ha.png" style="margin:0 auto;display:block;"/>
@@ -1615,6 +1681,7 @@ function to clear all selected values.
 	    	'suggestion-item': 'test-suggestion',
 	    }}
 	    enableFeaturedSuggestions
+        searchboxId="document_search"
     />
 ```
 

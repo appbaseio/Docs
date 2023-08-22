@@ -15,6 +15,8 @@ ReactiveSearch provides quite a lot of options to modify the search query before
 
 In this guide, we will build a pipeline that overrides the `_reactivesearch` endpoints and uses pre-built stages to manipulate the query before it reaches ElasticSearch.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/query_rules/pipeline_oneclick.json)**
+
 ## Pretext
 
 Before pipelines, this functionality was provided through Query rules. These rules can be created by the user and they take effect in order to manipulate certain queries before it reaches ElasticSearch. This is useful in cases like when there are certain terms that needs to be filtered out.

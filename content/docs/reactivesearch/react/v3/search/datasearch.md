@@ -31,6 +31,7 @@ Example uses:
 ```js
 <DataSearch
     componentId="SearchSensor"
+    compoundClause="filter"
     dataField={[
     	{
     		"field": "group_venue",

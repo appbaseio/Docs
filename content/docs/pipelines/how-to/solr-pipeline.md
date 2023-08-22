@@ -13,6 +13,8 @@ sidebar: 'docs'
 
 ReactiveSearch supports Solr as a valid backend. This means, instead of using ElasticSearch, Solr can also be used and all the features of ReactiveSearch can be used along with that.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/solr/pipeline_oneclick.json)**
+
 ## Pre Setup
 
 Let's define the basics of the pipeline. It will be in the following way:

@@ -13,6 +13,8 @@ sidebar: 'docs'
 
 ReactiveSearch Pipelines exposes quite a lot of useful stages as pre-built stages. One of them is support for using cache and recording analytics.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/cache_analytics/pipeline_oneclick.json)**
+
 ## Pre Setup
 
 Let's define the basics of the pipeline. It will be in the following way:

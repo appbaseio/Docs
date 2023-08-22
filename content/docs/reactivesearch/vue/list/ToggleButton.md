@@ -42,6 +42,7 @@ Example uses:
 ```html
 <toggle-button
     componentId="MeetupTops"
+    compoundClause="filter"
     dataField="group_topics.topic_name.raw"
     title="Meetups"
     filterLabel="City"
@@ -70,9 +71,24 @@ Example uses:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String` |   No   |
 
 unique identifier of the component, can be referenced in other components' `react` prop.
+
+### compoundClause
+
+| Type | Optional |
+|------|----------|
+|  `String` |   Yes   |
+
+Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use `must`. Setting the compound clause to filter allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. term, geo or range type of queries that act as filters on the data)
+
+This property only has an effect when the search engine is either elasticsearch or opensearch.
+
+
+> Note: `compoundClause` is supported with v8.16.0 (server) as well as with serverless search.
+
+
 ### dataField
 
 | Type | Optional |
@@ -321,4 +337,4 @@ name: 'app',
 
 ## Examples
 
-<a href="https://reactivesearch-vue-playground.netlify.com/?selectedKind=Base%20components%2FToggleButton&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs" target="_blank">Basic ToggleButton</a>
+<a href="https://reactivesearch-vue.vercel.app/?selectedKind=Base%20components%2FToggleButton&selectedStory=Basic&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs" target="_blank">Basic ToggleButton</a>

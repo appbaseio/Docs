@@ -17594,9 +17594,9 @@ scroll-into-view-if-needed@^2.2.25:
   dependencies:
     compute-scroll-into-view "^1.0.20"
 
-"searchbox-showcase@https://github.com/awesome-reactivesearch/searchbox-showcase.git#95e7f82":
+"searchbox-showcase@https://github.com/awesome-reactivesearch/searchbox-showcase.git#ac58bba":
   version "0.1.0"
-  resolved "https://github.com/awesome-reactivesearch/searchbox-showcase.git#95e7f827b0efa15b4022a5a7ce43982ae43359ab"
+  resolved "https://github.com/awesome-reactivesearch/searchbox-showcase.git#ac58bba963d57cb7bdffeb0597d8914da90c6133"
   dependencies:
     bootstrap "^5.2.3"
     react-bootstrap "^2.7.2"
@@ -20097,9 +20097,9 @@ window-size@^0.1.4:
   integrity sha512-2thx4pB0cV3h+Bw7QmMXcEbdmOzv9t0HFplJH/Lz6yu60hXYy5RT8rUu+wlIreVxWsGN20mo+MHeCSfUpQBwPw==
 
 word-wrap@~1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
-  integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.4.tgz#cb4b50ec9aca570abd1f52f33cd45b6c61739a9f"
+  integrity sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==
 
 wordwrap@0.0.2:
   version "0.0.2"

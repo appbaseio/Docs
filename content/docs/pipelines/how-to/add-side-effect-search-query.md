@@ -18,6 +18,8 @@ At times, we might need to add some side effects to a search query. Side effects
 
 We can override the `/{index}/_reactivesearch` endpoint and add a step that adds some side effect before the query is completed.
 
+**[Deploy this pipeline with one-click](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/saved_search/pipeline_oneclick.json)**
+
 ## Example Scenario: Save a search query before the query
 
 At times, we might want to keep track of the search query body everytime the `_reactivesearch` endpoint is hit. We can implement this behaviour pretty easily with a pipeline.
