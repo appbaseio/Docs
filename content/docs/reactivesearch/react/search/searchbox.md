@@ -413,6 +413,12 @@ Defaults to `false`. When set to `true`, featured suggestions are returned as su
 
 > Featured suggestions allow creating autocomplete experiences with user-defined suggestions. They're specified using the [Featured Suggestions API](https://api.reactivesearch.io/#337cdab6-d06c-4319-8c51-51e9ff0c1266), introduced in 8.1.0. This is a beta API and subject to change.
 
+### enableDocumentSuggestions
+
+Defaults to `false`. When set to `true`, show user’s recently accessed documents as suggestions. Using this requires setting of recently accessed documents (doc link).
+
+> When setting this prop, configure `renderItem` to render the document.
+
 ### searchboxId
 
 | Type | Optional |
@@ -429,7 +435,7 @@ When featured suggestions are enabled, set the value of the `searchboxId` to use
 |  `Object` |   Yes   |
 
 
-Specify additional options for fetching featured suggestions.
+Specify additional options for fetching FAQ suggestions.
 
 It can accept the following keys:
 - sectionLabel: `string` Label of the division under which all FAQ suggestions are shown
@@ -473,6 +479,19 @@ It can accept the following keys:
     />
 ```
 
+### documentSuggestionsConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for fetching featured suggestions.
+
+It can accept the following keys:
+- sectionLabel: `string | JSX` Label of the division under which all document suggestions are shown
+- size: `number` maximum number of document suggestions to be fetched per section
+- from: `number` offset of the document suggestions, this enables paginating to show more suggestions on a scroll behavior. This requires controled usage to modify
+- maxChars: `number` maximum number of characters in the search input for which document suggestions get returned. If the input length exceeds this value, then document suggestions will not be returned. Defaults to 6
 
 ### enablePredictiveSuggestions
 
@@ -1167,6 +1186,8 @@ You can render each suggestion in a custom layout by using the `renderItem` prop
         }
     />
 ```
+
+> When using `enableDocumentSuggestions` prop, the search value on document selection will set based on the [`.textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) value of the markup of this section. For implementing a navigation behavior, define a onClick callback function.
 
 
 ### renderAIAnswer
