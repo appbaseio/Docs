@@ -7,14 +7,6 @@ import { URLIcon } from './URLIcon';
 import { getBreadcrumbText } from './getBreadcrumbText';
 
 import * as styles from './DocumentSuggestions.module.css';
-import { CREDENTIAL_FOR_DOCS } from '../constants';
-
-function resolveAbsoluteURL(source) {
-	if (source.source === 'docs') {
-		return `https://docs.reactivesearch.io${source.url}`;
-	}
-	return source.url;
-}
 
 function sanitizeHTMLAndCombineStrings(inputStrings) {
 	// Combine all input strings into a single string
@@ -50,9 +42,7 @@ export const DocumentSuggestion = ({ source, docId }) => {
 		>
 			<div className="row">
 				<div className="flex items-center">
-					<div
-						className={`p-2 me-3 rounded search__suggestionIcon ${styles.suggestionIcon}`}
-					>
+					<div className={`me-3 rounded search__suggestionIcon ${styles.suggestionIcon}`}>
 						<URLIcon
 							url={source.url}
 							style={{ marginBottom: 0 }}
@@ -92,6 +82,10 @@ export const DocumentSuggestion = ({ source, docId }) => {
 			</div>
 		</a>
 	);
+};
+
+DocumentSuggestion.defaultProps = {
+	source: {},
 };
 
 DocumentSuggestion.propTypes = {

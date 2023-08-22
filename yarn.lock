@@ -97,10 +97,10 @@
     prop-types "^15.6.0"
     react-leaflet "^2.1.3"
 
-"@appbaseio/reactivesearch@^4.1.0-alpha.10":
-  version "4.1.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-4.1.0-alpha.10.tgz#c9d0e1790d7060234937c615de170916a7900062"
-  integrity sha512-kh2mKFSjFPZQSSMkyvlqc9mPQHapyqFcwcaEQIHvDWLcYh3Ay7GYPlUhvDna5ifySCGJ5HJovTWFK5e/eVwlJg==
+"@appbaseio/reactivesearch@^4.1.0-alpha.11":
+  version "4.1.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@appbaseio/reactivesearch/-/reactivesearch-4.1.0-alpha.11.tgz#8fbd21ea01ea7270c759198c350a349f9c2fd4d5"
+  integrity sha512-W1mVwu88fjCFHvdupueqWtCVmNC8P6+rFAyoswvpjdavJl2YSukMExQiXCBndQco6onF7JTz05XIoYy9Efa4Bg==
   dependencies:
     "@appbaseio/analytics" "^1.2.0-alpha.1"
     "@appbaseio/reactivecore" "10.1.0-alpha"

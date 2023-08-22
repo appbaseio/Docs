@@ -62,6 +62,8 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 				recordAnalytics: true,
 				userId: 'test',
 			}}
+			key={themeType}
+			themePreset={themeType}
 		>
 			<nav className="shadow-3 on-white">
 				<div
@@ -536,6 +538,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 							showClear
 							placeholder="Explore Reactivesearch..."
 							showVoiceSearch
+							showDistinctSuggestions
 							enableDocumentSuggestions
 							documentSuggestionsConfig={{
 								sectionLabel: '🕦 Recently Viewed',
