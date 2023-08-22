@@ -537,7 +537,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 								URLParams
 								size={10}
 								showClear
-								placeholder="Explore Reactivesearch..."
+								placeholder="Search..."
 								showVoiceSearch
 								showDistinctSuggestions
 								enableDocumentSuggestions
