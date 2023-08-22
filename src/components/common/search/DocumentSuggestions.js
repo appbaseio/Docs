@@ -45,11 +45,11 @@ export const DocumentSuggestion = ({ source, docId }) => {
 					<div className={`me-3 rounded search__suggestionIcon ${styles.suggestionIcon}`}>
 						<URLIcon
 							url={source.url}
-							style={{ marginBottom: 0 }}
+							style={{ marginBottom: 0, display: 'block', maxWidth: 'fit-content' }}
 							size={isMobileWidth ? 25 : 30}
 						/>
 					</div>
-					<div className="flex-1 w-75">
+					<div className="flex-1">
 						<div title={source.value} className={styles.suggestionTitle}>
 							{source.title || source.meta_title}
 						</div>

@@ -54,6 +54,15 @@ export function URLIcon({ url, style = {}, size = 50 }) {
 					/>
 				);
 			}
+			if (url.match('/docs/pipelines')) {
+				return (
+					<img
+						src="https://www.svgrepo.com/show/203186/pipe.svg"
+						className={styles.sectionItemIcon}
+						style={{ width: size, ...style }}
+					/>
+				);
+			}
 			if (url.match('/docs/speed')) {
 				return (
 					<BsLightningChargeFill
@@ -102,15 +111,6 @@ export function URLIcon({ url, style = {}, size = 50 }) {
 						size={size}
 						className={styles.sectionItemIcon}
 						style={style}
-					/>
-				);
-			}
-			if (url.match('/docs/pipelines')) {
-				return (
-					<img
-						src="https://www.svgrepo.com/show/203186/pipe.svg"
-						className={styles.sectionItemIcon}
-						style={{ width: size, ...style }}
 					/>
 				);
 			}

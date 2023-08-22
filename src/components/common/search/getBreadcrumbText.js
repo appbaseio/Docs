@@ -16,6 +16,7 @@ const matchComponents = url => {
 	return breadcrumbText;
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export function getBreadcrumbText(url) {
 	let breadcrumbText = '';
 	try {
@@ -34,6 +35,12 @@ export function getBreadcrumbText(url) {
 					breadcrumbText += 'Vue';
 					breadcrumbText += matchComponents(url);
 				}
+			} else if (url.match('/docs/ai-search')) {
+				breadcrumbText += 'AI Search';
+			} else if (url.match('/docs/data')) {
+				breadcrumbText += 'Managing Data';
+			} else if (url.match('/docs/search/relevancy')) {
+				breadcrumbText += 'Search Relevancy';
 			} else if (url.match('/docs/speed')) {
 				breadcrumbText += 'Speed';
 			} else if (url.match('/docs/hosting')) {

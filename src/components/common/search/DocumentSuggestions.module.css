@@ -67,7 +67,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	border-radius: var(--bs-border-radius);
+	border-radius: 2px;
 }
 .suggestionDescription {
 	margin-top: 0.25rem;
@@ -78,9 +78,6 @@
 	overflow: hidden;
 }
 @media (max-width: 500px) {
-	.suggestionDescription {
-		-webkit-line-clamp: 3;
-	}
 	.suggestionBreadcrumb {
 		position: relative;
 		top: 0;
@@ -93,8 +90,7 @@
 	}
 }
 .suggestionIcon {
-	margin: auto;
-	margin-bottom: auto;
+	margin-right: 15px;
 }
 .selectedSuggestion {
 	font-weight: bold;
