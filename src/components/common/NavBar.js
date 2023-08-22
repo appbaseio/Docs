@@ -53,18 +53,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, [mockWindow]);
 
 	return (
-		<ReactiveBase
-			app="unified-reactivesearch-web-data"
-			url={`https://${CREDENTIAL_FOR_DOCS}@appbase-demo-ansible-abxiydt-arc.searchbase.io`}
-			transformRequest={transformRequest}
-			transformResponse={transformResponse}
-			reactivesearchAPIConfig={{
-				recordAnalytics: true,
-				userId: 'test',
-			}}
-			key={themeType}
-			themePreset={themeType}
-		>
+		<>
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
@@ -515,48 +504,61 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						</div>
 					</div>
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
-						<SearchBox
-							dataField={[
-								{
-									field: 'title',
-									weight: 3,
-								},
-								{
-									field: 'tokens.keyword',
-									weight: 6,
-								},
-								{
-									field: 'heading',
-									weight: 6,
-								},
-							]}
-							componentId={SEARCH_COMPONENT_ID}
-							className={styles.searchBox}
-							highlight
-							URLParams
-							size={10}
-							showClear
-							placeholder="Explore Reactivesearch..."
-							showVoiceSearch
-							showDistinctSuggestions
-							enableDocumentSuggestions
-							documentSuggestionsConfig={{
-								sectionLabel: '🕦 Recently Viewed',
+						<ReactiveBase
+							app="unified-reactivesearch-web-data"
+							url={`https://${CREDENTIAL_FOR_DOCS}@appbase-demo-ansible-abxiydt-arc.searchbase.io`}
+							transformRequest={transformRequest}
+							transformResponse={transformResponse}
+							reactivesearchAPIConfig={{
+								recordAnalytics: true,
+								userId: 'test',
 							}}
-							renderItem={suggestion => {
-								const suggestionType = suggestion._suggestion_type;
+							key={themeType}
+							themePreset={themeType}
+						>
+							<SearchBox
+								dataField={[
+									{
+										field: 'title',
+										weight: 3,
+									},
+									{
+										field: 'tokens.keyword',
+										weight: 6,
+									},
+									{
+										field: 'heading',
+										weight: 6,
+									},
+								]}
+								componentId={SEARCH_COMPONENT_ID}
+								className={styles.searchBox}
+								highlight
+								URLParams
+								size={10}
+								showClear
+								placeholder="Explore Reactivesearch..."
+								showVoiceSearch
+								showDistinctSuggestions
+								enableDocumentSuggestions
+								documentSuggestionsConfig={{
+									sectionLabel: '🕦 Recently Viewed',
+								}}
+								renderItem={suggestion => {
+									const suggestionType = suggestion._suggestion_type;
 
-								return suggestionType === 'index' ||
-									suggestionType === 'document' ? (
-									<DocumentSuggestion
-										docId={suggestion._id}
-										source={suggestion._source}
-									/>
-								) : (
-									<Suggestion suggestion={suggestion} />
-								);
-							}}
-						/>
+									return suggestionType === 'index' ||
+										suggestionType === 'document' ? (
+										<DocumentSuggestion
+											docId={suggestion._id}
+											source={suggestion._source}
+										/>
+									) : (
+										<Suggestion suggestion={suggestion} />
+									);
+								}}
+							/>
+						</ReactiveBase>
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
 						<ThemeSwitch setThemeType={setThemeType} />
@@ -564,7 +566,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 					<MobileNav setThemeType={setThemeType} />
 				</div>
 			</nav>
-		</ReactiveBase>
+		</>
 	);
 };
 
