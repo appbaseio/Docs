@@ -485,7 +485,7 @@ It can accept the following keys:
 |------|----------|
 |  `Object` |   Yes   |
 
-Specify additional options for fetching featured suggestions.
+Specify additional options for fetching recent document suggestions.
 
 It can accept the following keys:
 - sectionLabel: `string | JSX` Label of the division under which all document suggestions are shown
