@@ -133,7 +133,7 @@ const plugins = [
 	{
 		resolve: `gatsby-plugin-google-analytics`,
 		options: {
-			trackingId: `UA-54082612-5`,
+			trackingId: `G-KB72HLEDRP`,
 		},
 	},
 
