@@ -15,6 +15,7 @@ export const transformRequest = req => {
 		if (componentQuery.id === SEARCH_COMPONENT_ID) {
 			return {
 				...componentQuery,
+				showDistinctSuggestions: true,
 				react: {
 					and: ['term'],
 				},
