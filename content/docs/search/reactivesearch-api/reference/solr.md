@@ -924,7 +924,7 @@ Not dependent on engine, works for all.
 **Supported Engines**
 elasticsearch, solr, opensearch
 
-`bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
+`bool` defaults to `false`. If `true` then it'll enable the recording of ReactiveSearch.io analytics.
 
 ### backend
 
