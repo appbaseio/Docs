@@ -97,6 +97,8 @@
                     link: /docs/pipelines/concepts/conditional-stages
             - link: /docs/pipelines/api/reference
               title: Pipeline API Reference
+            - link: /docs/pipelines/api/stage-reference
+              title: Pipeline Pre-built stages reference
             - link: /docs/pipelines/developing/
               title: Developing/Debugging Pipelines
               items:
