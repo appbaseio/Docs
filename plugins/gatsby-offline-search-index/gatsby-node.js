@@ -117,6 +117,7 @@ exports.createPages = async ({ graphql }) => {
 			// push for the last heading
 			searchData.push({
 				title,
+				keywords,
 				meta_title: metaTitle,
 				meta_description: metaDescription,
 				heading: prevHashId === '' ? '' : headings[headings.length - 1].value,
@@ -126,6 +127,7 @@ exports.createPages = async ({ graphql }) => {
 		} else {
 			searchData.push({
 				title,
+				keywords,
 				meta_title: metaTitle,
 				meta_description: metaDescription,
 				heading: '',
