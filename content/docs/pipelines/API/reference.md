@@ -15,8 +15,6 @@ This guide explains all the properties for the ReactiveSearch Pipelines API and 
 
 
 
-# null
-
 ## Description
 
 Description of pipeline.
@@ -257,7 +255,7 @@ Trigger will indicate whether or not to trigger the stage.
 
 #### Trigger Expression
 
-Custom trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#advanced-editor).
+Custom trigger expression. You can read more at [here](https://docs.reactivesearch.io/docs/search/rules/#advanced-editor).
 
 ### Pre-built Stage
 
@@ -269,7 +267,7 @@ Use a pre-built stage from Appbase.
 
 ## Trigger Expression
 
-Trigger expression is to define the condition of Pipeline invocation. For example, only execute pipeline if query is \'mobile phone\'. Check the documentation at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
+Trigger expression is to define the condition of Pipeline invocation. For example, only execute pipeline if query is \'mobile phone\'. Check the documentation at [here](https://docs.reactivesearch.io/docs/search/rules/#configure-if-condition).
 
 Following is an example trigger for a pipeline that searches for mobile phones:
 
@@ -283,7 +281,7 @@ Above trigger will **always** run and execute the expression provided to it.
 
 ### Trigger Expression
 
-Custom trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#advanced-editor).
+Custom trigger expression. You can read more at [here](https://docs.reactivesearch.io/docs/search/rules/#advanced-editor).
 
 ### Timeframe
 
@@ -295,7 +293,7 @@ To define the valid timeframe for trigger expression.
 
 ### Trigger Type
 
-Type of trigger expression. You can read more at [here](https://docs.appbase.io/docs/search/rules/#configure-if-condition).
+Type of trigger expression. You can read more at [here](https://docs.reactivesearch.io/docs/search/rules/#configure-if-condition).
 
 **Following values are supported for this field**
 

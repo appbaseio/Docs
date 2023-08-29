@@ -33,11 +33,6 @@ This guide is specific to the keys supported for the **MongoDB Atlas Search** en
 }
 ```
 
-# null
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
 ## query
 
 **This is a required field**
@@ -485,7 +480,7 @@ Useful for showing the correct results for an incorrect search parameter by taki
 
 | <p style="margin: 0px;" class="table-header-text">Type</p>           | <p style="margin: 0px;" class="table-header-text">Applicable on query of type</p> | <p style="margin: 0px;" class="table-header-text">Required</p> |
 | -------------- | --------------------------- | -------- |
-| `int | string` | `search`, `suggestion`      | false    |
+| `int, string` | `search`, `suggestion`      | false    |
 
 > Note:
 >

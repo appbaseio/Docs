@@ -36,11 +36,6 @@ This guide only contains the fields supported for the **Solr** search engine.
 
 Reactivesearch API supports all the [query parameters supported by solr search API](https://solr.apache.org/guide/8_11/common-query-parameters.html).
 
-# null
-
-**Supported Engines**
-Not dependent on engine, works for all.
-
 ## query
 
 **This is a required field**
@@ -929,7 +924,7 @@ Not dependent on engine, works for all.
 **Supported Engines**
 elasticsearch, solr, opensearch
 
-`bool` defaults to `false`. If `true` then it'll enable the recording of Appbase.io analytics.
+`bool` defaults to `false`. If `true` then it'll enable the recording of ReactiveSearch.io analytics.
 
 ### backend
 
