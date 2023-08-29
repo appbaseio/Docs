@@ -209,7 +209,7 @@ function parsePropertiesFromLevel(
 		propTitle = key;
 	}
 
-	if (propTitle !== undefined) {
+	if (propTitle !== undefined && propTitle !== null) {
 		let isRequired = false;
 
 		// Handle `required` mark as well.
