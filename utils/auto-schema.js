@@ -394,14 +394,29 @@ function parsePipelineReference() {
 
 								for (const propKey in inputs.properties) {
 									const propValue = inputs.properties[propKey];
-									markdownStr += `### ${propValue.title}\n`;
+
+									// If the title is not present, use the `propKey` instead
+									let titleToUse = propValue.title;
+									if (!titleToUse) {
+										titleToUse = propKey;
+									}
+
+									markdownStr += `### ${titleToUse}\n`;
 
 									if (requiredInputs.includes(propKey)) {
 										markdownStr += '\n**This is a required field**\n';
 									}
 
-									markdownStr += `\nType: ${propValue.type}\n\n`;
-									markdownStr += `${propValue.description}\n\n`;
+									if (propValue.type) {
+										markdownStr += `\nType: ${propValue.type}\n\n`;
+									}
+
+									// Inject the key that is to be used
+									markdownStr += `Key: ` + '`' + `${propKey}` + '`\n\n';
+
+									if (propValue.description) {
+										markdownStr += `${propValue.description}\n\n`;
+									}
 								}
 							}
 						}
