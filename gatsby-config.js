@@ -131,12 +131,11 @@ const plugins = [
 		},
 	},
 	{
-		resolve: `gatsby-plugin-google-analytics`,
+		resolve: `gatsby-plugin-google-gtag`,
 		options: {
-			trackingId: `G-KB72HLEDRP`,
+			trackingIds: ['G-KB72HLEDRP'],
 		},
 	},
-
 	{
 		resolve: 'gatsby-plugin-page-progress',
 		options: {
