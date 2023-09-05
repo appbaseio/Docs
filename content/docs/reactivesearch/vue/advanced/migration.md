@@ -15,9 +15,7 @@ nestedSidebar: 'vue-reactivesearch'
 
 ReactiveSearch is fully compatible with Vue 3.x and above with the 3.x releases. This release comes after the feedback we have gathered from the iterative deployment of reactivesearch in production for the dozens of our clients over the last year. In this version, we have changed the way certain props behave, and included new components. This guide will give you a brief about all the changes.
 
-## ReactiveSearch
-
-### Connect with ReactiveSearch Cloud
+## Connect with ReactiveSearch Cloud
 
 Starting v3, ReactiveSearch has removed support for front-end query generation, we strongly encourage upgrading to v4 for powering a secure search experience with ReactiveSearch.
 
@@ -28,17 +26,17 @@ More on security risks of allowing a search DSL over the network:
 - The query DSL's imperative nature also makes it hard to enrich, transform or apply access controls to search requests.
 
 
-### Benefits
+## Benefits
 
 - ReactiveSearch Cloud magic: Accelerate, enrich, and transform your search requests using features such as query rules, search relevance, caching, analytics
 - Easy to secure: As ReactiveSearch API doesn't expose Elasticsearch APIs directly, it prevents the possibility of DSL based injection attacks
 - Composable: Easily composes with Elasticsearch's query DSL for advanced use-cases
 - Encapsulate business logic: Don't want to expose sensitive fields to web and mobile clients? Set the fields to return with ReactiveSearch dashboard once and avoid declaring them as part of the network requests.
 
-### Supports Vue 3.x
+## Supports Vue 3.x
 ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usage of slots have been changed completely.
 
-#### Usage of named slot
+### Usage of named slot
 **v1.x:**
 
 ```html
@@ -67,7 +65,7 @@ ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usag
     </reactive-list>
 ```
 
-#### Usage of default slot
+### Usage of default slot
 **v1.x:**
 
 ```html
@@ -106,7 +104,7 @@ Elasticsearch `_msearch` request
 ![alt network req v4](https://i.imgur.com/dSNqvlR.png)
 
 
-### Removal of `DataSearch` component
+## Removal of `DataSearch` component
 In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have only one component named [SearchBox](/docs/reactivesearch/vue/search/searchbox/) to implement auto-suggestions UI.
 
 **v1.x:**
@@ -127,7 +125,7 @@ In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have 
     />
 ```
 
-### Removal of Deprecated props
+## Removal of Deprecated props
 We have also removed the following deprecated props:
 
 | <p style="margin: 0px;" class="table-header-text">Prop Name</p>   | <p style="margin: 0px;" class="table-header-text">Component</p> | <p style="margin: 0px;" class="table-header-text">Alternative</p> |
@@ -139,9 +137,166 @@ We have also removed the following deprecated props:
 | `aggregationField` | `All Components`   | `distinctField`    |
 
 
-### New Enhancements
+## SSR support
 
-#### ReactiveComponent
+There are a couple of changes you would need to make when you migrate to v3. We are using code snippets showing migration of a Nuxt JS app, but these steps would be similiar, even if you aren't using NuxtJS.
+
+### Change 1: initialState
+
+There are two things we need to change here.
+
+1. `initReactivesearch` -> `getServerState`
+2. Passing all the component configuration explicitly inside `initReactivesearch` -> Passing the root component containing ReactiveBase inside `getServerState`
+
+
+**v1**
+
+```html
+<script>
+import { initReactivesearch, SearchBox, ReactiveList } from '@appbaseio/reactivesearch-vue'
+const components = {
+    // settings passed to ReactiveBase
+	settings: {
+		app: 'airbnb-dev',
+		url: 'https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io',
+		enableAppbase: true,
+	},
+    // query settings for searchbox component
+	searchBox: {
+		componentId: 'SearchSensor',
+		dataField: ['name', 'name.search'],
+		autosuggest: false,
+	},
+	result: {
+		componentId: 'SearchResult',
+		dataField: 'name',
+		size: 12,
+		react: {
+			and: ['SearchSensor'],
+		},
+	},
+};
+
+
+export default {
+	async asyncData({ query }) {
+        const initialState = await initReactivesearch(
+            // v1 required to define all the components explicitly.
+            [
+                {
+                    ...components.searchBox,
+                    // Component imported from @appbaseio/reactivesearch-vue
+                    source: SearchBox,
+                },
+                {
+                    ...components.result,
+                    // Component imported from @appbaseio/reactivesearch-vue
+                    source: ReactiveList,
+                },
+            ],
+            query,
+            components.settings,
+        );
+        return {
+            initialState,
+        };
+	},
+};
+</script>
+<template>
+    <ReactiveBase 
+        v-bind="components.settings"
+        :initial-state="initialState"
+    >
+          <!-- App here -->
+    </ReactiveBase>
+</template>
+```
+
+**v3**
+
+```html
+<script>
+import { getServerState } from '@appbaseio/reactivesearch-vue'
+// Search is the component which contains ReactiveBase, SearchBox, etc.
+import Search from '../components/search.vue';
+
+export default defineNuxtComponent({
+    async asyncData({query}){
+        // initReactivesearch -> getServerState
+        // 
+        const initialState = getServerState(Search, query)
+        return { initialState }
+    }
+})
+// Library changes
+</script>
+
+<template>
+  <div>
+    <search :initial-state="initialState" />
+  </div>
+</template>
+```
+
+### Change 2: Passing props to ReactiveBase
+
+The `initialState` created above, needs to be passed to the ReactiveBase. In `v3` we need to pass an additional prop called the `contextCollector` to ReactiveBase. It would be populated by the library. You can see the difference below.
+
+
+**v1**
+
+```html
+<template>
+    <ReactiveBase 
+        v-bind="components.settings"
+        :initial-state="initialState"
+    >
+          <!-- App here -->
+    </ReactiveBase>
+</template>
+```
+
+**v3**
+
+The Search component passed to `getServerState` is passed an additional parameter `contextCollector` which needs to be passed to `ReactiveBase`.
+
+```html
+<!-- search.vue -->
+<template>
+    <!-- Pass context collector prop additionally -->
+    <ReactiveBase 
+          v-bind="components.settings"
+          :initial-state="initialState"
+          :context-collector="contextCollector"      
+    >
+          <!-- App here -->
+    </ReactiveBase>
+</template>
+
+<script>
+export default {
+    name: "Search",
+	props: {
+		initialState: {
+			type: Object,
+			default: null,
+		},
+        // Define the context collector prop
+		contextCollector: {
+			type: Function,
+			default: null,
+		},
+	},
+};
+</script>
+```
+
+Here's a link to the [complete example using NuxtJS](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr).
+
+## New Enhancements
+
+### ReactiveComponent
 
 We have shed some load in the `<ReactiveComponent />` in favor of tree shaking eventually improving the bundle size and performance for our users. 
 
@@ -160,13 +315,13 @@ import { componentTypes } from '@appbaseio/reactivecore/lib/utils/constants';
 <ReactiveComponentPrivate :componentType="componentTypes.searchBox" />
 ```
 
-#### compoundClause
+### compoundClause
 
 Configure whether the DSL query is generated with the compound clause of `must` or `filter`. If nothing is passed the default is to use must. Setting the compound clause to `filter` allows search engine to cache and allows for higher throughput in cases where scoring isn’t relevant (e.g. `term`, `geo` or `range` type of queries that act as filters on the data)
 
 > This property only has an effect when the search engine is either elasticsearch or opensearch.
 
-#### AIAnswer
+### AIAnswer
 
 ![AI Answer](https://i.imgur.com/P6C5kH6.png)
 
@@ -175,7 +330,7 @@ Configure whether the DSL query is generated with the compound clause of `must` 
 Learn more about the `AIAnswer` component over [here](https://docs.reactivesearch.io/docs/reactivesearch/vue/search/aianswer/).
 
 
-#### AIAnswer support in SearchBox
+### AIAnswer support in SearchBox
 
 ![AI Answer support in SearchBox](https://i.imgur.com/P6C5kH6.png)
 
@@ -202,14 +357,14 @@ Take a look at an example of the AI integration can do:
 
 
 
-#### FeaturedSuggestion in SearchBox
+### FeaturedSuggestion in SearchBox
 
 Featured suggestions (curated by you) provide for rich interactive behavior such as navigating to a page, section, or a custom behavior through a JavaScript callback function. Setting featured suggestions only requires point-and-click actions in the ReactiveSearch dashboard.
 
 [Doc ref](https://docs.reactivesearch.io/docs/reactivesearch/vue/search/searchbox/#enablefeaturedsuggestions)
 
 
-#### FAQ suggestions in SearchBox
+### FAQ suggestions in SearchBox
 
 FAQ suggestions show up as show frequently asked user questions in SearchBox as configured via the ReactiveSearch dashboard.
 
