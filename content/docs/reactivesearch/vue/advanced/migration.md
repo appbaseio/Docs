@@ -13,11 +13,11 @@ sidebar: 'docs'
 nestedSidebar: 'vue-reactivesearch'
 ---
 
-ReactiveSearch is fully compatible with Vue 3.x and above with the 3.x releases. This release comes after the feedback we have gathered from the iterative deployment of reactivesearch in production for the dozens of our clients over the last year. In this version, we have changed the way certain props behave, and included new components. This guide will give you a brief about all the changes.
+ReactiveSearch Vue is compatible with Vue 3.x and above with the 3.x releases. This release comes after iterative feedback over the past 2 years from Vue 1.x's usage in production. This post will guide you on upgrading from ReactiveSearch Vue 1.x to 3.x (stable) release.
 
 ## Connect with ReactiveSearch Cloud
 
-Starting v3, ReactiveSearch has removed support for front-end query generation, we strongly encourage upgrading to v4 for powering a secure search experience with ReactiveSearch.
+Starting v3, ReactiveSearch Vue has removed support for front-end DSL query generation, we strongly encourage upgrading to this major version for powering a secure search experience with ReactiveSearch.
 
 More on security risks of allowing a search DSL over the network:
 
@@ -34,23 +34,12 @@ More on security risks of allowing a search DSL over the network:
 - Encapsulate business logic: Don't want to expose sensitive fields to web and mobile clients? Set the fields to return with ReactiveSearch dashboard once and avoid declaring them as part of the network requests.
 
 ## Supports Vue 3.x
-ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usage of slots have been changed completely.
+
+ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x, the usage of slots has had an overhaul.
 
 ### Usage of named slot
-**v1.x:**
 
-```html
-    <reactive-list
-        component-id="result"
-        data-field="['title', 'description']"
-    >
-        <div slot="renderItem" slot-scope="{ item }">
-            {...}
-        </div>
-    </reactive-list>
-```
-
-**v3.x:**
+**v3.x:** (new usage)
 
 ```html
     <reactive-list
@@ -65,20 +54,23 @@ ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usag
     </reactive-list>
 ```
 
-### Usage of default slot
-**v1.x:**
+**v1.x:** (older usage)
 
 ```html
-    <reactive-component
-        component-id="custom-component"
+    <reactive-list
+        component-id="result"
+        data-field="['title', 'description']"
     >
-        <div slot-scope="{ hits, aggregations }">
+        <div slot="renderItem" slot-scope="{ item }">
             {...}
         </div>
     </reactive-list>
 ```
 
-**v3.x:**
+
+### Usage of default slot
+
+**v3.x:** (new usage)
 
 ```html
     <reactive-component
@@ -90,33 +82,39 @@ ReactiveSearch components are fully compatible with Vue 3.x. In Vue 3.x the usag
     </reactive-list>
 ```
 
+**v1.x:** (older usage)
 
-**v1.x:**
+```html
+    <reactive-component
+        component-id="custom-component"
+    >
+        <div slot-scope="{ hits, aggregations }">
+            {...}
+        </div>
+    </reactive-list>
+```
+
+**v3.x:** (network payload)
+
+uses the [ReactiveSearch API](/docs/search/reactivesearch-api/). ReactiveSearch API is a declarative API that captures the search intent, allowing the server to modify, secure, enrich and transform requests and/or responses passed by the FE (client).
+
+![alt network req v3](https://i.imgur.com/dSNqvlR.png)
+
+
+**v1.x:** (network payload)
 
 Elasticsearch `_msearch` request
 
 ![alt network req v1](https://i.imgur.com/6Ew1txq.png)
 
-**v3.x:**
 
-[ReactiveSearch API](/docs/search/reactivesearch-api/) in action
-
-![alt network req v4](https://i.imgur.com/dSNqvlR.png)
 
 
 ## Removal of `DataSearch` component
-In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have only one component named [SearchBox](/docs/reactivesearch/vue/search/searchbox/) to implement auto-suggestions UI.
 
-**v1.x:**
+ReactiveSearch Vue 1.x provided a `DataSearch` component for building a suggestions search experience. With v3.x, the usage is consolidated under the [SearchBox](/docs/reactivesearch/vue/search/searchbox/) UI component for building both suggestions and search experiences.
 
-```html
-    <data-search
-        component-id="Search"
-        data-field="['title', 'description']"
-    />
-```
-
-**v3.x:**
+**v3.x:** (new usage)
 
 ```html
     <search-box
@@ -125,8 +123,19 @@ In 1.x we had one components for auto-suggestions, `DataSearch`. In 3.x we have 
     />
 ```
 
+**v1.x:** (older usage)
+
+```html
+    <data-search
+        component-id="Search"
+        data-field="['title', 'description']"
+    />
+```
+
+
 ## Removal of Deprecated props
-We have also removed the following deprecated props:
+
+ReactiveSearch v3 removes the following deprecated props and you can use the corresponding alternative props instead:
 
 | <p style="margin: 0px;" class="table-header-text">Prop Name</p>   | <p style="margin: 0px;" class="table-header-text">Component</p> | <p style="margin: 0px;" class="table-header-text">Alternative</p> |
 | ------ | --------------------------- | -------- |
@@ -139,16 +148,16 @@ We have also removed the following deprecated props:
 
 ## SSR support
 
-When migrating to v3, there are a couple of changes you'll need to make. We provide code snippets for migrating a Nuxt.js app, but these steps are applicable even if you're not using Nuxt.js.
+For server-side rendering (SSR) usage migration from v1 to v3, there are two primary changes you will need to make. See the code snippets below showing this process for a Nuxt.js app. The steps are similar for doing SSR with Express.
 
 ### Change 1: initialState
 
-There are two things we need to change here:
+For defining the initialState, update:
 
-1. Change `initReactivesearch` function call to `getServerState`.
+1. the `initReactivesearch` function call to `getServerState`.
 2. Instead of passing all the component configuration explicitly inside `initReactivesearch`, pass the root component containing ReactiveBase inside `getServerState`.
 
-**v3**
+**v3.x:** (new usage)
 
 ```html
 <script>
@@ -174,7 +183,7 @@ export default defineNuxtComponent({
 </template>
 ```
 
-**v1**
+**v1.x:** (older usage)
 
 ```html
 <script>
@@ -240,9 +249,9 @@ export default {
 
 ### Change 2: Passing props to ReactiveBase
 
-The `initialState` created above, needs to be passed to the ReactiveBase. In `v3` we need to pass an additional prop called the `contextCollector` to ReactiveBase. It would be populated by the library. You can see the difference below.
+In `v3`, you would pass an additional prop called the `contextCollector` to ReactiveBase.
 
-**v3**
+**v3.x:** (new usage)
 
 There is an additional prop passed to ReactiveBase, `contextCollector`. This is required for SSR to work.
 
@@ -277,7 +286,7 @@ export default {
 </script>
 ```
 
-**v1**
+**v1.x:** (older usage)
 
 ```html
 <template>
@@ -290,7 +299,7 @@ export default {
 </template>
 ```
 
-Here's a link to the [complete example using NuxtJS v3](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr).
+Here's a link to an [example that uses NuxtJS with ReactiveSearch Vue 3.x](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr).
 
 ## New Enhancements
 
