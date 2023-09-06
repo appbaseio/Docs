@@ -139,15 +139,40 @@ We have also removed the following deprecated props:
 
 ## SSR support
 
-There are a couple of changes you would need to make when you migrate to v3. We are using code snippets showing migration of a Nuxt JS app, but these steps would be similiar, even if you aren't using NuxtJS.
+When migrating to v3, there are a couple of changes you'll need to make. We provide code snippets for migrating a Nuxt.js app, but these steps are applicable even if you're not using Nuxt.js.
 
 ### Change 1: initialState
 
-There are two things we need to change here.
+There are two things we need to change here:
 
-1. `initReactivesearch` -> `getServerState`
-2. Passing all the component configuration explicitly inside `initReactivesearch` -> Passing the root component containing ReactiveBase inside `getServerState`
+1. Change `initReactivesearch` function call to `getServerState`.
+2. Instead of passing all the component configuration explicitly inside `initReactivesearch`, pass the root component containing ReactiveBase inside `getServerState`.
 
+**v3**
+
+```html
+<script>
+import { getServerState } from '@appbaseio/reactivesearch-vue'
+// Search is the component which contains ReactiveBase, SearchBox, etc.
+import Search from '../components/search.vue';
+
+export default defineNuxtComponent({
+    async asyncData({query}){
+        // initReactivesearch -> getServerState
+        // 
+        const initialState = getServerState(Search, query)
+        return { initialState }
+    }
+})
+// Library changes
+</script>
+
+<template>
+  <div>
+    <search :initial-state="initialState" />
+  </div>
+</template>
+```
 
 **v1**
 
@@ -213,53 +238,13 @@ export default {
 </template>
 ```
 
-**v3**
-
-```html
-<script>
-import { getServerState } from '@appbaseio/reactivesearch-vue'
-// Search is the component which contains ReactiveBase, SearchBox, etc.
-import Search from '../components/search.vue';
-
-export default defineNuxtComponent({
-    async asyncData({query}){
-        // initReactivesearch -> getServerState
-        // 
-        const initialState = getServerState(Search, query)
-        return { initialState }
-    }
-})
-// Library changes
-</script>
-
-<template>
-  <div>
-    <search :initial-state="initialState" />
-  </div>
-</template>
-```
-
 ### Change 2: Passing props to ReactiveBase
 
 The `initialState` created above, needs to be passed to the ReactiveBase. In `v3` we need to pass an additional prop called the `contextCollector` to ReactiveBase. It would be populated by the library. You can see the difference below.
 
-
-**v1**
-
-```html
-<template>
-    <ReactiveBase 
-        v-bind="components.settings"
-        :initial-state="initialState"
-    >
-          <!-- App here -->
-    </ReactiveBase>
-</template>
-```
-
 **v3**
 
-The Search component passed to `getServerState` is passed an additional parameter `contextCollector` which needs to be passed to `ReactiveBase`.
+There is an additional prop passed to ReactiveBase, `contextCollector`. This is required for SSR to work.
 
 ```html
 <!-- search.vue -->
@@ -292,7 +277,20 @@ export default {
 </script>
 ```
 
-Here's a link to the [complete example using NuxtJS](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr).
+**v1**
+
+```html
+<template>
+    <ReactiveBase 
+        v-bind="components.settings"
+        :initial-state="initialState"
+    >
+          <!-- App here -->
+    </ReactiveBase>
+</template>
+```
+
+Here's a link to the [complete example using NuxtJS v3](https://github.com/appbaseio/reactivesearch/tree/next/packages/vue/examples/with-ssr).
 
 ## New Enhancements
 
