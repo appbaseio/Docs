@@ -370,7 +370,7 @@ Additionally, the ReactiveSearch components support `preferencesPath` prop which
 >
 > Preferences is meant to be a one time configuration for components. We don't recommend to mutate it as it can cause performance issues.
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/just-for-csb-002/packages/vue/examples/preferences" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## Connect to Elasticsearch
 > Note
