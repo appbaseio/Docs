@@ -2,13 +2,20 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Button from '@appbaseio/designkit/lib/atoms/Button';
+import { ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import ThemeSwitch from './themeSwitch';
 import { Spirit } from '../../styles/spirit-styles';
 import Logo from './ReactivesearchLogo';
 import DropdownLink from './DropdownLink';
 import Icon from './Icon';
-import Search from './search/HomeSearch';
 import MobileNav from './MobileNav';
+import { CREDENTIAL_FOR_DOCS, SEARCH_COMPONENT_ID } from './constants';
+
+import * as styles from './NavBar.module.css';
+import { Suggestion } from './search/Suggestion';
+import { DocumentSuggestion } from './search/DocumentSuggestions';
+import { transformRequest } from './transformRequest';
+import { transformResponse } from './transformResponse';
 
 const NavBar = ({ theme, setThemeType, themeType }) => {
 	// Theme definitions
@@ -46,7 +53,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 	}, [mockWindow]);
 
 	return (
-		<div>
+		<>
 			<nav className="shadow-3 on-white">
 				<div
 					className={`${Spirit.page.xl} flex flex-auto flex-nowrap items-center justify-between pt2 pb2`}
@@ -261,7 +268,9 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																with reactivesearch.io
 															</p>
 															<Link
-																style={{ textDecoration: 'none' }}
+																style={{
+																	textDecoration: 'none',
+																}}
 																to="/integrations"
 															>
 																<Button
@@ -495,7 +504,61 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 						</div>
 					</div>
 					<div className="relative home-search-container" style={{ marginRight: 10 }}>
-						<Search isMobile={isMobile} />
+						<ReactiveBase
+							app="unified-reactivesearch-web-data"
+							url={`https://${CREDENTIAL_FOR_DOCS}@appbase-demo-ansible-abxiydt-arc.searchbase.io`}
+							transformRequest={transformRequest}
+							transformResponse={transformResponse}
+							reactivesearchAPIConfig={{
+								recordAnalytics: true,
+								userId: 'test',
+							}}
+							key={themeType}
+							themePreset={themeType}
+						>
+							<SearchBox
+								dataField={[
+									{
+										field: 'title',
+										weight: 3,
+									},
+									{
+										field: 'tokens.keyword',
+										weight: 6,
+									},
+									{
+										field: 'heading',
+										weight: 6,
+									},
+								]}
+								componentId={SEARCH_COMPONENT_ID}
+								className={styles.searchBox}
+								highlight
+								URLParams
+								size={10}
+								showClear
+								placeholder="Search..."
+								showVoiceSearch
+								showDistinctSuggestions
+								enableDocumentSuggestions
+								documentSuggestionsConfig={{
+									sectionLabel: '🕦 Recently Viewed',
+								}}
+								renderItem={suggestion => {
+									const suggestionType = suggestion._suggestion_type;
+
+									return suggestionType === 'index' ||
+										suggestionType === 'document' ? (
+										<DocumentSuggestion
+											docId={suggestion._id}
+											source={suggestion._source}
+										/>
+									) : (
+										<Suggestion suggestion={suggestion} />
+									);
+								}}
+							/>
+						</ReactiveBase>
 					</div>
 					{mockWindow?.innerWidth > 768 ? (
 						<ThemeSwitch setThemeType={setThemeType} />
@@ -503,7 +566,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 					<MobileNav setThemeType={setThemeType} />
 				</div>
 			</nav>
-		</div>
+		</>
 	);
 };
 

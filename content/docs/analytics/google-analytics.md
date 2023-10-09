@@ -59,7 +59,7 @@ If you only want to track your searchbox and you are using the [DataSearch](http
 ### ReactiveSearch Vue
 If you want to track your searchbox and you are using the [data-search](https://docs.appbase.io/docs/reactivesearch/vue/search/DataSearch/) component for it, you can do the following.
 
-```vue
+```html
 <data-search
 	@valueChange="
 		function(value) {

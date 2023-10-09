@@ -35,7 +35,7 @@ Example uses:
 
 ### Usage (with all props)
 
-```vue
+```html
     <TreeList
     	componentId="TreeListComponent"
     	mode="multiple"
@@ -61,7 +61,7 @@ Example uses:
 
 ### Usage (as a controlled component)
 
-```vue
+```html
 <template>
 	<TreeList
     	componentId="TreeListComponent"
