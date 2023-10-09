@@ -461,7 +461,7 @@ Accepts the following properties:
 ## Demo
 
 <br />
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/reactive-component?fontsize=14&hidenavigation=1&theme=light"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/just-for-csb-002/packages/vue/examples/reactive-component?fontsize=14&hidenavigation=1&theme=light"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="reactive-component"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -486,7 +486,7 @@ gets triggered in case of an error and provides the `error` object, which can be
 
 ### With defaultQuery
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/reactive-component?fontsize=14&hidenavigation=1&theme=light"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/just-for-csb-002/packages/vue/examples/reactive-component?fontsize=14&hidenavigation=1&theme=light"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
 	title="reactive-component"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -495,7 +495,7 @@ gets triggered in case of an error and provides the `error` object, which can be
 
 ### With customQuery
 
-<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/next/packages/vue/examples/reactive-component-with-custom-query?fontsize=14&hidenavigation=1&theme=light"
+<iframe src="https://codesandbox.io/embed/github/appbaseio/reactivesearch/tree/feat/just-for-csb-002/packages/vue/examples/reactive-component-with-custom-query?fontsize=14&hidenavigation=1&theme=light"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
 	title="reactive-component-with-custom-query"
 	allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
