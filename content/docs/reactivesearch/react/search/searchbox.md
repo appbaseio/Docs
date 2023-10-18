@@ -809,6 +809,50 @@ specified in `dataField`.
 |  `Boolean` |   Yes   |
 
 show a voice icon in the searchbox to enable users to set voice input. Defaults to `false`.
+
+### showImageSearch
+
+| Type | Optional |
+|------|----------|
+|  `Boolean` |   Yes   |
+
+Show an image icon in the searchbox to enable users to set image input. Defaults to `false`.
+
+<img src="https://i.imgur.com/VBmukOy.gif" alt="showImageSearch example" style="margin:0 auto;display:block;"/>
+
+```jsx
+	<SearchBox 
+        showImageSearch={true}		
+	/>
+```
+
+### imageSearchConfig
+
+| Type | Optional |
+|------|----------|
+|  `Object` |   Yes   |
+
+Specify additional options for configuring image search.
+
+Accepts the following properties:
+-   **iconTooltip** `string` [optional]
+    Set a custom tooltip. Default to `Search any image`.
+-   **icon** `JSX` [optional]
+    set a custom search icon instead of the default camera icon. Takes precedence over `iconURL` prop.
+-   **iconURL** `string` [optional]
+    Customize camera icon by providing a URL.
+
+```jsx
+	<SearchBox 
+        showImageSearch
+		imageSearchConfig={{
+			iconTooltip: "perform image search 📸",
+			icon: <CustomIcon />, // Takes precedence over `iconURL` prop
+			iconURL: "https://example.com/custom-icon.png" 
+		}} 
+	/>
+```
+
 ### searchOperators
 
 | Type | Optional |
