@@ -822,7 +822,7 @@ Show an image icon in the searchbox to enable users to set image input. Defaults
 
 ```jsx
 	<SearchBox 
-        showImageSearch={true}		
+                showImageSearch={true}		
 	/>
 ```
 
@@ -844,7 +844,7 @@ Accepts the following properties:
 
 ```jsx
 	<SearchBox 
-        showImageSearch
+                showImageSearch
 		imageSearchConfig={{
 			iconTooltip: "perform image search 📸",
 			icon: <CustomIcon />, // Takes precedence over `iconURL` prop
