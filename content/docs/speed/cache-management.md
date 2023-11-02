@@ -1,7 +1,7 @@
 ---
 title: 'Cache Management'
 meta_title: 'Cache Management - Core Concepts'
-meta_description: 'Blazing ⚡️ Elasticsearch search performance with ReactiveSearch cache.'
+meta_description: 'Blazing ⚡️ search engine performance with ReactiveSearch cache.'
 keywords:
     - concepts
     - reactivesearch
@@ -13,7 +13,7 @@ sidebar: 'docs'
 
 ## Overview
 
-Elasticsearch does very limited caching of search queries. ReactiveSearch cache drastically improves the search performance by caching the most frequent search queries made to Elasticsearch. It offers the following benefits:
+Elasticsearch and OpenSearch provide for limited caching of search queries. ReactiveSearch cache aims to improve the search performance by caching the most frequent search queries made to these search engines. It offers the following benefits:
 - Better Latency: It saves the time to query Elasticsearch. In our benchmarks for a search use-case, we see over 100ms saved,
 - Improves the search throughput for the same patterns of search queries without requiring them to hit the search engine everytime.
 
@@ -60,3 +60,29 @@ The `Evict Cache` action allows you to free up the cache by removing all the cac
 reactivesearch.io sets the `X-Request-Cache` header as `true` for cached responses, i.e. when caching is enabled and the request is also found within the cache. See the below screenshot for an example response.
 
 ![cache header](https://i.imgur.com/CRi0KIs.png)
+
+## External Cache Configuration
+
+While ReactiveSearch.io's default cache is fast and suitable for many use cases, there might be scenarios where you need a more persistent and flexible caching solution. For such cases, ReactiveSearch.io allows the configuration of an external Redis compatible cache.
+
+### When to Use External Cache vs Default Cache
+
+Here's a comparison to help you decide when to use an external cache over the internal Ristretto cache:
+
+| Feature | Internal Cache (Ristretto) | External Cache (Redis) |
+|---------|-----------------------------|------------------------|
+| Persistence | Memory-only, not persisted to disk | Can be persisted to disk |
+| Durability | Resets with server restart | Survives server restarts |
+| Scalability | Local to a single node | Can scale with primary/replica setups and cluster mode |
+| Data Eviction | LFU (Least Frequently Used) policy | Configurable policies including LRU (Least Recently Used) |
+| High Availability | Not applicable | Supports failover and backup |
+
+### Configuring Redis Cache
+
+To configure an external Redis cache, you need to provide the Redis server address, password (if required), and the database index. This configuration can be done within the cache preferences section of your ReactiveSearch.io dashboard.
+
+![Screenshot 2566-11-03 at 00 25 50](https://github.com/appbaseio/Docs/assets/630042/1ed1d8de-da74-420a-b080-e929baa6a008)
+
+
+By opting for an external Redis cache, you gain the benefits of Redis' advanced features such as data persistence, automatic failover, backup capabilities, and fine-grained control over how the data is stored and retrieved.
+
