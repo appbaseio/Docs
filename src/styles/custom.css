@@ -603,7 +603,7 @@ kbd {
 
 .search-modal-result-container {
 	max-height: calc(100vh - 23.6rem);
-	overflow-y: scroll;
+	overflow: auto;
 	overflow-x: hidden;
 }
 
@@ -1362,7 +1362,7 @@ to be custom HTML.
 	max-height: 70vh;
 	z-index: 999;
 	box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
-	overflow-y: scroll;
+	overflow-y: auto;
 	border-radius: 2px;
 }
 
@@ -1461,7 +1461,7 @@ to be custom HTML.
 	opacity: 0;
 	height: calc(100vh - 75px);
 	transition: all ease 0.1s;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 .mobile-sidebar.open {
@@ -1927,7 +1927,7 @@ a:link {
 
 .overflow-sidebar-scroll {
 	height: 85vh;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 /*(-n+3) selects first three columns*/
@@ -1953,7 +1953,7 @@ tbody tr td:nth-child(-n + 3) {
 }
 
 .autosuggest-content {
-	overflow: scroll;
+	overflow-y: auto;
 	max-height: 510px;
 }
 

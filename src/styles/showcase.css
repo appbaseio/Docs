@@ -69,7 +69,7 @@
 
 .showcase pre {
 	width: 100%;
-	overflow: scroll;
+	overflow-y: auto;
 	margin: 5px 0 !important;
 }
 

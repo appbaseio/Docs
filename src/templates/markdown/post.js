@@ -50,7 +50,7 @@ class Post extends React.Component {
 					<SidebarNav
 						location={location}
 						sidebar={sidebar}
-						style={{ overflow: 'scroll', height: '86vh' }}
+						style={{ overflow: 'auto', height: '86vh' }}
 						nestedSidebar={nestedSidebar}
 					/>
 				</div>
@@ -87,13 +87,14 @@ class Post extends React.Component {
 					<meta charSet="utf-8" />
 					<meta name="title" content={`${post.frontmatter.meta_title}`} />
 					<meta name="description" content={`${post.frontmatter.meta_description}`} />
-					<link rel="canonical" href={`${location.protocol}//${location.host}${location.pathname}`} />
+					<link
+						rel="canonical"
+						href={`${location.protocol}//${location.host}${location.pathname}`}
+					/>
 				</Helmet>
 				<Layout>
 					<div
-						className={`${Spirit.page.xl} flex flex-column flex-row-ns ${
-							sideBarLayout.justification
-						} relative`}
+						className={`${Spirit.page.xl} flex flex-column flex-row-ns ${sideBarLayout.justification} relative`}
 					>
 						<button
 							onClick={() => this.toggleMobileMenu()}
@@ -121,9 +122,7 @@ class Post extends React.Component {
 							>
 								<article className="flex-auto pa5 pa8-m pa15-l pt10-ns pb10-ns pt10-l pb10-l relative">
 									<div className="flex content-between items-baseline justify-between no-wrap">
-										<h1 className={`${Spirit.h1}`}>
-											{post.frontmatter.title}
-										</h1>
+										<h1 className={`${Spirit.h1}`}>{post.frontmatter.title}</h1>
 										{githubLink && (
 											<a
 												href={githubLink}
