@@ -179,7 +179,8 @@ You can define the `reactivesearchAPIConfig` prop in the `ReactiveBase` componen
 |------|----------|
 |  `Boolean` |   Yes   |
 
-allows recording search analytics (and click analytics) when set to `true` and appbase.io is used as a backend. Defaults to `false`.
+allows recording search analytics (and click analytics) when set to `true`. Defaults to `true`.
+
 ### emptyQuery
 
 | Type | Optional |
