@@ -104,7 +104,7 @@ GET /:index/_search
 
 This query will return all the documents whose field `type` contains the value "data".
 
-Elasticsearch uses an imperative Query DSL, like most search engines two. This requires users to learn the process of analysis, setting mappings and the JSON Query DSL of Elasticsearch to be able to effectively leverage Elasticsearch. Further, this typically needs to be exposed over a REST API -- allowing a client to specify Query DSL is a security risk as it allows script injections and DoS scenarios.
+Elasticsearch uses an imperative Query DSL, like most search engines do. This requires users to learn the process of analysis, setting mappings and the JSON Query DSL of Elasticsearch to be able to effectively leverage Elasticsearch. Further, this typically needs to be exposed over a REST API -- allowing a client to specify Query DSL is a security risk as it allows script injections and DoS scenarios.
 
 ReactiveSearch.io offers a declarative Query API for querying Elasticsearch to address these issues - [ReactiveSearch API](/docs/search/reactivesearch-api/). This same API is used by UI libraries such as [ReactiveSearch](https://github.com/appbaseio/reactivesearch) and [Searchbox](https://github.com/appbaseio/searchbox) - which are used by thousands of projects for building their Search UIs.
 
