@@ -1,7 +1,7 @@
 ---
 title: 'QuickStart'
 meta_title: 'QuickStart to Flutter Searchbox'
-meta_description: 'flutter_searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch.'
+meta_description: 'flutter_searchbox is a lightweight library that provides scaffolding to create search experiences powered by Elasticsearch or OpenSearch.'
 keywords:
     - quickstart
     - flutter_searchbox
@@ -9,11 +9,12 @@ keywords:
     - dart
     - search library
     - elasticsearch
+	- opensearch
 sidebar: 'docs'
 nestedSidebar: 'flutter-searchbox'
 ---
 
-[flutter_searchbox](https://github.com/appbaseio/flutter-searchbox/tree/master/flutter_searchbox) provides declarative API to query Elasticsearch, and binds UI widgets with different types of search queries. As the name suggests, it provides a searchbox UI widget for Elasticsearch and Appbase.io.
+[flutter_searchbox](https://github.com/appbaseio/flutter-searchbox/tree/master/flutter_searchbox) offers a declarative API for querying Elasticsearch and OpenSearch with ReactiveSearch. It seamlessly integrates UI widgets with various types of search queries, making it easy to build robust search interfaces.
 
 ## Installation
 
@@ -23,8 +24,8 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_searchbox: ^1.0.0
-  searchbase: ^1.0.0
+  flutter_searchbox: ^4.0.0
+  searchbase: ^4.0.0
 ```
 
 2. Install it
@@ -57,12 +58,12 @@ class FlutterSearchBoxApp extends StatelessWidget {
   // to preserve state on hot reloading
   final searchbaseInstance = SearchBase(
       'good-books-ds',
-      'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+      'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
       'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
       appbaseConfig: AppbaseSettings(
           recordAnalytics: true,
           // Use unique user id to personalize the recent searches
-          userId: 'jon@appbase.io'));
+          userId: 'test@dev'));
 
   FlutterSearchBoxApp({Key key}) : super(key: key);
 
@@ -375,12 +376,12 @@ class FlutterSearchBoxApp extends StatelessWidget {
   // to preserve state on hot reloading
   final searchbaseInstance = SearchBase(
       'good-books-ds',
-      'https://arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+      'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
       'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
       appbaseConfig: AppbaseSettings(
           recordAnalytics: true,
           // Use unique user id to personalize the recent searches
-          userId: 'jon@appbase.io'));
+          userId: 'test@dev'));
 
   FlutterSearchBoxApp({Key key}) : super(key: key);
 
