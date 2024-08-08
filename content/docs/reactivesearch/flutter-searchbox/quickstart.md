@@ -9,7 +9,7 @@ keywords:
     - dart
     - search library
     - elasticsearch
-	- opensearch
+    - opensearch
 sidebar: 'docs'
 nestedSidebar: 'flutter-searchbox'
 ---
