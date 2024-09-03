@@ -18,7 +18,13 @@ nestedSidebar: 'flutter-searchbox'
 
 ## Installation
 
-1. Depend on it
+1. Scaffold a flutter project
+
+```bash
+flutter create flutter_searchbox_demo
+```
+
+2. Depend on it
 
 Add this to your package's `pubspec.yaml` file:
 
@@ -28,7 +34,7 @@ dependencies:
   searchbase: ^4.0.0
 ```
 
-2. Install it
+3. Install it
 
 You can install packages from the command line:
 
@@ -47,6 +53,7 @@ The following example renders an autosuggestion `search-widget` with one custom 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:searchbase/searchbase.dart';
+import 'package:searchbase/src/searchcontroller.dart' as searchbase;
 import 'package:flutter_searchbox/flutter_searchbox.dart';
 
 void main() {
@@ -54,26 +61,19 @@ void main() {
 }
 
 class FlutterSearchBoxApp extends StatelessWidget {
-  // Avoid creating searchbase instance in build method
-  // to preserve state on hot reloading
   final searchbaseInstance = SearchBase(
       'good-books-ds',
       'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
       'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
       appbaseConfig: AppbaseSettings(
           recordAnalytics: true,
-          // Use unique user id to personalize the recent searches
           userId: 'test@dev'));
 
-  FlutterSearchBoxApp({Key key}) : super(key: key);
+  FlutterSearchBoxApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // The SearchBaseProvider should wrap your MaterialApp or WidgetsApp. This will
-    // ensure all routes have access to the store.
     return SearchBaseProvider(
-      // Pass the searchbase instance to the SearchBaseProvider. Any ancestor `SearchWidgetConnector`
-      // Widgets will find and use this value as the `SearchController`.
       searchbase: searchbaseInstance,
       child: MaterialApp(
         title: "SearchBox Demo",
@@ -88,76 +88,63 @@ class FlutterSearchBoxApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SearchBox Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  // Invoke the Search Delegate to display search UI with autosuggestions
-                  showSearch(
-                      context: context,
-                      // SearchBox widget from flutter searchbox
-                      delegate: SearchBox(
-                        // A unique identifier that can be used by other widgetss to reactively update data
-                        id: 'search-widget',
-                        enableRecentSearches: true,
-                        enablePopularSuggestions: true,
-                        showAutoFill: true,
-                        maxPopularSuggestions: 3,
-                        size: 10,
-                        dataField: [
-                          {'field': 'original_title', 'weight': 1},
-                          {'field': 'original_title.search', 'weight': 3}
-                        ],
-                        // This prop is used to return only the distinct value documents for the specified field
-                        distinctField: 'authors.keyword',
-                        // This prop allows specifying additional options to the distinctField prop
-                        distinctFieldConfig: {
-                          'inner_hits': {
-                            'name': 'most_recent',
-                            'size': 5,
-                            'sort': [
-                              {'timestamp': 'asc'}
-                            ],
-                          },
-                          'max_concurrent_group_searches': 4,
+    return Scaffold(
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                    context: context,
+                    delegate: SearchBox(
+                      id: 'search-widget',
+                      enableRecentSearches: false,
+                      enablePopularSuggestions: false,
+                      showAutoFill: true,
+                      maxPopularSuggestions: 3,
+                      size: 10,
+                      dataField: [
+                        {'field': 'original_title', 'weight': 1},
+                        {'field': 'original_title.search', 'weight': 3}
+                      ],
+                      distinctField: 'authors.keyword',
+                      distinctFieldConfig: {
+                        'inner_hits': {
+                          'name': 'most_recent',
+                          'size': 5,
+                          'sort': [
+                            {'timestamp': 'asc'}
+                          ],
                         },
-                      ));
-                }),
-          ],
-          title: Text('SearchBox Demo'),
-        ),
-        body: Center(
-          // A custom UI widget to render a list of results
-          child: SearchWidgetConnector(
-              id: 'result-widget',
-              dataField: 'original_title',
-              react: {
-                'and': ['search-widget'],
-              },
-              size: 10,
-              triggerQueryOnInit: true,
-              preserveResults: true,
-              builder: (context, searchController) => ResultsWidget(searchController)),
-        ),
+                        'max_concurrent_group_searches': 4,
+                      },
+                    ));
+              }),
+        ],
+        title: Text('SearchBox Demo'),
+      ),
+      body: Center(
+        child: SearchWidgetConnector(
+            id: 'result-widget',
+            dataField: 'original_title',
+            react: {
+              'and': ['search-widget'],
+            },
+            size: 10,
+            triggerQueryOnInit: true,
+            preserveResults: true,
+            builder: (context, searchController) => ResultsWidget(searchController)),
       ),
     );
   }
 }
 
 class ResultsWidget extends StatelessWidget {
-  final SearchController searchController;
+  final searchbase.SearchController searchController;  // Use the aliased class name
   ResultsWidget(this.searchController);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -166,8 +153,8 @@ class ResultsWidget extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              color: Colors.white,
               height: 20,
+              padding: const EdgeInsets.only(left: 10.0),
               child: Text('${searchController.results.numberOfResults} results found in ${searchController.results.time.toString()} ms'),
             ),
           ),
@@ -176,12 +163,10 @@ class ResultsWidget extends StatelessWidget {
           child: ListView.builder(
             itemBuilder: (context, index) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                var offset = (searchController.from != null ? searchController.from : 0) + searchController.size;
+                var offset = (searchController.from ?? 0) + (searchController.size ?? 0);
                 if (index == offset - 1) {
                   if (searchController.results.numberOfResults > offset) {
-                    // Load next set of results
-                    searchController.setFrom(offset,
-                        options: Options(triggerDefaultQuery: true));
+                    searchController.setFrom(offset, options: Options(triggerDefaultQuery: true));
                   }
                 }
               });
@@ -191,8 +176,7 @@ class ResultsWidget extends StatelessWidget {
                       ? Container(
                           margin: const EdgeInsets.all(0.5),
                           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-                          decoration: new BoxDecoration(
-                              border: Border.all(color: Colors.black26)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.black26)),
                           height: 200,
                           child: Row(
                             children: [
@@ -217,111 +201,15 @@ class ResultsWidget extends StatelessWidget {
                                 flex: 7,
                                 child: Column(
                                   children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 110,
-                                          width: 280,
-                                          child: ListTile(
-                                            title: Tooltip(
-                                              padding: EdgeInsets.all(5),
-                                              height: 35,
-                                              textStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.normal),
-                                              decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey,
-                                                    spreadRadius: 1,
-                                                    blurRadius: 1,
-                                                    offset: Offset(0, 1),
-                                                  ),
-                                                ],
-                                                color: Colors.white,
-                                              ),
-                                              message:
-                                                  'By: ${searchController.results.data[index]["original_title"]}',
-                                              child: Text(
-                                                searchController.results.data[index]["original_title"].length < 40
-                                                    ? searchController.results.data[index]["original_title"]
-                                                    : '${searchController.results.data[index]["original_title"].substring(0, 39)}...',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                ),
-                                              ),
-                                            ),
-                                            subtitle: Tooltip(
-                                              padding: EdgeInsets.all(5),
-                                              height: 35,
-                                              textStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey,
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                              decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey,
-                                                    spreadRadius: 1,
-                                                    blurRadius: 1,
-                                                    offset: Offset(0, 1),
-                                                  ),
-                                                ],
-                                                color: Colors.white,
-                                              ),
-                                              message:
-                                                  'By: ${searchController.results.data[index]["authors"]}',
-                                              child: Text(
-                                                searchController.results.data[index]["authors"].length > 50
-                                                    ? 'By: ${searchController.results.data[index]["authors"].substring(0, 49)}...'
-                                                    : 'By: ${searchController.results.data[index]["authors"]}',
-                                                style: TextStyle(
-                                                  fontSize: 15.0,
-                                                ),
-                                              ),
-                                            ),
-                                            isThreeLine: true,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      25, 0, 0, 0),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      10, 5, 0, 0),
-                                              child: Text(
-                                                '(${searchController.results.data[index]["average_rating"]} avg)',
-                                                style: TextStyle(
-                                                  fontSize: 12.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      27, 10, 0, 0),
-                                              child: Text(
-                                                'Pub: ${searchController.results.data[index]["original_publication_year"]}',
-                                                style: TextStyle(
-                                                  fontSize: 12.0,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
+                                    ListTile(
+                                      title: Text(
+                                        searchController.results.data[index]["original_title"],
+                                        style: TextStyle(fontSize: 20.0),
+                                      ),
+                                      subtitle: Text('By: ${searchController.results.data[index]["authors"]}'),
                                     ),
+                                    Text('(${searchController.results.data[index]["average_rating"]} avg)'),
+                                    Text('Pub: ${searchController.results.data[index]["original_publication_year"]}'),
                                   ],
                                 ),
                               ),
@@ -332,18 +220,7 @@ class ResultsWidget extends StatelessWidget {
                           ? Center(child: CircularProgressIndicator())
                           : ListTile(
                               title: Center(
-                                child: RichText(
-                                  text: TextSpan(
-                                    text:
-                                        searchController.results.data.length > 0
-                                            ? "No more results"
-                                            : 'No results found',
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
+                                child: Text(searchController.results.data.isNotEmpty ? "No more results" : 'No results found'),
                               ),
                             )));
             },
