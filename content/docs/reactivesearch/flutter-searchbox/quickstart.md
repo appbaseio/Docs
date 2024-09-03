@@ -18,13 +18,13 @@ nestedSidebar: 'flutter-searchbox'
 
 ## Installation
 
-1. Scaffold a flutter project
+1. Create a new Flutter project
 
 ```bash
 flutter create flutter_searchbox_demo
 ```
 
-2. Depend on it
+2. Add the library dependencies
 
 Add this to your package's `pubspec.yaml` file:
 
@@ -34,7 +34,7 @@ dependencies:
   searchbase: ^4.0.0
 ```
 
-3. Install it
+3. Install the dependencies
 
 You can install packages from the command line:
 
