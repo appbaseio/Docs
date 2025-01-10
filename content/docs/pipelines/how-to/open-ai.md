@@ -13,7 +13,7 @@ sidebar: 'docs'
 
 In this guide, we explain how OpenAI can be integrated into ReactiveSearch to take things above and beyond. ReactiveSearch in itself is capable of handling things like indexing data into OpenSearch/ElasticSearch as well as searching data.
 
-Integrating OpenAI with ReactiveSearch adds the functionality to support kNN based searching/indexing on the data thus increasing the accuracy of the search results. In this guide, we will explain how [OpenAI's Embeddings API](https://beta.openai.com/docs/guides/embeddings) is being leveraged to make search better than ever.
+Integrating OpenAI with ReactiveSearch adds the functionality to support kNN based searching/indexing on the data thus increasing the accuracy of the search results. In this guide, we will explain how [OpenAI's Embeddings API](https://platform.openai.com/docs/guides/embeddings) is being leveraged to make search better than ever.
 
 ## Overview of Workflow
 
@@ -26,14 +26,14 @@ The basic workflow is divided into two sub-flows:
 
 Indexing is done in two steps:
 
-- Use OpenAI's API to get the vector representation of the fields that are to be stored as vector
-- Index the data into OpenSearch along with the newly injected vector data field
+- Use OpenAI's API to get the vector representation of fields to be stored
+- Index the data into OpenSearch/Elasticsearch with the generated vector field.
 
 ### Searching Data
 
 Searching the data is done in:
 
-- Use OpenAI's API to get the vector representation of the query value
+- Use OpenAI's API to get the vector representation of the user query value
 - Take the resulting vector and send it to OpenSearch/ElasticSearch
 - Return the response received from OpenSearch/ElasticSearch back to the user
 
@@ -42,9 +42,9 @@ Searching the data is done in:
 
 ## Pre-Requisites
 
-Before starting with the process of indexing vector data, some mapping and settings need to be set in OpenSearch.
+### KNN Index Creation with OpenSearch
 
-> NOTE: This example does not work with ElasticSearch as of the date when this doc is written. This is because ElasticSearch caps the length of the vector field at 1024 whereas OpenAI's embeddings are of length 1536.
+Before starting with the process of indexing vector data, some mapping and settings need to be set in OpenSearch.
 
 The settings for the index will have to be specified when the index is created. This can be done in the following way. Below the vector field is named as `vector_data` and the name of the index is set as `amazon_reviews`.
 
@@ -53,18 +53,19 @@ PUT /{index}
 
 {
     "settings": {
-        "knn": true,
-        "knn.algo_param.ef_search": 100
+      "index": {
+        "knn": true
+      }
     },
     "mappings": {
         "properties": {
             "vector_data": {
                 "type": "knn_vector",
                 "dimension": 1536,
+                "space_type": "l2",
                 "method": {
                     "name": "hnsw",
-                    "space_type": "cosinesimil",
-                    "engine": "nmslib"
+                    "engine": "lucene"
                 }
             }
         }
@@ -72,15 +73,27 @@ PUT /{index}
 }
 ```
 
-### kNN plugin for OpenSearch
+You can read more on this over here: https://opensearch.org/docs/latest/search-plugins/knn/knn-index/.
 
-The above settings will be accepted only if the `opensearch-knn` plugin is installed in the OpenSearch instance that gets the above request. This plugin is shipped by default for the complete versions of OpenSearch, however the minimal versions doesn't include the plugin. In such a case, it can be installed by the following command:
+### KNN Index Creation with Elasticsearch
 
-```sh
-./bin/opensearch-plugin install --batch https://repo1.maven.org/maven2/org/opensearch/plugin/opensearch-knn/$OS_VERSION.0/opensearch-knn-$OS_VERSION.0.zip
+If you're using Elasticsearch v8.12 or above, you can use it with OpenAI embeddings. You would only need to configure the mappings.
+
 ```
+PUT /{index}
 
-> NOTE: Above might need `sudo` in order to execute properly
+{
+    "mappings": {
+      "properties": {
+        "vector_data": {
+          "type": "dense_vector",
+          "dims": 1536,
+          "similarity": "l2_norm"
+        }
+      }
+    }
+}
+```
 
 ## Using OpenAI Embeddings
 
@@ -104,20 +117,26 @@ The pipeline will consist of a few pre-built stages provided by ReactiveSearch. 
 
 Before starting with the stage definitions for the pipeline, the basic details like routes etc need to be defined. It can be done in the following way:
 
-```yaml
-enabled: true
-description: Index pipeline to store vectorized data
-
-routes:
-  - path: /amazon_reviews/_doc
-    method: POST
-    classify:
-      category: elasticsearch
-      acl: index
-
-envs:
-  openAIApiKey: <your-api-key>
-  method: POST
+```json
+{
+  "enabled": true,
+  "description": "Index pipeline to store vectorized data",
+  "routes": [
+    {
+      "path": "/amazon_reviews/_doc",
+      "method": "POST",
+      "classify": {
+        "category": "elasticsearch",
+        "acl": "index"
+      }
+    }
+  ],
+  "envs": {
+    "openAIApiKey": "<your-api-key>",
+    "method": "POST"
+  },
+  "stages": []
+}
 ```
 
 In the above, a new route `/amazon_reviews/_doc` is added for the method `POST`. The pipeline will be invoked if the above route is matched. The OpenAI API's APIKey is also added as an env variable so that it can be used in a later stage. This should be the value of the api key that was explained in a previous step.
@@ -128,25 +147,39 @@ This stage is pretty self-explanatory. As the name suggests, this makes sure tha
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: "authorize user"
-  use: "authorization"
+```json
+{
+  ...,
+  "stages": [
+    {
+      "id": "authorize user",
+      "use": "authorization"
+    }
+  ]
+}
 ```
 
 ### openAIEmbeddingsIndex
 
 Now that we have authorized the user that's making the request, we can fetch the embeddings for the request body passed and update the body with the embeddings. This can be simply done by using the pre-built stage `openAIEmbeddingsIndex`.
 
-```yaml
-- id: fetch embeddings
-  use: openAIEmbeddingsIndex
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    inputKeys:
-    - Summary
-    - Text
-    outputKey: vector_data
-  continueOnError: false
+```json
+{
+  ...,
+  "stages": [
+    ...,
+    {
+      "id": "fetch embeddings",
+      "use": "openAIEmbeddingsIndex",
+      "inputs": {
+        "apiKey": "{{openAIApiKey}}",
+        "inputKeys": ["Summary", "Text"],
+        "outputKey": "vector_data"
+      },
+      "continueOnError": false
+    }
+  ]
+}
 ```
 
 This is a stage provided by ReactiveSearch for OpenAI specific usage. It's very easy to use and takes care of reading from the request body, getting the embeddings using OpenAI API and updating the request body accordingly.
@@ -167,11 +200,18 @@ In this example, it is set to `vector_data` since in the mappings we have define
 
 Now that we have the vector data ready and merged in the request body, we can send the index request to OpenSearch. This can be done by using the pre-built stage `elasticsearchQuery`.
 
-```yaml
-- id: index data
-  use: elasticsearchQuery
-  needs:
-    - fetch embeddings
+```json
+{
+  ...,
+  "stages": [
+    ...,
+    {
+      "id": "index data",
+      "use": "elasticsearchQuery",
+      "needs": ["fetch embeddings"]
+    }
+  ]
+}
 ```
 
 The complete pipeline can be deployed by [using this link](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/openai_indexing/pipeline_oneclick.yaml)
@@ -197,17 +237,23 @@ Following pre-built stages will be used in the query pipeline:
 
 Before starting with the stage definitions for the pipeline, the basic details like routes etc need to be defined. It can be done in the following way:
 
-```yaml
-enabled: true
-routes:
-- path: "/amazon_reviews/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  openAIApiKey: <your-api-key>
-
+```json
+{
+  "enabled": true,
+  "routes": [
+    {
+      "path": "/amazon_reviews/_reactivesearch",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    }
+  ],
+  "envs": {
+    "openAIApiKey": "<your-api-key>"
+  },
+  "stages": []
+}
 ```
 
 The route defined here is `/amazon_reviews/_reactivesearch` and the method is `POST`. An env variable is defined so that the OpenAI API key can be passed to the stage that needs to use it.
@@ -218,22 +264,38 @@ Similar to the indexing pipeline, the authorization stage takes care of making s
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: authorize user
-  use: authorization
+```json
+{
+  ...,
+  "stages": [
+    {
+      "id": "authorize user",
+      "use": "authorization"
+    }
+  ]
+}
 ```
 
 ### openAIEmbeddings
 
 Fetch the embeddings for the passed query. In order to achieve this, we can use the `openAIEmbeddings` pre-built stage that takes care of fetching the vector representation of the query and injecting the representation into the request body directly.
 
-```yaml
-- id: fetch embeddings
-  use: openAIEmbeddings
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    useWithReactiveSearchQuery: true
-  continueOnError: false
+```json
+{
+  ...,
+  "stages": [
+    ...,
+    {
+      "id": "fetch embeddings",
+      "use": "openAIEmbeddings",
+      "inputs": {
+        "apiKey": "{{openAIApiKey}}",
+        "useWithReactiveSearchQuery": true
+      },
+      "continueOnError": false
+    }
+  ]
+}
 ```
 
 In the above, we are passing the `openAIApiKey` as input since that's a required value in order for the stage to work properly. Besides that, the `useWithReactiveSearchQuery` field is passed as `true`. This field triggers the stage to iterate over the request body which is a ReactiveSearch Query body and finds out all the queries that have the `vectorDataField` field set. Whichever queries has this field set, the stage will extract the `value` passed in that query and generate the embedding for it using OpenAI's API. Once the embedding is generated, it is injected into the `queryVector` field of the same query so that it can be utilized in the next stage.
@@ -246,12 +308,19 @@ Now, we can use the pre-built stage `reactivesearchQuery` to convert the Reactiv
 
 We can do that in the following way:
 
-```yaml
-- id: reactivesearch
-  use: reactivesearchQuery
-  needs:
-    - fetch embeddings
-  continueOnError: false
+```json
+{
+  ...,
+  "stages": [
+    ...,
+    {
+      "id": "reactivesearch",
+      "use": "reactivesearchQuery",
+      "needs": ["fetch embeddings"],
+      "continueOnError": false
+    }
+  ]
+}
 ```
 
 ### elasticsearchQuery
@@ -260,10 +329,18 @@ The final stage is to hit ElasticSearch with the translated query and get the re
 
 This stage can be defined in the following way:
 
-```yaml
-- id: elastic search
-  use: elasticsearchQuery
-  continueOnError: false
+```json
+{
+  ...,
+  "stages": [
+    ...,
+    {
+      "id": "elastic search",
+      "use": "elasticsearchQuery",
+      "continueOnError": false
+    }
+  ]
+}
 ```
 
 The complete pipeline can be deployed by [using this link](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/openai_search/pipeline_oneclick.yaml)
