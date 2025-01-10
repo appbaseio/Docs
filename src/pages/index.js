@@ -12,7 +12,7 @@ import { Spirit } from '../styles/spirit-styles';
 const TimelineOption = loadable(() => import('@appbaseio/designkit/lib/molecules/TimelineOption'));
 const Grid = loadable(() => import('@appbaseio/designkit/lib/atoms/Grid'));
 const Card = loadable(() => import('@appbaseio/designkit/lib/atoms/Card'));
-const imagePrefix = 'https://opensource.appbase.io/reactivesearch/images/support';
+const imagePrefix = '/images/home';
 
 const HomePage = ({ data, location }) => {
 	const [themeType, setThemeType] = useState(
