@@ -1,11 +1,11 @@
 {
 	"name": "docs",
 	"version": "0.0.2",
-	"description": "Data-driven components for building Maps and Search UIs",
+	"description": "Documentation for ReactiveSearch - Supercharge your search | A versatile stack for incrementally adopting AI for your site search",
 	"repository": "git@github.com:appbaseio/docs.git",
 	"author": {
-		"name": "Yash Joshi",
-		"url": "https://github.com/jyash97"
+		"name": "ReactiveSearch",
+		"url": "https://github.com/appbaseio"
 	},
 	"contributors": [
 		{
