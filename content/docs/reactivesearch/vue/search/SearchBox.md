@@ -55,12 +55,14 @@ Example uses:
     	'weight': 3
     },
   ]"
+  vectorDataField="vector_data" # Only one of dataField or vectorDataField is needed
   :defaultSuggestions="[
     { label: 'Songwriting', value: 'Songwriting' },
     { label: 'Musicians', value: 'Musicians' },
   ]"
   :fuzziness="0"
   :size="10"
+  :candidates="10" # used with vectorDataField for kNN retrieving
   :debounce="100"
   :react="{
     and: ['CategoryFilter', 'SearchFilter']
@@ -205,8 +207,13 @@ type DataField = {
 ```
 database field(s) to be queried against. Accepts an Array in addition to String, useful for applying search across multiple fields. Check examples at [here](/docs/search/reactivesearch-api/reference/#datafield).
 
-> Note:
-> 1. The `dataField` property as `DataField` object is only available for ReactiveSearch version >= `v3.0.0` and Appbase version `v7.47.0`.
+### vectorDataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    Yes    |
+
+vector data field to query for retrieving hits for the component's UI view. This is used when applying kNN search. Introduced in v3.4.0.
 
 ### size
 
@@ -215,6 +222,15 @@ database field(s) to be queried against. Accepts an Array in addition to String,
 |  `Number` |   Yes   |
 
 number of suggestions to show. Defaults to `10`.
+
+### candidates
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+number of candidate values (aka k) to retrieve for kNN search. This is used with kNN search for populating the suggestions view.
+
 ### excludeFields
 
 | Type | Optional |

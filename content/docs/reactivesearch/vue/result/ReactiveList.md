@@ -40,6 +40,7 @@ Example uses:
     componentId="SearchResult"
     compoundClause="filter"
     dataField="ratings"
+    vectorDataField="vector_data" # Only one of dataField or vectorDataField is needed
     paginationAt="bottom"
     loader="Loading Results.."
     prevLabel="Prev"
@@ -48,6 +49,7 @@ Example uses:
     :pagination="false"
     :pages="5"
     :size="10"
+    :candidates="10"
     :showResultStats="true"
     :react="{ and: ['CitySensor', 'SearchSensor'] }"
     :endpoint="{
@@ -108,9 +110,17 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String`  |    Yes    |
 
 data field to be connected to the component's UI view. It is useful for providing a **sorting** context i.e. results would be sorted based on the `dataField`.
+
+### vectorDataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    Yes    |
+
+vector data field to query for retrieving hits for the component's UI view. This is used when applying kNN search. Introduced in v4.3.0.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
@@ -204,6 +214,15 @@ accepts the label of the desired sort option to set default sort value from give
 |  `Number` |   Yes   |
 
 number of results to show per view. Defaults to 10.
+
+### candidates
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+number of candidate values (aka k) to retrieve for kNN search. This is used with kNN search.
+
 ### loader
 
 | Type | Optional |

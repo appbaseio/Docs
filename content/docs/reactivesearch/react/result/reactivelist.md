@@ -39,6 +39,7 @@ Example uses:
     componentId="SearchResult"
     compoundClause="filter"
     dataField="ratings"
+    vectorDataField="vector_data" # Only one of dataField or vectorDataField is needed
     pagination={false}
     paginationAt="bottom"
     pages={5}
@@ -47,11 +48,9 @@ Example uses:
     loader="Loading Results.."
     showResultStats={true}
     renderItem={res => <div>{res.title}</div>}
-    renderResultStats={function(stats) {
-    	return `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
-    		stats.time
-    	} ms`;
-    }}
+    renderResultStats={stats => `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
+    	stats.time
+    } ms`}
     highlight={true}
     highlightConfig={{
         'pre_tags': ['<mark>'],
@@ -124,9 +123,18 @@ Accepts the following properties:
 
 | Type | Optional |
 |------|----------|
-|  `String`  |    No    |
+|  `String`  |    Yes    |
 
 data field to be connected to the component's UI view. It is useful for providing a sorting context.
+
+### vectorDataField
+
+| Type | Optional |
+|------|----------|
+|  `String`  |    Yes    |
+
+vector data field to query for retrieving hits for the component's UI view. This is used when applying kNN search. Introduced in v4.3.0.
+
 ### distinctField
 
 | Type | Optional |
@@ -147,7 +155,7 @@ You can read more about it over [here](https://www.elastic.co/guide/en/elasticse
 
 > It is possible to override this query by providing `defaultQuery`.
 
-> Note: This prop has been marked as deprecated starting v3.18.0. Please use the `distinctField` prop instead.
+> Note: This prop has been marked as deprecated starting v3.18.0. Please use the `distinctField` prop instead.
 
 ### aggregationSize
 To set the number of buckets to be returned by aggregations.
@@ -247,6 +255,15 @@ accepts the label of the desired sort option to set default sort value from give
 |  `Number` |   Yes   |
 
 number of results to show per view. Defaults to 10.
+
+### candidates
+
+| Type | Optional |
+|------|----------|
+|  `Number` |   Yes   |
+
+number of candidate values (aka k) to retrieve for kNN search. This is used with kNN search.
+
 ### loader
 
 | Type | Optional |
@@ -307,25 +324,23 @@ Read more about it [here](/docs/reactivesearch/react/advanced/customqueries/#whe
 returns a list element object to be rendered based on the `res` data object. This callback function prop is called for each data item rendered in the **ReactiveList** component's view. For example,
 ```jsx
 renderItem = {
-    function(res) {
-        return (
-            <a className="full_row single-record single_record_for_clone" key={res._id}>
-                <div className="text-container full_row" style={{ paddingLeft: '10px' }}>
-                    <div className="text-head text-overflow full_row">
-                        <span className="text-head-info text-overflow">
-                            {res.name ? res.name : ''} - {res.brand ? res.brand : ''}
-                        </span>
-                        <span className="text-head-city">{res.brand ? res.brand : ''}</span>
-                    </div>
-                    <div className="text-description text-overflow full_row">
-                        <ul className="highlight_tags">
-                            {res.price ? `Priced at $${res.price}` : 'Free Test Drive'}
-                        </ul>
-                    </div>
+    res => (
+        <a className="full_row single-record single_record_for_clone" key={res._id}>
+            <div className="text-container full_row" style={{ paddingLeft: '10px' }}>
+                <div className="text-head text-overflow full_row">
+                    <span className="text-head-info text-overflow">
+                        {res.name ? res.name : ''} - {res.brand ? res.brand : ''}
+                    </span>
+                    <span className="text-head-city">{res.brand ? res.brand : ''}</span>
                 </div>
-            </a>
-        );
-    },
+                <div className="text-description text-overflow full_row">
+                    <ul className="highlight_tags">
+                        {res.price ? `Priced at $${res.price}` : 'Free Test Drive'}
+                    </ul>
+                </div>
+            </div>
+        </a>
+    )
 };
 ```
 ### render
@@ -377,11 +392,9 @@ renders custom result stats using a callback function that takes `stats` object 
     Total number of promoted results found
 ```jsx
 renderResultStats = {
-    function(stats) {
-        return `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
-            stats.time
-        } ms`;
-    },
+    stats => `Showing ${stats.displayedResults} of total ${stats.numberOfResults} in ${
+        stats.time
+    } ms`
 };
 ```
 ### renderNoResults
@@ -427,7 +440,7 @@ renderPagination={({ pages, totalPages, currentPage, setPage, setSize }) => {
             </select>
         );
         return selectPage;
-}
+}}
 ```
 ### renderExport
 
@@ -445,11 +458,13 @@ renderExport={
     ({ 
         triggerExportCSV, 
         triggerExportJSON
-    }) =>   (<div> Custom Export
-                <button onClick={triggerExportCSV}>CSV 🔢</button>
-                <button onClick={triggerExportJSON}>JSON ❤️</button>
-            </div>)
-    }
+    }) => (
+        <div> Custom Export
+            <button onClick={triggerExportCSV}>CSV 🔢</button>
+            <button onClick={triggerExportJSON}>JSON ❤️</button>
+        </div>
+    )
+}
 ```
 ### onData
 
@@ -596,16 +611,14 @@ Read more about it [here](/docs/reactivesearch/react/theming/classnameinjection/
   className="custom-class"
   style={{"paddingBottom": "10px"}}
   renderItem={
-    function(res) {
-      return(
-        <div>
-          { res.data }
-        </div>
-      )
-    }
+    res => (
+      <div>
+        { res.data }
+      </div>
+    )
   }
   onQueryChange={
-    function(prevQuery, nextQuery) {
+    (prevQuery, nextQuery) => {
       // use the query with other js code
       console.log('prevQuery', prevQuery);
       console.log('nextQuery', nextQuery);
