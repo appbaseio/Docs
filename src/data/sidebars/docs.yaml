@@ -107,6 +107,8 @@
             - link: /docs/pipelines/how-to/
               title: 'How To Guides'
               items:
+                  - link: /docs/pipelines/how-to/ecommerce-search
+                    title: E-commerce Search
                   - link: /docs/pipelines/how-to/open-ai
                     title: Integrate with OpenAI
                   - link: /docs/pipelines/how-to/add-external-search-results
