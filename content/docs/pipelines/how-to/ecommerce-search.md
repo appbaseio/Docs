@@ -12,8 +12,6 @@ keywords:
 sidebar: 'docs'
 ---
 
-# E-commerce Search with ReactiveSearch Pipelines
-
 This guide shows how to implement an e-commerce search pipeline that:
 
 - reshapes incoming ReactiveSearch queries for better ranking,
@@ -112,7 +110,6 @@ This guide shows how to implement an e-commerce search pipeline that:
         "continueOnError": false
     }
 ]
-```
 ```
 
 ### 4) Typo / fallback (custom script)
