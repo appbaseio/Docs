@@ -1,13 +1,15 @@
 ---
 title: 'Create a pipeline with caching and recording analytics'
-meta_title: 'Create a pipeline with caching and recording analytics | Introduction to Appbase.io'
+meta_title: 'Create a pipeline with caching and recording analytics | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create a pipeline that supports caching and recording analytics.'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - pipelines
     - caching
     - analytics
+    - elasticsearch
+    - opensearch
 sidebar: 'docs'
 ---
 
@@ -19,21 +21,23 @@ ReactiveSearch Pipelines exposes quite a lot of useful stages as pre-built stage
 
 Let's define the basics of the pipeline. It will be in the following way:
 
-```yml
-enabled: true
-description: Pipeline to show how to use cache and record analytics
-routes:
-  - path: good-books-ds-pipeline/_reactivesearch
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-  category: reactivesearch
-  index:
-    - good-books-ds-pipeline
-  urlValues:
-    cache: true
+```json
+{
+  "enabled": true,
+  "description": "Pipeline to show how to use cache and record analytics",
+  "routes": [
+    {
+      "path": "good-books-ds-pipeline/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "envs": {
+    "category": "reactivesearch",
+    "index": ["good-books-ds-pipeline"],
+    "urlValues": { "cache": true }
+  }
+}
 ```
 
 Note that we have also set the `envs.index` field as `good-books-ds`. This is an _optional_ step but is good practice. The ElasticSearch step reads the index from this step as a fallback.
@@ -48,9 +52,13 @@ Now that we have the pre setup out of the way, let's define the stages for the p
 
 We need to make sure that the requests made to this endpoint are authenticated. To do this, we can use the pre-built stage `authorization`. We can define it in the following way:
 
-```yml
-- id: authorize request
-  use: authorization
+```json
+[
+  {
+    "id": "authorize request",
+    "use": "authorization"
+  }
+]
 ```
 
 It's as simple as that, we don't need to do anything else, rest will be taken care of by the pipeline.
@@ -59,9 +67,13 @@ It's as simple as that, we don't need to do anything else, rest will be taken ca
 
 This stage will utilize the pre-built stage `useCache` to enable caching. This can be done in the following way:
 
-```yml
-- id: enable caching
-  use: useCache
+```json
+[
+  {
+    "id": "enable caching",
+    "use": "useCache"
+  }
+]
 ```
 
 It is as simple as that. We can just add a stage and forget about it, everything else is taken care of automatically.
@@ -72,9 +84,13 @@ We will use the pre-built stage `reactivesearchQuery` for this stage. We will be
 
 We can define this stage in the following way:
 
-```yaml
-- id: reactive search query
-  use: reactivesearchQuery
+```json
+[
+  {
+    "id": "reactive search query",
+    "use": "reactivesearchQuery"
+  }
+]
 ```
 
 ### Elastic Search Query
@@ -85,9 +101,13 @@ We will be using the pre-built stage `elasticsearchQuery` at this stage.
 
 We can define this stage in the following way:
 
-```yaml
-- id: elastic search query
-  use: elasticsearchQuery
+```json
+[
+  {
+    "id": "elastic search query",
+    "use": "elasticsearchQuery"
+  }
+]
 ```
 
 ### Record Analytics
@@ -96,39 +116,43 @@ Now that the ES request is complete, we can start recording the analytics. This 
 
 It can be used in the following way:
 
-```yml
-- id: record analytics
-  use: recordAnalytics
+```json
+[
+  {
+    "id": "record analytics",
+    "use": "recordAnalytics"
+  }
+]
 ```
 
 ## Complete Pipeline
 
 Now that all the stages are defined, let's take a look at the whole pipeline at once:
 
-```yml
-enabled: true
-description: Pipeline to show how to use cache and record analytics
-routes:
-  - path: good-books-ds-pipeline/_reactivesearch
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-  category: reactivesearch
-  index:
-    - good-books-ds-pipeline
-  urlValues:
-    cache: true
-
-stages:
-  - use: authorization
-  - use: useCache
-  - use: reactivesearchQuery
-    continueOnError: false
-  - use: elasticsearchQuery
-    continueOnError: false
-  - use: recordAnalytics
+```json
+{
+  "enabled": true,
+  "description": "Pipeline to show how to use cache and record analytics",
+  "routes": [
+    {
+      "path": "good-books-ds-pipeline/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "envs": {
+    "category": "reactivesearch",
+    "index": ["good-books-ds-pipeline"],
+    "urlValues": { "cache": true }
+  },
+  "stages": [
+    { "use": "authorization" },
+    { "use": "useCache" },
+    { "use": "reactivesearchQuery", "continueOnError": false },
+    { "use": "elasticsearchQuery", "continueOnError": false },
+    { "use": "recordAnalytics" }
+  ]
+}
 ```
 
 ## Create the pipeline
@@ -144,7 +168,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

@@ -4,8 +4,8 @@ meta_title: 'Integrating OpenAI into ReactiveSearch'
 meta_description: 'Learn how to integrate OpenAI into ReactiveSearch using pipelines and OpenAI API'
 keywords:
     - open-ai
-    - appbase.io
     - elasticsearch
+    - opensearch
     - pipelines
     - reactivesearch
 sidebar: 'docs'
@@ -148,15 +148,12 @@ This stage is pretty self-explanatory. As the name suggests, this makes sure tha
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
 ```json
-{
-  ...,
-  "stages": [
-    {
-      "id": "authorize user",
-      "use": "authorization"
-    }
-  ]
-}
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 ### openAIEmbeddingsIndex
@@ -164,22 +161,21 @@ The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in th
 Now that we have authorized the user that's making the request, we can fetch the embeddings for the request body passed and update the body with the embeddings. This can be simply done by using the pre-built stage `openAIEmbeddingsIndex`.
 
 ```json
-{
-  ...,
-  "stages": [
-    ...,
-    {
-      "id": "fetch embeddings",
-      "use": "openAIEmbeddingsIndex",
-      "inputs": {
-        "apiKey": "{{openAIApiKey}}",
-        "inputKeys": ["Summary", "Text"],
-        "outputKey": "vector_data"
-      },
-      "continueOnError": false
-    }
-  ]
-}
+[
+  {
+    "id": "fetch embeddings",
+    "use": "openAIEmbeddingsIndex",
+    "inputs": {
+      "apiKey": "{{openAIApiKey}}",
+      "inputKeys": [
+        "Summary",
+        "Text"
+      ],
+      "outputKey": "vector_data"
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 This is a stage provided by ReactiveSearch for OpenAI specific usage. It's very easy to use and takes care of reading from the request body, getting the embeddings using OpenAI API and updating the request body accordingly.
@@ -201,17 +197,15 @@ In this example, it is set to `vector_data` since in the mappings we have define
 Now that we have the vector data ready and merged in the request body, we can send the index request to OpenSearch. This can be done by using the pre-built stage `elasticsearchQuery`.
 
 ```json
-{
-  ...,
-  "stages": [
-    ...,
-    {
-      "id": "index data",
-      "use": "elasticsearchQuery",
-      "needs": ["fetch embeddings"]
-    }
-  ]
-}
+[
+  {
+    "id": "index data",
+    "use": "elasticsearchQuery",
+    "needs": [
+      "fetch embeddings"
+    ]
+  }
+]
 ```
 
 The complete pipeline can be deployed by [using this link](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/openai_indexing/pipeline_oneclick.yaml)
@@ -265,15 +259,12 @@ Similar to the indexing pipeline, the authorization stage takes care of making s
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
 ```json
-{
-  ...,
-  "stages": [
-    {
-      "id": "authorize user",
-      "use": "authorization"
-    }
-  ]
-}
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 ### openAIEmbeddings
@@ -281,21 +272,17 @@ The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in th
 Fetch the embeddings for the passed query. In order to achieve this, we can use the `openAIEmbeddings` pre-built stage that takes care of fetching the vector representation of the query and injecting the representation into the request body directly.
 
 ```json
-{
-  ...,
-  "stages": [
-    ...,
-    {
-      "id": "fetch embeddings",
-      "use": "openAIEmbeddings",
-      "inputs": {
-        "apiKey": "{{openAIApiKey}}",
-        "useWithReactiveSearchQuery": true
-      },
-      "continueOnError": false
-    }
-  ]
-}
+[
+  {
+    "id": "fetch embeddings",
+    "use": "openAIEmbeddings",
+    "inputs": {
+      "apiKey": "{{openAIApiKey}}",
+      "useWithReactiveSearchQuery": true
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 In the above, we are passing the `openAIApiKey` as input since that's a required value in order for the stage to work properly. Besides that, the `useWithReactiveSearchQuery` field is passed as `true`. This field triggers the stage to iterate over the request body which is a ReactiveSearch Query body and finds out all the queries that have the `vectorDataField` field set. Whichever queries has this field set, the stage will extract the `value` passed in that query and generate the embedding for it using OpenAI's API. Once the embedding is generated, it is injected into the `queryVector` field of the same query so that it can be utilized in the next stage.
@@ -309,18 +296,16 @@ Now, we can use the pre-built stage `reactivesearchQuery` to convert the Reactiv
 We can do that in the following way:
 
 ```json
-{
-  ...,
-  "stages": [
-    ...,
-    {
-      "id": "reactivesearch",
-      "use": "reactivesearchQuery",
-      "needs": ["fetch embeddings"],
-      "continueOnError": false
-    }
-  ]
-}
+[
+  {
+    "id": "reactivesearch",
+    "use": "reactivesearchQuery",
+    "needs": [
+      "fetch embeddings"
+    ],
+    "continueOnError": false
+  }
+]
 ```
 
 ### elasticsearchQuery
@@ -330,17 +315,13 @@ The final stage is to hit ElasticSearch with the translated query and get the re
 This stage can be defined in the following way:
 
 ```json
-{
-  ...,
-  "stages": [
-    ...,
-    {
-      "id": "elastic search",
-      "use": "elasticsearchQuery",
-      "continueOnError": false
-    }
-  ]
-}
+[
+  {
+    "id": "elastic search",
+    "use": "elasticsearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 The complete pipeline can be deployed by [using this link](https://dashboard.reactivesearch.io/deploy?template=https://raw.githubusercontent.com/appbaseio/pipelines-template/master/openai_search/pipeline_oneclick.yaml)
@@ -352,4 +333,4 @@ Now that both the data is indexed and the query pipeline is created, the data ne
 
 Following playground URL shows that in an intuitive way.
 
-<iframe src=https://play.reactivesearch.io/embed/32Xox0q4osvXOSQTyj8A     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-32Xox0q4osvXOSQTyj8A   ></iframe>
+<iframe src=https://play.reactivesearch.io/embed/32Xox0q4osvXOSQTyj8A     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"     title=rs-playground-32Xox0q4osvXOSQTyj8A></iframe>

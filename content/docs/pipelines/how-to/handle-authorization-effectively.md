@@ -1,10 +1,10 @@
 ---
 title: 'Handle authorization effectively in Pipelines'
-meta_title: 'Handle authorization effectively in pipelines | Introduction to Appbase.io'
+meta_title: 'Handle authorization effectively in pipelines | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to handle authorization properly while defining a pipeline with ReactiveSearch'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
     - pipelines
     - authorization
@@ -50,15 +50,18 @@ Before we start with the stages, let's setup the routes and other pre-requisites
 
 We will make this pipeline be invoked with the `auth/_rectivesearch` endpoint on a **POST** request.
 
-```yaml
-enabled: true
-description: Set authorization effectively for search
-
-routes:
-  - path: /auth/_reactivesearch
-    method: POST
-      classify:
-        category: reactivesearch
+```json
+{
+  "enabled": true,
+  "description": "Set authorization effectively for search",
+  "routes": [
+    {
+      "path": "/auth/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ]
+}
 ```
 
 ## Stages
@@ -75,10 +78,14 @@ Following stages will be defined:
 
 Authorize user using the `authorization` pre-built stage. We can define it in the following way:
 
-```yaml
-- id: Authorize User
-  use: authorization
-  continueOnError: false
+```json
+[
+  {
+    "id": "Authorize User",
+    "use": "authorization",
+    "continueOnError": false
+  }
+]
 ```
 
 > Note that the `continueOnError` field is set to `false` to make sure the authorization stops execution.
@@ -89,42 +96,49 @@ ReactiveSearch query will translate the passed query to ElasticSearch and accord
 
 We can use the pre-built stage `reactivesearchQuery` for this stage.
 
-```yaml
-- id: ReactiveSearch Query
-  use: reactivesearchQuery
+```json
+[
+  {
+    "id": "ReactiveSearch Query",
+    "use": "reactivesearchQuery"
+  }
+]
 ```
 
 ### ElasticSearch Query
 
 Finally, we can hit ElasticSearch to get the response and return it accordingly in the response. We can use the pre-built stage `elasticsearchQuery` for this stage.
 
-```yml
-- id: ElasticSearch Query
-  use: elasticsearchQuery
+```json
+[
+  {
+    "id": "ElasticSearch Query",
+    "use": "elasticsearchQuery"
+  }
+]
 ```
 
 ## Complete Pipeline
 
 Now that we have defined the stages we needed, let's get the whole pipeline
 
-```yml
-enabled: true
-description: Set authorization effectively for search
-
-routes:
-  - path: /auth/_reactivesearch
-    method: POST
-      classify:
-        category: reactivesearch
-
-stages:
-  - id: Authorize User
-    use: authorization
-    continueOnError: false
-  - id: ReactiveSearch Query
-    use: reactivesearchQuery
-  - id: ElasticSearch Query
-    use: elasticsearchQuery
+```json
+{
+  "enabled": true,
+  "description": "Set authorization effectively for search",
+  "routes": [
+    {
+      "path": "/auth/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "stages": [
+    { "id": "Authorize User", "use": "authorization", "continueOnError": false },
+    { "id": "ReactiveSearch Query", "use": "reactivesearchQuery" },
+    { "id": "ElasticSearch Query", "use": "elasticsearchQuery" }
+  ]
+}
 ```
 
 ## Create the pipeline
@@ -140,7 +154,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

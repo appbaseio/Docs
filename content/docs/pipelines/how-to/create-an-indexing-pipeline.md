@@ -1,10 +1,10 @@
 ---
 title: 'Create an indexing pipeline'
-meta_title: 'Create an indexing pipeline | Introduction to Appbase.io'
+meta_title: 'Create an indexing pipeline | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create an indexing pipeline with ReactiveSearch'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
     - pipelines
     - indexing
@@ -33,16 +33,18 @@ So our pipeline will basically _intercept_ the document to be indexed, add a new
 
 Before we start with the pipeline stages, let's setup the routes and other prerequisites of a pipeline. We want this pipeline to be invoked whenever data is to be indexed to the `user-info` index. So we can define it in the following way
 
-```yaml
-enabled: true
-description: Index data into user-info with a location field
-
-routes:
-  - path: /user-info/_doc
-    method: POST
-      classify:
-        category: elasticsearch
-        acl: index
+```json
+{
+  "enabled": true,
+  "description": "Index data into user-info with a location field",
+  "routes": [
+    {
+      "path": "/user-info/_doc",
+      "method": "POST",
+      "classify": { "category": "elasticsearch", "acl": "index" }
+    }
+  ]
+}
 ```
 
 We are setting the category as `elasticsearch` because this will eventually lead to an elasticsearch call. Think of `acl` like a nested category that specifies exactly what the operation is. Here `index` as `acl` works perfectly as we are creating an indexing pipeline.
@@ -64,9 +66,13 @@ This is important to make sure only the proper credentials can index data into t
 
 We can use this stage in the following way:
 
-```yaml
-- id: authorise user
-  uses: authorization
+```json
+[
+  {
+    "id": "authorise user",
+    "uses": "authorization"
+  }
+]
 ```
 
 Yes, as simple as that, we will take care of the rest.
@@ -79,10 +85,14 @@ Since, this is a custom stage, we will pass a **JavaScript** file to the pipelin
 
 This stage will be defined in the followin way:
 
-```yaml
-- id: get location details
-  scriptRef: "getLocation.js"
-  async: true
+```json
+[
+  {
+    "id": "get location details",
+    "scriptRef": "getLocation.js",
+    "async": true
+  }
+]
 ```
 
 In the above, we are referencing a `getLocation.js` in the `scriptRef` field.
@@ -140,11 +150,16 @@ We now have the location added to the context, we can update the request body wi
 
 This stage will be simple and defined in the following way
 
-```yaml
-- id: add details to body
-  scriptRef: "addDetails.js"
-  needs:
-    - get location details
+```json
+[
+  {
+    "id": "add details to body",
+    "scriptRef": "addDetails.js",
+    "needs": [
+      "get location details"
+    ]
+  }
+]
 ```
 
 > Note that we have a `needs` stage here. The `needs` makes sure this stage is executed only after all the stages that it _needs_ are completed.
@@ -174,11 +189,16 @@ We are at the final stage now. We just need to pass the request body to ElasticS
 
 We can define this stage in the following way
 
-```yaml
-- id: index data
-  uses: elasticsearchQuery
-  needs:
-    - add details to body
+```json
+[
+  {
+    "id": "index data",
+    "uses": "elasticsearchQuery",
+    "needs": [
+      "add details to body"
+    ]
+  }
+]
 ```
 
 We are using the `needs` property to make sure this stage gets executed after the `location` is added to the body.
@@ -187,31 +207,46 @@ We are using the `needs` property to make sure this stage gets executed after th
 
 Let's now take a look at the completed pipeline to see how it looks like in one file.
 
-```yaml
-enabled: true
-description: Index data into user-info with a location field
-
-routes:
-  - path: /user-info/_doc
-    method: POST
-      classify:
-        category: elasticsearch
-        acl: index
-
-stages:
-  - id: authorise user
-    uses: authorization
-  - id: get location details
-    scriptRef: "getLocation.js"
-    async: true
-  - id: add details to body
-    scriptRef: "addDetails.js"
-    needs:
-      - get location details
-  - id: index data
-    uses: elasticsearchQuery
-    needs:
-      - add details to body
+```json
+{
+    "enabled": true,
+    "description": "Index data into user-info with a location field",
+    "routes": [
+        {
+            "path": "/user-info/_doc",
+            "method": "POST",
+            "classify": {
+                "category": "elasticsearch",
+                "acl": "index"
+            }
+        }
+    ],
+    "stages": [
+        {
+            "id": "authorise user",
+            "uses": "authorization"
+        },
+        {
+            "id": "get location details",
+            "scriptRef": "getLocation.js",
+            "async": true
+        },
+        {
+            "id": "add details to body",
+            "scriptRef": "addDetails.js",
+            "needs": [
+                "get location details"
+            ]
+        },
+        {
+            "id": "index data",
+            "uses": "elasticsearchQuery",
+            "needs": [
+                "add details to body"
+            ]
+        }
+    ]
+}
 ```
 
 In just a few lines of code, we have the pipeline ready. This pipeline can be tested through the dashboard at [dash.appbase.io](https://dash.appbase.io).
@@ -229,5 +264,5 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "addDetails.js=addDetails.js" --form "getLocation.js=getLocation.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "addDetails.js=addDetails.js" --form "getLocation.js=getLocation.js"
 ```

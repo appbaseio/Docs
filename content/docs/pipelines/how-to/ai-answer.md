@@ -1,11 +1,12 @@
 ---
 title: 'Use AIAnswer to build answers to search queries'
-meta_title: 'Use AI Answer to build answers to search queries | Introduction to Appbase.io'
+meta_title: 'Use AI Answer to build answers to search queries | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to use AIAnswer stage to build answers to search queries using ChatGPT'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - opensearch
+    - elasticsearch
     - pipelines
     - chatGPT
     - AI answer
@@ -30,19 +31,22 @@ We will create a pipeline that overrides the `/{index}/_reactivesearch` endpoint
 
 Now that we know what our requirement is, let's define the initial content of the pipeline. As described before, we will over-ride the `/{index}/_reactivesearch` so that we can return answers when a search query comes in. We can do that in the following way:
 
-```yaml
-enabled: true
-description: Supercharge search queries by returning answer to user's query using ChatGPT
-routes:
-- path: "/movie-db/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  index:
-  - movie-db
-  openAIApiKey: <your-api-key>
+```json
+{
+  "enabled": true,
+  "description": "Supercharge search queries by returning answer to user's query using ChatGPT",
+  "routes": [
+    {
+      "path": "/movie-db/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "envs": {
+    "index": ["movie-db"],
+    "openAIApiKey": "<your-api-key>"
+  }
+}
 ```
 
 For the sake of this example, we will not override a dynamic path but instead override the `movie-db` index. This index can be setup by going through the interactive tutorial on `dash.reactivesearch.io` and selecting the movie dataset.
@@ -70,9 +74,13 @@ This is one of the most important steps in the pipeline. Using this stage we wil
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: authorize user
-  use: authorization
+```json
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 Yes, just one line will authorize the user, it's as simple as that!
@@ -83,10 +91,14 @@ Now, we can use the pre-built stage `reactivesearchQuery` to convert the Reactiv
 
 We can do that in the following way:
 
-```yaml
-- id: reactivesearch
-  use: reactivesearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "id": "reactivesearch",
+    "use": "reactivesearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 ### Elastic Search
@@ -95,10 +107,14 @@ The final stage is to hit ElasticSearch with the translated query and get the re
 
 This stage can be defined in the following way:
 
-```yaml
-- id: elastic search
-  use: elasticsearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "id": "elastic search",
+    "use": "elasticsearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 ### AI Answer
@@ -148,46 +164,63 @@ then the query template `Can you tell me about: ${value}` will resolve to `Can y
 
 Following is the stage that we can use to get a decent answer from ChatGPT:
 
-```yaml
-- id: ai answer
-  use: AIAnswer
-  inputs:
-    docTemplate: "${source.title} is ${source.overview} with url: ${source.backdrop_path}"
-    apiKey: "{{openAIApiKey}}"
+```json
+[
+  {
+    "id": "ai answer",
+    "use": "AIAnswer",
+    "inputs": {
+      "docTemplate": "${source.title} is ${source.overview} with url: ${source.backdrop_path}",
+      "apiKey": "{{openAIApiKey}}"
+    }
+  }
+]
 ```
 
 ## Complete pipeline
 
 Now that all the stages are defined, the final pipeline looks like following:
 
-```yaml
-enabled: true
-description: Supercharge search queries by returning answer to user's query using ChatGPT
-routes:
-- path: "/movie-db/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  index:
-  - movie-db
-  openAIApiKey: <your-api-key>
-
-stages:
-  - id: authorize user
-    use: authorization
-  - id: reactivesearch
-    use: reactivesearchQuery
-    continueOnError: false
-  - id: elastic search
-    use: elasticsearchQuery
-    continueOnError: false
-  - id: ai answer
-    use: AIAnswer
-    inputs:
-        docTemplate: "${source.title} is ${source.overview} with url: ${source.backdrop_path}"
-        apiKey: "{{openAIApiKey}}"
+```json
+{
+  "enabled": true,
+  "description": "Supercharge search queries by returning answer to user's query using ChatGPT",
+  "routes": [
+    {
+      "path": "/movie-db/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "envs": {
+    "index": ["movie-db"],
+    "openAIApiKey": "<your-api-key>"
+  },
+  "stages": [
+    {
+      "id": "authorize user",
+      "use": "authorization"
+    },
+    {
+      "id": "reactivesearch",
+      "use": "reactivesearchQuery",
+      "continueOnError": false
+    },
+    {
+      "id": "elastic search",
+      "use": "elasticsearchQuery",
+      "continueOnError": false
+    },
+    {
+      "id": "ai answer",
+      "use": "AIAnswer",
+      "inputs": {
+        "docTemplate": "${source.title} is ${source.overview} with url: ${source.backdrop_path}",
+        "apiKey": "{{openAIApiKey}}"
+      }
+    }
+  ]
+}
 ```
 
 ## Create the pipeline
@@ -203,7 +236,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

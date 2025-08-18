@@ -4,7 +4,6 @@ meta_title: 'How to guides for ReactiveSearch Pipelines'
 meta_description: 'Learn how to use ReactiveSearch pipelines through different examples'
 keywords:
     - concepts
-    - appbase.io
     - elasticsearch
     - pipelines
     - reactivesearch

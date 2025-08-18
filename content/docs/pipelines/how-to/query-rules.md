@@ -1,10 +1,11 @@
 ---
 title: 'Create a pipeline with query rules'
-meta_title: 'Create a pipeline with Query Rules | Introduction to Appbase.io'
+meta_title: 'Create a pipeline with Query Rules | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create a pipeline that uses query rules to boost search results'
 keywords:
     - concepts
-    - appbase.io
+    - elasticsearch
+    - opensearch
     - pipelines
     - query
     - rules
@@ -29,19 +30,26 @@ Query rules play an important role in search applications to tune search relevan
 
 Let's define the basics of the pipeline. It will be in the following way:
 
-```yml
-enabled: true
-description: Promote cell phones
-
-routes:
-  - path: /query-boost-example
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-    category: reactivesearch
-    index: [best-buy-dataset]
+```json
+{
+    "enabled": true,
+    "description": "Promote cell phones",
+    "routes": [
+        {
+            "path": "/query-boost-example",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "envs": {
+        "category": "reactivesearch",
+        "index": [
+            "best-buy-dataset"
+        ]
+    }
+}
 ```
 We have defined the search route details along with some envs variables to configure the route category and search index. We would be using the `best-buy-dataset` index, you can browse the data at [here](https://dejavu.appbase.io/?appname=best-buy-dataset&url=https://b9f6f919e680:268f356c-434b-4cda-955b-f71953a0ff38@appbase-demo-ansible-abxiydt-arc.searchbase.io&mode=view).
 
@@ -53,10 +61,14 @@ Now that we have the pre setup out of the way, let's define the stages for the p
 
 We need to make sure that the requests made to this endpoint are authenticated. To do this, we can use the pre-built stage `authorization`. We can define it in the following way:
 
-```yml
-- id: authorization
-  use: authorization
-  continueOnError: false
+```json
+[
+  {
+    "id": "authorization",
+    "use": "authorization",
+    "continueOnError": false
+  }
+]
 ```
 
 It's as simple as that, we don't need to do anything else, the rest will be taken care of by the pipeline.
@@ -65,14 +77,20 @@ It's as simple as that, we don't need to do anything else, the rest will be take
 
 The following stage defines a facet to filter search results by `department` value as `DIGITAL COMMUNICATIO`.
 
-```yml
-- id: addFilter
-  use: addFilter
-  continueOnError: false
-  description: Filter results by department
-  inputs:
-    data: mongodb
-      department.keyword: DIGITAL COMMUNICATIO   
+```json
+[
+  {
+    "id": "addFilter",
+    "use": "addFilter",
+    "continueOnError": false,
+    "description": "Filter results by department",
+    "inputs": {
+      "data": {
+        "department.keyword": "DIGITAL COMMUNICATIO"
+      }
+    }
+  }
+]
 ```
 
 
@@ -80,30 +98,44 @@ The following stage defines a facet to filter search results by `department` val
 
 The following stage replaces the `iphone` word in search query to `iphone 11 apple` so we can get more specific results for latest iphone series available in stock.
 
-```yml
-- id: replaceWords
-  use: replaceWords
-  continueOnError: false
-  description: Replaces iphone word to iphone 11 apple
-  inputs:
-    data:
-      iphone: iphone 11 apple   
+```json
+[
+  {
+    "id": "replaceWords",
+    "use": "replaceWords",
+    "continueOnError": false,
+    "description": "Replaces iphone word to iphone 11 apple",
+    "inputs": {
+      "data": {
+        "iphone": "iphone 11 apple"
+      }
+    }
+  }
+]
 ```
 
 ### Boost Results by Score
 
 In the following stage, we are boosting the documents for which `categoryPath.name` field is `cell Phones` or `Prepaid Phones`.
 
-```yml
-- id: boostByScore
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: categoryPath.name
-    value: [cell Phones, Prepaid Phones] 
-    boostType: score
-    boostFactor: 0
-    boostOp: 'add'
+```json
+[
+  {
+    "id": "boostByScore",
+    "use": "boost",
+    "continueOnError": false,
+    "inputs": {
+      "dataField": "categoryPath.name",
+      "value": [
+        "cell Phones",
+        "Prepaid Phones"
+      ],
+      "boostType": "score",
+      "boostFactor": 0,
+      "boostOp": "add"
+    }
+  }
+]
 ```
 
 Above stage will translate to the following ElasticSearch query:
@@ -115,7 +147,7 @@ Above stage will translate to the following ElasticSearch query:
     "match": {
       "categoryPath.name": {
         "query": "cell Phones Prepaid Phones",
-        "operator": "or" 
+        "operator": "or"
       }
     }
   }
@@ -126,18 +158,24 @@ Above stage will translate to the following ElasticSearch query:
 
 `boost` stage also supports `geo` and `range` based query boosting. Following is an example on how range based query boosting works:
 
-```yaml
-- id: boostByScore
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: categoryPath.name
-    value:
-      start: 23
-      end: 45
-    boostType: score
-    boostFactor: 0
-    boostOp: 'add'
+```json
+[
+  {
+    "id": "boostByScore",
+    "use": "boost",
+    "continueOnError": false,
+    "inputs": {
+      "dataField": "categoryPath.name",
+      "value": {
+        "start": 23,
+        "end": 45
+      },
+      "boostType": "score",
+      "boostFactor": 0,
+      "boostOp": "add"
+    }
+  }
+]
 ```
 
 Above stage translates to the following ElasticSearch query:
@@ -159,19 +197,25 @@ Above stage translates to the following ElasticSearch query:
 
 Following is an example of boosting on a `geo` location field. Note that in order to boost on a geo field, the field type should be a supported location field.
 
-```yaml
-- id: boostByScore
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: location
-    value:
-      location: "22.3184816, 73.17065699999999"
-      unit: mi
-      distance: 45
-    boostType: score
-    boostFactor: 0
-    boostOp: 'add'
+```json
+[
+  {
+    "id": "boostByScore",
+    "use": "boost",
+    "continueOnError": false,
+    "inputs": {
+      "dataField": "location",
+      "value": {
+        "location": "22.3184816, 73.17065699999999",
+        "unit": "mi",
+        "distance": 45
+      },
+      "boostType": "score",
+      "boostFactor": 0,
+      "boostOp": "add"
+    }
+  }
+]
 ```
 
 Above stage translates to the following ElasticSearch query:
@@ -194,15 +238,22 @@ Above stage translates to the following ElasticSearch query:
 
 The following stage would promote the documents at the top for which `albumTitle` field contains `Galaxy Note10+`. Since we want to promote maximum one document, so we have set the `boostMaxDocs` to `1`.
 
-```yml
-- id: promoteResults
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: albumTitle
-    value: [Galaxy Note10+]
-    boostType: promote
-    boostMaxDocs: 1
+```json
+[
+  {
+    "id": "promoteResults",
+    "use": "boost",
+    "continueOnError": false,
+    "inputs": {
+      "dataField": "albumTitle",
+      "value": [
+        "Galaxy Note10+"
+      ],
+      "boostType": "promote",
+      "boostMaxDocs": 1
+    }
+  }
+]
 ```
 
 ### ReactiveSearch Query
@@ -211,9 +262,13 @@ We will use the pre-built stage `reactivesearchQuery` for this stage. We will be
 
 We can define this stage in the following way:
 
-```yml
-- use: reactivesearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "use": "reactivesearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 
@@ -225,9 +280,13 @@ We will be using the pre-built stage `elasticsearchQuery` at this stage.
 
 We can define this stage in the following way:
 
-```yaml
-- use: elasticsearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "use": "elasticsearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 ## Complete Pipeline
@@ -235,57 +294,91 @@ We can define this stage in the following way:
 Now that all the stages are defined, let's take a look at the whole pipeline at once:
 
 
-```yml
-enabled: true
-description: Promote cell phones
-
-routes:
-  - path: /query-boost-example
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-    category: reactivesearch
-    index: [best-buy-dataset]
-
-stages:
-- id: authorization
-  use: authorization
-  continueOnError: false
-- id: addFilter
-  use: addFilter
-  continueOnError: false
-  description: Filter results by department
-  inputs:
-    data: mongodb
-      department.keyword: DIGITAL COMMUNICATIO
-- id: replaceWords
-  use: replaceWords
-  continueOnError: false
-  description: Replaces iphone word to iphone 11 apple
-  inputs:
-    data:
-      iphone: iphone 11 apple
-- id: boostByScore
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: categoryPath.name
-    value: [cell Phones, Prepaid Phones] 
-    boostType: score
-- id: promoteResults
-  use: boost
-  continueOnError: false
-  inputs:
-    dataField: albumTitle
-    value: [Galaxy Note10+]
-    boostType: promote
-    boostMaxDocs: 1
-- use: reactivesearchQuery
-  continueOnError: false
-- use: elasticsearchQuery
-  continueOnError: false
+```json
+{
+    "enabled": true,
+    "description": "Promote cell phones",
+    "routes": [
+        {
+            "path": "/query-boost-example",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "envs": {
+        "category": "reactivesearch",
+        "index": [
+            "best-buy-dataset"
+        ]
+    },
+    "stages": [
+        {
+            "id": "authorization",
+            "use": "authorization",
+            "continueOnError": false
+        },
+        {
+            "id": "addFilter",
+            "use": "addFilter",
+            "continueOnError": false,
+            "description": "Filter results by department",
+            "inputs": {
+                "data": {
+                    "department.keyword": "DIGITAL COMMUNICATIO"
+                }
+            }
+        },
+        {
+            "id": "replaceWords",
+            "use": "replaceWords",
+            "continueOnError": false,
+            "description": "Replaces iphone word to iphone 11 apple",
+            "inputs": {
+                "data": {
+                    "iphone": "iphone 11 apple"
+                }
+            }
+        },
+        {
+            "id": "boostByScore",
+            "use": "boost",
+            "continueOnError": false,
+            "inputs": {
+                "dataField": "categoryPath.name",
+                "value": [
+                    "cell Phones",
+                    "Prepaid Phones"
+                ],
+                "boostType": "score",
+                "boostFactor": 0,
+                "boostOp": "add"
+            }
+        },
+        {
+            "id": "promoteResults",
+            "use": "boost",
+            "continueOnError": false,
+            "inputs": {
+                "dataField": "albumTitle",
+                "value": [
+                    "Galaxy Note10+"
+                ],
+                "boostType": "promote",
+                "boostMaxDocs": 1
+            }
+        },
+        {
+            "use": "reactivesearchQuery",
+            "continueOnError": false
+        },
+        {
+            "use": "elasticsearchQuery",
+            "continueOnError": false
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -301,7 +394,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_URL/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_URL/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

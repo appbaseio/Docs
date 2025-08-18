@@ -1,10 +1,10 @@
 ---
 title: 'Implement Vector Indexing for passed data using OpenAI'
-meta_title: 'Implement Vector Indexing with OpenAI | Introduction to Appbase.io'
+meta_title: 'Implement Vector Indexing with OpenAI | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to index incoming data and store it as a vector using OpenAI embeddings API'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - opensearch
     - pipelines
     - kNN
@@ -90,20 +90,25 @@ Now that we know how we are going to implement kNN index, let's start with the b
 
 The file will be defined in the following way:
 
-```yaml
-enabled: true
-description: Index pipeline to store vectorized data
-
-routes:
-  - path: /amazon_reviews/_doc
-    method: POST
-    classify:
-      category: elasticsearch
-      acl: index
-
-envs:
-  openAIApiKey: <your-api-key>
-  method: POST
+```json
+{
+    "enabled": true,
+    "description": "Index pipeline to store vectorized data",
+    "routes": [
+        {
+            "path": "/amazon_reviews/_doc",
+            "method": "POST",
+            "classify": {
+                "category": "elasticsearch",
+                "acl": "index"
+            }
+        }
+    ],
+    "envs": {
+        "openAIApiKey": "<your-api-key>",
+        "method": "POST"
+    }
+}
 ```
 
 ### Environment Variables
@@ -128,25 +133,35 @@ This is one of the most important steps in the pipeline. Using this stage we wil
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: "authorize user"
-  use: "authorization"
+```json
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 ### Fetch Embeddings
 
 Now that we have authorized the user that's making the request, we can fetch the embeddings for the request body passed and update the body with the embeddings. This can be simply done by using the pre-built stage `openAIEmbeddingsIndex`.
 
-```yaml
-- id: fetch embeddings
-  use: openAIEmbeddingsIndex
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    inputKeys:
-    - Summary
-    - Text
-    outputKey: vector_data
-  continueOnError: false
+```json
+[
+  {
+    "id": "fetch embeddings",
+    "use": "openAIEmbeddingsIndex",
+    "inputs": {
+      "apiKey": "{{openAIApiKey}}",
+      "inputKeys": [
+        "Summary",
+        "Text"
+      ],
+      "outputKey": "vector_data"
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 This is a stage provided by ReactiveSearch for OpenAI specific usage. It's very easy to use and takes care of reading from the request body, getting the embeddings using OpenAI API and updating the request body accordingly.
@@ -167,48 +182,67 @@ In this example, it is set to `vector_data` since in the mappings we have define
 
 Now that we have the vector data ready and merged in the request body, we can send the index request to OpenSearch. This can be done by using the pre-built stage `elasticsearchQuery`.
 
-```yaml
-- id: index data
-  use: elasticsearchQuery
-  needs:
-    - fetch embeddings
+```json
+[
+  {
+    "id": "index data",
+    "use": "elasticsearchQuery",
+    "needs": [
+      "fetch embeddings"
+    ]
+  }
+]
 ```
 
 ## Complete Pipeline
 
 The complete pipeline is defined as follows
 
-```yaml
-enabled: true
-description: Index pipeline to store vectorized data
-
-routes:
-  - path: /amazon_reviews/_doc
-    method: POST
-    classify:
-      category: elasticsearch
-      acl: index
-
-envs:
-  openAIApiKey: <your-api-key>
-  method: POST
-
-stages:
-- id: authorize user
-  use: authorization
-- id: fetch embeddings
-  use: openAIEmbeddingsIndex
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    inputKeys:
-    - Summary
-    - Text
-    outputKey: vector_data
-  continueOnError: false
-- id: index data
-  use: elasticsearchQuery
-  needs:
-  - fetch embeddings
+```json
+{
+    "enabled": true,
+    "description": "Index pipeline to store vectorized data",
+    "routes": [
+        {
+            "path": "/amazon_reviews/_doc",
+            "method": "POST",
+            "classify": {
+                "category": "elasticsearch",
+                "acl": "index"
+            }
+        }
+    ],
+    "envs": {
+        "openAIApiKey": "<your-api-key>",
+        "method": "POST"
+    },
+    "stages": [
+        {
+            "id": "authorize user",
+            "use": "authorization"
+        },
+        {
+            "id": "fetch embeddings",
+            "use": "openAIEmbeddingsIndex",
+            "inputs": {
+                "apiKey": "{{openAIApiKey}}",
+                "inputKeys": [
+                    "Summary",
+                    "Text"
+                ],
+                "outputKey": "vector_data"
+            },
+            "continueOnError": false
+        },
+        {
+            "id": "index data",
+            "use": "elasticsearchQuery",
+            "needs": [
+                "fetch embeddings"
+            ]
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -224,7 +258,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

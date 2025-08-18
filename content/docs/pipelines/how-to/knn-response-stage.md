@@ -1,10 +1,11 @@
 ---
 title: 'Implement Vector Search using kNN with OpenAI'
-meta_title: 'Implement Vector Search using kNN with OpenAI | Introduction to Appbase.io'
+meta_title: 'Implement Vector Search using kNN with OpenAI | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to re rank the results of a search using k Nearest Neighbor with OpenAI'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
+    - elasticsearch
     - opensearch
     - pipelines
     - kNN
@@ -50,17 +51,14 @@ As explained above, we will override the `_reactivesearch` endpoint which will i
 
 The file will be defined in the following way:
 
-```yaml
-enabled: true
-routes:
-- path: "/amazon_reviews/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  openAIApiKey: <your-api-key>
-
+```json
+{
+  "enabled": true,
+  "routes": [
+    { "path": "/amazon_reviews/_reactivesearch", "method": "POST", "classify": { "category": "reactivesearch" } }
+  ],
+  "envs": { "openAIApiKey": "<your-api-key>" }
+}
 ```
 
 ### Environment Variables
@@ -86,9 +84,13 @@ This is one of the most important steps in the pipeline. Using this stage we wil
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: authorize user
-  use: authorization
+```json
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 Yes, just one line will authorize the user, it's as simple as that!
@@ -97,13 +99,18 @@ Yes, just one line will authorize the user, it's as simple as that!
 
 Fetch the embeddings for the passed query. In order to achieve this, we can use the `openAIEmbeddings` pre-built stage that takes care of fetching the vector representation of the query and injecting the representation into the request body directly.
 
-```yaml
-- id: fetch embeddings
-  use: openAIEmbeddings
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    useWithReactiveSearchQuery: true
-  continueOnError: false
+```json
+[
+  {
+    "id": "fetch embeddings",
+    "use": "openAIEmbeddings",
+    "inputs": {
+      "apiKey": "{{openAIApiKey}}",
+      "useWithReactiveSearchQuery": true
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 In the above, we are passing the `openAIApiKey` as input since that's a required value in order for the stage to work properly. Besides that, the `useWithReactiveSearchQuery` field is passed as `true`. This field triggers the stage to iterate over the request body which is a ReactiveSearch Query body and finds out all the queries that have the `vectorDataField` field set. Whichever queries has this field set, the stage will extract the `value` passed in that query and generate the embedding for it using OpenAI's API. Once the embedding is generated, it is injected into the `queryVector` field of the same query so that it can be utilized in the next stage.
@@ -116,12 +123,17 @@ Now, we can use the pre-built stage `reactivesearchQuery` to convert the Reactiv
 
 We can do that in the following way:
 
-```yaml
-- id: reactivesearch
-  use: reactivesearchQuery
-  needs:
-    - fetch embeddings
-  continueOnError: false
+```json
+[
+  {
+    "id": "reactivesearch",
+    "use": "reactivesearchQuery",
+    "needs": [
+      "fetch embeddings"
+    ],
+    "continueOnError": false
+  }
+]
 ```
 
 ### Elastic Search
@@ -130,42 +142,62 @@ The final stage is to hit ElasticSearch with the translated query and get the re
 
 This stage can be defined in the following way:
 
-```yaml
-- id: elastic search
-  use: elasticsearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "id": "elastic search",
+    "use": "elasticsearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 ## Complete Pipeline
 
 Now that all stages are defined, we can have a look at the completed pipeline at once.
 
-```yaml
-enabled: true
-routes:
-- path: "/amazon_reviews/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  openAIApiKey: <your-api-key>
-
-stages:
-- id: authorize user
-  use: authorization
-- id: fetch embeddings
-  use: openAIEmbeddings
-  inputs:
-    apiKey: "{{openAIApiKey}}"
-    useWithReactiveSearchQuery: true
-  continueOnError: false
-- use: reactivesearchQuery
-  needs:
-  - fetch embeddings
-  continueOnError: false
-- use: elasticsearchQuery
-  continueOnError: false
+```json
+{
+    "enabled": true,
+    "routes": [
+        {
+            "path": "/amazon_reviews/_reactivesearch",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "envs": {
+        "openAIApiKey": "<your-api-key>"
+    },
+    "stages": [
+        {
+            "id": "authorize user",
+            "use": "authorization"
+        },
+        {
+            "id": "fetch embeddings",
+            "use": "openAIEmbeddings",
+            "inputs": {
+                "apiKey": "{{openAIApiKey}}",
+                "useWithReactiveSearchQuery": true
+            },
+            "continueOnError": false
+        },
+        {
+            "use": "reactivesearchQuery",
+            "needs": [
+                "fetch embeddings"
+            ],
+            "continueOnError": false
+        },
+        {
+            "use": "elasticsearchQuery",
+            "continueOnError": false
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -181,7 +213,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json"
 ```
 
 ## Testing the Pipeline

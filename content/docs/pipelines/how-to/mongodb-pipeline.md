@@ -1,10 +1,9 @@
 ---
 title: 'Create a pipeline with MongoDB as Backend'
-meta_title: 'Create a pipeline with MongoDB as Backend | Introduction to Appbase.io'
+meta_title: 'Create a pipeline with MongoDB as Backend | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create a pipeline that uses MongoDB as a backend'
 keywords:
     - concepts
-    - appbase.io
     - pipelines
     - mongoDB
     - reactivesearch
@@ -19,21 +18,21 @@ ReactiveSearch supports MongoDB as a valid backend. This means, instead of using
 
 Let's define the basics of the pipeline. It will be in the following way:
 
-```yml
-enabled: true
-description: Pipeline to use mongo db as search backend
-routes:
-- path: mongo-db-example/_reactivesearch
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  category: reactivesearch
-  MONGO_DB: ""
-  MONGO_COLLECTION: ""
-  MONGO_HOST: ""
-  MONGO_CREDS: ""
+```json
+{
+  "enabled": true,
+  "description": "Pipeline to use mongo db as search backend",
+  "routes": [
+    { "path": "mongo-db-example/_reactivesearch", "method": "POST", "classify": { "category": "reactivesearch" } }
+  ],
+  "envs": {
+    "category": "reactivesearch",
+    "MONGO_DB": "",
+    "MONGO_COLLECTION": "",
+    "MONGO_HOST": "",
+    "MONGO_CREDS": ""
+  }
+}
 ```
 
 We are setting some of the sensitive input data as environment variables so that they can be reused in the `inputs` part of MongoDB Query. The values are:
@@ -53,10 +52,14 @@ Now that we have the pre setup out of the way, let's define the stages for the p
 
 We need to make sure that the requests made to this endpoint are authenticated. To do this, we can use the pre-built stage `authorization`. We can define it in the following way:
 
-```yml
-- id: authorization
-  use: authorization
-  continueOnError: false
+```json
+[
+  {
+    "id": "authorization",
+    "use": "authorization",
+    "continueOnError": false
+  }
+]
 ```
 
 It's as simple as that, we don't need to do anything else, rest will be taken care of by the pipeline.
@@ -67,20 +70,29 @@ We can start with reactivesearch query to convert the request body into it's Mon
 
 This can be done in the following way:
 
-```yml
-- use: reactivesearchQuery
-  inputs:
-    backend: mongodb
-  continueOnError: false
+```json
+[
+  {
+    "use": "reactivesearchQuery",
+    "inputs": {
+      "backend": "mongodb"
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 ### Extract Envs
 
 Since there are a few dynamic fields, these will need to be extracted from the environment directly. This can be done with a script. The script can be passed in the pipeline using `scriptRef` functionality.
 
-```yml
-- id: extract envs to context
-  scriptRef: "extractEnvs.js"
+```json
+[
+  {
+    "id": "extract envs to context",
+    "scriptRef": "extractEnvs.js"
+  }
+]
 ```
 
 The file should be saved as `extractEnvs.js` and can contain some code like this:
@@ -100,15 +112,20 @@ function handleRequest() {
 
 Now that we have the required values extracted and set in the context, we can use the `mongoDBQuery` stage to execute the converted request and get the response. This can be done in the following way:
 
-```yml
-- use: mongoDBQuery
-  inputs:
-    host: "{{mongoHost}}"
-    credentials: "{{mongoCreds}}"
-    db: "{{mongoDb}}"
-    collection: "{{mongoCollection}}"
-    connectionOptions: authSource=admin&readPreference=primary&ssl=true
-  continueOnError: false
+```json
+[
+  {
+    "use": "mongoDBQuery",
+    "inputs": {
+      "host": "{{mongoHost}}",
+      "credentials": "{{mongoCreds}}",
+      "db": "{{mongoDb}}",
+      "collection": "{{mongoCollection}}",
+      "connectionOptions": "authSource=admin&readPreference=primary&ssl=true"
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 ## Complete Pipeline
@@ -116,39 +133,55 @@ Now that we have the required values extracted and set in the context, we can us
 Now that all the stages are defined, let's take a look at the whole pipeline at once:
 
 
-```yml
-enabled: true
-description: Pipeline to use mongo db as search backend
-routes:
-- path: mongo-db-example/_reactivesearch
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  category: reactivesearch
-  MONGO_DB: ""
-  MONGO_COLLECTION: ""
-  MONGO_HOST: ""
-  MONGO_CREDS: ""
-
-stages:
-- use: authorization
-  continueOnError: false
-- use: reactivesearchQuery
-  inputs:
-    backend: mongodb
-  continueOnError: false
-- id: extract envs to context
-  scriptRef: "extractEnvs.js"
-- use: mongoDBQuery
-  inputs:
-    host: "{{mongoHost}}"
-    credentials: "{{mongoCreds}}"
-    db: "{{mongoDb}}"
-    collection: "{{mongoCollection}}"
-    connectionOptions: authSource=admin&readPreference=primary&ssl=true
-  continueOnError: false
+```json
+{
+    "enabled": true,
+    "description": "Pipeline to use mongo db as search backend",
+    "routes": [
+        {
+            "path": "mongo-db-example/_reactivesearch",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "envs": {
+        "category": "reactivesearch",
+        "MONGO_DB": "",
+        "MONGO_COLLECTION": "",
+        "MONGO_HOST": "",
+        "MONGO_CREDS": ""
+    },
+    "stages": [
+        {
+            "use": "authorization",
+            "continueOnError": false
+        },
+        {
+            "use": "reactivesearchQuery",
+            "inputs": {
+                "backend": "mongodb"
+            },
+            "continueOnError": false
+        },
+        {
+            "id": "extract envs to context",
+            "scriptRef": "extractEnvs.js"
+        },
+        {
+            "use": "mongoDBQuery",
+            "inputs": {
+                "host": "{{mongoHost}}",
+                "credentials": "{{mongoCreds}}",
+                "db": "{{mongoDb}}",
+                "collection": "{{mongoCollection}}",
+                "connectionOptions": "authSource=admin&readPreference=primary&ssl=true"
+            },
+            "continueOnError": false
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -164,7 +197,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "extractEnvs.js=extractEnvs.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "extractEnvs.js=extractEnvs.js"
 ```
 
 ## Testing the Pipeline

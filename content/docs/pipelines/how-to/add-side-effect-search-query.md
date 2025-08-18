@@ -1,11 +1,12 @@
 ---
 title: 'Add Side Effect to Search Query'
-meta_title: 'Add Side Effect to Search Query | Introduction to Appbase.io'
+meta_title: 'Add Side Effect to Search Query | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create a side effect with ReactiveSearch Pipelines'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
+    - opensearch
     - pipelines
     - reactivesearch
     - side effect
@@ -30,18 +31,22 @@ Before we get started with the stages, let's go over the basic details of the pi
 
 The file will be defined in the following way.
 
-```yaml
-enabled: true
-description: Pipeline to save search to an Elasticsearch index
-routes:
-- path: "/side-effect/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  saved_search_index: savedsearch
-  saved_search_credentials: foo:bar
+```json
+{
+  "enabled": true,
+  "description": "Pipeline to save search to an Elasticsearch index",
+  "routes": [
+    {
+      "path": "/side-effect/_reactivesearch",
+      "method": "POST",
+      "classify": { "category": "reactivesearch" }
+    }
+  ],
+  "envs": {
+    "saved_search_index": "savedsearch",
+    "saved_search_credentials": "foo:bar"
+  }
+}
 ```
 
 ### Environment Variables
@@ -72,9 +77,13 @@ This is one of the most important steps in the pipeline. Using this stage we wil
 
 The is a `pre-built` stage provided by ReactiveSearch and can be leveraged in the following way:
 
-```yaml
-- id: "authorize user"
-  use: "authorization"
+```json
+[
+  {
+    "id": "authorize user",
+    "use": "authorization"
+  }
+]
 ```
 
 Yes, just one line will authorize the user, it's as simple as that!
@@ -89,10 +98,14 @@ We will pass the `async: true` flag to make the script run asynchronously.
 
 It can be defined in the following way:
 
-```yaml
-- id: "save search"
-  async: true
-  scriptRef: "saveSearch.js"
+```json
+[
+  {
+    "id": "save search",
+    "async": true,
+    "scriptRef": "saveSearch.js"
+  }
+]
 ```
 
 In the above stage, we are referencing the `saveSearch.js` file. We will have to define the script in the following way:
@@ -124,11 +137,14 @@ Since the above stage is async, we also need to make sure that that stage is com
 
 We can define this stage in the following way:
 
-```yaml
-- id: reactive search query
-  use: reactivesearchQuery
-  needs:
-    - save search
+```json
+[
+  {
+    "id": "reactive search query",
+    "use": "reactivesearchQuery",
+    "needs": ["save search"]
+  }
+]
 ```
 
 ### Elastic Search Query
@@ -139,40 +155,59 @@ We will be using the pre-built stage `elasticsearchQuery` at this stage.
 
 We can define this stage in the following way:
 
-```yaml
-- id: elastic search query
-  use: elasticsearchQuery
+```json
+[
+  {
+    "id": "elastic search query",
+    "use": "elasticsearchQuery"
+  }
+]
 ```
 
 ## Complete Pipeline
 
 Now that all the stages are defined, let's take a look at the whole pipeline at once:
 
-```yaml
-enabled: true
-description: Pipeline to save search to an Elasticsearch index
-routes:
-- path: "/side-effect/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  saved_search_index: savedsearch
-  saved_search_credentials: foo:bar
-
-stages:
-  - id: "authorize user"
-    use: "authorization"
-  - id: "save search"
-    async: true
-    scriptRef: "saveSearch.js"
-  - id: reactive search query
-    use: reactivesearchQuery
-    needs:
-      - save search
-  - id: elastic search query
-    use: elasticsearchQuery
+```json
+{
+    "enabled": true,
+    "description": "Pipeline to save search to an Elasticsearch index",
+    "routes": [
+        {
+            "path": "/side-effect/_reactivesearch",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "envs": {
+        "saved_search_index": "savedsearch",
+        "saved_search_credentials": "foo:bar"
+    },
+    "stages": [
+        {
+            "id": "authorize user",
+            "use": "authorization"
+        },
+        {
+            "id": "save search",
+            "async": true,
+            "scriptRef": "saveSearch.js"
+        },
+        {
+            "id": "reactive search query",
+            "use": "reactivesearchQuery",
+            "needs": [
+                "save search"
+            ]
+        },
+        {
+            "id": "elastic search query",
+            "use": "elasticsearchQuery"
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -188,7 +223,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "saveSearch.js=saveSearch.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "saveSearch.js=saveSearch.js"
 ```
 
 ## Testing the Pipeline

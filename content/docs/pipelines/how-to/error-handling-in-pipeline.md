@@ -1,10 +1,10 @@
 ---
 title: 'Add Error Handling in Pipeline'
-meta_title: 'Add Error Handling in Pipeline | Introduction to Appbase.io'
+meta_title: 'Add Error Handling in Pipeline | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to handle various kinds of error in ReactiveSearch Pipelines'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
     - pipelines
     - error
@@ -29,10 +29,14 @@ The default value of this field is set to **true**.
 
 Let's understand this with an example. Let's say we have a stage using the pre-built `reactivesearchQuery` stage. It is defined in the following way:
 
-```yml
-- id: reactive search with error
-  use: reactivesearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "id": "reactive search with error",
+    "use": "reactivesearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 Since the `continueOnError` field is by default set to `true`, we need to explicitly set it to `false` when we want the execution to stop on error.
@@ -56,12 +60,18 @@ function handleRequest() {
 }
 ```
 
-```yml
-- id: set error
-  scriptRef: setError.js
-- id: reactive search with error
-  use: reactivesearchQuery
-  continueOnError: false
+```json
+[
+  {
+    "id": "set error",
+    "scriptRef": "setError.js"
+  },
+  {
+    "id": "reactive search with error",
+    "use": "reactivesearchQuery",
+    "continueOnError": false
+  }
+]
 ```
 
 Now, if there will be an error in the `reactive search with error` step then the response will be the one we set in the `setError.js` script.
@@ -86,10 +96,14 @@ function handleRequest() {
 
 We can then use this script in the following way:
 
-```yml
-- id: check query field
-  scriptRef: checkQueryWithError.js
-  continueOnError: false
+```json
+[
+  {
+    "id": "check query field",
+    "scriptRef": "checkQueryWithError.js",
+    "continueOnError": false
+  }
+]
 ```
 
 > Note that we are setting the `continueOnError` field because we are throwing an error.
@@ -98,30 +112,45 @@ We can then use this script in the following way:
 
 Now that we have defined the stages we needed, let's get the whole pipeline
 
-```yml
-enabled: true
-description: Handle errors gracefully
-
-routes:
-  - path: /error-pipeline/_reactivesearch
-    method: POST
-      classify:
-        category: reactivesearch
-
-stages:
-  - id: Authorize User
-    use: authorization
-    continueOnError: false
-  - id: check query field
-    scriptRef: checkQueryWithError.js
-    continueOnError: false
-  - id: set error
-    scriptRef: setError.js
-  - id: ReactiveSearch Query
-    use: reactivesearchQuery
-    continueOnError: false
-  - id: ElasticSearch Query
-    use: elasticsearchQuery
+```json
+{
+    "enabled": true,
+    "description": "Handle errors gracefully",
+    "routes": [
+        {
+            "path": "/error-pipeline/_reactivesearch",
+            "method": "POST",
+            "classify": {
+                "category": "reactivesearch"
+            }
+        }
+    ],
+    "stages": [
+        {
+            "id": "Authorize User",
+            "use": "authorization",
+            "continueOnError": false
+        },
+        {
+            "id": "check query field",
+            "scriptRef": "checkQueryWithError.js",
+            "continueOnError": false
+        },
+        {
+            "id": "set error",
+            "scriptRef": "setError.js"
+        },
+        {
+            "id": "ReactiveSearch Query",
+            "use": "reactivesearchQuery",
+            "continueOnError": false
+        },
+        {
+            "id": "ElasticSearch Query",
+            "use": "elasticsearchQuery"
+        }
+    ]
+}
 ```
 
 ## Create the pipeline
@@ -137,7 +166,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "checkQueryWithError.js=checkQueryWithError.js" --form "setError.js=setError.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "checkQueryWithError.js=checkQueryWithError.js" --form "setError.js=setError.js"
 ```
 
 ## Test the pipeline

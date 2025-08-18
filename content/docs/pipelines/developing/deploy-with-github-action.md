@@ -22,9 +22,9 @@ The [pipeline-action](https://github.com/marketplace/actions/reactivesearch-pipe
 
 ## Things to note
 
-### Appbaseio URL
+### ReactiveSearch URL
 
-This action requires just an appbaseio URL in order to work. This URL can be found in the deployed cluster settings over in the [dashboard](https://dashboard.appbase.io)
+This action requires a ReactiveSearch URL in order to work. This URL can be found in the deployed cluster settings over in the [dashboard](https://dashboard.reactivesearch.io)
 
 It is best to save the URL as secret and reference it in the action in the following way:
 

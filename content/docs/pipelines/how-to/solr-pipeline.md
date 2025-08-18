@@ -1,10 +1,10 @@
 ---
 title: 'Create a pipeline with Solr as Backend'
-meta_title: 'Create a pipeline with Solr as Backend | Introduction to Appbase.io'
+meta_title: 'Create a pipeline with Solr as Backend | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to quickly create a pipeline that uses Solr as a backend'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - pipelines
     - fusion
     - solr
@@ -19,21 +19,30 @@ ReactiveSearch supports Solr as a valid backend. This means, instead of using El
 
 Let's define the basics of the pipeline. It will be in the following way:
 
-```yml
-enabled: true
-routes:
-- path: "/_solr/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-- path: "/_solr/_reactivesearch.v3"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  FUSION_CREDS: ${{FUSION_CREDS}}
-  FUSION_HOST: ${{FUSION_HOST_IP}}
+```json
+{
+  "enabled": true,
+  "routes": [
+    {
+      "path": "/_solr/_reactivesearch",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    },
+    {
+      "path": "/_solr/_reactivesearch.v3",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    }
+  ],
+  "envs": {
+    "FUSION_CREDS": "${{FUSION_CREDS}}",
+    "FUSION_HOST": "${{FUSION_HOST_IP}}"
+  }
+}
 ```
 
 Note that we have set `FUSION_CREDS` and `FUSION_HOST` as environment variables because these values are required for Solr to work properly.
@@ -46,9 +55,13 @@ Now that we have the pre setup out of the way, let's define the stages for the p
 
 We need to make sure that the requests made to this endpoint are authenticated. To do this, we can use the pre-built stage `authorization`. We can define it in the following way:
 
-```yml
-- id: auth
-  use: authorization
+```json
+[
+  {
+    "id": "auth",
+    "use": "authorization"
+  }
+]
 ```
 
 It's as simple as that, we don't need to do anything else, rest will be taken care of by the pipeline.
@@ -61,11 +74,15 @@ It can be passed in the following way:
 
 ```json
 {
-    "query": [{"id": "test"}],
-    "metadata": {
-        "app": "someApp",
-        "profile": "someProfile"
+  "query": [
+    {
+      "id": "test"
     }
+  ],
+  "metadata": {
+    "app": "someApp",
+    "profile": "someProfile"
+  }
 }
 ```
 
@@ -87,10 +104,14 @@ function handleRequest() {
 
 This file should be saved in the same directory as the pipeline with the name `extractMetadata.js` and then referenced in the pipeline in the following way:
 
-```yml
-- id: extract metadata and profile
-  scriptRef: "extractMetadata.js"
-  continueOnError: false
+```json
+[
+  {
+    "id": "extract metadata and profile",
+    "scriptRef": "extractMetadata.js",
+    "continueOnError": false
+  }
+]
 ```
 
 ### Extract Environments
@@ -108,10 +129,14 @@ function handleRequest() {
 
 The above script can be used with a `scriptRef` in the following way:
 
-```yml
-- id: set environments
-  scriptRef: setEnvironment.js
-  continueOnError: false
+```json
+[
+  {
+    "id": "set environments",
+    "scriptRef": "setEnvironment.js",
+    "continueOnError": false
+  }
+]
 ```
 
 Note that the above script should be saved as `setEnvironment.js` in order for the pipeline to understand the scriptRef.
@@ -122,28 +147,38 @@ Now that the values are extracted, we can use the reactivesearch stage to conver
 
 It can be defined in the following way:
 
-```yml
-- id: reactivesearch query
-  use: reactivesearchQuery
-  inputs:
-    backend: solr
-  continueOnError: false
+```json
+[
+  {
+    "id": "reactivesearch query",
+    "use": "reactivesearchQuery",
+    "inputs": {
+      "backend": "solr"
+    },
+    "continueOnError": false
+  }
+]
 ```
 
 ### Solr Query
 
 Once that the request is converted, it can now be hit accordingly and the response can be fetched. This can be done by using the pre-built stage `solrQuery` in the following way:
 
-```yml
-- id: solr query
-  use: solrQuery
-  continueOnError: false
-  inputs:
-    protocol: http
-    host: "{{fusionHost}}"
-    app: "{{fusionApp}}"
-    profile: "{{fusionProfile}}"
-    credentials: "{{fusionCreds}}"
+```json
+[
+  {
+    "id": "solr query",
+    "use": "solrQuery",
+    "continueOnError": false,
+    "inputs": {
+      "protocol": "http",
+      "host": "{{fusionHost}}",
+      "app": "{{fusionApp}}",
+      "profile": "{{fusionProfile}}",
+      "credentials": "{{fusionCreds}}"
+    }
+  }
+]
 ```
 
 The values are passed dynamically through context and hence have the braces around them for automatic resolution.
@@ -152,45 +187,66 @@ The values are passed dynamically through context and hence have the braces arou
 
 Now that all the stages are defined, let's take a look at the whole pipeline at once:
 
-```yml
-enabled: true
-routes:
-- path: "/_solr/_reactivesearch"
-  method: POST
-  classify:
-    category: reactivesearch
-- path: "/_solr/_reactivesearch.v3"
-  method: POST
-  classify:
-    category: reactivesearch
-
-envs:
-  FUSION_CREDS: ${{FUSION_CREDS}}
-  FUSION_HOST: ${{FUSION_HOST_IP}}
-
-stages:
-- id: auth
-  use: authorization
-- id: extract app and profile
-  scriptRef: 'extractMetadata.js'
-  continueOnError: false
-- id: extract fusion host and credentials
-  scriptRef: 'setEnvironment.js'
-  continueOnError: false
-- id: rs
-  use: reactivesearchQuery
-  inputs:
-    backend: solr
-  continueOnError: false
-- id: solr_query
-  use: solrQuery
-  continueOnError: false
-  inputs:
-    protocol: http
-    host: "{{fusionHost}}"
-    app: "{{fusionApp}}"
-    profile: "{{fusionProfile}}"
-    credentials: "{{fusionCreds}}"
+```json
+{
+  "enabled": true,
+  "routes": [
+    {
+      "path": "/_solr/_reactivesearch",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    },
+    {
+      "path": "/_solr/_reactivesearch.v3",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    }
+  ],
+  "envs": {
+    "FUSION_CREDS": "${{FUSION_CREDS}}",
+    "FUSION_HOST": "${{FUSION_HOST_IP}}"
+  },
+  "stages": [
+    {
+      "id": "auth",
+      "use": "authorization"
+    },
+    {
+      "id": "extract app and profile",
+      "scriptRef": "extractMetadata.js",
+      "continueOnError": false
+    },
+    {
+      "id": "extract fusion host and credentials",
+      "scriptRef": "setEnvironment.js",
+      "continueOnError": false
+    },
+    {
+      "id": "rs",
+      "use": "reactivesearchQuery",
+      "inputs": {
+        "backend": "solr"
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "solr_query",
+      "use": "solrQuery",
+      "continueOnError": false,
+      "inputs": {
+        "protocol": "http",
+        "host": "{{fusionHost}}",
+        "app": "{{fusionApp}}",
+        "profile": "{{fusionProfile}}",
+        "credentials": "{{fusionCreds}}"
+      }
+    }
+  ]
+}
 ```
 
 ## Create the pipeline
@@ -206,7 +262,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "setEnvironment.js=setEnvironment.js" --form "extractMetadata.js=extractMetadata.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "setEnvironment.js=setEnvironment.js" --form "extractMetadata.js=extractMetadata.js"
 ```
 
 ## Testing the Pipeline

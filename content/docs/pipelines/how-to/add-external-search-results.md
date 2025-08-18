@@ -1,11 +1,12 @@
 ---
 title: 'Add External Search Results'
-meta_title: 'Add External Search Results | Introduction to Appbase.io'
+meta_title: 'Add External Search Results | Introduction to ReactiveSearch.io'
 meta_description: 'Learn how to add external search results for a query'
 keywords:
     - concepts
-    - appbase.io
+    - reactivesearch
     - elasticsearch
+    - opensearch
     - pipelines
     - external
     - search
@@ -30,19 +31,24 @@ Before we get started with the pipeline stages, let's define the route first. As
 
 The file will be defined in the following way
 
-```yaml
-enabled: true
-description: Add Knowledge Graph Data to response
-
-routes:
-  - path: /external-search/_reactivesearch
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-  knowledgeGraphAPIKey: "someAPIkey"
-  query: harry
+```json
+{
+  "enabled": true,
+  "description": "Add Knowledge Graph Data to response",
+  "routes": [
+    {
+      "path": "/external-search/_reactivesearch",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    }
+  ],
+  "envs": {
+    "knowledgeGraphAPIKey": "someAPIkey",
+    "query": "harry"
+  }
+}
 ```
 
 In the above file, we are also defining an `envs.knowledgeGraphAPIKey` that is being used to hit the Knowledge Graph API. This is necessary to be able to use the API properly.
@@ -92,10 +98,14 @@ function handleRequest() {
 
 Above JS script can be saved as `extractUserQuery.js` and  then we can add a step in the following way:
 
-```yaml
-- id: extract user passed query
-  scriptRef: extractUserQuery.js
-  continueOnError: false
+```json
+[
+    {
+        "id": "extract user passed query",
+        "scriptRef": "extractUserQuery.js",
+        "continueOnError": false
+    }
+]
 ```
 
 ### ReactiveSearch
@@ -104,9 +114,13 @@ Now that we know the user has access to this endpoint, let's convert the request
 
 We can use the pre-built stage `reactivesearchQuery` for this stage. That can be done in the following way:
 
-```yaml
-- id: reactivesearch
-  uses: reactivesearchQuery
+```json
+[
+  {
+    "id": "reactivesearch",
+    "uses": "reactivesearchQuery"
+  }
+]
 ```
 
 Above stage will automatically update the body in the context as well as update the URL that the elasticsearch stage will use. This is an essential step.
@@ -123,12 +137,17 @@ We are finally at the stage where we will hit Google's Knowledge Graph API. Befo
 
 This stage can be defined in the following way
 
-```yaml
-- id: google knowledge graph
-  scriptRef: "knowledgeGraph.js"
-  async: true
-  needs:
-    - extract user passed query
+```json
+[
+  {
+    "id": "google knowledge graph",
+    "scriptRef": "knowledgeGraph.js",
+    "async": true,
+    "needs": [
+      "extract user passed query"
+    ]
+  }
+]
 ```
 
 > NOTE that we are using the `extract user passed query` step as a needed step since we want the user query to be set in the envs.query field before this step is executed.
@@ -158,9 +177,13 @@ We can now use the pre-built stage `elasticsearchQuery` to hit Elastic Search.
 
 We can do that in the following way:
 
-```yaml
-- id: es query
-  uses: elasticsearchQuery
+```json
+[
+  {
+    "id": "es query",
+    "uses": "elasticsearchQuery"
+  }
+]
 ```
 
 It's as straightforward as that to hit ElasticSearch. This will automatically update the `context.response` field with whatever ElasticSearch returns.
@@ -173,12 +196,17 @@ We can do that by defining a script. Note that this script will run synchronousl
 
 We will define the stage in the following way:
 
-```yaml
-- id: merge response
-  scriptRef: "mergeResponse.js"
-  needs:
-    - es query
-    - google knowledge graph
+```json
+[
+  {
+    "id": "merge response",
+    "scriptRef": "mergeResponse.js",
+    "needs": [
+      "es query",
+      "google knowledge graph"
+    ]
+  }
+]
 ```
 
 In the above, we are using the `needs` property to indicate that this stage will be executed only after the _needed_ stages are completed.
@@ -204,39 +232,58 @@ In the above script, we are merging the responses from Elastic Search and Knowle
 
 Now that all stages are complete, let's take look at the complete pipeline at once
 
-```yaml
-enabled: true
-description: Add Knowledge Graph Data to response
-
-routes:
-  - path: /external-search/_reactivesearch
-    method: POST
-    classify:
-      category: reactivesearch
-
-envs:
-  knowledgeGraphAPIKey: "someAPIkey"
-
-stages:
-  - id: authorize user
-    uses: authorization
-  - id: extract user passed query
-    scriptRef: "extractUserQuery.js"
-    continueOnError: false
-  - id: reactivesearch
-    uses: reactivesearchQuery
-  - id: google knowledge graph
-    scriptRef: "knowledgeGraph.js"
-    async: true
-    needs:
-      - extract user passed query
-  - id: es query
-    uses: elasticsearchQuery
-  - id: merge response
-    scriptRef: "mergeResponse.js"
-    needs:
-      - es query
-      - google knowledge graph
+```json
+{
+  "enabled": true,
+  "description": "Add Knowledge Graph Data to response",
+  "routes": [
+    {
+      "path": "/external-search/_reactivesearch",
+      "method": "POST",
+      "classify": {
+        "category": "reactivesearch"
+      }
+    }
+  ],
+  "envs": {
+    "knowledgeGraphAPIKey": "someAPIkey"
+  },
+  "stages": [
+    {
+      "id": "authorize user",
+      "uses": "authorization"
+    },
+    {
+      "id": "extract user passed query",
+      "scriptRef": "extractUserQuery.js",
+      "continueOnError": false
+    },
+    {
+      "id": "reactivesearch",
+      "uses": "reactivesearchQuery"
+    },
+    {
+      "id": "google knowledge graph",
+      "scriptRef": "knowledgeGraph.js",
+      "async": true,
+      "needs": [
+        "extract user passed query"
+      ]
+    },
+    {
+      "id": "es query",
+      "uses": "elasticsearchQuery"
+    },
+    {
+      "id": "merge response",
+      "scriptRef": "mergeResponse.js",
+      "needs": [
+        "es query",
+        "google knowledge graph"
+      ]
+    }
+  ]
+}
 ```
 
 ## Create the pipeline
@@ -252,7 +299,7 @@ We can create the pipeline in the following request:
 > Below request assumes all the files mentioned in this guide are present in the current directory
 
 ```sh
-curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.yaml" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js" --form "extractUserQuery.js=extractUserQuery.js"
+curl -X POST 'CLUSTER_ID/_pipeline' -H "Content-Type: multipart/form-data" --form "pipeline=pipeline.json" --form "knowledgeGraph.js=knowledgeGraph.js" --form "mergeResponse.js=mergeResponse.js" --form "extractUserQuery.js=extractUserQuery.js"
 ```
 
 ## Testing the pipeline
