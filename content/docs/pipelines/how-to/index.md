@@ -17,6 +17,10 @@ Get started with ReactiveSearch Pipelines with our How To guides curated conside
 
 This example covers the scenario where a person might want to include external results into the querytranslate response. This guide explains how this can be done by using an example of adding external results by accessing Google's Knowledge Graph API. [Read More](add-external-search-results)
 
+## E-commerce Search
+
+This guide demonstrates building an e‑commerce search pipeline: tuned ReactiveSearch request generation, ES query, business-signal re-ranking (globalRank/categoryRank), typo/fuzzy fallback with a second-pass RS→ES, and optional AI answers. Includes scripts and a complete pipeline example. [Read More](ecommerce-search)
+
 ## Search Relevancy using Query Rules
 [Query Rules](/docs/search/rules/) enable you to cover the search relevance blind spots by creating "If this, then that" style rules tailored to your business use-case. The following guide explains the query rules usage with pipelines to add dynamic facets, replace search words and promote/boost search results. [Read More](query-rules)
 
