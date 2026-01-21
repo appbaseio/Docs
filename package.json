@@ -107,7 +107,7 @@
 		"gatsby-transformer-yaml": "4.9.0",
 		"hotkeys-js": "^3.8.7",
 		"js-search": "^1.4.2",
-		"lodash": "^4.17.21",
+		"lodash": "^4.17.23",
 		"moment": "^2.29.4",
 		"prismjs": "1.27.0",
 		"prop-types": "^15.8.1",
