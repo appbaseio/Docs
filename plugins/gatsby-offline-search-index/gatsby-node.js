@@ -78,6 +78,10 @@ function getHashId(heading, tableOfContents, startFrom = 0) {
 }
 
 exports.createPages = async ({ graphql }) => {
+	if (process.env.SKIP_SEARCH_INDEX) {
+		console.log('Skipping search index generation (SKIP_SEARCH_INDEX is set)');
+		return;
+	}
 	const result = await graphql(query);
 
 	if (result.errors) {

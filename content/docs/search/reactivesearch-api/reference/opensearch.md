@@ -1578,6 +1578,11 @@ When featured suggestions are enabled, set the value of the `searchboxId` to use
 | ------   | --------------------------- | -------- |
 | `string`   | `suggestion`                | true*    |
 
+### faqSearchboxId
+
+**Supported Engines**
+elasticsearch, opensearch
+
 ### range
 
 **Supported Engines**

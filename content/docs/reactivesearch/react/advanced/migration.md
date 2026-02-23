@@ -28,10 +28,7 @@ More on security risks of allowing a search DSL over the network:
 
 ### Benefits
 
-- ReactiveSearch Cloud magic: Accelerate, enrich, and transform your search requests using features such as query rules, search relevance, caching, analytics
-  - There are two cloud offerings to cater to your use-case:
-     - Dedicated Search cluster - [Starting at $99/mo](https://www.reactivesearch.io/pricing), a 2 CPU + 8 GB RAM server instance suitable for ML-powered search experiences
-     - Serverless Search (Beta) - [Starting at $29/mo](https://www.reactivesearch.io/pricing/serverless-search), serve a geo-distributed search solution
+- ReactiveSearch Open Source: Accelerate, enrich, and transform your search requests using features such as query rules, search relevance, caching, analytics via the [Docker-based Open Source deployment](/docs/hosting/open-source/)
 - Easy to secure: As ReactiveSearch API doesn't expose Elasticsearch APIs directly, it prevents the possibility of DSL based injection attacks and supports `size` based restrictions to mitigate against data scraping attempts
 - Composable: Compose by extending using search engine's query DSL. Supports Elasticsearch, OpenSearch, Solr and MongoDB engines
 - Encapsulate business logic: Don't want to expose sensitive fields to web and mobile clients? Set the fields to return with ReactiveSearch dashboard once and avoid declaring them as part of the network requests.

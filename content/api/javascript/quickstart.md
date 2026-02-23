@@ -23,12 +23,9 @@ It can't:
 
 ## Create Cluster
 
-You can start by creating an [Elasticsearch cluster with appbase.io](/docs/hosting/clusters/) or [bring your Elasticsearch cluster](/docs/hosting/byoc/) or [self-host appbase.io](/docs/hosting/byoc/#quickstart-recipes).
+ReactiveSearch is available as an Open Source Docker-based deployment. [Bring your own Elasticsearch cluster and self-host reactivesearch.io](/docs/hosting/open-source/).
 
--   Log in to[Appbase Dashboard](https://dashboard.reactivesearch.io), and create a new cluster.
--   Copy the URL of your cluster for further actions
-
-You can read see the different options for creating a cluster and their pricing over [here](https://reactivesearch.io/pricing/).
+Follow the [Docker quickstart guide](/docs/hosting/open-source/) to get your ReactiveSearch instance running, then copy the URL for use below.
 
 ## Creating an Index
 

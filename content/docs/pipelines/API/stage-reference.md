@@ -14,84 +14,6 @@ sidebar: 'docs'
 This guide explains all the pre-built stages supported in pipelines.
 
 
-# Answer AI
-
-This stage will generate answers based on the top results from the request query and return them
-
-## Inputs
-
-### API Key
-
-Type: string
-
-Key: `apiKey`
-
-(mandatory) OpenAI API key to access the API
-
-### Doc Template
-
-Type: string
-
-Key: `docTemplate`
-
-(optional) Template for building the context message for each hit. Supports special character 'source' that refers to the document '_source' field. Eg: '${source.text} is ${source.summary} with url as ${source.url}'
-
-### Maximum Tokens
-
-Type: integer
-
-Key: `maxTokens`
-
-(optional) Maximum number of tokens to pass to ChatGPT. Read more about it here: https://platform.openai.com/docs/api-reference/chat/create#chat/create-max_tokens
-
-### Model
-
-Type: string
-
-Key: `model`
-
-Model to use for getting the vector embeddings. Options can be found at https://platform.openai.com/docs/models. Defaults to 'gpt-3.5-turbo'
-
-### Query ID
-
-Type: string
-
-Key: `queryId`
-
-(optional) ID of the query where hits are going to be extracted from. This should be rarely needed, as it is picked from the ReactiveSearch query body to a 'search' type of query, with a fallback to a 'suggestion' type of query.
-
-### Query Template
-
-Type: string
-
-Key: `queryTemplate`
-
-(optional) Template for the query that is passed to ChatGPT as the question. Supports special character 'value' that refers to the 'value' field passed in the query object, e.g. Answer the query: '${value}'. Think step-by-step, cite the source after the answer and ensure the source is from the provided context.
-
-### System Prompt
-
-Type: string
-
-Key: `systemPrompt`
-
-(optional) First message that will be sent to ChatGPT from the system. Defaults to: You are a helpful assistant
-
-### Temperature
-
-Type: number
-
-Key: `temperature`
-
-(optional) Temperature to pass to ChatGPT. Defaults to 1. Read more about it here: https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
-
-### Top Docs For Context
-
-Type: integer
-
-Key: `topDocsForContext`
-
-Number of documents from the top hits to pass to ChatGPT as context for the query. This value is capped to the minimum value of size (hits fetched in a request) and 100. Defaults to 3
-
 # Add Filter
 
 Add Filter action allows you to define the term filters that will get applied on the search type of queries. For example, if somebody searches for iphone then you may want to apply a brand filter with value as apple.
@@ -179,20 +101,12 @@ Key: `queryFormat`
 Query operator for boost query, can have values as 'or' and 'and'. Defaults to 'or'.
 
 ### Value
+
+Type: array
+
 Key: `value`
 
-To define the matching values to boost results, for e.g show items with '['holiday-sale', 'premium values']' for 'tag' data field above other items. This key also supports other types of values in order to support `range` and `geo` type of queries.
-
-To use with `geo` for boosting, value can be ```yaml
-location: '23.7555,76.4444'
-distance: 100
-unit:'km'
-```
-
-To use with `range` for boosting, value can be ```yaml
-start: 23
-end: 45
-```
+To define the matching values to boost results, for e.g show items with '['holiday-sale', 'premium values']' for 'tag' data field above other items.
 
 # Apply Custom Data
 
@@ -364,6 +278,52 @@ Type: object
 
 Key: `search`
 
+# MarkLogic
+
+To perform a request to MarkLogic.
+
+## Inputs
+
+### Headers
+
+Type: object
+
+Key: `headers`
+
+Headers to be passed in the Solr query request.
+
+### Password
+
+Type: string
+
+Key: `password`
+
+Password to access the URI passed
+
+### Type
+
+Type: string
+
+Key: `type`
+
+Type of request to make to MarkLogic. Valid options are sparql, search or optic
+
+### URI
+
+Type: string
+
+Key: `uri`
+
+URI to connect to the fusion instance. If passed, host, app, profile and credentials will be ignored and not required. Example: 'http://username:password@localhost:6764/api/apps/appbase/query/appbase'
+
+### Username
+
+Type: string
+
+Key: `username`
+
+Username to access the URI passed
+
 # MongoDB
 
 To perform a request to MongoDB.
@@ -436,82 +396,6 @@ Type: string
 Key: `protocol`
 
 Protocol. For example, 'mongodb+srv'.
-
-# Open AI Embeddings
-
-Get vector embeddings from OpenAI based on the passed text value
-
-## Inputs
-
-### API Key
-
-Type: string
-
-Key: `apiKey`
-
-OpenAI API key to be able to access the API
-
-### Model
-
-Type: string
-
-Key: `model`
-
-Model to use for getting the vector embeddings. Options can be found at https://platform.openai.com/docs/models. Defaults to 'text-embedding-ada-002'
-
-### Text
-
-Type: string
-
-Key: `text`
-
-Text to get the vector for. Eg: 'test string'
-
-### Use With ReactiveSearch Query
-
-Type: boolean
-
-Key: `useWithReactiveSearchQuery`
-
-When set as true, the output vector will be populated into the ReactiveSearch query where vectorDataField key is present. Defaults to 'false'
-
-# Open AI Embeddings Index
-
-This stage will generate the vector embedding of the inputKeys passed and inject the output to the request body
-
-## Inputs
-
-### API Key
-
-Type: string
-
-Key: `apiKey`
-
-OpenAI API key to be able to access the API
-
-### Input Keys
-
-Type: array
-
-Key: `inputKeys`
-
-Keys from the request body that should be used for getting the embedding.
-
-### Model
-
-Type: string
-
-Key: `model`
-
-Model to use for getting the vector embeddings. Options can be found at https://platform.openai.com/docs/models. Defaults to 'text-embedding-ada-002'
-
-### Output Key
-
-Type: string
-
-Key: `outputKey`
-
-Key to write the vector data to in the request body
 
 # Promote Results
 

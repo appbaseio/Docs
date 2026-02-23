@@ -1,6 +1,6 @@
 ---
-title: 'Bring Your Own Cluster'
-meta_title: 'Bring Your Own Cluster - ReactiveSearch'
+title: 'Open Source Deployment'
+meta_title: 'ReactiveSearch Open Source Deployment'
 meta_description: 'Run ReactiveSearch in Open Source mode with Docker alongside your own Elasticsearch or OpenSearch cluster'
 keywords:
     - clusters
@@ -11,10 +11,7 @@ keywords:
     - docker
     - open source
 sidebar: 'docs'
-redirect_to: '/docs/hosting/open-source/'
 ---
-
-This page has moved. Please visit the [Open Source Deployment](/docs/hosting/open-source/) guide.
 
 ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's [AWS OpenSearch](/docs/hosting/byoc/connect-to-aws-opensearch/), [Elastic Cloud](/docs/hosting/byoc/connect-to-elastic-cloud/), or a self-hosted Elasticsearch/OpenSearch instance.
 
@@ -26,7 +23,7 @@ This diagram highlights how reactivesearch.io works. It directly interacts with 
 
 ### Using Docker
 
-Run reactivesearch.io via a single [docker compose file](https://github.com/appbaseio/arc-dockerized/blob/master/docker-compose-with-elasticsearch.yaml). This setup enables you to run reactivesearch.io and Elasticsearch together with single command, i.e. `docker-compose up -d`. 😎
+Run reactivesearch.io via a single [docker compose file](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/docker-compose-with-elasticsearch.yaml). This setup enables you to run reactivesearch.io and Elasticsearch together with single command, i.e. `docker-compose up -d`. 😎
 
 The dockerized setup is composed of the following services:
 
@@ -46,7 +43,7 @@ This service helps in setting up reverse proxy for reactivesearch.io Service and
 
 #### Elasticsearch
 
-An open-source single-node Elasticsearch cluster is run. This is optional: You can use the [docker compose file here](https://github.com/appbaseio/arc-dockerized/blob/master/docker-compose.yaml) to run without Elasticsearch.
+An open-source single-node Elasticsearch cluster is run. This is optional: You can use the [docker compose file here](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/docker-compose.yaml) to run without Elasticsearch.
 
 
 The steps described here assumes that you have [Docker](https://docs.docker.com/install/) already installed on your system.
@@ -54,7 +51,7 @@ The steps described here assumes that you have [Docker](https://docs.docker.com/
 -   **Step 1:** Clone the repository
 
     ```bash
-    git clone https://github.com/appbaseio/arc-dockerized.git && cd arc-dockerized
+    git clone https://github.com/appbaseio/reactivesearch-api-docker.git && cd reactivesearch-api-docker
     ```
 
 -   **Step 2:** Build and run docker containers
@@ -63,12 +60,12 @@ The steps described here assumes that you have [Docker](https://docs.docker.com/
 
     1 - **Install reactivesearch.io + Nginx with TLS setup _(Recommended for production)_**
 
-    -   Change [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and keys with production files. Please obtain [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and key for your domain using [Let's Encrypt](https://letsencrypt.org/) or any other provider. Update the files in [nginx/certs](https://github.com/appbaseio/arc-dockerized/tree/master/nginx/certs).
-    -   In case you are using different name than mentioned in [nginx/certs](https://github.com/appbaseio/arc-dockerized/tree/master/nginx/certs) folder, please update them in the `docker-compose.yaml` file as well.
+    -   Change [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and keys with production files. Please obtain [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and key for your domain using [Let's Encrypt](https://letsencrypt.org/) or any other provider. Update the files in [nginx/certs](https://github.com/appbaseio/reactivesearch-api-docker/tree/master/nginx/certs).
+    -   In case you are using different name than mentioned in [nginx/certs](https://github.com/appbaseio/reactivesearch-api-docker/tree/master/nginx/certs) folder, please update them in the `docker-compose.yaml` file as well.
 
     ![](https://i.imgur.com/piUKTLl.png)
 
-    Also, make sure you update the file names in the [nginx/default.conf](https://github.com/appbaseio/arc-dockerized/blob/master/nginx/default.conf) file.
+    Also, make sure you update the file names in the [nginx/default.conf](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/nginx/default.conf) file.
 
     ![](https://i.imgur.com/LW8zOyB.png)
 
@@ -95,4 +92,3 @@ The steps described here assumes that you have [Docker](https://docs.docker.com/
     > **Note:** Once you save the configuration, it may take 5-10s to restart the reactivesearch.io service.
 
 -   **Step 6:** Start using reactivesearch.io services via the Dashboard at http(s)://localhost_OR_cluster_url. Enter the username and password values that you configured in _Step 4_.
-

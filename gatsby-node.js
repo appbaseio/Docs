@@ -4,6 +4,10 @@ const { parse } = require('./utils/auto-schema');
 const parseRSSchema = require('./utils/auto-schema');
 
 exports.onPreBootstrap = ({ reporter }) => {
+	if (process.env.SKIP_SCHEMA) {
+		reporter.info('skipping schema generation (SKIP_SCHEMA is set)');
+		return;
+	}
 	reporter.info('generating the schema files for ReactiveSearch API');
 	parseRSSchema.parse();
 	reporter.info('generating the schema for the Pipelines API');

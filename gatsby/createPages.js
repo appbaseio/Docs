@@ -8,6 +8,12 @@ exports.createRedirects = ({ createRedirect }) => {
 		redirectInBrowser: true,
 		toPath: `/concepts/introduction/`,
 	});
+	createRedirect({
+		fromPath: `/docs/hosting/byoc/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/hosting/open-source/`,
+	});
 };
 
 exports.createMarkdownPages = async (graphql, { createPage, createRedirect }) => {
@@ -61,11 +67,10 @@ exports.createMarkdownPages = async (graphql, { createPage, createRedirect }) =>
 					} else {
 						createPage(options);
 					}
-
-					resolve();
 				});
+				resolve();
 			});
-		})
+		}),
 	);
 
 	await Promise.all(queryPromises);

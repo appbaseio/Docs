@@ -1,7 +1,7 @@
 ---
 title: 'Deploy OpenSearch with ReactiveSearch'
 meta_title: 'Deploy OpenSearch with ReactiveSearch'
-meta_description: 'Deploy the latest Apache 2.0 licensed OpenSearch and OpenSearch Dashboards with ReactiveSearch cloud in a single click.'
+meta_description: 'Run ReactiveSearch in Open Source mode alongside your OpenSearch cluster using Docker.'
 keywords:
     - opensearch
     - appbase.io
@@ -13,25 +13,8 @@ keywords:
 sidebar: 'docs'
 ---
 
-[OpenSearch](https://opensearch.org) is an Apache 2.0 licensed fork derived from Elasticsearch v7.10.2. ReactiveSearch (previously appbase.io) is an OpenSearch partner. You can deploy the [latest OpenSearch release with reactivesearch.io](https://www.reactivesearch.io/partnership/opensearch) for building enterprise and app search experiences.
+> ReactiveSearch is now available in **Open Source mode** as a Docker-based deployment. The previously available hosted OpenSearch + ReactiveSearch cloud service is no longer offered.
 
-## Deploying OpenSearch
+[OpenSearch](https://opensearch.org) is an Apache 2.0 licensed fork derived from Elasticsearch v7.10.2, and is fully supported as an upstream cluster for ReactiveSearch.
 
-You can select **OpenSearch** as an Elasticsearch flavour when creating a cluster.
-
-[Click here to create a new cluster](https://dashboard.appbase.io/clusters/new)
-
-![Choose OpenSearch when creating a cluster](https://i.imgur.com/UdN1b4N.png)
-
-
-## Why host OpenSearch with ReactiveSearch
-
-ReactiveSearch offers a no-code platform for creating the most demanding app search experiences powered by Elasticsearch and OpenSearch.
-
-When deploying OpenSearch with ReactiveSearch, you get OpenSearch, OpenSearch Dashboards and ReactiveSearch server all deployed in a single-click to power your app search experience.
-
-Features ReactiveSearch offers on top of the OpenSearch hosting:
-
-![ReactiveSearch feature stack overview](https://i.imgur.com/8jz4Ssp.png)
-
-Read more about ReactiveSearch in our [getting started guide](/docs/gettingstarted/quickstart/).
+To run ReactiveSearch with your own OpenSearch cluster, follow the [Open Source Deployment guide](/docs/hosting/open-source/). You can connect to an AWS OpenSearch cluster specifically via the [Connect to AWS OpenSearch](/docs/hosting/byoc/connect-to-aws-opensearch/) guide.

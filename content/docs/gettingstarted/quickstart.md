@@ -42,20 +42,17 @@ ReactiveSearch offers the following advantages over running your own Elasticsear
 4. **An Active Ecosystem** - From UI toolkits to build [search interfaces](https://opensource.reactivesearch.io/) and [map UIs](https://opensource.reactivesearch.io/geo-search), to the [leading Elasticsearch data browser](https://dejavu.reactivesearch.io/) to [backend data connectors](https://medium.appbase.io/abc-import-import-your-mongodb-sql-json-csv-data-into-elasticsearch-a202cafafc0d) to import data from SQL, MongoDB, JSON, CSV sources into Elasticsearch, we are actively working on open-standards to improve accessibility of building apps with ReactiveSearch.
 5. **No Vendor Lock-in** - Hosted APIs often come with a huge lock-in cost. ReactiveSearch.io is offered as [a hosted API](https://reactivesearch.io) as well as a [cloud native software](https://github.com/appbaseio/reactivesearch-api), offering a consistent experience without becoming a walled garden.
 
-## Choose your hosting
+## Getting started with Docker
+
+ReactiveSearch is available in Open Source mode as a Docker-based deployment. Bring your own Elasticsearch cluster and deploy ReactiveSearch alongside it.
 
 <div class="grid-integrations-index mt6 mt6-l f8">
-	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem;height: 120px;width:120px;" href="/docs/hosting/clusters">
-		<img class="w10 mb1" src="/images/clusters.png" />
-		Clusters
-	</a>
 	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/byoc">
 		<img class="w10 mb1" src="/images/arc.svg" />
-		Bring Your Own Cluster
+		Docker (Open Source)
 	</a>
 </div>
 
-| <p style="margin: 0px;" class="table-header-text">Hosting</p>                                     | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                                                                                                                                      |
+| <p style="margin: 0px;" class="table-header-text">Deployment</p>                                     | <p style="margin: 0px;" class="table-header-text">Description</p>                                                                                                                                                                                                      |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Clusters](/docs/hosting/clusters/)          | Free 14-day trial. Flexibility of deploying in 16 regions across North America, South America, Europe, Asia and Australia                                                                                        |
-| [Bring Your Own Cluster](/docs/hosting/byoc/) | Already have an Elasticsearch cluster with AWS or Elastic Cloud or hosting it yourself? You can provision the ReactiveSearch docker container or image as a hosted service from the dashboard or deploy it yourself. |
+| [Docker (Open Source)](/docs/hosting/open-source/) | Already have an Elasticsearch cluster with AWS OpenSearch, Elastic Cloud, or self-hosted? Deploy the ReactiveSearch Docker container alongside it. |

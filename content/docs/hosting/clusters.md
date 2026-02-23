@@ -1,7 +1,7 @@
 ---
 title: 'Clusters'
 meta_title: 'Clusters'
-meta_description: 'ReactiveSearch clusters provide a hosted app search experience.'
+meta_description: 'ReactiveSearch clusters - now available as Open Source Docker deployment.'
 keywords:
     - clusters
     - appbaseio
@@ -11,7 +11,9 @@ keywords:
 sidebar: 'docs'
 ---
 
-[ReactiveSearch's cloud service](https://www.reactivesearch.io/pricing) provides a fully hosted Elasticsearch + ReactiveSearch experience in over 16+ global regions. It's the easiest way to get started with ReactiveSearch. The cloud service comes with the following benefits over a [bring your cluster](/docs/hosting/byoc/) option:
+> The ReactiveSearch hosted cloud service (Clusters) is no longer available. ReactiveSearch is now available in **Open Source mode** as a Docker-based deployment.
+
+Please refer to the [Open Source Deployment guide](/docs/hosting/open-source/) to get started running ReactiveSearch alongside your own Elasticsearch or OpenSearch cluster.
 
   - **A zero config app search experience**: With the cloud service, appbase.io deploys both Elasticsearch and appbase.io services in a performance-optimized fashion,
   - **16+ available regions**: Deploy your cluster in one of 16+ global regions on GCP or AWS,
