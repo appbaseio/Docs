@@ -41,7 +41,7 @@
 		"auto-schema": "node ./utils/schema.js"
 	},
 	"engines": {
-		"node": ">=14.17.1"
+		"node": "18.x"
 	},
 	"devDependencies": {
 		"autoprefixer": "9.5.0",
