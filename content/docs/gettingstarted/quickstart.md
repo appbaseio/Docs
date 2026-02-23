@@ -47,7 +47,7 @@ ReactiveSearch offers the following advantages over running your own Elasticsear
 ReactiveSearch is available in Open Source mode as a Docker-based deployment. Bring your own Elasticsearch cluster and deploy ReactiveSearch alongside it.
 
 <div class="grid-integrations-index mt6 mt6-l f8">
-	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/byoc">
+	<a class="bg-white shadow-2 box-shadow-hover shadow-2-hover  br4 db flex flex-column justify-between items-center middarkgrey pa2 pt5 pb5 tdn tc" style="box-shadow: 0 0 5px rgba(0,0,0,.02), 0 5px 22px -8px rgba(0,0,0,.1);    word-break: normal;cursor: pointer; padding: 2rem; height: 120px;width:120px;" href="/docs/hosting/open-source/">
 		<img class="w10 mb1" src="/images/arc.svg" />
 		Docker (Open Source)
 	</a>

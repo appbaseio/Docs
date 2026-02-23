@@ -16,7 +16,7 @@ redirect_to: '/docs/hosting/open-source/'
 
 This page has moved. Please visit the [Open Source Deployment](/docs/hosting/open-source/) guide.
 
-ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's [AWS OpenSearch](/docs/hosting/byoc/connect-to-aws-opensearch/), [Elastic Cloud](/docs/hosting/byoc/connect-to-elastic-cloud/), or a self-hosted Elasticsearch/OpenSearch instance.
+ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's AWS OpenSearch, Elastic Cloud, or a self-hosted Elasticsearch/OpenSearch instance.
 
 ![](https://i.imgur.com/QjBkE7R.png)
 

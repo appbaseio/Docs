@@ -14,6 +14,30 @@ exports.createRedirects = ({ createRedirect }) => {
 		redirectInBrowser: true,
 		toPath: `/docs/hosting/open-source/`,
 	});
+	createRedirect({
+		fromPath: `/docs/hosting/byoc/connect-to-aws-opensearch/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/hosting/open-source/`,
+	});
+	createRedirect({
+		fromPath: `/docs/hosting/byoc/connect-to-elastic-cloud/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/hosting/open-source/`,
+	});
+	createRedirect({
+		fromPath: `/docs/hosting/opensearch/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/hosting/open-source/`,
+	});
+	createRedirect({
+		fromPath: `/docs/hosting/clusters/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/hosting/open-source/`,
+	});
 };
 
 exports.createMarkdownPages = async (graphql, { createPage, createRedirect }) => {

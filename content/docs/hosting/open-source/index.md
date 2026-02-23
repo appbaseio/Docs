@@ -13,7 +13,7 @@ keywords:
 sidebar: 'docs'
 ---
 
-ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's [AWS OpenSearch](/docs/hosting/byoc/connect-to-aws-opensearch/), [Elastic Cloud](/docs/hosting/byoc/connect-to-elastic-cloud/), or a self-hosted Elasticsearch/OpenSearch instance.
+ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's AWS OpenSearch, Elastic Cloud, or a self-hosted Elasticsearch/OpenSearch instance.
 
 ![](https://i.imgur.com/QjBkE7R.png)
 
@@ -23,72 +23,148 @@ This diagram highlights how reactivesearch.io works. It directly interacts with 
 
 ### Using Docker
 
-Run reactivesearch.io via a single [docker compose file](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/docker-compose-with-elasticsearch.yaml). This setup enables you to run reactivesearch.io and Elasticsearch together with single command, i.e. `docker-compose up -d`. 😎
+The quickest way to get started is to run ReactiveSearch alongside Elasticsearch using Docker Compose. This requires [Docker](https://docs.docker.com/install/) to be installed on your system.
 
-The dockerized setup is composed of the following services:
-
-#### reactivesearch.io
-
-Allows you to access all reactivesearch.io features like search preview, actionable analytics and granular security with any Elasticsearch cluster hosted anywhere.
-
-> **Note:** Make sure your reactivesearch.io container has complete access to Elasticsearch. You can use Elasticsearch URL with Basic Auth in configuring dashboard or IP restricted Elasticsearch URL where IP of your reactivesearch.io cluster hosted using docker setup is white listed.
-
-#### Configure
-
-This service comes with simple user interface which allows you to set credentials and other environment variables. Also it watches for environment variable file changes: if any variable in the file is changed, it can hot-reload the reactivesearch.io service.
-
-#### Nginx
-
-This service helps in setting up reverse proxy for reactivesearch.io Service and serving Configuration service. It also helps in serving data using with TLS certificate, which is recommended for production.
-
-#### Elasticsearch
-
-An open-source single-node Elasticsearch cluster is run. This is optional: You can use the [docker compose file here](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/docker-compose.yaml) to run without Elasticsearch.
-
-
-The steps described here assumes that you have [Docker](https://docs.docker.com/install/) already installed on your system.
-
--   **Step 1:** Clone the repository
+-   **Step 1:** Clone the repository and start the services
 
     ```bash
     git clone https://github.com/appbaseio/reactivesearch-api-docker.git && cd reactivesearch-api-docker
-    ```
-
--   **Step 2:** Build and run docker containers
-
-    We highly recommend using reactivesearch.io with [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) so that we can easily bind this with the reactivesearch.io Dashboard. To simplify the process of docker build, test and deployment, we have created 2 versions:
-
-    1 - **Install reactivesearch.io + Nginx with TLS setup _(Recommended for production)_**
-
-    -   Change [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and keys with production files. Please obtain [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificate and key for your domain using [Let's Encrypt](https://letsencrypt.org/) or any other provider. Update the files in [nginx/certs](https://github.com/appbaseio/reactivesearch-api-docker/tree/master/nginx/certs).
-    -   In case you are using different name than mentioned in [nginx/certs](https://github.com/appbaseio/reactivesearch-api-docker/tree/master/nginx/certs) folder, please update them in the `docker-compose.yaml` file as well.
-
-    ![](https://i.imgur.com/piUKTLl.png)
-
-    Also, make sure you update the file names in the [nginx/default.conf](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/nginx/default.conf) file.
-
-    ![](https://i.imgur.com/LW8zOyB.png)
-
-    ```bash
-    docker-compose up -d
-    ```
-
-    2 - **Install reactivesearch.io + Elasticsearch (If you want to deploy reactivesearch.io Along with Elasticsearch.)**
-
-    ```
     docker-compose -f docker-compose-with-elasticsearch.yaml up -d
     ```
 
-    🔥 Thats all, our containers should be up and running. Next, let us configure the environment variables required by reactivesearch.io service.
+    This starts Elasticsearch, ReactiveSearch API, Nginx (with TLS), Zinc (for internal logging), and Fluent Bit — all with a single command. 😎
 
--   **Step 3:** Open configuration service URL in your browser, i.e. http://localhost (or https://your-domain.com as configured in your nginx settings).
+-   **Step 2:** Verify the service is running
 
-    > **Note:** If you are running this setup on an virtual machine, make sure ports `80` and `443` are set in your inbound rules for the cluster.
+    Once the containers are up, verify that ReactiveSearch is accessible:
 
--   **Step 4:** Set username and password credentials.
+    ```bash
+    curl http://localhost:8000 -u rs-admin-user:rs-password
+    ```
 
--   **Step 5:** Configure the Elasticsearch URL.
+    You should see a response like:
 
-    > **Note:** Once you save the configuration, it may take 5-10s to restart the reactivesearch.io service.
+    ```json
+    {
+      "name": "elasticsearch",
+      "cluster_name": "docker-cluster",
+      "version": {
+        "number": "9.3.0",
+        "build_flavor": "default",
+        "build_type": "docker",
+        "build_hash": "17b451d8979a29e31935fe1eb901310350b30e62",
+        "build_date": "2026-01-29T10:05:46.708397977Z",
+        "build_snapshot": false,
+        "lucene_version": "10.3.2",
+        "minimum_wire_compatibility_version": "8.19.0",
+        "minimum_index_compatibility_version": "8.0.0"
+      },
+      "tagline": "You Know, for Search"
+    }
+    ```
 
--   **Step 6:** Start using reactivesearch.io services via the Dashboard at http(s)://localhost_OR_cluster_url. Enter the username and password values that you configured in _Step 4_.
+    This confirms that ReactiveSearch is running and connected to the Elasticsearch cluster.
+
+-   **Step 3:** Connect the ReactiveSearch Dashboard
+
+    Open [dash.reactivesearch.io](https://dash.reactivesearch.io) in your browser. Enter your ReactiveSearch URL (`http://localhost:8000`), username (`rs-admin-user`) and password (`rs-password`).
+
+    ![ReactiveSearch Dashboard Login](/images/reactivesearch-dashboard-login.png)
+
+-   **Step 4:** Start building your search experience
+
+    After signing in, you'll land on the Cluster Overview page — your central hub for managing indices, configuring search relevancy, setting up analytics, and more.
+
+    ![ReactiveSearch Dashboard Overview](/images/reactivesearch-dashboard-overview.png)
+
+### Services overview
+
+The dockerized setup is composed of the following services:
+
+#### ReactiveSearch API
+
+Allows you to access all ReactiveSearch features like search preview, actionable analytics and granular security with any Elasticsearch cluster hosted anywhere.
+
+> **Note:** Make sure your ReactiveSearch container has complete access to Elasticsearch. You can use Elasticsearch URL with Basic Auth in configuring the dashboard or an IP-restricted Elasticsearch URL where the IP of your ReactiveSearch cluster is whitelisted.
+
+#### Nginx
+
+This service sets up a reverse proxy for the ReactiveSearch API. It also supports serving data with a TLS certificate, which is recommended for production.
+
+For production deployments, replace the self-signed certificates in [nginx/certs](https://github.com/appbaseio/reactivesearch-api-docker/tree/master/nginx/certs) with your own TLS certificate and key (e.g. from [Let's Encrypt](https://letsencrypt.org/)). Update the file names in both the `docker-compose.yaml` and [nginx/default.conf](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/nginx/default.conf) if needed.
+
+#### Elasticsearch
+
+An open-source single-node Elasticsearch cluster. This is optional — you can use the [docker compose file here](https://github.com/appbaseio/reactivesearch-api-docker/blob/master/docker-compose.yaml) to run ReactiveSearch without a bundled Elasticsearch and connect to your own cluster instead.
+
+#### Zinc
+
+A lightweight search engine used internally by ReactiveSearch for logging.
+
+#### Fluent Bit
+
+A log processor that forwards pipeline execution logs.
+
+## Deploy with OpenSearch
+
+To run ReactiveSearch alongside [OpenSearch](https://opensearch.org) instead of Elasticsearch, use the dedicated OpenSearch docker compose file:
+
+```bash
+git clone https://github.com/appbaseio/reactivesearch-api-docker.git && cd reactivesearch-api-docker
+docker-compose -f docker-compose-with-opensearch.yaml up -d
+```
+
+This sets up:
+
+- **OpenSearch** (single-node, port `9200`) — an Apache 2.0 licensed search engine compatible with the Elasticsearch API
+- **ReactiveSearch API** — connected to OpenSearch via `ES_CLUSTER_URL=http://opensearch:9200`
+- **Nginx** — reverse proxy with TLS support
+- **Zinc** — lightweight search engine for internal logging
+- **Fluent Bit** — log forwarding for pipeline logs
+
+The default credentials configured in the compose file are:
+- ReactiveSearch username: `rs-admin-user`
+- ReactiveSearch password: `rs-password`
+
+You can change these by editing the environment variables in the compose file or via the configuration UI at http://localhost after startup.
+
+### Connecting to AWS OpenSearch
+
+To connect ReactiveSearch to an existing AWS OpenSearch cluster (instead of running a local one), modify the `ES_CLUSTER_URL` environment variable for the `reactivesearch-api` service in your docker compose file to point to your AWS OpenSearch endpoint:
+
+```yaml
+reactivesearch-api:
+    environment:
+      - ES_CLUSTER_URL=https://your-aws-opensearch-endpoint.region.es.amazonaws.com
+```
+
+> **Note:** Ensure your AWS OpenSearch domain's access policy allows connections from the machine running the ReactiveSearch Docker container. You can use IP whitelisting or fine-grained access control with a master user to secure the connection.
+
+## Deploy with Elastic Cloud
+
+To connect ReactiveSearch to your [Elastic Cloud](https://cloud.elastic.co) cluster, modify the `ES_CLUSTER_URL` environment variable to use your Elastic Cloud endpoint with credentials:
+
+```bash
+git clone https://github.com/appbaseio/reactivesearch-api-docker.git && cd reactivesearch-api-docker
+docker-compose up -d
+```
+
+Edit the `docker-compose.yaml` (or use the configuration UI after startup) and set:
+
+```yaml
+reactivesearch-api:
+    environment:
+      - ES_CLUSTER_URL=https://username:password@your-elastic-cloud-endpoint.es.cloud.es.io:9243
+```
+
+### Setting up Elastic Cloud credentials
+
+1. Log in to [Elastic Cloud](https://cloud.elastic.co/home) and open your deployment
+2. Navigate to Kibana → Management → Security → Users
+3. Create a new user (e.g. `reactivesearch-connect`) with a **superuser** role
+4. Construct the URL as `https://<username>:<password>@<elasticsearch-endpoint>`
+5. Use this URL as the `ES_CLUSTER_URL` value
+
+> **Why is a `superuser` role needed?** ReactiveSearch creates and manages system indices within your Elastic Cloud cluster for recording analytics, storing query rules, search relevance preferences, logs and more. Other roles don't allow access to these indices.
+
+> ReactiveSearch connects to your Elastic Cloud cluster from a private environment and these credentials aren't exposed anywhere.
