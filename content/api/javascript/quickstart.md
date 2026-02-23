@@ -23,9 +23,9 @@ It can't:
 
 ## Create Cluster
 
-ReactiveSearch is available as an Open Source Docker-based deployment. [Bring your own Elasticsearch cluster and self-host reactivesearch.io](/docs/hosting/open-source/).
+ReactiveSearch is available as an Open Source Docker-based deployment. [Bring your own Elasticsearch cluster and self-host reactivesearch.io](/docs/gettingstarted/install/).
 
-Follow the [Docker quickstart guide](/docs/hosting/open-source/) to get your ReactiveSearch instance running, then copy the URL for use below.
+Follow the [Docker quickstart guide](/docs/gettingstarted/install/) to get your ReactiveSearch instance running, then copy the URL for use below.
 
 ## Creating an Index
 

@@ -12,7 +12,7 @@ sidebar: 'api-reference'
 
 Appbase.io provides an API gateway and control plane for Elasticsearch -  with a mission of powering the most demanding application search use-cases.
 
-To get started with the APIs, the first pre-requisite is to set up a ReactiveSearch instance. ReactiveSearch is available as an Open Source Docker-based deployment — [bring your own Elasticsearch cluster and self-host reactivesearch.io](/docs/hosting/open-source/).
+To get started with the APIs, the first pre-requisite is to set up a ReactiveSearch instance. ReactiveSearch is available as an Open Source Docker-based deployment — [bring your own Elasticsearch cluster and self-host reactivesearch.io](/docs/gettingstarted/install/).
 
 ## REST APIs
 

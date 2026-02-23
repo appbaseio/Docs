@@ -9,34 +9,46 @@ exports.createRedirects = ({ createRedirect }) => {
 		toPath: `/concepts/introduction/`,
 	});
 	createRedirect({
+		fromPath: `/docs/hosting/open-source/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/gettingstarted/install/`,
+	});
+	createRedirect({
 		fromPath: `/docs/hosting/byoc/`,
 		isPermanent: true,
 		redirectInBrowser: true,
-		toPath: `/docs/hosting/open-source/`,
+		toPath: `/docs/gettingstarted/install/`,
 	});
 	createRedirect({
 		fromPath: `/docs/hosting/byoc/connect-to-aws-opensearch/`,
 		isPermanent: true,
 		redirectInBrowser: true,
-		toPath: `/docs/hosting/open-source/`,
+		toPath: `/docs/gettingstarted/install/`,
 	});
 	createRedirect({
 		fromPath: `/docs/hosting/byoc/connect-to-elastic-cloud/`,
 		isPermanent: true,
 		redirectInBrowser: true,
-		toPath: `/docs/hosting/open-source/`,
+		toPath: `/docs/gettingstarted/install/`,
 	});
 	createRedirect({
 		fromPath: `/docs/hosting/opensearch/`,
 		isPermanent: true,
 		redirectInBrowser: true,
-		toPath: `/docs/hosting/open-source/`,
+		toPath: `/docs/gettingstarted/install/`,
 	});
 	createRedirect({
 		fromPath: `/docs/hosting/clusters/`,
 		isPermanent: true,
 		redirectInBrowser: true,
-		toPath: `/docs/hosting/open-source/`,
+		toPath: `/docs/gettingstarted/install/`,
+	});
+	createRedirect({
+		fromPath: `/docs/gettingstarted/download-and-install/`,
+		isPermanent: true,
+		redirectInBrowser: true,
+		toPath: `/docs/gettingstarted/install/`,
 	});
 };
 

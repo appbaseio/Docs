@@ -13,7 +13,7 @@ sidebar: 'docs'
 
 > The ReactiveSearch hosted cloud service (Clusters) is no longer available. ReactiveSearch is now available in **Open Source mode** as a Docker-based deployment.
 
-Please refer to the [Open Source Deployment guide](/docs/hosting/open-source/) to get started running ReactiveSearch alongside your own Elasticsearch or OpenSearch cluster.
+Please refer to the [Download and Install guide](/docs/gettingstarted/install/) to get started running ReactiveSearch alongside your own Elasticsearch or OpenSearch cluster.
 
   - **A zero config app search experience**: With the cloud service, appbase.io deploys both Elasticsearch and appbase.io services in a performance-optimized fashion,
   - **16+ available regions**: Deploy your cluster in one of 16+ global regions on GCP or AWS,

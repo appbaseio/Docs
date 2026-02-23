@@ -17,4 +17,4 @@ sidebar: 'docs'
 
 [OpenSearch](https://opensearch.org) is an Apache 2.0 licensed fork derived from Elasticsearch v7.10.2, and is fully supported as an upstream cluster for ReactiveSearch.
 
-To run ReactiveSearch with your own OpenSearch cluster, follow the [Open Source Deployment guide](/docs/hosting/open-source/).
+To run ReactiveSearch with your own OpenSearch cluster, follow the [Download and Install guide](/docs/gettingstarted/install/).

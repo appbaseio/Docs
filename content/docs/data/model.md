@@ -22,7 +22,7 @@ As far as data modeling is concerned, it's Elasticsearch all the way!
 
 ## Cluster
 
-A ReactiveSearch cluster is equivalent to an Elasticsearch cluster. ReactiveSearch is available in Open Source mode and can be deployed alongside [your own Elasticsearch cluster](/docs/hosting/open-source/) using Docker.
+A ReactiveSearch cluster is equivalent to an Elasticsearch cluster. ReactiveSearch is available in Open Source mode and can be deployed alongside [your own Elasticsearch cluster](/docs/gettingstarted/install/) using Docker.
 
 Elasticsearch (or OpenSearch) is a distributed search and analytics engine built on top of Apache Lucene.
 

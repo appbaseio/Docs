@@ -114,7 +114,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon
-																	name="gettingStarted"
+																	name="rocket"
 																	className="dropdown-content-icon mr2"
 																/>
 																Getting Started
@@ -202,16 +202,6 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																	className="dropdown-content-icon mr2"
 																/>
 																Access Control
-															</Link>
-															<Link
-																to="/docs/hosting/open-source/"
-																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
-															>
-																<Icon
-																	name="rocket"
-																	className="dropdown-content-icon mr2"
-																/>
-																Hosting
 															</Link>
 														</div>
 													</div>

@@ -14,7 +14,7 @@ In this page, you will learn about how to implement Appbase.io analytics for you
 
 ### Prerequite: Deploying Appbase.io
 
-Appbase.io Analytics requires a deployment of appbase.io alongside your Elasticsearch cluster. ReactiveSearch is available as an Open Source Docker-based deployment. [Learn More](/docs/hosting/open-source/)
+Appbase.io Analytics requires a deployment of appbase.io alongside your Elasticsearch cluster. ReactiveSearch is available as an Open Source Docker-based deployment. [Learn More](/docs/gettingstarted/install/)
 
 ![Diagram showing how appbase.io works with Elasticsearch](/images/byoc.png)
 

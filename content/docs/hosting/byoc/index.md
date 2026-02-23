@@ -1,7 +1,7 @@
 ---
 title: 'Bring Your Own Cluster'
 meta_title: 'Bring Your Own Cluster - ReactiveSearch'
-meta_description: 'Run ReactiveSearch in Open Source mode with Docker alongside your own Elasticsearch or OpenSearch cluster'
+meta_description: 'Run ReactiveSearch in Open Source mode with Docker with an Elasticsearch or OpenSearch cluster'
 keywords:
     - clusters
     - appbaseio
@@ -11,10 +11,10 @@ keywords:
     - docker
     - open source
 sidebar: 'docs'
-redirect_to: '/docs/hosting/open-source/'
+redirect_to: '/docs/gettingstarted/install/'
 ---
 
-This page has moved. Please visit the [Open Source Deployment](/docs/hosting/open-source/) guide.
+This page has moved. Please visit the [Download and Install](/docs/gettingstarted/install/) guide.
 
 ReactiveSearch is available in Open Source mode as a Docker-based deployment. Run it alongside any Elasticsearch-compatible cluster you manage — whether that's AWS OpenSearch, Elastic Cloud, or a self-hosted Elasticsearch/OpenSearch instance.
 

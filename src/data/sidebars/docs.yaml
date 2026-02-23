@@ -1,10 +1,12 @@
 ---
 - groups:
       - group: 'Getting Started'
-        icon: gettingStarted
+        icon: rocket
         items:
             - link: /docs/gettingstarted/quickstart/
               title: Overview
+            - link: /docs/gettingstarted/install/
+              title: 'Download and Install'
       - group: 'Managing Data'
         icon: importData
         items:
@@ -170,8 +172,3 @@
               title: 'Role Based Access Control'
             - link: /docs/security/node-sync-preferences/
               title: 'Node Sync Preferences'
-      - group: Hosting
-        icon: rocket
-        items:
-            - link: /docs/hosting/open-source/
-              title: 'Open Source Deployment'

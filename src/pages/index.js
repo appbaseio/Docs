@@ -21,8 +21,10 @@ const HomePage = ({ data, location }) => {
 
 	// Add meta title and description for this page here to overwrite the site meta data as set in the config
 	data.site.siteMetadata = {
-		title: 'Reactivesearch Docs - Developer Guide for building search experiences with API, UI kits and no-code UI builder',
-		description: 'ReactiveSearch Docs - Build search experiences with REST API, industry leading low-code UI kits and no-code UI builder, powered by ElasticSearch, OpenSearch, OpenAI and more',
+		title:
+			'Reactivesearch Docs - Developer Guide for building search experiences with API, UI kits and no-code UI builder',
+		description:
+			'ReactiveSearch Docs - Build search experiences with REST API, industry leading low-code UI kits and no-code UI builder, powered by ElasticSearch, OpenSearch, OpenAI and more',
 	};
 
 	if (typeof window !== 'undefined' && !localStorage.getItem('recentSuggestions'))
@@ -63,12 +65,10 @@ const HomePage = ({ data, location }) => {
 								items={{
 									'1': {
 										title: 'Getting Started',
-										subtitle: 'Overview and Quickstart with reactivesearch.io',
+										subtitle:
+											'Download, install and get started with ReactiveSearch',
 										icon: (
-											<Icon
-												name="gettingStarted"
-												className="dropdown-content-icon"
-											/>
+											<Icon name="rocket" className="dropdown-content-icon" />
 										),
 										chapters: [
 											{
@@ -77,6 +77,13 @@ const HomePage = ({ data, location }) => {
 													'Overview and Quickstart with reactivesearch.io',
 												link: '/docs/gettingstarted/quickstart/',
 												duration: 3,
+											},
+											{
+												title: 'Download and Install',
+												description:
+													'Run ReactiveSearch in Open Source mode with Docker with an Elasticsearch or OpenSearch cluster',
+												link: '/docs/gettingstarted/install/',
+												duration: 5,
 											},
 										],
 									},
@@ -394,21 +401,6 @@ const HomePage = ({ data, location }) => {
 												duration: 6,
 												description:
 													'Build secure and access controled search experiences with RBAC using JWTs',
-											},
-										],
-									},
-									'10': {
-										title: 'Hosting',
-										icon: (
-											<Icon name="rocket" className="dropdown-content-icon" />
-										),
-										chapters: [
-											{
-												title: 'Open Source Deployment',
-												link: '/docs/hosting/open-source/',
-												duration: 5,
-												description:
-													'Run ReactiveSearch in Open Source mode with Docker alongside your own Elasticsearch or OpenSearch cluster',
 											},
 										],
 									},

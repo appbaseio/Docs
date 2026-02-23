@@ -43,16 +43,23 @@ class HomeHeader extends React.Component {
 							delightful search experiences with our low code UI kits.
 						</p>
 						<div className="mt8 mobile-btn">
-							<button
-								style={{
-									background:
-										'-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
-									borderRadius: '1rem',
-								}}
-								className="signup-btn"
+							<a
+								href="https://www.reactivesearch.io/get-started"
+								target="_blank"
+								rel="noopener noreferrer"
+								style={{ textDecoration: 'none' }}
 							>
-								SignUp for free
-							</button>
+								<button
+									style={{
+										background:
+											'-webkit-linear-gradient(bottom left, #3B82F6, #FF2A6F)',
+										borderRadius: '1rem',
+									}}
+									className="signup-btn"
+								>
+									Get Started
+								</button>
+							</a>
 							<Link to="/tutorial">
 								<button
 									className="video-btn"

@@ -253,14 +253,6 @@ class MobileNav extends React.Component {
 							{typeof window !== 'undefined' && window.innerWidth <= 768 ? (
 								<ThemeSwitch onClick={val => this.handleClick(val)} />
 							) : null}
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								className="midgrey hover-blue-l2 link"
-								href="https://dashboard.reactivesearch.io"
-							>
-								Dashboard
-							</a>
 						</div>
 					</div>
 				</div>
