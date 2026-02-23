@@ -204,7 +204,7 @@ const NavBar = ({ theme, setThemeType, themeType }) => {
 																Access Control
 															</Link>
 															<Link
-																to="/docs/hosting/clusters/"
+																to="/docs/hosting/open-source/"
 																className={`${themeClasses[theme].menuItem} nowrap f5 pa3 mr1 mr3-l nl3 dropdown-link link-container`}
 															>
 																<Icon

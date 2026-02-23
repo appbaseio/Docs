@@ -404,25 +404,11 @@ const HomePage = ({ data, location }) => {
 										),
 										chapters: [
 											{
-												title: 'Clusters',
-												link: '/docs/hosting/clusters/',
-												duration: 3,
+												title: 'Open Source Deployment',
+												link: '/docs/hosting/open-source/',
+												duration: 5,
 												description:
-													'Deploy Elasticsearch or OpenSearch with ReactiveSearch Cloud',
-											},
-											{
-												title: 'Bring your own Cluster',
-												link: '/docs/hosting/byoc/',
-												duration: 11,
-												description:
-													'Deploy reactivesearch with your own search cluster, supports Elasticsearch and OpenSearch',
-											},
-											{
-												title: 'Deploy OpenSearch',
-												link: '/docs/hosting/opensearch/',
-												duration: 1,
-												description:
-													'Deploy OpenSearch with appbase for all your app search needs',
+													'Run ReactiveSearch in Open Source mode with Docker alongside your own Elasticsearch or OpenSearch cluster',
 											},
 										],
 									},
