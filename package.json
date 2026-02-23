@@ -41,7 +41,7 @@
 		"auto-schema": "node ./utils/schema.js"
 	},
 	"engines": {
-		"node": "18.x"
+		"node": "20.x"
 	},
 	"devDependencies": {
 		"autoprefixer": "9.5.0",
@@ -124,5 +124,8 @@
 		"searchbox-showcase": "https://github.com/awesome-reactivesearch/searchbox-showcase.git#ac58bba",
 		"tocbot": "^4.18.0",
 		"yarn": "^1.22.18"
+	},
+	"resolutions": {
+		"msgpackr": "^1.10.2"
 	}
 }
