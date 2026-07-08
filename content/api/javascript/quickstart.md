@@ -33,7 +33,7 @@ This gif shows how to create an index on reactivesearch.io cluster, which we wil
 
 ![](https://www.dropbox.com/s/qa5nazj2ajaskr6/wky0vrsPPB.gif?raw=1)
 
-For this tutorial, we will use an index called `good-books-demo`. The credentials for this index are `376aa692e5ab:8472bf31-b18a-454d-bd39-257c07d02854`.
+For this tutorial, we will use an index called `good-books-ds`. The credentials are `d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0`.
 
 > Note <i class="fa fa-info-circle"></i>
 >
@@ -59,9 +59,9 @@ To write data to [appbase.io](https://reactivesearch.io), we need to first creat
 
 ```js
 var appbaseRef = Appbase({
-	url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
-	app: 'good-books-demo',
-	credentials: 'c84fb24cbe08:db2a25b5-1267-404f-b8e6-cf0754953c68',
+	url: 'https://reactivesearch-api-9-3-0.onrender.com',
+	app: 'good-books-ds',
+	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
 });
 ```
 
@@ -69,9 +69,8 @@ var appbaseRef = Appbase({
 
 ```js
 var appbaseRef = Appbase({
-	url:
-		'https://c84fb24cbe08:db2a25b5-1267-404f-b8e6-cf0754953c68@appbase-demo-ansible-abxiydt-arc.searchbase.io',
-	app: 'good-books-demo',
+	url: 'https://d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0@reactivesearch-api-9-3-0.onrender.com',
+	app: 'good-books-ds',
 });
 ```
 
@@ -128,7 +127,7 @@ appbaseRef.get({
 
 /* get() response */
 {
- "_index": "good-books-demo",
+ "_index": "good-books-ds",
  "_type": "books",
  "_id": "X1",
  "_version": 5,

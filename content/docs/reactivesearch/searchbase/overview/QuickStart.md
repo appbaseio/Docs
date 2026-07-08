@@ -44,16 +44,16 @@ import { SearchComponent } from '@appbaseio/searchbase';
 // Instantiate the `SearchComponent`
 const searchComponent = new SearchComponent({
 	// Elasticsearch index name
-	index: 'gitxplore-app',
+	index: 'good-books-ds',
 	// Appbase credentials
-	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
-	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
+	url: 'https://reactivesearch-api-9-3-0.onrender.com',
 	// Unique identifier for component
 	id: 'search-component',
 	// initialize with empty value
 	value: '',
 	// Database fields to perform the search
-	dataField: ['name', 'description', 'name.search', 'fullname', 'owner', 'topics'],
+	dataField: ['title', 'original_title', 'authors'],
 });
 
 // Get the input element
@@ -118,24 +118,24 @@ import { SearchBase } from '@appbaseio/searchbase';
 // Instantiate the `SearchBase`
 const searchbase = new SearchBase({
 	// Elasticsearch index name
-	index: 'gitxplore-app',
+	index: 'good-books-ds',
 	// Appbase credentials
-	credentials: 'a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61',
-	url: 'https://@arc-cluster-appbase-demo-6pjy6z.searchbase.io',
+	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
+	url: 'https://reactivesearch-api-9-3-0.onrender.com',
 });
 
 // Register search component => To render the suggestions
 const searchComponent = searchbase.register('search-component', {
 	// pass this prop as true to enable predictive suggestions
 	enablePredictiveSuggestions: true,
-	dataField: ['name', 'description', 'name.raw', 'fullname', 'owner', 'topics'],
+	dataField: ['title', 'original_title', 'authors'],
 });
 
 // Register filter component with dependency on search component
 const filterComponent = searchbase.register('language-filter', {
 	// The type property as `term` is to use the Elasticsearch terms aggregations.
 	type: 'term',
-	dataField: 'language.keyword',
+	dataField: 'language_code.keyword',
 	react: {
 		and: 'search-component',
 	},
@@ -143,7 +143,7 @@ const filterComponent = searchbase.register('language-filter', {
 
 // Register result component with react dependency on search and filter component => To render the results
 const resultComponent = searchbase.register('result-component', {
-	dataField: 'name',
+	dataField: 'title',
 	react: {
 		and: ['search-component', 'language-filter'],
 	},
