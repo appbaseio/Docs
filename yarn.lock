@@ -18091,9 +18091,9 @@ scroll-into-view-if-needed@^2.2.25:
   dependencies:
     compute-scroll-into-view "^1.0.20"
 
-"searchbox-showcase@https://github.com/awesome-reactivesearch/searchbox-showcase.git#fd402658":
+"searchbox-showcase@https://github.com/awesome-reactivesearch/searchbox-showcase.git":
   version "0.1.0"
-  resolved "https://github.com/awesome-reactivesearch/searchbox-showcase.git#fd4026582c48844ce383423d72f5933ba694bc0a"
+  resolved "https://github.com/awesome-reactivesearch/searchbox-showcase.git#757465dbb9ac1211f0cb0bb5443259fbbc82f058"
   dependencies:
     bootstrap "^5.2.3"
     react-bootstrap "^2.7.2"
