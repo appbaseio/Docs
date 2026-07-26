@@ -59,7 +59,7 @@ To write data to [appbase.io](https://reactivesearch.io), we need to first creat
 
 ```js
 var appbaseRef = Appbase({
-	url: 'https://reactivesearch-api-9-3-0.onrender.com',
+	url: 'https://reactivesearch-api-9-4-0.onrender.com',
 	app: 'good-books-ds',
 	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
 });
@@ -69,7 +69,7 @@ var appbaseRef = Appbase({
 
 ```js
 var appbaseRef = Appbase({
-	url: 'https://d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0@reactivesearch-api-9-3-0.onrender.com',
+	url: 'https://d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0@reactivesearch-api-9-4-0.onrender.com',
 	app: 'good-books-ds',
 });
 ```

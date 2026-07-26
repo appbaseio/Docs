@@ -57,7 +57,7 @@ Lets add our first ReactiveSearch component: [ReactiveBase](/docs/reactivesearch
 
 ![create an appbase.io index](https://www.dropbox.com/s/qa5nazj2ajaskr6/wky0vrsPPB.gif?raw=1)
 
-**Caption:** For the example that we will build in this tutorial, the app is called **good-books-ds** and the associated credentials are **d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0**. Browse the dataset via the [ReactiveSearch API](https://reactivesearch-api-9-3-0.onrender.com) or import your own copy.
+**Caption:** For the example that we will build in this tutorial, the app is called **good-books-ds** and the associated credentials are **d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0**. Browse the dataset via the [ReactiveSearch API](https://reactivesearch-api-9-4-0.onrender.com) or import your own copy.
 
 **Note:** Clone app option will not work with these credentials here have very narrow access scope (to prevent abuse).
 
@@ -70,7 +70,7 @@ import { ReactiveBase } from "@appbaseio/reactivesearch";
 function App() {
   return (
     <ReactiveBase
-      url="https://reactivesearch-api-9-3-0.onrender.com"
+      url="https://reactivesearch-api-9-4-0.onrender.com"
       app="good-books-ds"
       credentials="d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0"
     >

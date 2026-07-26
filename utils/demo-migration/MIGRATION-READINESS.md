@@ -1,6 +1,6 @@
 # Docs Migration Readiness Report
 
-**New backend:** `https://reactivesearch-api-9-3-0.onrender.com` (`rs-demo` / `rs-password`)  
+**New backend:** `https://reactivesearch-api-9-4-0.onrender.com` (`rs-demo` / `rs-password`)  
 **Elasticsearch:** Aiven OpenSearch  
 **Last updated:** 2026-07-07
 
@@ -34,7 +34,7 @@
 ```
 OLD: https://appbase-demo-ansible-abxiydt-arc.searchbase.io
 OLD: https://arc-cluster-appbase-demo-6pjy6z.searchbase.io
-NEW: https://reactivesearch-api-9-3-0.onrender.com
+NEW: https://reactivesearch-api-9-4-0.onrender.com
 
 OLD: /recipes-demo/_reactivesearch.v3
 NEW: /good-books-ds/_reactivesearch   # interim until recipes-demo migrated
@@ -42,7 +42,7 @@ NEW: /good-books-ds/_reactivesearch   # interim until recipes-demo migrated
 
 ## P0 pages updated (2026-07-07)
 
-Backend: `https://reactivesearch-api-9-3-0.onrender.com` / `rs-demo:rs-password`
+Backend: `https://reactivesearch-api-9-4-0.onrender.com` / `rs-demo:rs-password`
 
 - `content/docs/reactivesearch/react/overview/quickstart.md`
 - `content/docs/reactivesearch/vue/overview/QuickStart.md`
@@ -121,7 +121,7 @@ Backend: `https://reactivesearch-api-9-3-0.onrender.com` / `rs-demo:rs-password`
 3. Bulk-replace hostnames in Docs + credentials
 4. Retarget `recipes-demo` demos → `good-books-ds` OR migrate subset
 5. Finish `best-buy-dataset` migration
-6. Update external repos: `reactivesearch`, `searchbox`, `autocomplete-suggestions-plugin`
+6. Update external repos: `reactivesearch` ([CSB checklist](./REACTIVESearch-CSB-CHECKLIST.md)), `searchbox`, `autocomplete-suggestions-plugin`
 7. Bulk-update `play.reactivesearch.io` saved states
 8. P0 → P1 → P2 manual test pass
 

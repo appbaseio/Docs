@@ -106,7 +106,7 @@ We will demonstrate creating an index using [appbase.io](https://appbase.io) ser
 
 ![create an appbase.io app](https://www.dropbox.com/s/qa5nazj2ajaskr6/wky0vrsPPB.gif?raw=1)
 
-**Caption:** For the example that we will build, the app is called **good-books-ds** and the associated credentials are **d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0**. Browse the dataset via the [ReactiveSearch API](https://reactivesearch-api-9-3-0.onrender.com).
+**Caption:** For the example that we will build, the app is called **good-books-ds** and the associated credentials are **d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0**. Browse the dataset via the [ReactiveSearch API](https://reactivesearch-api-9-4-0.onrender.com).
 
 **Note:** Clone app option will not work with these credentials here have very narrow access scope (to prevent abuse).
 
@@ -116,7 +116,7 @@ We will update our `src/App.vue` file to add the ReactiveBase component.
 <template>
 	<div id="app">
 		<reactive-base
-			url="https://reactivesearch-api-9-3-0.onrender.com"
+			url="https://reactivesearch-api-9-4-0.onrender.com"
 			app="good-books-ds"
 			credentials="d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0"
 		>
@@ -248,7 +248,7 @@ Now, we will put all three components together to create the UI view.
 <template>
   <div id="app">
     <reactive-base
-      url="https://reactivesearch-api-9-3-0.onrender.com"
+      url="https://reactivesearch-api-9-4-0.onrender.com"
       app="good-books-ds"
       credentials="d03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0"
     >

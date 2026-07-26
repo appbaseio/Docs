@@ -17,7 +17,7 @@ import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
 const settings = {
 	app: 'clone-airbeds',
 	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
-	url: 'https://reactivesearch-api-9-3-0.onrender.com',
+	url: 'https://reactivesearch-api-9-4-0.onrender.com',
     enableAppbase: true,
     mapKey: 'AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU',
 	theme: {
