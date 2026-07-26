@@ -38,7 +38,8 @@
 		"prestart": "gatsby clean",
 		"lint": "eslint . --ext .js --cache",
 		"test": "gatsby clean && yarn build",
-		"auto-schema": "node ./utils/schema.js"
+		"auto-schema": "node ./utils/schema.js",
+		"postinstall": "node ./scripts/patch-searchbox-showcase.js"
 	},
 	"engines": {
 		"node": "22.x"
