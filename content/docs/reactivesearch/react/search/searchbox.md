@@ -95,9 +95,9 @@ Example uses:
         }}
         renderNoSuggestion="No suggestions found"
         endpoint={{
-            url:"https://appbase-demo-ansible-abxiydt-arc.searchbase.io/recipes-demo/_reactivesearch.v3", //mandatory
+            url:"https://reactivesearch-api-9-4-0.onrender.com/recipes-demo/_reactivesearch", //mandatory
             headers:{
-                // relevant headers
+                Authorization: 'Basic ZDAzZTZmNWYzM2Q1OjQ5MTI0Njc0LTU1NGUtNDM0My05YWIyLTAwNmIyOTMyZjVjMA=='
             },
             method: 'POST'
         }}            

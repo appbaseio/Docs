@@ -16,8 +16,8 @@ import ShowcaseComponent from '../../../../../components/ShowcaseComponent';
 
 const settings = {
 	app: 'clone-airbeds',
-	credentials: '3f7ed293fbe0:47ff004a-4722-49fe-bc48-0ff0286e4de0',
-    url: 'https://appbase-demo-ansible-abxiydt-arc.searchbase.io',
+	credentials: 'd03e6f5f33d5:49124674-554e-4343-9ab2-006b2932f5c0',
+	url: 'https://reactivesearch-api-9-4-0.onrender.com',
     enableAppbase: true,
     mapKey: 'AIzaSyA9JzjtHeXg_C_hh_GdTBdLxREWdj3nsOU',
 	theme: {

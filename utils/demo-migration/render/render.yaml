@@ -1,0 +1,34 @@
+# Render Blueprint — ReactiveSearch API gateway for demo backends
+#
+# Deploy:
+#   1. Fork/push this folder to a repo Render can access
+#   2. In Render: New > Blueprint > connect repo (root: utils/demo-migration/render)
+#   3. Set ES_CLUSTER_URL secret in dashboard (Aiven OpenSearch URI with creds)
+#
+# Notes:
+#   - Persistent disk keeps RS users / ACL config across restarts (Starter+ plan)
+#   - Set service Port to 8000 in Render dashboard if health checks fail
+#   - Free tier spins down on idle — not ideal for CodeSandbox embeds
+
+services:
+  - type: web
+    name: rs-api-demo
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    healthCheckPath: /
+    numInstances: 1
+    disk:
+      name: rs-data
+      mountPath: /reactivesearch-data
+      sizeGB: 1
+    envVars:
+      - key: ES_CLUSTER_URL
+        sync: false
+      - key: USERNAME
+        value: rs-admin-user
+      - key: PASSWORD
+        generateValue: true
+      - key: PORT
+        value: "8000"
