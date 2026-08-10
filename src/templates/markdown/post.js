@@ -8,6 +8,7 @@ import { SidebarNav } from '../../components/common/sidebar';
 import { PrevNextSection } from '../../components/common/prev-next';
 import { Icon, TOC } from '../../components/common';
 import { Helmet } from 'react-helmet';
+import { CREDENTIAL_FOR_DOCS } from '../../components/common/constants';
 
 const getGitHubLink = absoluteFilePath => {
 	const splitPath = absoluteFilePath.split('/content')[1];
@@ -24,6 +25,30 @@ class Post extends React.Component {
 		};
 
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+	}
+
+	async componentDidMount() {
+		const { docId } = this.props && this.props.location && this.props.location.state;
+		if (docId) {
+			try {
+				await fetch(
+					'https://appbase-demo-ansible-abxiydt-arc.searchbase.io/unified-reactivesearch-web-data/_analytics/document',
+					{
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: `Basic ${btoa(CREDENTIAL_FOR_DOCS)}`,
+						},
+						body: JSON.stringify({
+							document_id: docId,
+							user_id: 'test',
+						}),
+					},
+				);
+			} catch (e) {
+				console.error(`Couldn't index document suggestion.\n${e}`);
+			}
+		}
 	}
 
 	toggleMobileMenu() {

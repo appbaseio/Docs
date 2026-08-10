@@ -304,11 +304,3 @@ pre > code {
 .gatsby-remark-prismjs-copy-button {
 	margin-right: 15px;
 }
-
-body.dark .search-icon {
-	fill: #ffffff !important;
-}
-
-body.light .search-icon {
-	fill: #082429 !important;
-}

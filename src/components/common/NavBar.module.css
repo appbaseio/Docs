@@ -1,0 +1,38 @@
+.logo {
+	height: 75px;
+}
+
+@media screen and (max-width: 800px) {
+	.logo {
+		height: 60px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.logo {
+		height: 50px;
+	}
+}
+
+.resourceFilter a {
+	text-decoration: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bolder;
+	text-transform: uppercase;
+	color: black;
+	padding: 1.25rem 2rem;
+}
+
+.searchBox {
+	font-size: 18px;
+}
+.searchBox ol,
+.searchBox ul,
+.searchBox dl {
+	padding-left: 0px;
+}
+
+.searchBox textarea {
+	overflow-y: hidden;
+	font-size: 1em !important;
+	resize: none;
+}
